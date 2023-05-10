@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2023-05-10-11-03-40.png">
 <meta property="article:published_time" content="2023-05-09T10:47:20.000Z">
-<meta property="article:modified_time" content="2023-05-10T06:50:02.519Z">
+<meta property="article:modified_time" content="2023-05-10T07:51:21.856Z">
 <meta property="article:author" content="Keke Liu">
 <meta property="article:tag" content="vasp">
 <meta name="twitter:card" content="summary">
@@ -204,7 +204,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-05-10 14:50:02" itemprop="dateModified" datetime="2023-05-10T14:50:02+08:00">2023-05-10</time>
+      <time title="修改时间：2023-05-10 15:51:21" itemprop="dateModified" datetime="2023-05-10T15:51:21+08:00">2023-05-10</time>
     </span>
 
   
@@ -301,19 +301,19 @@
 <p>贴一个我的结构优化的INCAR：</p>
 <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">ISTART</span> =  <span class="number">0</span>            (<span class="title class_">Read</span> existing wavefunction; <span class="keyword">if</span> there)</span><br><span class="line"><span class="variable constant_">ISPIN</span>  =  <span class="number">2</span>           (<span class="title class_">Non</span>-<span class="title class_">Spin</span> polarised <span class="variable constant_">DFT</span>) </span><br><span class="line"><span class="variable constant_">ICHARG</span> =  <span class="number">2</span>         (<span class="title class_">Non</span>-self-<span class="attr">consistent</span>: <span class="variable constant_">GGA</span>/<span class="variable constant_">LDA</span> band structures)</span><br><span class="line"><span class="variable constant_">ENCUT</span>  =  <span class="number">500</span>        (<span class="title class_">Cut</span>-off energy <span class="keyword">for</span> plane wave basis set, <span class="keyword">in</span> eV)</span><br><span class="line"><span class="variable constant_">PREC</span>   =  A       (<span class="title class_">Precision</span> level)</span><br><span class="line"><span class="variable constant_">LWAVE</span>  = .<span class="property">F</span>.        (<span class="title class_">Write</span> <span class="variable constant_">WAVECAR</span> or not)</span><br><span class="line"><span class="variable constant_">LCHARG</span> = .<span class="property">F</span>.        (<span class="title class_">Write</span> <span class="variable constant_">CHGCAR</span> or not)</span><br><span class="line"><span class="variable constant_">ISMEAR</span> =  <span class="number">0</span>            (<span class="title class_">Gaussian</span> smearing; <span class="attr">metals</span>:<span class="number">1</span>)</span><br><span class="line"><span class="variable constant_">SIGMA</span>  =  <span class="number">0.05</span>         (<span class="title class_">Smearing</span> value <span class="keyword">in</span> eV; <span class="attr">metals</span>:<span class="number">0.2</span></span><br><span class="line"><span class="variable constant_">EDIFF</span>  =  <span class="number">1E-08</span>        (<span class="variable constant_">SCF</span> energy convergence; <span class="keyword">in</span> eV)</span><br><span class="line"><span class="variable constant_">EDIFFG</span> = -<span class="number">1E-02</span>        (<span class="title class_">Ionic</span> convergence; eV/<span class="variable constant_">AA</span>) </span><br><span class="line"><span class="variable constant_">NSW</span>    =  <span class="number">100</span>          (<span class="title class_">Max</span> ionic steps)</span><br><span class="line"><span class="variable constant_">IBRION</span> =  <span class="number">2</span>            (<span class="title class_">Algorithm</span>: <span class="number">0</span>-<span class="variable constant_">MD</span>; <span class="number">1</span>-<span class="title class_">Quasi</span>-<span class="title class_">New</span>; <span class="number">2</span>-<span class="variable constant_">CG</span>)</span><br><span class="line"><span class="variable constant_">POTIM</span>=<span class="number">0.1</span></span><br><span class="line"><span class="variable constant_">ISIF</span>   =  <span class="number">3</span>            (<span class="title class_">Stress</span>/<span class="attr">relaxation</span>: <span class="number">2</span>-<span class="title class_">Ions</span>, <span class="number">3</span>-<span class="title class_">Shape</span>/<span class="title class_">Ions</span>/V, <span class="number">4</span>-<span class="title class_">Shape</span>/<span class="title class_">Ions</span>)</span><br></pre></td></tr></table></figure>
 <h3 id="上面参数详细介绍"><a href="#上面参数详细介绍" class="headerlink" title="上面参数详细介绍"></a>上面参数详细介绍</h3><ul>
-<li>__ISTART__：初始波函数。WAVECAR存在默认1，不存在默认0。<br>0：随机生成波函数<br>1：从 WAVECAR 读取波函数，若读取失败则随机生成。</li>
-<li>__ICHARG__：初始电荷密度。当ISTART&#x3D;0默认2，其他默认1。<br>0：通过 WAVECAR 生成电荷密度，若读取失败则通过原子电荷密度叠加生成<br>1：从 CHGCAR 读取电荷密度<br>2：通过原子电荷密度叠加生成电荷密度<br>11：从 CHGCAR 读取电荷密度，且在（非自洽）循环中保持不变</li>
-<li>__ISPIN__：自旋极化。默认1，关闭。不知道是否打开，可以打开，结果不会有影响。<br>1：非自旋极化（每个轨道上自旋向上和自旋向下的电子数量相等，适合非磁性体系）<br>2：自旋极化（适合铁磁、反铁磁体系）</li>
-<li>__ENCUT__：平面波截断能（单位 eV）<br>默认元素中最大的ENMAX。一般为 POTCAR 中 最大ENMAX 参数值的 1.0 到 1.3 倍。500适用大部分体系。</li>
-<li>__PREC__：总体计算精度，默认Normal。可设为 Low、Med、High、Normal、Single、Accurate。具体参照手册，设为A或者Accurate足够精确。</li>
+<li><strong>ISTART</strong> ：初始波函数。WAVECAR存在默认1，不存在默认0。<br>0：随机生成波函数<br>1：从 WAVECAR 读取波函数，若读取失败则随机生成。</li>
+<li><strong>ICHARG</strong> ：初始电荷密度。当ISTART&#x3D;0默认2，其他默认1。<br>0：通过 WAVECAR 生成电荷密度，若读取失败则通过原子电荷密度叠加生成<br>1：从 CHGCAR 读取电荷密度<br>2：通过原子电荷密度叠加生成电荷密度<br>11：从 CHGCAR 读取电荷密度，且在（非自洽）循环中保持不变</li>
+<li><strong>ISPIN</strong> ：自旋极化。默认1，关闭。不知道是否打开，可以打开，结果不会有影响。<br>1：非自旋极化（每个轨道上自旋向上和自旋向下的电子数量相等，适合非磁性体系）<br>2：自旋极化（适合铁磁、反铁磁体系）</li>
+<li><strong>ENCUT</strong> ：平面波截断能（单位 eV）<br>默认元素中最大的ENMAX。一般为 POTCAR 中 最大ENMAX 参数值的 1.0 到 1.3 倍。500适用大部分体系。</li>
+<li><strong>PREC</strong> ：总体计算精度，默认Normal。可设为 Low、Med、High、Normal、Single、Accurate。具体参照手册，设为A或者Accurate足够精确。</li>
 <li><strong>LWAVE  LCHARG</strong> ：控制WAVECAR和CHGCAR输出，默认输出，在结构优化可以关闭，节省储存空间。</li>
-<li>__ISMEAR__：轨道分数占据<br>−5：四面体方法（适合半导体和绝缘体）<br>0：高斯方法（适合导体、半导体和绝缘体），展宽由 SIGMA 确定<br>N：Methfessel-Paxton 方法（适合导体）</li>
-<li>__EDIFF__：自洽循环收敛标准（系统能量变化），单位为 eV。默认1E-4，可以设的更精确一些。一般设置为 1E-6或更高。</li>
+<li><strong>ISMEAR</strong> ：轨道分数占据<br>−5：四面体方法（适合半导体和绝缘体）<br>0：高斯方法（适合导体、半导体和绝缘体），展宽由 SIGMA 确定<br>N：Methfessel-Paxton 方法（适合导体）</li>
+<li><strong>EDIFF</strong> ：自洽循环收敛标准（系统能量变化），单位为 eV。默认1E-4，可以设的更精确一些。一般设置为 1E-6或更高。</li>
 <li>__EDIFFG__：离子位置优化收敛标准。默认EDIFF*10。正值为系统能量变化，负值为原子上残余力。随着体系维数下降，可适当增加原子残余力。</li>
-<li>__NSW__：离子位置优化最大步数（IBRION&#x3D;1、2）。默认0。设为100足够大，也可以继续加大。<br>分子动力学开启时代表分子动力学模拟步数（IBRION&#x3D;0）</li>
-<li>__IBRION__：离子位置优化算法。默认NSW&#x3D;0&#x2F;1时为-1，其他默认0。<br>-1：离子不移动<br>0：分子动力学模拟<br>1：准牛顿法<br>2：共轭梯度法<br>5：振动频率计算<br>6：弹性常数计算<br>7&#x2F;8：DFPT方法</li>
-<li>__POTIM__：有限差分法步长。当IBRION&#x3D;1&#x2F;2&#x2F;3默认值 0.5。当IBRION&#x3D;0（MD）时必须指定。</li>
-<li>__ISIF__：需要结构优化变量。默认IBRION&#x3D;0时为0，其他默认2。结构优化一般设为3，全部优化。<br><img src="/2023-05-10-11-03-40.png"></li>
+<li><strong>NSW</strong> ：离子位置优化最大步数（IBRION&#x3D;1、2）。默认0。设为100足够大，也可以继续加大。<br>分子动力学开启时代表分子动力学模拟步数（IBRION&#x3D;0）</li>
+<li><strong>IBRION</strong> ：离子位置优化算法。默认NSW&#x3D;0&#x2F;1时为-1，其他默认0。<br>-1：离子不移动<br>0：分子动力学模拟<br>1：准牛顿法<br>2：共轭梯度法<br>5：振动频率计算<br>6：弹性常数计算<br>7&#x2F;8：DFPT方法</li>
+<li><strong>POTIM</strong> ：有限差分法步长。当IBRION&#x3D;1&#x2F;2&#x2F;3默认值 0.5。当IBRION&#x3D;0（MD）时必须指定。</li>
+<li><strong>ISIF</strong> ：需要结构优化变量。默认IBRION&#x3D;0时为0，其他默认2。结构优化一般设为3，全部优化。<br><img src="/2023-05-10-11-03-40.png"></li>
 </ul>
 <h4 id="Mind"><a href="#Mind" class="headerlink" title="Mind"></a>Mind</h4><ul>
 <li><strong>上面四个输入文件都是纯文本文件，且文件名不能更改，格式不能错误。</strong></li>
