@@ -122,7 +122,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -197,7 +197,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-05-10 12:02:11" itemprop="dateModified" datetime="2023-05-10T12:02:11+08:00">2023-05-10</time>
+      <time title="修改时间：2023-05-10 14:50:02" itemprop="dateModified" datetime="2023-05-10T14:50:02+08:00">2023-05-10</time>
     </span>
 
   
@@ -218,8 +218,7 @@
 </ul>
 <h2 id="目录操作"><a href="#目录操作" class="headerlink" title="目录操作"></a>目录操作</h2><h3 id="1-切换目录（cd）"><a href="#1-切换目录（cd）" class="headerlink" title="1 切换目录（cd）"></a>1 切换目录（cd）</h3> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd /                 <span class="comment">//切换到根目录</span></span><br><span class="line">cd /bin              <span class="comment">//切换到根目录下的bin目录</span></span><br><span class="line">cd ../               <span class="comment">//切换到上一级目录 或者使用命令：cd ..</span></span><br><span class="line">cd ~                 <span class="comment">//切换到home目录</span></span><br><span class="line">cd -                 <span class="comment">//切换到上次访问的目录</span></span><br><span class="line">cd <span class="title function_">xx</span>(文件夹名)       <span class="comment">//切换到本目录下的名为xx的文件目录，如果目录不存在报错</span></span><br><span class="line">cd /xxx/xx/x         <span class="comment">//可以输入完整的路径，直接切换到目标目录，输入过程中可以使用tab键快速补全</span></span><br></pre></td></tr></table></figure>
 <h3 id="2-查看目录（ls）"><a href="#2-查看目录（ls）" class="headerlink" title="2 查看目录（ls）"></a>2 查看目录（ls）</h3>  <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ls                   <span class="comment">//查看当前目录下的所有目录和文件</span></span><br><span class="line">ls -a                <span class="comment">//查看当前目录下的所有目录和文件（包括隐藏的文件）</span></span><br><span class="line">ls -l                <span class="comment">//列表查看当前目录下的所有目录和文件（列表查看，显示更多信息），与命令&quot;ll&quot;效果一样</span></span><br><span class="line">ls /bin              <span class="comment">//查看指定目录下的所有目录和文件 </span></span><br></pre></td></tr></table></figure>
-<h3 id="3-创建目录（mkdir）"><a href="#3-创建目录（mkdir）" class="headerlink" title="3 创建目录（mkdir）"></a>3 创建目录（mkdir）</h3>  <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir tools          <span class="comment">//在当前目录下创建一个名为tools的目录</span></span><br><span class="line">mkdir /bin/tools     <span class="comment">//在指定目录下创建一个名为tools的目录</span></span><br></pre></td></tr></table></figure>
-<h3 id="4-删除目录与文件（rm）"><a href="#4-删除目录与文件（rm）" class="headerlink" title="4 删除目录与文件（rm）"></a>4 删除目录与文件（rm）</h3> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">rm 文件名              <span class="comment">//删除当前目录下的文件</span></span><br><span class="line">rm -f 文件名           <span class="comment">//删除当前目录的的文件（不询问）</span></span><br><span class="line">rm -r 文件夹名         <span class="comment">//递归删除当前目录下此名的目录</span></span><br><span class="line">rm -rf 文件夹名        <span class="comment">//递归删除当前目录下此名的目录（不询问）</span></span><br><span class="line">rm -rf *              <span class="comment">//将当前目录下的所有目录和文件全部删除</span></span><br><span class="line">rm -rf <span class="comment">/*             //将根目录下的所有文件全部删除【慎用！相当于格式化系统】</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-创建目录（mkdir）"><a href="#3-创建目录（mkdir）" class="headerlink" title="3 创建目录（mkdir）"></a>3 创建目录（mkdir）</h3>  <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  mkdir tools          <span class="comment">//在当前目录下创建一个名为tools的目录</span></span><br><span class="line">  mkdir /bin/tools     <span class="comment">//在指定目录下创建一个名为tools的目录</span></span><br><span class="line">   <span class="string">``</span><span class="string">`算算</span></span><br><span class="line"><span class="string">### 4 删除目录与文件（rm）</span></span><br><span class="line"><span class="string"> `</span><span class="string">``</span>javascript  &#123;.<span class="property">line</span>-numbers&#125; </span><br><span class="line">  rm 文件名              <span class="comment">//删除当前目录下的文件</span></span><br><span class="line">  rm -f 文件名           <span class="comment">//删除当前目录的的文件（不询问）</span></span><br><span class="line">  rm -r 文件夹名         <span class="comment">//递归删除当前目录下此名的目录</span></span><br><span class="line">  rm -rf 文件夹名        <span class="comment">//递归删除当前目录下此名的目录（不询问）</span></span><br><span class="line">  rm -rf *              <span class="comment">//将当前目录下的所有目录和文件全部删除</span></span><br><span class="line">  rm -rf <span class="comment">/*             //将根目录下的所有文件全部删除【慎用！相当于格式化系统】</span></span><br></pre></td></tr></table></figure>
 <h3 id="5-修改目录（mv）"><a href="#5-修改目录（mv）" class="headerlink" title="5 修改目录（mv）"></a>5 修改目录（mv）</h3> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mv 当前目录名 新目录名        <span class="comment">//修改目录名，同样适用与文件操作</span></span><br><span class="line">mv /usr/tmp/tool /opt       <span class="comment">//将/usr/tmp目录下的tool目录剪切到 /opt目录下面</span></span><br><span class="line">mv -r /usr/tmp/tool /opt    <span class="comment">//递归剪切目录中所有文件和文件夹</span></span><br></pre></td></tr></table></figure>
 <h3 id="6-拷贝目录（cp）"><a href="#6-拷贝目录（cp）" class="headerlink" title="6 拷贝目录（cp）"></a>6 拷贝目录（cp）</h3>  <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/tmp/tool /opt       <span class="comment">//将/usr/tmp目录下的tool目录复制到 /opt目录下面</span></span><br><span class="line">cp -r /usr/tmp/tool /opt    <span class="comment">//递归剪复制目录中所有文件和文件夹</span></span><br></pre></td></tr></table></figure>
 <h3 id="7-搜索目录（find）"><a href="#7-搜索目录（find）" class="headerlink" title="7 搜索目录（find）"></a>7 搜索目录（find）</h3>  <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /bin -name <span class="string">&#x27;a*&#x27;</span>        <span class="comment">//查找/bin目录下的所有以a开头的文件或者目录</span></span><br></pre></td></tr></table></figure>
@@ -629,6 +628,205 @@
 <p>$…$ 或者 (…) 中的数学表达式将会在行内显示。<br>$$…$$ 或者 […] 或者 &#96;&#96;&#96;math 中的数学表达式将会在块内显示。</p>
 <p>$$<br>\begin{Bmatrix}<br>   a &amp; b \<br>   c &amp; d<br>\end{Bmatrix}<br>$$<br>$$<br>\begin{CD}<br>   A @&gt;a&gt;&gt; B \<br>@VbVV @AAcA \<br>   C @&#x3D; D<br>\end{CD}<br>$$</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">%% 时序图例子,-&gt; 直线，--&gt;虚线，-&gt;&gt;实线箭头</span><br><span class="line">  sequenceDiagram</span><br><span class="line">    participant 张三</span><br><span class="line">    participant 李四</span><br><span class="line">    张三-&gt;王五: 王五你好吗？</span><br><span class="line">    loop 健康检查</span><br><span class="line">        王五-&gt;王五: 与疾病战斗</span><br><span class="line">    end</span><br><span class="line">    Note right of 王五: 合理 食物 &lt;br/&gt;看医生...</span><br><span class="line">    李四--&gt;&gt;张三: 很好!</span><br><span class="line">    王五-&gt;李四: 你怎么样?</span><br><span class="line">    李四--&gt;王五: 很好!</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/10-12-23/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Keke Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lightchaser">
+      <meta itemprop="description" content="一个小学生的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Lightchaser">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/05/09/10-12-23/" class="post-title-link" itemprop="url">准备工作</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-09 10:12:23" itemprop="dateCreated datePublished" datetime="2023-05-09T10:12:23+08:00">2023-05-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-05-10 15:26:57" itemprop="dateModified" datetime="2023-05-10T15:26:57+08:00">2023-05-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="常用计算相关数据库"><a href="#常用计算相关数据库" class="headerlink" title="常用计算相关数据库"></a>常用计算相关数据库</h1><h2 id="结构查找"><a href="#结构查找" class="headerlink" title="结构查找"></a>结构查找</h2><ol>
+<li><strong>The Materials Project</strong> <a target="_blank" rel="noopener" href="https://www.materialsproject.org/">https://www.materialsproject.org/</a></li>
+<li><strong>ICSD the Inorganic Crystal Structure Database 无机晶体数据库</strong> <a target="_blank" rel="noopener" href="http://www2.fiz-karlsruhe.de/icsd_home.html">http://www2.fiz-karlsruhe.de/icsd_home.html</a> , 需要账号密码</li>
+<li>CCDC – The Cambridge Crystallographic Data Centre 剑桥晶体数据库。<a target="_blank" rel="noopener" href="https://www.ccdc.cam.ac.uk/">https://www.ccdc.cam.ac.uk/</a></li>
+<li>COD – 开放晶体结构数据库（Crystallography Open Database）。<a target="_blank" rel="noopener" href="http://www.crystallography.net/cod/">http://www.crystallography.net/cod/</a></li>
+<li>AMCSD – American Mineralogist Crystal Structure Database。<a target="_blank" rel="noopener" href="http://rruff.geo.arizona.edu/AMS/amcsd.php">http://rruff.geo.arizona.edu/AMS/amcsd.php</a></li>
+<li>AFLOW：<a target="_blank" rel="noopener" href="http://www.aflowlib.org/">http://www.aflowlib.org/</a></li>
+<li>springer material :  <a target="_blank" rel="noopener" href="https://materials.springer.com/periodictable#">https://materials.springer.com/periodictable#</a></li>
+<li>拓扑材料：（该部分内容参考：<a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/blog-1502061-1130705.html">http://blog.sciencenet.cn/blog-1502061-1130705.html</a> ）<br> Materiae ：<a target="_blank" rel="noopener" href="http://materiae.iphy.ac.cn/#/">http://materiae.iphy.ac.cn/#/</a><br>Topological Materials Arsenal：<a target="_blank" rel="noopener" href="https://ccmp.nju.edu.cn/">https://ccmp.nju.edu.cn/</a><br>Topological Materials Database: <a target="_blank" rel="noopener" href="http://topologicalquantumchemistry.org/#/">http://topologicalquantumchemistry.org/#/</a></li>
+<li>二维材料：<br>   Materials Cloud：<a target="_blank" rel="noopener" href="https://www.materialscloud.org/discover/2dstructures/dashboard/ptable">https://www.materialscloud.org/discover/2dstructures/dashboard/ptable</a><br>   2D Materials：<a target="_blank" rel="noopener" href="https://materialsweb.org/twodmaterials">https://materialsweb.org/twodmaterials</a>      C2DB: <a target="_blank" rel="noopener" href="https://cmr.fysik.dtu.dk/c2db/c2db.html">https://cmr.fysik.dtu.dk/c2db/c2db.html</a></li>
+<li>超导材料：<br>  第I类超导体：<a target="_blank" rel="noopener" href="http://www.superconductors.org/Type1.htm">http://www.superconductors.org/Type1.htm</a><br>  第II类超导体：<a target="_blank" rel="noopener" href="http://www.superconductors.org/Type2.htm">http://www.superconductors.org/Type2.htm</a></li>
+<li>磁结构数据库： MAGNDATA: <a target="_blank" rel="noopener" href="http://webbdcrista1.ehu.es/magndata/index.php?show_db=1">http://webbdcrista1.ehu.es/magndata/index.php?show_db=1</a></li>
+<li>ChemSpider :<a target="_blank" rel="noopener" href="http://www.chemspider.com/">http://www.chemspider.com/</a> RSC旗下的一个数据库</li>
+</ol>
+<h2 id="物理性质"><a href="#物理性质" class="headerlink" title="物理性质"></a>物理性质</h2><ol>
+<li><p>__NIST 数据库__： <a target="_blank" rel="noopener" href="https://physics.nist.gov/cuu/Constants/index.html">https://physics.nist.gov/cuu/Constants/index.html</a></p>
+</li>
+<li><p>CRC Handbook of physical chemistry ： <a target="_blank" rel="noopener" href="http://hbcponline.com/faces/contents/ContentsSearch.xhtml">http://hbcponline.com/faces/contents/ContentsSearch.xhtml</a> 查找热力学参数，晶格常数，entropy等等。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://www2.ucdsb.on.ca/tiss/stretton/database/inorganic_thermo.htm">http://www2.ucdsb.on.ca/tiss/stretton/database/inorganic_thermo.htm</a> 无机化合物的物理和热力学相关数据</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://www.knowledgedoor.com/2/elements_handbook/cohesive_energy.html">http://www.knowledgedoor.com/2/elements_handbook/cohesive_energy.html</a> 结合能</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://www.surface-tension.de/">http://www.surface-tension.de/</a> 表面张力</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://www.wiredchemist.com/chemistry/data/thermodynamic-data">http://www.wiredchemist.com/chemistry/data/thermodynamic-data</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://atct.anl.gov/">https://atct.anl.gov/</a></p>
+</li>
+<li><p>物理常数<br><a target="_blank" rel="noopener" href="https://physics.nist.gov/cuu/Constants/index.html">https://physics.nist.gov/cuu/Constants/index.html</a><br><a target="_blank" rel="noopener" href="http://wild.life.nctu.edu.tw/class/common/energy-unit-conv-table.html">http://wild.life.nctu.edu.tw/class/common/energy-unit-conv-table.html</a><br><a target="_blank" rel="noopener" href="http://halas.rice.edu/conversions">http://halas.rice.edu/conversions</a></p>
+</li>
+<li><p>空间群对称性和其布里渊区的信息：<br> <a target="_blank" rel="noopener" href="http://cryst.ehu.es/">http://cryst.ehu.es/</a><br> <a target="_blank" rel="noopener" href="http://www.cryst.ehu.es/cryst/get_kvec.html">http://www.cryst.ehu.es/cryst/get_kvec.html</a></p>
+</li>
+</ol>
+<p>#软件官网</p>
+<ol>
+<li><p><strong>VASP官网</strong> <a target="_blank" rel="noopener" href="http://www.vasp.at/">http://www.vasp.at/</a></p>
+</li>
+<li><p>VASP 教程视频 <a target="_blank" rel="noopener" href="http://www.nersc.gov/users/training/events/3-day-vasp-workshop/">http://www.nersc.gov/users/training/events/3-day-vasp-workshop/</a></p>
+</li>
+<li><p>VASP官方论坛 <a target="_blank" rel="noopener" href="https://cms.mpi.univie.ac.at/vasp-forum/">https://cms.mpi.univie.ac.at/vasp-forum/</a> 需要注册才可以提问</p>
+</li>
+<li><p>Henkelman 课题组 <a target="_blank" rel="noopener" href="http://theory.cm.utexas.edu/henkelman/">http://theory.cm.utexas.edu/henkelman/</a></p>
+</li>
+<li><p>ASE： Atomic Simulation Environment： <a target="_blank" rel="noopener" href="https://wiki.fysik.dtu.dk/ase/">https://wiki.fysik.dtu.dk/ase/</a></p>
+</li>
+<li><p>Pymatgen： <a target="_blank" rel="noopener" href="http://pymatgen.org/">http://pymatgen.org/</a>, 适合材料计算的</p>
+</li>
+<li><p>__K-path__： <a target="_blank" rel="noopener" href="https://www.materialscloud.org/work/tools/seekpath">https://www.materialscloud.org/work/tools/seekpath</a></p>
+</li>
+<li><p>Chemml: <a target="_blank" rel="noopener" href="https://hachmannlab.github.io/chemml/">https://hachmannlab.github.io/chemml/</a></p>
+</li>
+<li><p>p4vasp：<a target="_blank" rel="noopener" href="http://www.p4vasp.at/">http://www.p4vasp.at/</a></p>
+</li>
+<li><p>RDkit：<a target="_blank" rel="noopener" href="https://www.rdkit.org/">https://www.rdkit.org/</a></p>
+</li>
+<li><p><strong>VASPkit</strong> ： <a target="_blank" rel="noopener" href="https://sourceforge.net/projects/vaspkit/files/">https://sourceforge.net/projects/vaspkit/files/</a> VASP计算前后处理。</p>
+</li>
+<li><p>VESTA ： <a target="_blank" rel="noopener" href="http://jp-minerals.org/vesta/en/">http://jp-minerals.org/vesta/en/</a> 日本开发的可视化建模软件</p>
+</li>
+<li><p>Xcrysden ：<a target="_blank" rel="noopener" href="http://www.xcrysden.org/%EF%BC%8C">http://www.xcrysden.org/，</a> 用于批量做图，选择K-path做能带图，等。</p>
+</li>
+<li><p>Jmol: an open-source Java viewer for chemical structures in 3D (sourceforge.net)</p>
+</li>
+<li><p>phonopy：<a target="_blank" rel="noopener" href="https://atztogo.github.io/phonopy/">https://atztogo.github.io/phonopy/</a></p>
+</li>
+<li><p>Lobster：<a target="_blank" rel="noopener" href="http://schmeling.ac.rwth-aachen.de/cohp/index.php?menuID=6">http://schmeling.ac.rwth-aachen.de/cohp/index.php?menuID=6</a></p>
+</li>
+<li><p>Wannier90：<a target="_blank" rel="noopener" href="http://www.wannier.org/">http://www.wannier.org/</a></p>
+</li>
+</ol>
+<p>#免费的学习网站和论坛</p>
+<ol>
+<li><p><strong>思想家公社的门口：量子化学·分子模拟·二次元</strong> (sobereva.com)</p>
+</li>
+<li><p><strong>计算化学公社 - 高水平计算化学、理论化学交流论坛</strong> (keinsci.com)</p>
+</li>
+<li><p><strong>Learn VASP The Hard Way</strong> (bigbrosci.com)大师兄科研网</p>
+</li>
+<li><p><strong>世事如棋</strong> (<a target="_blank" rel="noopener" href="https://blog.shishiruqi.com/">https://blog.shishiruqi.com/</a>)</p>
+</li>
+<li><p><strong>Physics</strong> (yh-phys.github.io)</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.guanjihuan.com/">https://www.guanjihuan.com/</a></p>
+</li>
+<li><p>学术之友知乎 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/gangtangdft">https://zhuanlan.zhihu.com/gangtangdft</a></p>
+</li>
+<li><p>一个人就是一个叠加态（Li pai）：<a target="_blank" rel="noopener" href="http://blog.sina.com.cn/lipai91">http://blog.sina.com.cn/lipai91</a></p>
+</li>
+<li><p>ruichun xiao：<a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/home.php?mod=space&uid=1502061">http://blog.sciencenet.cn/home.php?mod=space&amp;uid=1502061</a></p>
+</li>
+<li><p>yunhai Li：<a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/home.php?mod=space&uid=2909108">http://blog.sciencenet.cn/home.php?mod=space&amp;uid=2909108</a></p>
+</li>
+<li><p>jicun Li：<a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/home.php?mod=space&uid=548663">http://blog.sciencenet.cn/home.php?mod=space&amp;uid=548663</a></p>
+</li>
+<li><p>Pengfei Liu: <a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/home.php?mod=space&uid=3352196">http://blog.sciencenet.cn/home.php?mod=space&amp;uid=3352196</a></p>
+</li>
+<li><p>zheyong fan：<a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/home.php?mod=space&uid=3102863">http://blog.sciencenet.cn/home.php?mod=space&amp;uid=3102863</a></p>
+</li>
+<li><p>zhaofu zhang: <a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/u/zhangfrank">http://blog.sciencenet.cn/u/zhangfrank</a></p>
+</li>
+<li><p>zhibin gao：<a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/home.php?mod=space&uid=1524047">http://blog.sciencenet.cn/home.php?mod=space&amp;uid=1524047</a></p>
+</li>
+<li><p>xiaoxia yu：<a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/home.php?mod=space&uid=3222255">http://blog.sciencenet.cn/home.php?mod=space&amp;uid=3222255</a></p>
+</li>
+<li><p>zhiqiang zhao：<a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/home.php?mod=space&uid=3388193">http://blog.sciencenet.cn/home.php?mod=space&amp;uid=3388193</a></p>
+</li>
+<li><p>lingju guo：<a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/home.php?mod=space&uid=478347">http://blog.sciencenet.cn/home.php?mod=space&amp;uid=478347</a></p>
+</li>
+<li><p>叶小球：<a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/home.php?mod=space&uid=567091">http://blog.sciencenet.cn/home.php?mod=space&amp;uid=567091</a></p>
+</li>
+<li><p>Nan Xu github：<a target="_blank" rel="noopener" href="https://github.com/tamaswells">https://github.com/tamaswells</a></p>
+</li>
+<li><p>QijingZheng github：<a target="_blank" rel="noopener" href="https://github.com/QijingZheng">https://github.com/QijingZheng</a></p>
+</li>
+<li><p>Chenists github：<a target="_blank" rel="noopener" href="https://github.com/Chenists/VASP">https://github.com/Chenists/VASP</a></p>
+</li>
+<li><p>ChengCheng Xiao github：<a target="_blank" rel="noopener" href="https://github.com/Chengcheng-Xiao?tab=repositories">https://github.com/Chengcheng-Xiao?tab=repositories</a></p>
+</li>
+<li><p>ShaoZhengjiang github：<a target="_blank" rel="noopener" href="https://github.com/PytLab">https://github.com/PytLab</a></p>
+</li>
+</ol>
+<h1 id="公众号"><a href="#公众号" class="headerlink" title="公众号"></a>公众号</h1><p><img src="/2023-05-10-15-22-32.png"></p>
+<h1 id="B站up"><a href="#B站up" class="headerlink" title="B站up"></a>B站up</h1><p><img src="/2023-05-10-15-23-04.png"><br><img src="/2023-05-10-15-23-17.png"><br><img src="/2023-05-10-15-23-36.png"></p>
+
       
     </div>
 
