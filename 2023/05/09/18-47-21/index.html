@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.16.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="结构优化完成后，我们已经可以从输出文件得到很多性质。这里我们先关注能量。 VASP输出的能量是什么在优化完的文件夹下输入 &amp;#123;.line-numbers&amp;#125;12[scf1355@ln151%nc-l 2h]$ tail -1 OSZICAR 3 F&#x3D; -.44829871E+02 E0&#x3D; -.44829871E+02  d E &#x3D;-.169526E-03  mag&#x3D;    -0.0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1.2 结构优化2">
+<meta property="og:url" content="http://example.com/2023/05/09/18-47-21/index.html">
+<meta property="og:site_name" content="Lightchaser">
+<meta property="og:description" content="结构优化完成后，我们已经可以从输出文件得到很多性质。这里我们先关注能量。 VASP输出的能量是什么在优化完的文件夹下输入 &amp;#123;.line-numbers&amp;#125;12[scf1355@ln151%nc-l 2h]$ tail -1 OSZICAR 3 F&#x3D; -.44829871E+02 E0&#x3D; -.44829871E+02  d E &#x3D;-.169526E-03  mag&#x3D;    -0.0">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2023-05-11-10-29-44.png">
+<meta property="og:image" content="http://example.com/2023-05-11-10-29-58.png">
+<meta property="og:image" content="http://example.com/2023-05-11-10-30-15.png">
+<meta property="article:published_time" content="2023-05-09T10:47:21.000Z">
+<meta property="article:modified_time" content="2023-05-11T02:44:56.876Z">
+<meta property="article:author" content="Keke Liu">
+<meta property="article:tag" content="vasp，形成能，ISMEAR，SP，IVDW，DFT+U，磁性，表面能">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2023-05-11-10-29-44.png">
+
+
+<link rel="canonical" href="http://example.com/2023/05/09/18-47-21/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/05/09/18-47-21/","path":"2023/05/09/18-47-21/","title":"1.2 结构优化2"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>1.2 结构优化2 | Lightchaser</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Lightchaser</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">三人行，必有我师</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#VASP%E8%BE%93%E5%87%BA%E7%9A%84%E8%83%BD%E9%87%8F%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">1.</span> <span class="nav-text">VASP输出的能量是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BD%A2%E6%88%90%E8%83%BD"><span class="nav-number">2.</span> <span class="nav-text">形成能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%95%E7%82%B9%E8%83%BDSP"><span class="nav-number">3.</span> <span class="nav-text">单点能SP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E6%B4%BD%E8%AE%A1%E7%AE%97"><span class="nav-number">4.</span> <span class="nav-text">自洽计算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B0%94%E4%BD%93%E4%BC%98%E5%8C%96"><span class="nav-number">5.</span> <span class="nav-text">气体优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IVDW%E5%8F%82%E6%95%B0"><span class="nav-number">6.</span> <span class="nav-text">IVDW参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DFT-U"><span class="nav-number">7.</span> <span class="nav-text">DFT+U</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A3%81%E6%80%A7%E4%BD%93%E7%B3%BB"><span class="nav-number">8.</span> <span class="nav-text">磁性体系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A1%A8%E9%9D%A2%E4%BC%98%E5%8C%96"><span class="nav-number">9.</span> <span class="nav-text">表面优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Bulk%E8%AE%A1%E7%AE%97%EF%BC%8C%E8%8E%B7%E5%BE%97%E7%A8%B3%E5%AE%9A%E6%9E%84%E5%9E%8B%E3%80%82"><span class="nav-number">9.1.</span> <span class="nav-text">1. Bulk计算，获得稳定构型。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E8%80%83%E8%99%91%E4%B8%8D%E5%90%8C%E6%99%B6%E9%9D%A2%E3%80%81%E5%B1%82%E6%95%B0%E3%80%82"><span class="nav-number">9.2.</span> <span class="nav-text">2. 考虑不同晶面、层数。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%B7%A5%E5%85%B7%EF%BC%9AMS%E3%80%81ASE%E3%80%81P4vasp%E3%80%81vaspkit%E3%80%82"><span class="nav-number">9.3.</span> <span class="nav-text">3. 工具：MS、ASE、P4vasp、vaspkit。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MS%E6%93%8D%E4%BD%9C%E3%80%82"><span class="nav-number">9.3.1.</span> <span class="nav-text">MS操作。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ASE%E6%93%8D%E4%BD%9C%E3%80%82python"><span class="nav-number">9.3.2.</span> <span class="nav-text">ASE操作。python</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E5%B8%88%E5%85%84ASE%E8%84%9A%E6%9C%AC%EF%BC%9A%E5%88%87%E9%87%91%E5%B1%9E"><span class="nav-number">9.3.3.</span> <span class="nav-text">大师兄ASE脚本：切金属</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vaspkit"><span class="nav-number">9.3.4.</span> <span class="nav-text">vaspkit</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E8%A1%A8%E9%9D%A2%E5%BC%9B%E8%B1%AB%E8%AE%A1%E7%AE%97"><span class="nav-number">9.4.</span> <span class="nav-text">4 表面弛豫计算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E7%82%B9%E8%83%BD"><span class="nav-number">9.4.1.</span> <span class="nav-text">单点能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A8%E9%9D%A2%E4%BC%98%E5%8C%96-1"><span class="nav-number">9.4.2.</span> <span class="nav-text">表面优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E8%A1%A8%E9%9D%A2%E8%83%BD%E8%AE%A1%E7%AE%97"><span class="nav-number">9.5.</span> <span class="nav-text">5  表面能计算</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Keke Liu</p>
+  <div class="site-description" itemprop="description">一个小学生的博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/stemdkk" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;stemdkk" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:257198@whut.edu.cn" title="E-Mail → mailto:257198@whut.edu.cn" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/18-47-21/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Keke Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lightchaser">
+      <meta itemprop="description" content="一个小学生的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="1.2 结构优化2 | Lightchaser">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          1.2 结构优化2
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-09 18:47:21" itemprop="dateCreated datePublished" datetime="2023-05-09T18:47:21+08:00">2023-05-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-05-11 10:44:56" itemprop="dateModified" datetime="2023-05-11T10:44:56+08:00">2023-05-11</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>结构优化完成后，我们已经可以从输出文件得到很多性质。这里我们先关注能量。</p>
+<h1 id="VASP输出的能量是什么"><a href="#VASP输出的能量是什么" class="headerlink" title="VASP输出的能量是什么"></a>VASP输出的能量是什么</h1><p>在优化完的文件夹下输入<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[scf1355@ln151%nc-l 2h]$ tail -<span class="number">1</span> <span class="variable constant_">OSZICAR</span> </span><br><span class="line"><span class="number">3</span> F= -<span class="number">.44829871E+02</span> <span class="variable constant_">E0</span>= -<span class="number">.44829871E+02</span>  d E =-<span class="number">.169526E-03</span>  mag=    -<span class="number">0.0000</span></span><br></pre></td></tr></table></figure><br><strong>这里的F和下面free energy含义相同，E0代表体系内能。</strong><br>另外在OUTCAR中还可以找到这些<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">free  energy   <span class="variable constant_">TOTEN</span>  =       -<span class="number">44.82987077</span> eV</span><br><span class="line">energy  without entropy=      -<span class="number">44.82987077</span>  <span class="title function_">energy</span>(sigma-&gt;<span class="number">0</span>) =      -<span class="number">44.82987077</span></span><br><span class="line">atomic energy  <span class="variable constant_">EATOM</span>  =      <span class="number">1542.31592482</span></span><br></pre></td></tr></table></figure></p>
+<p>free energy指的是亥姆霍兹自由能(Helmholtz free energy)，在VASP手册中被称为自由电子能(free electronic energy)，它可以用F表示： <code>F = E-TS+PV </code>.而F和E对应上面的F和E0。<br>TOTEN和without entropy分别代表考虑和未考虑熵的贡献时自由能的值。而energy(sigma-&gt;0)为展宽趋近于零时的自由能，可以外推得到：  <code>energy(sigma-&gt;0) = E0 =1/2（F+E） </code></p>
+<p>其中上面的展宽对应于INCAR中设置的ISMEAR参数，详情可以查看手册或者参考 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/384626631%E3%80%82">https://zhuanlan.zhihu.com/p/384626631。</a><br> <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV19L4y1i7mC/?vd_source=17084cc867ff3bb86398ff1a79b443f2">https://www.bilibili.com/video/BV19L4y1i7mC/?vd_source=17084cc867ff3bb86398ff1a79b443f2</a><br>简单理解费米面内电子全占据，费米面外没有电子。这种阶梯函数就使得，随着K点数目变化，K点处积分值变化很大，不易收敛。于是我们需要一个连续函数，代替该阶梯函数进行积分，这种替代方法就叫smear。在VASP计算中，只有在ISMEAR&#x3D;-5时，才能严格满足费米能级的定义；而在其他情况下，允许电子在费米能级附近的宽度内“波动”，即将阶梯函数替代为一个平滑的函数，从而在不破坏和的精度的情况下获得更快的收敛速度。</p>
+<p><strong>明白非常重要的一点，从OUTCAR中直接提取的能量在不同赝势下不具备重复性，是不能够直接写到论文中去的。一般计算相对能量的时候只要保持取一样的值即可 比较绝对能量没啥意义。</strong></p>
+<h1 id="形成能"><a href="#形成能" class="headerlink" title="形成能"></a>形成能</h1><p>形成能很简单，参考高中化学形成焓的计算可以知道对于反应A+B&#x3D;C+D，那么形成能&#x3D;E(C)+E(D)-E(A)-E(B)<br>同样对于MoS2的生成焓我们可以知道：  $\Delta$H&#x3D;E(MoS2)-E(Mo)-2E(S)<br>因此还需要计算Mo单质和S单质的单原子能量。计算过程和1.1完全一致，只需要获得结构，利用vaspkit生成KPOINTS和POTCAR文件，INCAR可以不用改。能量用F或者E0或者上面说的哪一项都可以，但要保持一致。代入计算即可。</p>
+<p>除此之外还可以计算产生一个Mo的空位的形成能： $\Delta$H&#x3D;E(空位，MoS2)-E(Mo)-E（MoS2）<br>但是此时没有考虑缺陷的电荷。<br>可以计算分解能，剥离能，滑移能，表面能，偏聚能，吸附能等等。但是具体结构的优化会有一些处理上的不同。</p>
+<h1 id="单点能SP"><a href="#单点能SP" class="headerlink" title="单点能SP"></a>单点能SP</h1><p>参考： <a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv10064345">https://www.bilibili.com/read/cv10064345</a></p>
+<p>单点计算是指对结果不做优化，直接输出能量。因此优化只会进行一步。</p>
+<p><strong>设置NSW &#x3D; 0 也可以不设置，因为默认值就是0。</strong> 其他文件和参数不需要改变。提交即可。</p>
+<p>对于一个结构在结构优化（NSW不等于0）时，第一步输出的1F和单点能的结果是一样的。</p>
+<h1 id="自洽计算"><a href="#自洽计算" class="headerlink" title="自洽计算"></a>自洽计算</h1><p>自洽计算其实也是单点计算，静态自洽计算前需要提供 <strong>较稳定体系</strong> 的晶格结构信息（即结构优化完的CONTCAR），从而通过电子自洽计算，通过自洽迭代求解薛定谔方程（微观中描述电子的状态，相当于宏观的运动方程））  完整地计算出体系基态下费米能级（准确值，The fermi level location is accurate only in self-consistent calculation.）、 电子的波函数、电荷密度等信息，可以直接分析原子间的键合作用，也可以在非自洽之后进一步分析晶体的电子结构和材料的相关性质。</p>
+<p>因此对于电子结构计算之前必须进行一步自洽计算优化电子分布，以便加速后续计算。</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">NSW</span>=<span class="number">0</span>  不再进行原子迟豫</span><br><span class="line"><span class="variable constant_">LWAVE</span>=.<span class="property">TRUE</span>  （需要在<span class="variable constant_">WAVECAR</span>中输出波函数）</span><br><span class="line"><span class="variable constant_">LCHARGE</span>=.<span class="property">TRUE</span>    （需要在<span class="variable constant_">CHG</span>和<span class="variable constant_">CHGCAR</span>中输出电荷密度）</span><br></pre></td></tr></table></figure>
+
+<h1 id="气体优化"><a href="#气体优化" class="headerlink" title="气体优化"></a>气体优化</h1><p>在涉及单质结构优化时，可能会涉及到气体分子的优化。</p>
+<ul>
+<li>一般情况下选择建一个相对大的格子，里面放入一个气体分子，格子的大小保证分子间不会影响。其他的和前面结构优化保持一致即可。</li>
+<li>另一个办法就是找数据库， ChemScpider。网址：<a target="_blank" rel="noopener" href="http://www.chemspider.com/">http://www.chemspider.com</a></li>
+</ul>
+<h1 id="IVDW参数"><a href="#IVDW参数" class="headerlink" title="IVDW参数"></a>IVDW参数</h1><p>有两大类的范德华斯作用修正：</p>
+<ol>
+<li>基于半经验的，包括了D2, D3, D3-BJ, TS, TS+SCS等等，这些都是在常用的交换关联泛函比如PBE的基础上，考虑色散力的作用，在PBE计算出来的总能基础上增加了额外半经验项，这一项需要设置一些参数，至于是哪种半经验公式，由IVDW的设置来决定，具体的参考VASP的手册。<br><strong>范德华力计算方法，在DFT能量计算基础上增加范德华力修正。IVDW&#x3D;10：DFT-D2方法；IVDW&#x3D;11：DFT-D3方法。推荐首选更新的DFT-D3方法。</strong></li>
+<li>另一类就是vdW-DF，也就是修改交换关联项来考虑范德华修正。包括你所提到的optPBE-vdW, optB88-vdW, and optB86b-vdW等。它们的设置由修改GGA赋值，以及额外相关的一些参数来设置。 这些在vasp手册上有明确的说明。<br>乱谈DFT-D：<a target="_blank" rel="noopener" href="http://sobereva.com/83">http://sobereva.com/83</a><br>DFT-D色散校正的使用：<a target="_blank" rel="noopener" href="http://sobereva.com/210">http://sobereva.com/210</a><br>大体系弱相互作用计算的解决之道：<a target="_blank" rel="noopener" href="http://sobereva.com/214">http://sobereva.com/214</a><br>LUSE_VDW：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Yaris_liu/article/details/124683272">https://blog.csdn.net/Yaris_liu/article/details/124683272</a>                <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/47619708">https://zhuanlan.zhihu.com/p/47619708</a><br>包含vdW-DF，optPBE-vdW, optB88-vdW, optB88b-vdW, vdw-DF2。需要在所在的文件夹下放置一个名叫vdw_kernel.bindat的文件。</li>
+</ol>
+<ul>
+<li>vdW-DF：采用该范德瓦尔斯修正需在INCAR中加上以下开关： <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="variable constant_">GGA</span>=<span class="variable constant_">RE</span></span><br><span class="line"><span class="variable constant_">LUSE_VDW</span>=.<span class="property">TRUE</span>.</span><br><span class="line"><span class="variable constant_">AGGAC</span>=<span class="number">0.0000</span></span><br></pre></td></tr></table></figure></li>
+<li>optB88-vdW：采用该范德瓦尔斯修正需在INCAR中加上以下开关：</li>
+</ul>
+ <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125; GGA</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">PARAM1</span>=<span class="number">0.1833333333</span></span><br><span class="line"><span class="title class_">PARAM2</span>=<span class="number">0.2200000000</span></span><br><span class="line"><span class="variable constant_">LUSE_VDW</span>=.<span class="property">TRUE</span>.</span><br><span class="line"><span class="variable constant_">AGGAC</span>=<span class="number">0.0000</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>optB86b-vdW：采用该范德瓦尔斯修正需在INCAR中加上以下开关：</li>
+</ul>
+ <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125; GGA</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">PARAM1</span>=<span class="number">0.1234</span></span><br><span class="line"><span class="title class_">PARAM2</span>=<span class="number">1.0000</span></span><br><span class="line"><span class="variable constant_">LUSE_VDW</span>=.<span class="property">TRUE</span>.</span><br><span class="line"><span class="variable constant_">AGGAC</span>=<span class="number">0.0000</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>vdW-DF2：采用该范德瓦尔斯修正需在INCAR中加上以下开关：</li>
+</ul>
+ <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125; GGA</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">LUSE_VDW</span>=.<span class="property">TRUE</span>.</span><br><span class="line"><span class="title class_">Zab</span>_vdW=-<span class="number">1.8867</span></span><br><span class="line"><span class="variable constant_">AGGAC</span>=<span class="number">0.0000</span></span><br></pre></td></tr></table></figure>
+<p><strong>在考虑DFT-D2或者DFT-D3计算的过程中可同时考虑自旋轨道耦合（SOC），但是在vdW-DF、optB88-vdW 、optB86b-vdW和vdW-DF2中无法同时考虑自旋轨道耦合进行计算。</strong></p>
+<h1 id="DFT-U"><a href="#DFT-U" class="headerlink" title="DFT+U"></a>DFT+U</h1><ol>
+<li>为什么加U?<br><strong>对于含有d、f轨道电子的强关联体系(Hubbard模型)，电子间存在强烈的在位库仑相互作用，而交换相关泛函中的局域密度近似（LDA）或广义梯度近似（GGA）对电子之间的强在位库仑相互作用描述不准，</strong> 此时可将研究体系的交换相关泛函分成两部分计算，也就是用DFT+U的方法进行求解，公式如下：<br>其中一部分电子用DFT算法（如LDA，GGA）等可以比较准确地描述；另外的d、f轨道电子通过引入Hubbard项得到正确的描述（U值就是考虑了同一个原子自旋相反的局域电子之间的库仑排斥）</li>
+<li>如何加U?<br>DFT计算时输入文件的U值由以下参数确定： <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">LDAU</span>= .<span class="property">TRUE</span>.|.<span class="property">FALSE</span>.：开启/关闭+U功能，默认值为.<span class="property">FALSE</span>.；</span><br><span class="line"><span class="variable constant_">LDAUTYPE</span>=<span class="number">1</span>|<span class="number">2</span>|<span class="number">4</span>指的是+U的类型，默认值是<span class="number">2</span>；其中<span class="number">1</span>为<span class="title class_">Liechtenstein</span>等提出的旋转不变<span class="variable constant_">LSDA</span>+U方法；<span class="number">2</span>为 <span class="title class_">Dudarev</span>等提出的简化 <span class="variable constant_">LSDA</span>+U方法；<span class="number">4</span>与<span class="number">1</span>类似, 但不考虑<span class="variable constant_">LSDA</span>交换劈裂；</span><br><span class="line"><span class="variable constant_">LDAUL</span>=-<span class="number">1</span>|<span class="number">1</span>|<span class="number">2</span>|<span class="number">3</span>分别对应不加U、p、d、f轨道加U；</span><br><span class="line"><span class="variable constant_">LDAUU</span>、<span class="variable constant_">LDAUJ</span>分别指定电子库伦相互作用项和交换相互作用项（U和J值）；</span><br><span class="line"><span class="variable constant_">LMAXMIX</span> =<span class="number">2</span>/<span class="number">4</span>/<span class="number">6</span>：默认为<span class="number">2</span>，加U计算时该值需大于轨道量子数，对于含有d轨道或f轨道电子的体系需对应增加至<span class="number">4</span>或<span class="number">6</span>。</span><br></pre></td></tr></table></figure>
+注意：<br><strong>1）必须为每一类原子指定一个U值，其顺序与结构文件POSCAR中元素排序一致；</strong><br><strong>2）同一种元素在不同的体系中U值不同；</strong><br><strong>3）U在所有电子中都存在，不管自旋是否相同，J只存在于自旋相同的电子上；当LDAUTYPE &#x3D;2时，U-J的差值才有意义，即有效的U参数。</strong><br>该参数需要测试或者参考文献。</li>
+</ol>
+<h1 id="磁性体系"><a href="#磁性体系" class="headerlink" title="磁性体系"></a>磁性体系</h1><p>很多体系都有磁性，磁性体系的计算需要打开自旋。以FeO为例：<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">ISPIN</span>=<span class="number">2</span></span><br><span class="line"><span class="variable constant_">MAGMOM</span>=原子数目*初始磁矩，eg <span class="number">3</span>*<span class="number">2</span> <span class="number">4</span>*<span class="number">5</span> （注：*号前后不要有空格，且对应顺序）</span><br></pre></td></tr></table></figure><br>对于一些简单的磁性体系，我们可以直接使用ISPIN&#x3D;2, MAGMOM不必进行设置。对于复杂的体系则需要设置。初始值不需要与实验值完全一致，一般设置1.5倍即可。</p>
+<ol>
+<li><p>有4个Fe原子，如果考虑铁磁态，则可以设置 <code>MAGMON= 4*3 4*0 （Fe初设的磁矩为3，O元素为0） </code></p>
+</li>
+<li><p>有4个Fe原子，如果考虑反铁磁态，则可以设置 <code>MAGMON=3 -3 3 -3 0 0 0 0或者MAGMON=3 3 -3 -3 0 0 0 0 </code></p>
+</li>
+</ol>
+<h1 id="表面优化"><a href="#表面优化" class="headerlink" title="表面优化"></a>表面优化</h1><h2 id="1-Bulk计算，获得稳定构型。"><a href="#1-Bulk计算，获得稳定构型。" class="headerlink" title="1. Bulk计算，获得稳定构型。"></a>1. Bulk计算，获得稳定构型。</h2><p>   注意LREAL、PREC、ENCUT、EDIFF、ISMEAR保持一致。</p>
+<h2 id="2-考虑不同晶面、层数。"><a href="#2-考虑不同晶面、层数。" class="headerlink" title="2. 考虑不同晶面、层数。"></a>2. 考虑不同晶面、层数。</h2><p>对于表面结构，有以下几个需要注意的:</p>
+<ul>
+<li>xy 方向上表面的大小（15 Å或者100原子左右）;<br>A 这个影响表面吸附物种的覆盖度;<br>B 影响体系的尺寸大小和计算时间;<br>C 不同的大小需要选取对应的K点；回想一下我们前面提到的经验规则。</li>
+<li>不同的晶面，(111)， (100)，(110);<br>A 这取决于你研究的方向;低指数面、解离面。<br>B 不同晶面的表面能;<br>C 不同晶面的表面结构，反应活性等。</li>
+<li>表面结构的层数（3+3以上，6Å+6Å）<br>A 层数多了，原子变多，体系在 z 方向的尺寸增加，也会影响计算速度；<br>B 计算中需要弛豫的层数；<br>C 不同层数对你要计算的性质会产生影响，比如表面能；<br>D 不同晶面需要的层数也不尽相同，一般开放的表面需要更多的层数；<br>E 根据自己感兴趣的性质，选择合适的层数，也就是需要你去测试一番。</li>
+<li>Slab模型有两种，一种是上下表面对称的，一种是非对称的。对称性结构往往需要很多层，体系较大。 非对称的结构体系较小，但存在偶极矩的影响，要注意加LDIPOL 和IDIPOL这两个参数来消除。1、2、3分表代表在x、y和z 方向上进行校正，4代表在所有方向上。真空层15-20埃。</li>
+</ul>
+<h2 id="3-工具：MS、ASE、P4vasp、vaspkit。"><a href="#3-工具：MS、ASE、P4vasp、vaspkit。" class="headerlink" title="3. 工具：MS、ASE、P4vasp、vaspkit。"></a>3. <strong>工具：MS、ASE、P4vasp、vaspkit。</strong></h2><h3 id="MS操作。"><a href="#MS操作。" class="headerlink" title="MS操作。"></a>MS操作。</h3><p>一般用conventional cell。<br>MS操作。Windows<br>VESTA将CONTCAR转成cif,导入MS。<br>build-surface-cleave surface 切面<br>Surface mesh-surface vectors 可调整vector。<br><img src="/2023-05-11-10-29-44.png"><br>Surface box-top&#x2F;thickness，调整终端和厚度。<br>Build-crystals-build vaccum slab-图2-build。<br><img src="/2023-05-11-10-29-58.png"><br>Lattice parameters-advanced-re-orient to startard把真空层沿Z轴  图3。<br><img src="/2023-05-11-10-30-15.png"><br>转换成POSCAR，可优化后进一步扩胞。</p>
+<h3 id="ASE操作。python"><a href="#ASE操作。python" class="headerlink" title="ASE操作。python"></a>ASE操作。python</h3><p>块体优化后<br>module load python&#x2F;3.7.3<br>python </p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>from ase.io import read<br>from ase.io import write<br>from ase.build import surface<br>a&#x3D;read(”CONTCAR”,format&#x3D;’vasp’)<br>b&#x3D;surface(a,(1,1,1),6,vacuum&#x3D;7.5)   6层，真空层15Å<br>write(”POSCAR”,b,format&#x3D;’vasp’)<br>Ctrl+D （退出 python） </p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h3 id="大师兄ASE脚本：切金属"><a href="#大师兄ASE脚本：切金属" class="headerlink" title="大师兄ASE脚本：切金属"></a>大师兄ASE脚本：切金属</h3><p>python3 cssm.py</p>
+<h3 id="vaspkit"><a href="#vaspkit" class="headerlink" title="vaspkit"></a>vaspkit</h3><p><strong>块体优化后复制成POSCAR</strong><br><strong>vaspkit –task 803</strong><br><strong>生成SLAB***.vasp</strong></p>
+<h2 id="4-表面弛豫计算"><a href="#4-表面弛豫计算" class="headerlink" title="4 表面弛豫计算"></a>4 表面弛豫计算</h2><h3 id="单点能"><a href="#单点能" class="headerlink" title="单点能"></a>单点能</h3><p><strong>转换成POSCAR单点计算。或表面优化时第一个离子步的能量，但要保证这一步收敛。</strong><br><strong>KPOINTS设置，20-30。</strong><br><strong>INCAR设置，NSW&#x3D;0或默认0.偶极矩矫正 LDIPOL &#x3D; .TRUE. ; IDIPOL &#x3D; 3。</strong><br><strong>POTCAR准备，提交任务脚本。完成后 grep without OUTCAR 获取单点能。</strong></p>
+<h3 id="表面优化-1"><a href="#表面优化-1" class="headerlink" title="表面优化"></a>表面优化</h3><p>1）POSCAR第7行加S，  <code>Sed –i ‘7a S’  POSCAR </code><br>原子坐标加F&#x2F;T。  <code>Sed  –i  ’10,11s/$/  F F F/g’  POSCAR </code><br>                 <code>Sed  –i  ’12,13,14s/$/  T T T/g’  POSCAR </code><br> <code>vaspkit –task 402/403  </code>或者ctrl+v,选中列-大写A-输入  <code>T T T </code> - ESC.<br>2）POTCAR和KPOINTS不变。<br>INCAR设置：IBRION&#x3D;1、2，EDIFF&#x3D;1E-6，EDIFFG&#x3D;-0.03（比块体小一点），ISIF&#x3D;2，<br>提交任务。</p>
+<h2 id="5-表面能计算"><a href="#5-表面能计算" class="headerlink" title="5  表面能计算"></a>5  表面能计算</h2><p>表面能是创造物质表面时，破坏分子间化学键所需消耗的能量。在固体物理理论中，表面原子比物质内部的原子具有更多的能量，因此，根据能量最低原理，原子会自发的趋于物质内部而不是表面。表面能的另一种定义是，材料表面相对于材料内部所多出的能量。把一个固体材料分解成小块需要破坏它内部的化学键，所以需要消耗能量。如果这个分解的过程是可逆的，那么把材料分解成小块所需要的能量就和小块材料表面所增加的能量相等。但事实上，只有在真空中刚刚形成的表面才符合上述能量守恒。因为新形成的表面是非常不稳定的，它们通过表面原子重组和相互间的反应，或者对周围其他分子或原子的吸附，从而使表面能量降低。<br> <code>γ=(E_&#123;surf&#125;-N*E_&#123;bulkatom&#125;)/(2A)   </code>       1ev&#x2F;Å^2 &#x3D;16.02J&#x2F;m^2<br> E_surf是未弛豫的表面能量,A是表面积a*b。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/vasp%EF%BC%8C%E5%BD%A2%E6%88%90%E8%83%BD%EF%BC%8CISMEAR%EF%BC%8CSP%EF%BC%8CIVDW%EF%BC%8CDFT-U%EF%BC%8C%E7%A3%81%E6%80%A7%EF%BC%8C%E8%A1%A8%E9%9D%A2%E8%83%BD/" rel="tag"># vasp，形成能，ISMEAR，SP，IVDW，DFT+U，磁性，表面能</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/05/09/18-47-20/" rel="prev" title="1.1 start">
+                  <i class="fa fa-chevron-left"></i> 1.1 start
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Keke Liu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
