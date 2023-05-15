@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.16.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="自洽计算VASP做静态自洽的目的主要是为了得到好的电子密度和波函数文件，为了使后续的性质计算可以读取电子密度和波函数，进而增加收敛速度。首先进行 高精度 的结构优化。然后复制文件， cp CONTCAR POSCAR 做一次自洽计算。自洽计算要求有密的k网格点，在计算条件允许的情况下要求自洽的k网格点大致为优化时的2倍左右。修改标签 &amp;#123;.line-numbers&amp;#125;1234IBR">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2.1 电子性质1">
+<meta property="og:url" content="http://example.com/2023/05/09/18-47-24/index.html">
+<meta property="og:site_name" content="Lightchaser">
+<meta property="og:description" content="自洽计算VASP做静态自洽的目的主要是为了得到好的电子密度和波函数文件，为了使后续的性质计算可以读取电子密度和波函数，进而增加收敛速度。首先进行 高精度 的结构优化。然后复制文件， cp CONTCAR POSCAR 做一次自洽计算。自洽计算要求有密的k网格点，在计算条件允许的情况下要求自洽的k网格点大致为优化时的2倍左右。修改标签 &amp;#123;.line-numbers&amp;#125;1234IBR">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-05-09T10:47:24.000Z">
+<meta property="article:modified_time" content="2023-05-15T02:13:20.032Z">
+<meta property="article:author" content="Keke Liu">
+<meta property="article:tag" content="vasp，电子结构">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/05/09/18-47-24/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/05/09/18-47-24/","path":"2023/05/09/18-47-24/","title":"2.1 电子性质1"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>2.1 电子性质1 | Lightchaser</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Lightchaser</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">三人行，必有我师</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E6%B4%BD%E8%AE%A1%E7%AE%97"><span class="nav-number">1.</span> <span class="nav-text">自洽计算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bader%E7%94%B5%E8%8D%B7"><span class="nav-number">1.1.</span> <span class="nav-text">bader电荷</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%90%E9%94%AE%E5%8F%8D%E9%94%AE"><span class="nav-number">1.2.</span> <span class="nav-text">成键反键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ELF%E7%94%B5%E5%AD%90%E5%B1%80%E5%9F%9F%E5%87%BD%E6%95%B0%E8%AE%A1%E7%AE%97"><span class="nav-number">1.3.</span> <span class="nav-text">ELF电子局域函数计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%B9%E7%B1%B3%E9%9D%A2"><span class="nav-number">1.4.</span> <span class="nav-text">费米面</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%81%E5%AF%86%E5%BA%A6"><span class="nav-number">2.</span> <span class="nav-text">态密度</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%B3%A2%E6%80%81%E5%AF%86%E5%BA%A6%E5%92%8C%E5%B1%80%E5%9F%9F%E6%80%81%E5%AF%86%E5%BA%A6"><span class="nav-number">2.1.</span> <span class="nav-text">分波态密度和局域态密度</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%83%BD%E5%B8%A6%E8%AE%A1%E7%AE%97"><span class="nav-number">3.</span> <span class="nav-text">能带计算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%95%E5%BD%B1%E7%94%B5%E8%8D%B7%E5%AF%86%E5%BA%A6"><span class="nav-number">3.1.</span> <span class="nav-text">投影电荷密度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%A8%E9%81%93%E6%8A%95%E5%BD%B1%E6%80%81%E5%AF%86%E5%BA%A6%E5%92%8C%E8%83%BD%E5%B8%A6%E3%80%82"><span class="nav-number">3.2.</span> <span class="nav-text">轨道投影态密度和能带。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HSE06%E8%AE%A1%E7%AE%97%E7%94%B5%E5%AD%90%E7%BB%93%E6%9E%84%EF%BC%9A"><span class="nav-number">3.3.</span> <span class="nav-text">HSE06计算电子结构：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SOC%E8%AE%A1%E7%AE%97%E7%94%B5%E5%AD%90%E7%BB%93%E6%9E%84%EF%BC%9A"><span class="nav-number">3.4.</span> <span class="nav-text">+SOC计算电子结构：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HSE06-SOC-band-structure-calculation"><span class="nav-number">3.5.</span> <span class="nav-text">HSE06+SOC band structure calculation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%BD%E5%B8%A6%E5%8F%8D%E6%8A%98%E5%8F%A0"><span class="nav-number">3.6.</span> <span class="nav-text">能带反折叠</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vaspkit"><span class="nav-number">3.6.1.</span> <span class="nav-text">vaspkit:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bandup"><span class="nav-number">3.6.2.</span> <span class="nav-text">bandup:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3D%E8%83%BD%E5%B8%A6"><span class="nav-number">3.7.</span> <span class="nav-text">3D能带</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E6%95%88%E8%B4%A8%E9%87%8F%EF%BC%9A"><span class="nav-number">3.8.</span> <span class="nav-text">有效质量：</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Keke Liu</p>
+  <div class="site-description" itemprop="description">一个小学生的博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/stemdkk" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;stemdkk" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:257198@whut.edu.cn" title="E-Mail → mailto:257198@whut.edu.cn" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/18-47-24/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Keke Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lightchaser">
+      <meta itemprop="description" content="一个小学生的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="2.1 电子性质1 | Lightchaser">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          2.1 电子性质1
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-09 18:47:24" itemprop="dateCreated datePublished" datetime="2023-05-09T18:47:24+08:00">2023-05-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-05-15 10:13:20" itemprop="dateModified" datetime="2023-05-15T10:13:20+08:00">2023-05-15</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="自洽计算"><a href="#自洽计算" class="headerlink" title="自洽计算"></a>自洽计算</h1><p><strong>VASP做静态自洽的目的主要是为了得到好的电子密度和波函数文件，为了使后续的性质计算可以读取电子密度和波函数，进而增加收敛速度。</strong><br>首先进行 <strong>高精度</strong> 的结构优化。然后复制文件， cp CONTCAR POSCAR 做一次自洽计算。<br>自洽计算要求有密的k网格点，在计算条件允许的情况下要求自洽的k网格点大致为优化时的2倍左右。<br>修改标签<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">IBRION</span>=-<span class="number">1</span></span><br><span class="line"><span class="variable constant_">NSW</span>=<span class="number">0</span></span><br><span class="line"><span class="variable constant_">LWAVE</span>  = .<span class="property">T</span>.        (<span class="title class_">Write</span> <span class="variable constant_">WAVECAR</span> )</span><br><span class="line"><span class="variable constant_">LCHARG</span> = .<span class="property">T</span>.        (<span class="title class_">Write</span> <span class="variable constant_">CHGCAR</span> )</span><br></pre></td></tr></table></figure><br>这一步完成后的输出文件CHGCAR即是电荷密度，导入VESTA直接查看。</p>
+<h2 id="bader电荷"><a href="#bader电荷" class="headerlink" title="bader电荷"></a>bader电荷</h2><p>自洽时INCAR再加一个参数：<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">IBRION</span>=-<span class="number">1</span></span><br><span class="line"><span class="variable constant_">NSW</span>=<span class="number">0</span></span><br><span class="line"><span class="variable constant_">LAECHG</span>=.<span class="property">T</span>.</span><br></pre></td></tr></table></figure></p>
+<p>输出文件：<br>AECCAR0 全电子中的芯电子部分（POTCAR）<br>AECCAR1 自洽计算前的交叠原子电荷（POTCAR，bader 分析不用）<br>AECCAR2 全电子中的价电子部分（自洽计算后）<br>CHGCAR 自洽计算后赝电子</p>
+<p>输入：</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chgsum.<span class="property">pl</span> <span class="title class_">AECCAR0</span> <span class="title class_">AECCAR2</span></span><br><span class="line">bader <span class="variable constant_">CHGCAR</span> -ref CHGCAR_sum</span><br></pre></td></tr></table></figure>
+<p>得到两个文件：</p>
+<ul>
+<li><strong>BCF.dat</strong> 电荷极大值序号和坐标<br>体积内的 Bader 电荷（积分）<br>距离极大值最近的原子和距离</li>
+<li><strong>ACF.dat</strong> 原子序号和坐标<br>原子电荷（极大值的电荷之后）<br>到零通量面最小距离<br>原子体积</li>
+</ul>
+<p>李强博士《learn vasp the hard way》<a target="_blank" rel="noopener" href="https://www.bigbrosci.com/2011/12/24/A08/">https://www.bigbrosci.com/2011/12/24/A08/</a> Bader电荷与原子电荷着色：<br><a target="_blank" rel="noopener" href="https://www.bigbrosci.com/2011/12/23/A07/">https://www.bigbrosci.com/2011/12/23/A07/</a> <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/BNzjhz8SI_HXkaEnyL29Bg">https://mp.weixin.qq.com/s/BNzjhz8SI_HXkaEnyL29Bg</a></p>
+<h2 id="成键反键"><a href="#成键反键" class="headerlink" title="成键反键"></a>成键反键</h2><p>自洽时添加：<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">NBANDS</span>=<span class="number">96</span></span><br><span class="line"><span class="variable constant_">ISYM</span>=-<span class="number">1</span></span><br><span class="line"><span class="variable constant_">IBRION</span>=-<span class="number">1</span></span><br><span class="line"><span class="variable constant_">NSW</span>=<span class="number">0</span></span><br><span class="line"><span class="variable constant_">LWAVE</span> = T</span><br></pre></td></tr></table></figure></p>
+<p><code>vi lobsterin</code><br>原子编号改为 8 和 6<br><code>lobster &lt; lobsterin</code><br>1、删除存在的WAVECAR文件，做单点计算，计算需要保存波函数文件；<br>2、做完单点计算在当前目录下运行lobster软件；<br>3、用wxDragon软件打开COHPCAR.lobster文件。<br><a target="_blank" rel="noopener" href="https://github.com/JaGeo/LobsterPy">https://github.com/JaGeo/LobsterPy</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/470592188">https://zhuanlan.zhihu.com/p/470592188</a></p>
+<h2 id="ELF电子局域函数计算"><a href="#ELF电子局域函数计算" class="headerlink" title="ELF电子局域函数计算"></a>ELF电子局域函数计算</h2><p>电子局域函数（Electron Localization Function—ELF）是研究电子结构的手段之一。用来描述以某个位置处的电子为参考，在其附近找到与他同自旋的电子的概率，可以表征这个作为参考的电子的局域化程度，也是一种描述在多电子体系中的电子对概率的方法。<br>ELF的取值范围是[0，1]。<br>ELF&#x3D;1 对应完全局域化；<br>ELF&#x3D;1&#x2F;2，对应类电子气型的成对概率；<br>ELF&#x3D;0，对应电子完全离域化。</p>
+<p>计算流程：做自洽的时候在INCAR中加入：<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">PREC</span>=A</span><br><span class="line"><span class="variable constant_">LELF</span>=T</span><br><span class="line"><span class="variable constant_">IBRION</span>=-<span class="number">1</span></span><br><span class="line"><span class="variable constant_">NSW</span>=<span class="number">0</span> </span><br></pre></td></tr></table></figure><br>运行vasp得到ELFCAR文件。</p>
+<p>将ELFCAR拖入Vesta <a target="_blank" rel="noopener" href="http://www.jp-minerals.org/vesta/en/download.html">http://www.jp-minerals.org/vesta/en/download.html</a></p>
+<p>点击 Utiltties - 2D Data Display。<br>点击Slice，确定切面和fractional coordinates。<br>导出图片：之后可以用PS工具将原子模型加入。</p>
+<h2 id="费米面"><a href="#费米面" class="headerlink" title="费米面"></a>费米面</h2><p>费米面计算，这里我们以Cu为例，见vaspkit&#x2F;examples&#x2F;Cu_fermi_surface。<br>第一步，准备好POSCAR，注意一定是原胞（primitive cell ）和用于静态计算的INCAR文件；<br>第二步，运行VASPKIT，输入261命令，产生用于计算计算费米面的KPOINTS和POTCAR文件，<br>第三步，提交VASP作业；第四步，待VASP计算完成后，再次运行VASPKIT，输入262命令，生成包含费米面数据的FERMISURFACE.bxsf文件；第五步，运行XcrySDen软件。<br>发现第五条能带穿过费米面，因此我们选择Band Number 5，然后点击Selected，然后得到Cu的费米面。推荐使用FermiSurfer可视化费米面。<br>对于半导体不存在费米面，如果想可视化导带或价带中某个能级处的等能面，新建FERMI_ENERGY.in文件然后在该文件第二行（第一行为注释行）中人为指定能级大小，注意该值一定要保证穿过价带或导带。接下来调用vaspkit-252或263命令提取可视化。</p>
+<h1 id="态密度"><a href="#态密度" class="headerlink" title="态密度"></a>态密度</h1><p>自洽计算之后，读取产生的CHGCAR、WAVECAR<br>上面例如bader电荷、ELF标签都关闭。<br>INCAR中修改：<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">ISTART</span>=<span class="number">1</span></span><br><span class="line"><span class="variable constant_">ICHARG</span>=<span class="number">11</span></span><br><span class="line"><span class="variable constant_">ISMEAR</span>=-<span class="number">5</span></span><br><span class="line"><span class="variable constant_">NEDOS</span>=<span class="number">2001</span></span><br><span class="line"><span class="variable constant_">LORBIT</span>=<span class="number">11</span></span><br></pre></td></tr></table></figure><br><strong>其他参数和自洽时保持一致。</strong><br>运行后vaspkit的111&#x2F;112&#x2F;113&#x2F;114命令处理即可得到。</p>
+<h2 id="分波态密度和局域态密度"><a href="#分波态密度和局域态密度" class="headerlink" title="分波态密度和局域态密度"></a>分波态密度和局域态密度</h2><p>态密度很多分析和能带的分析结果可以一一对应，很多术语也和能带分析相通。但是因为它更直观，因此在结果讨论中用得比能带分析更广泛一些。在电子能级为准连续分布的情况下，单位能量间隔内的电子态数目，即为态密度。能态密度与能带结构密切相关，是一个重要的基本函数。固体的许多特性，如电子比热、光和X射线的吸收和发射等，都与能态密度有关。在VASP中，LORBIT&#x3D;10计算的就是LDOS，也就是每个原子的局域态密度 (local DOS)，是分解到每个原子上面的s,p,d；LORBIT&#x3D;11，计算的就是PDOS,投影态密度(projected DOS)或分波态密度(partial DOS)，不仅分解到每个原子的s,p,d,而且还进行px,py,pz分解。</p>
+<p>在 <code>/vaspkit.0.72/examples/LDOS_PDOS/Partial_DOS_of_CO_on_Ni_111_surface </code>目录下启动 <code>vaspkit </code>，输入命令 <code>115 </code>选择子功能 <code>The Sum of Projected DOS for Selected Atoms and orbitals </code>。我们需要提取的是O的s，p轨道，C的s，p轨道以及表面的dxy和d3z2-r2(dz2)轨道。首先提示你选择元素（累加），第一次输入元素O，回车后提示你输入提取的轨道名（累加），第一次输入轨道s。回车后重复以上两个操作。如果想结束输入，在元素选择行直接按回车键结束输入。</p>
+<p>元素行接受自由格式输入，你可以输入以下内容元素行接受自由格式输入，你可以输入以下内容<code>1-3 4 Ni</code>表示选择元素1,2,3,4和Ni元素的PDOS进行累加。轨道行只支持标准输入，如果使用了<code>LORBIT=10</code>不投影轨道，你只能选择 s p d f中的一个或多个，如果使用了<code>LORBIT=11</code>投影了轨道，你可以从s p d f和s py pz px dxy dyz dz2 dxz dx2 f-3 f-2 f-1 f0 f1 f2 f3中选择一个或多个输入。轨道行还支持输入all计算所有轨道的DOS之和。</p>
+<p>比如元素行输入C O ,对应的轨道选择s px，那么提取的就是所有C和O元素的s轨道和px轨道的PDOS之和。 PDOS_USER.dat中的轨道名 为#Energy C&amp;O_s&amp;px，显而易懂。</p>
+<h1 id="能带计算"><a href="#能带计算" class="headerlink" title="能带计算"></a>能带计算</h1><p>参考链接：<br><a target="_blank" rel="noopener" href="https://yh-phys.github.io/2019/10/04/vasp-band-structure-dos/">https://yh-phys.github.io/2019/10/04/vasp-band-structure-dos/</a><br>自洽计算之后，读取产生的CHGCAR、WAVECAR<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">ISTART</span>=<span class="number">1</span></span><br><span class="line"><span class="variable constant_">ICHARG</span>=<span class="number">11</span></span><br></pre></td></tr></table></figure><br><strong>其他参数和自洽时保持一致。</strong></p>
+<p><strong>能带计算的KPOINTS文件不同于前面，称为高对称点。</strong><br>学术之友微信公众号历史记录搜索文章《五种方法生成能带结构计算的高对称点》<br>1、<a target="_blank" rel="noopener" href="http://cryst.ehu.es/">http://cryst.ehu.es/</a><br>2、<a target="_blank" rel="noopener" href="https://www.materialscloud.org/work/tools/seekpath">https://www.materialscloud.org/work/tools/seekpath</a><br>3、<a target="_blank" rel="noopener" href="http://www.aflowlib.org/aflow-online">http://www.aflowlib.org/aflow-online</a> (已更新)<br>4、<a target="_blank" rel="noopener" href="http://pymatgen.org/">http://pymatgen.org/</a> (pymatgen)<br>5、<a target="_blank" rel="noopener" href="http://www.xcrysden.org/">http://www.xcrysden.org/</a> (XCrySDen)<br>Accurate DOS and Band-structure calculations：<br><a target="_blank" rel="noopener" href="http://cms.mpi.univie.ac.at/vasp/vasp/Accurate_DOS_Band_structure_calculations.html">http://cms.mpi.univie.ac.at/vasp/vasp/Accurate_DOS_Band_structure_calculations.html</a></p>
+<p>可以通过vaspkit的303命令产生KPATH.in文件，cp KPATH.in KPOINTS即可。<br>计算完成后通过vaspkit的211命令提取能带。<br><strong>注意能带路径生成操作需在自洽计算前完成。</strong></p>
+<ul>
+<li><p>1.准备POSCAR，调用vaspkit- 303（体相材料）或-302（二维材料）得到KPATH.in和PRIMCELL.in文件；对于二维体系，需要检查POSCAR文件的真空层是否沿z方向，如果没有，可调用vaspkit-923或vaspkit-407强制真空层沿z方向。另外，如果需要改变识别结构对称性精度（symprec默认值为1E-5），可通过vaspkit -task 302 -symprec 1E-6实现或者在~&#x2F;.vaspkit中修改SYMPREC默认值。</p>
+</li>
+<li><p>2.执行cp PRIMCELL.vasp POSCAR命名。KPATH.in推荐能带路径只针对于PRIMITIVE CELL，缺少这一步，你可能得到错误的结果。如果有必要，比较KPATH.in文件中的能带路径是否与在线能带路径产生工具SeeK-Path产生的一致，包括比较PRIMCELL.vasp和HIGH_SYMMETRY_POINTS文件。需要指出的是SeeK-Path只用于体相结构能带路径的产生。自1.3.0版本，对于二维体系不需要执行cp PRIMCELL.vasp POSCAR。</p>
+</li>
+</ul>
+<h2 id="投影电荷密度"><a href="#投影电荷密度" class="headerlink" title="投影电荷密度"></a>投影电荷密度</h2><p>复制能带结构文件，<br>vi INCAR<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">增加标签 <span class="variable constant_">LPARD</span>=.<span class="property">T</span>.</span><br><span class="line">增加标签 <span class="variable constant_">IBAND</span>=<span class="number">16</span> <span class="number">17</span></span><br><span class="line">增加标签 <span class="variable constant_">LSEPB</span>=.<span class="property">T</span>.</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>LPARD：它的取值为.TRUE.或.FALSE.，它的默认值是.FALSE.，当为.TRUE.时，表示读入自<br>洽收敛的 CHGCAR 和 WAVECAR 并进行 partial charge density计算。</li>
+<li>IBAND：它的取值就是你想要计算的第几条能带或哪几条能带(比如要计算第 4、 5、 6 条能带，那么就设置 IBAND &#x3D; 4 5 6)，此时 NBMOD的值就是所要计算的能带的条数。</li>
+<li>EINT：另一种方式指定所要计算的能带，它是指定计算某能量范围的partial charge density，一般是设置为两个实数，比如EINT&#x3D; 4.00 5.00，此时NBOMD的值设置为-2。如果只设置了一个数，那么表示计算从 EINT 到费米能级这个范围内的，此时NBOMD 的值为-3。</li>
+<li>KPUSE：指定所要计算的 k 点(哪个或哪几个)。</li>
+<li>LSEPB：指定是不是要把计算的partial charge density按每个带分别写到各自对应的文件</li>
+<li>PARCHG.nb (设置为.TRUE.)中，还是把它们合并写到一个文件中(相当于把各个带对应的partial charge density 加起来，设置为.FALSE.)，默认值为.FALSE.。</li>
+<li>LSEPK：指定是不是把要计算的partial charge density按每个k分别写到各自对应的文件PARCHG.nk (设置为.TRUE.).</li>
+</ul>
+<p><strong>三个方法：</strong></p>
+<p><strong>1、读取自恰计算的波函数，KPOINTS文件采用特定的k点</strong></p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#partial charge density</span><br><span class="line"><span class="variable constant_">LPARD</span> = .<span class="property">TRUE</span>. </span><br><span class="line"><span class="variable constant_">IBAND</span> = <span class="number">17</span> <span class="number">18</span> # 价带顶和导带底</span><br><span class="line"><span class="variable constant_">KPUSE</span> = <span class="number">1</span></span><br><span class="line"><span class="variable constant_">LSEPB</span> = .<span class="property">TRUE</span>.</span><br><span class="line"><span class="variable constant_">LSEPK</span> = .<span class="property">TRUE</span>.</span><br></pre></td></tr></table></figure>
+
+ <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">CsPbI3</span>-cubic</span><br><span class="line"><span class="number">1</span></span><br><span class="line">r</span><br><span class="line"><span class="number">0.500000</span> <span class="number">0.500000</span> <span class="number">0.500000</span> <span class="number">1.0</span></span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="http://muchong.com/html/200906/1404880.html">http://muchong.com/html/200906/1404880.html</a><br><strong>2、读取自恰计算的波函数，KPOINTS文件采用自恰计算的k点</strong><br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#partial charge density</span><br><span class="line"><span class="variable constant_">LPARD</span> = .<span class="property">TRUE</span>. </span><br><span class="line"><span class="variable constant_">IBAND</span> = <span class="number">17</span> <span class="number">18</span></span><br><span class="line"><span class="variable constant_">KPUSE</span> = <span class="number">35</span></span><br><span class="line"><span class="variable constant_">LSEPB</span> = .<span class="property">TRUE</span>.</span><br><span class="line"><span class="variable constant_">LSEPK</span> = .<span class="property">TRUE</span>.</span><br><span class="line"><span class="variable constant_">NELM</span> = <span class="number">200</span></span><br><span class="line"><span class="variable constant_">ICHARG</span> = <span class="number">1</span></span><br></pre></td></tr></table></figure><br>在scf自恰计算OUTCAR中<br>找到对应导带底和价带顶<br>对应的k-point编号<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">CsPbI3</span>-cubic</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="title class_">Gamma</span></span><br><span class="line"><span class="number">8</span> <span class="number">8</span> <span class="number">8</span></span><br><span class="line"><span class="number">0.0</span> <span class="number">0.0</span> <span class="number">0.0</span></span><br></pre></td></tr></table></figure><br><strong>3、读取能带计算的波函数，KPOINTS文件采用能带计算的k点</strong></p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#partial charge density</span><br><span class="line"><span class="variable constant_">LPARD</span> = .<span class="property">TRUE</span>. </span><br><span class="line"><span class="variable constant_">IBAND</span> = <span class="number">17</span> <span class="number">18</span></span><br><span class="line"><span class="variable constant_">KPUSE</span> = <span class="number">80</span> <span class="number">81</span></span><br><span class="line"><span class="variable constant_">LSEPB</span> = .<span class="property">TRUE</span>.</span><br><span class="line"><span class="variable constant_">LSEPK</span> = .<span class="property">TRUE</span>.</span><br><span class="line"><span class="variable constant_">NELM</span> = <span class="number">200</span></span><br><span class="line"><span class="variable constant_">ICHARG</span> = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>KPOINTS和能带计算一样。在band能带计算OUTCAR中找到对应导带底和价带顶对应的k-point编号。</p>
+<h2 id="轨道投影态密度和能带。"><a href="#轨道投影态密度和能带。" class="headerlink" title="轨道投影态密度和能带。"></a>轨道投影态密度和能带。</h2> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">LORBIT</span>=<span class="number">11</span> </span><br><span class="line"><span class="variable constant_">NEDOS</span>=<span class="number">2001</span></span><br></pre></td></tr></table></figure>
+<p>提取DOS：vaspkit -task 111&#x2F;113<br>提取band：211&#x2F;212&#x2F;213&#x2F;214<br><strong>如果3D能带图不够平滑，可通过能带插值进行改善。</strong><br>VASPKIT升级到1.3.0或更新版本，在~&#x2F;.vaspkit文件中设置以下三个参数：<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">GET_INTERPOLATED_DATA</span>      .<span class="property">TRUE</span>.     是否插值</span><br><span class="line"><span class="variable constant_">INTERPOLATION_SPACING</span>        <span class="number">0.04</span>     插值间距，决定平滑程度</span><br><span class="line"><span class="variable constant_">INTERPOLATION_METHOD</span>        <span class="string">&#x27;cubic&#x27;</span>   插值方法</span><br></pre></td></tr></table></figure></p>
+<h2 id="HSE06计算电子结构："><a href="#HSE06计算电子结构：" class="headerlink" title="HSE06计算电子结构："></a>HSE06计算电子结构：</h2><ol>
+<li><p>结构优化（PBE）</p>
+</li>
+<li><p>静态自洽scf计算（PBE）KPOINTS和POTCAR文件不变，写波函数和电荷密度</p>
+</li>
+<li><p>(可选）静态自洽scf计算（HSE06）KPOINTS，POSCAR和POTCAR文件不变</p>
+</li>
+<li><p>DOS&#x2F;band计算（HSE06）vaspkit -task 303<br>vaspkit→251→2→0.03→0.03生成KPOINTS，运行VASP<br>vaspkit-252<br><a target="_blank" rel="noopener" href="http://vaspkit.cn/index.php/29.html">http://vaspkit.cn/index.php/29.html</a></p>
+</li>
+<li><p>PBE优化结构</p>
+</li>
+<li><p>HSE自洽计算(得到波函数)</p>
+</li>
+<li><p>HSE能带计算&#x2F;态密度计算</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">ALGO</span> = <span class="title class_">Damped</span></span><br><span class="line"><span class="variable constant_">HFSCREEN</span> = <span class="number">0.2</span></span><br><span class="line"><span class="variable constant_">LHFCALC</span> = .<span class="property">True</span>.</span><br><span class="line"><span class="variable constant_">LMAXFOCK</span> = <span class="number">4</span></span><br><span class="line"><span class="variable constant_">PRECFOCK</span> = <span class="title class_">Fast</span></span><br><span class="line"><span class="variable constant_">TIME</span> = <span class="number">0.4</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="SOC计算电子结构："><a href="#SOC计算电子结构：" class="headerlink" title="+SOC计算电子结构："></a>+SOC计算电子结构：</h2><ol>
+<li>结构优化（PBE）</li>
+<li>静态自洽scf计算（PBE+SOC）KPOINTS和POTCAR文件不变，写波函数和电荷密度</li>
+<li>非自洽计算（PBE+SOC）<br>Spin-Orbit Coupling Calculation<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="variable constant_">ISPIN</span>  =  <span class="number">2</span></span><br><span class="line"> <span class="variable constant_">NELMIN</span> =  <span class="number">6</span>            (<span class="title class_">Min</span> electronic <span class="variable constant_">SCF</span> steps) </span><br><span class="line"> <span class="variable constant_">LSORBIT</span>    = .<span class="property">TRUE</span>.    (<span class="title class_">Activate</span> <span class="variable constant_">SOC</span>)</span><br><span class="line"> <span class="variable constant_">GGA_COMPAT</span> = .<span class="property">FALSE</span>.   (<span class="title class_">Apply</span> spherical cutoff on gradient field)</span><br><span class="line">#<span class="variable constant_">VOSKOWN</span>    =  <span class="number">1</span>        (<span class="title class_">Enhances</span> the magnetic moments and the magnetic energies)</span><br><span class="line"> <span class="variable constant_">LMAXMIX</span>    =  <span class="number">2</span>        (<span class="title class_">For</span> d elements increase <span class="variable constant_">LMAXMIX</span> to <span class="number">4</span>, <span class="attr">f</span>: <span class="variable constant_">LMAXMIX</span> = <span class="number">6</span>)</span><br><span class="line"> <span class="variable constant_">SAXIS</span>    =  <span class="number">0</span> <span class="number">0</span> <span class="number">1</span>      (<span class="title class_">Direction</span> <span class="keyword">of</span> the magnetic field)</span><br><span class="line"> #<span class="variable constant_">MAGMOM</span>   =  <span class="number">0</span> <span class="number">0</span> <span class="number">3</span>    (<span class="title class_">Set</span> <span class="variable language_">this</span> parameters manually, <span class="title class_">Local</span> magnetic moment parallel to <span class="variable constant_">SAXIS</span>, <span class="number">3</span>*<span class="variable constant_">NIONS</span>*<span class="number">1.0</span> <span class="keyword">for</span> non-collinear magnetic systems)</span><br><span class="line"> <span class="variable constant_">NBANDS</span>   =  <span class="number">32</span>         (<span class="title class_">Set</span> <span class="variable language_">this</span> parameters manually, <span class="number">2</span> * number <span class="keyword">of</span> bands <span class="keyword">of</span> collinear-run)</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="HSE06-SOC-band-structure-calculation"><a href="#HSE06-SOC-band-structure-calculation" class="headerlink" title="HSE06+SOC band structure calculation"></a>HSE06+SOC band structure calculation</h2><ul>
+<li><p>Step-I: HSE06 SCF calculation with SOC (INCAR):</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#<span class="variable constant_">SOC</span>-<span class="attr">related</span>:</span><br><span class="line"><span class="variable constant_">LSORBIT</span>=.<span class="property">TRUE</span>.                </span><br><span class="line"><span class="variable constant_">SAXIS</span>= <span class="number">0</span> <span class="number">0</span> <span class="number">1</span>  </span><br><span class="line"><span class="variable constant_">ISYM</span>=<span class="number">0</span>                   </span><br><span class="line"></span><br><span class="line">#<span class="title class_">HSE06</span>-<span class="attr">related</span>:</span><br><span class="line"><span class="variable constant_">LHFCALC</span> = .<span class="property">TRUE</span>.</span><br><span class="line"><span class="variable constant_">HFSCREEN</span> = <span class="number">0.2</span></span><br><span class="line"><span class="variable constant_">ALGO</span> = <span class="title class_">Damped</span>         #<span class="title class_">Damped</span>/<span class="title class_">Normal</span>/<span class="title class_">All</span></span><br><span class="line"><span class="variable constant_">TIME</span> = <span class="number">0.4</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Step-II: HSE06 NSCF calculation with SOC:</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#<span class="variable constant_">SOC</span>-<span class="attr">related</span>:</span><br><span class="line"><span class="variable constant_">LSORBIT</span>=.<span class="property">TRUE</span>.                </span><br><span class="line"><span class="variable constant_">SAXIS</span>= <span class="number">0</span> <span class="number">0</span> <span class="number">1</span>  </span><br><span class="line"><span class="variable constant_">ISYM</span>=<span class="number">0</span>                  </span><br><span class="line"></span><br><span class="line">#<span class="title class_">HSE06</span> <span class="attr">related</span>:</span><br><span class="line"><span class="variable constant_">LHFCALC</span> = .<span class="property">TRUE</span>.               </span><br><span class="line"><span class="variable constant_">HFSCREEN</span> = <span class="number">0.2</span></span><br><span class="line"><span class="variable constant_">ALGO</span> = <span class="title class_">Normal</span>                  !use <span class="title class_">Normal</span></span><br><span class="line"><span class="variable constant_">TIME</span> = <span class="number">0.4</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="能带反折叠"><a href="#能带反折叠" class="headerlink" title="能带反折叠"></a>能带反折叠</h2><h3 id="vaspkit"><a href="#vaspkit" class="headerlink" title="vaspkit:"></a>vaspkit:</h3><ol>
+<li>准备POSCAR</li>
+<li>运行vaspkit -task 302&#x2F;303生成KPATH.in文件</li>
+<li>cp PRIMCELL.vasp POSCAR </li>
+<li>运行vasp优化结构，cp CONTCAR POSCAR</li>
+<li>运行vaspkit -task 400&#x2F;400生成超胞结构POSCAR，并执行cp TRANSMAT TRANSMAT.in</li>
+<li>运行vasp优化含有缺陷的超胞结构，cp CONTCAR POSCAR</li>
+<li>运行vaspkit -task 281生成KPOINTS文件</li>
+<li>准备INCAR（静态计算，设置LWAVE &#x3D; T，适当增加NBANDS值）并执行VASP计算</li>
+<li>运行vaspkit -task 282提取effective band structure(画法类似于投影能带)</li>
+</ol>
+<ul>
+<li><strong>如果不会计算变换矩阵（TRANSMAT.in文件不存在时），可以执行cp PRIMCELL.vasp PRIMCELL.in，281</strong> ，这时vaspkit分别读入超胞基矢（POSCAR）和原胞基矢（PRIMCELL.in）计算变换矩阵并生成TRANSMAT.in文件。</li>
+<li>vaspkit&#x2F;examples&#x2F;band_unfolding&#x2F;ebs.py画图。生成的ENERGY.grd，WEIGHT.grd和MOMENTUM.grd三个文件，可使用vaspkit&#x2F;examples&#x2F;band_unfolding&#x2F;ebs_k_resolved_dos_plot_matlalb.m脚本画图。</li>
+</ul>
+<h3 id="bandup"><a href="#bandup" class="headerlink" title="bandup:"></a>bandup:</h3><p><strong>第一步</strong>  得到超胞CHGCAR:输入文件参考BANDUP的example的第一步，提交任务之后得到CHGCAR。<br><strong>第二步</strong>  主要是为了得到超胞非自洽计算的K点路径，分别给出单胞和超胞的晶格坐标文件prim_cell_lattice.in与supercell_lattice.in。还有单胞的高对称K点路径。<br>下一步命令是bandup kpts-sc-get -no_symm_avg,这一步会生成KPOINTS_supercell.out文件后面会用到。-no_symm_avg这个标签是为了减少需要计算的k点个数，减小计算量和WAVECAR大小。<br><strong>第三步</strong>  利用前面第一步生成 CHGCAR; POSCAR POTCAR与第一步的一样，K点从第二步那个复制过来,然后提交任务得到波函数WAVECAR<br>第四步就要开始做能带反折叠了，一句命令，bandup unfold -emin -13 -emax 6 -dE 0.050  -no_symm_avg<br>会生成一个unfolded_EBS_not-symmetry_averaged.dat文件，画出来就行了。<br><a target="_blank" rel="noopener" href="https://github.com/band-unfolding/bandup">https://github.com/band-unfolding/bandup</a></p>
+<p><a target="_blank" rel="noopener" href="http://staff.ustc.edu.cn/~zqj/posts/Band-unfolding-tutorial/">http://staff.ustc.edu.cn/~zqj/posts/Band-unfolding-tutorial/</a><br>可以处理能带反折叠的软件汇总：<br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/-5lN2lwxsALA-rhNQxK1dw">https://mp.weixin.qq.com/s/-5lN2lwxsALA-rhNQxK1dw</a><br><a target="_blank" rel="noopener" href="https://vaspkit.com/tutorials.html#band-unfolding">https://vaspkit.com/tutorials.html#band-unfolding</a><br><a target="_blank" rel="noopener" href="https://github.com/QuantumMaterialsModelling/bands4vasp">https://github.com/QuantumMaterialsModelling/bands4vasp</a><br><a target="_blank" rel="noopener" href="https://github.com/QuantumMaterialsModelling/UnfoldingPatch4vasp">https://github.com/QuantumMaterialsModelling/UnfoldingPatch4vasp</a></p>
+<h2 id="3D能带"><a href="#3D能带" class="headerlink" title="3D能带"></a>3D能带</h2><p>__第一步__，准备好石墨烯的POSCAR和用于静态计算的INCAR文件；<br>__第二步__：运行VASPKIT并选择231生成用于3D能带计算 的KPOINTS文件。为了获得平滑的3D能带面，用于产生KPOINTS文件的分辨率值应该设置在0.005左右 ；<br>__第三步__，提交VASP作业；<br>__第四步__，待VASP计算完成后，再次运行VASPKIT，输入232或233命令。233命令可一次性输入包含价带顶的BAND.HOMO.grd和导带底的BAND.LUMO.grd文件的能带；232可以得到其它任意能带的计算数据，这里我们选择233。<br>__第五步__：运行python how_to_visual.py，绘制3D能带图(python2.7环境)。<br><strong>如果3D能带图不够平滑，可通过能带插值进行改善。</strong></p>
+<h2 id="有效质量："><a href="#有效质量：" class="headerlink" title="有效质量："></a>有效质量：</h2><p>除了通过能带，也可以通过调用VASPKIT-911命令来得到带边位置，接下来我们计算K点处沿着K -&gt; Γ和K -&gt; M方向的电子及空穴载流子的有效质量；<br>第一步：准备POSCAR文件以及VPKIT.in文件，VPKIT.in文件包含以下内容；</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>                  设置为<span class="number">1</span>将会生成计算有效质量的<span class="variable constant_">KPOINTS</span>文件，<span class="number">2</span>则计算有效质量</span><br><span class="line"><span class="number">6</span>                  <span class="number">6</span>表示我们在K附近取<span class="number">6</span>个离散点用于多项式拟合</span><br><span class="line"><span class="number">0.015</span>              k-cutoff, 截断半径，典型值<span class="number">0.015</span> <span class="number">1</span>/Å</span><br><span class="line"><span class="number">2</span>                  <span class="number">2</span> 表示有两个有效质量任务</span><br><span class="line"><span class="number">0.333333</span> <span class="number">0.3333333</span>  <span class="number">0.000</span>  <span class="number">0.000</span> <span class="number">0.000</span> <span class="number">0.000</span>  K-&gt;Γ     计算K点处有效质量，沿着K指向Γ方向    </span><br><span class="line"><span class="number">0.333333</span> <span class="number">0.3333333</span>  <span class="number">0.000</span>  <span class="number">0.500</span> <span class="number">0.000</span> <span class="number">0.000</span>  K-&gt;M     计算K点处有效质量，沿着K指向M方向 </span><br></pre></td></tr></table></figure>
+<p>第二步：运行vaspkit并选择912或者913产生KPOINTS，POTCAR文件及静态计算INCAR文件；<br>第三步：提交VASP作业；<br>第四步：计算完成后把VPKIT.in文件中第一行的1修改为2，然后再次运行vaspkit并选择913，得到结果：<br>为了得到可靠的有效质量计算值，括号里的精度至少要在1E-7这个量级，如果误差比较大，可以适当调整k-cutoff值，一般减少该值但不能太小。<br>手动vaspkit处理的能带：m∗&#x3D;3.815&#x2F;B</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/vasp%EF%BC%8C%E7%94%B5%E5%AD%90%E7%BB%93%E6%9E%84/" rel="tag"># vasp，电子结构</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/05/09/18-47-23/" rel="prev" title="1.4 提高效率与准确性">
+                  <i class="fa fa-chevron-left"></i> 1.4 提高效率与准确性
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/05/09/18-48-23/" rel="next" title="3.1 热输运1 声子谱">
+                  3.1 热输运1 声子谱 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Keke Liu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
