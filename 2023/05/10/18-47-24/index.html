@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.16.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="弹性常数基本概念弹性常数描述了晶体对外加应变的响应的刚度。在材料的线性变形范围内（应变较小的情况下），体系的应力与应变满足胡克定律。也就是说，对于足够的小的变形，应力与应变成正比，即应力分量(S)是应变分量(E)的线性函数，三维材料的弹性刚度常数矩阵是6×6的。公式中Cij就是我们通常所说的弹性常数。因为刚度矩阵是对称矩阵，因此，弹性常数的独立张量元数目至多只有21个。对不同的晶系的晶体，因为对称">
+<meta property="og:type" content="article">
+<meta property="og:title" content="4.1 力学性质">
+<meta property="og:url" content="http://example.com/2023/05/10/18-47-24/index.html">
+<meta property="og:site_name" content="Lightchaser">
+<meta property="og:description" content="弹性常数基本概念弹性常数描述了晶体对外加应变的响应的刚度。在材料的线性变形范围内（应变较小的情况下），体系的应力与应变满足胡克定律。也就是说，对于足够的小的变形，应力与应变成正比，即应力分量(S)是应变分量(E)的线性函数，三维材料的弹性刚度常数矩阵是6×6的。公式中Cij就是我们通常所说的弹性常数。因为刚度矩阵是对称矩阵，因此，弹性常数的独立张量元数目至多只有21个。对不同的晶系的晶体，因为对称">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-05-10T10:47:24.000Z">
+<meta property="article:modified_time" content="2023-05-15T07:09:18.663Z">
+<meta property="article:author" content="Keke Liu">
+<meta property="article:tag" content="力学">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/05/10/18-47-24/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/05/10/18-47-24/","path":"2023/05/10/18-47-24/","title":"4.1 力学性质"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>4.1 力学性质 | Lightchaser</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Lightchaser</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">三人行，必有我师</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%B9%E6%80%A7%E5%B8%B8%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">弹性常数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.0.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B"><span class="nav-number">1.0.2.</span> <span class="nav-text">计算过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">方法一：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">方法二：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E5%BC%B9%E6%80%A7%E5%B8%B8%E6%95%B0%E8%AE%A1%E7%AE%97%E5%92%8C%E4%B8%89%E7%BB%B4%E5%8F%AF%E8%A7%86%E5%8C%96%E6%9D%90%E6%96%99%E5%8A%9B%E5%AD%A6%E9%87%8F"><span class="nav-number">1.0.3.</span> <span class="nav-text">根据弹性常数计算和三维可视化材料力学量</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Keke Liu</p>
+  <div class="site-description" itemprop="description">一个小学生的博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/stemdkk" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;stemdkk" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:257198@whut.edu.cn" title="E-Mail → mailto:257198@whut.edu.cn" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/10/18-47-24/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Keke Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lightchaser">
+      <meta itemprop="description" content="一个小学生的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="4.1 力学性质 | Lightchaser">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          4.1 力学性质
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-10 18:47:24" itemprop="dateCreated datePublished" datetime="2023-05-10T18:47:24+08:00">2023-05-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-05-15 15:09:18" itemprop="dateModified" datetime="2023-05-15T15:09:18+08:00">2023-05-15</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="弹性常数"><a href="#弹性常数" class="headerlink" title="弹性常数"></a>弹性常数</h1><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>弹性常数描述了晶体对外加应变的响应的刚度。在材料的线性变形范围内（应变较小的情况下），体系的应力与应变满足胡克定律。也就是说，对于足够的小的变形，应力与应变成正比，即应力分量(S)是应变分量(E)的线性函数，三维材料的弹性刚度常数矩阵是6×6的。公式中Cij就是我们通常所说的弹性常数。因为刚度矩阵是对称矩阵，因此，弹性常数的独立张量元数目至多只有21个。<strong>对不同的晶系的晶体，因为对称性的关系，其独立的弹性常数是确定的。因此，晶系的对称性越高，独立的张量元数目越少。</strong><br><strong>立方晶系</strong> ——只有3个独立矩阵元（C11，C12，C44）<br><strong>六角晶系</strong> ——有5个独立矩阵元（C11，C12，C13，C33，C44）<br><strong>三角晶系</strong><br>a)  32，3m，-32&#x2F;m——有6个独立矩阵元（C11，C12，C13，C14，C33，C44）<br>b)  3，-3,——有8个独立矩阵元（C11，C12，C13，C14，C15，C33，C44，C45）<br><strong>四方晶系</strong><br>a) 422，4mm，-42m，4&#x2F;mmm——有6个独立矩阵元（C11，C12，C13，C33，C44，C66）<br>b) 4，-4，4&#x2F;m——有7个独立矩阵元（C11，C12，C13，C16，C33，C44，C66）<br><strong>正交晶系</strong> ——有9个独立矩阵元（C11，C12，C13，C22，C23，C33，C44，C55，C66）<br><strong>单斜晶系</strong> ——有13个独立矩阵元<br><strong>三斜晶系</strong> ——有21个独立矩阵元</p>
+<h3 id="计算过程"><a href="#计算过程" class="headerlink" title="计算过程"></a>计算过程</h3><p>采用第一性原理计算弹性常数有两种方法，<strong>第一种方法是应力-应变方法，</strong> 即通过给结构施加不同应变，分别计算出所对应的应力大小，然后利用公式（1）拟合得到一次项系数，从而得到。<strong>第二种方法是能量-应变方法，</strong> 即通过给结构施加不同应变后计算出体系总能相对于基态能量变化（应变能），再利用公式（2）进行二次多项式拟合，其中二次多项式系数是晶体的某个弹性常数或者弹性常数组合。第一种方法优点是每进行一次计算可一次得到六个独立分量，缺点是为了得到准确的应力大小，必须选择更高的截断能和更密集的K格点。<strong>在同样的精度下，能量-应变法相比应力-应变方法要求的截断能和K点数目相对较少，缺点是计算应变数目有所增加。VASPKIT中弹性常数计算基于能量-应变法，目前不支持三斜晶系。</strong><br>一般计算弹性常数我们可以采用应变应力或者应变能量关系，进行拟合。或者可以直接通过VASP直接计算。</p>
+<h4 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h4><p>首先介绍直接用VASP在输入文件中添加参数进行计算的方法。</p>
+<ol>
+<li><p>当然首先要进行结构优化，</p>
+</li>
+<li><p>在INCAR中添加关键参数，进行弹性常数的计算</p>
+ <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">NSW</span>=<span class="number">1</span></span><br><span class="line"><span class="variable constant_">EDIFFG</span>=-<span class="number">1e-3</span></span><br><span class="line"><span class="variable constant_">ISIF</span>=<span class="number">3</span></span><br><span class="line"><span class="variable constant_">IBRION</span>=<span class="number">6</span> #计算弹性常数</span><br><span class="line"><span class="variable constant_">POTIM</span>=<span class="number">0.015</span></span><br><span class="line"><span class="variable constant_">NFREE</span> = <span class="number">4</span></span><br></pre></td></tr></table></figure></li>
+<li><p>计算完成后可以查看OUTCAR得到弹性刚度矩阵。或者可以利用VASPKIT直接得到弹性常数。<br>请注意OUTCAR中的刚度矩阵是未经过处理的刚度矩阵，二维材料需要乘以C轴长度的0.01，还需要了解Voigt简标，11&gt;1 22&gt;2 33&gt;3 23&gt;4 13&gt;5 12&gt;6。然后我们通过Origin等工具绘图即可得到材料的杨氏模量，泊松比等力学性质。</p>
+</li>
+</ol>
+<h4 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h4><p>VASPKIT和VASP计算晶体的弹性常数具体计算步骤分为：</p>
+<ol>
+<li><p>准备优化彻底的POSCAR文件，注意通常采用标准的惯用原胞计算弹性常数，如果不确信POSCAR文件中是否是标准的惯用原胞，可以用vaspkit-603&#x2F;604生成标准结构；</p>
+</li>
+<li><p>运行vaspkit 选择102生成KPOINTS，由于计算弹性常数对K-mesh要求很高，因此对于半导体（金属体）体系，生成K点的精度应不小于 0.03(0.02)×2π {\AA}^{-1}</p>
+</li>
+<li><p>INCAR参考设置如下；</p>
+ <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Global</span> <span class="title class_">Parameters</span></span><br><span class="line"> <span class="variable constant_">ISTART</span> =  <span class="number">0</span>        </span><br><span class="line"> <span class="variable constant_">LREAL</span>  =  F      </span><br><span class="line"> <span class="variable constant_">PREC</span>   =  <span class="title class_">High</span>  （截断能设置默认值<span class="number">1.5</span>-<span class="number">2</span>倍）</span><br><span class="line"> <span class="variable constant_">LWAVE</span>  = F       </span><br><span class="line"> <span class="variable constant_">LCHARG</span> = F     </span><br><span class="line"> <span class="variable constant_">ADDGRID</span>= .<span class="property">TRUE</span>.    </span><br><span class="line"><span class="title class_">Electronic</span> <span class="title class_">Relaxation</span></span><br><span class="line"> <span class="variable constant_">ISMEAR</span> =  <span class="number">0</span>          </span><br><span class="line"> <span class="variable constant_">SIGMA</span>  =  <span class="number">0.05</span>       </span><br><span class="line"> <span class="variable constant_">NELM</span>   =  <span class="number">40</span>           </span><br><span class="line"> <span class="variable constant_">NELMIN</span> =  <span class="number">4</span>           </span><br><span class="line"> <span class="variable constant_">EDIFF</span>  =  <span class="number">1E-08</span>       </span><br><span class="line"><span class="title class_">Ionic</span> <span class="title class_">Relaxation</span></span><br><span class="line"> <span class="variable constant_">NELMIN</span> =  <span class="number">6</span>          </span><br><span class="line"> <span class="variable constant_">NSW</span>    =  <span class="number">100</span>         </span><br><span class="line"> <span class="variable constant_">IBRION</span> =  <span class="number">2</span>           </span><br><span class="line"> <span class="variable constant_">ISIF</span>   =  <span class="number">2</span>    （切记选择<span class="number">2</span>,如果选择<span class="number">3</span>会把施加应变后原胞重新优化成平衡原胞）</span><br><span class="line"> <span class="variable constant_">EDIFFG</span> = -<span class="number">1E-02</span>  </span><br></pre></td></tr></table></figure></li>
+<li><p>准备VPKIT.in文件并设置第一行为1（预处理）；运行vaspkit并选择201, 将生成用于计算弹性常数文件；</p>
+ <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>                    ! 设置<span class="number">1</span>将产生计算弹性常数的输入文件，<span class="number">2</span>则计算弹性常数</span><br><span class="line">3D                   ! 2D为二维体系，3D为三维体系</span><br><span class="line"><span class="number">7</span>                    ! <span class="number">7</span>个应变</span><br><span class="line">-<span class="number">0.015</span> -<span class="number">0.010</span> -<span class="number">0.005</span> <span class="number">0.000</span> <span class="number">0.005</span> <span class="number">0.010</span> <span class="number">0.015</span>  ! 应变变化范围</span><br></pre></td></tr></table></figure></li>
+<li><p>批量提交vasp作业；<br>总计有9个大文件夹，分别以该空间群所需要的独立弹性常数来命名；在每个大文件夹内则是以应变强度命名的实际计算执行的文件夹，文件夹的数量可根据预处理的VPKIT.in文件的最后一行的应变设置来更改。在每一个应变文件夹内则是施加了应变的POSCAR和事先准备好的INCAR、KPOINTS和POTCAR文件的链接，可直接进行vasp计算。<br>这里通过一个简单的两重for循环命令依次序完成所需要的计算任务。<br>脚本 :</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#!<span class="regexp">/bin/</span>bash</span><br><span class="line">path=<span class="string">`pwd`</span></span><br><span class="line">#记录当前文件夹位置并定义到变量 path中，称为初始目录</span><br><span class="line">pwd</span><br><span class="line"><span class="keyword">for</span> cij <span class="keyword">in</span> <span class="string">`ls -F | grep /$`</span></span><br><span class="line">#ls -F| grep /$ 命令为返回当前文件夹中所有子目录</span><br><span class="line">#将所有子目录添加到变量cij中，并准备进行<span class="keyword">for</span>循环</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">cd $&#123;path&#125;/$cij</span><br><span class="line">#进入cij变量所代表的子目录中</span><br><span class="line">pwd</span><br><span class="line"><span class="keyword">for</span> s <span class="keyword">in</span> strain_*</span><br><span class="line">#将cij代表的子目录中所有strain文件夹添加到变量s中</span><br><span class="line">#此部添加变量s的方式可更改为添加变量cij的方式，但不建议这么做</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">cd $&#123;path&#125;/$cij/$s</span><br><span class="line">#进入初始目录下变量cij和变量s组成的目录，由于<span class="keyword">for</span>循环的设置，将遍历所有可计算的strain文件夹</span><br><span class="line">pwd</span><br><span class="line"> mpirun -np <span class="number">16</span> vasp_std</span><br><span class="line"> #执行vasp计算</span><br><span class="line">cd $&#123;path&#125;</span><br><span class="line">#返回初始目录</span><br><span class="line">pwd</span><br><span class="line">done</span><br><span class="line">done</span><br></pre></td></tr></table></figure></li>
+<li><p>再次修改VPKIT.in文件中第一行为2（后处理），然后再次运行vaspkit并选择201，得到以下结果；</p>
+</li>
+<li><p>如果在计算弹性常数时希望强制固定某个体系的空间群，可在SYMMETRY.in文件第二行设置空间群，这样晶系将通过指定空间群判断并计算相应的独立弹性常数，这对于掺杂或者合金体系比较有用。</p>
+</li>
+</ol>
+<h3 id="根据弹性常数计算和三维可视化材料力学量"><a href="#根据弹性常数计算和三维可视化材料力学量" class="headerlink" title="根据弹性常数计算和三维可视化材料力学量"></a>根据弹性常数计算和三维可视化材料力学量</h3><p>首先利用VASPKIT-204命令得到体弹性模量、杨氏模量、剪切模量及泊松比随角度的依赖关系，具体算法可参考文献【J. Phys. Condens. Matter, 28, 275201 (2016)和Comput. Phys. Commun. 181, 2102–2115 (2010)】。接下来我们以某单斜体系的弹性常数为例来演示如何进行材料力学量三维可视化。</p>
+<ul>
+<li>第一步新建ELASTIC_TENSOR.in并输入6x6弹性常数矩阵，注意第一行是注释行不可省略。如果是二维体系，则输入文件为ELASTIC_TENSOR_2D.in，注意二维体系弹性常数矩阵大小为3x3。 <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># comment line (<span class="keyword">in</span> <span class="title class_">GPa</span>)</span><br><span class="line">   <span class="number">228.38</span>   <span class="number">85.741</span>   <span class="number">81.503</span>        <span class="number">0</span>   -<span class="number">0.737</span>        <span class="number">0</span></span><br><span class="line">   <span class="number">85.741</span>   <span class="number">217.47</span>   <span class="number">94.201</span>        <span class="number">0</span>  -<span class="number">20.213</span>        <span class="number">0</span></span><br><span class="line">   <span class="number">81.503</span>   <span class="number">94.201</span>   <span class="number">178.81</span>        <span class="number">0</span>   -<span class="number">9.472</span>        <span class="number">0</span></span><br><span class="line">        <span class="number">0</span>        <span class="number">0</span>        <span class="number">0</span>   <span class="number">35.094</span>        <span class="number">0</span>  -<span class="number">17.851</span></span><br><span class="line">   -<span class="number">0.737</span>  -<span class="number">20.213</span>   -<span class="number">9.472</span>        <span class="number">0</span>   <span class="number">37.778</span>        <span class="number">0</span></span><br><span class="line">        <span class="number">0</span>        <span class="number">0</span>        <span class="number">0</span>  -<span class="number">17.851</span>        <span class="number">0</span>   <span class="number">42.708</span></span><br></pre></td></tr></table></figure></li>
+<li>第二步运行VASPKIT 204命令得到MECHANICS_3D.dat<br>打开MECHANICS_3D.dat可看到第一行给出了每一列数据所代表的物理量，第二行给出了球坐标系下分别划分仰角θ∈[0,180]和方位角ϕ∈[0,360]的格点大小。</li>
+<li>第三步从vaspkit&#x2F;examples&#x2F;angular_dependent_mechanics (VASPKIT ver. &gt;&#x3D; 1.3.2)文件夹中拷贝mechanics_3d_plot_matlab.m到当前目录，调用Matlab软件运行该脚本，得到以下信息.<br>如果我们想可视化杨氏模量，则输入2回车即可得到。</li>
+<li>另外，以下两个软件也可以实现材料力学量三维可视化。<br>Elate<br>ElasticPOST</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%8A%9B%E5%AD%A6/" rel="tag"># 力学</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/05/09/18-48-23/" rel="prev" title="3.1 热输运1 声子谱">
+                  <i class="fa fa-chevron-left"></i> 3.1 热输运1 声子谱
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/05/11/18-47-24/" rel="next" title="4.2 光学性质">
+                  4.2 光学性质 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Keke Liu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

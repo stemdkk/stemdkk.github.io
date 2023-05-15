@@ -123,12 +123,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -153,6 +153,195 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/11/18-47-24/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Keke Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lightchaser">
+      <meta itemprop="description" content="一个小学生的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Lightchaser">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/05/11/18-47-24/" class="post-title-link" itemprop="url">4.2 光学性质</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-11 18:47:24" itemprop="dateCreated datePublished" datetime="2023-05-11T18:47:24+08:00">2023-05-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-05-15 15:39:34" itemprop="dateModified" datetime="2023-05-15T15:39:34+08:00">2023-05-15</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="介电常数"><a href="#介电常数" class="headerlink" title="介电常数"></a>介电常数</h1><p>首先进行结构优化,参考官网： <a target="_blank" rel="noopener" href="https://www.vasp.at/wiki/index.php/Dielectric_properties_of_SiC">https://www.vasp.at/wiki/index.php/Dielectric_properties_of_SiC</a></p>
+<h3 id="静态介电常数："><a href="#静态介电常数：" class="headerlink" title="静态介电常数："></a>静态介电常数：</h3><p>方法1：DFPT方法;<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">IBRION</span> = <span class="number">8</span></span><br><span class="line"><span class="variable constant_">NSW</span>=<span class="number">1</span></span><br><span class="line"><span class="variable constant_">LEPSILON</span> = .<span class="property">TRUE</span>.</span><br><span class="line"><span class="variable constant_">LRPA</span>=.<span class="property">TRUE</span>.#<span class="variable constant_">RPA</span>考虑局域场效应，默认关闭，即<span class="variable constant_">IP</span>近似</span><br><span class="line"><span class="variable constant_">LPEAD</span>=.<span class="property">TRUE</span>.#有限差分法</span><br></pre></td></tr></table></figure><br>方法2：Response to finite electric fields<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">LCALCEPS</span> = .<span class="property">TRUE</span>.</span><br><span class="line"><span class="variable constant_">IBRION</span>=<span class="number">6</span></span><br><span class="line"><span class="variable constant_">NFREE</span>=<span class="number">2</span></span><br><span class="line"><span class="variable constant_">ISMEAR</span> =  <span class="number">0</span></span><br><span class="line"><span class="variable constant_">SIGMA</span>  =  <span class="number">0.01</span></span><br></pre></td></tr></table></figure><br> 在OUTCAR中抓取：<br> <code>MACROSCOPIC STATIC DIELECTRIC TENSOR (including local field effects in DFT) </code> 电子贡献或者 <code>MACROSCOPIC STATIC DIELECTRIC TENSOR (including local field effects in RPA (Hartree)) </code><br> <figure class="highlight plaintext"><figcaption><span>STATIC DIELECTRIC TENSOR IONIC CONTRIBUTION ```离子贡献</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">  ```BORN EFFECTIVE CHARGES (in e, cummulative output) ```</span><br><span class="line">```ELASTIC MODULI IONIC CONTR (kBar)```</span><br><span class="line"> ```PIEZOELECTRIC TENSOR IONIC CONTR  for field in x, y, z        (C/m^2) ```</span><br><span class="line">### 频率依赖介电函数：读取WAVECAR</span><br><span class="line">IPA：</span><br><span class="line"> ```javascript  &#123;.line-numbers&#125;</span><br><span class="line">ALGO = Exact</span><br><span class="line">NBANDS  = 64</span><br><span class="line">LOPTICS = .TRUE. </span><br><span class="line">CSHIFT = 0.100</span><br><span class="line">NEDOS = 2000  </span><br><span class="line">#and you might try with the following</span><br><span class="line">#LPEAD = .TRUE.</span><br></pre></td></tr></table></figure><br> <code>frequency dependent IMAGINARY DIELECTRIC FUNCTION (independent particle, no local field effects) </code><br>and<br> <code>frequency dependent      REAL DIELECTRIC FUNCTION (independent particle, no local field effects) </code></p>
+<p>Note：对于光学性质的计算，也就是计算材料的介电函数，需要足够多的空带和致密的K网格点，使其达到非常好的收敛状态，我们才可以得到合理的光学性质；因此通常计算中，一般设置NBANDS为默认值（可在自洽的OUTCAR中以关键字NBANDS查找到）的2-3倍，K网格点为自洽值或适当增加。<br>使用optics.sh脚本得到介电函数的实部和虚部<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># extract image and real parts <span class="keyword">of</span> dielectric <span class="keyword">function</span> <span class="keyword">from</span> vasprun.<span class="property">xml</span></span><br><span class="line">awk <span class="string">&#x27;BEGIN&#123;i=1&#125; /&lt;imag&gt;/,\</span></span><br><span class="line"><span class="string">                /&lt;\/imag&gt;/ \</span></span><br><span class="line"><span class="string">                 &#123;a[i]=$2 ; b[i]=$3 ; c[i]=$4; d[i]=$5 ; e[i]=$6 ; f[i]=$7; g[i]=$8; i=i+1&#125; \</span></span><br><span class="line"><span class="string">     END&#123;for (j=12;j&lt;i-3;j++) print a[j],b[j],c[j],d[j],e[j],f[j],g[j]&#125;&#x27;</span> vasprun.<span class="property">xml</span> &gt; <span class="variable constant_">IMAG</span>.<span class="property">in</span></span><br><span class="line">#awk <span class="string">&#x27;BEGIN&#123;i=1&#125; /imag/,\</span></span><br><span class="line"><span class="string">#                /\/imag/ \</span></span><br><span class="line"><span class="string">#                 &#123;a[i]=$2 ; b[i]=$3 ; c[i]=$4; d[i]=$5 ; e[i]=$6 ; f[i]=$7; g[i]=$8; i=i+1&#125; \</span></span><br><span class="line"><span class="string">#     END&#123;for (j=12;j&lt;i-3;j++) print a[j],b[j],c[j],d[j],e[j],f[j],g[j]&#125;&#x27;</span> vasprun.<span class="property">xml</span> &gt; <span class="variable constant_">IMAG</span>.<span class="property">in</span></span><br><span class="line">awk <span class="string">&#x27;BEGIN&#123;i=1&#125; /&lt;real&gt;/,\</span></span><br><span class="line"><span class="string">                /&lt;\/real&gt;/ \</span></span><br><span class="line"><span class="string">                 &#123;a[i]=$2 ; b[i]=$3 ; c[i]=$4; d[i]=$5 ; e[i]=$6 ; f[i]=$7; g[i]=$8; i=i+1&#125; \</span></span><br><span class="line"><span class="string">     END&#123;for (j=12;j&lt;i-3;j++) print a[j],b[j],c[j],d[j],e[j],f[j],g[j]&#125;&#x27;</span> vasprun.<span class="property">xml</span> &gt; <span class="variable constant_">REAL</span>.<span class="property">in</span></span><br></pre></td></tr></table></figure><br>vaspkit处理：<br> <code>vaspkit-task 711  </code></p>
+<h3 id="压电常数"><a href="#压电常数" class="headerlink" title="压电常数"></a>压电常数</h3><p>上面计算完介电常数后<br> <code>grep &quot;PIEZOELECTRIC TENSOR IONIC CONTR  for field in x, y, z        (C/m^2)&quot; OUTCAR  -A10 </code><br> &amp;<br> <code>grep &quot;PIEZOELECTRIC TENSOR  for field in x, y, z        (C/m^2)&quot; OUTCAR -A10 </code></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/10/18-47-24/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Keke Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lightchaser">
+      <meta itemprop="description" content="一个小学生的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Lightchaser">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/05/10/18-47-24/" class="post-title-link" itemprop="url">4.1 力学性质</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-10 18:47:24" itemprop="dateCreated datePublished" datetime="2023-05-10T18:47:24+08:00">2023-05-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-05-15 15:09:18" itemprop="dateModified" datetime="2023-05-15T15:09:18+08:00">2023-05-15</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="弹性常数"><a href="#弹性常数" class="headerlink" title="弹性常数"></a>弹性常数</h1><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>弹性常数描述了晶体对外加应变的响应的刚度。在材料的线性变形范围内（应变较小的情况下），体系的应力与应变满足胡克定律。也就是说，对于足够的小的变形，应力与应变成正比，即应力分量(S)是应变分量(E)的线性函数，三维材料的弹性刚度常数矩阵是6×6的。公式中Cij就是我们通常所说的弹性常数。因为刚度矩阵是对称矩阵，因此，弹性常数的独立张量元数目至多只有21个。<strong>对不同的晶系的晶体，因为对称性的关系，其独立的弹性常数是确定的。因此，晶系的对称性越高，独立的张量元数目越少。</strong><br><strong>立方晶系</strong> ——只有3个独立矩阵元（C11，C12，C44）<br><strong>六角晶系</strong> ——有5个独立矩阵元（C11，C12，C13，C33，C44）<br><strong>三角晶系</strong><br>a)  32，3m，-32&#x2F;m——有6个独立矩阵元（C11，C12，C13，C14，C33，C44）<br>b)  3，-3,——有8个独立矩阵元（C11，C12，C13，C14，C15，C33，C44，C45）<br><strong>四方晶系</strong><br>a) 422，4mm，-42m，4&#x2F;mmm——有6个独立矩阵元（C11，C12，C13，C33，C44，C66）<br>b) 4，-4，4&#x2F;m——有7个独立矩阵元（C11，C12，C13，C16，C33，C44，C66）<br><strong>正交晶系</strong> ——有9个独立矩阵元（C11，C12，C13，C22，C23，C33，C44，C55，C66）<br><strong>单斜晶系</strong> ——有13个独立矩阵元<br><strong>三斜晶系</strong> ——有21个独立矩阵元</p>
+<h3 id="计算过程"><a href="#计算过程" class="headerlink" title="计算过程"></a>计算过程</h3><p>采用第一性原理计算弹性常数有两种方法，<strong>第一种方法是应力-应变方法，</strong> 即通过给结构施加不同应变，分别计算出所对应的应力大小，然后利用公式（1）拟合得到一次项系数，从而得到。<strong>第二种方法是能量-应变方法，</strong> 即通过给结构施加不同应变后计算出体系总能相对于基态能量变化（应变能），再利用公式（2）进行二次多项式拟合，其中二次多项式系数是晶体的某个弹性常数或者弹性常数组合。第一种方法优点是每进行一次计算可一次得到六个独立分量，缺点是为了得到准确的应力大小，必须选择更高的截断能和更密集的K格点。<strong>在同样的精度下，能量-应变法相比应力-应变方法要求的截断能和K点数目相对较少，缺点是计算应变数目有所增加。VASPKIT中弹性常数计算基于能量-应变法，目前不支持三斜晶系。</strong><br>一般计算弹性常数我们可以采用应变应力或者应变能量关系，进行拟合。或者可以直接通过VASP直接计算。</p>
+<h4 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h4><p>首先介绍直接用VASP在输入文件中添加参数进行计算的方法。</p>
+<ol>
+<li><p>当然首先要进行结构优化，</p>
+</li>
+<li><p>在INCAR中添加关键参数，进行弹性常数的计算</p>
+ <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">NSW</span>=<span class="number">1</span></span><br><span class="line"><span class="variable constant_">EDIFFG</span>=-<span class="number">1e-3</span></span><br><span class="line"><span class="variable constant_">ISIF</span>=<span class="number">3</span></span><br><span class="line"><span class="variable constant_">IBRION</span>=<span class="number">6</span> #计算弹性常数</span><br><span class="line"><span class="variable constant_">POTIM</span>=<span class="number">0.015</span></span><br><span class="line"><span class="variable constant_">NFREE</span> = <span class="number">4</span></span><br></pre></td></tr></table></figure></li>
+<li><p>计算完成后可以查看OUTCAR得到弹性刚度矩阵。或者可以利用VASPKIT直接得到弹性常数。<br>请注意OUTCAR中的刚度矩阵是未经过处理的刚度矩阵，二维材料需要乘以C轴长度的0.01，还需要了解Voigt简标，11&gt;1 22&gt;2 33&gt;3 23&gt;4 13&gt;5 12&gt;6。然后我们通过Origin等工具绘图即可得到材料的杨氏模量，泊松比等力学性质。</p>
+</li>
+</ol>
+<h4 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h4><p>VASPKIT和VASP计算晶体的弹性常数具体计算步骤分为：</p>
+<ol>
+<li><p>准备优化彻底的POSCAR文件，注意通常采用标准的惯用原胞计算弹性常数，如果不确信POSCAR文件中是否是标准的惯用原胞，可以用vaspkit-603&#x2F;604生成标准结构；</p>
+</li>
+<li><p>运行vaspkit 选择102生成KPOINTS，由于计算弹性常数对K-mesh要求很高，因此对于半导体（金属体）体系，生成K点的精度应不小于 0.03(0.02)×2π {\AA}^{-1}</p>
+</li>
+<li><p>INCAR参考设置如下；</p>
+ <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Global</span> <span class="title class_">Parameters</span></span><br><span class="line"> <span class="variable constant_">ISTART</span> =  <span class="number">0</span>        </span><br><span class="line"> <span class="variable constant_">LREAL</span>  =  F      </span><br><span class="line"> <span class="variable constant_">PREC</span>   =  <span class="title class_">High</span>  （截断能设置默认值<span class="number">1.5</span>-<span class="number">2</span>倍）</span><br><span class="line"> <span class="variable constant_">LWAVE</span>  = F       </span><br><span class="line"> <span class="variable constant_">LCHARG</span> = F     </span><br><span class="line"> <span class="variable constant_">ADDGRID</span>= .<span class="property">TRUE</span>.    </span><br><span class="line"><span class="title class_">Electronic</span> <span class="title class_">Relaxation</span></span><br><span class="line"> <span class="variable constant_">ISMEAR</span> =  <span class="number">0</span>          </span><br><span class="line"> <span class="variable constant_">SIGMA</span>  =  <span class="number">0.05</span>       </span><br><span class="line"> <span class="variable constant_">NELM</span>   =  <span class="number">40</span>           </span><br><span class="line"> <span class="variable constant_">NELMIN</span> =  <span class="number">4</span>           </span><br><span class="line"> <span class="variable constant_">EDIFF</span>  =  <span class="number">1E-08</span>       </span><br><span class="line"><span class="title class_">Ionic</span> <span class="title class_">Relaxation</span></span><br><span class="line"> <span class="variable constant_">NELMIN</span> =  <span class="number">6</span>          </span><br><span class="line"> <span class="variable constant_">NSW</span>    =  <span class="number">100</span>         </span><br><span class="line"> <span class="variable constant_">IBRION</span> =  <span class="number">2</span>           </span><br><span class="line"> <span class="variable constant_">ISIF</span>   =  <span class="number">2</span>    （切记选择<span class="number">2</span>,如果选择<span class="number">3</span>会把施加应变后原胞重新优化成平衡原胞）</span><br><span class="line"> <span class="variable constant_">EDIFFG</span> = -<span class="number">1E-02</span>  </span><br></pre></td></tr></table></figure></li>
+<li><p>准备VPKIT.in文件并设置第一行为1（预处理）；运行vaspkit并选择201, 将生成用于计算弹性常数文件；</p>
+ <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>                    ! 设置<span class="number">1</span>将产生计算弹性常数的输入文件，<span class="number">2</span>则计算弹性常数</span><br><span class="line">3D                   ! 2D为二维体系，3D为三维体系</span><br><span class="line"><span class="number">7</span>                    ! <span class="number">7</span>个应变</span><br><span class="line">-<span class="number">0.015</span> -<span class="number">0.010</span> -<span class="number">0.005</span> <span class="number">0.000</span> <span class="number">0.005</span> <span class="number">0.010</span> <span class="number">0.015</span>  ! 应变变化范围</span><br></pre></td></tr></table></figure></li>
+<li><p>批量提交vasp作业；<br>总计有9个大文件夹，分别以该空间群所需要的独立弹性常数来命名；在每个大文件夹内则是以应变强度命名的实际计算执行的文件夹，文件夹的数量可根据预处理的VPKIT.in文件的最后一行的应变设置来更改。在每一个应变文件夹内则是施加了应变的POSCAR和事先准备好的INCAR、KPOINTS和POTCAR文件的链接，可直接进行vasp计算。<br>这里通过一个简单的两重for循环命令依次序完成所需要的计算任务。<br>脚本 :</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#!<span class="regexp">/bin/</span>bash</span><br><span class="line">path=<span class="string">`pwd`</span></span><br><span class="line">#记录当前文件夹位置并定义到变量 path中，称为初始目录</span><br><span class="line">pwd</span><br><span class="line"><span class="keyword">for</span> cij <span class="keyword">in</span> <span class="string">`ls -F | grep /$`</span></span><br><span class="line">#ls -F| grep /$ 命令为返回当前文件夹中所有子目录</span><br><span class="line">#将所有子目录添加到变量cij中，并准备进行<span class="keyword">for</span>循环</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">cd $&#123;path&#125;/$cij</span><br><span class="line">#进入cij变量所代表的子目录中</span><br><span class="line">pwd</span><br><span class="line"><span class="keyword">for</span> s <span class="keyword">in</span> strain_*</span><br><span class="line">#将cij代表的子目录中所有strain文件夹添加到变量s中</span><br><span class="line">#此部添加变量s的方式可更改为添加变量cij的方式，但不建议这么做</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">cd $&#123;path&#125;/$cij/$s</span><br><span class="line">#进入初始目录下变量cij和变量s组成的目录，由于<span class="keyword">for</span>循环的设置，将遍历所有可计算的strain文件夹</span><br><span class="line">pwd</span><br><span class="line"> mpirun -np <span class="number">16</span> vasp_std</span><br><span class="line"> #执行vasp计算</span><br><span class="line">cd $&#123;path&#125;</span><br><span class="line">#返回初始目录</span><br><span class="line">pwd</span><br><span class="line">done</span><br><span class="line">done</span><br></pre></td></tr></table></figure></li>
+<li><p>再次修改VPKIT.in文件中第一行为2（后处理），然后再次运行vaspkit并选择201，得到以下结果；</p>
+</li>
+<li><p>如果在计算弹性常数时希望强制固定某个体系的空间群，可在SYMMETRY.in文件第二行设置空间群，这样晶系将通过指定空间群判断并计算相应的独立弹性常数，这对于掺杂或者合金体系比较有用。</p>
+</li>
+</ol>
+<h3 id="根据弹性常数计算和三维可视化材料力学量"><a href="#根据弹性常数计算和三维可视化材料力学量" class="headerlink" title="根据弹性常数计算和三维可视化材料力学量"></a>根据弹性常数计算和三维可视化材料力学量</h3><p>首先利用VASPKIT-204命令得到体弹性模量、杨氏模量、剪切模量及泊松比随角度的依赖关系，具体算法可参考文献【J. Phys. Condens. Matter, 28, 275201 (2016)和Comput. Phys. Commun. 181, 2102–2115 (2010)】。接下来我们以某单斜体系的弹性常数为例来演示如何进行材料力学量三维可视化。</p>
+<ul>
+<li>第一步新建ELASTIC_TENSOR.in并输入6x6弹性常数矩阵，注意第一行是注释行不可省略。如果是二维体系，则输入文件为ELASTIC_TENSOR_2D.in，注意二维体系弹性常数矩阵大小为3x3。 <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># comment line (<span class="keyword">in</span> <span class="title class_">GPa</span>)</span><br><span class="line">   <span class="number">228.38</span>   <span class="number">85.741</span>   <span class="number">81.503</span>        <span class="number">0</span>   -<span class="number">0.737</span>        <span class="number">0</span></span><br><span class="line">   <span class="number">85.741</span>   <span class="number">217.47</span>   <span class="number">94.201</span>        <span class="number">0</span>  -<span class="number">20.213</span>        <span class="number">0</span></span><br><span class="line">   <span class="number">81.503</span>   <span class="number">94.201</span>   <span class="number">178.81</span>        <span class="number">0</span>   -<span class="number">9.472</span>        <span class="number">0</span></span><br><span class="line">        <span class="number">0</span>        <span class="number">0</span>        <span class="number">0</span>   <span class="number">35.094</span>        <span class="number">0</span>  -<span class="number">17.851</span></span><br><span class="line">   -<span class="number">0.737</span>  -<span class="number">20.213</span>   -<span class="number">9.472</span>        <span class="number">0</span>   <span class="number">37.778</span>        <span class="number">0</span></span><br><span class="line">        <span class="number">0</span>        <span class="number">0</span>        <span class="number">0</span>  -<span class="number">17.851</span>        <span class="number">0</span>   <span class="number">42.708</span></span><br></pre></td></tr></table></figure></li>
+<li>第二步运行VASPKIT 204命令得到MECHANICS_3D.dat<br>打开MECHANICS_3D.dat可看到第一行给出了每一列数据所代表的物理量，第二行给出了球坐标系下分别划分仰角θ∈[0,180]和方位角ϕ∈[0,360]的格点大小。</li>
+<li>第三步从vaspkit&#x2F;examples&#x2F;angular_dependent_mechanics (VASPKIT ver. &gt;&#x3D; 1.3.2)文件夹中拷贝mechanics_3d_plot_matlab.m到当前目录，调用Matlab软件运行该脚本，得到以下信息.<br>如果我们想可视化杨氏模量，则输入2回车即可得到。</li>
+<li>另外，以下两个软件也可以实现材料力学量三维可视化。<br>Elate<br>ElasticPOST</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
