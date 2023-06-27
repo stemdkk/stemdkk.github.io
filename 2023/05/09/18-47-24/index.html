@@ -28,7 +28,7 @@
 <meta property="og:description" content="自洽计算VASP做静态自洽的目的主要是为了得到好的电子密度和波函数文件，为了使后续的性质计算可以读取电子密度和波函数，进而增加收敛速度。首先进行 高精度 的结构优化。然后复制文件， cp CONTCAR POSCAR 做一次自洽计算。自洽计算要求有密的k网格点，在计算条件允许的情况下要求自洽的k网格点大致为优化时的2倍左右。修改标签 &amp;#123;.line-numbers&amp;#125;1234IBR">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-05-09T10:47:24.000Z">
-<meta property="article:modified_time" content="2023-05-15T02:13:20.032Z">
+<meta property="article:modified_time" content="2023-06-27T01:06:54.435Z">
 <meta property="article:author" content="Keke Liu">
 <meta property="article:tag" content="vasp，电子结构">
 <meta name="twitter:card" content="summary">
@@ -127,7 +127,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -203,7 +203,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-05-15 10:13:20" itemprop="dateModified" datetime="2023-05-15T10:13:20+08:00">2023-05-15</time>
+      <time title="修改时间：2023-06-27 09:06:54" itemprop="dateModified" datetime="2023-06-27T09:06:54+08:00">2023-06-27</time>
     </span>
 
   
@@ -315,7 +315,7 @@
 <h2 id="3D能带"><a href="#3D能带" class="headerlink" title="3D能带"></a>3D能带</h2><p>__第一步__，准备好石墨烯的POSCAR和用于静态计算的INCAR文件；<br>__第二步__：运行VASPKIT并选择231生成用于3D能带计算 的KPOINTS文件。为了获得平滑的3D能带面，用于产生KPOINTS文件的分辨率值应该设置在0.005左右 ；<br>__第三步__，提交VASP作业；<br>__第四步__，待VASP计算完成后，再次运行VASPKIT，输入232或233命令。233命令可一次性输入包含价带顶的BAND.HOMO.grd和导带底的BAND.LUMO.grd文件的能带；232可以得到其它任意能带的计算数据，这里我们选择233。<br>__第五步__：运行python how_to_visual.py，绘制3D能带图(python2.7环境)。<br><strong>如果3D能带图不够平滑，可通过能带插值进行改善。</strong></p>
 <h2 id="有效质量："><a href="#有效质量：" class="headerlink" title="有效质量："></a>有效质量：</h2><p>除了通过能带，也可以通过调用VASPKIT-911命令来得到带边位置，接下来我们计算K点处沿着K -&gt; Γ和K -&gt; M方向的电子及空穴载流子的有效质量；<br>第一步：准备POSCAR文件以及VPKIT.in文件，VPKIT.in文件包含以下内容；</p>
 <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>                  设置为<span class="number">1</span>将会生成计算有效质量的<span class="variable constant_">KPOINTS</span>文件，<span class="number">2</span>则计算有效质量</span><br><span class="line"><span class="number">6</span>                  <span class="number">6</span>表示我们在K附近取<span class="number">6</span>个离散点用于多项式拟合</span><br><span class="line"><span class="number">0.015</span>              k-cutoff, 截断半径，典型值<span class="number">0.015</span> <span class="number">1</span>/Å</span><br><span class="line"><span class="number">2</span>                  <span class="number">2</span> 表示有两个有效质量任务</span><br><span class="line"><span class="number">0.333333</span> <span class="number">0.3333333</span>  <span class="number">0.000</span>  <span class="number">0.000</span> <span class="number">0.000</span> <span class="number">0.000</span>  K-&gt;Γ     计算K点处有效质量，沿着K指向Γ方向    </span><br><span class="line"><span class="number">0.333333</span> <span class="number">0.3333333</span>  <span class="number">0.000</span>  <span class="number">0.500</span> <span class="number">0.000</span> <span class="number">0.000</span>  K-&gt;M     计算K点处有效质量，沿着K指向M方向 </span><br></pre></td></tr></table></figure>
-<p>第二步：运行vaspkit并选择912或者913产生KPOINTS，POTCAR文件及静态计算INCAR文件；<br>第三步：提交VASP作业；<br>第四步：计算完成后把VPKIT.in文件中第一行的1修改为2，然后再次运行vaspkit并选择913，得到结果：<br>为了得到可靠的有效质量计算值，括号里的精度至少要在1E-7这个量级，如果误差比较大，可以适当调整k-cutoff值，一般减少该值但不能太小。<br>手动vaspkit处理的能带：m∗&#x3D;3.815&#x2F;B</p>
+<p>第二步：运行vaspkit并选择912或者913产生KPOINTS，POTCAR文件及静态计算INCAR文件；<br>第三步：提交VASP作业；<br>第四步：计算完成后把VPKIT.in文件中第一行的1修改为2，然后再次运行vaspkit并选择913，得到结果：<br>为了得到可靠的有效质量计算值，括号里的精度至少要在1E-7这个量级，如果误差比较大，可以适当调整k-cutoff值，一般减少该值但不能太小。<br>手动vaspkit处理的能带：$m^∗&#x3D;3.815&#x2F;B$</p>
 
     </div>
 

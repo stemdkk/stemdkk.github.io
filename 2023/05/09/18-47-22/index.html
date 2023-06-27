@@ -28,7 +28,7 @@
 <meta property="og:description" content="加压可通过施加静水压强、调整晶格常数的方法实现结构压缩 vi INCAR 增加标签 PSTRESS&#x3D;50（单位为 0.1 GPa） 其他不变 加电场在vasp中根据自己所需要添加电场的场强更改INCAR中的如下参数： 123LDIPOL&#x3D;.TRUE.IDIPOL&#x3D;1&#x2F;2&#x2F;3&#x2F;4EFIELD&#x3D; ？ 对于IDIPOL参数的设置，需注意：对于IDIPOL&#x3D;1-3，偶极矩将分别平行于第一、第二或">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-05-09T10:47:22.000Z">
-<meta property="article:modified_time" content="2023-05-11T07:51:57.912Z">
+<meta property="article:modified_time" content="2023-06-27T01:03:08.766Z">
 <meta property="article:author" content="Keke Liu">
 <meta property="article:tag" content="vasp，建模">
 <meta name="twitter:card" content="summary">
@@ -127,7 +127,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -203,7 +203,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-05-11 15:51:57" itemprop="dateModified" datetime="2023-05-11T15:51:57+08:00">2023-05-11</time>
+      <time title="修改时间：2023-06-27 09:03:08" itemprop="dateModified" datetime="2023-06-27T09:03:08+08:00">2023-06-27</time>
     </span>
 
   
@@ -221,7 +221,7 @@
 <h1 id="加电场"><a href="#加电场" class="headerlink" title="加电场"></a>加电场</h1><p>在vasp中根据自己所需要添加电场的场强更改INCAR中的如下参数：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LDIPOL=.TRUE.</span><br><span class="line">IDIPOL=1/2/3/4</span><br><span class="line">EFIELD= ？</span><br></pre></td></tr></table></figure>
 <p>对于IDIPOL参数的设置，需注意：对于IDIPOL&#x3D;1-3，偶极矩将分别平行于第一、第二或第三晶格矢量的方向计算。总能量的修正计算为当前超单元中单极子&#x2F;偶极子和四极子与放置在超单元中的同一偶极子之间的能量差，对应的晶格矢量接近无穷大。此标志应用于板计算。对于IDIPOL&#x3D;4，将计算所有方向上的完整偶极矩，并将总能量的修正计算为当前超级单体中的单极&#x2F;偶极&#x2F;四极和放置在真空中的同一单极&#x2F;偶极&#x2F;四极之间的能量差，使用该标志计算孤立分子。</p>
-<p>此外，EFIELD 的设置需要注意单位的换算。eV&#x2F;A（电子伏特&#x2F;埃）计算完毕之后通过后处理软件分析所关注的性质即可。</p>
+<p>此外，EFIELD 的设置需要注意单位的换算。eV&#x2F;Å（电子伏特&#x2F;埃）计算完毕之后通过后处理软件分析所关注的性质即可。</p>
 <h1 id="分数占据"><a href="#分数占据" class="headerlink" title="分数占据"></a>分数占据</h1><p>生成disorder或者掺杂构型的软件汇总：</p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/vYar9UcYWAZgazBTgqUGEA">https://mp.weixin.qq.com/s/vYar9UcYWAZgazBTgqUGEA</a><br><a target="_blank" rel="noopener" href="https://github.com/jichunlian/disorder">https://github.com/jichunlian/disorder</a><br>supercell： <a target="_blank" rel="noopener" href="https://orex.github.io/supercell/">https://orex.github.io/supercell/</a><br>ATAT： <a target="_blank" rel="noopener" href="https://www.brown.edu/Departments/Engineering/Labs/avdw/atat/">https://www.brown.edu/Departments/Engineering/Labs/avdw/atat/</a><br>vaspkit：<a target="_blank" rel="noopener" href="https://vaspkit.com/">https://vaspkit.com/</a></p>
 
