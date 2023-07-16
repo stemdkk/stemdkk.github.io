@@ -123,12 +123,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -336,6 +336,136 @@
 <li>第二步运行VASPKIT 204命令得到MECHANICS_3D.dat<br>打开MECHANICS_3D.dat可看到第一行给出了每一列数据所代表的物理量，第二行给出了球坐标系下分别划分仰角θ∈[0,180]和方位角ϕ∈[0,360]的格点大小。</li>
 <li>第三步从vaspkit&#x2F;examples&#x2F;angular_dependent_mechanics (VASPKIT ver. &gt;&#x3D; 1.3.2)文件夹中拷贝mechanics_3d_plot_matlab.m到当前目录，调用Matlab软件运行该脚本，得到以下信息.<br>如果我们想可视化杨氏模量，则输入2回车即可得到。</li>
 <li>另外，以下两个软件也可以实现材料力学量三维可视化。<br>Elate<br>ElasticPOST</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/18-48-24/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Keke Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lightchaser">
+      <meta itemprop="description" content="一个小学生的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Lightchaser">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/05/09/18-48-24/" class="post-title-link" itemprop="url">3.1 热输运1 声子谱</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-09 18:48:24" itemprop="dateCreated datePublished" datetime="2023-05-09T18:48:24+08:00">2023-05-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-07-16 10:09:22" itemprop="dateModified" datetime="2023-07-16T10:09:22+08:00">2023-07-16</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="三阶力常数矩阵"><a href="#三阶力常数矩阵" class="headerlink" title="三阶力常数矩阵"></a>三阶力常数矩阵</h1><p>需要用到thirdorder程序。</p>
+<h3 id="使用方法："><a href="#使用方法：" class="headerlink" title="使用方法："></a>使用方法：</h3><ol>
+<li>准备好POSCAR,INCAR,KPOINTS,POTCAR和提交任务脚本（以sub.sh为例）；<br>其中POSCAR与二阶力常数矩阵求解时的POSCAR-unit一致，KPOINTS也与二阶一致。INCAR文件与二阶力常数求解时的有限位移法一致，其他不变。完成后运行thirdorder实现扩胞。</li>
+</ol>
+<p><code>~/安装目录/thirdorder_vasp.py sow 2 2 2 -12</code><br>2 2 2是扩胞倍数，要和二阶力常数矩阵保持一致或者略小。-12指的是考虑多少个近邻原子，需要测试，但是如果计算资源紧缺的时候取个-10就行了，但有风险；正值是指截断半径。之后生成成功以后会出现一堆3RD开头的文件，那些都是POSCAR，一般有几百上千个。</p>
+<ol start="2">
+<li>参考phonopy计算声子谱的有限位移法，需要把这些POSCAR单独计算。也就是有多少POSCAR，建立多少文件夹，分别进行多少次计算。</li>
+<li><code>find job* -name vasprun.xml|sort -n|/ thirdorder_vasp.py reap a b c -d</code>  a b c和-d与前面一致。该命令可获得FORCE_CONSTANT_3RD也即是三阶力常数矩阵。</li>
+</ol>
+<h3 id="脚本方法"><a href="#脚本方法" class="headerlink" title="脚本方法"></a>脚本方法</h3><ul>
+<li><p>测试-d参数 </p>
+</li>
+<li><p>针对大量POSCAR批量建立文件夹</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#<span class="variable language_">module</span> load spglib/master</span><br><span class="line">#thirdorder_vasp.<span class="property">py</span> sow <span class="number">3</span> <span class="number">3</span> <span class="number">1</span> -<span class="number">10</span></span><br><span class="line">#生成<span class="number">2</span>*<span class="number">2</span>*<span class="number">2</span>的超胞 <span class="number">0.6</span>表示截断半径为<span class="number">6</span>埃。</span><br><span class="line">#sow a b c m  abc表示生成的超胞大小，m为正数的时候表示截断半径（单位：nm）（例如<span class="number">0.6</span>，表示截断半径为<span class="number">6.0</span>埃）；为负数时表示第几近邻截断（此时应取负整数，例如-<span class="number">3</span>表示第三近邻）</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> 3RD.<span class="property">POSCAR</span>.*</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">s=$(echo $i| cut -d <span class="string">&quot;.&quot;</span> -f <span class="number">3</span>)</span><br><span class="line">d=job-$s</span><br><span class="line">mkdir $d</span><br><span class="line">cp $i $d/<span class="variable constant_">POSCAR</span></span><br><span class="line">cp ./<span class="variable constant_">INCAR</span> ./sub.<span class="property">sh</span> ./<span class="variable constant_">KPOINTS</span> ./<span class="variable constant_">POTCAR</span> $d</span><br><span class="line">pushd $d</span><br><span class="line">popd</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>批量提交任务</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#!<span class="regexp">/bin/</span>sh</span><br><span class="line">root_path=<span class="string">&#x27;pwd&#x27;</span></span><br><span class="line"></span><br><span class="line">#在每个job文件夹里进行静态计算。</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;<span class="number">001</span>.<span class="number">.1050</span>&#125; #按顺序从job-<span class="number">001</span>到<span class="number">1050</span>做静态vasp计算,根据生成的文件夹设定</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">cd job-$i</span><br><span class="line">echo <span class="string">&quot;job-$i&quot;</span>, time </span><br><span class="line">sbatch sub.<span class="property">sh</span></span><br><span class="line">wait</span><br><span class="line">cd ..</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">#上述静态计算完成后提取三阶力常数文件</span><br><span class="line">#cd $&#123;root_path&#125;</span><br><span class="line"></span><br><span class="line">#find job* -name vasprun.<span class="property">xml</span>| sort -n| python thirdorder_vasp.<span class="property">py</span> reap <span class="number">2</span>  <span class="number">2</span>  <span class="number">1</span> -<span class="number">12</span> #最后四个数字跟你扩胞时一致</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>脚本赋予权限：chmod +x .sh;运行脚本：.&#x2F;sh</p>
+<h1 id="ShengBTE获得热输运性质"><a href="#ShengBTE获得热输运性质" class="headerlink" title="ShengBTE获得热输运性质"></a>ShengBTE获得热输运性质</h1><h3 id="运行ShengBTE计算热输运性质"><a href="#运行ShengBTE计算热输运性质" class="headerlink" title="运行ShengBTE计算热输运性质"></a>运行ShengBTE计算热输运性质</h3><ul>
+<li>获得二阶力常数计算：<br>计算流程与声子谱计算流程相同，用DFPT和有限位移法都可以。将得到的FORCE_CONSTANTS重命名为FORCE_CONSTANTS_2ND。</li>
+<li>获得二阶力常数计算：见上，输出为FORCE_CONSTANTS_3RD文件。</li>
+<li>准备CONTROL文件：格式如下:<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#<span class="variable constant_">CONTROL</span> <span class="keyword">for</span> <span class="title class_">ShengBTE</span></span><br><span class="line">&amp;allocations</span><br><span class="line">        nelements=<span class="number">2</span>              #元素种类</span><br><span class="line">        natoms=<span class="number">6</span>                 #原子个数</span><br><span class="line">        <span class="title function_">ngrid</span>(:)=<span class="number">20</span> <span class="number">20</span> <span class="number">5</span>         #计算网格密度</span><br><span class="line">&amp;end</span><br><span class="line">&amp;crystal</span><br><span class="line">        lfactor=<span class="number">0.1</span>              #软件长度单位换算</span><br><span class="line">        <span class="title function_">lattvec</span>(:,<span class="number">1</span>)=<span class="number">3.1613337552503711</span>    <span class="number">0.0000000000000025</span>    <span class="number">0.0000000000000000</span> #晶胞参数</span><br><span class="line">        <span class="title function_">lattvec</span>(:,<span class="number">2</span>)=-<span class="number">1.5806668776251651</span>    <span class="number">2.7377953418477841</span>    <span class="number">0.0000000000000000</span></span><br><span class="line">        <span class="title function_">lattvec</span>(:,<span class="number">3</span>)=-<span class="number">0.0000000000000000</span>    <span class="number">0.0000000000000000</span>   <span class="number">12.3318234981499426</span></span><br><span class="line">        elements= <span class="string">&quot;Mo&quot;</span> <span class="string">&quot;S&quot;</span>  #原子顺序</span><br><span class="line">        types= <span class="number">1</span> <span class="number">1</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span>  #原子个数</span><br><span class="line">       <span class="title function_">positions</span>(:,<span class="number">1</span>)= <span class="number">0.3333333449999998</span>  <span class="number">0.6666666890000030</span>  <span class="number">0.2500000000000000</span> #原子坐标，按顺序</span><br><span class="line">       <span class="title function_">positions</span>(:,<span class="number">2</span>)=<span class="number">0.6666666240000012</span>  <span class="number">0.3333333229999980</span>  <span class="number">0.7500000189999980</span></span><br><span class="line">       <span class="title function_">positions</span>(:,<span class="number">3</span>)= <span class="number">0.3333333449999998</span>  <span class="number">0.6666666890000030</span>  <span class="number">0.6230719397502427</span></span><br><span class="line">       <span class="title function_">positions</span>(:,<span class="number">4</span>)=<span class="number">0.6666666240000012</span>  <span class="number">0.3333333229999980</span>  <span class="number">0.3769280602499874</span></span><br><span class="line">       <span class="title function_">positions</span>(:,<span class="number">5</span>)=<span class="number">0.6666666240000012</span>  <span class="number">0.3333333229999980</span>  <span class="number">0.1230720067501656</span></span><br><span class="line">       <span class="title function_">positions</span>(:,<span class="number">6</span>)=<span class="number">0.3333333449999998</span>  <span class="number">0.6666666890000030</span>  <span class="number">0.8769280222497613</span></span><br><span class="line">       <span class="title function_">scell</span>(:)=<span class="number">4</span> <span class="number">4</span> <span class="number">1</span> #扩胞倍数，和前面一致</span><br><span class="line">&amp;end</span><br><span class="line">&amp;parameters</span><br><span class="line">       T=<span class="number">300</span>  #温度</span><br><span class="line">&amp;end</span><br><span class="line">&amp;flags</span><br><span class="line">      nonanalytic=.<span class="property">TRUE</span>.</span><br><span class="line">      nanowires=.<span class="property">FALSE</span>.</span><br><span class="line">      convergence=.<span class="property">TRUE</span>.  #迭代法，默认最大<span class="number">1000</span>步</span><br><span class="line">&amp;end</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>详细参数可参考手册。</p>
+<ul>
+<li>提交任务</li>
+<li>获得不同温度的数据，只需要依次修改CONTROL文件的T tag。或者通过脚本：</li>
+</ul>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;<span class="number">350.</span><span class="number">.1350</span>.<span class="number">.100</span>&#125; # 对i赋值，区间为<span class="number">300</span>到<span class="number">900</span>，每搁<span class="number">10</span>取一个数，即（<span class="number">300</span> <span class="number">310</span> <span class="number">320</span> <span class="number">330</span> ...<span class="number">.890</span> <span class="number">900</span>），可以根据自身情况自行设置</span><br><span class="line"><span class="keyword">do</span>  #开始循环</span><br><span class="line">mkdir $i #建立单一任务文件夹</span><br><span class="line">cp sub.<span class="property">sh</span> <span class="variable constant_">CONTROL</span> <span class="variable constant_">FORCE_CONSTANTS_2ND</span> <span class="variable constant_">FORCE_CONSTANTS_3RD</span> $i  </span><br><span class="line">#将二阶三阶力学常数文件和<span class="variable constant_">CONTROL</span>文件复制到单一任务文件夹</span><br><span class="line">#注意，这里的<span class="variable constant_">CONTROL</span>文件夹是删减过的</span><br><span class="line">cd $i #进入单一文件夹内</span><br><span class="line">echo \&amp;parameters &gt;&gt; <span class="variable constant_">CONTROL</span>      #补充<span class="variable constant_">CONTROL</span>文件</span><br><span class="line">  echo  T= $i  &gt;&gt; <span class="variable constant_">CONTROL</span>    #补充<span class="variable constant_">CONTROL</span>文件 </span><br><span class="line">  #温度设置 如果同时设置多个温度，同一行只会算第一个并报错。如果多次设定一个温度到同一个<span class="variable constant_">CONTROL</span>文件，只会运算最后一个。</span><br><span class="line">#echo   scalebroad=<span class="number">0.1</span>    &gt;&gt; <span class="variable constant_">CONTROL</span>    #补充<span class="variable constant_">CONTROL</span>文件</span><br><span class="line">echo \&amp;end    &gt;&gt; <span class="variable constant_">CONTROL</span>    #补充<span class="variable constant_">CONTROL</span>文件</span><br><span class="line">echo \&amp;flags  &gt;&gt; <span class="variable constant_">CONTROL</span>    #补充<span class="variable constant_">CONTROL</span>文件</span><br><span class="line">echo    nonanalytic=.<span class="property">TRUE</span>.   &gt;&gt; <span class="variable constant_">CONTROL</span>    #补充<span class="variable constant_">CONTROL</span>文件</span><br><span class="line">echo    nanowires=.<span class="property">FALSE</span>.   &gt;&gt; <span class="variable constant_">CONTROL</span>    #补充<span class="variable constant_">CONTROL</span>文件</span><br><span class="line">echo    convergence=.<span class="property">True</span>. &gt;&gt; <span class="variable constant_">CONTROL</span></span><br><span class="line">echo \&amp;end  &gt;&gt; <span class="variable constant_">CONTROL</span>    #补充<span class="variable constant_">CONTROL</span>文件</span><br><span class="line"> #这里补充<span class="variable constant_">CONTROL</span>文件用的是笨方法，如果有相应改进方法可以自行更改，简洁代码</span><br><span class="line">sbatch sub.<span class="property">sh</span>  #执行<span class="title class_">ShengBTE</span>计算，这里的执行命令应视情况而定。</span><br><span class="line">cd .. #返回初始目录</span><br><span class="line">done  #结束任务</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h1><ul>
+<li>计算完成后，先检查收敛情况，找到T300K文件夹下的BTE.kappa,第一列代表迭代步数，一般未达到默认1000步可认为收敛正常。</li>
+<li>计算完成后在当前目录下会生成T300K文件夹和一些输出文件。文件处理参见天玑算b站视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Yh411n7tx/?spm_id_from=333.788&vd_source=17084cc867ff3bb86398ff1a79b443f2">https://www.bilibili.com/video/BV1Yh411n7tx/?spm_id_from=333.788&amp;vd_source=17084cc867ff3bb86398ff1a79b443f2</a></li>
+</ul>
+<p>其他参考：<a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv22090733/">https://www.bilibili.com/read/cv22090733/</a></p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<li><p>计算得到的热导率和文献报道有较大偏差，可能偏大或者偏小，可能的原因有：</p>
+<p>1.采用的2阶力常数FORCE_CONSTANT中超胞内原子排序不是按照ucatom<em>sc_z</em>sc_y*sc_x排列；力常数文件与control文件中原胞内原子次序是否一致；</p>
+<p>2.shengBTE的control文件中晶格参数单位默认nm，有转换系数的参数；</p>
+<p>3.使用QE利用phonopy计算得到的FORCE_CONSTANT文件中，单位需要转换，不能直接利用shengBTE计算，vasp利用phonopy则单位正确；</p>
+<ol start="4">
+<li><p>3阶力常数的计算量较大，但精度要求很高，如0.0003Rh&#x2F;bohr^2量级的力的误差，也会导致最终热导率的数值出现大的偏离；如使用cp2k计算力常数，通常使用QE等平面波软件，对于超胞体系，随着扩胞，在较大的截断半径下，所需计算量非常大，使用CP2K中的QS模块也能进行第一性原理计算，具有相对较高的计算效率，但是CP2K不同于平面波的QE等，计算中仅有gamma点计算，需要采用实空间较大超胞，如果使用和QE等相同的超胞，则会导致原子受力精度不高，一般在~0.0003Rh&#x2F;bohr^2量级的误差，也会对某些体系，特别是二维体系的热导率有很大的影响。在使用cp2k进行3阶力常数大量计算之前，先进行超胞收敛测试，可以在相同的位移构型下，不断扩胞，判断力计算的变化情况和误差。用QE等计算也建议先进行k点等计算参数的收敛判断，否则会浪费大量时间，热导率计算结果却有很大偏离。</p>
+</li>
+<li><p>使用经验势能模型，在通过lammps进行热输运计算之前，可以先利用分子静力学软件GULP结合shengBTE模块，预判势能应用于热输运计算的准确性。但经验势能用于热输运精度和前景一般，机器势能表现更好。</p>
+</li>
+</ol>
+<p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/odin_linux/article/details/130084321">https://blog.csdn.net/odin_linux/article/details/130084321</a></p>
+</li>
+<li><p>静态计算可以各个job文件夹同时分别计算，不用按顺序来。等所有job文件夹计算完后，自行运行“find job…” 提取三阶力常数的命令。严格来说，胞的大小和三阶力常数计算的截断半径都应该进行测试，测试以所计算得到的热导率的收敛进行判断。计算资源有限无法测试的话，尽可能取大一点。Born有效电荷和介电常数的计算应该不是必要的，如果你要考虑在Gamma点附近LO-TO劈裂的话(主要针对离子晶体)，则需要进行计算。可以加上，感觉要好点。<br>二阶力常数和三阶力常数所用的超胞大小可以不统一，我看文献中有这种情形，不过一般作者采用的二阶力常数的超胞都是大于等于三阶力常数超胞的大小。<br>原文链接：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/147810223">https://zhuanlan.zhihu.com/p/147810223</a></p>
+</li>
+<li><p>官方网站：<a target="_blank" rel="noopener" href="https://www.shengbte.org/">https://www.shengbte.org/</a></p>
+</li>
 </ul>
 
       
@@ -1429,203 +1559,6 @@
 <li>输入文件KPOINTS比较简单，可以手动，注意格式；INCAR参数众多，直接参考，不知道的参数不加；POTCAR文件比较大，我们只关注赝势对应的元素顺序与POSCAR是否一致；POSCAR结构文件VESTA直接输出。提交任务脚本由超算代理提供，不同超算不同。</li>
 <li>任务提交后关注是否正常结束，另外关注计算的时间等。</li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/10-12-23/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Keke Liu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lightchaser">
-      <meta itemprop="description" content="一个小学生的博客">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Lightchaser">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/05/09/10-12-23/" class="post-title-link" itemprop="url">0 准备工作</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-05-09 10:12:23" itemprop="dateCreated datePublished" datetime="2023-05-09T10:12:23+08:00">2023-05-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-05-10 17:31:08" itemprop="dateModified" datetime="2023-05-10T17:31:08+08:00">2023-05-10</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="常用计算相关数据库"><a href="#常用计算相关数据库" class="headerlink" title="常用计算相关数据库"></a>常用计算相关数据库</h1><h2 id="结构查找"><a href="#结构查找" class="headerlink" title="结构查找"></a>结构查找</h2><ol>
-<li><strong>The Materials Project</strong> <a target="_blank" rel="noopener" href="https://www.materialsproject.org/">https://www.materialsproject.org/</a></li>
-<li><strong>ICSD the Inorganic Crystal Structure Database 无机晶体数据库</strong> <a target="_blank" rel="noopener" href="http://www2.fiz-karlsruhe.de/icsd_home.html">http://www2.fiz-karlsruhe.de/icsd_home.html</a> , 需要账号密码</li>
-<li>CCDC – The Cambridge Crystallographic Data Centre 剑桥晶体数据库。<a target="_blank" rel="noopener" href="https://www.ccdc.cam.ac.uk/">https://www.ccdc.cam.ac.uk/</a></li>
-<li>COD – 开放晶体结构数据库（Crystallography Open Database）。<a target="_blank" rel="noopener" href="http://www.crystallography.net/cod/">http://www.crystallography.net/cod/</a></li>
-<li>AMCSD – American Mineralogist Crystal Structure Database。<a target="_blank" rel="noopener" href="http://rruff.geo.arizona.edu/AMS/amcsd.php">http://rruff.geo.arizona.edu/AMS/amcsd.php</a></li>
-<li>AFLOW：<a target="_blank" rel="noopener" href="http://www.aflowlib.org/">http://www.aflowlib.org/</a></li>
-<li>springer material :  <a target="_blank" rel="noopener" href="https://materials.springer.com/periodictable#">https://materials.springer.com/periodictable#</a></li>
-<li>拓扑材料：（该部分内容参考：<a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/blog-1502061-1130705.html">http://blog.sciencenet.cn/blog-1502061-1130705.html</a> ）<br> Materiae ：<a target="_blank" rel="noopener" href="http://materiae.iphy.ac.cn/#/">http://materiae.iphy.ac.cn/#/</a><br>Topological Materials Arsenal：<br><a target="_blank" rel="noopener" href="https://ccmp.nju.edu.cn/">https://ccmp.nju.edu.cn/</a><br>Topological Materials Database:<br><a target="_blank" rel="noopener" href="http://topologicalquantumchemistry.org/#/">http://topologicalquantumchemistry.org/#/</a></li>
-<li>二维材料：<br>   Materials Cloud：<br>   <a target="_blank" rel="noopener" href="https://www.materialscloud.org/discover/2dstructures/dashboard/ptable">https://www.materialscloud.org/discover/2dstructures/dashboard/ptable</a><br>   2D Materials：<a target="_blank" rel="noopener" href="https://materialsweb.org/twodmaterials">https://materialsweb.org/twodmaterials</a><br>   C2DB: <a target="_blank" rel="noopener" href="https://cmr.fysik.dtu.dk/c2db/c2db.html">https://cmr.fysik.dtu.dk/c2db/c2db.html</a></li>
-<li>超导材料：<br>  第I类超导体：<a target="_blank" rel="noopener" href="http://www.superconductors.org/Type1.htm">http://www.superconductors.org/Type1.htm</a><br>  第II类超导体：<a target="_blank" rel="noopener" href="http://www.superconductors.org/Type2.htm">http://www.superconductors.org/Type2.htm</a></li>
-<li>磁结构数据库：MAGNDATA:<br><a target="_blank" rel="noopener" href="http://webbdcrista1.ehu.es/magndata/index.php?show_db=1">http://webbdcrista1.ehu.es/magndata/index.php?show_db=1</a></li>
-<li>ChemSpider :<a target="_blank" rel="noopener" href="http://www.chemspider.com/">http://www.chemspider.com/</a> RSC旗下的一个数据库</li>
-</ol>
-<h2 id="物理性质"><a href="#物理性质" class="headerlink" title="物理性质"></a>物理性质</h2><ol>
-<li><p><strong>NIST 数据库</strong> ： <a target="_blank" rel="noopener" href="https://physics.nist.gov/cuu/Constants/index.html">https://physics.nist.gov/cuu/Constants/index.html</a></p>
-</li>
-<li><p>CRC Handbook of physical chemistry查找热力学参数，晶格常数，entropy等等。<br><a target="_blank" rel="noopener" href="http://hbcponline.com/faces/contents/ContentsSearch.xhtml">http://hbcponline.com/faces/contents/ContentsSearch.xhtml</a> </p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://www2.ucdsb.on.ca/tiss/stretton/database/inorganic_thermo.htm">http://www2.ucdsb.on.ca/tiss/stretton/database/inorganic_thermo.htm</a> 无机化合物的物理和热力学相关数据</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://www.knowledgedoor.com/2/elements_handbook/cohesive_energy.html">http://www.knowledgedoor.com/2/elements_handbook/cohesive_energy.html</a> 结合能</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://www.surface-tension.de/">http://www.surface-tension.de/</a> 表面张力</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://www.wiredchemist.com/chemistry/data/thermodynamic-data">http://www.wiredchemist.com/chemistry/data/thermodynamic-data</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://atct.anl.gov/">https://atct.anl.gov/</a></p>
-</li>
-<li><p>物理常数<br><a target="_blank" rel="noopener" href="https://physics.nist.gov/cuu/Constants/index.html">https://physics.nist.gov/cuu/Constants/index.html</a><br><a target="_blank" rel="noopener" href="http://wild.life.nctu.edu.tw/class/common/energy-unit-conv-table.html">http://wild.life.nctu.edu.tw/class/common/energy-unit-conv-table.html</a><br><a target="_blank" rel="noopener" href="http://halas.rice.edu/conversions">http://halas.rice.edu/conversions</a></p>
-</li>
-<li><p>空间群对称性和其布里渊区的信息：<br> <a target="_blank" rel="noopener" href="http://cryst.ehu.es/">http://cryst.ehu.es/</a><br> <a target="_blank" rel="noopener" href="http://www.cryst.ehu.es/cryst/get_kvec.html">http://www.cryst.ehu.es/cryst/get_kvec.html</a></p>
-</li>
-</ol>
-<h1 id="软件官网"><a href="#软件官网" class="headerlink" title="软件官网"></a>软件官网</h1><ol>
-<li><p><strong>VASP官网</strong> <a target="_blank" rel="noopener" href="http://www.vasp.at/">http://www.vasp.at/</a></p>
-</li>
-<li><p>VASP 教程视频 <a target="_blank" rel="noopener" href="http://www.nersc.gov/users/training/events/3-day-vasp-workshop/">http://www.nersc.gov/users/training/events/3-day-vasp-workshop/</a></p>
-</li>
-<li><p>VASP官方论坛 <a target="_blank" rel="noopener" href="https://cms.mpi.univie.ac.at/vasp-forum/">https://cms.mpi.univie.ac.at/vasp-forum/</a> 需要注册才可以提问</p>
-</li>
-<li><p>Henkelman 课题组 <a target="_blank" rel="noopener" href="http://theory.cm.utexas.edu/henkelman/">http://theory.cm.utexas.edu/henkelman/</a></p>
-</li>
-<li><p>ASE： Atomic Simulation Environment： <a target="_blank" rel="noopener" href="https://wiki.fysik.dtu.dk/ase/">https://wiki.fysik.dtu.dk/ase/</a></p>
-</li>
-<li><p>Pymatgen： <a target="_blank" rel="noopener" href="http://pymatgen.org/">http://pymatgen.org/</a>, 适合材料计算的</p>
-</li>
-<li><p><strong>K-path</strong> ： <a target="_blank" rel="noopener" href="https://www.materialscloud.org/work/tools/seekpath">https://www.materialscloud.org/work/tools/seekpath</a></p>
-</li>
-<li><p>Chemml: <a target="_blank" rel="noopener" href="https://hachmannlab.github.io/chemml/">https://hachmannlab.github.io/chemml/</a></p>
-</li>
-<li><p>p4vasp：<a target="_blank" rel="noopener" href="http://www.p4vasp.at/">http://www.p4vasp.at/</a></p>
-</li>
-<li><p>RDkit：<a target="_blank" rel="noopener" href="https://www.rdkit.org/">https://www.rdkit.org/</a></p>
-</li>
-<li><p><strong>vaspkit</strong> ： <a target="_blank" rel="noopener" href="https://sourceforge.net/projects/vaspkit/files/">https://sourceforge.net/projects/vaspkit/files/</a> VASP计算前后处理。</p>
-</li>
-<li><p>VESTA ： <a target="_blank" rel="noopener" href="http://jp-minerals.org/vesta/en/">http://jp-minerals.org/vesta/en/</a> 日本开发的可视化建模软件</p>
-</li>
-<li><p>Xcrysden ：<a target="_blank" rel="noopener" href="http://www.xcrysden.org/%EF%BC%8C">http://www.xcrysden.org/，</a> 用于批量做图，选择K-path做能带图，等。</p>
-</li>
-<li><p>Jmol: (sourceforge.net)</p>
-</li>
-<li><p>phonopy：<a target="_blank" rel="noopener" href="https://atztogo.github.io/phonopy/">https://atztogo.github.io/phonopy/</a></p>
-</li>
-<li><p>Lobster：<a target="_blank" rel="noopener" href="http://schmeling.ac.rwth-aachen.de/cohp/index.php?menuID=6">http://schmeling.ac.rwth-aachen.de/cohp/index.php?menuID=6</a></p>
-</li>
-<li><p>Wannier90：<a target="_blank" rel="noopener" href="http://www.wannier.org/">http://www.wannier.org/</a></p>
-</li>
-</ol>
-<h1 id="免费的学习网站和论坛"><a href="#免费的学习网站和论坛" class="headerlink" title="免费的学习网站和论坛"></a>免费的学习网站和论坛</h1><ol>
-<li><p><strong>思想家公社的门口：量子化学·分子模拟·二次元</strong>  (sobereva.com)</p>
-</li>
-<li><p><strong>计算化学公社 - 高水平计算化学、理论化学交流论坛</strong> (keinsci.com)</p>
-</li>
-<li><p><strong>Learn VASP The Hard Way</strong> (bigbrosci.com)大师兄科研网</p>
-</li>
-<li><p><strong>世事如棋</strong> (<a target="_blank" rel="noopener" href="https://blog.shishiruqi.com/">https://blog.shishiruqi.com/</a>)</p>
-</li>
-<li><p><strong>Physics</strong> (yh-phys.github.io)</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.guanjihuan.com/">https://www.guanjihuan.com/</a></p>
-</li>
-<li><p>学术之友知乎 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/gangtangdft">https://zhuanlan.zhihu.com/gangtangdft</a></p>
-</li>
-<li><p>一个人就是一个叠加态（Li pai）：<a target="_blank" rel="noopener" href="http://blog.sina.com.cn/lipai91">http://blog.sina.com.cn/lipai91</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/home.php?mod=space&uid=1502061">http://blog.sciencenet.cn/home.php?mod=space&amp;uid=1502061</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/home.php?mod=space&uid=2909108">http://blog.sciencenet.cn/home.php?mod=space&amp;uid=2909108</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/home.php?mod=space&uid=548663">http://blog.sciencenet.cn/home.php?mod=space&amp;uid=548663</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/home.php?mod=space&uid=3352196">http://blog.sciencenet.cn/home.php?mod=space&amp;uid=3352196</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/home.php?mod=space&uid=3102863">http://blog.sciencenet.cn/home.php?mod=space&amp;uid=3102863</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/u/zhangfrank">http://blog.sciencenet.cn/u/zhangfrank</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/home.php?mod=space&uid=1524047">http://blog.sciencenet.cn/home.php?mod=space&amp;uid=1524047</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/home.php?mod=space&uid=3222255">http://blog.sciencenet.cn/home.php?mod=space&amp;uid=3222255</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/home.php?mod=space&uid=3388193">http://blog.sciencenet.cn/home.php?mod=space&amp;uid=3388193</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/home.php?mod=space&uid=478347">http://blog.sciencenet.cn/home.php?mod=space&amp;uid=478347</a></p>
-</li>
-<li><p>叶小球：<a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/home.php?mod=space&uid=567091">http://blog.sciencenet.cn/home.php?mod=space&amp;uid=567091</a></p>
-</li>
-<li><p>Nan Xu github：<a target="_blank" rel="noopener" href="https://github.com/tamaswells">https://github.com/tamaswells</a></p>
-</li>
-<li><p>QijingZheng github：<a target="_blank" rel="noopener" href="https://github.com/QijingZheng">https://github.com/QijingZheng</a></p>
-</li>
-<li><p>Chenists github：<a target="_blank" rel="noopener" href="https://github.com/Chenists/VASP">https://github.com/Chenists/VASP</a></p>
-</li>
-<li><p>ChengCheng Xiao：<a target="_blank" rel="noopener" href="https://github.com/Chengcheng-Xiao?tab=repositories">https://github.com/Chengcheng-Xiao?tab=repositories</a></p>
-</li>
-<li><p>ShaoZhengjiang github：<a target="_blank" rel="noopener" href="https://github.com/PytLab">https://github.com/PytLab</a></p>
-</li>
-</ol>
-<h1 id="公众号"><a href="#公众号" class="headerlink" title="公众号"></a>公众号</h1><p><img src="/2023-05-10-15-22-32.png"></p>
-<h1 id="B站up"><a href="#B站up" class="headerlink" title="B站up"></a>B站up</h1><p><img src="/2023-05-10-15-23-04.png"><br><img src="/2023-05-10-15-23-17.png"><br><img src="/2023-05-10-15-23-36.png"></p>
 
       
     </div>
