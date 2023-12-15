@@ -28,7 +28,7 @@
 <meta property="og:description" content="介电常数首先进行结构优化,参考官网： https:&#x2F;&#x2F;www.vasp.at&#x2F;wiki&#x2F;index.php&#x2F;Dielectric_properties_of_SiC 静态介电常数：方法1：DFPT方法; &amp;#123;.line-numbers&amp;#125;12345IBRION &#x3D; 8NSW&#x3D;1LEPSILON &#x3D; .TRUE.LRPA&#x3D;.TRUE.#RPA考虑局域场效应，默认关闭，即IP近似LPE">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-05-11T10:47:24.000Z">
-<meta property="article:modified_time" content="2023-06-27T01:22:30.293Z">
+<meta property="article:modified_time" content="2023-10-12T07:53:27.636Z">
 <meta property="article:author" content="Keke Liu">
 <meta property="article:tag" content="光">
 <meta name="twitter:card" content="summary">
@@ -114,7 +114,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8B%E7%94%B5%E5%B8%B8%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">介电常数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E4%BB%8B%E7%94%B5%E5%B8%B8%E6%95%B0%EF%BC%9A"><span class="nav-number">1.0.1.</span> <span class="nav-text">静态介电常数：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%8B%E7%94%B5%E5%B8%B8%E6%95%B0"><span class="nav-number">1.0.2.</span> <span class="nav-text">压电常数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9E%81%E5%8C%96%E5%BC%BA%E5%BA%A6"><span class="nav-number">2.</span> <span class="nav-text">极化强度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Note%EF%BC%9A"><span class="nav-number">2.0.1.</span> <span class="nav-text">Note：</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8B%E7%94%B5%E5%B8%B8%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">介电常数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E4%BB%8B%E7%94%B5%E5%B8%B8%E6%95%B0%EF%BC%9A"><span class="nav-number">1.0.1.</span> <span class="nav-text">静态介电常数：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%8B%E7%94%B5%E5%B8%B8%E6%95%B0"><span class="nav-number">1.0.2.</span> <span class="nav-text">压电常数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9E%81%E5%8C%96%E5%BC%BA%E5%BA%A6"><span class="nav-number">2.</span> <span class="nav-text">极化强度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Note%EF%BC%9A"><span class="nav-number">2.0.1.</span> <span class="nav-text">Note：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8B%89%E6%9B%BC%E8%AE%A1%E7%AE%97"><span class="nav-number">3.</span> <span class="nav-text">拉曼计算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%89%E7%85%A7%E8%84%9A%E6%9C%ACVASP%E9%9C%80%E8%A6%81%E8%AE%A1%E7%AE%97%E4%B8%A4%E6%AD%A5%EF%BC%9A"><span class="nav-number">3.0.1.</span> <span class="nav-text">按照脚本VASP需要计算两步：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E5%B1%95%E5%AE%BD"><span class="nav-number">3.0.2.</span> <span class="nav-text">加展宽</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%A2%E5%A4%96%E8%B0%B1%E8%AE%A1%E7%AE%97"><span class="nav-number">4.</span> <span class="nav-text">红外谱计算</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -127,13 +127,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -204,7 +204,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-06-27 09:22:30" itemprop="dateModified" datetime="2023-06-27T09:22:30+08:00">2023-06-27</time>
+      <time title="修改时间：2023-10-12 15:53:27" itemprop="dateModified" datetime="2023-10-12T15:53:27+08:00">2023-10-12</time>
     </span>
 
   
@@ -226,12 +226,67 @@
 <p>Note：对于光学性质的计算，也就是计算材料的介电函数，需要足够多的空带和致密的K网格点，使其达到非常好的收敛状态，我们才可以得到合理的光学性质；因此通常计算中，一般设置NBANDS为默认值（可在自洽的OUTCAR中以关键字NBANDS查找到）的2-3倍，K网格点为自洽值或适当增加。<br>使用optics.sh脚本得到介电函数的实部和虚部</p>
 <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># extract image and real parts <span class="keyword">of</span> dielectric <span class="keyword">function</span> <span class="keyword">from</span> vasprun.<span class="property">xml</span></span><br><span class="line">awk <span class="string">&#x27;BEGIN&#123;i=1&#125; /&lt;imag&gt;/,\</span></span><br><span class="line"><span class="string">               /&lt;\/imag&gt;/ \</span></span><br><span class="line"><span class="string">                &#123;a[i]=$2 ; b[i]=$3 ; c[i]=$4; d[i]=$5 ; e[i]=$6 ; f[i]=$7; g[i]=$8; i=i+1&#125; \</span></span><br><span class="line"><span class="string">    END&#123;for (j=12;j&lt;i-3;j++) print a[j],b[j],c[j],d[j],e[j],f[j],g[j]&#125;&#x27;</span> vasprun.<span class="property">xml</span> &gt; <span class="variable constant_">IMAG</span>.<span class="property">in</span></span><br><span class="line">#awk <span class="string">&#x27;BEGIN&#123;i=1&#125; /imag/,\</span></span><br><span class="line"><span class="string">#                /\/imag/ \</span></span><br><span class="line"><span class="string">#                 &#123;a[i]=$2 ; b[i]=$3 ; c[i]=$4; d[i]=$5 ; e[i]=$6 ; f[i]=$7; g[i]=$8; i=i+1&#125; \</span></span><br><span class="line"><span class="string">#     END&#123;for (j=12;j&lt;i-3;j++) print a[j],b[j],c[j],d[j],e[j],f[j],g[j]&#125;&#x27;</span> vasprun.<span class="property">xml</span> &gt; <span class="variable constant_">IMAG</span>.<span class="property">in</span></span><br><span class="line">awk <span class="string">&#x27;BEGIN&#123;i=1&#125; /&lt;real&gt;/,\</span></span><br><span class="line"><span class="string">               /&lt;\/real&gt;/ \</span></span><br><span class="line"><span class="string">                &#123;a[i]=$2 ; b[i]=$3 ; c[i]=$4; d[i]=$5 ; e[i]=$6 ; f[i]=$7; g[i]=$8; i=i+1&#125; \</span></span><br><span class="line"><span class="string">    END&#123;for (j=12;j&lt;i-3;j++) print a[j],b[j],c[j],d[j],e[j],f[j],g[j]&#125;&#x27;</span> vasprun.<span class="property">xml</span> &gt; <span class="variable constant_">REAL</span>.<span class="property">in</span></span><br></pre></td></tr></table></figure>
 <p>vaspkit处理：<br><code>vaspkit-task 711  </code></p>
-<h3 id="压电常数"><a href="#压电常数" class="headerlink" title="压电常数"></a>压电常数</h3><p>上面计算完介电常数后<br><code>grep &quot;PIEZOELECTRIC TENSOR IONIC CONTR  for field in x, y, z        (C/m^2)&quot; OUTCAR  -A10 </code><br> &amp;<br><code>grep &quot;PIEZOELECTRIC TENSOR  for field in x, y, z        (C/m^2)&quot; OUTCAR -A10 </code></p>
+<h3 id="压电常数"><a href="#压电常数" class="headerlink" title="压电常数"></a>压电常数</h3><p>上面计算完介电常数后，一般正交晶系。<br><code>grep &quot;PIEZOELECTRIC TENSOR IONIC CONTR  for field in x, y, z        (C/m^2)&quot; OUTCAR  -A10 </code><br> &amp;<br><code>grep &quot;PIEZOELECTRIC TENSOR  for field in x, y, z        (C/m^2)&quot; OUTCAR -A10 </code></p>
 <h1 id="极化强度"><a href="#极化强度" class="headerlink" title="极化强度"></a>极化强度</h1><ol>
 <li>极化强度计算<br>首先选取极化相FE（PhaseB, P, 铁电相）和参考相NP（PhaseA, P&#x3D;0, 中心对称相），分别以下列INCAR计算，<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> <span class="variable constant_">SYSTEM</span> = <span class="variable constant_">FE</span></span><br><span class="line"> <span class="variable constant_">ENCUT</span> = <span class="number">600</span>  #铁电极化计算建议设置高精度</span><br><span class="line"> <span class="variable constant_">EDIFF</span> = <span class="number">1E-6</span></span><br><span class="line"> <span class="variable constant_">IBRION</span> = -<span class="number">1</span></span><br><span class="line"> <span class="variable constant_">POTIM</span> = <span class="number">0.3</span></span><br><span class="line"> <span class="variable constant_">NSW</span> = <span class="number">0</span></span><br><span class="line"> <span class="variable constant_">EDIFFG</span> = -<span class="number">5E-3</span></span><br><span class="line"> <span class="variable constant_">ISMEAR</span> = <span class="number">0</span></span><br><span class="line"> <span class="variable constant_">SIGMA</span> = <span class="number">0.05</span></span><br><span class="line"> <span class="variable constant_">PREC</span> = <span class="title class_">Accurate</span></span><br><span class="line"> <span class="variable constant_">ISIF</span> = <span class="number">2</span></span><br><span class="line"> #<span class="variable constant_">NPAR</span> = <span class="number">4</span></span><br><span class="line"><span class="variable constant_">LWAVE</span> = .<span class="property">FALSE</span>.</span><br><span class="line"><span class="variable constant_">LCHARG</span> = .<span class="property">FALSE</span>.</span><br><span class="line"><span class="variable constant_">LREAL</span> = .<span class="property">FALSE</span>. </span><br><span class="line"><span class="variable constant_">LDIPOL</span> = .<span class="property">T</span>.</span><br><span class="line"><span class="variable constant_">DIPOL</span> = <span class="number">0.2</span> <span class="number">0.2</span> <span class="number">0.2</span> #不要设置在原子及迁移路径上，设置在真空层的一边/质心</span><br><span class="line"><span class="variable constant_">LCALCPOL</span> = .<span class="property">TRUE</span>. #计算铁电极化开关 </span><br><span class="line"><span class="variable constant_">IPEAD</span>=<span class="number">4</span></span><br><span class="line"><span class="variable constant_">LPEAD</span>=.<span class="property">True</span>.</span><br></pre></td></tr></table></figure></li>
 <li>收集结果：grep “Total electronic dipole momen” OUTCAR &amp; grep “Ionic dipole moment” OUTCAR，离子与电子相加即可，然后用NP相-铁电相即可得到极化强度P，注意单位换算。<br>首先要理清数据单位。VASP 计算得到的 dipole moment 的单位是 e*Å，它与库仑之间换算为:<br>$1e &#x3D;  1.602176634 * 10^{-19} C$<br>$1Å &#x3D; 10^{-10} m$<br>三维体系的极化强度： 极化值除以体积。单位为 $e&#x2F;Å^2$；二维体系的极化强度：极化值除以面积。单位为 e&#x2F;Å。</li>
 </ol>
 <h3 id="Note："><a href="#Note：" class="headerlink" title="Note："></a>Note：</h3><p>在铁电极化计算过程中经常会出现参考相为非半导体的情况，这种情况下可以：①镜像法：以FE以NP为参照中心，建立一个-FE相（PhaseB’, 即铁电极化方向相反）。然后按照上述方法计算极化，再以FE相的极化-（-FE相）的极化值，然后除以2即得到极化强度。可以理解为1-（-1）&#x3D;2，2&#x2F;2&#x3D;1；②线性插值法：在FE和NP相中间插入一系列中间过渡相（0%（FE）,10%,20%,30%….100%(NP)），计算它们的极化，然后可以用Origin做拟合，100%时即为NP相的极化。（100%-0%）则是极化强度P。</p>
+<h1 id="拉曼计算"><a href="#拉曼计算" class="headerlink" title="拉曼计算"></a>拉曼计算</h1><p>VASP中计算拉曼谱主要使用vasp_raman.py这个脚本，见github：<br>  <a target="_blank" rel="noopener" href="https://github.com/raman-sc/VASP">https://github.com/raman-sc/VASP</a></p>
+<p>使用raman-sc有几个注意的地方：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/354651066">https://zhuanlan.zhihu.com/p/354651066</a></p>
+<p>作者这里提供了一个算例。供大家参考链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1dTCP_0bRcRo0uIy0rBGttQ">https://pan.baidu.com/s/1dTCP_0bRcRo0uIy0rBGttQ</a><br>提取码：4vp8</p>
+<ol>
+<li>这个代码已经年代久远，使用python2写的，对大部分新学vasp的同学来说可能装的anaconda3，既使用的是python3，与python2代码是不兼容的，作者这里对vasp_raman.py进行了改写，方便python3环境运行这段代码。下载见附件。</li>
+<li>raman.sub既提交代码的脚本，需要根据自己的软件环境进行更改，我这里给出我的提交脚本供大家参考:<br>export VASP_RAMAN_RUN&#x3D;’mpirun -np 64 &#x2F;public&#x2F;home&#x2F;wangxiaohui&#x2F;vasp&#x2F;vasp.5.4.4&#x2F;bin&#x2F;vasp_std &amp;&gt; job.out ‘意思是运行vasp的命令，找一下vasp_std所在路径</li>
+</ol>
+<p>python &#x2F;public&#x2F;home&#x2F;wangxiaohui&#x2F;WORKSPACE&#x2F;Ti3C2Li2&#x2F;raman&#x2F;zhenraman&#x2F;vasp_raman.py &gt; vasp_raman.out这里是运行raman.py代码的意思，既raman.py代码所在路径</p>
+<ol start="3">
+<li>查看raman.py代码内容得知，POSCAR.phon和OUTCAR.phon是前一步计算的结果文件，不要被作者的例子给坑了。并且POSCAR.phon，OUTCAR.phon和INCAR等文件放在同一个文件夹下。</li>
+</ol>
+<h3 id="按照脚本VASP需要计算两步："><a href="#按照脚本VASP需要计算两步：" class="headerlink" title="按照脚本VASP需要计算两步："></a>按照脚本VASP需要计算两步：</h3><p>第一步，计算Gamma点声子。用有限位移方法或者DFPT方法。</p>
+<p>第一步结束后，执行，</p>
+<p> cp POSCAR POSCAR.phon</p>
+<p> cp OUTCAR OUTCAR.phon</p>
+<p>第二步，计算宏观介电常数的导数。用vasp_raman.py 脚本。</p>
+<p>DFPT: LEPSILON&#x3D;.TRUE.</p>
+<p>频率依赖的介电矩阵: LOPTICS&#x3D;.TRUE.</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#!<span class="regexp">/bin/</span>bash</span><br><span class="line">#<span class="variable constant_">PBS</span> -l select=<span class="number">1</span>:ncpus=<span class="number">32</span>:mpiprocs=<span class="number">32</span></span><br><span class="line">#<span class="variable constant_">PBS</span> -l walltime=<span class="number">01</span>:<span class="number">00</span>:<span class="number">00</span></span><br><span class="line">#<span class="variable constant_">PBS</span> -q debug</span><br><span class="line">#<span class="variable constant_">PBS</span> -j oe</span><br><span class="line">#<span class="variable constant_">PBS</span> -N <span class="title class_">Example</span></span><br><span class="line">#<span class="variable constant_">PBS</span> -V</span><br><span class="line"></span><br><span class="line">cd $PBS_O_WORKDIR</span><br><span class="line"></span><br><span class="line">ulimit -s unlimited  # remove limit on stack size</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="variable constant_">VASP_RAMAN_RUN</span>=<span class="string">&#x27;mpirun -n 12 /u/afonari/vasp.5.3.2/vasp.5.3/vasp &amp;&gt; job.out&#x27;</span>   #a按照自己路径更改</span><br><span class="line"><span class="keyword">export</span> <span class="variable constant_">VASP_RAMAN_PARAMS</span>=<span class="string">&#x27;01_10_2_0.01&#x27;</span>  #b按照自己材料更改</span><br><span class="line"></span><br><span class="line">python27 vasp_raman.<span class="property">py</span> &gt; vasp_raman.<span class="property">out</span></span><br></pre></td></tr></table></figure>
+
+<p>a. VASP_RAMAN_RUN设置调用VASP的命令</p>
+<p>b. VASP_RAMAN_PARAMS&#x3D;01_10_2_0.01</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FIRST_MODE - 整数, 第一个计算的振动模</span><br><span class="line">LAST-MODE - 整数, 最后一个计算的振动模</span><br><span class="line">NDERIV - 整数, 有限位移的策略选择，目前只有2这一种选择</span><br><span class="line">STEPSIZE - 浮点数, 有限位移步长，单位是Angstroms，一般选默认就可以</span><br></pre></td></tr></table></figure>
+<p>注意：以上这种设置格式允许我们并行计算大体系拉曼，我们可以在计算大体系的时候将Γ点的振动频率分为很多段分别计算，这样会大大提高我们计算大体系的效率。</p>
+<p>在多段计算的时候。具体细节上要把每一段计算的OUTCAR.000n.-1.out和OUTCAR.000n.-1.out文件拷贝到同一个文件夹下，然后注释掉vasp_raman.py脚本中的运行VASP的命令。运行python2.7 vasp_raman.py &gt; vasp_raman.out 即可得到整段的数据。</p>
+<p>vasp_raman.py文件中执行VASP的行为331行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">else: # run VASP here</span><br><span class="line">                  print &quot;[__main__]: Running VASP...&quot;</span><br><span class="line">                  os.system(VASP_RAMAN_RUN) #注释掉这一行</span><br></pre></td></tr></table></figure>
+<h3 id="加展宽"><a href="#加展宽" class="headerlink" title="加展宽"></a>加展宽</h3><p>使用脚本broaden.py给出展宽谱，可以选择洛伦兹线型或者高斯线型。</p>
+<p>$ python2 broaden.py result.txt<br>生成result.txt-broaden.dat文件，画图即可。</p>
+<p>需要注意的是，broaden.py的第23和24行分别代表频率和强度所在列。其设置文件中对应的列。</p>
+<pre><code>cm1 = hw[:,1]
+int1 = hw[:,2]
+</code></pre>
+<h1 id="红外谱计算"><a href="#红外谱计算" class="headerlink" title="红外谱计算"></a>红外谱计算</h1><ol>
+<li><p>红外谱主要是因为振动模在振动前后偶极矩发生变化，从而产生后外吸收。在振动过程中引起偶极矩改变的振动都具有红外活性。</p>
+</li>
+<li><p>根据上述原理，我们首先需要在计算过程中计算Gamma点的振动模，其次，我们需要计算伯恩有效电荷。</p>
+</li>
+</ol>
+<p>有限位移方法INCAR关键参数：</p>
+<p>IBRION &#x3D; 5<br>NWRITE &#x3D; 3<br>POTIM &#x3D; 0.015<br>LEPSILON &#x3D; .TRUE<br>DFPT方法INCAR关键参数：</p>
+<p>IBRION &#x3D; 7<br>NWRITE &#x3D; 3<br>NSW &#x3D; 1<br>LEPSILON &#x3D; .TRUE.<br>NELMIN&#x3D;6</p>
+<p>另外，建议进行k点测试直到伯恩有效常数收敛。</p>
+<ol start="3">
+<li><p>后处理</p>
+<p> 计算得到OUTCAR，然后文件夹下运行脚本。运行结果如下：</p>
+</li>
+</ol>
+<p> sh IR.sh </p>
+<p>上面的振动模和活性是归一化以后的结果，也就是运行结果intensities&#x2F;results&#x2F;results.txt的内容。文件intensities&#x2F;results&#x2F;exact.res.txt是归一化之前的内容。</p>
+<ol start="4">
+<li>展宽</li>
+</ol>
+<p>使用脚本broaden.py给出展宽谱，可以选择洛伦兹线型或者高斯线型。</p>
+<p>$ python2 broaden.py result.txt<br>生成result.txt-broaden.dat文件，画图即可。</p>
 
     </div>
 
@@ -253,6 +308,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2023/09/09/18-47-21/" rel="next" title="5.1">
+                  5.1 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>

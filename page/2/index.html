@@ -123,13 +123,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -154,6 +154,519 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/18-47-21/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Keke Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lightchaser">
+      <meta itemprop="description" content="一个小学生的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Lightchaser">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/05/09/18-47-21/" class="post-title-link" itemprop="url">1.2 结构优化2</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-09 18:47:21" itemprop="dateCreated datePublished" datetime="2023-05-09T18:47:21+08:00">2023-05-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-09-17 19:53:39" itemprop="dateModified" datetime="2023-09-17T19:53:39+08:00">2023-09-17</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>结构优化完成后，我们已经可以从输出文件得到很多性质。这里我们先关注能量。</p>
+<h1 id="VASP输出的能量是什么"><a href="#VASP输出的能量是什么" class="headerlink" title="VASP输出的能量是什么"></a>VASP输出的能量是什么</h1><p>在优化完的文件夹下输入<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[scf1355@ln151%nc-l 2h]$ tail -<span class="number">1</span> <span class="variable constant_">OSZICAR</span> </span><br><span class="line"><span class="number">3</span> F= -<span class="number">.44829871E+02</span> <span class="variable constant_">E0</span>= -<span class="number">.44829871E+02</span>  d E =-<span class="number">.169526E-03</span>  mag=    -<span class="number">0.0000</span></span><br></pre></td></tr></table></figure><br><strong>这里的F和下面free energy含义相同，E0代表体系内能。</strong><br>另外在OUTCAR中还可以找到这些<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">free  energy   <span class="variable constant_">TOTEN</span>  =       -<span class="number">44.82987077</span> eV</span><br><span class="line">energy  without entropy=      -<span class="number">44.82987077</span>  <span class="title function_">energy</span>(sigma-&gt;<span class="number">0</span>) =      -<span class="number">44.82987077</span></span><br><span class="line">atomic energy  <span class="variable constant_">EATOM</span>  =      <span class="number">1542.31592482</span></span><br></pre></td></tr></table></figure></p>
+<p>free energy指的是亥姆霍兹自由能(Helmholtz free energy)，在VASP手册中被称为自由电子能(free electronic energy)，它可以用F表示： <code>F = E-TS+PV </code>.而F和E对应上面的F和E0。<br>TOTEN和without entropy分别代表考虑和未考虑熵的贡献时自由能的值。而energy(sigma-&gt;0)为展宽趋近于零时的自由能，可以外推得到：  <code>energy(sigma-&gt;0) = E0 =1/2（F+E） </code></p>
+<p>其中上面的展宽对应于INCAR中设置的ISMEAR参数，详情可以查看手册或者参考 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/384626631%E3%80%82">https://zhuanlan.zhihu.com/p/384626631。</a><br> <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV19L4y1i7mC/?vd_source=17084cc867ff3bb86398ff1a79b443f2">https://www.bilibili.com/video/BV19L4y1i7mC/?vd_source=17084cc867ff3bb86398ff1a79b443f2</a><br>简单理解费米面内电子全占据，费米面外没有电子。这种阶梯函数就使得，随着K点数目变化，K点处积分值变化很大，不易收敛。于是我们需要一个连续函数，代替该阶梯函数进行积分，这种替代方法就叫smear。在VASP计算中，只有在ISMEAR&#x3D;-5时，才能严格满足费米能级的定义；而在其他情况下，允许电子在费米能级附近的宽度内“波动”，即将阶梯函数替代为一个平滑的函数，从而在不破坏和的精度的情况下获得更快的收敛速度。</p>
+<p><strong>明白非常重要的一点，从OUTCAR中直接提取的能量在不同赝势下不具备重复性，是不能够直接写到论文中去的。一般计算相对能量的时候只要保持取一样的值即可 比较绝对能量没啥意义。</strong></p>
+<h1 id="形成能"><a href="#形成能" class="headerlink" title="形成能"></a>形成能</h1><p>形成能很简单，参考高中化学形成焓的计算可以知道对于反应A+B&#x3D;C+D，那么形成能&#x3D;E(C)+E(D)-E(A)-E(B)<br>同样对于MoS2的生成焓我们可以知道：  $\Delta$ H&#x3D;E(MoS2)-E(Mo)-2E(S)<br>因此还需要计算Mo单质和S单质的单原子能量。计算过程和1.1完全一致，只需要获得结构，利用vaspkit生成KPOINTS和POTCAR文件，INCAR可以不用改。能量用F或者E0或者上面说的哪一项都可以，但要保持一致。代入计算即可。</p>
+<p>除此之外还可以计算产生一个Mo的空位的形成能： $\Delta$ H&#x3D;E(空位，MoS2)-E(Mo)-E（MoS2）<br>但是此时没有考虑缺陷的电荷。<br>可以计算分解能，剥离能，滑移能，表面能，偏聚能，吸附能等等。但是具体结构的优化会有一些处理上的不同。</p>
+<h1 id="单点能SP"><a href="#单点能SP" class="headerlink" title="单点能SP"></a>单点能SP</h1><p>参考： <a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv10064345">https://www.bilibili.com/read/cv10064345</a></p>
+<p>单点计算是指对结果不做优化，直接输出能量。因此优化只会进行一步。</p>
+<p><strong>设置NSW &#x3D; 0 也可以不设置，因为默认值就是0。</strong> 其他文件和参数不需要改变。提交即可。</p>
+<p>对于一个结构在结构优化（NSW不等于0）时，第一步输出的1F和单点能的结果是一样的。</p>
+<h1 id="自洽计算"><a href="#自洽计算" class="headerlink" title="自洽计算"></a>自洽计算</h1><p>自洽计算其实也是单点计算，静态自洽计算前需要提供 <strong>较稳定体系</strong> 的晶格结构信息（即结构优化完的CONTCAR），从而通过电子自洽计算，通过自洽迭代求解薛定谔方程（微观中描述电子的状态，相当于宏观的运动方程））  完整地计算出体系基态下费米能级（准确值，The fermi level location is accurate only in self-consistent calculation.）、 电子的波函数、电荷密度等信息，可以直接分析原子间的键合作用，也可以在非自洽之后进一步分析晶体的电子结构和材料的相关性质。</p>
+<p>因此对于电子结构计算之前必须进行一步自洽计算优化电子分布，以便加速后续计算。</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">NSW</span>=<span class="number">0</span>  不再进行原子迟豫</span><br><span class="line"><span class="variable constant_">LWAVE</span>=.<span class="property">TRUE</span>  （需要在<span class="variable constant_">WAVECAR</span>中输出波函数）</span><br><span class="line"><span class="variable constant_">LCHARGE</span>=.<span class="property">TRUE</span>    （需要在<span class="variable constant_">CHG</span>和<span class="variable constant_">CHGCAR</span>中输出电荷密度）</span><br></pre></td></tr></table></figure>
+
+<h1 id="气体优化"><a href="#气体优化" class="headerlink" title="气体优化"></a>气体优化</h1><p>在涉及单质结构优化时，可能会涉及到气体分子的优化。</p>
+<ul>
+<li>一般情况下选择建一个相对大的格子，里面放入一个气体分子，格子的大小保证分子间不会影响。其他的和前面结构优化保持一致即可。</li>
+<li>另一个办法就是找数据库， ChemScpider。网址：<a target="_blank" rel="noopener" href="http://www.chemspider.com/">http://www.chemspider.com</a></li>
+</ul>
+<h1 id="IVDW参数"><a href="#IVDW参数" class="headerlink" title="IVDW参数"></a>IVDW参数</h1><p>有两大类的范德华斯作用修正：</p>
+<ol>
+<li>基于半经验的，包括了D2, D3, D3-BJ, TS, TS+SCS等等，这些都是在常用的交换关联泛函比如PBE的基础上，考虑色散力的作用，在PBE计算出来的总能基础上增加了额外半经验项，这一项需要设置一些参数，至于是哪种半经验公式，由IVDW的设置来决定，具体的参考VASP的手册。<br><strong>范德华力计算方法，在DFT能量计算基础上增加范德华力修正。IVDW&#x3D;10：DFT-D2方法；IVDW&#x3D;11：DFT-D3方法。推荐首选更新的DFT-D3方法。</strong></li>
+<li>另一类就是vdW-DF，也就是修改交换关联项来考虑范德华修正。包括你所提到的optPBE-vdW, optB88-vdW, and optB86b-vdW等。它们的设置由修改GGA赋值，以及额外相关的一些参数来设置。 这些在vasp手册上有明确的说明。<br>乱谈DFT-D：<a target="_blank" rel="noopener" href="http://sobereva.com/83">http://sobereva.com/83</a><br>DFT-D色散校正的使用：<a target="_blank" rel="noopener" href="http://sobereva.com/210">http://sobereva.com/210</a><br>大体系弱相互作用计算的解决之道：<a target="_blank" rel="noopener" href="http://sobereva.com/214">http://sobereva.com/214</a><br>LUSE_VDW：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Yaris_liu/article/details/124683272">https://blog.csdn.net/Yaris_liu/article/details/124683272</a>                <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/47619708">https://zhuanlan.zhihu.com/p/47619708</a><br>包含vdW-DF，optPBE-vdW, optB88-vdW, optB88b-vdW, vdw-DF2。需要在所在的文件夹下放置一个名叫vdw_kernel.bindat的文件。</li>
+</ol>
+<ul>
+<li>vdW-DF：采用该范德瓦尔斯修正需在INCAR中加上以下开关： <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">GGA</span>=<span class="variable constant_">RE</span></span><br><span class="line"><span class="variable constant_">LUSE_VDW</span>=.<span class="property">TRUE</span>.</span><br><span class="line"><span class="variable constant_">AGGAC</span>=<span class="number">0.0000</span></span><br></pre></td></tr></table></figure></li>
+<li>optB88-vdW：采用该范德瓦尔斯修正需在INCAR中加上以下开关：</li>
+</ul>
+ <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125; GGA</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">PARAM1</span>=<span class="number">0.1833333333</span></span><br><span class="line"><span class="title class_">PARAM2</span>=<span class="number">0.2200000000</span></span><br><span class="line"><span class="variable constant_">LUSE_VDW</span>=.<span class="property">TRUE</span>.</span><br><span class="line"><span class="variable constant_">AGGAC</span>=<span class="number">0.0000</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>optB86b-vdW：采用该范德瓦尔斯修正需在INCAR中加上以下开关：</li>
+</ul>
+ <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125; GGA</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">PARAM1</span>=<span class="number">0.1234</span></span><br><span class="line"><span class="title class_">PARAM2</span>=<span class="number">1.0000</span></span><br><span class="line"><span class="variable constant_">LUSE_VDW</span>=.<span class="property">TRUE</span>.</span><br><span class="line"><span class="variable constant_">AGGAC</span>=<span class="number">0.0000</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>vdW-DF2：采用该范德瓦尔斯修正需在INCAR中加上以下开关：</li>
+</ul>
+ <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125; GGA</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">LUSE_VDW</span>=.<span class="property">TRUE</span>.</span><br><span class="line"><span class="title class_">Zab</span>_vdW=-<span class="number">1.8867</span></span><br><span class="line"><span class="variable constant_">AGGAC</span>=<span class="number">0.0000</span></span><br></pre></td></tr></table></figure>
+<p><strong>在考虑DFT-D2或者DFT-D3计算的过程中可同时考虑自旋轨道耦合（SOC），但是在vdW-DF、optB88-vdW 、optB86b-vdW和vdW-DF2中无法同时考虑自旋轨道耦合进行计算。</strong></p>
+<h1 id="DFT-U"><a href="#DFT-U" class="headerlink" title="DFT+U"></a>DFT+U</h1><ol>
+<li>为什么加U?<br><strong>对于含有d、f轨道电子的强关联体系(Hubbard模型)，电子间存在强烈的在位库仑相互作用，而交换相关泛函中的局域密度近似（LDA）或广义梯度近似（GGA）对电子之间的强在位库仑相互作用描述不准，</strong> 此时可将研究体系的交换相关泛函分成两部分计算，也就是用DFT+U的方法进行求解，公式如下：<br>其中一部分电子用DFT算法（如LDA，GGA）等可以比较准确地描述；另外的d、f轨道电子通过引入Hubbard项得到正确的描述（U值就是考虑了同一个原子自旋相反的局域电子之间的库仑排斥）</li>
+<li>如何加U?<br>DFT计算时输入文件的U值由以下参数确定： <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">LDAU</span>= .<span class="property">TRUE</span>.|.<span class="property">FALSE</span>.：开启/关闭+U功能，默认值为.<span class="property">FALSE</span>.；</span><br><span class="line"><span class="variable constant_">LDAUTYPE</span>=<span class="number">1</span>|<span class="number">2</span>|<span class="number">4</span>指的是+U的类型，默认值是<span class="number">2</span>；其中<span class="number">1</span>为<span class="title class_">Liechtenstein</span>等提出的旋转不变<span class="variable constant_">LSDA</span>+U方法；<span class="number">2</span>为 <span class="title class_">Dudarev</span>等提出的简化 <span class="variable constant_">LSDA</span>+U方法；<span class="number">4</span>与<span class="number">1</span>类似, 但不考虑<span class="variable constant_">LSDA</span>交换劈裂；</span><br><span class="line"><span class="variable constant_">LDAUL</span>=-<span class="number">1</span>|<span class="number">1</span>|<span class="number">2</span>|<span class="number">3</span>分别对应不加U、p、d、f轨道加U；</span><br><span class="line"><span class="variable constant_">LDAUU</span>、<span class="variable constant_">LDAUJ</span>分别指定电子库伦相互作用项和交换相互作用项（U和J值）；</span><br><span class="line"><span class="variable constant_">LMAXMIX</span> =<span class="number">2</span>/<span class="number">4</span>/<span class="number">6</span>：默认为<span class="number">2</span>，加U计算时该值需大于轨道量子数，对于含有d轨道或f轨道电子的体系需对应增加至<span class="number">4</span>或<span class="number">6</span>。</span><br></pre></td></tr></table></figure>
+注意：<br><strong>1）必须为每一类原子指定一个U值，其顺序与结构文件POSCAR中元素排序一致；</strong><br><strong>2）同一种元素在不同的体系中U值不同；</strong><br><strong>3）U在所有电子中都存在，不管自旋是否相同，J只存在于自旋相同的电子上；当LDAUTYPE &#x3D;2时，U-J的差值才有意义，即有效的U参数。</strong><br>该参数需要测试或者参考文献。</li>
+</ol>
+<h1 id="磁性体系"><a href="#磁性体系" class="headerlink" title="磁性体系"></a>磁性体系</h1><p>很多体系都有磁性，磁性体系的计算需要打开自旋。以FeO为例：<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">ISPIN</span>=<span class="number">2</span></span><br><span class="line"><span class="variable constant_">MAGMOM</span>=原子数目*初始磁矩，eg <span class="number">3</span>*<span class="number">2</span> <span class="number">4</span>*<span class="number">5</span> （注：*号前后不要有空格，且对应顺序）</span><br></pre></td></tr></table></figure><br>对于一些简单的磁性体系，我们可以直接使用ISPIN&#x3D;2, MAGMOM不必进行设置。对于复杂的体系则需要设置。初始值不需要与实验值完全一致，一般设置1.5倍即可。</p>
+<ol>
+<li><p>有4个Fe原子，如果考虑铁磁态，则可以设置 <code>MAGMON= 4*3 4*0 （Fe初设的磁矩为3，O元素为0） </code></p>
+</li>
+<li><p>有4个Fe原子，如果考虑反铁磁态，则可以设置 <code>MAGMON=3 -3 3 -3 0 0 0 0或者MAGMON=3 3 -3 -3 0 0 0 0 </code></p>
+</li>
+</ol>
+<h1 id="表面优化"><a href="#表面优化" class="headerlink" title="表面优化"></a>表面优化</h1><h2 id="1-Bulk计算，获得稳定构型。"><a href="#1-Bulk计算，获得稳定构型。" class="headerlink" title="1. Bulk计算，获得稳定构型。"></a>1. Bulk计算，获得稳定构型。</h2><p>   注意LREAL、PREC、ENCUT、EDIFF、ISMEAR保持一致。</p>
+<h2 id="2-考虑不同晶面、层数。"><a href="#2-考虑不同晶面、层数。" class="headerlink" title="2. 考虑不同晶面、层数。"></a>2. 考虑不同晶面、层数。</h2><p>对于表面结构，有以下几个需要注意的:</p>
+<ul>
+<li>xy 方向上表面的大小（15 Å或者100原子左右）;<br>A 这个影响表面吸附物种的覆盖度;<br>B 影响体系的尺寸大小和计算时间;<br>C 不同的大小需要选取对应的K点；回想一下我们前面提到的经验规则。</li>
+<li>不同的晶面，(111)， (100)，(110);<br>A 这取决于你研究的方向;低指数面、解离面。<br>B 不同晶面的表面能;<br>C 不同晶面的表面结构，反应活性等。</li>
+<li>表面结构的层数（3+3以上，6Å+6Å）<br>A 层数多了，原子变多，体系在 z 方向的尺寸增加，也会影响计算速度；<br>B 计算中需要弛豫的层数；<br>C 不同层数对你要计算的性质会产生影响，比如表面能；<br>D 不同晶面需要的层数也不尽相同，一般开放的表面需要更多的层数；<br>E 根据自己感兴趣的性质，选择合适的层数，也就是需要你去测试一番。</li>
+<li>Slab模型有两种，一种是上下表面对称的，一种是非对称的。对称性结构往往需要很多层，体系较大。 非对称的结构体系较小，但存在偶极矩的影响，要注意加LDIPOL 和IDIPOL这两个参数来消除。1、2、3分表代表在x、y和z 方向上进行校正，4代表在所有方向上。真空层15-20埃。</li>
+</ul>
+<h2 id="3-工具：MS、ASE、P4vasp、vaspkit。"><a href="#3-工具：MS、ASE、P4vasp、vaspkit。" class="headerlink" title="3. 工具：MS、ASE、P4vasp、vaspkit。"></a>3. <strong>工具：MS、ASE、P4vasp、vaspkit。</strong></h2><h3 id="MS操作。"><a href="#MS操作。" class="headerlink" title="MS操作。"></a>MS操作。</h3><p>一般用conventional cell。<br>MS操作。Windows<br>VESTA将CONTCAR转成cif,导入MS。<br>build-surface-cleave surface 切面<br>Surface mesh-surface vectors 可调整vector。<br><img src="/2023-05-11-10-29-44.png"><br>Surface box-top&#x2F;thickness，调整终端和厚度。<br>Build-crystals-build vaccum slab-图2-build。<br><img src="/2023-05-11-10-29-58.png"><br>Lattice parameters-advanced-re-orient to startard把真空层沿Z轴  图3。<br><img src="/2023-05-11-10-30-15.png"><br>转换成POSCAR，可优化后进一步扩胞。</p>
+<h3 id="ASE操作。python"><a href="#ASE操作。python" class="headerlink" title="ASE操作。python"></a>ASE操作。python</h3><p>块体优化后<br>module load python&#x2F;3.7.3<br>python </p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>from ase.io import read<br>from ase.io import write<br>from ase.build import surface<br>a&#x3D;read(”CONTCAR”,format&#x3D;’vasp’)<br>b&#x3D;surface(a,(1,1,1),6,vacuum&#x3D;7.5)   6层，真空层15Å<br>write(”POSCAR”,b,format&#x3D;’vasp’)<br>Ctrl+D （退出 python） </p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h3 id="大师兄ASE脚本：切金属"><a href="#大师兄ASE脚本：切金属" class="headerlink" title="大师兄ASE脚本：切金属"></a>大师兄ASE脚本：切金属</h3><p>python3 cssm.py</p>
+<h3 id="vaspkit"><a href="#vaspkit" class="headerlink" title="vaspkit"></a>vaspkit</h3><p><strong>块体优化后复制成POSCAR</strong><br><strong>vaspkit –task 803</strong><br><strong>生成SLAB***.vasp</strong></p>
+<h2 id="4-表面弛豫计算"><a href="#4-表面弛豫计算" class="headerlink" title="4 表面弛豫计算"></a>4 表面弛豫计算</h2><h3 id="单点能"><a href="#单点能" class="headerlink" title="单点能"></a>单点能</h3><p><strong>转换成POSCAR单点计算。或表面优化时第一个离子步的能量，但要保证这一步收敛。</strong><br><strong>KPOINTS设置，20-30。</strong><br><strong>INCAR设置，NSW&#x3D;0或默认0.偶极矩矫正 LDIPOL &#x3D; .TRUE. ; IDIPOL &#x3D; 3。</strong><br><strong>POTCAR准备，提交任务脚本。完成后 grep without OUTCAR 获取单点能。</strong></p>
+<h3 id="表面优化-1"><a href="#表面优化-1" class="headerlink" title="表面优化"></a>表面优化</h3><p>1）POSCAR第7行加S，  <code>Sed –i ‘7a S’  POSCAR </code><br>原子坐标加F&#x2F;T。  <code>Sed  –i  ’10,11s/$/  F F F/g’  POSCAR </code><br>                 <code>Sed  –i  ’12,13,14s/$/  T T T/g’  POSCAR </code><br> <code>vaspkit –task 402/403  </code>或者ctrl+v,选中列-大写A-输入  <code>T T T </code> - ESC.<br>2）POTCAR和KPOINTS不变。<br>INCAR设置：IBRION&#x3D;1、2，EDIFF&#x3D;1E-6，EDIFFG&#x3D;-0.03（比块体小一点），ISIF&#x3D;2，<br>提交任务。</p>
+<h2 id="5-表面能计算"><a href="#5-表面能计算" class="headerlink" title="5  表面能计算"></a>5  表面能计算</h2><p>表面能是创造物质表面时，破坏分子间化学键所需消耗的能量。在固体物理理论中，表面原子比物质内部的原子具有更多的能量，因此，根据能量最低原理，原子会自发的趋于物质内部而不是表面。表面能的另一种定义是，材料表面相对于材料内部所多出的能量。把一个固体材料分解成小块需要破坏它内部的化学键，所以需要消耗能量。如果这个分解的过程是可逆的，那么把材料分解成小块所需要的能量就和小块材料表面所增加的能量相等。但事实上，只有在真空中刚刚形成的表面才符合上述能量守恒。因为新形成的表面是非常不稳定的，它们通过表面原子重组和相互间的反应，或者对周围其他分子或原子的吸附，从而使表面能量降低。<br> γ&#x3D;($E_{surf}$ - N * $E_{bulkatom}$)&#x2F;(2A)</p>
+<p>  1ev&#x2F;$Å^2$ &#x3D;16.02J&#x2F;$m^2$<br> $E_{surf}$是未弛豫的表面能量,A是表面积a*b。</p>
+<h1 id="固定基矢优化结构"><a href="#固定基矢优化结构" class="headerlink" title="固定基矢优化结构"></a>固定基矢优化结构</h1><p>在第一性原理计算时，二维材料的建模会采用在某一方向（一般是z轴方向）添加15-20 Å的真空层的方式来抵消层与层之间的相互作用。但是，当我们优化晶格常数的时候会遇到一个问题：那就是使用ISIF&#x3D;3来优化平面内晶格常数（一般是a和b）时，c轴方向的晶格长度总是随着优化变的越来越小。</p>
+<ol>
+<li><p>采用ISIF&#x3D;4的固定晶胞体积的方法来计算。这样采用实验参数建的晶胞，由于a和b方向的变化，c轴也会变化。解决了越是优化c轴越小的问题，但是计算量还是很大。</p>
+</li>
+<li><p>编译vasp，就自己编译了固定z轴的脚本，专门计算二维材料。这种方法优点是直接换脚本就能解决上面优化时c轴缩小的问题，但是我想固定两个轴就需要再编译一份脚本。比较麻烦。</p>
+</li>
+</ol>
+<p>修改constr_cell_relax.F实现固定基矢优化结构的原理：</p>
+<p>FCELL contains the forces on the basis vectors. These forces are used to modify the basis vectors according to the following equations:</p>
+<p>FCELL 是个3 * 3的矩阵，包含了晶格矢量的受力，当ISIF &#x3D; 3时，晶格矢量会按照如下的方法更新：</p>
+<p>A_OLD(1:3,1:3)&#x3D;A(1:3,1:3) ! F90 style<br>DO J&#x3D;1,3<br>DO I&#x3D;1,3<br>DO K&#x3D;1,3<br>   A(I,J)&#x3D;A(I,J) + FCELL(I,K)*A_OLD(K,J)*STEP_SIZE<br>ENDDO<br>ENDDO<br>ENDDO<br>当通过OPTCELL文件把晶格矢量在某个方向的受力改成0以后，</p>
+<p>IF (ICELL(I,J)&#x3D;&#x3D;0) FCELL(I,J)&#x3D;0.0</p>
+<p>在结构更新的时候，该方向就不会改变。完成编译后，在 INCAR 文件中设置 ISIF&#x3D;3，便可实现固定 Z 轴的结构优化。<br>对于其他方向晶格基矢的修改同理：对于a方向基矢，将 FCELL(3,I) 和 FCELL(I,3) 分别改为 FCELL(1,I) 和 FCELL(I,1) ；对于b方向基矢，则分别改为 FCELL(2,I) 和 FCELL(I,2) ；固定两个基矢则应该同时将两个方向对应的矩阵元设置为0。或参考 VASP并行可执行软件包，可对晶胞参数进行部分优化 可实现添加参数文件实现不同基矢方向固定。（未做测试）</p>
+<ol start="3">
+<li>肖承诚博士的补丁，按照肖博士的方法安装以后，在INCAR中添加如下参数即可。</li>
+</ol>
+<p>IOPTCELL &#x3D; xx xy xz yx yy yz zx zy zz</p>
+<p>上面的九个参数对应晶格常数矩阵。</p>
+<p>1 xx xy xz</p>
+<p>2 yx yy yz</p>
+<p>3 zx zy zz</p>
+<p>1代表驰豫，0代表固定</p>
+<p>此时固定c轴的设置就是如下：</p>
+<p>IOPTCELL &#x3D; 1 1 0 1 1 0 0 0 0</p>
+<p>下载地址：<a target="_blank" rel="noopener" href="https://github.com/Chengcheng-Xiao/VASP_OPT_AXIS">https://github.com/Chengcheng-Xiao/VASP_OPT_AXIS</a></p>
+<h1 id="滑移能和剥离能"><a href="#滑移能和剥离能" class="headerlink" title="滑移能和剥离能"></a>滑移能和剥离能</h1><p>材料的塑性行为主要是由于材料的结构和化学键决定的。材料发生塑性形<br>变在原子尺度上可以分解成两个过程。一个是由于原子、位错或者晶界沿着某<br>一特定方向自由运动；第二个是在这种运动过程中存在束缚力保证在其它方向<br>不会产生裂纹，导致材料的断裂。因此任何一个塑性材料必须满足两个要求，<br>一是对某些原子层存在势垒相对低的滑动方式，以确保原子、位错或者晶界可<br>以沿着这些方向滑动。另一个是在这些滑动过程中，滑移平面两侧的原子依然<br>存在某种相对强的作用力，以确保滑移过程中材料的完整性。如金属键，其自<br>由电子容易发生变形和转移，在滑移过程中金属键不断的断裂和产生，从而导致了金属的滑移能量很小。而金属键的键强度很大，保证的金属滑移过程的完<br>整性。而离子键和共价键由于配位数和方向性等要求，在滑移时必须先发生键<br>的断裂，从而阻碍滑移的进行。由范德华力连接的层状材料，虽然层与层之间<br>容易发生滑移，但其层间作用力较弱，材料在滑移过程中容易发生破坏。为了研究 α-Ag2S 的塑性行为，我们通过第一性原理对 α-Ag2S 的滑移过程进<br>行了计算。其中，我们计算的滑移面为（100）方向，滑移方向为[001]方向。其<br>滑移过程如图 6.10 所示，α-Ag2S 的滑移面沿着能量最低点进行滑移，滑移面不<br>仅发生相对移动，其面间距也会发生。因此，整个滑移路径成波浪形。 我们将滑移一个周期（滑移一个晶格常数）均分 12 步。每一步我们计算系<br>统总能量与滑移面之间距离的关系，对于塑性材料而<br>言，它需要同时具有足够小的滑移能来保证材料的滑移可以进行；以及大的解离<br>能以至于材料不会发生断裂。 </p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/18-47-20/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Keke Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lightchaser">
+      <meta itemprop="description" content="一个小学生的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Lightchaser">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/05/09/18-47-20/" class="post-title-link" itemprop="url">1.1 结构优化1</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-09 18:47:20" itemprop="dateCreated datePublished" datetime="2023-05-09T18:47:20+08:00">2023-05-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-06-27 08:46:57" itemprop="dateModified" datetime="2023-06-27T08:46:57+08:00">2023-06-27</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>这里主要分享怎样快速开始第一个结构优化过程。</p>
+<h1 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h1><ul>
+<li>如果是个人服务器，需要安装Linux系统或者Windows+虚拟机+Linux；如果租用超算，安装对应超算客户端或者SSH。</li>
+<li>这部分内容需要自己熟练，对于命令的意义在操作中就会明白。<a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-command-manual.html">https://www.runoob.com/linux/linux-command-manual.html</a></li>
+<li>常用命令如下：<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_46422300/article/details/104645072">https://blog.csdn.net/m0_46422300/article/details/104645072</a></li>
+</ul>
+<h2 id="目录操作"><a href="#目录操作" class="headerlink" title="目录操作"></a>目录操作</h2><h3 id="1-切换目录（cd）"><a href="#1-切换目录（cd）" class="headerlink" title="1 切换目录（cd）"></a>1 切换目录（cd）</h3> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd /                 <span class="comment">//切换到根目录</span></span><br><span class="line">cd /bin              <span class="comment">//切换到根目录下的bin目录</span></span><br><span class="line">cd ../               <span class="comment">//切换到上一级目录 或者使用命令：cd ..</span></span><br><span class="line">cd ~                 <span class="comment">//切换到home目录</span></span><br><span class="line">cd -                 <span class="comment">//切换到上次访问的目录</span></span><br><span class="line">cd <span class="title function_">xx</span>(文件夹名)       <span class="comment">//切换到本目录下的名为xx的文件目录，如果目录不存在报错</span></span><br><span class="line">cd /xxx/xx/x         <span class="comment">//可以输入完整的路径，直接切换到目标目录，输入过程中可以使用tab键快速补全</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-查看目录（ls）"><a href="#2-查看目录（ls）" class="headerlink" title="2 查看目录（ls）"></a>2 查看目录（ls）</h3>  <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ls                   <span class="comment">//查看当前目录下的所有目录和文件</span></span><br><span class="line">ls -a                <span class="comment">//查看当前目录下的所有目录和文件（包括隐藏的文件）</span></span><br><span class="line">ls -l                <span class="comment">//列表查看当前目录下的所有目录和文件（列表查看，显示更多信息），与命令&quot;ll&quot;效果一样</span></span><br><span class="line">ls /bin              <span class="comment">//查看指定目录下的所有目录和文件 </span></span><br></pre></td></tr></table></figure>
+<h3 id="3-创建目录（mkdir）"><a href="#3-创建目录（mkdir）" class="headerlink" title="3 创建目录（mkdir）"></a>3 创建目录（mkdir）</h3>  <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir tools          <span class="comment">//在当前目录下创建一个名为tools的目录</span></span><br><span class="line">mkdir /bin/tools     <span class="comment">//在指定目录下创建一个名为tools的目录</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-删除目录与文件（rm）"><a href="#4-删除目录与文件（rm）" class="headerlink" title="4 删除目录与文件（rm）"></a>4 删除目录与文件（rm）</h3> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">rm 文件名              <span class="comment">//删除当前目录下的文件</span></span><br><span class="line">rm -f 文件名           <span class="comment">//删除当前目录的的文件（不询问）</span></span><br><span class="line">rm -r 文件夹名         <span class="comment">//递归删除当前目录下此名的目录</span></span><br><span class="line">rm -rf 文件夹名        <span class="comment">//递归删除当前目录下此名的目录（不询问）</span></span><br><span class="line">rm -rf *              <span class="comment">//将当前目录下的所有目录和文件全部删除</span></span><br><span class="line">rm -rf <span class="comment">/*             //将根目录下的所有文件全部删除【慎用！相当于格式化系统】</span></span><br></pre></td></tr></table></figure>
+<h3 id="5-修改目录（mv）"><a href="#5-修改目录（mv）" class="headerlink" title="5 修改目录（mv）"></a>5 修改目录（mv）</h3> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mv 当前目录名 新目录名        <span class="comment">//修改目录名，同样适用与文件操作</span></span><br><span class="line">mv /usr/tmp/tool /opt       <span class="comment">//将/usr/tmp目录下的tool目录剪切到 /opt目录下面</span></span><br><span class="line">mv -r /usr/tmp/tool /opt    <span class="comment">//递归剪切目录中所有文件和文件夹</span></span><br></pre></td></tr></table></figure>
+<h3 id="6-拷贝目录（cp）"><a href="#6-拷贝目录（cp）" class="headerlink" title="6 拷贝目录（cp）"></a>6 拷贝目录（cp）</h3>  <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/tmp/tool /opt       <span class="comment">//将/usr/tmp目录下的tool目录复制到 /opt目录下面</span></span><br><span class="line">cp -r /usr/tmp/tool /opt    <span class="comment">//递归剪复制目录中所有文件和文件夹</span></span><br></pre></td></tr></table></figure>
+<h3 id="7-搜索目录（find）"><a href="#7-搜索目录（find）" class="headerlink" title="7 搜索目录（find）"></a>7 搜索目录（find）</h3>  <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /bin -name <span class="string">&#x27;a*&#x27;</span>        <span class="comment">//查找/bin目录下的所有以a开头的文件或者目录</span></span><br></pre></td></tr></table></figure>
+<h3 id="8-查看当前目录（pwd）"><a href="#8-查看当前目录（pwd）" class="headerlink" title="8 查看当前目录（pwd）"></a>8 查看当前目录（pwd）</h3>  <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pwd                         <span class="comment">//显示当前位置路径</span></span><br></pre></td></tr></table></figure>
+<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><h3 id="1-新增文件（touch）"><a href="#1-新增文件（touch）" class="headerlink" title="1 新增文件（touch）"></a>1 新增文件（touch）</h3>  <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch  a.<span class="property">txt</span>         <span class="comment">//在当前目录下创建名为a的txt文件（文件不存在），如果文件存在，将文件时间属性修改为当前系统时间</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-删除文件（rm）"><a href="#2-删除文件（rm）" class="headerlink" title="2 删除文件（rm）"></a>2 删除文件（rm）</h3>  <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;rm 文件名</span><a target="_blank" rel="noopener" href="//删除当前目录下的文件">link</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -f 文件名           <span class="comment">//删除当前目录的的文件（不询问）</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-编辑文件（vi、vim）"><a href="#3-编辑文件（vi、vim）" class="headerlink" title="3 编辑文件（vi、vim）"></a>3 编辑文件（vi、vim）</h3><figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi 文件名              <span class="comment">//打开需要编辑的文件</span></span><br></pre></td></tr></table></figure>
+<p>  –进入后，操作界面有三种模式：命令模式（command mode）、插入模式（Insert mode）和底行模式（last line mode）<br>  命令模式<br>  -刚进入文件就是命令模式，通过方向键控制光标位置，<br>  -使用命令”dd”删除当前整行<br>  -使用命令”&#x2F;字段”进行查找<br>  -按”i”在光标所在字符前开始插入<br>  -按”a”在光标所在字符后开始插入<br>  -按”o”在光标所在行的下面另起一新行插入<br>  -按”：”进入底行模式<br>  插入模式<br>  -此时可以对文件内容进行编辑，左下角会显示 “– 插入 –””<br>  -按”ESC”进入底行模式<br>  底行模式<br>  -退出编辑：      :q<br>  -强制退出：      :q!<br>  -保存并退出：    :wq</p>
+<h4 id="操作步骤示例"><a href="#操作步骤示例" class="headerlink" title="操作步骤示例"></a>操作步骤示例</h4><p> 1.保存文件：按”ESC” -&gt; 输入”:” -&gt; 输入”wq”,回车           &#x2F;&#x2F;保存并退出编辑<br> 2.取消操作：按”ESC” -&gt; 输入”:” -&gt; 输入”q!”,回车             &#x2F;&#x2F;撤销本次修改并退出编辑</p>
+<h4 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h4> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim +<span class="number">10</span> filename.<span class="property">txt</span>                   <span class="comment">//打开文件并跳到第10行</span></span><br><span class="line">vim -R /etc/passwd                     <span class="comment">//以只读模式打开文件</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-查看文件"><a href="#4-查看文件" class="headerlink" title="4 查看文件"></a>4 查看文件</h3> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat a.<span class="property">txt</span>          <span class="comment">//查看文件最后一屏内容</span></span><br><span class="line">less a.<span class="property">txt</span>         <span class="comment">//PgUp向上翻页，PgDn向下翻页，&quot;q&quot;退出查看</span></span><br><span class="line">more a.<span class="property">txt</span>         <span class="comment">//显示百分比，回车查看下一行，空格查看下一页，&quot;q&quot;退出查看</span></span><br><span class="line">tail -<span class="number">100</span> a.<span class="property">txt</span>    <span class="comment">//查看文件的后100行，&quot;Ctrl+C&quot;退出查看</span></span><br></pre></td></tr></table></figure>
+<h3 id="5-grep"><a href="#5-grep" class="headerlink" title="5 grep"></a>5 grep</h3> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grep -i <span class="string">&quot;the&quot;</span> demo_file              <span class="comment">//在文件中查找字符串(不区分大小写)</span></span><br><span class="line">grep -A <span class="number">3</span> -i <span class="string">&quot;example&quot;</span> demo_text     <span class="comment">//输出成功匹配的行，以及该行之后的三行</span></span><br><span class="line">grep -r <span class="string">&quot;ramesh&quot;</span> *                   <span class="comment">//在一个文件夹中递归查询包含指定字符串的文</span></span><br></pre></td></tr></table></figure>
+<h2 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h2><h3 id="1-权限说明"><a href="#1-权限说明" class="headerlink" title="1 权限说明"></a>1 权限说明</h3><p>  文件权限简介：’r’ 代表可读（4），’w’ 代表可写（2），’x’ 代表执行权限（1），括号内代表”8421法”<br>  ##文件权限信息示例：-rwxrw-r–<br>  -第一位：’-‘就代表是文件，’d’代表是文件夹<br>  -第一组三位：拥有者的权限<br>  -第二组三位：拥有者所在的组，组员的权限<br>  -第三组三位：代表的是其他用户的权限</p>
+<h3 id="2-文件权限"><a href="#2-文件权限" class="headerlink" title="2 文件权限"></a>2 文件权限</h3><p>  普通授权     <code>chmod +x a.txt  </code><br>  8421法     <code>chmod 777 a.txt      //1+2+4=7，&quot;7&quot;说明授予所有权限</code></p>
+<h2 id="打包与解压"><a href="#打包与解压" class="headerlink" title="打包与解压"></a>打包与解压</h2><h3 id="1-说明"><a href="#1-说明" class="headerlink" title="1 说明"></a>1 说明</h3> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">zip</span>、.<span class="property">rar</span>        <span class="comment">//windows系统中压缩文件的扩展名</span></span><br><span class="line">.<span class="property">tar</span>              <span class="comment">//Linux中打包文件的扩展名</span></span><br><span class="line">.<span class="property">gz</span>               <span class="comment">//Linux中压缩文件的扩展名</span></span><br><span class="line">.<span class="property">tar</span>.<span class="property">gz</span>           <span class="comment">//Linux中打包并压缩文件的扩展名</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-打包文件"><a href="#2-打包文件" class="headerlink" title="2 打包文件"></a>2 打包文件</h3><p>  tar -zcvf 打包压缩后的文件名 要打包的文件<br>  参数说明：z：调用gzip压缩命令进行压缩; c：打包文件; v：显示运行过程; f：指定文件名;<br>  示例：</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zcvf a.<span class="property">tar</span> file1 file2,...      <span class="comment">//多个文件压缩打包</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-解压文件"><a href="#3-解压文件" class="headerlink" title="3 解压文件"></a>3 解压文件</h3> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf a.<span class="property">tar</span>                      <span class="comment">//解包至当前目录</span></span><br><span class="line">tar -zxvf a.<span class="property">tar</span> -C /usr------        <span class="comment">//指定解压的位置</span></span><br><span class="line">unzip test.<span class="property">zip</span>             <span class="comment">//解压*.zip文件 </span></span><br><span class="line">unzip -l test.<span class="property">zip</span>          <span class="comment">//查看*.zip文件的内容 </span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_46422300/article/details/104645072">https://blog.csdn.net/m0_46422300/article/details/104645072</a></p>
+<h1 id="其他准备"><a href="#其他准备" class="headerlink" title="其他准备"></a>其他准备</h1><p>安装好VASP、vaspkit，个人电脑安装好VESTA、MS或者qvasp等建模可视化软件中的一个。如果是租用超算，还需要准备好提交任务的脚本文件，一般工程师会帮我们编好，软件安装只需要给他们提供安装包或官网即可。</p>
+<h1 id="vaspkit运行的五种方式"><a href="#vaspkit运行的五种方式" class="headerlink" title="vaspkit运行的五种方式"></a>vaspkit运行的五种方式</h1><p><strong>方法一</strong> ：交换式菜单模式，直接输入vaspkit；</p>
+<p><strong>方法二</strong> ：命令+参数模式，适合批处理。如vaspkit -task 102 -kpr 0.03，详细介绍见vaspki-help, 注意部分功能不支持这种模式；</p>
+<p><strong>方法三</strong> ：利用bash管道传递参数,如echo -e “102\n2\n0.04\n”| vaspkit</p>
+<p><strong>方法四</strong> ：同样利用bash管道传递参数, (echo 102; echo 2; echo 0.04)|vaspkit</p>
+<p><strong>方法五</strong> ：vi cmd.in（文件名任意，非必须是cmd.in）包含以下三行内容</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">102</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">0.04</span></span><br></pre></td></tr></table></figure>
+<p>然后运行<code>vaspkit &lt; cmd.in</code>，产生KPOINTS文件，其他命令格式类似。</p>
+<h1 id="输入文件"><a href="#输入文件" class="headerlink" title="输入文件"></a>输入文件</h1><figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">INCAR</span>      <span class="keyword">in</span>    **</span><br><span class="line"><span class="variable constant_">STOPCAR</span>    <span class="keyword">in</span></span><br><span class="line">stout      out</span><br><span class="line"><span class="variable constant_">POTCAR</span>     <span class="keyword">in</span>     **</span><br><span class="line"><span class="variable constant_">KPOINTS</span>    <span class="keyword">in</span>     **</span><br><span class="line"><span class="variable constant_">IBZKPT</span>     out</span><br><span class="line"><span class="variable constant_">POSCAR</span>     <span class="keyword">in</span>     **</span><br><span class="line"><span class="variable constant_">CONTCAR</span>    out</span><br><span class="line"><span class="variable constant_">CHGCAR</span>     <span class="keyword">in</span>/out</span><br><span class="line"><span class="variable constant_">CHG</span>        out</span><br><span class="line"><span class="variable constant_">WAVECAR</span>    <span class="keyword">in</span>/out</span><br><span class="line"><span class="variable constant_">TMPCAR</span>     <span class="keyword">in</span>/out</span><br><span class="line"><span class="variable constant_">EIGENVAL</span>   out</span><br><span class="line"><span class="variable constant_">DOSCAR</span>     out</span><br><span class="line"><span class="variable constant_">PROCAR</span>     out</span><br><span class="line"><span class="variable constant_">OSZICAR</span>    out</span><br><span class="line"><span class="variable constant_">PCDAT</span>      out</span><br><span class="line"><span class="variable constant_">XDATCAR</span>    out</span><br><span class="line"><span class="variable constant_">LOCPOT</span>     out</span><br><span class="line"><span class="variable constant_">ELFCAR</span>     out</span><br><span class="line"><span class="variable constant_">PROOUT</span>     out</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>必要的输入文件有四个：<strong>INCAR，KPOINTS，POSCAR，POTCAR</strong> 。<ul>
+<li><strong>INCAR</strong> 告诉VASP算什么，怎么算。</li>
+<li><strong>KPOINTS</strong> 包含计算的倒空间K点信息。</li>
+<li><strong>POSCAR</strong> 是结构信息，包括元素、晶胞参数及各个原子的坐标信息。</li>
+<li><strong>POTCAR</strong> 元素的赝势文件，描述体系中对应的原子核和电子的相关信息。</li>
+<li>提交任务的脚本或者命令，需要你自己准备。</li>
+</ul>
+</li>
+</ul>
+<p>下面由简单到复杂介绍</p>
+<h2 id="POSCAR"><a href="#POSCAR" class="headerlink" title="POSCAR"></a>POSCAR</h2><p>结构文件信息格式如下：</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Mo</span> <span class="variable constant_">S2</span>                  #结构名称，可不写或随便写，不能没有这一行</span><br><span class="line"><span class="number">1.0</span>                   # universal scaling parameters，缩放系数</span><br><span class="line">    <span class="number">3.1500000954</span>     <span class="number">0.0000000000</span>     <span class="number">0.0000000000</span> # 晶格矢量 <span class="title function_">a</span>(<span class="number">1</span>) </span><br><span class="line">    -<span class="number">1.5750000477</span>    <span class="number">2.7279801045</span>     <span class="number">0.0000000000</span> # 晶格矢量 <span class="title function_">a</span>(<span class="number">2</span>)</span><br><span class="line">     <span class="number">0.0000000000</span>    <span class="number">0.0000000000</span>    <span class="number">12.3000001907</span> # 晶格矢量 <span class="title function_">a</span>(<span class="number">3</span>)</span><br><span class="line">   <span class="title class_">Mo</span>    S                                         # 元素名称，种类</span><br><span class="line">    <span class="number">2</span>    <span class="number">4</span>                                         #对应元素的原子个数，顺序要对应</span><br><span class="line"><span class="title class_">Direct</span>                                             #</span><br><span class="line">     <span class="number">0.333333345</span>       <span class="number">0.666666689</span>       <span class="number">0.250000000</span></span><br><span class="line">     <span class="number">0.666666624</span>       <span class="number">0.333333323</span>       <span class="number">0.750000019</span></span><br><span class="line">     <span class="number">0.333333345</span>       <span class="number">0.666666689</span>       <span class="number">0.620999986</span></span><br><span class="line">     <span class="number">0.666666624</span>       <span class="number">0.333333323</span>       <span class="number">0.379000014</span></span><br><span class="line">     <span class="number">0.666666624</span>       <span class="number">0.333333323</span>       <span class="number">0.121000053</span></span><br><span class="line">     <span class="number">0.333333345</span>       <span class="number">0.666666689</span>       <span class="number">0.878999976</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>对于自己建模的结构，按照该格式自己写；</li>
+<li>对于<a target="_blank" rel="noopener" href="https://materialsproject.org/">Materials projiect</a>数据库可以直接下载POSCAR格式；</li>
+<li>对于.cif文件，可以导入 <strong>VEASTA</strong> 等输出为POSCAR的格式，或者用 <strong>vaspkit</strong> 的411&#x2F;412功能。</li>
+</ul>
+<h4 id="Mind："><a href="#Mind：" class="headerlink" title="Mind："></a>Mind：</h4><p><strong>POSCAR文件非常重要，大部分报错都是结构不合理导致的。一个好的初始结构不仅可以加快收敛速度，也会增加准确性。文件中元素的顺序非常重要。</strong></p>
+<h2 id="KPOINTS"><a href="#KPOINTS" class="headerlink" title="KPOINTS"></a>KPOINTS</h2><p>文件一般格式如下：</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">K-<span class="variable constant_">POINTS</span>      #  第一行随便写或者空着不写，但不能没有这一行</span><br><span class="line"><span class="number">0</span>             # 零，表示自动生成</span><br><span class="line"><span class="title class_">Gamma</span>         #  gamma点centered </span><br><span class="line"><span class="number">1</span> <span class="number">1</span> <span class="number">1</span>         #  <span class="number">1</span>*<span class="number">1</span>*<span class="number">1</span>格子，K点密度</span><br><span class="line"><span class="number">0</span> <span class="number">0</span> <span class="number">0</span>         #  <span class="variable constant_">S1</span> <span class="variable constant_">S2</span> <span class="variable constant_">S3</span>，shift的值，一般保持 <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> 不变。</span><br></pre></td></tr></table></figure>
+
+<p><strong>大家需要修改的是第三行和第四行，其他可不改。</strong></p>
+<ul>
+<li><p>第三行：VASP只认第一个字母，大小写均可。当然这一行也可以直接写字母G或者g。G表示的是以gamma点为中心生成网格。<br>另外一种是原始的Monkhorst-Pack 网格，两者的区别是 M 或者 m 在 G的基础上在三个方向上平移了1&#x2F;（2N）个单位。G，也叫 gamma centered Monkhorst-Pack Grid；所以，gamma centered 只是MP网格的一种特殊情况。<br><strong>因此这一行也可以一直用G不变。</strong></p>
+</li>
+<li><p>第四行，在xyz三个方向上生成对应数目的K点；__这个一般需要测试__。如果开始不想测试，官网也给出了经验方法，</p>
+<ul>
+<li>d区金属，k*a ~ 30 Å</li>
+<li>普通金属，k*a ~ 25 Å</li>
+<li>半导体，k*a ~ 20 Å</li>
+<li>绝缘体，k*a ~ 15 Å</li>
+</ul>
+<p>其中a对应三个方向的晶胞参数，也就是对应方向的k点与该方向晶胞参数乘积最好在20-30之间。</p>
+</li>
+</ul>
+<p><strong>如果已经安装了vaspkit程序，可以通过102功能自动生成KPOINTS文件。</strong></p>
+<h2 id="POTCAR"><a href="#POTCAR" class="headerlink" title="POTCAR"></a>POTCAR</h2><p>POTCAR赝势文件相对来说最复杂也最简单。其中有很多信息，大部分信息我们不需要关注，一般只需要关注前几行。特别是赝势的种类信息。以Mo为例：</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">PAW_PBE</span> <span class="title class_">Mo</span> 08Apr2002                   </span><br><span class="line">   <span class="number">6.00000000000000</span>     </span><br><span class="line"> parameters <span class="keyword">from</span> <span class="variable constant_">PSCTR</span> <span class="attr">are</span>:</span><br><span class="line">   <span class="variable constant_">VRHFIN</span> =<span class="title class_">Mo</span>: 4p5s4d</span><br><span class="line">   <span class="variable constant_">LEXCH</span>  = <span class="variable constant_">PE</span></span><br><span class="line">   <span class="variable constant_">EATOM</span>  =   <span class="number">217.5176</span> eV,   <span class="number">15.9871</span> <span class="title class_">Ry</span></span><br><span class="line"></span><br><span class="line">   <span class="variable constant_">TITEL</span>  = <span class="variable constant_">PAW_PBE</span> <span class="title class_">Mo</span> 08Apr2002</span><br><span class="line">   <span class="variable constant_">LULTRA</span> =        F    use ultrasoft <span class="variable constant_">PP</span> ?</span><br><span class="line">   <span class="variable constant_">IUNSCR</span> =        <span class="number">1</span>    <span class="attr">unscreen</span>: <span class="number">0</span>-lin <span class="number">1</span>-nonlin <span class="number">2</span>-no</span><br><span class="line">   <span class="variable constant_">RPACOR</span> =    <span class="number">2.200</span>    partial core radius</span><br><span class="line">   <span class="variable constant_">POMASS</span> =   <span class="number">95.940</span>; <span class="variable constant_">ZVAL</span>   =    <span class="number">6.000</span>    mass and valenz</span><br><span class="line">   <span class="variable constant_">RCORE</span>  =    <span class="number">2.750</span>    outmost cutoff radius</span><br><span class="line">   <span class="variable constant_">RWIGS</span>  =    <span class="number">2.750</span>; <span class="variable constant_">RWIGS</span>  =    <span class="number">1.455</span>    wigner-seitz radius (au A)</span><br><span class="line">   <span class="variable constant_">ENMAX</span>  =  <span class="number">224.584</span>; <span class="variable constant_">ENMIN</span>  =  <span class="number">168.438</span> eV</span><br></pre></td></tr></table></figure>
+<p>除此之外，一种元素也有很多赝势，例如Mo：</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[scf1355@ln151%nc-l potpaw_PBE<span class="number">.52</span>]$ ls <span class="title class_">Mo</span>*</span><br><span class="line"><span class="title class_">Mo</span>:</span><br><span class="line"><span class="variable constant_">POTCAR</span>  <span class="variable constant_">PSCTR</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Mo</span><span class="attr">_pv</span>:</span><br><span class="line"><span class="variable constant_">POTCAR</span>  <span class="variable constant_">PSCTR</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Mo</span><span class="attr">_sv</span>:</span><br><span class="line"><span class="variable constant_">POTCAR</span>  <span class="variable constant_">PSCTR</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Mo</span><span class="attr">_sv_GW</span>:</span><br><span class="line"><span class="variable constant_">POTCAR</span>  <span class="variable constant_">PSCTR</span></span><br></pre></td></tr></table></figure>
+<p>如果没有特别的需求，直接采用VASP官网推荐的即可。参考链接：<br><a target="_blank" rel="noopener" href="https://cms.mpi.univie.ac.at/vasp/vasp/Recommended_PAW_potentials_DFT_calculations_using_vasp_5_2.html">https://cms.mpi.univie.ac.at/vasp/vasp/Recommended_PAW_potentials_DFT_calculations_using_vasp_5_2.html</a><br>不知道选哪一个就选第一个，使用方法如下：</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~<span class="regexp">/pot/</span><span class="title class_">Mo</span>/<span class="variable constant_">POTCAR</span> ~<span class="regexp">/pot/</span>S/<span class="variable constant_">POTCAR</span>  &gt; <span class="variable constant_">POTCAR</span></span><br></pre></td></tr></table></figure>
+<p>或者用vaspkit的103命令自动生成。</p>
+<h4 id="Mind：-1"><a href="#Mind：-1" class="headerlink" title="Mind："></a>Mind：</h4><p><strong>该文件看似复杂，使用时只需要查看元素种类和POSCAR是否对应即可。</strong><br>可以通过<code>grep PBE POTCAR</code>查看顺序是否正确。</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[scf1355@ln151%nc-l 2h]$ grep <span class="variable constant_">PBE</span> <span class="variable constant_">POTCAR</span> </span><br><span class="line">  <span class="variable constant_">PAW_PBE</span> <span class="title class_">Mo</span> 08Apr2002                   </span><br><span class="line">   <span class="variable constant_">TITEL</span>  = <span class="variable constant_">PAW_PBE</span> <span class="title class_">Mo</span> 08Apr2002</span><br><span class="line">  <span class="variable constant_">PAW_PBE</span> S 06Sep2000                    </span><br><span class="line">   <span class="variable constant_">TITEL</span>  = <span class="variable constant_">PAW_PBE</span> S 06Sep2000</span><br></pre></td></tr></table></figure>
+
+<h2 id="INCAR"><a href="#INCAR" class="headerlink" title="INCAR"></a>INCAR</h2><p>这个控制计算过程的文件最为复杂，手册上相关参数多达三百多个。因此前期我们记住一点：不知道含义的参数不要加。不加对于有些参数意味着用默认值，一般是合理的。INCAR参数查找参考官方：<a target="_blank" rel="noopener" href="https://www.vasp.at/wiki/index.php/Category:INCAR_tag">https://www.vasp.at/wiki/index.php/Category:INCAR_tag</a></p>
+<p>贴一个我的结构优化的INCAR：</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">ISTART</span> =  <span class="number">0</span>            (<span class="title class_">Read</span> existing wavefunction; <span class="keyword">if</span> there)</span><br><span class="line"><span class="variable constant_">ISPIN</span>  =  <span class="number">2</span>           (<span class="title class_">Non</span>-<span class="title class_">Spin</span> polarised <span class="variable constant_">DFT</span>) </span><br><span class="line"><span class="variable constant_">ICHARG</span> =  <span class="number">2</span>         (<span class="title class_">Non</span>-self-<span class="attr">consistent</span>: <span class="variable constant_">GGA</span>/<span class="variable constant_">LDA</span> band structures)</span><br><span class="line"><span class="variable constant_">ENCUT</span>  =  <span class="number">500</span>        (<span class="title class_">Cut</span>-off energy <span class="keyword">for</span> plane wave basis set, <span class="keyword">in</span> eV)</span><br><span class="line"><span class="variable constant_">PREC</span>   =  A       (<span class="title class_">Precision</span> level)</span><br><span class="line"><span class="variable constant_">LWAVE</span>  = .<span class="property">F</span>.        (<span class="title class_">Write</span> <span class="variable constant_">WAVECAR</span> or not)</span><br><span class="line"><span class="variable constant_">LCHARG</span> = .<span class="property">F</span>.        (<span class="title class_">Write</span> <span class="variable constant_">CHGCAR</span> or not)</span><br><span class="line"><span class="variable constant_">ISMEAR</span> =  <span class="number">0</span>            (<span class="title class_">Gaussian</span> smearing; <span class="attr">metals</span>:<span class="number">1</span>)</span><br><span class="line"><span class="variable constant_">SIGMA</span>  =  <span class="number">0.05</span>         (<span class="title class_">Smearing</span> value <span class="keyword">in</span> eV; <span class="attr">metals</span>:<span class="number">0.2</span></span><br><span class="line"><span class="variable constant_">EDIFF</span>  =  <span class="number">1E-08</span>        (<span class="variable constant_">SCF</span> energy convergence; <span class="keyword">in</span> eV)</span><br><span class="line"><span class="variable constant_">EDIFFG</span> = -<span class="number">1E-02</span>        (<span class="title class_">Ionic</span> convergence; eV/<span class="variable constant_">AA</span>) </span><br><span class="line"><span class="variable constant_">NSW</span>    =  <span class="number">100</span>          (<span class="title class_">Max</span> ionic steps)</span><br><span class="line"><span class="variable constant_">IBRION</span> =  <span class="number">2</span>            (<span class="title class_">Algorithm</span>: <span class="number">0</span>-<span class="variable constant_">MD</span>; <span class="number">1</span>-<span class="title class_">Quasi</span>-<span class="title class_">New</span>; <span class="number">2</span>-<span class="variable constant_">CG</span>)</span><br><span class="line"><span class="variable constant_">POTIM</span>=<span class="number">0.1</span></span><br><span class="line"><span class="variable constant_">ISIF</span>   =  <span class="number">3</span>            (<span class="title class_">Stress</span>/<span class="attr">relaxation</span>: <span class="number">2</span>-<span class="title class_">Ions</span>, <span class="number">3</span>-<span class="title class_">Shape</span>/<span class="title class_">Ions</span>/V, <span class="number">4</span>-<span class="title class_">Shape</span>/<span class="title class_">Ions</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="上面参数详细介绍"><a href="#上面参数详细介绍" class="headerlink" title="上面参数详细介绍"></a>上面参数详细介绍</h3><ul>
+<li><strong>ISTART</strong> ：初始波函数。WAVECAR存在默认1，不存在默认0。<br>0：随机生成波函数<br>1：从 WAVECAR 读取波函数，若读取失败则随机生成。</li>
+<li><strong>ICHARG</strong> ：初始电荷密度。当ISTART&#x3D;0默认2，其他默认1。<br>0：通过 WAVECAR 生成电荷密度，若读取失败则通过原子电荷密度叠加生成<br>1：从 CHGCAR 读取电荷密度<br>2：通过原子电荷密度叠加生成电荷密度<br>11：从 CHGCAR 读取电荷密度，且在（非自洽）循环中保持不变</li>
+<li><strong>ISPIN</strong> ：自旋极化。默认1，关闭。不知道是否打开，可以打开，结果不会有影响。<br>1：非自旋极化（每个轨道上自旋向上和自旋向下的电子数量相等，适合非磁性体系）<br>2：自旋极化（适合铁磁、反铁磁体系）</li>
+<li><strong>ENCUT</strong> ：平面波截断能（单位 eV）<br>默认元素中最大的ENMAX。一般为 POTCAR 中 最大ENMAX 参数值的 1.0 到 1.3 倍。500适用大部分体系。</li>
+<li><strong>PREC</strong> ：总体计算精度，默认Normal。可设为 Low、Med、High、Normal、Single、Accurate。具体参照手册，设为A或者Accurate足够精确。</li>
+<li><strong>LWAVE  LCHARG</strong> ：控制WAVECAR和CHGCAR输出，默认输出，在结构优化可以关闭，节省储存空间。</li>
+<li><strong>ISMEAR</strong> ：轨道分数占据<br>−5：四面体方法（适合半导体和绝缘体）<br>0：高斯方法（适合导体、半导体和绝缘体），展宽由 SIGMA 确定<br>N：Methfessel-Paxton 方法（适合导体）</li>
+<li><strong>EDIFF</strong> ：自洽循环收敛标准（系统能量变化），单位为 eV。默认1E-4，可以设的更精确一些。一般设置为 1E-6或更高。</li>
+<li>__EDIFFG__：离子位置优化收敛标准。默认EDIFF*10。正值为系统能量变化，负值为原子上残余力。随着体系维数下降，可适当增加原子残余力。</li>
+<li><strong>NSW</strong> ：离子位置优化最大步数（IBRION&#x3D;1、2）。默认0。设为100足够大，也可以继续加大。<br>分子动力学开启时代表分子动力学模拟步数（IBRION&#x3D;0）</li>
+<li><strong>IBRION</strong> ：离子位置优化算法。默认NSW&#x3D;0&#x2F;1时为-1，其他默认0。<br>-1：离子不移动<br>0：分子动力学模拟<br>1：准牛顿法<br>2：共轭梯度法<br>5：振动频率计算<br>6：弹性常数计算<br>7&#x2F;8：DFPT方法</li>
+<li><strong>POTIM</strong> ：有限差分法步长。当IBRION&#x3D;1&#x2F;2&#x2F;3默认值 0.5。当IBRION&#x3D;0（MD）时必须指定。</li>
+<li><strong>ISIF</strong> ：需要结构优化变量。默认IBRION&#x3D;0时为0，其他默认2。结构优化一般设为3，全部优化。<br><img src="/2023-05-10-11-03-40.png"></li>
+</ul>
+<h4 id="Mind"><a href="#Mind" class="headerlink" title="Mind"></a>Mind</h4><ul>
+<li><strong>上面四个输入文件都是纯文本文件，且文件名不能更改，格式不能错误。</strong></li>
+<li><strong>vaspkit可以同时产生INCAR、POTCAR、KPOINTS文件。</strong></li>
+</ul>
+<h1 id="提交任务"><a href="#提交任务" class="headerlink" title="提交任务"></a>提交任务</h1><p>在超算上提交或者集群上提交，只需要把四个输入文件和提交任务的脚本文件放在同一文件夹下，运行脚本即可。<br>在个人服务器、虚拟机提交可以通过<code>nohup mpirun -np 核数 vasp_std &gt; std.out &amp;</code>提交</p>
+<h4 id="Mind-1"><a href="#Mind-1" class="headerlink" title="Mind"></a>Mind</h4><ul>
+<li><strong>提交后经常查看作业收敛情况，有问题及时暂停，避免浪费时间</strong></li>
+</ul>
+<h1 id="查看任务完成"><a href="#查看任务完成" class="headerlink" title="查看任务完成"></a>查看任务完成</h1><p>实时查看任务日志<code>tail -f 日志文件</code><br>任务停止后，判断任务是否正常结束，输入<code>grep reached 日志文件</code>或者<code>tail 日志文件</code><br>如果输出<code>reached required accuracy - stopping structural energy minimisation</code>代表正常结束，否则很可能没有收敛或者出错中断。</p>
+<h1 id="输出文件"><a href="#输出文件" class="headerlink" title="输出文件"></a>输出文件</h1><p>任务一旦提交，会立刻生成输出文件，不过此时可能是空的。运行片刻大部分文件会产生内容。<br><a target="_blank" rel="noopener" href="https://www.vasp.at/wiki/index.php/Category:Output_files">https://www.vasp.at/wiki/index.php/Category:Output_files</a><br>其中我们先关注几个输出文件。</p>
+<h2 id="CONTCAR"><a href="#CONTCAR" class="headerlink" title="CONTCAR"></a>CONTCAR</h2><p>优化后的结构文件，与POSCAR相对应。为最后一个离子步的结构。当然如果要提高精度或者续算，可以<code>cp CONTCAR POSCAR</code>继续计算。</p>
+<h2 id="OSZICAR"><a href="#OSZICAR" class="headerlink" title="OSZICAR"></a>OSZICAR</h2><p>包含自洽计算中能量收敛等信息。</p>
+<h2 id="OUTCAR"><a href="#OUTCAR" class="headerlink" title="OUTCAR"></a>OUTCAR</h2><p>这个是VASP最主要的输出文件，包含计算过程中大量信息，依次主要包括：<br>VASP版本；<br>计算开始时间和并行性CPU数；<br>赝势信息；<br>最近邻列表；<br>对称性信息；<br>晶格信息和k点坐标;<br>INCAR中读入的参数和其他大部分的默认参数值；<br>平面波个数和FFT信息；<br>每一步离子步数和其中每一个电子自洽的时间、内存、能量等信息；<br>自洽完成后的费米能和能量本征值；<br>应力；力；<br>电荷数和磁矩；<br>程序运行时间。<br>总而言之想找而不知道去哪里找，就在这里。</p>
+<h2 id="IBZKPT"><a href="#IBZKPT" class="headerlink" title="IBZKPT"></a>IBZKPT</h2><p>由VASP自动生成，包含所有不等价k点的坐标和权重以及可能的四面体链接情况，它的格式与KPOINTS文件的格式是完全一样的。</p>
+<h2 id="WAVECAR"><a href="#WAVECAR" class="headerlink" title="WAVECAR"></a>WAVECAR</h2><p>波函数文件，二进制文件，不能直接用文本编辑器直接打开。<br>波函数文件较大，可以通过(LWAVE)来控制输出。结构优化不需要输出。<br>它也可以作为输入文件，为后续计算提供初始波函数。</p>
+<h2 id="CHGCAR和CHG"><a href="#CHGCAR和CHG" class="headerlink" title="CHGCAR和CHG"></a>CHGCAR和CHG</h2><p>电荷密度文件，包含晶格矢量，原子坐标，总电荷密度以及PAW的单中心占据情况等信息。 该文件既是输出文件(由LCHARG控制)，也可以是输入文件。结构优化不需要输出。<br>在计算能带或者态密度时，需要读入电荷密度进行非自洽计算。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li>输入文件KPOINTS比较简单，可以手动，注意格式；INCAR参数众多，直接参考，不知道的参数不加；POTCAR文件比较大，我们只关注赝势对应的元素顺序与POSCAR是否一致；POSCAR结构文件VESTA直接输出。提交任务脚本由超算代理提供，不同超算不同。</li>
+<li>任务提交后关注是否正常结束，另外关注计算的时间等。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/10-12-24/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Keke Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lightchaser">
+      <meta itemprop="description" content="一个小学生的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Lightchaser">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/05/09/10-12-24/" class="post-title-link" itemprop="url">01 VASP服务器安装</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-09 10:12:24" itemprop="dateCreated datePublished" datetime="2023-05-09T10:12:24+08:00">2023-05-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-12-15 10:14:20" itemprop="dateModified" datetime="2023-12-15T10:14:20+08:00">2023-12-15</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="系统安装"><a href="#系统安装" class="headerlink" title="系统安装"></a>系统安装</h1><h2 id="一、下载centos镜像"><a href="#一、下载centos镜像" class="headerlink" title="一、下载centos镜像"></a>一、下载centos镜像</h2><p>centos官方：<a target="_blank" rel="noopener" href="https://vault.centos.org/">https://vault.centos.org/</a>   清华镜像源下载<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/">https://mirrors.tuna.tsinghua.edu.cn/</a><br>常用的镜像文件类型介绍：<br>DVD ISO：普通光盘完整安装版镜像，可离线安装到计算机硬盘上，包含大量的常用软件（一般选择这种jing）。<br>Everything ISO：包含了完整安装版的内容，并对其进行补充，集成了所有软件。<br>Minimal ISO：这个版本为精简版的镜像，可以安装一个基本的CentOS系 统，包含了可启动系统基本所需的最小安装包。<br>Netinstal：在线安装版本，启动后需要联网边下载边安装。</p>
+<h2 id="二、制作centos安装盘-u盘"><a href="#二、制作centos安装盘-u盘" class="headerlink" title="二、制作centos安装盘-u盘"></a>二、制作centos安装盘-u盘</h2><ul>
+<li><p>这里推荐rufus:<a target="_blank" rel="noopener" href="https://rufus.ie/downloads/">https://rufus.ie/downloads/</a><br>无需安装，如图<img src="/./gra/0101.png" alt="0101"></p>
+<p>“引导类型选择”选择镜像文件，选择下载好的ISO文件，开始即可。</p>
+</li>
+<li><p>用软碟通打开镜像，然后选择 “ 启动”再选择 “写入硬盘映像” ，再选择自己的u盘之后，再选写入。注意：Windows系统限制了LABEL的长度为11，多出的部分被截断了，所以导致U盘的LABEL只有“CentOS 7 x8”11位(实际为CentOS 7 x86_64)。<br><img src="/./gra/0102.png" alt="0102"></p>
+</li>
+<li><p>u盘格式</p>
+<p>1、FAT32格式：</p>
+</li>
+</ul>
+<p>这一种格式是任何USB存储设备都会预装的文件系统，属Windows平台的传统文件格式，兼容性很好。但是呢，“上帝”还是公平的，给你开了这一扇窗，必然会关上另一扇门。即便FAT32格式兼容性好，但它不支持4GB以上的文件，因此对于很多镜像文件或大视频文件之类的也会有无可奈何的状况。<br>一句话概括：FAT32格式兼容性好，但不支持4GB以上的文件<br>  2、NTFS格式：<br>前面说到FAT32格式是Windows平台的传统文件格式，而NTFS格式却是Windows平台应用最广泛的文件格式。它的优点在于能够支持大容量文件和超大分区，且集合了很多高级的技术，其中包括长文件名、压缩分区、数据保护和恢复等等的功能。但人无完人，任何事物也相同，那NTFS格式又差在哪了呢？差就差在它会减短闪存的寿命。为什么？大家是否知道NTFS格式是针对机械硬盘设计的，它会对硬盘的读写操作做详细的记录，而闪存储存芯片的读写次数是有限的，若使用该格式就会让闪存造成很大的负担和伤害。易受伤的人心碎了还能长长久久吗？更何况是U盘呢！<br>一句话概括：NTFS格式支持大容量文件和超大分区，但对闪盘芯片有伤害<br>  3、exFAT格式<br>虽然说到FAT32是传统文件格式，NTFS又是最广泛的，但老毛桃可以告诉大家：exFAT格式才是最适合U盘的文件格式，它是微软为了闪存设备特地设计的文件系统，是U盘等移动设备最好的选择之一。注意：SSD和U盘同为闪存，但SSD还是用NTFS格式为好！<br>exFAT格式的优点在于它能够增强台式机或笔记本和移动设备之间的互操作能力、同目录下最多65536个文件，且支持访问控制，还有的就是剩余空间分配表改善空间分配行。一句话概括：exFAT格式是最适合U盘的<br><strong>在linux系统下centos支持VFAT格式和FAT32格式的U盘，而且VFAT是Windows和LINUX系统都可以使用的格式。如果U盘是NTFS格式的，而又不想切换格式，那么就需装个NTFS-3G的包就可以支持NTFS。</strong></p>
+<p>  在U盘重装系统时，我们首要的便是制作一个U盘启动盘，经常捣鼓系统的伙伴们大都知道，制作前我们需要选择U盘的模式和格式，其中模式分为2种：USB-HDD和USB-ZIP;格式分为3种，也就是上述说到的。<br>USB-HDD模式： USB-HDD硬盘仿真模式，此模式兼容性很高，适用于新机型，但对于一些只支持USB-ZIP模式的电脑则无法启动，一般制作U盘启动盘选择该模式。<br>USB-ZIP模式：大容量软盘仿真模式，此模式在一些比较老的电脑上是唯一可选的模式，但对大部分新电脑来说兼容性不好，特别是2GB以上的大容量U盘。</p>
+<h2 id="三、u盘安装操作系统"><a href="#三、u盘安装操作系统" class="headerlink" title="三、u盘安装操作系统"></a>三、u盘安装操作系统</h2><h3 id="BIOS设置问题："><a href="#BIOS设置问题：" class="headerlink" title="BIOS设置问题："></a>BIOS设置问题：</h3><p>U盘启动盘有分两种的，一个是legacy启动U盘，这种启动盘不能在UEFI模式下启动。另一种是UEFI启动盘，这种就可以直接在UEFI模式下识别到。<br>解决方法：<br>1、 开机不停按Del键（也可能是其他：F2、F12、esc等），进入BIOS。<br>2、 进入BIOS后，通过左右方向键切换到boot选项，设置Secure Boot为Disabled（禁用），表示关闭安全引导。<br>3、 将U盘启动改为第一个，方法是将其上面的选项键盘输入-号，一直到U盘启动到第一个；选中enter。<br>4、 最后按下F10保存设置退出，开机时再按U盘启动快捷键就可以识别到U盘启动盘了。</p>
+<p>其他原因：</p>
+<p>1、 <strong>U盘启动盘制作失败了</strong>，需要重新制作一遍启动盘。用软碟通容易失败，推荐Rufus。</p>
+<p>2、 USB接口接触不良，可以换几个接口尝试。</p>
+<p>3、安装dracut报错解决方法：安装后进入了dracut:&#x2F;#模式<br>    （1）.查看你的U盘名称:<br>    dracut:&#x2F;# cd &#x2F;dev<br>    dracut:&#x2F;# ls<br>    ls然后找到sda 是硬盘对应的文件名，sdb是U盘对应的文件名，可以看到是sdb4（”4”也有可能是别的数字,视情况而定）。<br>    （2）.修改路径:<br>    至此重启一下，回到U盘启动第一界面安装行处，然后按下Tab键(如果不行按’e’键)，将<br>    vmlinuz initrd&#x3D;initrd.img inst.stage2&#x3D;hd:LABEL&#x3D;RHEL-server-7.0-x86_64-LinuxProbe.Com.iso quiet改为(注意最后面的“quiet”切勿删除):<br>    vmlinuz initrd&#x3D;initrd.img inst.stage2&#x3D;hd:&#x2F;dev&#x2F;sdb4 quiet然后，如果是Tab按下enter键进入安装界面，就可以顺利开始安装了。如果上面按的是’e’键就需要按ctrl+x进入安装界面，就可以顺利开始安装了</p>
+<h3 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h3><p><strong>如果重启重新进入安装选项，只需进入boot将hard设为第一即可。</strong></p>
+<p>1、首先会进入语言地区设置，按照习惯即可。后面进入安装界面。<br><img src="/./gra/0103.png" alt="0103"><br>2、选择软件-软件选择(S)，选择如图。<br><img src="/./gra/0104.png" alt="0104"></p>
+<p>安装centos不进入桌面</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum  groupinstall  -y  &quot;GNOME Desktop&quot;</span><br><span class="line">reboot now</span><br><span class="line">Startx</span><br></pre></td></tr></table></figure>
+
+<p>3、选择安装位置(D)进入分区。<br>Linux分区：顺序（主要是boot swap &#x2F;）</p>
+<ul>
+<li>boot  分区（因为boot是引导启动的分区，所以分区的时候必须先分boot，通常设置大小为200M 空间足够300 - 500M）</li>
+<li>*swap（缓存分区，通常设置大小为1G  通常是物理内存大小的2倍，比如你电脑是4G的物理内存，swap分区可以是8G）</li>
+<li>&#x2F; （根分区）</li>
+<li>&#x2F;home分区 （最大）<br><img src="/./gra/0107.png" alt="0107"><br>安装完成后登录，通过命令：df -h 查看分区<br>也可以使用lsblk查看，更直观.<br>下面是基本的命名方案:<br>第一个软盘驱动器命名为&#x2F;dev&#x2F;fd0第二个软驱命名为&#x2F;dev&#x2F;fd1.<br>检测到的第一个硬盘名为&#x2F;dev&#x2F;sda。检测到的第二块硬盘命名为&#x2F;dev&#x2F;sdb，以此类推。<br>第一个SCSI CD-ROM命名为&#x2F;dev&#x2F;scd0，也称为&#x2F;dev&#x2F;sr0。<br>每个SCSI磁盘上的分区通过在磁盘名后面加上一个十进制数字表示：sda1和sda2表示系统中第一个SCSI磁盘驱动器的第一个和第二个分区。<br>假设你有一个有2个SCSI磁盘的系统，一个在SCSI地址2，另一个在SCSI地址4。第一个磁盘(地址2)被命名为sda，第二个磁盘被命名为sdb。如果sda驱动器上有3个分区，这些分区将被命名为sda1、sda2和sda3。这同样适用于sdb磁盘及其分区。<br>主分区：也叫引导分区，最多可能创建4个，当创建四个主分区时候，就无法再创建扩展分区了，当然也就没有逻辑分区了。主分区是独立的，对应磁盘上的第一个分区，“一般”就是C盘。在Windows系统把所有的主分区和逻辑分区都叫做“盘”或者“驱动器”，并且把所有的可存储介质都显示为操作系统的“盘”。因此，从“盘”的概念上无法区分主分区和逻辑分区。并且盘符可以在操作系统中修改，这就是要加上“一般”二字的原因。<br>扩展分区：除了主分区外，剩余的磁盘空间就是扩展分区了，扩展分区可以没有，最多1个。严格地讲它不是一个实际意义的分区，它仅仅是一个指向下一个分区的指针，这种指针结构将形成一个单向链表。这样在主引导扇区中除了主分区外，仅需要存储一个被称为扩展分区的分区数据，通过这个扩展分区的数据可以找到下一个分区(实际上也就是下一个逻辑磁盘)的起始位置，以此起始位置类推可以找到所有的分区。无论系统中建立多少个逻辑磁盘，在主引导扇区中通过一个扩展分区的参数就可以逐个找到每一个逻辑磁盘。<br>逻辑分区：在扩展分区上面，可以创建多个逻辑分区。逻辑分区相当于一块存储截止，和操作系统还有别的逻辑分区、主分区没有什么关系，是“独立的”。<br>硬盘的容量＝主分区的容量＋扩展分区的容量（硬盘&#x3D;C盘+X）<br>扩展分区的容量＝各个逻辑分区的容量之和（X&#x3D;D盘+E盘+F盘）</li>
+</ul>
+<p>4、开始安装。此时会进入这个界面。同时完成1&#x2F;2步骤，牢记密码。等待安装完成重启。</p>
+<p><img src="/./gra/0105.png" alt="0105"><br>5、登录账户，设置网络即可。</p>
+<p>&#x2F;usr&#x2F;bin&#x2F;xauth: file &#x2F;home&#x2F;user&#x2F;.Xauthority does not exist<br>错误原因:<br>是因为添加用户时没有授权对应的目录，仅仅执行了useradd user而没有授权对应的家目录</p>
+<p>chown username:username -R &#x2F;home&#x2F;user_dir<br>例如本机：<br><img src="/./gra/0106.png" alt="0106"><br>然后继续登录<br>发现可以登录了<br>但是不显示用户名和路径<br>查看**&#x2F;etc&#x2F;passwd文件后发现，新建的用户未指定shell<strong>。我们只需将其指定为</strong>&#x2F;bin&#x2F;bash**即可。<br>Solution：在root用户下<br>usermod -s &#x2F;bin&#x2F;bash name<br>然后继续登录，就ok了。</p>
+<p><strong>总结</strong>：</p>
+<pre><code>1.首先，备份您的重要数据。
+2.下载 CentOS 7 的安装镜像。您可以从 CentOs 官方网站上下载适用于您的计算机架构的镜像文件。
+3.创建一个启动盘，将下载的镜像文件写入到 USB 设备或 DVD 上，以便用于安装过程，您可以使用工具如 Rufus 或 Etcher 来创建启动盘。UltraIso软件。
+“Ultraiso根据镜像名为u盘命名盘符名称，默认的镜像名太长，将会导致Centos在装机时，无法定位到镜像，从而导致安装失败，出现drauct错误”。
+4.将启动盘插入计算机并重启。在计算机启动时，进入 BIOS 设置界面，并将启动优先级设置为 USB 设备或 DVD.
+5.选择安装选项。在 CentoS 安装程序启动后，按照屏幕上的指示选择合适的语言、键盘布局和时区。
+6.分区和磁盘设置。根据需要配置磁盘分区和文件系统。您可以选择手动分区或使用默认选项。boot分区：是引导分区；作用：系统启动，在boot分区存放着grub，内核文件等，一般200M就够了。swap交换分区：内存扩展分区；交换分区给多大？ 一般做多：8G，16G，如果系统使用到了swap分区，就直接添加物理内存或排查一下服务器有没有被黑。/ 根：所有文件的根，绝对路径的开始标志。
+7.设置网络和主机名。为您的计算机设置网络连接和主机名。
+8.选择软件包组件。根据您的需求选择要安装的软件包组件。可以选择最小化安装或自定义安装。安装桌面勾选GUI和GNOME两个。关闭kdump。安全策略使用默认。
+9.设置管理员密码。为 root 用户设置安全容码
+10.开始安装。确认所有设置后，开始安装 CentOS 7 系统
+11.完成安装。安装完成后，您可以重新启动计算机，并开始使用新安装的 CentOS 7 系统请注意，重新安装系统可能会导致数据丢失，请谨慎操作并确保提前进行数据备份
+</code></pre>
+<h2 id="安装编译器"><a href="#安装编译器" class="headerlink" title="安装编译器"></a>安装编译器</h2><ul>
+<li>下载官方Get the Toolkits: <a target="_blank" rel="noopener" href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/toolkits.html">https://www.intel.com/content/www/us/en/developer/tools/oneapi/toolkits.html</a><br>下载base和HPC，上传到服务器上。</li>
+<li>赋予权限：<br>chmod +x l_*.sh</li>
+<li>选择IDE即可，避免出错。需要预留30g左右的磁盘空间，否则会安装失败。sh .&#x2F;l_Base*.sh sh .&#x2F;l_HPC*.sh</li>
+<li>默认安装位置：<br>如果使用sudo安装的话，默认路径是&#x2F;opt&#x2F;intel&#x2F;oneapi&#x2F;<br>如果使用普通用户权限安装的话，默认路径是~&#x2F;intel&#x2F;oneapi&#x2F;</li>
+<li>添加环境：vim ~&#x2F;.bashrc,添加<br>如果使用sudo安装的话，是source &#x2F;opt&#x2F;intel&#x2F;oneapi&#x2F;setvars.sh &gt;&#x2F;dev&#x2F;null<br>如果使用普通用户权限安装的话，默认路径是source ~&#x2F;intel&#x2F;oneapi&#x2F;setvars.sh &gt;&#x2F;dev&#x2F;null</li>
+</ul>
+<p>保存退出</p>
+<h2 id="安装vasp"><a href="#安装vasp" class="headerlink" title="安装vasp"></a>安装vasp</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tar -xzvf vasp.6.3.0.tgz</span><br><span class="line">cd vasp.6.3.0</span><br><span class="line">cp arch/makefile.include.intel makefile.include</span><br><span class="line">vim makefile.include</span><br><span class="line">注释掉 MKLROOT    ?= /path/to/your/mkl/installation</span><br><span class="line">保存退出</span><br><span class="line">make all或者make std gam ncl</span><br></pre></td></tr></table></figure>
+<p>成功后添加环境变量：vim ~&#x2F;.bashrc<br>export PATH&#x3D;&#x2F;home&#x2F;hptem001&#x2F;bin&#x2F;vasp.6.3.0&#x2F;bin:$PATH<br>保存退出</p>
+<h2 id="安装vaspkit1-4"><a href="#安装vaspkit1-4" class="headerlink" title="安装vaspkit1.4"></a>安装vaspkit1.4</h2><p>tar -xzvf vaspkit.1.4.1.linux.x64.tar.gz<br>cd vaspkit.1.4.1<br>sh setup.sh<br>查看cat ~&#x2F;.bashrc<br>有没有export PATH&#x3D;&#x2F;home&#x2F;hptem001&#x2F;bin&#x2F;vaspkit.1.4.1&#x2F;bin:${PATH}<br>或者直接终端输入：vaspkit看是否有输出。<br>安装成功。<br>vim ~&#x2F;.vaspkit<br>更改赝势路径以自动输出POTCAR<br>更改其他可参考：<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/649806633">https://zhuanlan.zhihu.com/p/649806633</a> 自动画图<br><a target="_blank" rel="noopener" href="http://vaspkit.cn/index.php/17.html">http://vaspkit.cn/index.php/17.html</a>  能带插值</p>
+<p>保存退出。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -742,6 +1255,92 @@
 <p>$…$ 或者 (…) 中的数学表达式将会在行内显示。<br>$$…$$ 或者 […] 或者 &#96;&#96;&#96;math 中的数学表达式将会在块内显示。</p>
 <p>$$<br>\begin{Bmatrix}<br>   a &amp; b \<br>   c &amp; d<br>\end{Bmatrix}<br>$$<br>$$<br>\begin{CD}<br>   A @&gt;a&gt;&gt; B \<br>@VbVV @AAcA \<br>   C @&#x3D; D<br>\end{CD}<br>$$</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">%% 时序图例子,-&gt; 直线，--&gt;虚线，-&gt;&gt;实线箭头</span><br><span class="line">  sequenceDiagram</span><br><span class="line">    participant 张三</span><br><span class="line">    participant 李四</span><br><span class="line">    张三-&gt;王五: 王五你好吗？</span><br><span class="line">    loop 健康检查</span><br><span class="line">        王五-&gt;王五: 与疾病战斗</span><br><span class="line">    end</span><br><span class="line">    Note right of 王五: 合理 食物 &lt;br/&gt;看医生...</span><br><span class="line">    李四--&gt;&gt;张三: 很好!</span><br><span class="line">    王五-&gt;李四: 你怎么样?</span><br><span class="line">    李四--&gt;王五: 很好!</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/09/18-48-24/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Keke Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lightchaser">
+      <meta itemprop="description" content="一个小学生的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Lightchaser">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/05/09/18-48-24/" class="post-title-link" itemprop="url">linux</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-05-09 18:48:24" itemprop="dateCreated datePublished" datetime="2022-05-09T18:48:24+08:00">2022-05-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-07-27 11:13:49" itemprop="dateModified" datetime="2023-07-27T11:13:49+08:00">2023-07-27</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="查看cpu核数"><a href="#查看cpu核数" class="headerlink" title="查看cpu核数"></a>查看cpu核数</h2><p>cat &#x2F;proc&#x2F;cpuinfo| grep “physical id”| sort| uniq| wc -l</p>
+<p>cat &#x2F;proc&#x2F;cpuinfo| grep “cpu cores”| uniq</p>
+<p>cat &#x2F;proc&#x2F;cpuinfo | grep ‘process’ | sort | uniq | wc -l</p>
+<p>系统处理器基本信息记录在&#x2F;proc&#x2F;cpuinfo文件中;sort 可针对文本文件的内容，以行为单位来排序;uniq 命令用于检查及删除文本文件中重复出现的行列，一般与 sort 命令结合使用。wc （word count）命令常用于计算文件的行数、字数和字节数，-l , –lines : 显示行数。</p>
+<h2 id="查看内存总大小"><a href="#查看内存总大小" class="headerlink" title="查看内存总大小"></a>查看内存总大小</h2><p>cat &#x2F;proc&#x2F;meminfo | grep “MemTotal” | awk ‘{print $2&#x2F;1024&#x2F;1024}’</p>
+<p>awk ‘{print $2&#x2F;1024&#x2F;1024}’ 以空格分隔，并将分割后的变量打印出来，因为文件里面是KB，转成GB，除两次1024，最后就是内存的大小。</p>
+<h2 id="查看硬盘大小"><a href="#查看硬盘大小" class="headerlink" title="查看硬盘大小"></a>查看硬盘大小</h2><p>两种方法</p>
+<p>第一种（安全，建议使用），所有的相加。</p>
+<p>df -h<br>第二种，不安全,查看磁盘分区，相加。</p>
+<p>fdisk -l</p>
+<p>fdisk是磁盘分区命令，而且普通用户没法执行这个命令，如果使用出错，很容易完整删除整个系统，虚拟机玩玩就好了。</p>
+
       
     </div>
 

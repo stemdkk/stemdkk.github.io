@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.16.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="一、USPEX 简介USPEX: Universal Structure Predictor: Evolutionary Xtallography. USPEX 代码能够通过仅仅只知道材料的化学成分来预测具有任意 P-T 条件的晶体结构。在全世界有6000多名研究人员使用它，它的出现极大的促进了相关领域的发展。而它的发明者：Oganov教授，通过这个软件做出了一系列漂亮的结果。 而 CALYPSO">
+<meta property="og:type" content="article">
+<meta property="og:title" content="6.1 USPEX">
+<meta property="og:url" content="http://example.com/2023/11/09/18-48-23/index.html">
+<meta property="og:site_name" content="Lightchaser">
+<meta property="og:description" content="一、USPEX 简介USPEX: Universal Structure Predictor: Evolutionary Xtallography. USPEX 代码能够通过仅仅只知道材料的化学成分来预测具有任意 P-T 条件的晶体结构。在全世界有6000多名研究人员使用它，它的出现极大的促进了相关领域的发展。而它的发明者：Oganov教授，通过这个软件做出了一系列漂亮的结果。 而 CALYPSO">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-11-09T10:48:23.000Z">
+<meta property="article:modified_time" content="2023-12-15T01:01:00.347Z">
+<meta property="article:author" content="Keke Liu">
+<meta property="article:tag" content="USPEX">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/11/09/18-48-23/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/11/09/18-48-23/","path":"2023/11/09/18-48-23/","title":"6.1 USPEX"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>6.1 USPEX | Lightchaser</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Lightchaser</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">三人行，必有我师</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81USPEX-%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">一、USPEX 简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81-%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">二、 下载安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E8%BF%9B%E8%A1%8C%E8%AE%A1%E7%AE%97"><span class="nav-number">3.</span> <span class="nav-text">三、进行计算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-%E5%87%86%E5%A4%87%E8%BE%93%E5%85%A5%E6%96%87%E4%BB%B6"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 准备输入文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-%E6%8F%90%E4%BA%A4USPEX%E4%BB%BB%E5%8A%A1"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 提交USPEX任务</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%AE%98%E6%96%B9%E7%AE%97%E4%BE%8B1%EF%BC%88EX01-3D-Si-vasp%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">四、官方算例1（EX01-3D_Si_vasp）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E8%BE%93%E5%85%A5%E6%96%87%E4%BB%B6"><span class="nav-number">4.1.</span> <span class="nav-text">1、输入文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E8%AE%A1%E7%AE%97"><span class="nav-number">4.2.</span> <span class="nav-text">2、计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6"><span class="nav-number">4.3.</span> <span class="nav-text">3、输出文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%AE%98%E6%96%B9%E7%AE%97%E4%BE%8B2%EF%BC%882-8%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">五、官方算例2（2-8）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B2"><span class="nav-number">5.1.</span> <span class="nav-text">案例2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%98%E6%96%B9%E7%AE%97%E4%BE%8B3"><span class="nav-number">5.2.</span> <span class="nav-text">官方算例3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E7%AE%97%E4%BE%8B%E8%A7%A3%E9%87%8A"><span class="nav-number">5.3.</span> <span class="nav-text">其他算例解释</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%AE%98%E6%96%B9%E7%AE%97%E4%BE%8B%EF%BC%889-13%EF%BC%89"><span class="nav-number">6.</span> <span class="nav-text">六、官方算例（9-13）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E5%AE%98%E6%96%B9%E6%A1%88%E4%BE%8B%E8%AE%B2%E8%A7%A3%EF%BC%8814-15%EF%BC%89"><span class="nav-number">7.</span> <span class="nav-text">七、官方案例讲解（14-15）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E5%AE%98%E6%96%B9%E6%A1%88%E4%BE%8B%E8%AE%B2%E8%A7%A3%EF%BC%8816-18%EF%BC%89"><span class="nav-number">8.</span> <span class="nav-text">八、官方案例讲解（16-18）</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Keke Liu</p>
+  <div class="site-description" itemprop="description">一个小学生的博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/stemdkk" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;stemdkk" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:257198@whut.edu.cn" title="E-Mail → mailto:257198@whut.edu.cn" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/11/09/18-48-23/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Keke Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lightchaser">
+      <meta itemprop="description" content="一个小学生的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="6.1 USPEX | Lightchaser">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          6.1 USPEX
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-11-09 18:48:23" itemprop="dateCreated datePublished" datetime="2023-11-09T18:48:23+08:00">2023-11-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-12-15 09:01:00" itemprop="dateModified" datetime="2023-12-15T09:01:00+08:00">2023-12-15</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="一、USPEX-简介"><a href="#一、USPEX-简介" class="headerlink" title="一、USPEX 简介"></a>一、USPEX 简介</h1><p>USPEX: Universal Structure Predictor: Evolutionary Xtallography. USPEX 代码能够通过仅仅只知道材料的化学成分来预测具有任意 P-T 条件的晶体结构。在全世界有6000多名研究人员使用它，它的出现极大的促进了相关领域的发展。而它的发明者：Oganov教授，通过这个软件做出了一系列漂亮的结果。</p>
+<p>而 CALYPSO 的主要是由吉林大学的马琰铭教授主导开发的。</p>
+<h1 id="二、-下载安装"><a href="#二、-下载安装" class="headerlink" title="二、 下载安装"></a>二、 下载安装</h1><ol>
+<li><p>浏览器进入：<a target="_blank" rel="noopener" href="https://uspex-team.org/en/uspex/downloads%EF%BC%8C%E8%BF%99%E4%B8%AA%E6%98%AF">https://uspex-team.org/en/uspex/downloads，这个是</a> USPEX 下载地址和官方手册。点击红色标记的 register 进行注册和登录即可免费下载。<br>USPEX-9.4.4 是 USPEX 最经典的版本，体积最小，而最新的版本的体积急剧膨胀，相对老的版本，最新版本是Oganov教授团队采用 Python 将 USPEX-9.4.4 (MATLAB)改写了一遍，无大的新功能增加，发布时间较短，质量无法得到保证。更主要的是，USPEX-9.4.4 有中文文档！</p>
+</li>
+<li><p>确保机器上有 MATLAB 或者Octave，假如都没有，并且机器与外网隔离的情况下，可以参考这个安装 MATLAB( https: &#x2F;&#x2F;blog.csdn.net&#x2F;pihuanwan3227&#x2F;article&#x2F;details&#x2F;84849969 ), 参考这个安装Octave (<a target="_blank" rel="noopener" href="https://www.cnblogs.com/freeweb/p/7124589.html)%E3%80%82">https://www.cnblogs.com/freeweb/p/7124589.html)。</a></p>
+</li>
+<li><p>接下进行安装: .&#x2F;install.sh，。接下来会提示让填写安装地址(如果机器里面 Octave 已经安装好，会显示 Octave。当然 MATLAB 安装好，也会显示 MATLAB)</p>
+</li>
+<li><p>接下来还有重要的最后三步（这个就是设置环境变量，能够当前用户能够直接调用 USPEX）：</p>
+</li>
+</ol>
+<ul>
+<li>vi  ~&#x2F;.bashrc  </li>
+<li>export PATH&#x3D;$PATH: &#x2F;home&#x2F;xiaoming&#x2F;EDU&#x2F;USPEX  </li>
+<li>export USPEXPATH&#x3D;&#x2F;home&#x2F;xiaoming&#x2F;EDU&#x2F;USPEX&#x2F;src</li>
+</ul>
+<p>其中&#x2F;home&#x2F;xiaoming&#x2F;EDU&#x2F;USPEX为USPEX安装目录。</p>
+<h1 id="三、进行计算"><a href="#三、进行计算" class="headerlink" title="三、进行计算"></a>三、进行计算</h1><p>在上一步中已经成功安装好 USPEX 了，这时候可以使用 USPEX 进行计算了，本教程使用的是最主流的软件组合：USPEX+VASP，本教程需要 VASP 已安装好，至于 VASP 懂不懂并不影响本教程的使用。</p>
+<h2 id="3-1-准备输入文件"><a href="#3-1-准备输入文件" class="headerlink" title="3.1 准备输入文件"></a>3.1 准备输入文件</h2><p>首先建立一个名为&#x2F;La-H&#x2F;0GPa的文件夹，进入这个文件之后，在终端输入命令： USPEX –g,然后查看文件夹 0GPa，会发现多了四个文件夹：AntiSeeds、Seeds、Specific、Submission。</p>
+<p>其中，AntiSeeds 和 Seeds 文件夹中里面的存放的的是结构文件，由于本教程使用的是VASP进行计算，故这两个文件夹放的是 POSCARS 的文件（至于为什么是POSCARS，等下解释）。而 Specific 文件夹里面放的是 VASP 进行计算时，需要的和赝势文件，而 Submission 文件夹里面放的是 USPEX 各种方式提交任务的脚本。这 4 个文件夹是 USPEX 程序自动生成的，因而需要进入每个文件夹里面进行修改或者准备所需要的输入文件。接下来我们一个个文件来进行详细说明（划重点）。</p>
+<p>a. AntiSeeds 文件夹，这个文件顾名思义，就是禁止 USPEX 生成的结构的种子文件，与 Seeds 文件夹作用相反，并且这个功能不常使用，本教程 AntiSeeds 文件夹就不设置，不用管它，直接考虑 Seeds 文件夹。</p>
+<p>b. Seeds文件夹，这个文件夹就是USPEX计算时，需要种子文件存放的地方。好了，既然需要种子文件，那么我们来准备种子文件吧。本教程要进行搜索的是 La-H 体系，那么开始准备La、H结构文件吧。首先到日本晶体结构数据NIMS网站(<a target="_blank" rel="noopener" href="https://crystdb.nims.go.jp/crystdb/search-materials">https://crystdb.nims.go.jp/crystdb/search-materials</a>: 免费注册且免费下载，并且里面结构文件多数有其引用的相关文献)上找结构。</p>
+<pre><code>1）、 把这两种元素的cif结构文件全部下载下来；
+
+2）、用VESTA 
+(http://www.jp-minerals.org/vesta/en/download.html：下载后解压即可使用，功能很强大的软件) 打开，另存为VASP5 格式的POSCAR文件；
+
+3）、打包上传到机器上刚刚建立的/La-H/0GPa /Seeds文件下；
+
+4）、包把La和H的POSCAR文件合并为一个文件，并命名为POSCARS (1、可以使用cat 命令合并，如：cat POSCAR_La* POSCAR_H &gt;&gt; POSCARS，2、建议查看一下POSCARS文件格式，假如有类似乱码的东西，dos2unix POSCARS百度了解一下)。
+</code></pre>
+<p>c. Specific文件夹,这个文件夹主要存放的是USPEX控制的VASP进行计算的输入文件，由于本教程是La-H体系在0 GPa的变组分结构搜索，主要是用VASP计算USPEX生成结构的能量，因而这个文件内主要是POSCAR进行结构优化的文件：<br>INCAR_1-5: 这样设置的主要原因：考虑有你的初始结构通常远离局部最小点，在这种情况下，</p>
+<p>INCAR_1，2首先应该在保持体积固定的情况下（ISIF&#x3D;4）弛豫原子和晶胞形状，然后在INCAR_3，4中做完全弛豫（ISIF&#x3D;3），在INCAR_5中完成非常精确的单点计算（ISIF&#x3D;2，NSW&#x3D;0）（至于更具体的细节问题，手册上有详细的描述，请查看手册第3章第3.4小节）。值得注意的是：K点设置由USPEX自动生成了，无需考虑。</p>
+<p>d. Submission文件夹, 这个文件夹主要是USPEX来提交计算任务和检查计算任务的情况的一些脚本。一般情况下，提交计算任务都是通过登陆到服务器上进行提交，那么这时候需要修改submitJob_local.m和checkStatus_local.m这两个脚本。</p>
+<p>e. INPUT.txt</p>
+<p>USPEX 自动生成的4个文件夹已经处理好了，那么接下来就是控制USPEX计算的输入文件：INPUT.txt  (固定名字的文件)，在&#x2F;La-H&#x2F;0GPa文件通过文本编辑器(vi INPUT.txt)，把上面的内容输入进去，并并保存，下面来解释每行代表的意思，这是超级重重点。</p>
+<p>上图都是USPEX计算输入控制文件：INPUT.txt主要内容，棕黄色的数字标志是行数，只是为了显示方便，不是需要输入的内容。</p>
+<pre><code>1-3行、为注释说明行。
+第4行、为选择计算类型行，主要是选择什么样的计算方法进行不同类型的计算，目前USPEX支持四种计算方法分别为：USPEX、VCNEB、META、PSO等。但目前采用变组分结构搜索的话，选用其王牌类型，USPEX就行，其他方法请参阅手册
+第5行、需要计算的结构类型、是否为分子和是否为变组分计算，301：3代表了三维块状结构，0代表了不是分子，1代表了采用变组分。
+第6行、1是代表了进行结构搜索最稳定结构时采用了生成焓作为筛选标准，当然还有其他标准：体积，硬度，结构有序度等等，详情参阅手册。
+第7行、1代表了设置允许系统自动进行进化的变分操作，这个设置能加快运算。
+第9-11行、是设置需要计算的体系，本教程是La-H体系，所以在第10行输入La H, 当然你也可以在第10行输入 La H 的原子序数：57 1 ，这样也是被允许的。
+第13-16行、设置上面你设置的体系原子的个数之比，表示着：LaxHy，也就是说任意x个La和任意y个H的结构都是可以生成的。假如需要生成任意x个La和任意2y个H的结构怎么设置？
+第17-24行、设置关于生成结构的数目，第20行populationSize设置除了第一代，其余以后每代生成的结构的数目，第21行initialPopSize设置第一代生成的结构的数目，第22行numGenerations，设置总共计算的最大代数。第23行stopCrit设置多少代的最好结构结构都一样就停止USPEX计算。第24行是设置是否重新优化幸存的结构，默认是0，意思就是不重新优化。（需要注意的是，这里的设置的大小，大致上决定你需要优化的结构的数目）
+第25-29行、设置允许生成LaxHy结构中8&lt;=x+y&lt;=18，这样设置能够更好锁定搜索结构的范围，当然越小计算量越少了，这个主要看个人选择了，但是minAt和maxAt不要相差太大，太大容易出错或者最后结果漏掉一些结构，手册上有推荐选择范围，自己参阅考虑。
+第30-37行、设置遗传变分操作的具体细节的，主要设置各个操作的所占比例，fracGene:基因遗传占的比例，fracRand：随机生成的占比例，fracAtomsMut:原子摄动占的比例，fracTrans：晶格转变占的比例，fracLatMut：点阵摄动占的比例。注意：所有比例之和必须为1。
+第39行、这行是设置体系的压强大小，单位是GPa, 0是不施加外压。当然了前面提到的文章，压力有150 GPa 和 300 GPa，在相应的压力下进行搜索时，应该此处改为150 或 300。
+第41-46行、是设置调用的外部程序执行具体计算用的，1代表了调用VASP，1 1 1 1 1  跟Specific 文件夹里面INCAR_1、INCAR_2、INCAR_3、INCAR_4、INCAR_5遥相呼应，表示一个结构需要优化5次得到精确的能量值。
+第48行、设置USPEX一次总共提交多少个任务，
+第49行、设置提交任务方式，1设置为local，毕竟USPEX一般都是安装在服务器上面的。
+第51-56行、设置重新启动USPEX运算，这个设置应该好好琢磨一下，尤其是第54行pickUpYN，0是不进行计算，1是进行重新计算，第55行pickUpGen根据你的结果文件夹results*里面的generation*的数目进行设置，第56行pickUpFolder是根据哪个结果文件夹results*进行重新计算，这3行一定要配合使用，是相关联的。当然本教程是进行新计算，都设置为0，即可，这个弄明白了，重新计算时，可以节省大量时间。
+</code></pre>
+<p>好了，La-H 体系不同压强下变组分结构搜索的INPUT.txt的主要设置内容介绍完毕。</p>
+<p>f. 最后一项设置，就是提交整个USPEX的脚本了，很简单的shell脚本，任何一个机器上提交USPEX任务，都可以用这个，只是切记一定要把这个脚本命名好。如果在自己机器上使用了MATLAB把 –o 去掉就行了，-o的意思是使用octave。</p>
+<h2 id="3-2-提交USPEX任务"><a href="#3-2-提交USPEX任务" class="headerlink" title="3.2 提交USPEX任务"></a>3.2 提交USPEX任务</h2><p>如果前面一切输入文件准备好了之后，那么我们可以开始了神奇的USPEX变组分结构搜索之旅了。终端输入命令：n nohup .&#x2F;uspex_Lah0.sh &gt;&gt; log &amp;（其中uspex_Lah0.sh就是1.f中提到的提交USPEX任务的脚本）。</p>
+<h1 id="四、官方算例1（EX01-3D-Si-vasp）"><a href="#四、官方算例1（EX01-3D-Si-vasp）" class="headerlink" title="四、官方算例1（EX01-3D_Si_vasp）"></a>四、官方算例1（EX01-3D_Si_vasp）</h1><p>案例1，0 GPa下的Si( 一个晶胞里面8个原子)<br>我们先把案例1拷贝到当前目录下：USPEX –c 1</p>
+<h2 id="1、输入文件"><a href="#1、输入文件" class="headerlink" title="1、输入文件"></a>1、输入文件</h2><p>其中reference里面是案例1的计算结果，属于参考答案，等下我们来分析一下里面的文件。现在我们先考虑一下，USPEX计算需要哪些文件夹？这里是不是还少了一些文件夹？少哪些了？答案很简单嘛：USPEX –g ，然后我们看看INPUT.txt，了解一下这个案例是做什么的。</p>
+<pre><code>第5行、calculationMethod （计算方法）：USPEX（遗传演化算法，也就是遗传、变异遗传算法那套原理的改进版）。
+第6行、calculationType（计算类型）：300 （3：三维、0：非分子、0：非变组分）
+第7行、optType（优化类型）：1（焓值）
+第8行、AutoFrac ？？：我也不记得了。。。不要怕，前面不是讲过怎么查看参数嘛！USPEX -p AutoFrac
+第11行、Si：计算的体系的原子类型
+第15行、8：计算的体系的原子类型的个数为8
+第20行、populationSize (每代多少结构)：20
+第21行、numGenerations（要计算多少代）：25 (这个代数，是最多要计算的代数，假如达到收敛的条件，可以在提前结束)
+第22行、stopCrit（收敛的条件）：8 （单位：代。意思就是假如连续有8代的最优结构的优化类型（本例中为焓值）是一样，那么证明计算收敛了，可以停止计算了）
+第23行、bestFrac（上一代用于生成下一代结构的比例）：0.6 （这个值默认值是0.7，在0.6-0.8之间是合理的）
+第27行、fracGene（本代由遗传生产结构的比例）：0.5
+第28行、fracRand（本代由晶体对称性随机产生结构的比例）：0.2
+第29行、fracAtomsMut（本代由较小的突变产生结构的比例）：0.2
+第30行、fracLatMut（本代由点阵突变产生结构的比例）：0.1
+特别需要注意的是：fracGene+ fracRand+ fracAtomsMut+ fracLatMut = 1
+第35行、计算总能软件的代码：1 1 1 1 1（VASP、采用5步优化，那么Specific应该有哪些文件了？请到入门教程找找）
+第39行、计算总能的K点密度设置：0.13 0.11 0.10 0.08 0.06（这个值越低、K点越密集）具体描述如下：USPEX -p KresolStart 。不懂哪个参数就USPEX -p
+第43行、运行总能计算软件的指令：一般建议不在这个设置这个参数，直接在Submission文件夹里面提交计算任务的脚本里面改就可以了。
+第46行、whichCluster(采用什么计算方式)：一般采用1，同第43行原理。
+第47行、numParallelCalcs（并行计算数）：10 (意思就是一次提交10个总能计算任务)
+第48行、ExternalPressure（计算外压）：0.00001 (GPa、老朋友啦，不解释了)
+</code></pre>
+<p>把这个INPUT.txt读完以后，案例1就是搜索包含8个Si原子的晶胞在大气压最稳定的结构。</p>
+<p>返回INPUT.txt目录，USPEX计算4大准备目录：AntiSeeds、Seeds、Specific、Submission和提交任务脚本EX01-3D_Si_vasp.sh。</p>
+<pre><code>a、AntiSeeds文件夹没特别需要，不用理它；
+b、Seeds文件夹，需要从NIMS下载所有稳定的Si结构，最后做成一个POSCARS，具体操作，读者需要自己动动手了，参考入门教程；
+c、Specific文件夹本案例中已经准备好了；
+d、Submission文件夹，读者需要自己动动手了，参考入门教程。
+f、EX01-3D_Si_vasp.sh：本案例已经准备好了，需要注意的一点就是USPEX –r –o &gt;&gt; log / USPEX –r &gt;&gt;log : (Octave/ MATLAB用哪个自己修改)。
+</code></pre>
+<h2 id="2、计算"><a href="#2、计算" class="headerlink" title="2、计算"></a>2、计算</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup ./EX01-3D_Si_vasp.sh &gt;&gt; log &amp; </span><br></pre></td></tr></table></figure>
+
+<p>在计算的过程中会出现一个重要的文件夹results1，results1里面放的就是计算结果，随着计算的时间的增长，里面会有文件夹generation1、generation2、generation3…，还有一些其他文件。但是肯定包括reference(参考答案)里面的文件，文件夹reference包含了计算结果，但是笔者先提醒一下，本次计算的目的：搜索8个Si原子的晶胞在大气压下最稳定的结构。<br>那么带着目的和INPUT.txt，我们来看一下计算结果。</p>
+<h2 id="3、输出文件"><a href="#3、输出文件" class="headerlink" title="3、输出文件"></a>3、输出文件</h2><p>我们先来看最需要的答案：BESTgatheredPOSCARS和BESTIndividuals，这两个文件是定组分变胞计算的最最重要的文件，并且相互对应。</p>
+<ul>
+<li><p>先看看BESTIndividuals：顾名思义，这个文件里面存着每一代最稳定的结构！</p>
+<p>  第1行标题，Gen是generation的缩写，USPEX计算时种群的代数；ID是USPEX计算时给每个结构做的标记，这个数值一般就是整个USPEX计算时产生第几个结构；Origin表示这个结构由什么遗传算法操作产生的；Composition成分；Enthalpy焓值；Volume、Density、KPOINTS这三个看字面意思就能明白了，SYMM代表空间群对称性，这个数字代表1-230个空间群代表；Fitness、Q_entr、A_order 、S_order这些都是代表晶胞有序度相关的量，都是根据fingerprint这篇文章里面定义的(doi:10.1107&#x2F;S0108767310026395)！</p>
+</li>
+<li><p>好了，我们把标题了解完了，来查看结果：焓值越低，结构越稳定！显然可见第13代（第15行）的ID301结构最稳定，而这个结构是从第12代ID276结构继承来（Origin: keptBest）,那么可以从这个文件里面看到USPEX计算过程中，最稳定的结构一代代遗传演化过程！</p>
+</li>
+<li><p>既然我们已经得到最稳定的结构的ID是301，那么它的具体原子坐标了？这时候该BESTgatheredPOSCARS出马了！从文件名字意思可以猜出这是最好的结构的原子坐标的集合，当然POSCAR这个就可以看出是以VASP的POSCAR形式存储的。既然我们有ID&#x3D;301这个目标，看一下这个结构在文件里面哪一行？</p>
+<p>  <code>grep 301 -n BESTgatheredPOSCARS</code></p>
+<p> 在文件里面的193行，现在我们打开文件，定位到这一行。</p>
+</li>
+<li><p>整个文件是VASP5格式的POSCAR集合，打开文件定位到这一行的时候，ID&#x3D;301这个结构是位于文件的最后，而上一个结构是EA276，上上一个结构是EA254…而EA301是第13代最稳定的结构，EA276是第12代最稳定的结构，EA254是第11代最稳定的结构。。。可以看出BESTgatheredPOSCARS的结构原子坐标和BESTIndividuals每一代的最稳定的结构是一一对应的，那么BESTgatheredPOSCARS里面的结构原子坐标也是一代代最稳定的结构步步演化过程。</p>
+</li>
+<li><p>把BESTIndividuals和BESTgatheredPOSCARS理解透彻了，其余的文件根据文件名字也能知道里面存放的具体数据是什么。比如文件Individuals里面放的是所有结构的焓值、体积、密度和有序度等信息，gatheredPOSCARS里面放的是所有的结构的原子坐标，Parameters.txt就是INPUT.txt的副本。余下的文件里面值得注意的就是OUTPUT.txt，这个文件是USPEX计算过程的软件自身的log文件。</p>
+<p> 里面包含了对于整个USPEX计算的解释，随着每一代计算的结束，OUTPUT.txt。这个文件里面也会有对于这一代计算的总结，整个计算结束以后，USPEX也会做出总结。总而言之，OUTPUT.txt就是log文件，假如不明白USPEX怎么计算的，或者USPEX计算过程出错了，在这里都能找到原因。</p>
+</li>
+</ul>
+<h1 id="五、官方算例2（2-8）"><a href="#五、官方算例2（2-8）" class="headerlink" title="五、官方算例2（2-8）"></a>五、官方算例2（2-8）</h1><h2 id="案例2"><a href="#案例2" class="headerlink" title="案例2"></a>案例2</h2><ul>
+<li><p>主要目标：在100 GPa，MgAl2O4（28个原子的单胞）使用GULP(General Utility Lattice Program，<a target="_blank" rel="noopener" href="http://gulp.curtin.edu.au/gulp/%EF%BC%8C%E4%BD%BF%E7%94%A8%E5%8A%9B%E5%9C%BA%E6%96%B9%E6%B3%95%E8%BF%9B%E8%A1%8C%E8%AE%A1%E7%AE%97%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%8C%85%EF%BC%8C%E9%87%8C%E9%9D%A2%E6%9C%89%E5%BE%88%E5%A4%9A%E6%9C%89%E6%84%8F%E6%80%9D%E7%83%AD%E5%8A%9B%E5%AD%A6%E8%AE%A1%E7%AE%97%E5%8A%9F%E8%83%BD%EF%BC%8C%E6%9C%89%E6%9C%BA%E4%BC%9A%E5%86%8D%E4%BB%8B%E7%BB%8D">http://gulp.curtin.edu.au/gulp/，使用力场方法进行计算的软件包，里面有很多有意思热力学计算功能，有机会再介绍</a>) -采用Buckingham势-进行变胞计算。这个案例直接揭示了地球内部物理现象，但是由于力场方法精确性不如DFT方法，所以想要更精确的结果，可以改用VASP一类的软件，同时计算时间会增长不少！</p>
+</li>
+<li><p>看完案例的简单介绍，我们来读一下INPUT.txt，复习一下定成分变胞计算怎么设置参数。</p>
+<p>第4行、 calculationMethod （计算方法）：USPEX（遗传演化算法，也就是遗传、变异遗传算法那套原理的改进版）。<br>第5行、calculationType（计算类型）：300 （3：三维、0：非分子、0：非变组分）<br>第6行、optType（优化类型）：1（焓值）<br>第7行、AutoFrac：1（允许系统自动变异演化，比用户自定义的快2倍）。一般建议设置为1即可。<br>第10行、Mg  Al  O：计算的体系的原子类型<br>第14行、4  8  16：计算的体系的Mg、Al、O的个数分别为4、8、16，也就是体系的原子总数为28的MgAl2O4。<br>第19行、populationSize (每代多少结构)：40<br>第20行、numGenerations（要计算多少代）：60 (这个代数，是最多要计算的代数，假如达到收敛的条件，可以在提前结束)<br>第21行、stopCrit（收敛的条件）：30（单位：代。意思就是假如连续有30代的最优结构的优化类型（本例中为焓值）是一样，那么证明计算收敛了，可以停止计算了）<br>第22行、bestFrac（上一代用于生成下一代结构的比例）：0.6 （这个值默认值是0.7，在0.6-0.8之间是合理的）<br>第26行、fracGene（本代由遗传生产结构的比例）：0.5<br>第27行、fracRand（本代由晶体对称性随机产生结构的比例）：0.2<br>第28行、fracPerm（本代由置换产生结构的比例）：0.1<br>第29行、fracAtomsMut（本代由较小的突变产生结构的比例）：0.2<br>特别需要注意的是：fracGene+ fracRand+ fracPerm+ fracAtomsMut &#x3D; 1<br>第35行、计算总能软件的代码：3 3 3 3 （GULP、采用4步优化，那么Specific应该有哪些文件了？等下介绍）</p>
+<p>以上就是USPEX所有用于结构优化的软件包<br>第39行、运行总能计算软件的指令：一般建议不在这个设置这个参数，直接在Submission文件夹里面提交计算任务的脚本里面改就可以了。<br>第43行、numParallelCalcs（并行计算数）：1(意思就是一次提交1个总能计算任务，计算效率太低，建议设置16个左右)。<br>第44行、whichCluster(采用什么计算方式)：一般采用1，同第43行原理。<br>第45行、ExternalPressure（计算外压）：100 (GPa)</p>
+<p>把INPUT.txt读完以后，案例2和案例1计算类型和参数设置几乎都是一样，但是需要注意的这次是采用GULP来计算的，那么问题来了！</p>
+<p><strong>问题1. Seeds 和AntiSeeds里面的种子文件采用的是GULP格式的吗？</strong></p>
+</li>
+</ul>
+<p>答：不是！还是VASP5 格式的POSCARS。另外提醒一下，种子文件都是POSCARS的形式，跟采用何种结构优化软件包无关！</p>
+<p>  <strong>问题2. Specific里面的文件怎么设置？</strong></p>
+<ul>
+<li><p>GULP计算时，ginput 和goptions一一对应，文件夹里面的文件还和INPUT.txt里面的4次结构优化对应。<br> 文件夹Submission的文件需要读者自己根据自己机器去修改了，然后假如读者机器里面有GULP的话，可以提交任务计算结果和reference对比一下。笔者在此不多说，直接看reference文件夹。</p>
+<p>里面的文件和案例2的文件都是一样的，可见定成分变胞计算结果都是由这些文件组成的。现在我们看看结果文件BESTIndividuals和BESTgatheredPOSCARS，其余文件就不再介绍了。</p>
+<p>从文件BESTIndividuals中可以看出到了第34代计算停止，之前30代的结构的焓值计算是一样，与INPUT.txt中stopCrit参数值30是对应的。既然有第34代最稳定结构的ID&#x3D;1562，那么根据ID&#x3D;1562去BESTgatheredPOSCARS中找结构，直接到文件最后找一下，另存ID&#x3D;1562的结构信息为一个文本文件，然后拖到VESTA，可以很直观的看到计算出的最稳定的结构究竟长什么样！</p>
+</li>
+</ul>
+<h2 id="官方算例3"><a href="#官方算例3" class="headerlink" title="官方算例3"></a>官方算例3</h2><p>案例3：MgSiO3（每个单胞有20个原子）使用GULP(采用Buckingham势)在知道结构参数的条件下进行结构预测。这个结构的晶格参数和后钙钛矿一致。后钙钛矿的发现（Oganov &amp; Ono, Nature 2004; Murakami et al., Science 2004）在地球科学领域是一个重大突破。<br>我们直接来来读一下INPUT.txt：</p>
+<pre><code>第11-13行、symmetries：16-74。第一次出现，设置生成结构的晶体对称性。三维晶体的取值范围：2-230。
+第42-44行、Latticevalues：2.474 8.121 6.138 90.0 90.0 90.0 = b, c, alpha, beta, and gamma values。此参数仅用作初始猜测，仅影响第一代，USPEX计算的每个结构都经过充分优化，并采用与（自由）能量最小值相对应的晶体参数。INPUT.txt中其他的参数都在案例2中讲解过一次了，就不再解释了。下面我们来继续看一下结果！
+</code></pre>
+<p>可以看出，案例3总共计算20代，共626个结构，得到最稳定的结构的原子结构之后，可以去计算MgSiO3其他的性质。</p>
+<h2 id="其他算例解释"><a href="#其他算例解释" class="headerlink" title="其他算例解释"></a>其他算例解释</h2><p><strong>案例4</strong>：预测16个C原子的最稳定的晶胞，但是使用LAMMPS优化结构计算能量，跟案例2、案例3基本上一样的，就不多介绍了!</p>
+<p><strong>案例5</strong>：预测8个Si原子的最稳定的晶胞，但是ATK里面的tight binding近似方法来优化结构计算总能，不多解释啦！</p>
+<p><strong>案例6</strong>：预测10 GPa下8个C原子的最稳定的晶胞，但是使用CASTEP优化结构计算能量，你懂的!</p>
+<p><strong>案例7</strong>：预测8个Si原子构成的二维晶体在0 GPa下最稳定的结构。<br>这个案例有点不一样，我们来直接看一下INPUT.txt，再讲一下不一样的参数怎么构成不一样的计算。</p>
+<pre><code>第5行、calculationType：-200。
+这个为什么是-2，没这个维数取值呀？不懂直接USPEX –p calculationType！
+
+可以看到2是表面结构，而-2是二维晶体结构，至于二维晶体和表面结构有什么区别？这个问题笔者不能很通俗易懂告诉大家，只能告诉你在USPEX中，二维晶体计算既不需要端点参考能也不需要衬底，而只需设置二维初始结构的厚度即可，而表面计算需要！
+
+第7行、thicknessS：3.0。初始层厚度，最后一个是大写的S，因为是Start的缩写。
+
+
+第10-12行、vacuumSize：8 9 10 12（20）？。设置真空层厚度，这是二维晶体和表面计算必须要设置的，不然的话，没有真空层，就会有作用力，计算的也就不是二维晶体。而这个参数，这里貌似设置错误了，少了1个参数。
+</code></pre>
+<p><strong>既然，我们读完INPUT.txt，那么有一个问题出来了：Seeds里面的文件怎么去设置了？还是POSCARS，里面还是放所有稳定的Si原子结构！</strong></p>
+<p>我们现在来看一下结果！总共计算了13代共295个结构。那么最后一代稳定的结构长什么样了？显然POSCAR的原子坐标，根本看不出什么，而单胞结构示意图也看不出是二维晶体，做一个3x3x3的超胞，可以看出这就是一个二维晶体！USPEX多么神奇！</p>
+<p><strong>案例8</strong>： 36个Mo原子的纳米粒子结构预测。使用Lennard-Jones对势函数的GULP进行结构优化。<br>这个案例值得看一下INPUT.txt。</p>
+<pre><code>第5行、calculationType：000。纳米颗粒结构计算。
+
+第36-38行、vacuumSize：10 10 11 12 12。真空厚度，案例7已经提到了，显然这个案例中真空层厚度值设置正确了。
+
+这个计算结果，显示在第7代一下突然找到低焓值的结构，然后一直持续到了26代，总共有20代的最稳定的结构的焓值是一样。所以到了第26代计算结束了。而我们查看第26代最稳定的结构示意图如下，也真是纳米颗粒结构！
+</code></pre>
+<p><strong>总结</strong>：</p>
+<pre><code>案例2：在100 GPa，MgAl2O4（28个原子的单胞）使用GULP采用Buckingham势-进行变胞计算。（calculationType：300）
+案例3：MgSiO3（每个单胞有20个原子）使用GULP(采用Buckingham势)在知道结构参数的条件下进行结构预测。（calculationType：300）
+案例4：预测16个C原子的最稳定的晶胞，但是使用LAMMPS优化结构计算能量。（calculationType：300）
+案例5：预测8个Si原子的最稳定的晶胞，但是ATK里面的tight binding近似方法来优化结构计算总能。（calculationType：300）
+案例6：预测10 GPa下8个C原子的最稳定的晶胞，但是使用CASTEP优化结构计算能量。（calculationType：300）
+案例7：预测8个Si原子构成的二维晶体在0 GPa下最稳定的结构。（calculationType： -200）
+案例8：36个Mo原子的纳米粒子结构预测。使用Lennard-Jones对势函数的GULP进行结构优化。（calculationType： 000）
+</code></pre>
+<p>其实可以看出，USPEX刚开始开发的时候，主要是用于定组分变胞的三维晶体最稳定的结构预测，后来功能慢慢的扩展开来，能够预测二维晶体、纳米粒子结构以及后面要讲案例中有关分子结构的预测、进化准动力学方法、表面结构预测、三元变组分结构预测方面的内容。</p>
+<h1 id="六、官方算例（9-13）"><a href="#六、官方算例（9-13）" class="headerlink" title="六、官方算例（9-13）"></a>六、官方算例（9-13）</h1><p><strong>案例9</strong>：预测有4个甲烷分子的单胞在20 GPa下最稳定结构，结构优化采用的是VASP。<br>分子？这个我们还是第一次遇到，现在来看看怎么一回事？</p>
+<p>可以看到案例9多出一个MOL_1的文件，现在我们先看看这个MOL_1文件有些什么：<br>这个文件在手册里面第5章里面有介绍，也可以在线观看（<a target="_blank" rel="noopener" href="https://uspex-team.org/online_utilities/uspex_manual_release/ChineseVersion/uspex_manual_chinese_V10.2/sect0029.html%EF%BC%89%EF%BC%8C%E9%87%8C%E9%9D%A2%E8%BF%98%E4%BB%8B%E7%BB%8D%E6%80%8E%E4%B9%88%E9%80%9A%E8%BF%87XYZ%E5%9D%90%E6%A0%87%E6%A0%BC%E5%BC%8F%E7%9A%84%E6%96%87%E4%BB%B6%E6%9D%A5%E5%88%9B%E5%BB%BAUSPEX%E4%BD%BF%E7%94%A8%E7%9A%84MOL%E6%96%87%E4%BB%B6%E3%80%82%E6%89%8B%E5%86%8C%E4%B8%8A%E9%9D%A2%E8%BF%99%E5%9D%97%E8%AE%B2%E7%9A%84%E6%8C%BA%E9%BA%BB%E7%83%A6%E7%9A%84%EF%BC%8C%E8%AE%A9%E7%AC%94%E8%80%85%E6%91%B8%E4%B8%8D%E7%9D%80%E5%A4%B4%E8%84%91%EF%BC%8C%E6%AF%95%E7%AB%9F%E7%AC%94%E8%80%85%E5%AF%B9%E4%BA%8E%E5%88%86%E5%AD%90%E6%8E%A5%E8%A7%A6%E7%9A%84%E5%B0%91%E3%80%82%E4%BD%86%E6%98%AF%E4%BB%8E%E6%9C%B1%E5%BC%BA%E5%8D%9A%E5%A3%AB%E7%9B%B8%E5%85%B3%E8%AE%BA%E6%96%87%E4%B8%AD%EF%BC%8C%E5%8F%AF%E4%BB%A5%E8%AF%BB%E5%88%B0%E8%BF%99%E4%B8%AA%E6%96%87%E4%BB%B6%E8%AE%BE%E7%BD%AE%E7%9A%84%E4%BD%9C%E7%94%A8%EF%BC%9A%E5%9C%A8USPEX%E4%BA%A7%E7%94%9F%E5%88%86%E5%AD%90%E7%BB%93%E6%9E%84%E7%9A%84%E6%97%B6%E5%80%99%E8%BF%9B%E8%A1%8C%E7%BA%A6%E6%9D%9F%EF%BC%8C%E8%BF%99%E6%A0%B7%E5%A4%A7%E5%A4%A7%E9%99%8D%E4%BD%8E%E6%90%9C%E7%B4%A2%E7%A9%BA%E9%97%B4%EF%BC%8C%E5%87%8F%E5%B0%91%E8%AE%A1%E7%AE%97%E9%87%8F%EF%BC%9B%E5%85%B6%E6%AC%A1%EF%BC%8C%E4%BB%BB%E4%BD%95%E5%88%86%E5%AD%90%E7%9A%84%E8%83%BD%E9%87%8F%E5%80%BC%EF%BC%8C%E9%83%BD%E8%A6%81%E6%AF%94%E5%85%B6%E5%88%86%E8%A7%A3%E4%B8%BA%E6%B0%B4%E5%92%8C%E7%9B%90%E7%9A%84%E5%8C%96%E5%90%88%E7%89%A9%E7%9A%84%E8%83%BD%E9%87%8F%E5%80%BC%E4%BD%8E%E3%80%82">https://uspex-team.org/online_utilities/uspex_manual_release/ChineseVersion/uspex_manual_chinese_V10.2/sect0029.html），里面还介绍怎么通过XYZ坐标格式的文件来创建USPEX使用的MOL文件。手册上面这块讲的挺麻烦的，让笔者摸不着头脑，毕竟笔者对于分子接触的少。但是从朱强博士相关论文中，可以读到这个文件设置的作用：在USPEX产生分子结构的时候进行约束，这样大大降低搜索空间，减少计算量；其次，任何分子的能量值，都要比其分解为水和盐的化合物的能量值低。</a></p>
+<p>进行分子结构预测时的INPUT.txt又需要注意哪些呢？</p>
+<pre><code>第5行、calculationType：310 三维分子定组分。
+第14行、numSpecies：1 4，这个官方案例有点问题，少了一个1，知道为啥不？
+第35-38行、IonDistances，设置不同原子类型之间的最小原子间距离矩阵，而低于离子距离低于这个距离都被认为没有物理意义的，将被忽略！这里只有两种原子，所以只设置两行就行！第36行的2.0，表示C原子和C原子之间的最小距离，1.7表示C原子和H原子之间的最小距离；第37行的0.7表示H原子和H原子之间的最小距离。这些值都要比真实健值要小！
+
+第40-42行、MolCenters，设置分子中心之间最小距离的矩阵，而任何低于这值的距离都表明分子有很大的重叠，是没有物理意义的，将被严格避免！第41行的2.8表示CH4的最小距离，单位为埃。进行分子结构预测时，这个必须设置！
+
+INPUT.txt其余的参数在前面的案例中，已经介绍了。可以看出结构优化时，计算CH4结构的能量采用的是VASP，那么Specific文件夹里面就是INCAR五部曲和C、H原子的赝势！当然进行计算时，Seeds文件夹依旧是POSCARS，里面放的是C、H原子的最稳定的结构！可以看到除了多了MOL_1文件和INPUT.txt部分参数不一样外，分子结构预测跟其他晶体预测设置不一样？
+</code></pre>
+<p>下面我们来看看参考结果的reference文件夹：</p>
+<p>里面也有MOL_1文件，这个是从之前的那个MOL_1拷贝过来的。其余的文件格式和内容与之前介绍的定成分计算的文件格式和内容都是一样！</p>
+<p>案例9总共计算了9代197个结构，其中最稳定的结构也是这个对称性最低的CH4。</p>
+<p><strong>案例10</strong>：预测有8个甲烷分子的单胞在常压下最稳定结构，结构优化采用的是DMACRYS；跟案例9类似，就不介绍了！</p>
+<p><strong>案例11</strong>：预测有2个尿素分子的单胞在常压下最稳定结构，结构优化采用的是TINKER；跟案例9、10类似，就不介绍了！</p>
+<p><strong>案例12</strong>：预测Mo-B二元体系常用最稳定的结构，变组分的结构预测，结构优化是采用Lennard-Jones对势的GULP做的。<br>案例12跟入门教程的La-H二元体系变组分结构预测是相似的，只是结构优化软件的软件包是不一样的，所以INPUT.txt就不介绍了。而在La-H二元变组分结构预测中，没来得及对计算结果进行分析，这次就在本教程对变组分的结果进行详细讨论。</p>
+<p>我们先看参考答案reference文件夹里面有哪些文件：</p>
+<p>这次文件夹里面有很多文件，又有些文件和定组分不同，但是对于变组分结构预测而言，只有extended_convex_hull、extended_convex_hull_POSCARS、extendedConvexHull.pdf和OUTPUT.txt这四个文件最重要，彻底掌握了这四个文件就掌握了变组分结构预测的结果分析。</p>
+<p>下面先来看看老朋友OUTPUT.txt，看一下Mo-B变组分运算过程的信息：</p>
+<p>可以看到总共计算了60代共5287个结构，最后列出来最稳定的成分，也就是凸包线点：Mo4、B6、MoB14、Mo4B8、Mo4B4、Mo2B6。（ps: 凸包线上稳定的单胞）。那么现在读者肯定很想知道凸包线是什么？直接打开extendedConvexHull.pdf！</p>
+<p>图中绿色的点就是本次计算的结构的，而最下面的那条黑色就是凸包线，位于这条线上的点就是热力学上稳定的结构。在本图中从左到右总共有6个落在线上的点，和OUTPUT.txt里面的6个稳定的成分是相对应的。读者应该知道能够很清楚的知道X轴代表什么意思，怎么计算的。而Y轴形成焓（Enthalpy of formation，eV&#x2F;atom）是由下面公式计算出来的：<br>Y &#x3D; (E(AxBy)-x<em>E(A)-y</em>E(B))&#x2F;(x+y)<br>在案例12中，x: Mo原子的个数，y:B原子的个数。</p>
+<p>而凸包线画法麻烦一点，先从两个端点开始，连接焓值最低点，然后找到端点到焓值最低点这段直线中下方最远的点，连线。迭代下去，直到没有一个点位于凸包线下面！<br>这条线的做法决定了稳定的结构都位于凸包线上。 假如有一个稳定的点在凸包线上方，那么它很容易分解为距离这个点最近的凸包线上的两个稳定点，有点类似直线方程的意思。</p>
+<p>读者需要仔细体会上面一段内容，因为理解了上面的观点也就明白了变组分结构预测中凸包线的意思，那么一大堆相关论文也就会明白了。<br>既然我们得到知道稳定的成分，那么它们具体的结构是什么了？先看一下extended_convex_hull文件：</p>
+<p>这个文件有些意思，第1-4行解释了extended_convex_hull文件的X、Y和Fitness这些标题的含义，其中X、Y和extendedConvexHull.pdf中X、Y轴是一一对应的，而Fitness这个就是结构离凸包线的距离，值为0意思就是在凸包线上，而值大于0就是在为凸包线上方，那么一个小小的思考题来了：为什么这个文件中没有Fitness值小于0的？（提示：思考凸包线的画法）</p>
+<p>现在我们把注意放在第7-12行，因为它们Fitness的值为0，也就是说它们就是凸包线上的点。再看一下它们的Compositions和Enthalpies值，与OUTPUT.txt里面的值是一一对应的，综合以上信息，可以确定以上6个结构就是我们要找的稳定结构。从第13行往后就是根据Fitness从小到大排下去的，也可以认为这是根据稳定性排下去的，当然大部分情况下，这些结构都是不需要考虑的！既然我们知道要找到的稳定结构，那么怎么找到这些结构的原子坐标？这就需要看看extended_convex_hull_POSCARS了：</p>
+<p>整个文件就是POSCAR的集合，并且每个结构的表头和之前的BESTgatheredPOSCARS是一样的，再加上第1行和第25行的ID，与extended_convex_hull里面前两个稳定结构的ID是一一对应的，那么显而易见extended_convex_hull_POSCARS文件和extended_convex_hull文件里面的结构是一一对应的。</p>
+<p>既然知道这些预测出的稳定新结构了，就可以继续通过DFT计算它们的性质，然后得到数据，发Paper了，这还不简单？<br>这就是变组分结构预测需要了解和处理的文件：extended_convex_hull、extended_convex_hull_POSCARS、extendedConvexHull.pdf和OUTPUT.txt。除了凸包线画法需要用心体会，其余很简单吧！</p>
+<p><strong>案例13</strong>：USPEX能很容易地找到最无序的合金结构。这个案例只是为了演示TixCo(1-x)O。您需要在&#x2F;Seeds&#x2F;POSCARS中指定初始结构，并且只使用置换突变操作。（在这种情况下，不需要使用任何外部代码。在这个例子中，我们优化（最小化）结构有序度（Oganov and Valle（2009）；Lyakhov Oganov Valle（2010））而不需要进行结构优化（abinitioCode&#x3D;0）。种子结构（Ti-Co-O结构的超级细胞）中的Ti原子和Co原子被置换，以寻找具有最小的有序度。在这种情况下最小化有序度，我们得到了“特殊准随机结构”的广义形式。）</p>
+<p>这个案例的说明比较饶舌，还是直接看INPUT.txt吧：</p>
+<pre><code>第6行、optType: -4，寻找有序最小的结构！因为4是寻找有序度最大的结构，所以-4是相反的意思。
+第30行、howManySwaps：15，设置为这个值，是因为在第29行设置本次计算的子代结构都是通过交换父代结构中的原子产生的。本次计算的Co16Ti16O64的单胞，总共有96个原子，这个值占比15%左右。
+
+第32-34行、specificSwaps：
+
+1 2，指明只有Co、Ti原子能进行置换。
+</code></pre>
+<p>其余没有什么新鲜的参数要介绍了，不过读者可能会注意到，本次并没有进行结构优化，或者说是调用外部软件进行计算。都是USPEX通过自己的Fingerprint算法来计算有序度，这个具体是怎么一回事？可以参考这个在线网址(<a target="_blank" rel="noopener" href="https://uspex-team.org/online_utilities/fingerprints2/)%E3%80%82">https://uspex-team.org/online_utilities/fingerprints2/)。</a></p>
+<p>好了，再把Seeds&#x2F;POSCARS文件准备好：放入Co、Ti、O原子所有稳定的结构信息进去就OK了。至于计算，本地计算就可以。我们先来看看结果吧（由于这次是300计算，结果只是需要关注BESTIndividuals、BESTgatheredPOSCARS、OUTPUT.txt），先看一下BESTIndividuals文件：</p>
+<p>可见BESTIndividuals文件还是跟以前，到文件末尾总共有50代 (本图志截取到19代 )，那么问题又来了，我们需要预测的结构长什么样了？我们接着打开BESTgatheredPOSCARS文件：可以看出这个结构还是比较复杂的，有点无序的感觉，有点高熵合金的感觉。</p>
+<p><strong>总结</strong>：</p>
+<pre><code>案例9：预测有4个甲烷分子的单胞在20 GPa下最稳定结构，结构优化采用的是VASP。310
+案例10：预测有8个甲烷分子的单胞在常压下最稳定结构，结构优化采用的是DMACRYS； 310
+案例11：预测有2个尿素分子的单胞在常压下最稳定结构，结构优化采用的是TINKER； 310
+这三个都是分子结构预测：310类型的，所以只详细的介绍了310。
+
+案例12：预测Mo-B二元体系常用最稳定的结构，变组分的结构预测，结构优化是采用Lennard-Jones对势的GULP做的。301
+这个案例主要是介绍了结果分析，其中关于凸包线的那段值得读者思考一下，弄明白了，很多Paper都能理解了。
+
+案例13：预测最无序的TixCo(1-x)O合金结构。300
+这个案例主要介绍无序结构预测，有点准随机的感觉，目前笔者感觉其在高熵合金方面有潜在用途。
+</code></pre>
+<h1 id="七、官方案例讲解（14-15）"><a href="#七、官方案例讲解（14-15）" class="headerlink" title="七、官方案例讲解（14-15）"></a>七、官方案例讲解（14-15）</h1><p><strong>案例14</strong>：通过进化准动力学(Evolutionary metadynamics)预测下常压下Si的低能亚稳结构，结构优化采用的是VASP。<br>这个案例就是为了展示Evolutionary Metadynamics强大的威力，其实最近为了演示水分子结晶问题这一科学热点问题，Metadynamics出了很大一把力。下面还是闲话少说，我们来看看怎么设置计算和分析结果的。<br>先看一下INPUT.txt</p>
+<pre><code>第1行、calculationMethod: META，第一次看到不是USPEX，而是META(Evolutionary metadynamics)。
+第8行、minVectorLength: 2.0，设置生成的子代结构最短的健长
+
+第9行、maxVectorLength：8.0，这个值是Evolutionary metadynamics独有的，是设置最大的健长，假如在进化准动力学计算中，单胞的健长没有处在最小健长和最大健长之间，那么在计算时，软件会自动校正，使晶胞进入正常的范围。
+
+
+第15行、mutationDegree：3.0、设置软模突变(softmutation)的程度，单位为埃。简单一点的意思就是设置晶格某个原子位置方向的突变距离。在Evolutionary metadynamics算法中，晶胞都是通过软模突变生成子代结构的。
+
+
+第16行、：GaussianHeight：250.0，进化准动力学专门的参数，用来促进晶胞相变，具体的值跟晶格常数和剪切模量相关。
+
+第17行、GaussianWidth：0.3。有高斯高度，那么肯定会有一个高斯宽度了！作用和GaussianHeight一样，但是这个参数只和晶胞最小长度有关。
+
+第18行、FullRelax：2，metadynamics原理是晶胞在某个方向上，长度发生变化，然后进行固定体积结构优化。而这个FullRelax就是设置结构优化的程度，可以理解为精度，0：精度最低，1：精度一般，2：精度可靠，大部分计算都采用2。
+</code></pre>
+<p>好了，进化准动力学参数介绍就介绍了到这里了。但是读者可能会有点好奇，这里为什么我们没有设置体系？ 因为不需要！META计算类型，计算很特别的:</p>
+<p>不需要设置Seeds&#x2F;POSCARS文件，因为计算时一般采用POSCAR_1作为初始结构，然后通过软模突变(softmutation)生成子代结构，然后结构优化，选择最稳定结构迭代下去，另一个需要注意的是这个计算截止条件是INPUT.txt里面设置的代数。</p>
+<p>好了我们来处理一下结果，这里需要提一句的就是，进化准动力学是寻找跟初始结构相差不是很大的亚稳结构，因而每一代焓值最低的结构都要考虑。我们来看一下参考文件夹reference</p>
+<p>这里面有很多文件很熟悉，看着名字也能猜出文件里面放的是什么，那么META(进化准动力学) 最重要的文件就是BESTIndividuals_relaxed 和BESTgatheredPOSCARS_relaxed这两个文件，不过我们先看一下BestEnthalpy.pdf</p>
+<p>这个图片，绿色的点连成的红色虚线是未完全弛豫的最好结构的焓值，而蓝色的线则是完全弛豫结构的焓值。<br>接着打开BESTIndividuals_relaxed，熟悉的味道：</p>
+<p>打开BESTgatheredPOSCARS_relaxed也还是熟悉的味道，就不多解释了。</p>
+<p>不过这样打开展示结果并不是一个很好的方式，也许在BestEnthalpy.pdf的图片中添加亚稳结构的示意图会更有意思，更直观，但是不在这个教程演示了，会在案例21：EX21-META_MgO_gulp里面展示，并总结一下META方法和USPEX方法之间的对比。</p>
+<p>BESTgatheredPOSCARS_relaxed就是案例9计算最后得到的亚稳结构，在研究中，所有的这些结构都需要考虑。也许有人会感觉这个META方法有点鸡肋，但是在研究相变的时候，尤其是水分子结晶过程，这个方法很有用！</p>
+<p><strong>案例15</strong>：通过VCNEB (variable-cell nudged elastic band)预测下常压下Ar的fcc-hcp的转变过程，结构优化采用的是GULP，并采用Lennard-Jones对势。<br>闲话少说，我们先看看INPUT.txt是怎么一回事：</p>
+<pre><code>第18行、vcnebType：111，指定VCNEB计算的类型。此变量由三个指标组成：计算选项（1：VCNEB方法，2：没有VCNEB计算的结构优化模式）、虚像结构数目的可变性（0：VCNEB虚像结构的数目是固定的，1：VCNEB虚像结构的数目是固定的是可变的）和弹簧常数的可变性（0：固定的弹性常数，1：可变的弹性的常数）；111，一般是推荐在重构相变（reconstructive phase transitions）上使用。重构相变：在热力学上，重构相变在相变压力/温度下呈现出焓和体积 “跳跃”变化的特征，其中，由于原子位置的变化，自由能一阶导数（熵和体积）存在不连续性。
+
+第19行、numImages：15，执行VCNEB的初始虚像的结构的数目。
+第20行、numSteps：500，执行VCNEB计算相变路径优化时的最大步数，由于VCNEB计算的过程收敛比较慢，所以一般推荐设置为500。
+第21行、optimizerType：1，结构优化采用的算法：1、最速下降法，2、FIRE (Fast Inertial Relaxation Engine)。
+第22行、optReadImages：2，虚像结构文件（Images）类型读取选项：0，文件中包含了所有的虚像结构，1，文件中只包含初始和最后的虚像结构，2，文件包含了初始、最后和特别指定中间虚像结构。其中选项1，2其余的虚像结构都是通过线性插值获得。
+第23行、optRelaxType：3，结构优化的模式，选项：1，晶胞固定只优化原子位置，经典的NEB的方法；2，只优化晶胞点阵大小（仅仅用作测试）；3，晶胞点阵大小和原子位置都优化（变胞优化）。
+第24行、dt：0.25，结构优化的时间步，设置的值太小时收敛很慢，设置很大的时候经常产生没意义的相变路径。
+第25行、ConvThreshold：0.003，整个VCNEB计算收敛的标准：RMS（Root Mean Square forces）。
+第29行、VarPathLength：0.3，变虚像结构方法的虚像结构的路径长度批判准则。当两个相邻虚像结构之间的长度大于VarPathLength的1.5倍时，将使用线性插值方法在两个虚像结构之间添加一个新虚像结构；当长度小于该值的0.5时，将删除第二个虚像结构。
+第30行、K_min：3，单位：eV/A^2，最小的弹性常数，只在变弹性常数的VCNEB中使用。
+第31行、K_max：6，单位：eV/A^2，最大的弹性常数，只在变弹性常数的VCNEB中使用。
+第32行、optFreezing：0，达到收敛标准时，虚像结构是否还变动，0：变，1：不变。
+第33行、optMethodCIDI：0，是否采用Climbing-Image (CI)/ Downing-Image (DI)方法，推荐使用0：CI/DI方法不采用。具体讲解如下：
+</code></pre>
+<p>到此案例15的VCNEB计算参数介绍也算完成了，VCNEB就是用来研究固体相变和反应路径的，比NEB更高级一点。<br>设置完了INPUT.txt，就可以准备计算了，但是需要注意VCNEB计算不需要设置种子文字Seeds，需要设置一个Images的文件，也就是虚像结构文件，包括初始虚像结构和最终虚像结构，（VCNEB就是计算初始结构和最终结构之间的相变路径的），其采用的是VASP4的POSCAR形式，如下图所示：</p>
+<p>计算完之后，我们来看看结果!</p>
+<p>里面有很多文件，我们不认识，但是没关系的，很多文件通过文字名字也能了解很多，我们一般只熟悉EnergyBarrier.pdf和transitionPath_POSCARs即可，因为EnergyBarrier.pdf里面放的是反应路径中虚像结构和能量的图，而transitionPath_POSCARs则是这个反应路径中对应的虚像结构的POSCAR文件。综合EnergyBarrier.pdf和transitionPath_POSCARs这两个文件，可以得到如下漂亮的结果：</p>
+<p>图中，展示了初始、最终和中间鞍点的Ar结构，其余结构就没多做演示了。但是从这个这个图可以看出VCNEB计算相变路径的强大的能力。但是为什么选择这个路径了？从计算结果文件里面查看PATH这个文件夹内容，就会发现有500个相变路径（和INPUT.txt的参数numSteps对应），但是最后还是找到EnergyBarrier的反应路径（step 434），因为这个是实际情况最接近了，也可以从SelectedEnergyBarrier.pdf文件里面直观看出来为什么选择step 434：</p>
+<p>从初始的fcc-Ar结构怎么变成了最后的hcp-Ar结构了？VCNEB给出最佳路径和中间反应的一系列的结构是不是真实的？从这个方法的程序编写者钱博士（虽然他现在不从事科研，去做人工智能创业）的PPT中可以看到VCNEB还是比较有用的：</p>
+<p>上面讲了很多VCNEB在USPEX程序中的参数设置和简单的结果的文件分析，但是这个VCNEB方法跟NEB有什么区别了？或者说它的原理是什么了？可以看出在Update Images这个过程当中使用的进化算法进行迭代，其余过程和NEB计算过程都差不多。还有一个特别值得一提的是：VCNEB能够给出一个相对可靠的相变路径，但是结合TPS（Transition Path Sampling）方法，能够给出更可靠的相变路径，这是这个方法存在的意义！</p>
+<p><strong>总结</strong>：</p>
+<pre><code>案例14：通过进化准动力学(Evolutionary metadynamics)预测下常压下Si的一系列低能亚稳结构，结构优化采用的是VASP。
+案例15：通过VCNEB (variable-cell nudged elastic band)预测下常压下Ar的fcc-hcp的相变路径，结构优化采用的是GULP，并采用Lennard-Jones对势。
+</code></pre>
+<p>这两个案例比较特殊，分别介绍了META、VCNEB两个计算方法，虽然目前这两个方法用的人比较少，但是笔者相信，这两个方法对于某些工作绝对是一个有力的工具。</p>
+<h1 id="八、官方案例讲解（16-18）"><a href="#八、官方案例讲解（16-18）" class="headerlink" title="八、官方案例讲解（16-18）"></a>八、官方案例讲解（16-18）</h1><p><strong>案例16</strong>：变胞定组分预测SrTiO3（50 原子&#x2F;单胞 ）0 GPa下稳定的结构，结构优化采用的是GULP（采用Buckingham势）。（这个案例存在的意义就是为了吊打XtalOpt：也是遗传算法的结构预测软件，USPEX大体系的成功率大于90%，而XtalOpt只有7-12%）。<br>案例16是300类型，我们的老朋友了，就不介绍INPUT.txt了，直接来看结果吧。300类型的计算，结果需要看哪些文件了？BESTIndividuals和BESTgatheredPOSCARS！</p>
+<p>从BESTIndividuals可以看到本次计算了42代结构，计算了大概1400多个结构，最后得到如下的稳定结构：</p>
+<p>可见对于单胞50个原子这么大的结构，USPEX也能很快得到稳定的结果，而其中执行结构优化的GULP也功不可没呐。</p>
+<p><strong>案例17</strong>：以最高德拜温度为目的变胞定组分预测单胞8个C原子的稳定结构，结构优化采用VASP软件包。</p>
+<p>案例17还是300类型的计算，但是这次是预测具有最高德拜温度的温度结构，那么也只需要在optType参数中，将我们通用的以焓值为优化目的改为以德拜温度为目的就行了。其余的话，参数设置和一般300类型类似。但是这次需要对Specific文件里面的INCAR做一次了解，因为根据INCAR也能猜测出USPEX究竟怎么计算的。</p>
+<p>Specific文件里面有5个INCAR，可以看出第一次和第二次是定体积的结构优化，而第三次和第四次结构优化是变体积的，经过这四步结构优化得到最小能量和相应的构型，最后才做弹性常数计算，因为德拜温度和弹性常数计算相关（当然这些计算是在VASP当中完成的）。</p>
+<p>从OUT.txt中可以看出USPEX总共计算了15代共351个结构，这样计算量并不大，因为这个案例是作为演示用的，INPUT.txt里面设置的代数和每代个数并不多。</p>
+<p>300计算类型的还需要看的就是BESTIndividuals和BESTgatheredPOSCARS这两个文件。先来看看BESTIndividuals这个文件：</p>
+<p>由于这次是根据德拜温度为目标进行稳定结构预测，那么就是根据Fitness大小程度来筛选德拜温度最高的稳定结构，Fitness负的越大的结构，德拜温度更高，接下来我们来看看这个德拜温度最高的稳定结构长什么样？</p>
+<p>可以看出只需要在optType参数里面修改优化参数就能获得具有相应特殊性质的稳定结构，这些特殊性质包括：</p>
+<p><strong>案例18</strong>：三元体系Zn-O-H的变成分结构预测，结构优化还是采用GULP软件进行的。</p>
+<p>由于变组分结构预测这方面非常非常重要，我们前面也介绍过两次了，但是这次准备继续再一次仔细介绍一下，因为大部分USPEX文章都是靠这个变组分结构预测方法产生。先来看看INPUT.txt文件：</p>
+<pre><code>第4-17行是设置整个大的计算类型和体系，也就是让软件知道采用USPEX方法进行301计算，以焓值最低为目的进行优化（焓值越低越稳定）。而计算哪个体系？Zn-O-H，这三个元素以任意比例构成的结构。
+第21-25行是设置USPEX遗传算法种群大小和代数。
+第29-33行是设置遗传算法的产生子代结构的具体操作。
+第37-46行是设置外挂的第一性原理软件。
+</code></pre>
+<p>USPEX的参数设置总结起来就是，先设置体系和类型，再设置种群和遗传操作，最后设置外挂的第一性原理软件，当然从官方案例拷贝一个类型的INPUT.TXT修改一下就行，不懂的参数USPEX –p xxx，就这么简单。</p>
+<p>前面介绍过二元体系的变组分结构预测的结果处理，强调了凸包线的原理和作用，而此次是三元体系的变组分结构预测，还是凸包线吗？想想也是不可能，只能往三元金字塔相图那边想，预测结果最直观的展示就是打开compositionStatistic.pdf文件：</p>
+<p>当然看到这个图，肯定会有点懵逼的感觉了，这个图要表达什么意思，这个Stable的结构到底是哪个了？不要着急，这个只是展示结构分布的图，具体的稳定的结构从OUTPUT.txt可以得到的：</p>
+<p>这里需要抱怨一下USPEX开发者吧，这里数据并没有处理，三元体系的稳定的结构的成分为三种元素构成，前两个是整数，后一个为啥是小数了？虽然最后一位是小说看起来很别扭，但是这些结构都是我们的指路明灯，有些这些结构我们就能很有针对性和目标性的处理extended_convex_hull和extended_convex_hull_POSCARS这两个重要的文件。</p>
+<p>先来看看extended_convex_hull这个文件，这个和二元体系有什么区别，其实是没多大区别的，但是二元体系里面的数据能够生动的和凸包线结合在一起，二元体系里面前面的几行的数据和OUTPUT.txt里面总结出来的稳定结构一一对应，也就是说都是凸包线上的点。而三元体系的数据有点让人摸不着头脑的感觉，看看前面几行的数据和OUTPUT.txt得到的稳定结构对应不上，只能根据OUTPUT.txt得到的稳定结构的成分来搜索。比如想找Zn1O5H10这个成分的稳定结构，直接<br><code>grep &quot;1  5 10&quot; extended_convex_hull</code><br>一下子就能extended_convex_hull找到好几个成分为Zn1O5H10的结构，当然是焓值最低的结构最稳定，那么ID为9219的结构最稳定了，既然知道了稳定的结构的ID，那么它的原子坐标信息也就好办了，直接上extended_convex_hull_POSCARS搜索一下就行：<br>grep -n EA9219 extended_convex_hull_POSCARS</p>
+<p>很简单一个命令就能找到ID为9219的原子坐标信息所在的行数，那么知道行数以后，直接去extended_convex_hull_POSCARS找。</p>
+<p>当然这只是一个结构的处理，OUTPUT.txt那么多稳定的结构还等待读者去处理。当然可以一个个手工去处理，也可以写一个简单脚本去处理。接下来请稍微深入的思考一下：三元体系变组分的有了这么一个初步的结果，怎么把这些结果变成paper了？下面一篇文章能够得到很好答案。<br>doi: 10.1038&#x2F;srep18347 (2015)</p>
+<p>对于三元变组分结构预测，笔者还有一些需要说道一下：三元变组分搜索的计算巨大，比二元变组分计算量大的不只是一点点，并且准确率还是一个值得考虑的问题，所以一般并不建议采用这个三元体系去计算，除非计算资源很大，并不考虑投入产出的问题，存粹只是为了科研。</p>
+<p>就拿Zn-O-H这三元体系计算来说，问题还是比较大的，总共计算了9339种结构，并且每种结构计算了5次，这就是差不多5W次计算，服务器跑起来至少一个月左右。再对结果进行进一步的处理，一个月左右的时间又过去了。这仅仅是一个压强下的结果，而实际上还需要计算不同压强的情况。此外有时候为了更好的处理三元体系的结果，还需要从三元体系里面找一些二元体系进行计算，这是一个庞大的工作。笔者在这里只是想强调三元体系计算变组分并不容易，如果准备三元体系计算变组分还需要做好心理准备。</p>
+<p><strong>总结</strong></p>
+<pre><code>案例16：变胞定组分预测SrTiO3（50 原子/单胞 ）0 GPa下稳定的结构，结构优化采用的是GULP（采用Buckingham势）。300
+案例17：以最高德拜温度为目的变胞定组分预测单胞8个C原子的稳定结构，结构优化采用VASP软件包。300
+案例18：三元体系Zn-O-H的变成分结构预测，结构优化还是采用GULP软件进行的。301
+</code></pre>
+<p>这三案例都是老朋友，前面都讲过很多次，但还是有些不一样的地方，所以这次教程比较详细的介绍了不同的地方：大体系定组分稳定结构预测、以德拜温度为目的进行定组分结构预测、计算量惊人的三元体系的变组分结构预测。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/USPEX/" rel="tag"># USPEX</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/09/09/18-47-21/" rel="prev" title="5.1">
+                  <i class="fa fa-chevron-left"></i> 5.1
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Keke Liu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

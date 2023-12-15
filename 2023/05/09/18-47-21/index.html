@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://example.com/2023-05-11-10-29-58.png">
 <meta property="og:image" content="http://example.com/2023-05-11-10-30-15.png">
 <meta property="article:published_time" content="2023-05-09T10:47:21.000Z">
-<meta property="article:modified_time" content="2023-06-27T01:01:47.840Z">
+<meta property="article:modified_time" content="2023-09-17T11:53:39.965Z">
 <meta property="article:author" content="Keke Liu">
 <meta property="article:tag" content="vasp，形成能，ISMEAR，SP，IVDW，DFT+U，磁性，表面能">
 <meta name="twitter:card" content="summary">
@@ -118,7 +118,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#VASP%E8%BE%93%E5%87%BA%E7%9A%84%E8%83%BD%E9%87%8F%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">1.</span> <span class="nav-text">VASP输出的能量是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BD%A2%E6%88%90%E8%83%BD"><span class="nav-number">2.</span> <span class="nav-text">形成能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%95%E7%82%B9%E8%83%BDSP"><span class="nav-number">3.</span> <span class="nav-text">单点能SP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E6%B4%BD%E8%AE%A1%E7%AE%97"><span class="nav-number">4.</span> <span class="nav-text">自洽计算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B0%94%E4%BD%93%E4%BC%98%E5%8C%96"><span class="nav-number">5.</span> <span class="nav-text">气体优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IVDW%E5%8F%82%E6%95%B0"><span class="nav-number">6.</span> <span class="nav-text">IVDW参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DFT-U"><span class="nav-number">7.</span> <span class="nav-text">DFT+U</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A3%81%E6%80%A7%E4%BD%93%E7%B3%BB"><span class="nav-number">8.</span> <span class="nav-text">磁性体系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A1%A8%E9%9D%A2%E4%BC%98%E5%8C%96"><span class="nav-number">9.</span> <span class="nav-text">表面优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Bulk%E8%AE%A1%E7%AE%97%EF%BC%8C%E8%8E%B7%E5%BE%97%E7%A8%B3%E5%AE%9A%E6%9E%84%E5%9E%8B%E3%80%82"><span class="nav-number">9.1.</span> <span class="nav-text">1. Bulk计算，获得稳定构型。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E8%80%83%E8%99%91%E4%B8%8D%E5%90%8C%E6%99%B6%E9%9D%A2%E3%80%81%E5%B1%82%E6%95%B0%E3%80%82"><span class="nav-number">9.2.</span> <span class="nav-text">2. 考虑不同晶面、层数。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%B7%A5%E5%85%B7%EF%BC%9AMS%E3%80%81ASE%E3%80%81P4vasp%E3%80%81vaspkit%E3%80%82"><span class="nav-number">9.3.</span> <span class="nav-text">3. 工具：MS、ASE、P4vasp、vaspkit。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MS%E6%93%8D%E4%BD%9C%E3%80%82"><span class="nav-number">9.3.1.</span> <span class="nav-text">MS操作。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ASE%E6%93%8D%E4%BD%9C%E3%80%82python"><span class="nav-number">9.3.2.</span> <span class="nav-text">ASE操作。python</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E5%B8%88%E5%85%84ASE%E8%84%9A%E6%9C%AC%EF%BC%9A%E5%88%87%E9%87%91%E5%B1%9E"><span class="nav-number">9.3.3.</span> <span class="nav-text">大师兄ASE脚本：切金属</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vaspkit"><span class="nav-number">9.3.4.</span> <span class="nav-text">vaspkit</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E8%A1%A8%E9%9D%A2%E5%BC%9B%E8%B1%AB%E8%AE%A1%E7%AE%97"><span class="nav-number">9.4.</span> <span class="nav-text">4 表面弛豫计算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E7%82%B9%E8%83%BD"><span class="nav-number">9.4.1.</span> <span class="nav-text">单点能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A8%E9%9D%A2%E4%BC%98%E5%8C%96-1"><span class="nav-number">9.4.2.</span> <span class="nav-text">表面优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E8%A1%A8%E9%9D%A2%E8%83%BD%E8%AE%A1%E7%AE%97"><span class="nav-number">9.5.</span> <span class="nav-text">5  表面能计算</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#VASP%E8%BE%93%E5%87%BA%E7%9A%84%E8%83%BD%E9%87%8F%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">1.</span> <span class="nav-text">VASP输出的能量是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BD%A2%E6%88%90%E8%83%BD"><span class="nav-number">2.</span> <span class="nav-text">形成能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%95%E7%82%B9%E8%83%BDSP"><span class="nav-number">3.</span> <span class="nav-text">单点能SP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E6%B4%BD%E8%AE%A1%E7%AE%97"><span class="nav-number">4.</span> <span class="nav-text">自洽计算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B0%94%E4%BD%93%E4%BC%98%E5%8C%96"><span class="nav-number">5.</span> <span class="nav-text">气体优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IVDW%E5%8F%82%E6%95%B0"><span class="nav-number">6.</span> <span class="nav-text">IVDW参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DFT-U"><span class="nav-number">7.</span> <span class="nav-text">DFT+U</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A3%81%E6%80%A7%E4%BD%93%E7%B3%BB"><span class="nav-number">8.</span> <span class="nav-text">磁性体系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A1%A8%E9%9D%A2%E4%BC%98%E5%8C%96"><span class="nav-number">9.</span> <span class="nav-text">表面优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Bulk%E8%AE%A1%E7%AE%97%EF%BC%8C%E8%8E%B7%E5%BE%97%E7%A8%B3%E5%AE%9A%E6%9E%84%E5%9E%8B%E3%80%82"><span class="nav-number">9.1.</span> <span class="nav-text">1. Bulk计算，获得稳定构型。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E8%80%83%E8%99%91%E4%B8%8D%E5%90%8C%E6%99%B6%E9%9D%A2%E3%80%81%E5%B1%82%E6%95%B0%E3%80%82"><span class="nav-number">9.2.</span> <span class="nav-text">2. 考虑不同晶面、层数。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%B7%A5%E5%85%B7%EF%BC%9AMS%E3%80%81ASE%E3%80%81P4vasp%E3%80%81vaspkit%E3%80%82"><span class="nav-number">9.3.</span> <span class="nav-text">3. 工具：MS、ASE、P4vasp、vaspkit。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MS%E6%93%8D%E4%BD%9C%E3%80%82"><span class="nav-number">9.3.1.</span> <span class="nav-text">MS操作。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ASE%E6%93%8D%E4%BD%9C%E3%80%82python"><span class="nav-number">9.3.2.</span> <span class="nav-text">ASE操作。python</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E5%B8%88%E5%85%84ASE%E8%84%9A%E6%9C%AC%EF%BC%9A%E5%88%87%E9%87%91%E5%B1%9E"><span class="nav-number">9.3.3.</span> <span class="nav-text">大师兄ASE脚本：切金属</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vaspkit"><span class="nav-number">9.3.4.</span> <span class="nav-text">vaspkit</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E8%A1%A8%E9%9D%A2%E5%BC%9B%E8%B1%AB%E8%AE%A1%E7%AE%97"><span class="nav-number">9.4.</span> <span class="nav-text">4 表面弛豫计算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E7%82%B9%E8%83%BD"><span class="nav-number">9.4.1.</span> <span class="nav-text">单点能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A8%E9%9D%A2%E4%BC%98%E5%8C%96-1"><span class="nav-number">9.4.2.</span> <span class="nav-text">表面优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E8%A1%A8%E9%9D%A2%E8%83%BD%E8%AE%A1%E7%AE%97"><span class="nav-number">9.5.</span> <span class="nav-text">5  表面能计算</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BA%E5%AE%9A%E5%9F%BA%E7%9F%A2%E4%BC%98%E5%8C%96%E7%BB%93%E6%9E%84"><span class="nav-number">10.</span> <span class="nav-text">固定基矢优化结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BB%91%E7%A7%BB%E8%83%BD%E5%92%8C%E5%89%A5%E7%A6%BB%E8%83%BD"><span class="nav-number">11.</span> <span class="nav-text">滑移能和剥离能</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -131,13 +131,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-06-27 09:01:47" itemprop="dateModified" datetime="2023-06-27T09:01:47+08:00">2023-06-27</time>
+      <time title="修改时间：2023-09-17 19:53:39" itemprop="dateModified" datetime="2023-09-17T19:53:39+08:00">2023-09-17</time>
     </span>
 
   
@@ -294,6 +294,32 @@
 <h3 id="表面优化-1"><a href="#表面优化-1" class="headerlink" title="表面优化"></a>表面优化</h3><p>1）POSCAR第7行加S，  <code>Sed –i ‘7a S’  POSCAR </code><br>原子坐标加F&#x2F;T。  <code>Sed  –i  ’10,11s/$/  F F F/g’  POSCAR </code><br>                 <code>Sed  –i  ’12,13,14s/$/  T T T/g’  POSCAR </code><br> <code>vaspkit –task 402/403  </code>或者ctrl+v,选中列-大写A-输入  <code>T T T </code> - ESC.<br>2）POTCAR和KPOINTS不变。<br>INCAR设置：IBRION&#x3D;1、2，EDIFF&#x3D;1E-6，EDIFFG&#x3D;-0.03（比块体小一点），ISIF&#x3D;2，<br>提交任务。</p>
 <h2 id="5-表面能计算"><a href="#5-表面能计算" class="headerlink" title="5  表面能计算"></a>5  表面能计算</h2><p>表面能是创造物质表面时，破坏分子间化学键所需消耗的能量。在固体物理理论中，表面原子比物质内部的原子具有更多的能量，因此，根据能量最低原理，原子会自发的趋于物质内部而不是表面。表面能的另一种定义是，材料表面相对于材料内部所多出的能量。把一个固体材料分解成小块需要破坏它内部的化学键，所以需要消耗能量。如果这个分解的过程是可逆的，那么把材料分解成小块所需要的能量就和小块材料表面所增加的能量相等。但事实上，只有在真空中刚刚形成的表面才符合上述能量守恒。因为新形成的表面是非常不稳定的，它们通过表面原子重组和相互间的反应，或者对周围其他分子或原子的吸附，从而使表面能量降低。<br> γ&#x3D;($E_{surf}$ - N * $E_{bulkatom}$)&#x2F;(2A)</p>
 <p>  1ev&#x2F;$Å^2$ &#x3D;16.02J&#x2F;$m^2$<br> $E_{surf}$是未弛豫的表面能量,A是表面积a*b。</p>
+<h1 id="固定基矢优化结构"><a href="#固定基矢优化结构" class="headerlink" title="固定基矢优化结构"></a>固定基矢优化结构</h1><p>在第一性原理计算时，二维材料的建模会采用在某一方向（一般是z轴方向）添加15-20 Å的真空层的方式来抵消层与层之间的相互作用。但是，当我们优化晶格常数的时候会遇到一个问题：那就是使用ISIF&#x3D;3来优化平面内晶格常数（一般是a和b）时，c轴方向的晶格长度总是随着优化变的越来越小。</p>
+<ol>
+<li><p>采用ISIF&#x3D;4的固定晶胞体积的方法来计算。这样采用实验参数建的晶胞，由于a和b方向的变化，c轴也会变化。解决了越是优化c轴越小的问题，但是计算量还是很大。</p>
+</li>
+<li><p>编译vasp，就自己编译了固定z轴的脚本，专门计算二维材料。这种方法优点是直接换脚本就能解决上面优化时c轴缩小的问题，但是我想固定两个轴就需要再编译一份脚本。比较麻烦。</p>
+</li>
+</ol>
+<p>修改constr_cell_relax.F实现固定基矢优化结构的原理：</p>
+<p>FCELL contains the forces on the basis vectors. These forces are used to modify the basis vectors according to the following equations:</p>
+<p>FCELL 是个3 * 3的矩阵，包含了晶格矢量的受力，当ISIF &#x3D; 3时，晶格矢量会按照如下的方法更新：</p>
+<p>A_OLD(1:3,1:3)&#x3D;A(1:3,1:3) ! F90 style<br>DO J&#x3D;1,3<br>DO I&#x3D;1,3<br>DO K&#x3D;1,3<br>   A(I,J)&#x3D;A(I,J) + FCELL(I,K)*A_OLD(K,J)*STEP_SIZE<br>ENDDO<br>ENDDO<br>ENDDO<br>当通过OPTCELL文件把晶格矢量在某个方向的受力改成0以后，</p>
+<p>IF (ICELL(I,J)&#x3D;&#x3D;0) FCELL(I,J)&#x3D;0.0</p>
+<p>在结构更新的时候，该方向就不会改变。完成编译后，在 INCAR 文件中设置 ISIF&#x3D;3，便可实现固定 Z 轴的结构优化。<br>对于其他方向晶格基矢的修改同理：对于a方向基矢，将 FCELL(3,I) 和 FCELL(I,3) 分别改为 FCELL(1,I) 和 FCELL(I,1) ；对于b方向基矢，则分别改为 FCELL(2,I) 和 FCELL(I,2) ；固定两个基矢则应该同时将两个方向对应的矩阵元设置为0。或参考 VASP并行可执行软件包，可对晶胞参数进行部分优化 可实现添加参数文件实现不同基矢方向固定。（未做测试）</p>
+<ol start="3">
+<li>肖承诚博士的补丁，按照肖博士的方法安装以后，在INCAR中添加如下参数即可。</li>
+</ol>
+<p>IOPTCELL &#x3D; xx xy xz yx yy yz zx zy zz</p>
+<p>上面的九个参数对应晶格常数矩阵。</p>
+<p>1 xx xy xz</p>
+<p>2 yx yy yz</p>
+<p>3 zx zy zz</p>
+<p>1代表驰豫，0代表固定</p>
+<p>此时固定c轴的设置就是如下：</p>
+<p>IOPTCELL &#x3D; 1 1 0 1 1 0 0 0 0</p>
+<p>下载地址：<a target="_blank" rel="noopener" href="https://github.com/Chengcheng-Xiao/VASP_OPT_AXIS">https://github.com/Chengcheng-Xiao/VASP_OPT_AXIS</a></p>
+<h1 id="滑移能和剥离能"><a href="#滑移能和剥离能" class="headerlink" title="滑移能和剥离能"></a>滑移能和剥离能</h1><p>材料的塑性行为主要是由于材料的结构和化学键决定的。材料发生塑性形<br>变在原子尺度上可以分解成两个过程。一个是由于原子、位错或者晶界沿着某<br>一特定方向自由运动；第二个是在这种运动过程中存在束缚力保证在其它方向<br>不会产生裂纹，导致材料的断裂。因此任何一个塑性材料必须满足两个要求，<br>一是对某些原子层存在势垒相对低的滑动方式，以确保原子、位错或者晶界可<br>以沿着这些方向滑动。另一个是在这些滑动过程中，滑移平面两侧的原子依然<br>存在某种相对强的作用力，以确保滑移过程中材料的完整性。如金属键，其自<br>由电子容易发生变形和转移，在滑移过程中金属键不断的断裂和产生，从而导致了金属的滑移能量很小。而金属键的键强度很大，保证的金属滑移过程的完<br>整性。而离子键和共价键由于配位数和方向性等要求，在滑移时必须先发生键<br>的断裂，从而阻碍滑移的进行。由范德华力连接的层状材料，虽然层与层之间<br>容易发生滑移，但其层间作用力较弱，材料在滑移过程中容易发生破坏。为了研究 α-Ag2S 的塑性行为，我们通过第一性原理对 α-Ag2S 的滑移过程进<br>行了计算。其中，我们计算的滑移面为（100）方向，滑移方向为[001]方向。其<br>滑移过程如图 6.10 所示，α-Ag2S 的滑移面沿着能量最低点进行滑移，滑移面不<br>仅发生相对移动，其面间距也会发生。因此，整个滑移路径成波浪形。 我们将滑移一个周期（滑移一个晶格常数）均分 12 步。每一步我们计算系<br>统总能量与滑移面之间距离的关系，对于塑性材料而<br>言，它需要同时具有足够小的滑移能来保证材料的滑移可以进行；以及大的解离<br>能以至于材料不会发生断裂。 </p>
 
     </div>
 
