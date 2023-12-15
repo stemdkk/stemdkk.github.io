@@ -199,7 +199,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-09-17 19:53:39" itemprop="dateModified" datetime="2023-09-17T19:53:39+08:00">2023-09-17</time>
+      <time title="修改时间：2023-12-15 11:40:31" itemprop="dateModified" datetime="2023-12-15T11:40:31+08:00">2023-12-15</time>
     </span>
 
   
@@ -271,7 +271,9 @@
 <li>表面结构的层数（3+3以上，6Å+6Å）<br>A 层数多了，原子变多，体系在 z 方向的尺寸增加，也会影响计算速度；<br>B 计算中需要弛豫的层数；<br>C 不同层数对你要计算的性质会产生影响，比如表面能；<br>D 不同晶面需要的层数也不尽相同，一般开放的表面需要更多的层数；<br>E 根据自己感兴趣的性质，选择合适的层数，也就是需要你去测试一番。</li>
 <li>Slab模型有两种，一种是上下表面对称的，一种是非对称的。对称性结构往往需要很多层，体系较大。 非对称的结构体系较小，但存在偶极矩的影响，要注意加LDIPOL 和IDIPOL这两个参数来消除。1、2、3分表代表在x、y和z 方向上进行校正，4代表在所有方向上。真空层15-20埃。</li>
 </ul>
-<h2 id="3-工具：MS、ASE、P4vasp、vaspkit。"><a href="#3-工具：MS、ASE、P4vasp、vaspkit。" class="headerlink" title="3. 工具：MS、ASE、P4vasp、vaspkit。"></a>3. <strong>工具：MS、ASE、P4vasp、vaspkit。</strong></h2><h3 id="MS操作。"><a href="#MS操作。" class="headerlink" title="MS操作。"></a>MS操作。</h3><p>一般用conventional cell。<br>MS操作。Windows<br>VESTA将CONTCAR转成cif,导入MS。<br>build-surface-cleave surface 切面<br>Surface mesh-surface vectors 可调整vector。<br><img src="/2023-05-11-10-29-44.png"><br>Surface box-top&#x2F;thickness，调整终端和厚度。<br>Build-crystals-build vaccum slab-图2-build。<br><img src="/2023-05-11-10-29-58.png"><br>Lattice parameters-advanced-re-orient to startard把真空层沿Z轴  图3。<br><img src="/2023-05-11-10-30-15.png"><br>转换成POSCAR，可优化后进一步扩胞。</p>
+<h2 id="3-工具：MS、ASE、P4vasp、vaspkit。"><a href="#3-工具：MS、ASE、P4vasp、vaspkit。" class="headerlink" title="3. 工具：MS、ASE、P4vasp、vaspkit。"></a>3. <strong>工具：MS、ASE、P4vasp、vaspkit。</strong></h2><h3 id="MS操作。"><a href="#MS操作。" class="headerlink" title="MS操作。"></a>MS操作。</h3><p>一般用conventional cell。<br>MS操作。Windows<br>VESTA将CONTCAR转成cif,导入MS。<br>build-surface-cleave surface 切面<br>Surface mesh-surface vectors 可调整vector。<br><img src="/./gra/1201.png"></p>
+<p>Surface box-top&#x2F;thickness，调整终端和厚度。<br>Build-crystals-build vaccum slab-图2-build。<br><img src="/./gra/1202.png"></p>
+<p>Lattice parameters-advanced-re-orient to startard把真空层沿Z轴  图3。<br><img src="/./gra/1203.png"><br>转换成POSCAR，可优化后进一步扩胞。</p>
 <h3 id="ASE操作。python"><a href="#ASE操作。python" class="headerlink" title="ASE操作。python"></a>ASE操作。python</h3><p>块体优化后<br>module load python&#x2F;3.7.3<br>python </p>
 <blockquote>
 <blockquote>
@@ -374,7 +376,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-06-27 08:46:57" itemprop="dateModified" datetime="2023-06-27T08:46:57+08:00">2023-06-27</time>
+      <time title="修改时间：2023-12-15 11:41:50" itemprop="dateModified" datetime="2023-12-15T11:41:50+08:00">2023-12-15</time>
     </span>
 
   
@@ -493,8 +495,9 @@
 <li><strong>NSW</strong> ：离子位置优化最大步数（IBRION&#x3D;1、2）。默认0。设为100足够大，也可以继续加大。<br>分子动力学开启时代表分子动力学模拟步数（IBRION&#x3D;0）</li>
 <li><strong>IBRION</strong> ：离子位置优化算法。默认NSW&#x3D;0&#x2F;1时为-1，其他默认0。<br>-1：离子不移动<br>0：分子动力学模拟<br>1：准牛顿法<br>2：共轭梯度法<br>5：振动频率计算<br>6：弹性常数计算<br>7&#x2F;8：DFPT方法</li>
 <li><strong>POTIM</strong> ：有限差分法步长。当IBRION&#x3D;1&#x2F;2&#x2F;3默认值 0.5。当IBRION&#x3D;0（MD）时必须指定。</li>
-<li><strong>ISIF</strong> ：需要结构优化变量。默认IBRION&#x3D;0时为0，其他默认2。结构优化一般设为3，全部优化。<br><img src="/2023-05-10-11-03-40.png"></li>
+<li><strong>ISIF</strong> ：需要结构优化变量。默认IBRION&#x3D;0时为0，其他默认2。结构优化一般设为3，全部优化。</li>
 </ul>
+<p><img src="/./gra/1101.png" alt="1101"></p>
 <h4 id="Mind"><a href="#Mind" class="headerlink" title="Mind"></a>Mind</h4><ul>
 <li><strong>上面四个输入文件都是纯文本文件，且文件名不能更改，格式不能错误。</strong></li>
 <li><strong>vaspkit可以同时产生INCAR、POTCAR、KPOINTS文件。</strong></li>
@@ -712,7 +715,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-05-10 17:31:08" itemprop="dateModified" datetime="2023-05-10T17:31:08+08:00">2023-05-10</time>
+      <time title="修改时间：2023-12-15 11:37:04" itemprop="dateModified" datetime="2023-12-15T11:37:04+08:00">2023-12-15</time>
     </span>
 
   
@@ -845,8 +848,8 @@
 <li><p>ShaoZhengjiang github：<a target="_blank" rel="noopener" href="https://github.com/PytLab">https://github.com/PytLab</a></p>
 </li>
 </ol>
-<h1 id="公众号"><a href="#公众号" class="headerlink" title="公众号"></a>公众号</h1><p><img src="/2023-05-10-15-22-32.png"></p>
-<h1 id="B站up"><a href="#B站up" class="headerlink" title="B站up"></a>B站up</h1><p><img src="/2023-05-10-15-23-04.png"><br><img src="/2023-05-10-15-23-17.png"><br><img src="/2023-05-10-15-23-36.png"></p>
+<h1 id="公众号"><a href="#公众号" class="headerlink" title="公众号"></a>公众号</h1><p><img src="/./gra/0001.png" alt="0001"></p>
+<h1 id="B站up"><a href="#B站up" class="headerlink" title="B站up"></a>B站up</h1><p><img src="/./gra/0002.png" alt="0002"><br><img src="/./gra/0003.png" alt="0003"><br><img src="/./gra/0004.png" alt="0004"></p>
 
       
     </div>

@@ -27,13 +27,13 @@
 <meta property="og:site_name" content="Lightchaser">
 <meta property="og:description" content="这里主要分享怎样快速开始第一个结构优化过程。 Linux常用命令 如果是个人服务器，需要安装Linux系统或者Windows+虚拟机+Linux；如果租用超算，安装对应超算客户端或者SSH。 这部分内容需要自己熟练，对于命令的意义在操作中就会明白。https:&#x2F;&#x2F;www.runoob.com&#x2F;linux&#x2F;linux-command-manual.html 常用命令如下：原文链接：https:&#x2F;&#x2F;b">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2023-05-10-11-03-40.png">
+<meta property="og:image" content="http://example.com/gra/1101.png">
 <meta property="article:published_time" content="2023-05-09T10:47:20.000Z">
-<meta property="article:modified_time" content="2023-06-27T00:46:57.239Z">
+<meta property="article:modified_time" content="2023-12-15T03:41:50.074Z">
 <meta property="article:author" content="Keke Liu">
 <meta property="article:tag" content="vasp">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2023-05-10-11-03-40.png">
+<meta name="twitter:image" content="http://example.com/gra/1101.png">
 
 
 <link rel="canonical" href="http://example.com/2023/05/09/18-47-20/">
@@ -206,7 +206,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-06-27 08:46:57" itemprop="dateModified" datetime="2023-06-27T08:46:57+08:00">2023-06-27</time>
+      <time title="修改时间：2023-12-15 11:41:50" itemprop="dateModified" datetime="2023-12-15T11:41:50+08:00">2023-12-15</time>
     </span>
 
   
@@ -324,8 +324,9 @@
 <li><strong>NSW</strong> ：离子位置优化最大步数（IBRION&#x3D;1、2）。默认0。设为100足够大，也可以继续加大。<br>分子动力学开启时代表分子动力学模拟步数（IBRION&#x3D;0）</li>
 <li><strong>IBRION</strong> ：离子位置优化算法。默认NSW&#x3D;0&#x2F;1时为-1，其他默认0。<br>-1：离子不移动<br>0：分子动力学模拟<br>1：准牛顿法<br>2：共轭梯度法<br>5：振动频率计算<br>6：弹性常数计算<br>7&#x2F;8：DFPT方法</li>
 <li><strong>POTIM</strong> ：有限差分法步长。当IBRION&#x3D;1&#x2F;2&#x2F;3默认值 0.5。当IBRION&#x3D;0（MD）时必须指定。</li>
-<li><strong>ISIF</strong> ：需要结构优化变量。默认IBRION&#x3D;0时为0，其他默认2。结构优化一般设为3，全部优化。<br><img src="/2023-05-10-11-03-40.png"></li>
+<li><strong>ISIF</strong> ：需要结构优化变量。默认IBRION&#x3D;0时为0，其他默认2。结构优化一般设为3，全部优化。</li>
 </ul>
+<p><img src="/./gra/1101.png" alt="1101"></p>
 <h4 id="Mind"><a href="#Mind" class="headerlink" title="Mind"></a>Mind</h4><ul>
 <li><strong>上面四个输入文件都是纯文本文件，且文件名不能更改，格式不能错误。</strong></li>
 <li><strong>vaspkit可以同时产生INCAR、POTCAR、KPOINTS文件。</strong></li>
