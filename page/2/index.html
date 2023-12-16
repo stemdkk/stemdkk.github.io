@@ -546,7 +546,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/10-12-24/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/08-12-23/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -564,7 +564,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/05/09/10-12-24/" class="post-title-link" itemprop="url">01 VASP服务器安装</a>
+          <a href="/2023/05/09/08-12-23/" class="post-title-link" itemprop="url">0 准备工作</a>
         </h2>
 
         <div class="post-meta-container">
@@ -575,149 +575,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-05-09 10:12:24" itemprop="dateCreated datePublished" datetime="2023-05-09T10:12:24+08:00">2023-05-09</time>
+      <time title="创建时间：2023-05-09 08:12:23" itemprop="dateCreated datePublished" datetime="2023-05-09T08:12:23+08:00">2023-05-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-12-15 10:14:20" itemprop="dateModified" datetime="2023-12-15T10:14:20+08:00">2023-12-15</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="系统安装"><a href="#系统安装" class="headerlink" title="系统安装"></a>系统安装</h1><h2 id="一、下载centos镜像"><a href="#一、下载centos镜像" class="headerlink" title="一、下载centos镜像"></a>一、下载centos镜像</h2><p>centos官方：<a target="_blank" rel="noopener" href="https://vault.centos.org/">https://vault.centos.org/</a>   清华镜像源下载<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/">https://mirrors.tuna.tsinghua.edu.cn/</a><br>常用的镜像文件类型介绍：<br>DVD ISO：普通光盘完整安装版镜像，可离线安装到计算机硬盘上，包含大量的常用软件（一般选择这种jing）。<br>Everything ISO：包含了完整安装版的内容，并对其进行补充，集成了所有软件。<br>Minimal ISO：这个版本为精简版的镜像，可以安装一个基本的CentOS系 统，包含了可启动系统基本所需的最小安装包。<br>Netinstal：在线安装版本，启动后需要联网边下载边安装。</p>
-<h2 id="二、制作centos安装盘-u盘"><a href="#二、制作centos安装盘-u盘" class="headerlink" title="二、制作centos安装盘-u盘"></a>二、制作centos安装盘-u盘</h2><ul>
-<li><p>这里推荐rufus:<a target="_blank" rel="noopener" href="https://rufus.ie/downloads/">https://rufus.ie/downloads/</a><br>无需安装，如图<img src="/./gra/0101.png" alt="0101"></p>
-<p>“引导类型选择”选择镜像文件，选择下载好的ISO文件，开始即可。</p>
-</li>
-<li><p>用软碟通打开镜像，然后选择 “ 启动”再选择 “写入硬盘映像” ，再选择自己的u盘之后，再选写入。注意：Windows系统限制了LABEL的长度为11，多出的部分被截断了，所以导致U盘的LABEL只有“CentOS 7 x8”11位(实际为CentOS 7 x86_64)。<br><img src="/./gra/0102.png" alt="0102"></p>
-</li>
-<li><p>u盘格式</p>
-<p>1、FAT32格式：</p>
-</li>
-</ul>
-<p>这一种格式是任何USB存储设备都会预装的文件系统，属Windows平台的传统文件格式，兼容性很好。但是呢，“上帝”还是公平的，给你开了这一扇窗，必然会关上另一扇门。即便FAT32格式兼容性好，但它不支持4GB以上的文件，因此对于很多镜像文件或大视频文件之类的也会有无可奈何的状况。<br>一句话概括：FAT32格式兼容性好，但不支持4GB以上的文件<br>  2、NTFS格式：<br>前面说到FAT32格式是Windows平台的传统文件格式，而NTFS格式却是Windows平台应用最广泛的文件格式。它的优点在于能够支持大容量文件和超大分区，且集合了很多高级的技术，其中包括长文件名、压缩分区、数据保护和恢复等等的功能。但人无完人，任何事物也相同，那NTFS格式又差在哪了呢？差就差在它会减短闪存的寿命。为什么？大家是否知道NTFS格式是针对机械硬盘设计的，它会对硬盘的读写操作做详细的记录，而闪存储存芯片的读写次数是有限的，若使用该格式就会让闪存造成很大的负担和伤害。易受伤的人心碎了还能长长久久吗？更何况是U盘呢！<br>一句话概括：NTFS格式支持大容量文件和超大分区，但对闪盘芯片有伤害<br>  3、exFAT格式<br>虽然说到FAT32是传统文件格式，NTFS又是最广泛的，但老毛桃可以告诉大家：exFAT格式才是最适合U盘的文件格式，它是微软为了闪存设备特地设计的文件系统，是U盘等移动设备最好的选择之一。注意：SSD和U盘同为闪存，但SSD还是用NTFS格式为好！<br>exFAT格式的优点在于它能够增强台式机或笔记本和移动设备之间的互操作能力、同目录下最多65536个文件，且支持访问控制，还有的就是剩余空间分配表改善空间分配行。一句话概括：exFAT格式是最适合U盘的<br><strong>在linux系统下centos支持VFAT格式和FAT32格式的U盘，而且VFAT是Windows和LINUX系统都可以使用的格式。如果U盘是NTFS格式的，而又不想切换格式，那么就需装个NTFS-3G的包就可以支持NTFS。</strong></p>
-<p>  在U盘重装系统时，我们首要的便是制作一个U盘启动盘，经常捣鼓系统的伙伴们大都知道，制作前我们需要选择U盘的模式和格式，其中模式分为2种：USB-HDD和USB-ZIP;格式分为3种，也就是上述说到的。<br>USB-HDD模式： USB-HDD硬盘仿真模式，此模式兼容性很高，适用于新机型，但对于一些只支持USB-ZIP模式的电脑则无法启动，一般制作U盘启动盘选择该模式。<br>USB-ZIP模式：大容量软盘仿真模式，此模式在一些比较老的电脑上是唯一可选的模式，但对大部分新电脑来说兼容性不好，特别是2GB以上的大容量U盘。</p>
-<h2 id="三、u盘安装操作系统"><a href="#三、u盘安装操作系统" class="headerlink" title="三、u盘安装操作系统"></a>三、u盘安装操作系统</h2><h3 id="BIOS设置问题："><a href="#BIOS设置问题：" class="headerlink" title="BIOS设置问题："></a>BIOS设置问题：</h3><p>U盘启动盘有分两种的，一个是legacy启动U盘，这种启动盘不能在UEFI模式下启动。另一种是UEFI启动盘，这种就可以直接在UEFI模式下识别到。<br>解决方法：<br>1、 开机不停按Del键（也可能是其他：F2、F12、esc等），进入BIOS。<br>2、 进入BIOS后，通过左右方向键切换到boot选项，设置Secure Boot为Disabled（禁用），表示关闭安全引导。<br>3、 将U盘启动改为第一个，方法是将其上面的选项键盘输入-号，一直到U盘启动到第一个；选中enter。<br>4、 最后按下F10保存设置退出，开机时再按U盘启动快捷键就可以识别到U盘启动盘了。</p>
-<p>其他原因：</p>
-<p>1、 <strong>U盘启动盘制作失败了</strong>，需要重新制作一遍启动盘。用软碟通容易失败，推荐Rufus。</p>
-<p>2、 USB接口接触不良，可以换几个接口尝试。</p>
-<p>3、安装dracut报错解决方法：安装后进入了dracut:&#x2F;#模式<br>    （1）.查看你的U盘名称:<br>    dracut:&#x2F;# cd &#x2F;dev<br>    dracut:&#x2F;# ls<br>    ls然后找到sda 是硬盘对应的文件名，sdb是U盘对应的文件名，可以看到是sdb4（”4”也有可能是别的数字,视情况而定）。<br>    （2）.修改路径:<br>    至此重启一下，回到U盘启动第一界面安装行处，然后按下Tab键(如果不行按’e’键)，将<br>    vmlinuz initrd&#x3D;initrd.img inst.stage2&#x3D;hd:LABEL&#x3D;RHEL-server-7.0-x86_64-LinuxProbe.Com.iso quiet改为(注意最后面的“quiet”切勿删除):<br>    vmlinuz initrd&#x3D;initrd.img inst.stage2&#x3D;hd:&#x2F;dev&#x2F;sdb4 quiet然后，如果是Tab按下enter键进入安装界面，就可以顺利开始安装了。如果上面按的是’e’键就需要按ctrl+x进入安装界面，就可以顺利开始安装了</p>
-<h3 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h3><p><strong>如果重启重新进入安装选项，只需进入boot将hard设为第一即可。</strong></p>
-<p>1、首先会进入语言地区设置，按照习惯即可。后面进入安装界面。<br><img src="/./gra/0103.png" alt="0103"><br>2、选择软件-软件选择(S)，选择如图。<br><img src="/./gra/0104.png" alt="0104"></p>
-<p>安装centos不进入桌面</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum  groupinstall  -y  &quot;GNOME Desktop&quot;</span><br><span class="line">reboot now</span><br><span class="line">Startx</span><br></pre></td></tr></table></figure>
-
-<p>3、选择安装位置(D)进入分区。<br>Linux分区：顺序（主要是boot swap &#x2F;）</p>
-<ul>
-<li>boot  分区（因为boot是引导启动的分区，所以分区的时候必须先分boot，通常设置大小为200M 空间足够300 - 500M）</li>
-<li>*swap（缓存分区，通常设置大小为1G  通常是物理内存大小的2倍，比如你电脑是4G的物理内存，swap分区可以是8G）</li>
-<li>&#x2F; （根分区）</li>
-<li>&#x2F;home分区 （最大）<br><img src="/./gra/0107.png" alt="0107"><br>安装完成后登录，通过命令：df -h 查看分区<br>也可以使用lsblk查看，更直观.<br>下面是基本的命名方案:<br>第一个软盘驱动器命名为&#x2F;dev&#x2F;fd0第二个软驱命名为&#x2F;dev&#x2F;fd1.<br>检测到的第一个硬盘名为&#x2F;dev&#x2F;sda。检测到的第二块硬盘命名为&#x2F;dev&#x2F;sdb，以此类推。<br>第一个SCSI CD-ROM命名为&#x2F;dev&#x2F;scd0，也称为&#x2F;dev&#x2F;sr0。<br>每个SCSI磁盘上的分区通过在磁盘名后面加上一个十进制数字表示：sda1和sda2表示系统中第一个SCSI磁盘驱动器的第一个和第二个分区。<br>假设你有一个有2个SCSI磁盘的系统，一个在SCSI地址2，另一个在SCSI地址4。第一个磁盘(地址2)被命名为sda，第二个磁盘被命名为sdb。如果sda驱动器上有3个分区，这些分区将被命名为sda1、sda2和sda3。这同样适用于sdb磁盘及其分区。<br>主分区：也叫引导分区，最多可能创建4个，当创建四个主分区时候，就无法再创建扩展分区了，当然也就没有逻辑分区了。主分区是独立的，对应磁盘上的第一个分区，“一般”就是C盘。在Windows系统把所有的主分区和逻辑分区都叫做“盘”或者“驱动器”，并且把所有的可存储介质都显示为操作系统的“盘”。因此，从“盘”的概念上无法区分主分区和逻辑分区。并且盘符可以在操作系统中修改，这就是要加上“一般”二字的原因。<br>扩展分区：除了主分区外，剩余的磁盘空间就是扩展分区了，扩展分区可以没有，最多1个。严格地讲它不是一个实际意义的分区，它仅仅是一个指向下一个分区的指针，这种指针结构将形成一个单向链表。这样在主引导扇区中除了主分区外，仅需要存储一个被称为扩展分区的分区数据，通过这个扩展分区的数据可以找到下一个分区(实际上也就是下一个逻辑磁盘)的起始位置，以此起始位置类推可以找到所有的分区。无论系统中建立多少个逻辑磁盘，在主引导扇区中通过一个扩展分区的参数就可以逐个找到每一个逻辑磁盘。<br>逻辑分区：在扩展分区上面，可以创建多个逻辑分区。逻辑分区相当于一块存储截止，和操作系统还有别的逻辑分区、主分区没有什么关系，是“独立的”。<br>硬盘的容量＝主分区的容量＋扩展分区的容量（硬盘&#x3D;C盘+X）<br>扩展分区的容量＝各个逻辑分区的容量之和（X&#x3D;D盘+E盘+F盘）</li>
-</ul>
-<p>4、开始安装。此时会进入这个界面。同时完成1&#x2F;2步骤，牢记密码。等待安装完成重启。</p>
-<p><img src="/./gra/0105.png" alt="0105"><br>5、登录账户，设置网络即可。</p>
-<p>&#x2F;usr&#x2F;bin&#x2F;xauth: file &#x2F;home&#x2F;user&#x2F;.Xauthority does not exist<br>错误原因:<br>是因为添加用户时没有授权对应的目录，仅仅执行了useradd user而没有授权对应的家目录</p>
-<p>chown username:username -R &#x2F;home&#x2F;user_dir<br>例如本机：<br><img src="/./gra/0106.png" alt="0106"><br>然后继续登录<br>发现可以登录了<br>但是不显示用户名和路径<br>查看**&#x2F;etc&#x2F;passwd文件后发现，新建的用户未指定shell<strong>。我们只需将其指定为</strong>&#x2F;bin&#x2F;bash**即可。<br>Solution：在root用户下<br>usermod -s &#x2F;bin&#x2F;bash name<br>然后继续登录，就ok了。</p>
-<p><strong>总结</strong>：</p>
-<pre><code>1.首先，备份您的重要数据。
-2.下载 CentOS 7 的安装镜像。您可以从 CentOs 官方网站上下载适用于您的计算机架构的镜像文件。
-3.创建一个启动盘，将下载的镜像文件写入到 USB 设备或 DVD 上，以便用于安装过程，您可以使用工具如 Rufus 或 Etcher 来创建启动盘。UltraIso软件。
-“Ultraiso根据镜像名为u盘命名盘符名称，默认的镜像名太长，将会导致Centos在装机时，无法定位到镜像，从而导致安装失败，出现drauct错误”。
-4.将启动盘插入计算机并重启。在计算机启动时，进入 BIOS 设置界面，并将启动优先级设置为 USB 设备或 DVD.
-5.选择安装选项。在 CentoS 安装程序启动后，按照屏幕上的指示选择合适的语言、键盘布局和时区。
-6.分区和磁盘设置。根据需要配置磁盘分区和文件系统。您可以选择手动分区或使用默认选项。boot分区：是引导分区；作用：系统启动，在boot分区存放着grub，内核文件等，一般200M就够了。swap交换分区：内存扩展分区；交换分区给多大？ 一般做多：8G，16G，如果系统使用到了swap分区，就直接添加物理内存或排查一下服务器有没有被黑。/ 根：所有文件的根，绝对路径的开始标志。
-7.设置网络和主机名。为您的计算机设置网络连接和主机名。
-8.选择软件包组件。根据您的需求选择要安装的软件包组件。可以选择最小化安装或自定义安装。安装桌面勾选GUI和GNOME两个。关闭kdump。安全策略使用默认。
-9.设置管理员密码。为 root 用户设置安全容码
-10.开始安装。确认所有设置后，开始安装 CentOS 7 系统
-11.完成安装。安装完成后，您可以重新启动计算机，并开始使用新安装的 CentOS 7 系统请注意，重新安装系统可能会导致数据丢失，请谨慎操作并确保提前进行数据备份
-</code></pre>
-<h2 id="安装编译器"><a href="#安装编译器" class="headerlink" title="安装编译器"></a>安装编译器</h2><ul>
-<li>下载官方Get the Toolkits: <a target="_blank" rel="noopener" href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/toolkits.html">https://www.intel.com/content/www/us/en/developer/tools/oneapi/toolkits.html</a><br>下载base和HPC，上传到服务器上。</li>
-<li>赋予权限：<br>chmod +x l_*.sh</li>
-<li>选择IDE即可，避免出错。需要预留30g左右的磁盘空间，否则会安装失败。sh .&#x2F;l_Base*.sh sh .&#x2F;l_HPC*.sh</li>
-<li>默认安装位置：<br>如果使用sudo安装的话，默认路径是&#x2F;opt&#x2F;intel&#x2F;oneapi&#x2F;<br>如果使用普通用户权限安装的话，默认路径是~&#x2F;intel&#x2F;oneapi&#x2F;</li>
-<li>添加环境：vim ~&#x2F;.bashrc,添加<br>如果使用sudo安装的话，是source &#x2F;opt&#x2F;intel&#x2F;oneapi&#x2F;setvars.sh &gt;&#x2F;dev&#x2F;null<br>如果使用普通用户权限安装的话，默认路径是source ~&#x2F;intel&#x2F;oneapi&#x2F;setvars.sh &gt;&#x2F;dev&#x2F;null</li>
-</ul>
-<p>保存退出</p>
-<h2 id="安装vasp"><a href="#安装vasp" class="headerlink" title="安装vasp"></a>安装vasp</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tar -xzvf vasp.6.3.0.tgz</span><br><span class="line">cd vasp.6.3.0</span><br><span class="line">cp arch/makefile.include.intel makefile.include</span><br><span class="line">vim makefile.include</span><br><span class="line">注释掉 MKLROOT    ?= /path/to/your/mkl/installation</span><br><span class="line">保存退出</span><br><span class="line">make all或者make std gam ncl</span><br></pre></td></tr></table></figure>
-<p>成功后添加环境变量：vim ~&#x2F;.bashrc<br>export PATH&#x3D;&#x2F;home&#x2F;hptem001&#x2F;bin&#x2F;vasp.6.3.0&#x2F;bin:$PATH<br>保存退出</p>
-<h2 id="安装vaspkit1-4"><a href="#安装vaspkit1-4" class="headerlink" title="安装vaspkit1.4"></a>安装vaspkit1.4</h2><p>tar -xzvf vaspkit.1.4.1.linux.x64.tar.gz<br>cd vaspkit.1.4.1<br>sh setup.sh<br>查看cat ~&#x2F;.bashrc<br>有没有export PATH&#x3D;&#x2F;home&#x2F;hptem001&#x2F;bin&#x2F;vaspkit.1.4.1&#x2F;bin:${PATH}<br>或者直接终端输入：vaspkit看是否有输出。<br>安装成功。<br>vim ~&#x2F;.vaspkit<br>更改赝势路径以自动输出POTCAR<br>更改其他可参考：<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/649806633">https://zhuanlan.zhihu.com/p/649806633</a> 自动画图<br><a target="_blank" rel="noopener" href="http://vaspkit.cn/index.php/17.html">http://vaspkit.cn/index.php/17.html</a>  能带插值</p>
-<p>保存退出。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/10-12-23/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Keke Liu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lightchaser">
-      <meta itemprop="description" content="一个小学生的博客">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Lightchaser">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/05/09/10-12-23/" class="post-title-link" itemprop="url">0 准备工作</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-05-09 10:12:23" itemprop="dateCreated datePublished" datetime="2023-05-09T10:12:23+08:00">2023-05-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-12-15 11:37:04" itemprop="dateModified" datetime="2023-12-15T11:37:04+08:00">2023-12-15</time>
+      <time title="修改时间：2023-12-16 15:37:52" itemprop="dateModified" datetime="2023-12-16T15:37:52+08:00">2023-12-16</time>
     </span>
 
   
@@ -878,7 +743,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/10-12-23/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/08/10-12-24/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -896,7 +761,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/05/09/10-12-23/" class="post-title-link" itemprop="url">01 VASP单机安装</a>
+          <a href="/2023/05/08/10-12-24/" class="post-title-link" itemprop="url">01 VASP6服务器安装</a>
         </h2>
 
         <div class="post-meta-container">
@@ -907,14 +772,149 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-05-09 10:12:23" itemprop="dateCreated datePublished" datetime="2023-05-09T10:12:23+08:00">2023-05-09</time>
+      <time title="创建时间：2023-05-08 10:12:24" itemprop="dateCreated datePublished" datetime="2023-05-08T10:12:24+08:00">2023-05-08</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-06-27 12:14:21" itemprop="dateModified" datetime="2023-06-27T12:14:21+08:00">2023-06-27</time>
+      <time title="修改时间：2023-12-16 15:37:52" itemprop="dateModified" datetime="2023-12-16T15:37:52+08:00">2023-12-16</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="系统安装"><a href="#系统安装" class="headerlink" title="系统安装"></a>系统安装</h1><h2 id="一、下载centos镜像"><a href="#一、下载centos镜像" class="headerlink" title="一、下载centos镜像"></a>一、下载centos镜像</h2><p>centos官方：<a target="_blank" rel="noopener" href="https://vault.centos.org/">https://vault.centos.org/</a>   清华镜像源下载<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/">https://mirrors.tuna.tsinghua.edu.cn/</a><br>常用的镜像文件类型介绍：<br>DVD ISO：普通光盘完整安装版镜像，可离线安装到计算机硬盘上，包含大量的常用软件（一般选择这种jing）。<br>Everything ISO：包含了完整安装版的内容，并对其进行补充，集成了所有软件。<br>Minimal ISO：这个版本为精简版的镜像，可以安装一个基本的CentOS系 统，包含了可启动系统基本所需的最小安装包。<br>Netinstal：在线安装版本，启动后需要联网边下载边安装。</p>
+<h2 id="二、制作centos安装盘-u盘"><a href="#二、制作centos安装盘-u盘" class="headerlink" title="二、制作centos安装盘-u盘"></a>二、制作centos安装盘-u盘</h2><ul>
+<li><p>这里推荐rufus:<a target="_blank" rel="noopener" href="https://rufus.ie/downloads/">https://rufus.ie/downloads/</a><br>无需安装，如图<img src="/./gra/0101.png" alt="0101"></p>
+<p>“引导类型选择”选择镜像文件，选择下载好的ISO文件，开始即可。</p>
+</li>
+<li><p>用软碟通打开镜像，然后选择 “ 启动”再选择 “写入硬盘映像” ，再选择自己的u盘之后，再选写入。注意：Windows系统限制了LABEL的长度为11，多出的部分被截断了，所以导致U盘的LABEL只有“CentOS 7 x8”11位(实际为CentOS 7 x86_64)。<br><img src="/./gra/0102.png" alt="0102"></p>
+</li>
+<li><p>u盘格式</p>
+<p>1、FAT32格式：</p>
+</li>
+</ul>
+<p>这一种格式是任何USB存储设备都会预装的文件系统，属Windows平台的传统文件格式，兼容性很好。但是呢，“上帝”还是公平的，给你开了这一扇窗，必然会关上另一扇门。即便FAT32格式兼容性好，但它不支持4GB以上的文件，因此对于很多镜像文件或大视频文件之类的也会有无可奈何的状况。<br>一句话概括：FAT32格式兼容性好，但不支持4GB以上的文件<br>  2、NTFS格式：<br>前面说到FAT32格式是Windows平台的传统文件格式，而NTFS格式却是Windows平台应用最广泛的文件格式。它的优点在于能够支持大容量文件和超大分区，且集合了很多高级的技术，其中包括长文件名、压缩分区、数据保护和恢复等等的功能。但人无完人，任何事物也相同，那NTFS格式又差在哪了呢？差就差在它会减短闪存的寿命。为什么？大家是否知道NTFS格式是针对机械硬盘设计的，它会对硬盘的读写操作做详细的记录，而闪存储存芯片的读写次数是有限的，若使用该格式就会让闪存造成很大的负担和伤害。易受伤的人心碎了还能长长久久吗？更何况是U盘呢！<br>一句话概括：NTFS格式支持大容量文件和超大分区，但对闪盘芯片有伤害<br>  3、exFAT格式<br>虽然说到FAT32是传统文件格式，NTFS又是最广泛的，但老毛桃可以告诉大家：exFAT格式才是最适合U盘的文件格式，它是微软为了闪存设备特地设计的文件系统，是U盘等移动设备最好的选择之一。注意：SSD和U盘同为闪存，但SSD还是用NTFS格式为好！<br>exFAT格式的优点在于它能够增强台式机或笔记本和移动设备之间的互操作能力、同目录下最多65536个文件，且支持访问控制，还有的就是剩余空间分配表改善空间分配行。一句话概括：exFAT格式是最适合U盘的<br><strong>在linux系统下centos支持VFAT格式和FAT32格式的U盘，而且VFAT是Windows和LINUX系统都可以使用的格式。如果U盘是NTFS格式的，而又不想切换格式，那么就需装个NTFS-3G的包就可以支持NTFS。</strong></p>
+<p>  在U盘重装系统时，我们首要的便是制作一个U盘启动盘，经常捣鼓系统的伙伴们大都知道，制作前我们需要选择U盘的模式和格式，其中模式分为2种：USB-HDD和USB-ZIP;格式分为3种，也就是上述说到的。<br>USB-HDD模式： USB-HDD硬盘仿真模式，此模式兼容性很高，适用于新机型，但对于一些只支持USB-ZIP模式的电脑则无法启动，一般制作U盘启动盘选择该模式。<br>USB-ZIP模式：大容量软盘仿真模式，此模式在一些比较老的电脑上是唯一可选的模式，但对大部分新电脑来说兼容性不好，特别是2GB以上的大容量U盘。</p>
+<h2 id="三、u盘安装操作系统"><a href="#三、u盘安装操作系统" class="headerlink" title="三、u盘安装操作系统"></a>三、u盘安装操作系统</h2><h3 id="BIOS设置问题："><a href="#BIOS设置问题：" class="headerlink" title="BIOS设置问题："></a>BIOS设置问题：</h3><p>U盘启动盘有分两种的，一个是legacy启动U盘，这种启动盘不能在UEFI模式下启动。另一种是UEFI启动盘，这种就可以直接在UEFI模式下识别到。<br>解决方法：<br>1、 开机不停按Del键（也可能是其他：F2、F12、esc等），进入BIOS。<br>2、 进入BIOS后，通过左右方向键切换到boot选项，设置Secure Boot为Disabled（禁用），表示关闭安全引导。<br>3、 将U盘启动改为第一个，方法是将其上面的选项键盘输入-号，一直到U盘启动到第一个；选中enter。<br>4、 最后按下F10保存设置退出，开机时再按U盘启动快捷键就可以识别到U盘启动盘了。</p>
+<p>其他原因：</p>
+<p>1、 <strong>U盘启动盘制作失败了</strong>，需要重新制作一遍启动盘。用软碟通容易失败，推荐Rufus。</p>
+<p>2、 USB接口接触不良，可以换几个接口尝试。</p>
+<p>3、安装dracut报错解决方法：安装后进入了dracut:&#x2F;#模式<br>    （1）.查看你的U盘名称:<br>    dracut:&#x2F;# cd &#x2F;dev<br>    dracut:&#x2F;# ls<br>    ls然后找到sda 是硬盘对应的文件名，sdb是U盘对应的文件名，可以看到是sdb4（”4”也有可能是别的数字,视情况而定）。<br>    （2）.修改路径:<br>    至此重启一下，回到U盘启动第一界面安装行处，然后按下Tab键(如果不行按’e’键)，将<br>    vmlinuz initrd&#x3D;initrd.img inst.stage2&#x3D;hd:LABEL&#x3D;RHEL-server-7.0-x86_64-LinuxProbe.Com.iso quiet改为(注意最后面的“quiet”切勿删除):<br>    vmlinuz initrd&#x3D;initrd.img inst.stage2&#x3D;hd:&#x2F;dev&#x2F;sdb4 quiet然后，如果是Tab按下enter键进入安装界面，就可以顺利开始安装了。如果上面按的是’e’键就需要按ctrl+x进入安装界面，就可以顺利开始安装了</p>
+<h3 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h3><p><strong>如果重启重新进入安装选项，只需进入boot将hard设为第一即可。</strong></p>
+<p>1、首先会进入语言地区设置，按照习惯即可。后面进入安装界面。<br><img src="/./gra/0103.png" alt="0103"><br>2、选择软件-软件选择(S)，选择如图。<br><img src="/./gra/0104.png" alt="0104"></p>
+<p>安装centos不进入桌面</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum  groupinstall  -y  &quot;GNOME Desktop&quot;</span><br><span class="line">reboot now</span><br><span class="line">Startx</span><br></pre></td></tr></table></figure>
+
+<p>3、选择安装位置(D)进入分区。<br>Linux分区：顺序（主要是boot swap &#x2F;）</p>
+<ul>
+<li>boot  分区（因为boot是引导启动的分区，所以分区的时候必须先分boot，通常设置大小为200M 空间足够300 - 500M）</li>
+<li>*swap（缓存分区，通常设置大小为1G  通常是物理内存大小的2倍，比如你电脑是4G的物理内存，swap分区可以是8G）</li>
+<li>&#x2F; （根分区）</li>
+<li>&#x2F;home分区 （最大）<br><img src="/./gra/0107.png" alt="0107"><br>安装完成后登录，通过命令：df -h 查看分区<br>也可以使用lsblk查看，更直观.<br>下面是基本的命名方案:<br>第一个软盘驱动器命名为&#x2F;dev&#x2F;fd0第二个软驱命名为&#x2F;dev&#x2F;fd1.<br>检测到的第一个硬盘名为&#x2F;dev&#x2F;sda。检测到的第二块硬盘命名为&#x2F;dev&#x2F;sdb，以此类推。<br>第一个SCSI CD-ROM命名为&#x2F;dev&#x2F;scd0，也称为&#x2F;dev&#x2F;sr0。<br>每个SCSI磁盘上的分区通过在磁盘名后面加上一个十进制数字表示：sda1和sda2表示系统中第一个SCSI磁盘驱动器的第一个和第二个分区。<br>假设你有一个有2个SCSI磁盘的系统，一个在SCSI地址2，另一个在SCSI地址4。第一个磁盘(地址2)被命名为sda，第二个磁盘被命名为sdb。如果sda驱动器上有3个分区，这些分区将被命名为sda1、sda2和sda3。这同样适用于sdb磁盘及其分区。<br>主分区：也叫引导分区，最多可能创建4个，当创建四个主分区时候，就无法再创建扩展分区了，当然也就没有逻辑分区了。主分区是独立的，对应磁盘上的第一个分区，“一般”就是C盘。在Windows系统把所有的主分区和逻辑分区都叫做“盘”或者“驱动器”，并且把所有的可存储介质都显示为操作系统的“盘”。因此，从“盘”的概念上无法区分主分区和逻辑分区。并且盘符可以在操作系统中修改，这就是要加上“一般”二字的原因。<br>扩展分区：除了主分区外，剩余的磁盘空间就是扩展分区了，扩展分区可以没有，最多1个。严格地讲它不是一个实际意义的分区，它仅仅是一个指向下一个分区的指针，这种指针结构将形成一个单向链表。这样在主引导扇区中除了主分区外，仅需要存储一个被称为扩展分区的分区数据，通过这个扩展分区的数据可以找到下一个分区(实际上也就是下一个逻辑磁盘)的起始位置，以此起始位置类推可以找到所有的分区。无论系统中建立多少个逻辑磁盘，在主引导扇区中通过一个扩展分区的参数就可以逐个找到每一个逻辑磁盘。<br>逻辑分区：在扩展分区上面，可以创建多个逻辑分区。逻辑分区相当于一块存储截止，和操作系统还有别的逻辑分区、主分区没有什么关系，是“独立的”。<br>硬盘的容量＝主分区的容量＋扩展分区的容量（硬盘&#x3D;C盘+X）<br>扩展分区的容量＝各个逻辑分区的容量之和（X&#x3D;D盘+E盘+F盘）</li>
+</ul>
+<p>4、开始安装。此时会进入这个界面。同时完成1&#x2F;2步骤，牢记密码。等待安装完成重启。</p>
+<p><img src="/./gra/0105.png" alt="0105"><br>5、登录账户，设置网络即可。</p>
+<p>&#x2F;usr&#x2F;bin&#x2F;xauth: file &#x2F;home&#x2F;user&#x2F;.Xauthority does not exist<br>错误原因:<br>是因为添加用户时没有授权对应的目录，仅仅执行了useradd user而没有授权对应的家目录</p>
+<p>chown username:username -R &#x2F;home&#x2F;user_dir<br>例如本机：<br><img src="/./gra/0106.png" alt="0106"><br>然后继续登录<br>发现可以登录了<br>但是不显示用户名和路径<br>查看**&#x2F;etc&#x2F;passwd文件后发现，新建的用户未指定shell<strong>。我们只需将其指定为</strong>&#x2F;bin&#x2F;bash**即可。<br>Solution：在root用户下<br>usermod -s &#x2F;bin&#x2F;bash name<br>然后继续登录，就ok了。</p>
+<p><strong>总结</strong>：</p>
+<pre><code>1.首先，备份您的重要数据。
+2.下载 CentOS 7 的安装镜像。您可以从 CentOs 官方网站上下载适用于您的计算机架构的镜像文件。
+3.创建一个启动盘，将下载的镜像文件写入到 USB 设备或 DVD 上，以便用于安装过程，您可以使用工具如 Rufus 或 Etcher 来创建启动盘。UltraIso软件。
+“Ultraiso根据镜像名为u盘命名盘符名称，默认的镜像名太长，将会导致Centos在装机时，无法定位到镜像，从而导致安装失败，出现drauct错误”。
+4.将启动盘插入计算机并重启。在计算机启动时，进入 BIOS 设置界面，并将启动优先级设置为 USB 设备或 DVD.
+5.选择安装选项。在 CentoS 安装程序启动后，按照屏幕上的指示选择合适的语言、键盘布局和时区。
+6.分区和磁盘设置。根据需要配置磁盘分区和文件系统。您可以选择手动分区或使用默认选项。boot分区：是引导分区；作用：系统启动，在boot分区存放着grub，内核文件等，一般200M就够了。swap交换分区：内存扩展分区；交换分区给多大？ 一般做多：8G，16G，如果系统使用到了swap分区，就直接添加物理内存或排查一下服务器有没有被黑。/ 根：所有文件的根，绝对路径的开始标志。
+7.设置网络和主机名。为您的计算机设置网络连接和主机名。
+8.选择软件包组件。根据您的需求选择要安装的软件包组件。可以选择最小化安装或自定义安装。安装桌面勾选GUI和GNOME两个。关闭kdump。安全策略使用默认。
+9.设置管理员密码。为 root 用户设置安全容码
+10.开始安装。确认所有设置后，开始安装 CentOS 7 系统
+11.完成安装。安装完成后，您可以重新启动计算机，并开始使用新安装的 CentOS 7 系统请注意，重新安装系统可能会导致数据丢失，请谨慎操作并确保提前进行数据备份
+</code></pre>
+<h2 id="安装编译器"><a href="#安装编译器" class="headerlink" title="安装编译器"></a>安装编译器</h2><ul>
+<li>下载官方Get the Toolkits: <a target="_blank" rel="noopener" href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/toolkits.html">https://www.intel.com/content/www/us/en/developer/tools/oneapi/toolkits.html</a><br>下载base和HPC，上传到服务器上。</li>
+<li>赋予权限：<br>chmod +x l_*.sh</li>
+<li>选择IDE即可，避免出错。需要预留30g左右的磁盘空间，否则会安装失败。sh .&#x2F;l_Base*.sh sh .&#x2F;l_HPC*.sh</li>
+<li>默认安装位置：<br>如果使用sudo安装的话，默认路径是&#x2F;opt&#x2F;intel&#x2F;oneapi&#x2F;<br>如果使用普通用户权限安装的话，默认路径是~&#x2F;intel&#x2F;oneapi&#x2F;</li>
+<li>添加环境：vim ~&#x2F;.bashrc,添加<br>如果使用sudo安装的话，是source &#x2F;opt&#x2F;intel&#x2F;oneapi&#x2F;setvars.sh &gt;&#x2F;dev&#x2F;null<br>如果使用普通用户权限安装的话，默认路径是source ~&#x2F;intel&#x2F;oneapi&#x2F;setvars.sh &gt;&#x2F;dev&#x2F;null</li>
+</ul>
+<p>保存退出</p>
+<h2 id="安装vasp"><a href="#安装vasp" class="headerlink" title="安装vasp"></a>安装vasp</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tar -xzvf vasp.6.3.0.tgz</span><br><span class="line">cd vasp.6.3.0</span><br><span class="line">cp arch/makefile.include.intel makefile.include</span><br><span class="line">vim makefile.include</span><br><span class="line">注释掉 MKLROOT    ?= /path/to/your/mkl/installation</span><br><span class="line">保存退出</span><br><span class="line">make all或者make std gam ncl</span><br></pre></td></tr></table></figure>
+<p>成功后添加环境变量：vim ~&#x2F;.bashrc<br>export PATH&#x3D;&#x2F;home&#x2F;hptem001&#x2F;bin&#x2F;vasp.6.3.0&#x2F;bin:$PATH<br>保存退出</p>
+<h2 id="安装vaspkit1-4"><a href="#安装vaspkit1-4" class="headerlink" title="安装vaspkit1.4"></a>安装vaspkit1.4</h2><p>tar -xzvf vaspkit.1.4.1.linux.x64.tar.gz<br>cd vaspkit.1.4.1<br>sh setup.sh<br>查看cat ~&#x2F;.bashrc<br>有没有export PATH&#x3D;&#x2F;home&#x2F;hptem001&#x2F;bin&#x2F;vaspkit.1.4.1&#x2F;bin:${PATH}<br>或者直接终端输入：vaspkit看是否有输出。<br>安装成功。<br>vim ~&#x2F;.vaspkit<br>更改赝势路径以自动输出POTCAR<br>更改其他可参考：<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/649806633">https://zhuanlan.zhihu.com/p/649806633</a> 自动画图<br><a target="_blank" rel="noopener" href="http://vaspkit.cn/index.php/17.html">http://vaspkit.cn/index.php/17.html</a>  能带插值</p>
+<p>保存退出。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/08/10-10-23/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Keke Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lightchaser">
+      <meta itemprop="description" content="一个小学生的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Lightchaser">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/05/08/10-10-23/" class="post-title-link" itemprop="url">01 VASP5单机安装</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-08 10:10:23" itemprop="dateCreated datePublished" datetime="2023-05-08T10:10:23+08:00">2023-05-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-12-16 15:37:52" itemprop="dateModified" datetime="2023-12-16T15:37:52+08:00">2023-12-16</time>
     </span>
 
   
@@ -981,7 +981,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/08/10-12-23/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/07/10-12-23/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -999,7 +999,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/05/08/10-12-23/" class="post-title-link" itemprop="url">text</a>
+          <a href="/2023/05/07/10-12-23/" class="post-title-link" itemprop="url">text</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1010,14 +1010,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2023-05-08 10:12:23" itemprop="dateCreated datePublished" datetime="2023-05-08T10:12:23+08:00">2023-05-08</time>
+      <time title="创建时间：2023-05-07 10:12:23" itemprop="dateCreated datePublished" datetime="2023-05-07T10:12:23+08:00">2023-05-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-05-10 17:19:13" itemprop="dateModified" datetime="2023-05-10T17:19:13+08:00">2023-05-10</time>
+      <time title="修改时间：2023-12-16 15:37:52" itemprop="dateModified" datetime="2023-12-16T15:37:52+08:00">2023-12-16</time>
     </span>
 
   
@@ -1285,7 +1285,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/09/18-48-24/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/01/18-48-24/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1303,7 +1303,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/05/09/18-48-24/" class="post-title-link" itemprop="url">linux</a>
+          <a href="/2023/05/01/18-48-24/" class="post-title-link" itemprop="url">linux</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1314,14 +1314,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-05-09 18:48:24" itemprop="dateCreated datePublished" datetime="2022-05-09T18:48:24+08:00">2022-05-09</time>
+      <time title="创建时间：2023-05-01 18:48:24" itemprop="dateCreated datePublished" datetime="2023-05-01T18:48:24+08:00">2023-05-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-07-27 11:13:49" itemprop="dateModified" datetime="2023-07-27T11:13:49+08:00">2023-07-27</time>
+      <time title="修改时间：2023-12-16 15:39:30" itemprop="dateModified" datetime="2023-12-16T15:39:30+08:00">2023-12-16</time>
     </span>
 
   
