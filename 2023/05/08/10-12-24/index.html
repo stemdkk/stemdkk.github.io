@@ -28,14 +28,10 @@
 <meta property="og:description" content="系统安装一、下载centos镜像centos官方：https:&#x2F;&#x2F;vault.centos.org&#x2F;   清华镜像源下载https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;常用的镜像文件类型介绍：DVD ISO：普通光盘完整安装版镜像，可离线安装到计算机硬盘上，包含大量的常用软件（一般选择这种jing）。Everything ISO：包含了完整安装版的内容，并对其进行补充，集">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/gra/0101.png">
+<meta property="og:image" content="http://example.com/0101.png">
 <meta property="og:image" content="http://example.com/gra/0102.png">
-<meta property="og:image" content="http://example.com/gra/0103.png">
-<meta property="og:image" content="http://example.com/gra/0104.png">
-<meta property="og:image" content="http://example.com/gra/0107.png">
-<meta property="og:image" content="http://example.com/gra/0105.png">
-<meta property="og:image" content="http://example.com/gra/0106.png">
 <meta property="article:published_time" content="2023-05-08T02:12:24.000Z">
-<meta property="article:modified_time" content="2023-12-17T06:54:04.609Z">
+<meta property="article:modified_time" content="2023-12-18T01:04:32.863Z">
 <meta property="article:author" content="Keke Liu">
 <meta property="article:tag" content="vasp">
 <meta property="article:tag" content="服务器">
@@ -219,7 +215,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-12-17 14:54:04" itemprop="dateModified" datetime="2023-12-17T14:54:04+08:00">2023-12-17</time>
+      <time title="修改时间：2023-12-18 09:04:32" itemprop="dateModified" datetime="2023-12-18T09:04:32+08:00">2023-12-18</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -242,10 +238,10 @@
     
     <div class="post-body" itemprop="articleBody"><h1 id="系统安装"><a href="#系统安装" class="headerlink" title="系统安装"></a>系统安装</h1><h2 id="一、下载centos镜像"><a href="#一、下载centos镜像" class="headerlink" title="一、下载centos镜像"></a>一、下载centos镜像</h2><p>centos官方：<a target="_blank" rel="noopener" href="https://vault.centos.org/">https://vault.centos.org/</a>   清华镜像源下载<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/">https://mirrors.tuna.tsinghua.edu.cn/</a><br>常用的镜像文件类型介绍：<br>DVD ISO：普通光盘完整安装版镜像，可离线安装到计算机硬盘上，包含大量的常用软件（一般选择这种jing）。<br>Everything ISO：包含了完整安装版的内容，并对其进行补充，集成了所有软件。<br>Minimal ISO：这个版本为精简版的镜像，可以安装一个基本的CentOS系 统，包含了可启动系统基本所需的最小安装包。<br>Netinstal：在线安装版本，启动后需要联网边下载边安装。</p>
 <h2 id="二、制作centos安装盘-u盘"><a href="#二、制作centos安装盘-u盘" class="headerlink" title="二、制作centos安装盘-u盘"></a>二、制作centos安装盘-u盘</h2><ul>
-<li><p>这里推荐rufus:<a target="_blank" rel="noopener" href="https://rufus.ie/downloads/">https://rufus.ie/downloads/</a><br>无需安装，如图<img src="/./gra/0101.png" alt="0101"></p>
+<li><p>这里推荐rufus:<a target="_blank" rel="noopener" href="https://rufus.ie/downloads/">https://rufus.ie/downloads/</a><br>无需安装，如图<img src="/gra/0101.png" alt="0101"><br><img src="/0101.png" alt="Alt text"></p>
 <p>“引导类型选择”选择镜像文件，选择下载好的ISO文件，开始即可。</p>
 </li>
-<li><p>用软碟通打开镜像，然后选择 “ 启动”再选择 “写入硬盘映像” ，再选择自己的u盘之后，再选写入。注意：Windows系统限制了LABEL的长度为11，多出的部分被截断了，所以导致U盘的LABEL只有“CentOS 7 x8”11位(实际为CentOS 7 x86_64)。<br><img src="/./gra/0102.png" alt="0102"></p>
+<li><p>用软碟通打开镜像，然后选择 “ 启动”再选择 “写入硬盘映像” ，再选择自己的u盘之后，再选写入。注意：Windows系统限制了LABEL的长度为11，多出的部分被截断了，所以导致U盘的LABEL只有“CentOS 7 x8”11位(实际为CentOS 7 x86_64)。<br><img src="/gra/0102.png" alt="0102"></p>
 </li>
 <li><p>u盘格式</p>
 <p>1、FAT32格式：</p>
@@ -259,7 +255,11 @@
 <p>2、 USB接口接触不良，可以换几个接口尝试。</p>
 <p>3、安装dracut报错解决方法：安装后进入了dracut:&#x2F;#模式<br>    （1）.查看你的U盘名称:<br>    dracut:&#x2F;# cd &#x2F;dev<br>    dracut:&#x2F;# ls<br>    ls然后找到sda 是硬盘对应的文件名，sdb是U盘对应的文件名，可以看到是sdb4（”4”也有可能是别的数字,视情况而定）。<br>    （2）.修改路径:<br>    至此重启一下，回到U盘启动第一界面安装行处，然后按下Tab键(如果不行按’e’键)，将<br>    vmlinuz initrd&#x3D;initrd.img inst.stage2&#x3D;hd:LABEL&#x3D;RHEL-server-7.0-x86_64-LinuxProbe.Com.iso quiet改为(注意最后面的“quiet”切勿删除):<br>    vmlinuz initrd&#x3D;initrd.img inst.stage2&#x3D;hd:&#x2F;dev&#x2F;sdb4 quiet然后，如果是Tab按下enter键进入安装界面，就可以顺利开始安装了。如果上面按的是’e’键就需要按ctrl+x进入安装界面，就可以顺利开始安装了</p>
 <h3 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h3><p><strong>如果重启重新进入安装选项，只需进入boot将hard设为第一即可。</strong></p>
-<p>1、首先会进入语言地区设置，按照习惯即可。后面进入安装界面。<br><img src="/./gra/0103.png" alt="0103"><br>2、选择软件-软件选择(S)，选择如图。<br><img src="/./gra/0104.png" alt="0104"></p>
+<p>1、首先会进入语言地区设置，按照习惯即可。后面进入安装界面。</p>
+
+<p>2、选择软件-软件选择(S)，选择如图。</p>
+
+
 <p>安装centos不进入桌面</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum  groupinstall  -y  &quot;GNOME Desktop&quot;</span><br><span class="line">reboot now</span><br><span class="line">Startx</span><br></pre></td></tr></table></figure>
 
@@ -268,12 +268,16 @@
 <li>boot  分区（因为boot是引导启动的分区，所以分区的时候必须先分boot，通常设置大小为200M 空间足够300 - 500M）</li>
 <li>*swap（缓存分区，通常设置大小为1G  通常是物理内存大小的2倍，比如你电脑是4G的物理内存，swap分区可以是8G）</li>
 <li>&#x2F; （根分区）</li>
-<li>&#x2F;home分区 （最大）<br><img src="/./gra/0107.png" alt="0107"><br>安装完成后登录，通过命令：df -h 查看分区<br>也可以使用lsblk查看，更直观.<br>下面是基本的命名方案:<br>第一个软盘驱动器命名为&#x2F;dev&#x2F;fd0第二个软驱命名为&#x2F;dev&#x2F;fd1.<br>检测到的第一个硬盘名为&#x2F;dev&#x2F;sda。检测到的第二块硬盘命名为&#x2F;dev&#x2F;sdb，以此类推。<br>第一个SCSI CD-ROM命名为&#x2F;dev&#x2F;scd0，也称为&#x2F;dev&#x2F;sr0。<br>每个SCSI磁盘上的分区通过在磁盘名后面加上一个十进制数字表示：sda1和sda2表示系统中第一个SCSI磁盘驱动器的第一个和第二个分区。<br>假设你有一个有2个SCSI磁盘的系统，一个在SCSI地址2，另一个在SCSI地址4。第一个磁盘(地址2)被命名为sda，第二个磁盘被命名为sdb。如果sda驱动器上有3个分区，这些分区将被命名为sda1、sda2和sda3。这同样适用于sdb磁盘及其分区。<br>主分区：也叫引导分区，最多可能创建4个，当创建四个主分区时候，就无法再创建扩展分区了，当然也就没有逻辑分区了。主分区是独立的，对应磁盘上的第一个分区，“一般”就是C盘。在Windows系统把所有的主分区和逻辑分区都叫做“盘”或者“驱动器”，并且把所有的可存储介质都显示为操作系统的“盘”。因此，从“盘”的概念上无法区分主分区和逻辑分区。并且盘符可以在操作系统中修改，这就是要加上“一般”二字的原因。<br>扩展分区：除了主分区外，剩余的磁盘空间就是扩展分区了，扩展分区可以没有，最多1个。严格地讲它不是一个实际意义的分区，它仅仅是一个指向下一个分区的指针，这种指针结构将形成一个单向链表。这样在主引导扇区中除了主分区外，仅需要存储一个被称为扩展分区的分区数据，通过这个扩展分区的数据可以找到下一个分区(实际上也就是下一个逻辑磁盘)的起始位置，以此起始位置类推可以找到所有的分区。无论系统中建立多少个逻辑磁盘，在主引导扇区中通过一个扩展分区的参数就可以逐个找到每一个逻辑磁盘。<br>逻辑分区：在扩展分区上面，可以创建多个逻辑分区。逻辑分区相当于一块存储截止，和操作系统还有别的逻辑分区、主分区没有什么关系，是“独立的”。<br>硬盘的容量＝主分区的容量＋扩展分区的容量（硬盘&#x3D;C盘+X）<br>扩展分区的容量＝各个逻辑分区的容量之和（X&#x3D;D盘+E盘+F盘）</li>
+<li>&#x2F;home分区 （最大）
+安装完成后登录，通过命令：df -h 查看分区<br>也可以使用lsblk查看，更直观.<br>下面是基本的命名方案:<br>第一个软盘驱动器命名为&#x2F;dev&#x2F;fd0第二个软驱命名为&#x2F;dev&#x2F;fd1.<br>检测到的第一个硬盘名为&#x2F;dev&#x2F;sda。检测到的第二块硬盘命名为&#x2F;dev&#x2F;sdb，以此类推。<br>第一个SCSI CD-ROM命名为&#x2F;dev&#x2F;scd0，也称为&#x2F;dev&#x2F;sr0。<br>每个SCSI磁盘上的分区通过在磁盘名后面加上一个十进制数字表示：sda1和sda2表示系统中第一个SCSI磁盘驱动器的第一个和第二个分区。<br>假设你有一个有2个SCSI磁盘的系统，一个在SCSI地址2，另一个在SCSI地址4。第一个磁盘(地址2)被命名为sda，第二个磁盘被命名为sdb。如果sda驱动器上有3个分区，这些分区将被命名为sda1、sda2和sda3。这同样适用于sdb磁盘及其分区。<br>主分区：也叫引导分区，最多可能创建4个，当创建四个主分区时候，就无法再创建扩展分区了，当然也就没有逻辑分区了。主分区是独立的，对应磁盘上的第一个分区，“一般”就是C盘。在Windows系统把所有的主分区和逻辑分区都叫做“盘”或者“驱动器”，并且把所有的可存储介质都显示为操作系统的“盘”。因此，从“盘”的概念上无法区分主分区和逻辑分区。并且盘符可以在操作系统中修改，这就是要加上“一般”二字的原因。<br>扩展分区：除了主分区外，剩余的磁盘空间就是扩展分区了，扩展分区可以没有，最多1个。严格地讲它不是一个实际意义的分区，它仅仅是一个指向下一个分区的指针，这种指针结构将形成一个单向链表。这样在主引导扇区中除了主分区外，仅需要存储一个被称为扩展分区的分区数据，通过这个扩展分区的数据可以找到下一个分区(实际上也就是下一个逻辑磁盘)的起始位置，以此起始位置类推可以找到所有的分区。无论系统中建立多少个逻辑磁盘，在主引导扇区中通过一个扩展分区的参数就可以逐个找到每一个逻辑磁盘。<br>逻辑分区：在扩展分区上面，可以创建多个逻辑分区。逻辑分区相当于一块存储截止，和操作系统还有别的逻辑分区、主分区没有什么关系，是“独立的”。<br>硬盘的容量＝主分区的容量＋扩展分区的容量（硬盘&#x3D;C盘+X）<br>扩展分区的容量＝各个逻辑分区的容量之和（X&#x3D;D盘+E盘+F盘）</li>
 </ul>
 <p>4、开始安装。此时会进入这个界面。同时完成1&#x2F;2步骤，牢记密码。等待安装完成重启。</p>
-<p><img src="/./gra/0105.png" alt="0105"><br>5、登录账户，设置网络即可。</p>
+
+<p>5、登录账户，设置网络即可。</p>
 <p>&#x2F;usr&#x2F;bin&#x2F;xauth: file &#x2F;home&#x2F;user&#x2F;.Xauthority does not exist<br>错误原因:<br>是因为添加用户时没有授权对应的目录，仅仅执行了useradd user而没有授权对应的家目录</p>
-<p>chown username:username -R &#x2F;home&#x2F;user_dir<br>例如本机：<br><img src="/./gra/0106.png" alt="0106"><br>然后继续登录<br>发现可以登录了<br>但是不显示用户名和路径<br>查看**&#x2F;etc&#x2F;passwd文件后发现，新建的用户未指定shell<strong>。我们只需将其指定为</strong>&#x2F;bin&#x2F;bash**即可。<br>Solution：在root用户下<br>usermod -s &#x2F;bin&#x2F;bash name<br>然后继续登录，就ok了。</p>
+<p>chown username:username -R &#x2F;home&#x2F;user_dir<br>例如本机：</p>
+ 
+<p>然后继续登录<br>发现可以登录了<br>但是不显示用户名和路径<br>查看**&#x2F;etc&#x2F;passwd文件后发现，新建的用户未指定shell<strong>。我们只需将其指定为</strong>&#x2F;bin&#x2F;bash**即可。<br>Solution：在root用户下<br>usermod -s &#x2F;bin&#x2F;bash name<br>然后继续登录，就ok了。</p>
 <p><strong>总结</strong>：</p>
 <pre><code>1.首先，备份您的重要数据。
 2.下载 CentOS 7 的安装镜像。您可以从 CentOs 官方网站上下载适用于您的计算机架构的镜像文件。
