@@ -20,20 +20,18 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.16.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="插入的image只需要看一下有没有原子互相挨得很近，有的话调一下就行。 一开始计算先用IOPT&#x3D;7，比IOPT&#x3D;3快一点，然后LCLIMB&#x3D;.FALSE.;算个一二十步之后再换IOPT&#x3D;1或2，LCLIMB&#x3D;.TRUE. NEB计算不需要收敛，从经验来看也极少能碰到收敛的情况。主要是找到切线力尽可能等于0的点，然后用dimer算，基本都能找到过渡">
+    <meta name="description" content="加压可通过施加静水压强、调整晶格常数的方法实现结构压缩 vi INCAR 增加标签 PSTRESS&#x3D;50（单位为 0.1 GPa） 其他不变 加电场在vasp中根据自己所需要添加电场的场强更改INCAR中的如下参数： 123LDIPOL&#x3D;.TRUE.IDIPOL&#x3D;1&#x2F;2&#x2F;3&#x2F;4EFIELD&#x3D; ？ 对于IDIPOL参数的设置，需注意：对于IDIPOL&#x3D;1-3，偶极矩将分别平行于第一、第二或">
 <meta property="og:type" content="article">
-<meta property="og:title" content="1.4 过渡态">
+<meta property="og:title" content="1.3 结构优化3">
 <meta property="og:url" content="http://example.com/2023/05/09/18-47-22/index.html">
 <meta property="og:site_name" content="Lightchaser">
-<meta property="og:description" content="插入的image只需要看一下有没有原子互相挨得很近，有的话调一下就行。 一开始计算先用IOPT&#x3D;7，比IOPT&#x3D;3快一点，然后LCLIMB&#x3D;.FALSE.;算个一二十步之后再换IOPT&#x3D;1或2，LCLIMB&#x3D;.TRUE. NEB计算不需要收敛，从经验来看也极少能碰到收敛的情况。主要是找到切线力尽可能等于0的点，然后用dimer算，基本都能找到过渡">
+<meta property="og:description" content="加压可通过施加静水压强、调整晶格常数的方法实现结构压缩 vi INCAR 增加标签 PSTRESS&#x3D;50（单位为 0.1 GPa） 其他不变 加电场在vasp中根据自己所需要添加电场的场强更改INCAR中的如下参数： 123LDIPOL&#x3D;.TRUE.IDIPOL&#x3D;1&#x2F;2&#x2F;3&#x2F;4EFIELD&#x3D; ？ 对于IDIPOL参数的设置，需注意：对于IDIPOL&#x3D;1-3，偶极矩将分别平行于第一、第二或">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-05-09T10:47:22.000Z">
-<meta property="article:modified_time" content="2024-01-09T07:24:04.484Z">
+<meta property="article:modified_time" content="2024-06-05T02:05:13.685Z">
 <meta property="article:author" content="Keke Liu">
 <meta property="article:tag" content="vasp">
-<meta property="article:tag" content="过渡态">
-<meta property="article:tag" content="NEB">
-<meta property="article:tag" content="CINEB">
+<meta property="article:tag" content="建模">
 <meta name="twitter:card" content="summary">
 
 
@@ -41,10 +39,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/05/09/18-47-22/","path":"2023/05/09/18-47-22/","title":"1.4 过渡态"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/05/09/18-47-22/","path":"2023/05/09/18-47-22/","title":"1.3 结构优化3"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>1.4 过渡态 | Lightchaser</title>
+<title>1.3 结构优化3 | Lightchaser</title>
   
 
 
@@ -104,7 +102,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -117,6 +115,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A0%E5%8E%8B"><span class="nav-number">1.</span> <span class="nav-text">加压</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A0%E7%94%B5%E5%9C%BA"><span class="nav-number">2.</span> <span class="nav-text">加电场</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E6%96%B9%E7%A8%8B%E6%8B%9F%E5%90%88"><span class="nav-number">3.</span> <span class="nav-text">状态方程拟合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E8%87%B4%E6%B5%81%E7%A8%8B%EF%BC%88%E4%BB%A5%E5%A4%A7%E5%B8%88%E5%85%84%E6%8F%90%E4%BE%9B%E8%84%9A%E6%9C%AC%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="nav-number">3.0.1.</span> <span class="nav-text">大致流程（以大师兄提供脚本为例）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E6%95%B0%E5%8D%A0%E6%8D%AE"><span class="nav-number">4.</span> <span class="nav-text">分数占据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#disorder"><span class="nav-number">4.1.</span> <span class="nav-text">disorder</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">4.1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%901%EF%BC%9ASnxPb1-xTe"><span class="nav-number">4.1.2.</span> <span class="nav-text">例子1：SnxPb1-xTe</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B1%82%E9%97%B4%E7%BB%93%E5%90%88%E8%83%BD%E3%80%81%E7%BB%93%E5%90%88%E5%8A%9B"><span class="nav-number">5.</span> <span class="nav-text">层间结合能、结合力</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Graphite-interlayer-distance"><span class="nav-number">5.0.1.</span> <span class="nav-text">Graphite interlayer distance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Graphite-MBD-binding-energy"><span class="nav-number">5.0.2.</span> <span class="nav-text">Graphite MBD binding energy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Graphite-TS-binding-energy"><span class="nav-number">5.0.3.</span> <span class="nav-text">Graphite TS binding energy</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -188,12 +187,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="1.4 过渡态 | Lightchaser">
+      <meta itemprop="name" content="1.3 结构优化3 | Lightchaser">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          1.4 过渡态
+          1.3 结构优化3
         </h1>
 
         <div class="post-meta-container">
@@ -211,7 +210,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-01-09 15:24:04" itemprop="dateModified" datetime="2024-01-09T15:24:04+08:00">2024-01-09</time>
+      <time title="修改时间：2024-06-05 10:05:13" itemprop="dateModified" datetime="2024-06-05T10:05:13+08:00">2024-06-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -232,38 +231,74 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><ol>
-<li>插入的image只需要看一下有没有原子互相挨得很近，有的话调一下就行。</li>
-<li>一开始计算先用IOPT&#x3D;7，比IOPT&#x3D;3快一点，然后LCLIMB&#x3D;.FALSE.;算个一二十步之后再换IOPT&#x3D;1或2，LCLIMB&#x3D;.TRUE.</li>
-<li>NEB计算不需要收敛，从经验来看也极少能碰到收敛的情况。主要是找到切线力尽可能等于0的点，然后用dimer算，基本都能找到过渡态。</li>
-<li>nebresult.pl没用过，看结果“forces and energy:”下面的数据的第四列应该就是切线力，正常的计算切线力是由正值变到负值，或者由负值变到正值，然后找接近于0的点。你图里的数据只有正值，因此要么初末态构型有问题，要么你要找的点在0和1两个image之间。<br>不过1号image的切线力已经很接近0了，可以尝试直接做过dimer</li>
-<li>跑个一二十步之后停止计算，‘mv CONTCAR POSCAR’之后修改INCAR再继续算。脚本都是线性插值，因此初始构型一般都很不合理，上来就用IOPT&#x3D;2的话收敛慢，甚至可能出错。跑个几十步等构型相对合理一些之后，再换IOPT&#x3D;2。</li>
-<li>dimer是vasp里面自带的算法，详细用法手册里有。</li>
+    <div class="post-body" itemprop="articleBody"><h1 id="加压"><a href="#加压" class="headerlink" title="加压"></a>加压</h1><p>可通过施加静水压强、调整晶格常数的方法实现结构压缩</p>
+<p>vi INCAR 增加标签 <code>PSTRESS=50</code><br>（单位为 0.1 GPa）</p>
+<p>其他不变</p>
+<h1 id="加电场"><a href="#加电场" class="headerlink" title="加电场"></a>加电场</h1><p>在vasp中根据自己所需要添加电场的场强更改INCAR中的如下参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LDIPOL=.TRUE.</span><br><span class="line">IDIPOL=1/2/3/4</span><br><span class="line">EFIELD= ？</span><br></pre></td></tr></table></figure>
+<p>对于IDIPOL参数的设置，需注意：对于IDIPOL&#x3D;1-3，偶极矩将分别平行于第一、第二或第三晶格矢量的方向计算。总能量的修正计算为当前超单元中单极子&#x2F;偶极子和四极子与放置在超单元中的同一偶极子之间的能量差，对应的晶格矢量接近无穷大。此标志应用于板计算。对于IDIPOL&#x3D;4，将计算所有方向上的完整偶极矩，并将总能量的修正计算为当前超级单体中的单极&#x2F;偶极&#x2F;四极和放置在真空中的同一单极&#x2F;偶极&#x2F;四极之间的能量差，使用该标志计算孤立分子。</p>
+<p>此外，EFIELD 的设置需要注意单位的换算。eV&#x2F;Å（电子伏特&#x2F;埃）计算完毕之后通过后处理软件分析所关注的性质即可。</p>
+<h1 id="状态方程拟合"><a href="#状态方程拟合" class="headerlink" title="状态方程拟合"></a>状态方程拟合</h1><p>我们需要对结构进行优化才可以获取稳定的晶格参数信息。有两个方法可以实现：</p>
+<p>1 Birch-Murnaghan状态方程拟合,<br>2 VASP计算中通过调节ISIF参数直接优化Bulk。<br>直接优化前面已经介绍，下面我们先讨论一下第一个方法：BM方程拟合。</p>
+<p>参考：大师兄科研网：<a target="_blank" rel="noopener" href="https://www.bigbrosci.com/2018/02/02/ex33/">https://www.bigbrosci.com/2018/02/02/ex33/</a></p>
+<p>科学网耿华运的博文：<a target="_blank" rel="noopener" href="https://blog.sciencenet.cn/blog-3469498-1280203.html">https://blog.sciencenet.cn/blog-3469498-1280203.html</a></p>
+<p>科学网赵志强的博文，关于拟合：<a target="_blank" rel="noopener" href="https://wap.sciencenet.cn/blog-3388193-1152915.html">https://wap.sciencenet.cn/blog-3388193-1152915.html</a></p>
+<p>vaspkit：<a target="_blank" rel="noopener" href="http://vaspkit.cn/index.php/48.html">http://vaspkit.cn/index.php/48.html</a></p>
+<h3 id="大致流程（以大师兄提供脚本为例）"><a href="#大致流程（以大师兄提供脚本为例）" class="headerlink" title="大致流程（以大师兄提供脚本为例）"></a>大致流程（以大师兄提供脚本为例）</h3><ol>
+<li><p>获得一定缩放系数的结构：<code>for i in 0.95 0.96 0.97 0.98 0.99 1.01 1.02 1.03 1.04 1.05; do cp 1.00 $i ; sed -i &quot;2s/1.0/$i/g&quot; $i/POSCAR ; done</code></p>
+</li>
+<li><p>分别进行结构优化:<code>for i in *; do cd $i; 提交任务命令; cd $OLDPWD; done</code></p>
+</li>
+<li><p>提取能量-体积以及能量-压力、压力-体积的数据:<code>for i in *; do echo -e $i &quot;\t&quot; $(grep &#39;  without&#39; $i/OUTCAR | tail -n 1| awk &#39;&#123;print $7&#125;&#39;);  done &gt; data</code></p>
+</li>
+<li><p>拟合能量体积曲线，获得平衡晶胞参数</p>
+</li>
 </ol>
-<p>计算步骤</p>
-<ol>
-<li>初末态结构优化<br>建立两个文件夹ini(初态的意思),fin(末态)，每个文件夹放入vasp计算必备的四个文件（INCAR，POSCAR，KPOINTS，POTCAR），其中的两个POSCAR对应未优化的初末态。确保两个文件夹里面除POSCAR外，其他文件完全一样。</li>
+<ul>
+<li>这个流程可通过批量计算脚本实现，参考上面链接。另外还可以获得能量随压力的变化来模拟相变。</li>
+</ul>
+<h1 id="分数占据"><a href="#分数占据" class="headerlink" title="分数占据"></a>分数占据</h1><p>生成disorder或者掺杂构型的软件汇总：</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/vYar9UcYWAZgazBTgqUGEA">https://mp.weixin.qq.com/s/vYar9UcYWAZgazBTgqUGEA</a><br><a target="_blank" rel="noopener" href="https://github.com/jichunlian/disorder">https://github.com/jichunlian/disorder</a><br>supercell： <a target="_blank" rel="noopener" href="https://orex.github.io/supercell/">https://orex.github.io/supercell/</a><br>ATAT： <a target="_blank" rel="noopener" href="https://www.brown.edu/Departments/Engineering/Labs/avdw/atat/">https://www.brown.edu/Departments/Engineering/Labs/avdw/atat/</a><br>vaspkit：<a target="_blank" rel="noopener" href="https://vaspkit.com/">https://vaspkit.com/</a></p>
+<h2 id="disorder"><a href="#disorder" class="headerlink" title="disorder"></a>disorder</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ unzip disorder-main</span><br><span class="line">$ cd disorder-main</span><br><span class="line">$ make disorder (Only disorder is compilied)</span><br><span class="line">$ make supercell (Only supercell is compilied)</span><br><span class="line">$ make or make all (Both disorder and supercell are compilied)</span><br><span class="line">$ make clean (rm *.o *.mod disorder supercell)</span><br><span class="line">export PATH=$PATH:disorder_installation_path/disorder-main/bin</span><br><span class="line">(Add this to the ~/.bashrc file as you wish)</span><br></pre></td></tr></table></figure>
+<p>Note: The default compiler is ifort, and you can modify the Makefile<br>in the src directory to use another compiler (e.g. gfortran).</p>
+<p>需要准备两个文件SPOSCAR和INDSOD,以examples的1和2为例：</p>
+<h3 id="例子1：SnxPb1-xTe"><a href="#例子1：SnxPb1-xTe" class="headerlink" title="例子1：SnxPb1-xTe"></a>例子1：SnxPb1-xTe</h3><ol>
+<li>扩建超胞，保证整除<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Te Pb</span><br><span class="line">   1.0</span><br><span class="line">    13.1323995589999996    0.0000000000000000    0.0000000000000000</span><br><span class="line">     0.0000000000000000   13.1323995589999996    0.0000000000000000</span><br><span class="line">     0.0000000000000000    0.0000000000000000   13.1323995589999996</span><br><span class="line">  Te   Pb</span><br><span class="line">  32   32</span><br><span class="line">Direct</span><br><span class="line">* * *</span><br></pre></td></tr></table></figure></li>
+<li>准备INDSOD文件<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&amp;input</span><br><span class="line">  nsub = 2</span><br><span class="line">  subs = 16,16</span><br><span class="line">  symb = &#x27;Sn&#x27;,&#x27;Pb&#x27; ! The quotes is unnecessary for the ifort compiler</span><br><span class="line">  site = 2</span><br><span class="line">  prec = 1D-5</span><br><span class="line">! lpro = .true.</span><br><span class="line">! lpos = .true.</span><br><span class="line">! leqa = .true.</span><br><span class="line">! lspg = .true.</span><br><span class="line">  lcfg = .false.</span><br><span class="line">/</span><br></pre></td></tr></table></figure>
+官方解释：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">nsub-tag:nsub = 2 ~ 5; Default: nsub = 2.该位置取代原子种类。本例中是2种。</span><br><span class="line">subs-tag：subs = integer, integer, …; Default: None。对 应的原子数目。总和加起来应该等于该位点在SPOSCAR中的数目。</span><br><span class="line">symb-tag：symb = character, character, …; Default: None。元素化学符号。空位用Kw,即汉语kong wei。本例是Sn Pb单引号。</span><br><span class="line">site-tag：site = integer; Default: 1。所取代的位置在SPOSCAR中的位置。本例是2.</span><br><span class="line">prec-tag：prec = real; Default: 1D-5。当软件产生空间群与其他软件识别不一致时调整该参数，一般不用修改。</span><br><span class="line">lpro-tag：lpro = logical; Default: .false.是否消除重复参数。对于大体系可以打开。</span><br><span class="line">lpos、leqa、lspg、lcfg：分别控制输出文件POSCAR-X、EQAMAT、SPGMAT、CFGMAT。</span><br></pre></td></tr></table></figure></li>
+<li>运行disorder。输入disorder即可。</li>
+<li>输出文件：</li>
 </ol>
-<p>对于两个POSCAR，注意每一行的原子一一对应。若有固定位置的原子（比方做表面计算，要固定底部1-2层原子），最好让两个POSCAR里面的固定原子位置完全相同。<br>用dist.pl检查两个优化后结构(两个CONTCAR)的相似程度（每个对应原子的初末态距离的平方和，再开根号）。</p>
-<p>具体命令为： dist.pl ini&#x2F;CONTCAR fin&#x2F;CONTCAR<br>若返回值小于5A，一般可以进行下一步。<br>2. 插点<br>插点的数目取决于前面dist.pl的返回值，一般插点数目可取（dist.pl返回值&#x2F;0.8）。</p>
-<p>具体插点的命令： nebmake.pl ini&#x2F;CONTCAR fin&#x2F;CONTCAR N</p>
-<p>最后的N表示插点数目。插入点的算法为线性插值，详情请进前面给的vtst脚本链接。我这里设置N为3，执行完命令后出现文件夹00，01，02，03，04.五个文件夹里面都有nebmake.pl产生的POSCAR。</p>
-<p>00表示初态，里面放的是ini&#x2F;CONTCAR,04表示末态，放的是fin&#x2F;CONTCAR, 01、02、03是插入的点。</p>
-<p>输出中提示讲初末态对应的OUTCAR复制到对应的文件夹中，以便后续数据分析。<br>检查插入点的合理性：</p>
-<p>输入命令 nebmovie.pl 0</p>
-<p>参数0表示用POSCAR生成xyz文件；还可取1，为用CONTCAR生成。</p>
-<p>可以看到每个文件夹内多了一个后缀名为xyz的文件。将这几个xyz文件合成一个movie.xyz文件即可在VMD中动画演示。我更倾向于使用jmol(或者ovito)来查看xyz文件，不过VMD可能大家更熟悉。</p>
-<p>用nebmovie.pl,没有直接生成movie.xyz是因为从官方主页下载的脚本默认当使用nebmovie.pl后面不带参数或者参数为0的时候(即使用POSCAR产生xyz)，不输出movie.xyz。 你想让脚本自动生成movie.xyz而不是自己去合并各个文件夹里面的xyz文件，需要自行修改nebmovie.pl文件。很简单，把倒数第二个if语句整个用#注释掉或者直接删掉即可。</p>
-<p>也可以直接用VESTA查看01的POSCAR。</p>
-<p>进一步可用命令nebavoid.pl 1,确保中间插入的点每一个原子间距都大于1A。该命令的参数1表示最小允许间距，可取小数。<br>原子间距太小说明结构有问题。要么是因为初末态POSCAR里的原子没有对应好，要么是因为nebmake.pl线性插值的方法不适用于估计反应路径路径。如果是前者，调整好对应原子，也就是CONTCAR里面相应行进行调换；如果是后者，用Materials studio之类的软件调整好结构，再放入对应文件夹。<br>3. 其它文件的准备<br>在当前目录下面放入KPOINTS，POTCAR及INCAR文件。要求KPOINTS和POTCAR与ini、fin文件夹中的一样；INCAR中的基本参数也与初末态计算的INCAR一样，另外再加入NEB计算的相关参数。<br>INCAR再多说两句。优化算法若想使用vtst的，需要如上设置IBRION&#x3D;3,POTIM&#x3D;0,IOPT设置见本文第四个图。若使用vasp自带的优化器，可以使用IBRION&#x3D;1或者3，不要取2；POTIM取合适的值（0.01-0.5范围内去尝试）。</p>
-<p>这样就可以提交NEB任务了。<br>4. 后处理<br>计算过程中，可以用nebef.pl命令（不带参数）查看计算收敛情况。<br>输出中，第二列即为最大受力（force of images in the neb），第三列为相应结构的能量。</p>
-<p>前面INCAR中EDIFFG设置为-0.02（一般结构优化可取-0.02，NEB计算取-0.03），表示当所有结构最大力小于0.02eV&#x2F;A时，结束计算。</p>
-<p>另一个可以用来观察收敛情况的命令是nebbarrier.pl（同样不带参数）。该命令没有输出到屏幕的内容，而是生成neb.dat文件。<br>neb.dat文件第二列表示距离（即临近两结构的dist.pl的计算结果），第三列表示能量（以初态能量为参考值），第四列为力（forces along the neb）。</p>
-<p>EDIFFG参数对应的力是nebef.pl输出中的force of images in the neb.</p>
-<p>计算完成后，使用命令nebresult.pl.</p>
-<p>nebresult.pl做的事情如其所输出表明的，完成了nebbarrier.pl, nebspline.pl, nebef.pl, nebmovie.pl, nebjmovie.pl, nebconverge.pl还有对各文件夹中的OUTCAR打包压缩。生成了很多文件。其中mep.eps是以dist.pl距离为横坐标，能量为纵坐标画出的能势垒图，如下：<br>该文件一般查看图片的软件打不开，推荐使用EPS&#x2F;PS viewer. <a target="_blank" rel="noopener" href="https://epsviewer.org/download.aspx">https://epsviewer.org/download.aspx</a></p>
-<p>生成的spline.dat文件是对上面几个点的拟合曲线数据，已经有了上图，这些数据就意义不大了。</p>
-<p>生成的vaspgr文件夹内是各个插点结构的收敛图（同样可用EPS&#x2F;PS viewer打开），如下vaspout1.eps是01结构收敛信息：</p>
+<h1 id="层间结合能、结合力"><a href="#层间结合能、结合力" class="headerlink" title="层间结合能、结合力"></a>层间结合能、结合力</h1><p>贴一篇文章：<a target="_blank" rel="noopener" href="https://news.sciencenet.cn/htmlpaper/2022/4/202242914585844872440.shtm">https://news.sciencenet.cn/htmlpaper/2022/4/202242914585844872440.shtm</a></p>
+<h3 id="Graphite-interlayer-distance"><a href="#Graphite-interlayer-distance" class="headerlink" title="Graphite interlayer distance"></a>Graphite interlayer distance</h3><p>vasp上的教程：</p>
+<p>准备graphite结构，</p>
+<p>INCAR：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">IVDW = 20           </span><br><span class="line">LVDW_EWALD =.TRUE. </span><br><span class="line">NSW = 1 </span><br><span class="line">IBRION = 2</span><br><span class="line">ISIF = 4</span><br><span class="line">PREC = Accurate</span><br><span class="line">EDIFFG = 1e-5</span><br><span class="line">LWAVE = .FALSE.</span><br><span class="line">LCHARG = .FALSE.</span><br><span class="line">ISMEAR = -5</span><br><span class="line">SIGMA = 0.01</span><br><span class="line">EDIFF = 1e-6</span><br><span class="line">ALGO = Fast</span><br><span class="line">NPAR = 2</span><br></pre></td></tr></table></figure>
+<p>提交脚本：<br>To run this example, execute the run.sh bash-script:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">#</span><br><span class="line"># To run VASP this script calls $vasp_std</span><br><span class="line"># (or posibly $vasp_gam and/or $vasp_ncl).</span><br><span class="line"># These variables can be defined by sourcing vaspcmd</span><br><span class="line">. vaspcmd 2&gt; /dev/null</span><br><span class="line"></span><br><span class="line">#</span><br><span class="line"># When vaspcmd is not available and $vasp_std,</span><br><span class="line"># $vasp_gam, and/or $vasp_ncl are not set as environment</span><br><span class="line"># variables, you can specify them here</span><br><span class="line">[ -z &quot;`echo $vasp_std`&quot; ] &amp;&amp; vasp_std=&quot;mpirun -np 8 /path-to-your-vasp/vasp_std&quot;</span><br><span class="line">[ -z &quot;`echo $vasp_gam`&quot; ] &amp;&amp; vasp_gam=&quot;mpirun -np 8 /path-to-your-vasp/vasp_gam&quot;</span><br><span class="line">[ -z &quot;`echo $vasp_ncl`&quot; ] &amp;&amp; vasp_ncl=&quot;mpirun -np 8 /path-to-your-vasp/vasp_ncl&quot;</span><br><span class="line"></span><br><span class="line">#</span><br><span class="line"># The real work starts here</span><br><span class="line">#</span><br><span class="line"></span><br><span class="line">rm results.dat</span><br><span class="line"></span><br><span class="line">for d in 6.5 6.6 6.65 6.7 6.75 6.8 6.9 7.0</span><br><span class="line">do</span><br><span class="line">  cat&gt;POSCAR&lt;&lt;!</span><br><span class="line">graphite</span><br><span class="line">1.0</span><br><span class="line">1.22800000 -2.12695839  0.00000000</span><br><span class="line">1.22800000  2.12695839  0.00000000</span><br><span class="line">0.00000000  0.00000000  $d</span><br><span class="line">4</span><br><span class="line">direct</span><br><span class="line">   0.00000000  0.00000000  0.25000000</span><br><span class="line">   0.00000000  0.00000000  0.75000000</span><br><span class="line">   0.33333333  0.66666667  0.25000000</span><br><span class="line">   0.66666667  0.33333333  0.75000000</span><br><span class="line">!</span><br><span class="line">  $vasp_std</span><br><span class="line">  cp OUTCAR OUTCAR.$d</span><br><span class="line">  energy=$(grep &quot;free  ene&quot; OUTCAR.$d|awk &#x27;&#123;print $5&#125;&#x27;)</span><br><span class="line">  echo $d $energy &gt;&gt; results.dat </span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<p>The optimal length of the lattice vector c normal to the stacking direction is determined in a series of single point calculations with varied value of c (all other degrees of freedom are fixed at their experimental values).</p>
+<p>The computed c vs. energy dependence is written in the file results.dat and can be visualized e.g. using xmgrace. The optimal value can be obtained using the attached utility (python with numpy or Numeric is needed):</p>
+<p><code>./utilities/fit.py results.dat</code><br>This should yield:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">200 iterations performed</span><br><span class="line">Ch-square: 4.30305519481e-09</span><br><span class="line">---------</span><br><span class="line"></span><br><span class="line">       E0(eV):         -37.433456779</span><br><span class="line">       d0(A):  6.65603352689</span><br><span class="line">The computed value of 6.66 Å agrees well with experiment (6.71 Å).</span><br></pre></td></tr></table></figure>
+
+<h3 id="Graphite-MBD-binding-energy"><a href="#Graphite-MBD-binding-energy" class="headerlink" title="Graphite MBD binding energy"></a>Graphite MBD binding energy</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">IVDW = 202           </span><br><span class="line">LVDWEXPANSION =.TRUE. </span><br><span class="line">NSW = 1 </span><br><span class="line">IBRION = 2</span><br><span class="line">ISIF = 4</span><br><span class="line">PREC = Accurate</span><br><span class="line">EDIFFG = 1e-5</span><br><span class="line">LWAVE = .FALSE.</span><br><span class="line">LCHARG = .FALSE.</span><br><span class="line">ISMEAR = -5</span><br><span class="line">SIGMA = 0.01</span><br><span class="line">EDIFF = 1e-6</span><br><span class="line">ALGO = Fast</span><br><span class="line">NPAR = 2</span><br></pre></td></tr></table></figure>
+<p>KPOINTS</p>
+<p>Graphite:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Monkhorst Pack</span><br><span class="line">0</span><br><span class="line">gamma</span><br><span class="line">16 16 8</span><br><span class="line">0 0 0</span><br></pre></td></tr></table></figure>
+<p>Graphene:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Monkhorst Pack</span><br><span class="line">0</span><br><span class="line">gamma</span><br><span class="line">16 16 1</span><br><span class="line">0 0 0</span><br></pre></td></tr></table></figure>
+<p>Running this example<br>To run this example, execute the run.sh bash-script:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">#</span><br><span class="line"># To run VASP this script calls $vasp_std</span><br><span class="line"># (or posibly $vasp_gam and/or $vasp_ncl).</span><br><span class="line"># These variables can be defined by sourcing vaspcmd</span><br><span class="line">. vaspcmd 2&gt; /dev/null</span><br><span class="line"></span><br><span class="line">#</span><br><span class="line"># When vaspcmd is not available and $vasp_std,</span><br><span class="line"># $vasp_gam, and/or $vasp_ncl are not set as environment</span><br><span class="line"># variables, you can specify them here</span><br><span class="line">[ -z &quot;`echo $vasp_std`&quot; ] &amp;&amp; vasp_std=&quot;mpirun -np 8 /path-to-your-vasp/vasp_std&quot;</span><br><span class="line">[ -z &quot;`echo $vasp_gam`&quot; ] &amp;&amp; vasp_gam=&quot;mpirun -np 8 /path-to-your-vasp/vasp_gam&quot;</span><br><span class="line">[ -z &quot;`echo $vasp_ncl`&quot; ] &amp;&amp; vasp_ncl=&quot;mpirun -np 8 /path-to-your-vasp/vasp_ncl&quot;</span><br><span class="line"></span><br><span class="line">#</span><br><span class="line"># The real work starts here</span><br><span class="line">#</span><br><span class="line"></span><br><span class="line"># Here the work starts</span><br><span class="line">rm results.dat</span><br><span class="line"></span><br><span class="line">drct=$(pwd)</span><br><span class="line"></span><br><span class="line">for i in graphene graphite</span><br><span class="line">do</span><br><span class="line">  cd $drct/$i</span><br><span class="line">  $vasp_std</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">cd $drct</span><br><span class="line"></span><br><span class="line"># obtain total energy for graphite </span><br><span class="line">en2=$(grep &quot;free  ene&quot; graphite/OUTCAR |tail -1|awk &#x27;&#123;print $5&#125;&#x27;) </span><br><span class="line"></span><br><span class="line"># obtain total energy for graphene</span><br><span class="line">en1=$(grep &quot;free  ene&quot; graphene/OUTCAR |tail -1|awk &#x27;&#123;print $5&#125;&#x27;)</span><br><span class="line"></span><br><span class="line"># compute interlayer binding energy (eV/atom)</span><br><span class="line">deltaE=$(echo print $en2/4 - $en1/2 |python)</span><br><span class="line"></span><br><span class="line">echo &quot;Binding energy (eV/atom): &quot; $deltaE &gt;results.dat</span><br></pre></td></tr></table></figure>
+
+<p>Note that the calculation is performed in two steps (two separate single-point calculations) in which the energy for bulk graphite and for graphene are obtained. The binding energy is computed automatically and it is written in the file results.dat. (N.B.: for the latter python needs to be available.)</p>
+<p>The computed value of 0.050 eV&#x2F;A is now fairly close to the RPA reference of 0.048 eV&#x2F;atom [1].</p>
+<h3 id="Graphite-TS-binding-energy"><a href="#Graphite-TS-binding-energy" class="headerlink" title="Graphite TS binding energy"></a>Graphite TS binding energy</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">IVDW = 20            </span><br><span class="line">LVDW_EWALD =.TRUE. </span><br><span class="line">NSW = 1 </span><br><span class="line">IBRION = 2</span><br><span class="line">ISIF = 4</span><br><span class="line">PREC = Accurate</span><br><span class="line">EDIFFG = 1e-5</span><br><span class="line">LWAVE = .FALSE.</span><br><span class="line">LCHARG = .FALSE.</span><br><span class="line">ISMEAR = -5</span><br><span class="line">SIGMA = 0.01</span><br><span class="line">EDIFF = 1e-6</span><br><span class="line">ALGO = Fast</span><br><span class="line">NPAR = 2</span><br></pre></td></tr></table></figure>
+<p>To run this example, execute the run.sh bash-script:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">#</span><br><span class="line"># To run VASP this script calls $vasp_std</span><br><span class="line"># (or posibly $vasp_gam and/or $vasp_ncl).</span><br><span class="line"># These variables can be defined by sourcing vaspcmd</span><br><span class="line">. vaspcmd 2&gt; /dev/null</span><br><span class="line"></span><br><span class="line">#</span><br><span class="line"># When vaspcmd is not available and $vasp_std,</span><br><span class="line"># $vasp_gam, and/or $vasp_ncl are not set as environment</span><br><span class="line"># variables, you can specify them here</span><br><span class="line">[ -z &quot;`echo $vasp_std`&quot; ] &amp;&amp; vasp_std=&quot;mpirun -np 8 /path-to-your-vasp/vasp_std&quot;</span><br><span class="line">[ -z &quot;`echo $vasp_gam`&quot; ] &amp;&amp; vasp_gam=&quot;mpirun -np 8 /path-to-your-vasp/vasp_gam&quot;</span><br><span class="line">[ -z &quot;`echo $vasp_ncl`&quot; ] &amp;&amp; vasp_ncl=&quot;mpirun -np 8 /path-to-your-vasp/vasp_ncl&quot;</span><br><span class="line"></span><br><span class="line">#</span><br><span class="line"># The real work starts here</span><br><span class="line">#</span><br><span class="line"></span><br><span class="line">rm results.dat</span><br><span class="line"></span><br><span class="line">drct=$(pwd)</span><br><span class="line"></span><br><span class="line">for i in graphene graphite</span><br><span class="line">do</span><br><span class="line">  cd $drct/$i</span><br><span class="line">  $vasp_std</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">cd $drct</span><br><span class="line"></span><br><span class="line"># obtain total energy for graphite </span><br><span class="line">en2=$(grep &quot;free  ene&quot; graphite/OUTCAR |tail -1|awk &#x27;&#123;print $5&#125;&#x27;) </span><br><span class="line"></span><br><span class="line"># obtain total energy for graphene</span><br><span class="line">en1=$(grep &quot;free  ene&quot; graphene/OUTCAR |tail -1|awk &#x27;&#123;print $5&#125;&#x27;)</span><br><span class="line"></span><br><span class="line"># compute interlayer binding energy (eV/atom)</span><br><span class="line">deltaE=$(echo print $en2/4 - $en1/2 |python)</span><br><span class="line"></span><br><span class="line">echo &quot;Binding energy (eV/atom): &quot; $deltaE &gt;results.dat</span><br></pre></td></tr></table></figure>
+
+<p>Note that the calculation is performed in two steps (two separate single-point calculations) in which the energy for bulk graphite and for graphene are obtained. The binding energy is computed automatically and it is written in the file results.dat. (N.B.: for the latter python needs to be available.)</p>
+<p>Even though the TS method predicts a reasonable geometry (see the Graphite interlayer distance example) it overestimates the energetics strongly: the computed binding energy of -0.083 eV&#x2F;atom is too large compared to the RPA reference of 0.048 eV&#x2F;atom. This overestimation is - at least in part - due to neglecting the many-body interactions (see example Graphite MBD binding energy).</p>
 
     </div>
 
@@ -274,9 +309,7 @@
     <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/vasp/" rel="tag"># vasp</a>
-              <a href="/tags/%E8%BF%87%E6%B8%A1%E6%80%81/" rel="tag"># 过渡态</a>
-              <a href="/tags/NEB/" rel="tag"># NEB</a>
-              <a href="/tags/CINEB/" rel="tag"># CINEB</a>
+              <a href="/tags/%E5%BB%BA%E6%A8%A1/" rel="tag"># 建模</a>
           </div>
 
         
@@ -288,8 +321,8 @@
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2023/05/09/18-47-22/" rel="next" title="1.3 结构优化3">
-                  1.3 结构优化3 <i class="fa fa-chevron-right"></i>
+                <a href="/2023/05/09/18-47-23/" rel="next" title="1.4 过渡态">
+                  1.4 过渡态 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
