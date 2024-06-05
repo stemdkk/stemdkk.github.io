@@ -20,17 +20,18 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.16.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="从头算分子动力学（ab initio molecular dYnamics, AIMD），又称为第一性原理分子动力学，为研究电子与原子核相互耦合系统的力学进动过程的理论方法。AIMD是在早期经验力场分子动力学基础上发展起来的理论方法。经验力场分子动力学中，针对原子核之间相互作用，均采用经验性的力场，这种力场往往是对相互作用，基于这些相互作用势场好处是计算量小，能够模拟的体系较大，模拟时长也比较长，">
+    <meta name="description" content="参考官网：https:&#x2F;&#x2F;www.vasp.at&#x2F;wiki&#x2F;index.php&#x2F;Machine_learning_force_field_calculations:_Basics https:&#x2F;&#x2F;www.vasp.at&#x2F;wiki&#x2F;index.php&#x2F;Best_practices_for_machine-learned_force_fields https:&#x2F;&#x2F;www.vasp.at&#x2F;wiki&#x2F;in">
 <meta property="og:type" content="article">
-<meta property="og:title" content="5.1 分子动力学1">
+<meta property="og:title" content="5.2 分子动力学2">
 <meta property="og:url" content="http://example.com/2023/09/09/18-47-21/index.html">
 <meta property="og:site_name" content="Lightchaser">
-<meta property="og:description" content="从头算分子动力学（ab initio molecular dYnamics, AIMD），又称为第一性原理分子动力学，为研究电子与原子核相互耦合系统的力学进动过程的理论方法。AIMD是在早期经验力场分子动力学基础上发展起来的理论方法。经验力场分子动力学中，针对原子核之间相互作用，均采用经验性的力场，这种力场往往是对相互作用，基于这些相互作用势场好处是计算量小，能够模拟的体系较大，模拟时长也比较长，">
+<meta property="og:description" content="参考官网：https:&#x2F;&#x2F;www.vasp.at&#x2F;wiki&#x2F;index.php&#x2F;Machine_learning_force_field_calculations:_Basics https:&#x2F;&#x2F;www.vasp.at&#x2F;wiki&#x2F;index.php&#x2F;Best_practices_for_machine-learned_force_fields https:&#x2F;&#x2F;www.vasp.at&#x2F;wiki&#x2F;in">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-09-09T10:47:21.000Z">
-<meta property="article:modified_time" content="2023-12-17T06:56:40.770Z">
+<meta property="article:modified_time" content="2024-05-07T12:57:04.285Z">
 <meta property="article:author" content="Keke Liu">
 <meta property="article:tag" content="AIMD">
+<meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary">
 
 
@@ -38,10 +39,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/09/09/18-47-21/","path":"2023/09/09/18-47-21/","title":"5.1 分子动力学1"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/09/09/18-47-21/","path":"2023/09/09/18-47-21/","title":"5.2 分子动力学2"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>5.1 分子动力学1 | Lightchaser</title>
+<title>5.2 分子动力学2 | Lightchaser</title>
   
 
 
@@ -101,7 +102,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -114,6 +115,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vasp6%E8%87%AA%E5%B8%A6%E7%9A%84%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0"><span class="nav-number">1.</span> <span class="nav-text">vasp6自带的机器学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80"><span class="nav-number">1.1.</span> <span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E5%87%86%E5%A4%87"><span class="nav-number">1.1.1.</span> <span class="nav-text">1、准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E5%BC%80%E5%A7%8B-on-the-fly%E8%AE%AD%E7%BB%83"><span class="nav-number">1.1.2.</span> <span class="nav-text">2、开始 on-the-fly训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E9%87%8D%E5%A4%8D%E8%AE%AD%E7%BB%83%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="nav-number">1.1.3.</span> <span class="nav-text">3、重复训练（可选）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81refit%E5%BF%AB%E9%80%9F%E9%A2%84%E6%B5%8B"><span class="nav-number">1.1.4.</span> <span class="nav-text">4、refit快速预测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0MD"><span class="nav-number">1.1.5.</span> <span class="nav-text">5、运行机器学习MD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E8%AE%AE%EF%BC%9A"><span class="nav-number">1.1.6.</span> <span class="nav-text">建议：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E9%98%B6"><span class="nav-number">1.2.</span> <span class="nav-text">进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%80%A7%E5%8E%9F%E7%90%86%E8%AE%A1%E7%AE%97%E9%83%A8%E5%88%86"><span class="nav-number">1.2.1.</span> <span class="nav-text">第一性原理计算部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MD%E9%83%A8%E5%88%86"><span class="nav-number">1.2.2.</span> <span class="nav-text">MD部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83%E9%83%A8%E5%88%86"><span class="nav-number">1.2.3.</span> <span class="nav-text">训练部分</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ICONST"><span class="nav-number">1.3.</span> <span class="nav-text">ICONST</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -126,7 +128,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -137,7 +139,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -185,12 +187,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="5.1 分子动力学1 | Lightchaser">
+      <meta itemprop="name" content="5.2 分子动力学2 | Lightchaser">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          5.1 分子动力学1
+          5.2 分子动力学2
         </h1>
 
         <div class="post-meta-container">
@@ -208,7 +210,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-12-17 14:56:40" itemprop="dateModified" datetime="2023-12-17T14:56:40+08:00">2023-12-17</time>
+      <time title="修改时间：2024-05-07 20:57:04" itemprop="dateModified" datetime="2024-05-07T20:57:04+08:00">2024-05-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -229,10 +231,48 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>从头算分子动力学（ab initio molecular dYnamics, AIMD），又称为第一性原理分子动力学，为研究电子与原子核相互耦合系统的力学进动过程的理论方法。AIMD是在早期经验力场分子动力学基础上发展起来的理论方法。经验力场分子动力学中，针对原子核之间相互作用，均采用经验性的力场，这种力场往往是对相互作用，基于这些相互作用势场好处是计算量小，能够模拟的体系较大，模拟时长也比较长，统计数据也较多。</p>
-<p>最初的AIMD为理想的Born-Oppenheimer分子动力学（BOMD），该理论将原子核-电子耦合体系的运动问题拆分为电子结构和分子动力学两部分，用密度泛函（DFT）等方法对特定原子核构型下的电子结构进行计算，得到K-S轨道及能量，在此基础上得到理想B-O势能面上原子核感受的势能和力，进而用经典力学来考察原子核在Born-Oppenheimer势能面上的运动。</p>
-<p>为解决理想的BOMD所遇到计算瓶颈的问题，Reberto Car和Michele Parrinello于1985年提出了一种近似的BOMD方法- Car-Parrinello MD（简称CPMD）（Car, R., &amp; Parrinello, M，1985）。该方法首次使用了一个扩展的Lagrangian量来描述电子-原子核耦合体系的动力学问题，Lagrangian量引入了虚拟电子质量u，基于这个Lagrangian量可给出运动方程，通过原子核的经典运动来近似更新电子波函数，而不再需要每一步通过矩阵对角化对电子结构进行SCF计算，简化了电子结构计算，大幅降低了计算成本，使得AIMD在技术上首次具备了可操作性，开创了近几十年AIMD模拟的时代。</p>
+    <div class="post-body" itemprop="articleBody"><p>参考官网：<br><a target="_blank" rel="noopener" href="https://www.vasp.at/wiki/index.php/Machine_learning_force_field_calculations:_Basics">https://www.vasp.at/wiki/index.php/Machine_learning_force_field_calculations:_Basics</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.vasp.at/wiki/index.php/Best_practices_for_machine-learned_force_fields">https://www.vasp.at/wiki/index.php/Best_practices_for_machine-learned_force_fields</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.vasp.at/wiki/index.php/Machine_learning_force_field:_Theory">https://www.vasp.at/wiki/index.php/Machine_learning_force_field:_Theory</a></p>
+<h1 id="vasp6自带的机器学习"><a href="#vasp6自带的机器学习" class="headerlink" title="vasp6自带的机器学习"></a>vasp6自带的机器学习</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h3 id="1、准备"><a href="#1、准备" class="headerlink" title="1、准备"></a>1、准备</h3><p>准备POSCAR、POTCAR、KPOINTS和AIMD的INCAR文件。</p>
+<h3 id="2、开始-on-the-fly训练"><a href="#2、开始-on-the-fly训练" class="headerlink" title="2、开始 on-the-fly训练"></a>2、开始 on-the-fly训练</h3> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ML_LMLFF = .TRUE.</span><br><span class="line">ML_MODE = train</span><br></pre></td></tr></table></figure>
+<p>将会生成几个重要的文件：</p>
+<p>ML_LOGFILE The log file for all MLFF-related details; training status, current errors and other important quantities can be extracted from here.(search err)</p>
+<p>ML_ABN This file contains the collected training structures and a list of selected local reference configurations.</p>
+<p>ML_FFN A binary file containing the current MLFF.</p>
+<h3 id="3、重复训练（可选）"><a href="#3、重复训练（可选）" class="headerlink" title="3、重复训练（可选）"></a>3、重复训练（可选）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp ML_ABN ML_AB</span><br><span class="line">cp CONTCAR POSCAR</span><br></pre></td></tr></table></figure>
 
+<p>也可以重复2步骤完全重新训练。INCAR和其他文件保持不变。如果读取上一步的力场，可以修改POSCAR以完成结构的变化，比如吸附、表面等。</p>
+<h3 id="4、refit快速预测"><a href="#4、refit快速预测" class="headerlink" title="4、refit快速预测"></a>4、refit快速预测</h3><p><code>cp ML_ABN ML_AB</code></p>
+<p>INCAR修改：</p>
+<p><code>ML_MODE = refit</code></p>
+<p>会生成新的 ML_FFN。官网提示这一步是必要的。</p>
+<h3 id="5、运行机器学习MD"><a href="#5、运行机器学习MD" class="headerlink" title="5、运行机器学习MD"></a>5、运行机器学习MD</h3><p><code>cp ML_FFN ML_FF</code></p>
+<p>INCAR修改：</p>
+<p><code>ML_MODE = run</code></p>
+<p>ML_MODE参数见：<br><a target="_blank" rel="noopener" href="https://www.vasp.at/wiki/index.php/ML_MODE">https://www.vasp.at/wiki/index.php/ML_MODE</a></p>
+<h3 id="建议："><a href="#建议：" class="headerlink" title="建议："></a>建议：</h3><ul>
+<li>熟悉第一性原理计算，机器学习之前先进行简短的MD模拟以验证结构是否符合预期。</li>
+<li>为了结果的准确性，要注意动态训练收集的参考数据与单点电子计算设置保持一致且收敛良好。注意 MD 运行中针对的不同温度和密度。MLFF只能再现单一的势能！</li>
+<li>选择MD过程合适的系综、时间步长等参数</li>
+</ul>
+<h2 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h2><h3 id="第一性原理计算部分"><a href="#第一性原理计算部分" class="headerlink" title="第一性原理计算部分"></a>第一性原理计算部分</h3><ul>
+<li>先进行自洽计算，不要设置 MAXMIX&gt;0 </li>
+<li>一般可以先单胞，然后应用到超胞。</li>
+<li>自洽计算检查K点、截断能等收敛情况。</li>
+<li>(ISYM&#x3D;0)对于标准的MD</li>
+<li>NPT等不固定体积的ENCUT要比固体体积大30%。</li>
+</ul>
+<h3 id="MD部分"><a href="#MD部分" class="headerlink" title="MD部分"></a>MD部分</h3><ul>
+<li>有轻原子要减小POTIM或增大轻原子的POMASS，氢原子不超过0.7 fs 氧原子不超过 1.5 fs。</li>
+<li>TEEND要大于TEBEG，且大于目标温度30%。</li>
+<li>最好NPT，或者NVT+ Langevin thermostat，避免NVE。</li>
+</ul>
+<h3 id="训练部分"><a href="#训练部分" class="headerlink" title="训练部分"></a>训练部分</h3><ul>
+<li>分步训练：比如表面吸附分子，先训练晶体，然后表面、单独分子和整个系统。</li>
+<li>给定结构，温度、压力越大，误差越大，</li>
+</ul>
+<h2 id="ICONST"><a href="#ICONST" class="headerlink" title="ICONST"></a>ICONST</h2>
     </div>
 
     
@@ -242,6 +282,7 @@
     <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/AIMD/" rel="tag"># AIMD</a>
+              <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag"># 机器学习</a>
           </div>
 
         
@@ -253,8 +294,8 @@
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2023/11/09/18-48-23/" rel="next" title="6.1 USPEX">
-                  6.1 USPEX <i class="fa fa-chevron-right"></i>
+                <a href="/2023/09/09/18-47-21/" rel="next" title="5.1 分子动力学1">
+                  5.1 分子动力学1 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -276,7 +317,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2023</span>
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
