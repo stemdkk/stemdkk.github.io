@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.16.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="参考官网：https:&#x2F;&#x2F;www.vasp.at&#x2F;wiki&#x2F;index.php&#x2F;Machine_learning_force_field_calculations:_Basics https:&#x2F;&#x2F;www.vasp.at&#x2F;wiki&#x2F;index.php&#x2F;Best_practices_for_machine-learned_force_fields https:&#x2F;&#x2F;www.vasp.at&#x2F;wiki&#x2F;in">
+<meta property="og:type" content="article">
+<meta property="og:title" content="5.2 分子动力学2">
+<meta property="og:url" content="http://example.com/2023/09/09/18-47-22/index.html">
+<meta property="og:site_name" content="Lightchaser">
+<meta property="og:description" content="参考官网：https:&#x2F;&#x2F;www.vasp.at&#x2F;wiki&#x2F;index.php&#x2F;Machine_learning_force_field_calculations:_Basics https:&#x2F;&#x2F;www.vasp.at&#x2F;wiki&#x2F;index.php&#x2F;Best_practices_for_machine-learned_force_fields https:&#x2F;&#x2F;www.vasp.at&#x2F;wiki&#x2F;in">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-09-09T10:47:22.000Z">
+<meta property="article:modified_time" content="2024-06-06T02:05:32.674Z">
+<meta property="article:author" content="Keke Liu">
+<meta property="article:tag" content="AIMD">
+<meta property="article:tag" content="机器学习">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/09/09/18-47-22/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/09/09/18-47-22/","path":"2023/09/09/18-47-22/","title":"5.2 分子动力学2"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>5.2 分子动力学2 | Lightchaser</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Lightchaser</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">三人行，必有我师</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vasp6%E8%87%AA%E5%B8%A6%E7%9A%84%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0"><span class="nav-number">1.</span> <span class="nav-text">vasp6自带的机器学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80"><span class="nav-number">1.1.</span> <span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E5%87%86%E5%A4%87"><span class="nav-number">1.1.1.</span> <span class="nav-text">1、准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E5%BC%80%E5%A7%8B-on-the-fly%E8%AE%AD%E7%BB%83"><span class="nav-number">1.1.2.</span> <span class="nav-text">2、开始 on-the-fly训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E9%87%8D%E5%A4%8D%E8%AE%AD%E7%BB%83%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="nav-number">1.1.3.</span> <span class="nav-text">3、重复训练（可选）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81refit%E5%BF%AB%E9%80%9F%E9%A2%84%E6%B5%8B"><span class="nav-number">1.1.4.</span> <span class="nav-text">4、refit快速预测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0MD"><span class="nav-number">1.1.5.</span> <span class="nav-text">5、运行机器学习MD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%BA%E8%AE%AE%EF%BC%9A"><span class="nav-number">1.1.6.</span> <span class="nav-text">建议：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E9%98%B6"><span class="nav-number">1.2.</span> <span class="nav-text">进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%80%A7%E5%8E%9F%E7%90%86%E8%AE%A1%E7%AE%97%E9%83%A8%E5%88%86"><span class="nav-number">1.2.1.</span> <span class="nav-text">第一性原理计算部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MD%E9%83%A8%E5%88%86"><span class="nav-number">1.2.2.</span> <span class="nav-text">MD部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%AD%E7%BB%83%E9%83%A8%E5%88%86"><span class="nav-number">1.2.3.</span> <span class="nav-text">训练部分</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ICONST"><span class="nav-number">1.3.</span> <span class="nav-text">ICONST</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Keke Liu</p>
+  <div class="site-description" itemprop="description">一个小学生的博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/stemdkk" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;stemdkk" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:257198@whut.edu.cn" title="E-Mail → mailto:257198@whut.edu.cn" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/09/09/18-47-22/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Keke Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lightchaser">
+      <meta itemprop="description" content="一个小学生的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="5.2 分子动力学2 | Lightchaser">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          5.2 分子动力学2
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-09 18:47:22" itemprop="dateCreated datePublished" datetime="2023-09-09T18:47:22+08:00">2023-09-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-06 10:05:32" itemprop="dateModified" datetime="2024-06-06T10:05:32+08:00">2024-06-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DFT%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">DFT学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>参考官网：<br><a target="_blank" rel="noopener" href="https://www.vasp.at/wiki/index.php/Machine_learning_force_field_calculations:_Basics">https://www.vasp.at/wiki/index.php/Machine_learning_force_field_calculations:_Basics</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.vasp.at/wiki/index.php/Best_practices_for_machine-learned_force_fields">https://www.vasp.at/wiki/index.php/Best_practices_for_machine-learned_force_fields</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.vasp.at/wiki/index.php/Machine_learning_force_field:_Theory">https://www.vasp.at/wiki/index.php/Machine_learning_force_field:_Theory</a></p>
+<h1 id="vasp6自带的机器学习"><a href="#vasp6自带的机器学习" class="headerlink" title="vasp6自带的机器学习"></a>vasp6自带的机器学习</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h3 id="1、准备"><a href="#1、准备" class="headerlink" title="1、准备"></a>1、准备</h3><p>准备POSCAR、POTCAR、KPOINTS和AIMD的INCAR文件。</p>
+<h3 id="2、开始-on-the-fly训练"><a href="#2、开始-on-the-fly训练" class="headerlink" title="2、开始 on-the-fly训练"></a>2、开始 on-the-fly训练</h3> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ML_LMLFF = .TRUE.</span><br><span class="line">ML_MODE = train</span><br></pre></td></tr></table></figure>
+<p>将会生成几个重要的文件：</p>
+<p>ML_LOGFILE The log file for all MLFF-related details; training status, current errors and other important quantities can be extracted from here.(search err)</p>
+<p>ML_ABN This file contains the collected training structures and a list of selected local reference configurations.</p>
+<p>ML_FFN A binary file containing the current MLFF.</p>
+<h3 id="3、重复训练（可选）"><a href="#3、重复训练（可选）" class="headerlink" title="3、重复训练（可选）"></a>3、重复训练（可选）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp ML_ABN ML_AB</span><br><span class="line">cp CONTCAR POSCAR</span><br></pre></td></tr></table></figure>
+
+<p>也可以重复2步骤完全重新训练。INCAR和其他文件保持不变。如果读取上一步的力场，可以修改POSCAR以完成结构的变化，比如吸附、表面等。</p>
+<h3 id="4、refit快速预测"><a href="#4、refit快速预测" class="headerlink" title="4、refit快速预测"></a>4、refit快速预测</h3><p><code>cp ML_ABN ML_AB</code></p>
+<p>INCAR修改：</p>
+<p><code>ML_MODE = refit</code></p>
+<p>会生成新的 ML_FFN。官网提示这一步是必要的。</p>
+<h3 id="5、运行机器学习MD"><a href="#5、运行机器学习MD" class="headerlink" title="5、运行机器学习MD"></a>5、运行机器学习MD</h3><p><code>cp ML_FFN ML_FF</code></p>
+<p>INCAR修改：</p>
+<p><code>ML_MODE = run</code></p>
+<p>ML_MODE参数见：<br><a target="_blank" rel="noopener" href="https://www.vasp.at/wiki/index.php/ML_MODE">https://www.vasp.at/wiki/index.php/ML_MODE</a></p>
+<h3 id="建议："><a href="#建议：" class="headerlink" title="建议："></a>建议：</h3><ul>
+<li>熟悉第一性原理计算，机器学习之前先进行简短的MD模拟以验证结构是否符合预期。</li>
+<li>为了结果的准确性，要注意动态训练收集的参考数据与单点电子计算设置保持一致且收敛良好。注意 MD 运行中针对的不同温度和密度。MLFF只能再现单一的势能！</li>
+<li>选择MD过程合适的系综、时间步长等参数</li>
+</ul>
+<h2 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h2><h3 id="第一性原理计算部分"><a href="#第一性原理计算部分" class="headerlink" title="第一性原理计算部分"></a>第一性原理计算部分</h3><ul>
+<li>先进行自洽计算，不要设置 MAXMIX&gt;0 </li>
+<li>一般可以先单胞，然后应用到超胞。</li>
+<li>自洽计算检查K点、截断能等收敛情况。</li>
+<li>(ISYM&#x3D;0)对于标准的MD</li>
+<li>NPT等不固定体积的ENCUT要比固体体积大30%。</li>
+</ul>
+<h3 id="MD部分"><a href="#MD部分" class="headerlink" title="MD部分"></a>MD部分</h3><ul>
+<li>有轻原子要减小POTIM或增大轻原子的POMASS，氢原子不超过0.7 fs 氧原子不超过 1.5 fs。</li>
+<li>TEEND要大于TEBEG，且大于目标温度30%。</li>
+<li>最好NPT，或者NVT+ Langevin thermostat，避免NVE。</li>
+</ul>
+<h3 id="训练部分"><a href="#训练部分" class="headerlink" title="训练部分"></a>训练部分</h3><ul>
+<li>分步训练：比如表面吸附分子，先训练晶体，然后表面、单独分子和整个系统。</li>
+<li>给定结构，温度、压力越大，误差越大，</li>
+</ul>
+<h2 id="ICONST"><a href="#ICONST" class="headerlink" title="ICONST"></a>ICONST</h2>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/AIMD/" rel="tag"># AIMD</a>
+              <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag"># 机器学习</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/09/09/18-47-21/" rel="prev" title="5.1 分子动力学1">
+                  <i class="fa fa-chevron-left"></i> 5.1 分子动力学1
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/11/09/18-48-23/" rel="next" title="6.1 USPEX">
+                  6.1 USPEX <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Keke Liu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
