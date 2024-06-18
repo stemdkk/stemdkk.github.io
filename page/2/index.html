@@ -856,7 +856,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-05 10:05:13" itemprop="dateModified" datetime="2024-06-05T10:05:13+08:00">2024-06-05</time>
+      <time title="修改时间：2024-06-17 15:06:20" itemprop="dateModified" datetime="2024-06-17T15:06:20+08:00">2024-06-17</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -912,10 +912,71 @@
 <h3 id="例子1：SnxPb1-xTe"><a href="#例子1：SnxPb1-xTe" class="headerlink" title="例子1：SnxPb1-xTe"></a>例子1：SnxPb1-xTe</h3><ol>
 <li>扩建超胞，保证整除<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Te Pb</span><br><span class="line">   1.0</span><br><span class="line">    13.1323995589999996    0.0000000000000000    0.0000000000000000</span><br><span class="line">     0.0000000000000000   13.1323995589999996    0.0000000000000000</span><br><span class="line">     0.0000000000000000    0.0000000000000000   13.1323995589999996</span><br><span class="line">  Te   Pb</span><br><span class="line">  32   32</span><br><span class="line">Direct</span><br><span class="line">* * *</span><br></pre></td></tr></table></figure></li>
 <li>准备INDSOD文件<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&amp;input</span><br><span class="line">  nsub = 2</span><br><span class="line">  subs = 16,16</span><br><span class="line">  symb = &#x27;Sn&#x27;,&#x27;Pb&#x27; ! The quotes is unnecessary for the ifort compiler</span><br><span class="line">  site = 2</span><br><span class="line">  prec = 1D-5</span><br><span class="line">! lpro = .true.</span><br><span class="line">! lpos = .true.</span><br><span class="line">! leqa = .true.</span><br><span class="line">! lspg = .true.</span><br><span class="line">  lcfg = .false.</span><br><span class="line">/</span><br></pre></td></tr></table></figure>
-官方解释：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">nsub-tag:nsub = 2 ~ 5; Default: nsub = 2.该位置取代原子种类。本例中是2种。</span><br><span class="line">subs-tag：subs = integer, integer, …; Default: None。对 应的原子数目。总和加起来应该等于该位点在SPOSCAR中的数目。</span><br><span class="line">symb-tag：symb = character, character, …; Default: None。元素化学符号。空位用Kw,即汉语kong wei。本例是Sn Pb单引号。</span><br><span class="line">site-tag：site = integer; Default: 1。所取代的位置在SPOSCAR中的位置。本例是2.</span><br><span class="line">prec-tag：prec = real; Default: 1D-5。当软件产生空间群与其他软件识别不一致时调整该参数，一般不用修改。</span><br><span class="line">lpro-tag：lpro = logical; Default: .false.是否消除重复参数。对于大体系可以打开。</span><br><span class="line">lpos、leqa、lspg、lcfg：分别控制输出文件POSCAR-X、EQAMAT、SPGMAT、CFGMAT。</span><br></pre></td></tr></table></figure></li>
+官方解释：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">nsub-tag:nsub = 2 ~ 5; Default: nsub = 2.该位置取代原子种类。本例中是2种。</span><br><span class="line">subs-tag：subs = integer, integer, …; Default: None。对 应的原子数目。总和加起来应该等于该位点在SPOSCAR中的数目。</span><br><span class="line">symb-tag：symb = character, character, …; Default: None。元素化学符号。空位用Kw,即汉语kong wei。本例是Sn Pb单引号。</span><br><span class="line">site-tag：site = integer; Default: 1。所取代的位置在SPOSCAR中的位置。本例是第2.</span><br><span class="line">prec-tag：prec = real; Default: 1D-5。当软件产生空间群与其他软件识别不一致时调整该参数，一般不用修改。</span><br><span class="line">lpro-tag：lpro = logical; Default: .false.是否消除重复参数。对于大体系可以打开。</span><br><span class="line">lpos、leqa、lspg、lcfg：分别控制输出文件POSCAR-X、EQAMAT、SPGMAT、CFGMAT。</span><br></pre></td></tr></table></figure></li>
 <li>运行disorder。输入disorder即可。</li>
 <li>输出文件：</li>
 </ol>
+<h1 id="ATAT软件"><a href="#ATAT软件" class="headerlink" title="ATAT软件"></a>ATAT软件</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
+<li>什么是ATAT？</li>
+</ul>
+<p>其全称为 Alloy Theoretic Automated Toolkit (ATAT)<br>引用官网的一句话，ATAT is a generic name that refers to a collection of alloy theory tools developped by Axel van de Walle, in collaboration with various research groups and with various sources of financial support.</p>
+<ul>
+<li>如何安装ATAT：</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="http://brown.edu/Departments/Engineering/Labs/avdw//atat/atat3_36.tar.gz%E4%B8%8B%E8%BD%BDATAT%E6%BA%90%E7%A0%81%EF%BC%8C%E8%A7%A3%E5%8E%8B%E5%90%8E%EF%BC%8Cmake">http://brown.edu/Departments/Engineering/Labs/avdw//atat/atat3_36.tar.gz下载ATAT源码，解压后，make</a> all开始编译；之后make install进行程序和脚本定向安装；之后在home中打开.&#x2F;bashrc添加ATAT安装路径于环境变量当中（添加 export PATH&#x3D;$PATH:&#x2F;xxxx），并source .&#x2F;bashrc即可。</p>
+<p>进入安装包的glue目录，里面有与各种dft软件的算例的接口设置。例如进入vasp可以看到它的接口设置脚本ezvasp，由于make install已经将它拷贝到了安装目录中，所以在bin中打开ezvasp，并设置相关可执行程序，包括赝势文件的名称和路径即可。</p>
+<p>配置~&#x2F;.ezvasp.rc</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/csh</span><br><span class="line">set VASPCMD=&quot;/path/vasp_std# 设置vasp可执行程序</span><br><span class="line">set POTLDA/PBE=&quot;/path/to/pot_lad&quot; # 设置为赝势实际的路径</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>ATAT能做啥？</li>
+</ul>
+<p>ATAT 是Walle及其合作者开发的一个利用第一性原理结合MonteCarlo模拟计算相图及热力学性能的软件包。该软件包首先采用团簇展开(cluster expansion)，用第一原理方法计算一系列构型的形成能，然后用这些能量作为Monte Carlo模拟的哈密顿量，计算材料的热力学性能和高熵合金的mcsqs建模。</p>
+<h2 id="MAPs"><a href="#MAPs" class="headerlink" title="MAPs"></a>MAPs</h2><p>软件运行</p>
+<p>一）运行MAPS：</p>
+<ol>
+<li>准备lat.in文件</li>
+</ol>
+<p>2）maps -d &amp; #maps命令运行，等待后面的指令</p>
+<p>3）touch ready </p>
+<p>#等待十几秒钟，出现“0”文件夹，是合金中比例为0的纯相结构。</p>
+<p>4）此时需要利用第一性原理软件计算该结构的能量 </p>
+<p>#（参见下部分和VASP软件的交互,可无需手动输入），现在手动输入能量，理解一下计算过程，假设该结构的能量已经知道，在0这个文件夹下，echo 1.1 &gt; energy, 并删除wait。继续touch ready，就会生成1这个文件夹，里面是比例为1的另一个纯相结构，echo 2.2 &gt; energy, 删除wait。touch ready，生成2这个文件夹，一直这样循环下去，直至达到相应的精度，最终停止输入touch stop。</p>
+<p>二）运行MAPS与VASP交互：</p>
+<p>1）需要lat.in，vasp.wrap文件 （ #vasp的INCAR参数）</p>
+<p>2）其余与上面运行MAPS步骤相同，直到第4步骤计算能量，进入该文件夹，运行runstruct_vasp。</p>
+<p>大概率会报错，原因有几个：</p>
+<p>a. 常见为~&#x2F;.ezvasp.rc文件配置问题，赝势位置，vasp运行路径出错。</p>
+<p><strong>可以看运行命令后，是否有POTCAR文件产生，如果没有，基本就是赝势位置问题，如果POTCAR文件正常，就是vasp没有运行。</strong></p>
+<p>b. vasp不运行，在集群上面运行的软件，ATAT软件给了集群上面的运行办法, pollmach命令，将runstruct_vasp命令写在脚本里是可以的。</p>
+<p>最终正确版本运行步骤：</p>
+<p>1）准备lat.in，vasp.wrap文件，脚本文件。</p>
+<p>lat.in文件</p>
+<p>vasp.wrap文件</p>
+<p>sub.sh文件</p>
+<p>2）提交脚本文件即可</p>
+<h2 id="MCSQS"><a href="#MCSQS" class="headerlink" title="MCSQS"></a>MCSQS</h2><p>一、原理</p>
+<p>无序态的关联函数已知，因此只需要备选态的关联函数和无序态关联函数差别最小就可以，即让下方公式中的目标函数最小。</p>
+<p>二、运行步骤</p>
+<p>step1. 准备rndstr.in文件</p>
+<p>1 1 1 90 90 90</p>
+<p>1 0 0 </p>
+<p>0 1 0</p>
+<p>0 0 1</p>
+<p>.0 .0 .0 Cr</p>
+<p>.0 .5 .5 Ni&#x3D;0.333333,Fe&#x3D;.333333, Co&#x3D;.333334</p>
+<p>.5 .0 .5 Ni&#x3D;0.333333,Fe&#x3D;.333333, Co&#x3D;.333334</p>
+<p>.5 .5 .0 Ni&#x3D;0.333333,Fe&#x3D;.333333, Co&#x3D;.333334</p>
+<p>#第一行也可以改成3*3矩阵，类似于POSCAR中晶格常数格式。这里一般不用实际的晶格常数，用1替代。</p>
+<p>用1对后面的参数设置更容易。</p>
+<p>step2. 运行命令<br>corrdump -l&#x3D;rndstr.in -ro -noe -nop -clus -2&#x3D;1.1<br>该命令通过读取rndstr.in文件中的结构，进而计算结构的对称性和团簇等信息，输出clusters.out文件。</p>
+<p>#需要注意的是‘-2’这个参数，是用于计算关联函数的截断距离。如对于FCC构型而言，晶格常数为1，第一最近距离为2^0.5&#x2F;2&#x3D;0.71，第二距离为1，第三距离为1.5^0.5&#x3D;1.2。所以这里设置阶段距离在1和1.2之间。一般考虑‘-2’参数即可。（注：更高的-2，-3参数会产生更无序的结构，但是需要更长的时间，一般晶格常数为1，这里选取1.1就可以）</p>
+<p>step3. 运行命令 mcsqs -n XX<br>该命令主要输出sqscell.out文件。XX表示体系的原子个数，该数值一定是上述结构原子的倍数，否则会出错。</p>
+<p>#比如上述构型，自身CrNi有4个原子，其中Ni元素与Fe,Co构成合金，因此XX至少为12个原子。该步骤运行一下，就可以进行停止。输出文件需要关注sqscell.out文件，该文件给出了XX个原子扩胞后形成的不同晶格构型。可通过挑选，删除一些不太可能的结构，比如x,y,z三个方向长度差别过大，形成的角度较小等对VASP或后续计算不友好的结构。之后用新的sqscell.out文件运行第四步骤。</p>
+<p>step4. 运行命令mcsqs -rc<br>输出bestsqs.out文件和bestcorr.out文件。其中bestsqs.out就是无序结构。</p>
+<p>#通常而言没有最完美的无序结构，这个命令会一直运行下去，可以肯定的是，再一次生成的结构比上一次生成的结构要优异，所以什么时候停止取决于自身研究的精度。</p>
 <h1 id="层间结合能、结合力"><a href="#层间结合能、结合力" class="headerlink" title="层间结合能、结合力"></a>层间结合能、结合力</h1><p>贴一篇文章：<a target="_blank" rel="noopener" href="https://news.sciencenet.cn/htmlpaper/2022/4/202242914585844872440.shtm">https://news.sciencenet.cn/htmlpaper/2022/4/202242914585844872440.shtm</a></p>
 <h3 id="Graphite-interlayer-distance"><a href="#Graphite-interlayer-distance" class="headerlink" title="Graphite interlayer distance"></a>Graphite interlayer distance</h3><p>vasp上的教程：</p>
 <p>准备graphite结构，</p>
