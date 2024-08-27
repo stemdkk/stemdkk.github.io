@@ -123,7 +123,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -159,6 +159,269 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/18-47-27/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Keke Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lightchaser">
+      <meta itemprop="description" content="一个小学生的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Lightchaser">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/05/09/18-47-27/" class="post-title-link" itemprop="url">2.3 wannier90+wanniertools</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-09 18:47:27" itemprop="dateCreated datePublished" datetime="2023-05-09T18:47:27+08:00">2023-05-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-05 10:49:09" itemprop="dateModified" datetime="2024-06-05T10:49:09+08:00">2024-06-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DFT%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">DFT学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/355317202">https://zhuanlan.zhihu.com/p/355317202</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzI3MzIyMjI2Nw==&mid=2247488523&idx=1&sn=90a544712f166e248993e1198eb40981&chksm=eb27cb1fdc50420921bb11d3bc8f4833c14418b0d0c0d755af6687fca024fc9d15d999ae7813&scene=21#wechat_redirect">https://mp.weixin.qq.com/s?__biz=MzI3MzIyMjI2Nw==&amp;mid=2247488523&amp;idx=1&amp;sn=90a544712f166e248993e1198eb40981&amp;chksm=eb27cb1fdc50420921bb11d3bc8f4833c14418b0d0c0d755af6687fca024fc9d15d999ae7813&amp;scene=21#wechat_redirect</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.sciencenet.cn/blog-2909108-1154273.html">https://blog.sciencenet.cn/blog-2909108-1154273.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/642116307">https://zhuanlan.zhihu.com/p/642116307</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/25432728">https://zhuanlan.zhihu.com/p/25432728</a></p>
+<h1 id="一、安装编译"><a href="#一、安装编译" class="headerlink" title="一、安装编译"></a>一、安装编译</h1><h2 id="wannier90安装"><a href="#wannier90安装" class="headerlink" title="wannier90安装"></a>wannier90安装</h2><p>下载: <a target="_blank" rel="noopener" href="https://wannier.org/download/">https://wannier.org/download/</a></p>
+<p>2.1版本是可以与VASP结合的最新版本。但是2.1版本默认安装与VASP接口并不好，主要是借助肖承诚博士写了一个Fortran的接口（<a target="_blank" rel="noopener" href="https://github.com/Chengcheng-Xiao/VASP2WAN90_v2_fix%EF%BC%89%EF%BC%8C">https://github.com/Chengcheng-Xiao/VASP2WAN90_v2_fix），</a> 需要注意的是这个接口是针对VASP 5.4.4版本的。1.2版本与VASP的接口是好的，所以1.2版本默认安装就好。对比两个版本的不同，1.2版本的主要缺点就在于不能构建向上自旋和向下自旋的能带，也就是没有自旋轨道耦合作用的铁磁和反铁磁体系。 <img src="/gra/0201.jpg" alt="0201"></p>
+<h3 id="1-1-wannier90-2-1安装"><a href="#1-1-wannier90-2-1安装" class="headerlink" title="1.1 wannier90 2.1安装"></a>1.1 wannier90 2.1安装</h3><p>首先，解压安装包</p>
+<p><code>tar -zxvf wannier90-2.1.0.tar.gz</code></p>
+<p>其次，进入文件夹</p>
+<p><code>cd wannier90-2.1.0/</code></p>
+<p>然后，准备编译文件（这里老王用的是ifort，注意要检查ifort和mpiifort执行命令）</p>
+<p><code>cp config/make.inc.ifort make.inc</code></p>
+<p>接着，编译</p>
+<p><code>make</code></p>
+<p>完成后，编译库，得到libwannier.a文件</p>
+<p><code>make lib</code></p>
+<h3 id="1-2-VASP编译（注意以上接口VASP2WAN90-v2-fix只针对VASP-5-4-4）"><a href="#1-2-VASP编译（注意以上接口VASP2WAN90-v2-fix只针对VASP-5-4-4）" class="headerlink" title="1.2 VASP编译（注意以上接口VASP2WAN90_v2_fix只针对VASP 5.4.4）"></a>1.2 VASP编译（注意以上接口VASP2WAN90_v2_fix只针对VASP 5.4.4）</h3><p>首先拷贝VASP2WAN90_v2_fix接口文件中的mlwf.patch 到VASP代码编译目录下。然后执行如下命令。</p>
+<p><code>patch -p0 &lt; mlwf.patch</code></p>
+<p>接着在VASP makefile.include 文件中加入下面两行。注意路径。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CPP_OPTIONS+=-DVASP2WANNIER90v2</span><br><span class="line"></span><br><span class="line">LLIBS+=/path/to/your/wannier90_distro/libwannier.a</span><br></pre></td></tr></table></figure>
+<p>最后编译即可</p>
+<p><code>make all</code></p>
+<h2 id="wannier-tools安装"><a href="#wannier-tools安装" class="headerlink" title="wannier-tools安装"></a>wannier-tools安装</h2><p>开源软件包WannierTools，是一个用于研究新型拓扑材料的软件。此代码在紧束缚模型中工作，可以由另一个软件包Wannier90生成。</p>
+<p>它可以通过计算Wilson loop来帮助对给定材料的拓扑相进行分类，通过角分辨光电发射(ARPES)和红外光谱技术，可以得到表面态光谱扫描隧道显微镜(STM)实验。它还可以识别Weyl&#x2F;Dirac点和节点线结构的位置，计算闭合动量环周围的贝里相位和部分布里渊区(BZ)的贝里曲率。<br>此外，WannierTools还可以计算非磁性金属和半金属的普通磁电阻利用玻尔兹曼输运理论，计算给定磁场方向和强度下的朗道能级谱;并从超胞计算中得到展开的能谱。</p>
+<p>wanniertools官方安装教程</p>
+<p><a target="_blank" rel="noopener" href="http://www.wanniertools.com/installation.html">http://www.wanniertools.com/installation.html</a></p>
+<h3 id="安装依赖环境"><a href="#安装依赖环境" class="headerlink" title="安装依赖环境"></a>安装依赖环境</h3><p>1、Intel编译器即oneapi（Fortran compiler (Gfortran or ifort)，MPICH version higher than 2.1.5，Lapack and Blas library, (Intel MKL recommended)）</p>
+<p>2、Arpack-ng</p>
+<h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><p>下载wanniertools和arpack安装包并分别解压</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">unzip wannier_tools-master.zip</span><br><span class="line">tar vzxf arpack96.tar.gz</span><br></pre></td></tr></table></figure>
+<p>先进入arpack，修改编译文件并编译<br>在ARmake.inc中修改编译路径，这里以实际安装路径为准</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">home = $(HOME)/ARPACK</span><br></pre></td></tr></table></figure>
+<p>修改编译器，参考VASP安装时的makefile.include</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">FC=f77</span><br><span class="line">FFLAGS= -O -cg89</span><br></pre></td></tr></table></figure>
+
+<p>改为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FC         = mpiifort</span><br><span class="line">FCL        = mpiifort -mkl=sequential</span><br><span class="line">FFLAGS  = -O -cg89</span><br></pre></td></tr></table></figure>
+
+<p>然后执行make编译</p>
+<p>make lib</p>
+<p>直至产生libarpack_SUN4.a文件，该文件会因为不同机器不同环境而不同名称，只要确定好，然后在编译wanniertools的时候指定好就行了</p>
+<p>在wanniertools的src文件夹的makefile文件中该默认值为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#ARPACK LIBRARY</span><br><span class="line"></span><br><span class="line">ARPACK=/Users/quan/work/workplace/ARPACK/libarpack MAC.a</span><br></pre></td></tr></table></figure>
+<p>修改为刚刚已经生成的文件路径，这里使用的是Makefile.intel-mpi，重命名为makefile</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp Makefile.intel-mpi Makefile</span><br></pre></td></tr></table></figure>
+<p>然后编译即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make</span><br></pre></td></tr></table></figure>
+
+<p>最后生成wt.x文件即为安装成功</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp -f wt.x../bin</span><br></pre></td></tr></table></figure>
+<h1 id="二、计算过程-以石墨烯为例"><a href="#二、计算过程-以石墨烯为例" class="headerlink" title="二、计算过程(以石墨烯为例)"></a>二、计算过程(以石墨烯为例)</h1><h2 id="1、结构优化加自洽计算"><a href="#1、结构优化加自洽计算" class="headerlink" title="1、结构优化加自洽计算"></a>1、结构优化加自洽计算</h2><p>POSCAR为<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Surf</span>-mp-<span class="number">48</span>                             </span><br><span class="line">   <span class="number">1.00000000000000</span>     </span><br><span class="line">     <span class="number">1.2344083195740001</span>   -<span class="number">2.1380573715510001</span>    <span class="number">0.0000000000000000</span></span><br><span class="line">     <span class="number">1.2344083195740001</span>    <span class="number">2.1380573715510001</span>    <span class="number">0.0000000000000000</span></span><br><span class="line">     <span class="number">0.0000000000000000</span>    <span class="number">0.0000000000000000</span>   <span class="number">12.0000000000000000</span></span><br><span class="line">   C </span><br><span class="line">     <span class="number">2</span></span><br><span class="line"><span class="title class_">Direct</span></span><br><span class="line">  <span class="number">0.0000000000000000</span>  <span class="number">0.0000000000000000</span>  <span class="number">0.5000000000000000</span></span><br><span class="line">  <span class="number">0.3333329999917112</span>  <span class="number">0.6666670000099160</span>  <span class="number">0.5000000000000000</span></span><br></pre></td></tr></table></figure><br>INCAR为</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">SYSTEM</span>=<span class="title class_">Graphene</span></span><br><span class="line"><span class="title class_">Global</span> <span class="title class_">Parameters</span></span><br><span class="line"><span class="variable constant_">ISTART</span> =  <span class="number">0</span>            (<span class="title class_">Read</span> existing wavefunction; <span class="keyword">if</span> there)</span><br><span class="line"><span class="variable constant_">ISPIN</span>  =  <span class="number">1</span>            (<span class="title class_">Non</span>-<span class="title class_">Spin</span> polarised <span class="variable constant_">DFT</span>)</span><br><span class="line"><span class="variable constant_">ICHARG</span> =  <span class="number">2</span>           (<span class="title class_">Non</span>-self-<span class="attr">consistent</span>: <span class="variable constant_">GGA</span>/<span class="variable constant_">LDA</span> band structures)</span><br><span class="line"><span class="variable constant_">LREAL</span>  = .<span class="property">FALSE</span>.       (<span class="title class_">Projection</span> <span class="attr">operators</span>: automatic)</span><br><span class="line"><span class="variable constant_">ENCUT</span>  =  <span class="number">500</span>          (<span class="title class_">Cut</span>-off energy <span class="keyword">for</span> plane wave basis set, <span class="keyword">in</span> eV)</span><br><span class="line"><span class="variable constant_">PREC</span>   =  A            (<span class="title class_">Precision</span> level)</span><br><span class="line"><span class="variable constant_">ADDGRID</span>= .<span class="property">TRUE</span>.        (<span class="title class_">Increase</span> grid; helps <span class="variable constant_">GGA</span> convergence)</span><br><span class="line"> </span><br><span class="line"><span class="title class_">Electronic</span> <span class="title class_">Relaxation</span></span><br><span class="line"><span class="variable constant_">ALGO</span> = N</span><br><span class="line"><span class="variable constant_">ISMEAR</span> =  <span class="number">0</span>            (<span class="title class_">Gaussian</span> smearing; <span class="attr">metals</span>:<span class="number">1</span>)</span><br><span class="line"><span class="variable constant_">SIGMA</span>  =  <span class="number">0.05</span>         (<span class="title class_">Smearing</span> value <span class="keyword">in</span> eV; <span class="attr">metals</span>:<span class="number">0.2</span>)</span><br><span class="line"><span class="variable constant_">NELM</span>   =  <span class="number">90</span>           (<span class="title class_">Max</span> electronic <span class="variable constant_">SCF</span> steps)</span><br><span class="line"><span class="variable constant_">NELMIN</span> =  <span class="number">6</span>            (<span class="title class_">Min</span> electronic <span class="variable constant_">SCF</span> steps)</span><br><span class="line"><span class="variable constant_">EDIFF</span>  =  <span class="number">1E-08</span>        (<span class="variable constant_">SCF</span> energy convergence; <span class="keyword">in</span> eV)</span><br><span class="line"> </span><br><span class="line"><span class="title class_">Ionic</span> <span class="title class_">Relaxation</span></span><br><span class="line"><span class="variable constant_">NSW</span>    =  <span class="number">0</span>            (<span class="title class_">Max</span> ionic steps)</span><br><span class="line"><span class="variable constant_">IBRION</span> = -<span class="number">1</span>            (<span class="title class_">Algorithm</span>: <span class="number">0</span>-<span class="variable constant_">MD</span>; <span class="number">1</span>-<span class="title class_">Quasi</span>-<span class="title class_">New</span>; <span class="number">2</span>-<span class="variable constant_">CG</span>)</span><br><span class="line"><span class="variable constant_">ISIF</span>   =  <span class="number">3</span>            (<span class="title class_">Stress</span>/<span class="attr">relaxation</span>: <span class="number">2</span>-<span class="title class_">Ions</span>, <span class="number">3</span>-<span class="title class_">Shape</span>/<span class="title class_">Ions</span>/V, <span class="number">4</span>-<span class="title class_">Shape</span>/<span class="title class_">Ions</span>)</span><br><span class="line"><span class="variable constant_">EDIFFG</span> = -<span class="number">2E-02</span>        (<span class="title class_">Ionic</span> convergence; eV/<span class="variable constant_">AA</span>)</span><br></pre></td></tr></table></figure>
+<p>加SOC在自洽计算加上<br><code>LSORBIT=T</code></p>
+<h2 id="2、非自洽计算投影能带"><a href="#2、非自洽计算投影能带" class="headerlink" title="2、非自洽计算投影能带"></a>2、非自洽计算投影能带</h2><p>在自洽计算基础上，<code>cp -r scf band</code><br>修改INCAR</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ISTART =  1         </span><br><span class="line">ICHARG =  11 </span><br><span class="line">LORBIT =  10/11</span><br></pre></td></tr></table></figure>
+<p>KPOINTS 改为高对称点路径。</p>
+<p>画一下能带结构，然后再做一下Fatband分析，了解费米面附近能带是有哪些成分构成的。以C的pz轨道。</p>
+<h2 id="3、非自洽vasp产生-win文件"><a href="#3、非自洽vasp产生-win文件" class="headerlink" title="3、非自洽vasp产生.win文件"></a>3、非自洽vasp产生.win文件</h2><p>在自洽计算基础上 <code>cp -r scf wan1</code><br>修改INCAR</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ISTART =  1         </span><br><span class="line">ICHARG =  11 </span><br><span class="line">NBANDS = 40</span><br><span class="line">LWANNIER90 = .TRUE.</span><br><span class="line">NUM_WANN = 2</span><br></pre></td></tr></table></figure>
+<p><strong>注意，INCAR中使用NPAR参数会出错</strong> </p>
+<p>KPOINTS、POSCAR、POTCAR不改。</p>
+<p>准备好wannier90.win文件，同时在INCAR里头添加一行LWANNIER90&#x3D;.TRUE.和一行ICHARG&#x3D;11，然后再运行一遍VASP。 顺利的话，会产生 <strong>wannier90.amn, wannier90.mmn, wannier90.eig, wannier90.chk</strong> 等4个文件。wannier90.win里头的内容也有可能会被改变。包括结构信息，k点信息。有了这三个文件就可以进一步调节参数，构造wannier函数了。请注意wannier90.win里头的num_bands要和OUTCAR里头的NBANDS一致。.mmn积分矩阵和.amn布洛赫态在轨道上的尝试投影和UNK0000x.1存储实空间单胞的布洛赫态相关信息，这些文件是运行链接wannier90的DFT计算输出的结果，而gaas.win是计算参数设置文件</p>
+<h2 id="4、wannier90-x计算"><a href="#4、wannier90-x计算" class="headerlink" title="4、wannier90.x计算"></a>4、wannier90.x计算</h2><p>运行wannier90主程序。<code>mpirun -np 40 wannier90.x wannier90 &amp;</code></p>
+<p><strong>注意在第3步打开<code>hr_plot = T</code>，关闭<code>write_hr = true</code>；在第4步打开<code>write_hr = true</code>，关闭<code>hr_plot = T</code>。</strong></p>
+<p>这里后面一个winner90代表wannier90.win的文件.win前面的部分。如果你的win文件是name.win运行的地方就可以是</p>
+<p><code>wannier90.x name &amp;</code></p>
+<p>运行过程中当num_bands &gt; num_wann 有个迭代过程，控制迭代步数可以通过</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dis_num_iter  =  200   # 迭代1，默认200步</span><br><span class="line">num_iter      =  200   # 迭代2，默认200步</span><br></pre></td></tr></table></figure>
+<p>最后会生成wannier90.chk文件，restart计算会读取这个文件。</p>
+<p>加入能带部分的话第一次运行就会出来，wannier90_band.dat文件，这个可以用来和DFT结果对比。<br>构造好Wannier函数以后，仔细检查一下wannier90.wout，<br>搜索”Final State”，在这里可以看到每条Wannier轨道的展宽，由此可以检查你构造的Wannier函数是否足够局域。如果有某个Wannier函数的展宽<br>比晶格常数大许多，就表明你的Wannier函数构造不是很理想，需要不断调节投影轨道，解纠缠窗口以及Frozen窗口等。从这些轨道的中心和展宽也能<br>看出轨道之间的简并性如何，由此也可以判断所构造的Wannier函数对称性如何，这个也会影响后续的分析，特别是表面态的计算。查看wannier90.wout末尾的Final State的最后一列小于3，其结果是可以的。</p>
+<h2 id="5、"><a href="#5、" class="headerlink" title="5、"></a>5、</h2><p>紧接着，你就可以开始书写WannierTools的主输入文件了，<br>目前叫input.dat，以后会改成<a target="_blank" rel="noopener" href="http://wt.in/">http://wt.in</a> (WannierTools v2.2之后)。 这里不具体介绍每一个参数，在说明文档中有详细的介绍，中文版的说明文档正在翻译中。<br>input.dat文件有模板，使用的时候直接拷贝然后加以修改。很多内容都可以直接从wannier90.win和wannier90.wout中拷<br>贝。 Bi2Se3的主输入文件input.dat可以在附件中下载得到。我们可以通过控制输入文件中的一些参数来实现我们所需要的功能。</p>
+<h1 id="常见报错"><a href="#常见报错" class="headerlink" title="常见报错"></a>常见报错</h1><ol>
+<li><p>首先跑接口会生成3个文件.amm .mmm .eig通过这三个文件构造wannier函数。也可以提前把.win文件准备好放进去。以上三个文件生成后运行wannier90.x会成.chk文件</p>
+</li>
+<li><p>Restar&#x3D;T是需要读取.chk文件的</p>
+</li>
+</ol>
+<p>Error: restart requested but wannier90.chkfile not found</p>
+<p>原因：加了restart &#x3D; plot 这个命令，但却没有wannier90.chk这个文件。Restart是需要读取wannier90.chk的。</p>
+<p>解决办法：注释掉restart &#x3D; plot，然后重新运行wannier90.x wannier90 &amp;得到wannier90.chk.</p>
+<ol start="3">
+<li>问题：Wannier90 is running in LIBRARY MODE</li>
+</ol>
+<p>Setting up k-point neighbours…</p>
+<p>Ignoring <num_bands> in input file</p>
+<p>解决办法：尽量串行，不要并行。请再次运行 $postw90 wannier90的为输出的数据</p>
+<ol start="4">
+<li><p>Spinors与文件INCAR中的ISPIN的设置有关，同时存在或者同时去掉，否则影响.amn文件的形成。（自旋轨道耦合）</p>
+</li>
+<li><p>谨慎用use_bloch_phases&#x3D;T一般是F</p>
+</li>
+<li><p>问题：param_read: mismatch in wannier90.eig</p>
+</li>
+</ol>
+<p>解决办法：每一步计算的核数要相等</p>
+<ol start="7">
+<li>问题：dis_windows: More states in the forze window than target WFs</li>
+</ol>
+<p>解决办法：把dis_windows改大点</p>
+<ol start="8">
+<li>Fewer projections defined than the number of wannier functions requested.</li>
+</ol>
+<p>投影的轨道太少</p>
+<p>解决办法：增加投影的轨道</p>
+<ol start="9">
+<li>Kmesh_get_bvector: Not enongh bevectors found</li>
+</ol>
+<p>解决办法：添加kemsh_tol</p>
+<ol start="10">
+<li>Wanted band:1 found band:17</li>
+</ol>
+<p>Wanted kpoint:2 found kpoint:1</p>
+<p>解决办法：常见原因是num_bands设置错误，返回band计算文件夹查看NBANDS</p>
+<ol start="11">
+<li>Dis_windows: Energy window contains fewer states than number sf target WFs</li>
+</ol>
+<p>解决办法：把dis_windows改大点</p>
+<ol start="12">
+<li>Dis_windows: more states in the frozen window than WFs</li>
+</ol>
+<p>解决办法：调节frozen window, 投影太多或者这个窗口太大涉及到别的轨道</p>
+<ol start="13">
+<li>Wannier 运行有两种模式一是library mode，一种是单机模式stand-alone mode</li>
+</ol>
+<p>解决办法：library mode是需要进行串行。</p>
+<ol start="14">
+<li>param_get_projection: too many projections defined</li>
+</ol>
+<p>解决办法：begin projections random</p>
+<p>原因：num_wann 与设置投影数不匹配。</p>
+<p>解决办法：不加soc：num_wann 等于每种原子投影轨道数之和</p>
+<p>soc：num_wann 等于两倍的每种原子投影轨道数之和</p>
+<ol start="15">
+<li><p>Gnuplot的报错信息”arc_bulk.gnu”, line 26: warning: No unsable data in this plot to auto-scale axis range</p>
+</li>
+<li><p>param_get_projection: Problem reading m state into string</p>
+</li>
+</ol>
+<p>解决办法：已解决Fe: s;px;py;pz;dz2;dxz;dyz;dx2-y2;dxy</p>
+<p>不是Fe:s;p;d</p>
+<ol start="17">
+<li>能带拟合的不好可能是因为，投影的不对，还有核数和能带数的关系</li>
+</ol>
+<p>解决办法：太马虎了，这样的问题肯定是K点写错了</p>
+<p>能带布里渊区的宽度不一样有可能是wannier里规定的K点数并没有完全计算。</p>
+<ol start="18">
+<li>num_iter &#x3D; 2000 #wannier center 迭代次数</li>
+</ol>
+<p>num_print_cycles &#x3D; 40 #wannier center 迭代每40步输出一次</p>
+<ol start="19">
+<li><p>dis_num_iter &#x3D; 1200 #解纠缠的迭代步数#</p>
+</li>
+<li><p>num_iter最小化过程中的总迭代次数。如果您希望生成投影wf而不是最大本地化的wf，则设置num_iter&#x3D;0(请参阅教程中的示例8)？默认值为100</p>
+</li>
+<li><p>dis_mix_ratio &#x3D; 1.d0 # 0.5&lt;dis_mix_ratio&lt;1, 默认值0.5</p>
+</li>
+</ol>
+<p>#在解纠缠过程中，要利用混合参数进行收敛，值为0.5是“安全”的选择。使用1.0(即不混合)通常会得到更快的收敛，但可能会导致 最小化，在某些情况下是不稳定的。</p>
+<p>dis_conv_tol &#x3D; 1.0E-10 # Delta &lt; 1.000E-10 over 3 iterations</p>
+<ol start="22">
+<li>dis_win_max &#x3D; 15</li>
+</ol>
+<p>dis_froz_max &#x3D; 14</p>
+<p>num_wan &#x3D; 12</p>
+<p>exclude_bands : 1-11,26 #在使用这个参数时，num_bands &#x3D; 总能带数减去排除在外的能带数</p>
+<p>num_bands &#x3D; 14</p>
+<p>#如果使用能量窗口规定想要拟合的能带区间，需要同时使用这个几个参数</p>
+<ol start="23">
+<li><p>wannier_plot_supercell &#x3D;2 #在一个对应于“超胞”的网格上生成WFs</p>
+</li>
+<li><p>wannier_plot_list &#x3D;2 #列举要画出WFs的序号，与wannier center 的序号是一致的</p>
+</li>
+<li><p>运行接口的情况有三种，一是选择投影能带数发生了改变，二是，需要写入wannier90.win的输入文件；三是需要在INCAR添加关键参数，输出wannier.x需要的文件。（仅仅是调节能量窗口是不需要重新运行接口的）</p>
+</li>
+<li><p>无没有projection是肯定没有amn的</p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -396,7 +659,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-13 11:27:50" itemprop="dateModified" datetime="2024-06-13T11:27:50+08:00">2024-06-13</time>
+      <time title="修改时间：2024-08-27 11:06:58" itemprop="dateModified" datetime="2024-08-27T11:06:58+08:00">2024-08-27</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -540,6 +803,42 @@
 <h2 id="有效质量："><a href="#有效质量：" class="headerlink" title="有效质量："></a>有效质量：</h2><p>除了通过能带，也可以通过调用VASPKIT-911命令来得到带边位置，接下来我们计算K点处沿着K -&gt; Γ和K -&gt; M方向的电子及空穴载流子的有效质量；<br>第一步：准备POSCAR文件以及VPKIT.in文件，VPKIT.in文件包含以下内容；</p>
 <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>                  设置为<span class="number">1</span>将会生成计算有效质量的<span class="variable constant_">KPOINTS</span>文件，<span class="number">2</span>则计算有效质量</span><br><span class="line"><span class="number">6</span>                  <span class="number">6</span>表示我们在K附近取<span class="number">6</span>个离散点用于多项式拟合</span><br><span class="line"><span class="number">0.015</span>              k-cutoff, 截断半径，典型值<span class="number">0.015</span> <span class="number">1</span>/Å</span><br><span class="line"><span class="number">2</span>                  <span class="number">2</span> 表示有两个有效质量任务</span><br><span class="line"><span class="number">0.333333</span> <span class="number">0.3333333</span>  <span class="number">0.000</span>  <span class="number">0.000</span> <span class="number">0.000</span> <span class="number">0.000</span>  K-&gt;Γ     计算K点处有效质量，沿着K指向Γ方向    </span><br><span class="line"><span class="number">0.333333</span> <span class="number">0.3333333</span>  <span class="number">0.000</span>  <span class="number">0.500</span> <span class="number">0.000</span> <span class="number">0.000</span>  K-&gt;M     计算K点处有效质量，沿着K指向M方向 </span><br></pre></td></tr></table></figure>
 <p>第二步：运行vaspkit并选择912或者913产生KPOINTS，POTCAR文件及静态计算INCAR文件；<br>第三步：提交VASP作业；<br>第四步：计算完成后把VPKIT.in文件中第一行的1修改为2，然后再次运行vaspkit并选择913，得到结果：<br>为了得到可靠的有效质量计算值，括号里的精度至少要在1E-7这个量级，如果误差比较大，可以适当调整k-cutoff值，一般减少该值但不能太小。<br>手动vaspkit处理的能带：$m^∗&#x3D;3.815&#x2F;B$</p>
+<h2 id="GW方法"><a href="#GW方法" class="headerlink" title="GW方法"></a>GW方法</h2><p>参考：<a target="_blank" rel="noopener" href="https://www.vasp.at/wiki/index.php/Bandgap_of_Si_in_GW">https://www.vasp.at/wiki/index.php/Bandgap_of_Si_in_GW</a></p>
+<p>步骤：</p>
+<ol>
+<li>PBE基态计算</li>
+<li>获得虚拟轨道（50-100&#x2F;atom）</li>
+</ol>
+<p>INCAR：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ALGO = Exact</span><br><span class="line">NBANDS  = 64</span><br><span class="line">LOPTICS = .TRUE. #得到WAVEDER文件</span><br><span class="line">CSHIFT = 0.1</span><br><span class="line">NEDOS = 2000</span><br><span class="line"># you might try</span><br><span class="line">#LPEAD = .TRUE.</span><br><span class="line">   </span><br><span class="line">ISMEAR =  0</span><br><span class="line">SIGMA  =  0.05</span><br><span class="line">EDIFF  = 1E-8</span><br></pre></td></tr></table></figure>
+<p>完成后：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp WAVECAR WAVECAR.DIAG</span><br><span class="line">cp WAVEDER WAVEDER.DIAG</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>GW计算<br>读取上一步<br>INCAR：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># Frequency dependent dielectric tensor including</span><br><span class="line"># local field effects within the RPA (default) or</span><br><span class="line"># including changes in the DFT xc-potential (LRPA=.FALSE.).</span><br><span class="line"># N.B.: beware one first has to have done a</span><br><span class="line"># calculation with ALGO=Exact, LOPTICS=.TRUE.</span><br><span class="line"># and a reasonable number of virtual states (see above)</span><br><span class="line">ALGO = GW0 ; LSPECTRAL = .TRUE. ; NOMEGA = 50</span><br><span class="line">   </span><br><span class="line"># be sure to take the same number of bands as for</span><br><span class="line"># the LOPTICS=.TRUE. calculation, otherwise the</span><br><span class="line"># WAVEDER file is not read correctly</span><br><span class="line">NBANDS = 64</span><br><span class="line">     </span><br><span class="line"># Add this to update the quasiparticle energies</span><br><span class="line"># in the Green&#x27;s function (GW0)</span><br><span class="line">#NELM = 4</span><br><span class="line">    </span><br><span class="line">ISMEAR =  0</span><br><span class="line">SIGMA  =  0.05</span><br><span class="line">EDIFF  = 1E-8</span><br></pre></td></tr></table></figure>
+在OUTCAR中quasi-particle (QP) energies.<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">QP shifts &lt;psi_nk| G(iteration)W_0 |psi_nk&gt;: iteration 1</span><br><span class="line"> for sc-GW calculations column KS-energies equals QP-energies in previous step</span><br><span class="line"> and V_xc(KS)=  KS-energies - (&lt;T + V_ion + V_H &gt; + &lt;T+V_H+V_ion&gt;^1  + &lt;V_x&gt;^1)</span><br><span class="line"></span><br><span class="line"> k-point   1 :       0.0000    0.0000    0.0000</span><br><span class="line">  band No.  KS-energies  QP-energies   sigma(KS)   V_xc(KS)     V^pw_x(r,r&#x27;)   Z            occupation</span><br><span class="line">  .........</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="LWANNIER90计算能带结构"><a href="#LWANNIER90计算能带结构" class="headerlink" title="LWANNIER90计算能带结构"></a>LWANNIER90计算能带结构</h3><p>重新开始第三步</p>
+<p>INCAR：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ALGO = GW0 ; LSPECTRAL = .TRUE. ; NOMEGA = 50</span><br><span class="line">#LRPA = .FALSE. </span><br><span class="line">## be sure to take the same number of bands as for</span><br><span class="line">## the LOPTICS=.TRUE. calculation, otherwise the</span><br><span class="line">## WAVEDER file is not read correctly</span><br><span class="line">NBANDS = 64</span><br><span class="line">##VASP2WANNIER90</span><br><span class="line">LWANNIER90=.TRUE.</span><br></pre></td></tr></table></figure>
+<p>wannier90.win:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line">num_wann=8</span><br><span class="line">num_bands=8</span><br><span class="line"></span><br><span class="line">exclude_bands = 9-64</span><br><span class="line"></span><br><span class="line">Begin Projections</span><br><span class="line">Si:sp3</span><br><span class="line">End Projections</span><br><span class="line"></span><br><span class="line">dis_froz_max=9</span><br><span class="line">dis_num_iter=1000</span><br><span class="line"></span><br><span class="line">guiding_centres=true</span><br><span class="line"></span><br><span class="line"># Bandstructure plot </span><br><span class="line">#restart         =  plot</span><br><span class="line">#bands_plot      =  true</span><br><span class="line">#begin kpoint_path</span><br><span class="line">#L 0.50000  0.50000 0.5000 G 0.00000  0.00000 0.0000</span><br><span class="line">#G 0.00000  0.00000 0.0000 X 0.50000  0.00000 0.5000</span><br><span class="line">#X 0.50000  0.00000 0.5000 K 0.37500 -0.37500 0.0000</span><br><span class="line">#K 0.37500 -0.37500 0.0000 G 0.00000  0.00000 0.0000</span><br><span class="line">#end kpoint_path</span><br><span class="line">#bands_num_points 40</span><br><span class="line">#bands_plot_format gnuplot xmgrace</span><br><span class="line"></span><br><span class="line">begin unit_cell_cart</span><br><span class="line">     2.7150000     2.7150000     0.0000000</span><br><span class="line">     0.0000000     2.7150000     2.7150000</span><br><span class="line">     2.7150000     0.0000000     2.7150000</span><br><span class="line">end unit_cell_cart</span><br><span class="line"></span><br><span class="line">begin atoms_cart</span><br><span class="line">Si       0.0000000     0.0000000     0.0000000</span><br><span class="line">Si       1.3575000     1.3575000     1.3575000</span><br><span class="line">end atoms_cart</span><br><span class="line"></span><br><span class="line">mp_grid =     4     4     4</span><br><span class="line"></span><br><span class="line">begin kpoints</span><br><span class="line">     0.0000000     0.0000000     0.0000000</span><br><span class="line">     0.2500000     0.0000000     0.0000000</span><br><span class="line">     0.5000000     0.0000000     0.0000000</span><br><span class="line">     0.2500000     0.2500000     0.0000000</span><br><span class="line">     0.5000000     0.2500000     0.0000000</span><br><span class="line">    -0.2500000     0.2500000     0.0000000</span><br><span class="line">     0.5000000     0.5000000     0.0000000</span><br><span class="line">    -0.2500000     0.5000000     0.2500000</span><br><span class="line">     0.0000000     0.2500000     0.0000000</span><br><span class="line">     0.0000000     0.0000000     0.2500000</span><br><span class="line">    -0.2500000    -0.2500000    -0.2500000</span><br><span class="line">    -0.2500000     0.0000000     0.0000000</span><br><span class="line">     0.0000000    -0.2500000     0.0000000</span><br><span class="line">     0.0000000     0.0000000    -0.2500000</span><br><span class="line">     0.2500000     0.2500000     0.2500000</span><br><span class="line">     0.0000000     0.5000000     0.0000000</span><br><span class="line">     0.0000000     0.0000000     0.5000000</span><br><span class="line">    -0.5000000    -0.5000000    -0.5000000</span><br><span class="line">     0.0000000     0.2500000     0.2500000</span><br><span class="line">     0.2500000     0.0000000     0.2500000</span><br><span class="line">    -0.2500000    -0.2500000     0.0000000</span><br><span class="line">    -0.2500000     0.0000000    -0.2500000</span><br><span class="line">     0.0000000    -0.2500000    -0.2500000</span><br><span class="line">     0.0000000     0.5000000     0.2500000</span><br><span class="line">     0.2500000     0.0000000     0.5000000</span><br><span class="line">    -0.2500000    -0.2500000     0.2500000</span><br><span class="line">    -0.5000000    -0.2500000    -0.5000000</span><br><span class="line">     0.2500000     0.5000000     0.0000000</span><br><span class="line">     0.2500000    -0.2500000    -0.2500000</span><br><span class="line">    -0.5000000    -0.5000000    -0.2500000</span><br><span class="line">     0.0000000     0.2500000     0.5000000</span><br><span class="line">    -0.2500000     0.2500000    -0.2500000</span><br><span class="line">    -0.2500000    -0.5000000    -0.5000000</span><br><span class="line">     0.5000000     0.0000000     0.2500000</span><br><span class="line">    -0.5000000    -0.2500000     0.0000000</span><br><span class="line">     0.0000000    -0.5000000    -0.2500000</span><br><span class="line">    -0.2500000     0.0000000    -0.5000000</span><br><span class="line">     0.2500000     0.2500000    -0.2500000</span><br><span class="line">     0.5000000     0.2500000     0.5000000</span><br><span class="line">    -0.2500000    -0.5000000     0.0000000</span><br><span class="line">    -0.2500000     0.2500000     0.2500000</span><br><span class="line">     0.5000000     0.5000000     0.2500000</span><br><span class="line">     0.0000000    -0.2500000    -0.5000000</span><br><span class="line">     0.2500000    -0.2500000     0.2500000</span><br><span class="line">     0.2500000     0.5000000     0.5000000</span><br><span class="line">    -0.5000000     0.0000000    -0.2500000</span><br><span class="line">     0.0000000    -0.2500000     0.2500000</span><br><span class="line">     0.2500000     0.0000000    -0.2500000</span><br><span class="line">    -0.2500000    -0.2500000    -0.5000000</span><br><span class="line">     0.2500000     0.5000000     0.2500000</span><br><span class="line">     0.2500000    -0.2500000     0.0000000</span><br><span class="line">    -0.5000000    -0.2500000    -0.2500000</span><br><span class="line">     0.2500000     0.2500000     0.5000000</span><br><span class="line">     0.0000000     0.2500000    -0.2500000</span><br><span class="line">    -0.2500000    -0.5000000    -0.2500000</span><br><span class="line">     0.5000000     0.2500000     0.2500000</span><br><span class="line">    -0.2500000     0.0000000     0.2500000</span><br><span class="line">     0.0000000     0.5000000     0.5000000</span><br><span class="line">     0.5000000     0.0000000     0.5000000</span><br><span class="line">     0.2500000    -0.2500000     0.5000000</span><br><span class="line">     0.5000000     0.2500000    -0.2500000</span><br><span class="line">    -0.5000000    -0.2500000    -0.7500000</span><br><span class="line">     0.2500000    -0.5000000    -0.2500000</span><br><span class="line">    -0.2500000     0.2500000    -0.5000000</span><br><span class="line">end kpoints</span><br></pre></td></tr></table></figure>
+
+<p>Compute Wannier functions<br>run wannier90:</p>
+<p><code>wannier90.x wannier90</code></p>
+<p>This run generates the wannier90 standard output (wannier90.wout) and the file wannier90.chk needed for the wannier interpolation (next step)</p>
+<p>Obtain bandstructure (Wannier interpolation)<br>Uncomment the bandstructure plot flags in wannier90.win and rerun (restart) wannier90:</p>
+<p><code>wannier90.x wannier90</code></p>
+<p>This run generates the following bandstructure files which can be visualized using xmgrace or gnuplot:</p>
+<p>wannier90_band.agr</p>
+<p>wannier90_band.dat</p>
+<p>wannier90_band.gnu</p>
+<p>to plot the band structure using gnuplot: <code>gnuplot -persist wannier90_band.gnu</code></p>
+<h3 id="Beyond-the-random-phase-approximation"><a href="#Beyond-the-random-phase-approximation" class="headerlink" title="Beyond the random-phase-approximation"></a>Beyond the random-phase-approximation</h3><p>To include local field effects beyond the random-phase-approximation in the description of the frequency dependent dielectric response function (local field effects in DFT) add the following line to your INCAR file:</p>
+<p><code>LRPA = .FALSE.</code><br>and again restart from the WAVECAR and WAVEDER files from step 2.</p>
+<h3 id="Beyond-G0W0-GW0"><a href="#Beyond-G0W0-GW0" class="headerlink" title="Beyond G0W0: GW0"></a>Beyond G0W0: GW0</h3><p>The most usual step beyond single-shot GW (G0W0) is to iterate the quasi-particle energies in the Greens functions. This is the socalled GW0 approximation. To have VASP do, for instance, 4 iterations of the QP-energies in G, add the following line to the INCAR file:</p>
+<p><code>NELM = 4</code><br>and again restart from the WAVECAR and WAVEDER files from step 2.</p>
+<p>To quickly find the QP-energy of the highest lying occupied state after 4 iterations of the QP energies in G, type:</p>
+<p><code>./gap_GW.sh OUTCAR</code></p>
 
       
     </div>
@@ -1069,7 +1368,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-05-21 17:14:18" itemprop="dateModified" datetime="2024-05-21T17:14:18+08:00">2024-05-21</time>
+      <time title="修改时间：2024-06-21 09:04:08" itemprop="dateModified" datetime="2024-06-21T09:04:08+08:00">2024-06-21</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1170,9 +1469,20 @@
 <h3 id="大师兄ASE脚本：切金属"><a href="#大师兄ASE脚本：切金属" class="headerlink" title="大师兄ASE脚本：切金属"></a>大师兄ASE脚本：切金属</h3><p>python3 cssm.py</p>
 <h3 id="vaspkit"><a href="#vaspkit" class="headerlink" title="vaspkit"></a>vaspkit</h3><p><strong>块体优化后复制成POSCAR</strong><br><strong>vaspkit –task 803</strong><br><strong>生成SLAB***.vasp</strong></p>
 <h2 id="4-表面弛豫计算"><a href="#4-表面弛豫计算" class="headerlink" title="4 表面弛豫计算"></a>4 表面弛豫计算</h2><h3 id="单点能"><a href="#单点能" class="headerlink" title="单点能"></a>单点能</h3><p><strong>转换成POSCAR单点计算。或表面优化时第一个离子步的能量，但要保证这一步收敛。</strong><br><strong>KPOINTS设置，20-30。</strong><br><strong>INCAR设置，NSW&#x3D;0或默认0.偶极矩矫正 LDIPOL &#x3D; .TRUE. ; IDIPOL &#x3D; 3。</strong><br><strong>POTCAR准备，提交任务脚本。完成后 grep without OUTCAR 获取单点能。</strong></p>
-<h3 id="表面优化-1"><a href="#表面优化-1" class="headerlink" title="表面优化"></a>表面优化</h3><p>1）POSCAR第7行加S，  <code>Sed –i ‘7a S’  POSCAR </code><br>原子坐标加F&#x2F;T。  <code>Sed  –i  ’10,11s/$/  F F F/g’  POSCAR </code><br>                 <code>Sed  –i  ’12,13,14s/$/  T T T/g’  POSCAR </code><br> <code>vaspkit –task 402/403  </code>或者ctrl+v,选中列-大写A-输入  <code>T T T </code> - ESC.<br>2）POTCAR和KPOINTS不变。<br>INCAR设置：IBRION&#x3D;1、2，EDIFF&#x3D;1E-6，EDIFFG&#x3D;-0.03（比块体小一点），ISIF&#x3D;2，<br>提交任务。</p>
+<h3 id="表面优化-1"><a href="#表面优化-1" class="headerlink" title="表面优化"></a>表面优化</h3><p>1）POSCAR第7行后面加一行加S，  <code>Sed –i ‘7a S’  POSCAR </code><br>原子坐标加F&#x2F;T。  <code>Sed  –i  ’10,11s/$/  F F F/g’  POSCAR </code><br>                 <code>Sed  –i  ’12,13,14s/$/  T T T/g’  POSCAR </code><br> <code>vaspkit –task 402/403  </code>或者ctrl+v,选中列-大写A-输入  <code>T T T </code> - ESC.<br>2）POTCAR和KPOINTS不变。<br>INCAR设置：IBRION&#x3D;1、2，EDIFF&#x3D;1E-6，EDIFFG&#x3D;-0.03（比块体小一点），ISIF&#x3D;2，<br>提交任务。</p>
 <h2 id="5-表面能计算"><a href="#5-表面能计算" class="headerlink" title="5  表面能计算"></a>5  表面能计算</h2><p>表面能是创造物质表面时，破坏分子间化学键所需消耗的能量。在固体物理理论中，表面原子比物质内部的原子具有更多的能量，因此，根据能量最低原理，原子会自发的趋于物质内部而不是表面。表面能的另一种定义是，材料表面相对于材料内部所多出的能量。把一个固体材料分解成小块需要破坏它内部的化学键，所以需要消耗能量。如果这个分解的过程是可逆的，那么把材料分解成小块所需要的能量就和小块材料表面所增加的能量相等。但事实上，只有在真空中刚刚形成的表面才符合上述能量守恒。因为新形成的表面是非常不稳定的，它们通过表面原子重组和相互间的反应，或者对周围其他分子或原子的吸附，从而使表面能量降低。<br> γ&#x3D;($E_{surf}$ - N * $E_{bulkatom}$)&#x2F;(2A)</p>
 <p>  1ev&#x2F;$Å^2$ &#x3D;16.02J&#x2F;$m^2$<br> $E_{surf}$是未弛豫的表面能量,A是表面积a*b。</p>
+<h1 id="吸附能扫描"><a href="#吸附能扫描" class="headerlink" title="吸附能扫描"></a>吸附能扫描</h1><p>算吸附能时一般只需要算分子在高对称点的吸附能，比如算Li在铜表面的吸附能，我们只需算Li在Cu(111）面的Top，HCP，FCC和Bridge位的吸附能即可。但是这些离散的点没法帮你构建一个“势能面”，也就是无法得到吸附能在表面究竟是怎么分布的. 下面的文献里DOI：10.1063&#x2F;1.4901055有一张图非常生动，讲的分别是Li在Li(001)以及Mg在Mg(0001)表面的吸附势能分布，我们不仅可以知道哪些位置有利于吸附，还可以根据吸附能分布，描绘出分子在表面的扩散路径，这有助于我们使用NEB方法算扩散能垒。</p>
+<p>图片</p>
+<p>其实思路很简单，就是将表面网格化，算分子在格点的吸附能，再画出等高线图。但是大部分吸附位点其实是不稳定的，所以我们采取固定吸附分子x,y方向，在z方向弛豫以达到吸附平衡的策略。</p>
+<p>其实手动撒点，再采集数据也是可行的，但是会比较麻烦，因此作者根据实际需要开发了一款脚本scan_adsorption_energy用于自动完成这个过程。脚本使用Python编写，需要numpy和matplotlib第三方库。 我们首先算好一个吸附例子得到CONTCAR,这个可以让我们得到吸附分子的元素信息和理想的吸附高度。如下图，吸附的Li是第97号，也是最后一个原子，接着就可以变换这个结构得到不同的吸附结构。 </p>
+<p>图片</p>
+<p>首先我们需要在目录下准备以下几个文件CONTCAR,INCAR,KPOINTS,POTCAR以及排队脚本文件(我的是vasp.pbs)，然后使用脚本产生不同的结构：</p>
+<p>tamas@tamas-PC:~&#x2F;Desktop&#x2F;scan$ python scan_adsorption_energy.py -g<br>Input which atom you want to move to scan adsorption energy–&gt;-1<br>脚本提示我们移动第几个原子产生不同的吸附结构，我们可以输入97或者-1，移动最后一个Li。这个Cu(111)面是(331)的超胞，因此我们最需要取左下角的1&#x2F;9的小区域撒点即可，然后程序会将小区域内的数据点进行平移得到整个表面的数据。如何根据不同的表面调整这个参数以及撒点的密度呢？可以使用-u参数进行自定义设置。</p>
+<p>Input how many supercells in x axis–&gt;3<br>Input how many supercells in y axis–&gt;3<br>Input interporate how many points for each unit cell in x axis,even number are suggested–&gt;2<br>Input interporate how many points for each unit cell in y axis,even number are suggested–&gt;2<br>command to submit jobs,e.g. qsub vasp.pbs–&gt;qsub vasp.pbs<br>Input which atom you want to move to scan adsorption energy–&gt;-1<br>手动选择x方向的超胞数3，y方向的超胞数3,在小区域内的x方向的撒点数，y方向的撒点数（为了包含中心点，建议选择偶数）和提交排队脚本的命令（我的是qsub vasp.pbs）。脚本会自动产生4个结构（2*2），并会将每个计算所需的文件都复制到相应的文件夹内，并提交排队脚本进行计算。同时脚本会写出一个grid.info里面包含了超胞数，选择移动的原子以及晶格常数信息。 在所有的计算完成后，同样使用该脚本提取数据。</p>
+<p>python scan_adsorption_energy.py -e<br>脚本会自动从每个结构文件夹内读取能量数据和吸附原子的坐标。生成两个dat文件new_direct.dat和new_dat-3D.dat。前者是原子的分数坐标和总能量，后者有4列，分别为原子的笛卡尔x分量坐标，y分量坐标，z分量坐标以及总能量。我们需要使用第1,2,4列绘制等高线图。如果需要绘制吸附能，需要自己手动将第四列的数据减去吸附原子和表面的能量。 脚本会尝试使用matplotlib绘制等高线图，如下图，你也可以使用Origin Pro绘图。 </p>
+<p>图片</p>
+<p>脚本可以在我的Github仓库下载(<a target="_blank" rel="noopener" href="https://github.com/tamaswells/VASP_script/blob/master/scan_adsorption_energy.py">https://github.com/tamaswells/VASP_script/blob/master/scan_adsorption_energy.py</a>).</p>
 <h1 id="固定基矢优化结构"><a href="#固定基矢优化结构" class="headerlink" title="固定基矢优化结构"></a>固定基矢优化结构</h1><p>在第一性原理计算时，二维材料的建模会采用在某一方向（一般是z轴方向）添加15-20 Å的真空层的方式来抵消层与层之间的相互作用。但是，当我们优化晶格常数的时候会遇到一个问题：那就是使用ISIF&#x3D;3来优化平面内晶格常数（一般是a和b）时，c轴方向的晶格长度总是随着优化变的越来越小。</p>
 <ol>
 <li><p>采用ISIF&#x3D;4的固定晶胞体积的方法来计算。这样采用实验参数建的晶胞，由于a和b方向的变化，c轴也会变化。解决了越是优化c轴越小的问题，但是计算量还是很大。</p>
@@ -1738,118 +2048,6 @@
 <p>成功后添加环境变量：vim ~&#x2F;.bashrc<br>export PATH&#x3D;&#x2F;home&#x2F;hptem001&#x2F;bin&#x2F;vasp.6.3.0&#x2F;bin:$PATH<br>保存退出</p>
 <h2 id="安装vaspkit1-4"><a href="#安装vaspkit1-4" class="headerlink" title="安装vaspkit1.4"></a>安装vaspkit1.4</h2><p>tar -xzvf vaspkit.1.4.1.linux.x64.tar.gz<br>cd vaspkit.1.4.1<br>sh setup.sh<br>查看cat ~&#x2F;.bashrc<br>有没有export PATH&#x3D;&#x2F;home&#x2F;hptem001&#x2F;bin&#x2F;vaspkit.1.4.1&#x2F;bin:${PATH}<br>或者直接终端输入：vaspkit看是否有输出。<br>安装成功。<br>vim ~&#x2F;.vaspkit<br>更改赝势路径以自动输出POTCAR<br>更改其他可参考：<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/649806633">https://zhuanlan.zhihu.com/p/649806633</a> 自动画图<br><a target="_blank" rel="noopener" href="http://vaspkit.cn/index.php/17.html">http://vaspkit.cn/index.php/17.html</a>  能带插值</p>
 <p>保存退出。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/08/10-10-23/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Keke Liu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lightchaser">
-      <meta itemprop="description" content="一个小学生的博客">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Lightchaser">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/05/08/10-10-23/" class="post-title-link" itemprop="url">0.3 VASP5单机安装</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-05-08 10:10:23" itemprop="dateCreated datePublished" datetime="2023-05-08T10:10:23+08:00">2023-05-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-12-19 17:17:11" itemprop="dateModified" datetime="2023-12-19T17:17:11+08:00">2023-12-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" itemprop="url" rel="index"><span itemprop="name">软件安装</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="虚拟机VMware安装（Windows用户）"><a href="#虚拟机VMware安装（Windows用户）" class="headerlink" title="虚拟机VMware安装（Windows用户）"></a>虚拟机VMware安装（Windows用户）</h1><p>VMware Workstation Pro 17.0是一款专业功能最强大的虚拟机软件，用户可以在虚拟机同时运行各种操作系统，进行开发、测试、演示和部署软件，虚拟机中复制服务器、台式机和平板环境，每个虚拟机可分配多个处理器核心、主内存和显存。VMware Workstation Pro 版延续了VMware的传统，即提供专业技术人员每天在使用虚拟机时所依赖的领先功能和性能。借助对最新版本的Windows和客户机操作系统版本、最新的处理器和硬件的支持以及连接到VMware vSphere和vCloud Air的能力，让它成为提高工作效率、节省时间和征服云计算的完美工具。<br>具体安装方式微信公众号都有，不再赘述。<br>需要提醒的一点：可以把内存和磁盘空间（80G）留大一点用于安装系统和软件，以及计算数据保存。另外注意版本和操作系统版本是否对应。</p>
-<p><a target="_blank" rel="noopener" href="https://www.haah.net/archives/1069.html">https://www.haah.net/archives/1069.html</a></p>
-<p>无论虚拟机还是服务器，都需要操作系统。Linux操作系统很多，以centos为例：</p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/145102034">https://zhuanlan.zhihu.com/p/145102034</a></p>
-<p>整个过程基本不会出错，按照步骤即可。centos是开源系统，不存在正版盗版的区别。</p>
-<p>视频操作。</p>
-<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1tP4y1x7Pz/?spm_id_from=333.337.search-card.all.click&vd_source=17084cc867ff3bb86398ff1a79b443f2">https://www.bilibili.com/video/BV1tP4y1x7Pz/?spm_id_from=333.337.search-card.all.click&amp;vd_source=17084cc867ff3bb86398ff1a79b443f2</a></p>
-<h3 id="虚拟机快速安装VMware-Tool"><a href="#虚拟机快速安装VMware-Tool" class="headerlink" title="虚拟机快速安装VMware Tool"></a>虚拟机快速安装VMware Tool</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/279241493#">https://zhuanlan.zhihu.com/p/279241493#</a>:~</p>
-<h1 id="Intel编译器"><a href="#Intel编译器" class="headerlink" title="Intel编译器"></a>Intel编译器</h1><p>过程很简单，一路默认。</p>
-<ol>
-<li>从intel官网下载：Intel® oneAPI Base Toolkit和Intel oneAPI HPC Toolkit。</li>
-<li>加权限:</li>
-</ol>
-<p>chmod +x l_HPCKit_p_2022.3.0.8751_offline.sh </p>
-<p>chmod +x l_BaseKit_p_2022.3.0.8767_offline.sh. </p>
-<p>然后运行：sudo .&#x2F;l_HPCKit_p_2022.3.0.8751_offline.sh 和 sudo .&#x2F;l_BaseKit_p_2022.3.0.8767_offline.sh. 按照提示一步步的完成即可。</p>
-<ol start="3">
-<li><p>sudo vim ~&#x2F;.bashrc 中加入 source &#x2F;opt&#x2F;intel&#x2F;oneapi&#x2F;setvars.sh</p>
-</li>
-<li><p>执行which icc; which icpc; which ifort; which mpirun 和echo $MKLROOT 检验是否安装正确。</p>
-</li>
-</ol>
-<h1 id="VASP编译"><a href="#VASP编译" class="headerlink" title="VASP编译"></a>VASP编译</h1><p>解压，进入文件夹。选择arch文件下的makefile.inclue.intel 复制到vasp6.3文件夹下，修改为makefile.inclue.</p>
-<p>修改makefile.inclue中的内容为：</p>
-<p>检验oneMKL with VASP是否连接成功，回到vasp6.3路径下面， ldd bin&#x2F;vasp_std </p>
-<p>vi ~&#x2F;.bashrc 末尾加上：<br>export PATH&#x3D;$PATH:&#x2F;opt&#x2F;vasp.6.3.0&#x2F;bin</p>
-<p>source ~&#x2F;.bashrc</p>
-<p>试运行<br>mpirun -np 4 vasp_std INCAR</p>
 
       
     </div>

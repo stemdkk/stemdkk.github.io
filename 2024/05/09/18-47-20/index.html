@@ -20,15 +20,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.16.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="一个小学生的博客">
+    <meta name="description" content="vasp磁性参数设置ISPIN和MAGMOM参数，详见vasp官网。关闭对称性：ISYM&#x3D;0.一般有的采用先做非磁结构优化，再打开自旋和磁性设置做磁基态计算。确定磁性体系可以直接做磁性计算。磁性计算一般属于过渡金属，要进行DFT+U计算。对于考虑LDAU的情况一般推荐增加参数 LMAXMIX。 INCAR中的参数设置：LDAU &#x3D; .TRUE. 打开LDAULDAUTYPE &amp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="7.1 磁性计算1">
 <meta property="og:url" content="http://example.com/2024/05/09/18-47-20/index.html">
 <meta property="og:site_name" content="Lightchaser">
-<meta property="og:description" content="一个小学生的博客">
+<meta property="og:description" content="vasp磁性参数设置ISPIN和MAGMOM参数，详见vasp官网。关闭对称性：ISYM&#x3D;0.一般有的采用先做非磁结构优化，再打开自旋和磁性设置做磁基态计算。确定磁性体系可以直接做磁性计算。磁性计算一般属于过渡金属，要进行DFT+U计算。对于考虑LDAU的情况一般推荐增加参数 LMAXMIX。 INCAR中的参数设置：LDAU &#x3D; .TRUE. 打开LDAULDAUTYPE &amp;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-09T10:47:20.000Z">
-<meta property="article:modified_time" content="2024-06-06T02:05:32.683Z">
+<meta property="article:modified_time" content="2024-07-30T12:46:53.017Z">
 <meta property="article:author" content="Keke Liu">
 <meta property="article:tag" content="vasp">
 <meta name="twitter:card" content="summary">
@@ -101,7 +101,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -114,6 +114,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vasp%E7%A3%81%E6%80%A7%E5%8F%82%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">vasp磁性参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A3%81%E5%9F%BA%E6%80%81"><span class="nav-number">2.</span> <span class="nav-text">磁基态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A3%81%E8%80%A6%E5%90%88"><span class="nav-number">3.</span> <span class="nav-text">磁耦合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B1%85%E9%87%8C%E6%B8%A9%E5%BA%A6"><span class="nav-number">4.</span> <span class="nav-text">居里温度</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#mcsolver%E8%AE%A1%E7%AE%97XY%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%B8%80%E4%B8%AA%E4%BE%8B%E5%AD%90%E3%80%82"><span class="nav-number">4.1.</span> <span class="nav-text">mcsolver计算XY模型的一个例子。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MAE"><span class="nav-number">5.</span> <span class="nav-text">MAE</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#vaspkit"><span class="nav-number">5.1.</span> <span class="nav-text">vaspkit</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%B5%E5%AD%90%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90"><span class="nav-number">6.</span> <span class="nav-text">电子结构分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">7.</span> <span class="nav-text"></span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -126,7 +127,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -208,7 +209,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-06 10:05:32" itemprop="dateModified" datetime="2024-06-06T10:05:32+08:00">2024-06-06</time>
+      <time title="修改时间：2024-07-30 20:46:53" itemprop="dateModified" datetime="2024-07-30T20:46:53+08:00">2024-07-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -229,7 +230,117 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body" itemprop="articleBody"><h1 id="vasp磁性参数"><a href="#vasp磁性参数" class="headerlink" title="vasp磁性参数"></a>vasp磁性参数</h1><p>设置ISPIN和MAGMOM参数，详见vasp官网。关闭对称性：ISYM&#x3D;0.一般有的采用先做非磁结构优化，再打开自旋和磁性设置做磁基态计算。确定磁性体系可以直接做磁性计算。磁性计算一般属于过渡金属，要进行DFT+U计算。对于考虑LDAU的情况一般推荐增加参数 LMAXMIX。</p>
+<p>INCAR中的参数设置：<br>LDAU &#x3D; .TRUE. 打开LDAU<br>LDAUTYPE &#x3D;2 LDAU类型LDAUTYPE&#x3D;2： 只考虑U-J的值；LDAUTYPE&#x3D;1： 同时考虑U和J，J基本为常数1 eV<br>LDAUL &#x3D; 2 -1 库伦排斥的轨道<br>LDAUU &#x3D; 2.8 0 库伦排斥的大小<br>LDAUJ &#x3D; 0 0 stoner 交换参数大小<br>LMAXMIX &#x3D; 4 mix轨道</p>
+<p>如果进行非线性计算，LNONCOLLINEAR &#x3D; .TRUE. MAGMOM &#x3D; x y z . . . … 可以读前一步的CHGCAR，进行非线性计算，也可以直接进行非线性计算。为了避免以上报错，增<br>加mix参数：<br>LMAXMIX &#x3D; 4<br>AMIX &#x3D; 0.2<br>BMIX &#x3D; 0.00001<br>AMIX_MAG &#x3D; 0.8<br>BMIX_MAG &#x3D; 0.00001<br>提交任务要使用vasp_ncl版本的程序</p>
+<p>自旋轨道耦合<br>默认 SAXIS &#x3D; 0 0 1<br>加入磁矩参数<br>MAGMOM &#x3D; x y z … … 一般接口wannier90还需要<br>ISYM&#x3D;-1<br>NPAR &#x3D;1 或者将这个开关删除<br>##</p>
+<p>铁磁半导体相对好收敛，遇到不收敛问题，可尝试降低 AMIX，增加 BMIX<br>尝试更换不同的ISMEAR，比如加电场时，会遇到矩阵不厄密。<br>call to ZHEGV failed 问题可能是</p>
+<ol>
+<li>结构不合理</li>
+<li>优化时优化到一个不合理的结构： 尝试改变弛豫算法IBRION ，减小步长POTIM &#x3D; 0.1或者更小</li>
+<li>对角化算法不稳定 ： ALGO &#x3D; Normal&#x2F;Fast</li>
+<li>尝试关掉对称性</li>
+</ol>
+<h1 id="磁基态"><a href="#磁基态" class="headerlink" title="磁基态"></a>磁基态</h1><p>得出体系的具体磁基态：比较三个计算无磁，铁磁，反铁磁的能量，能量更低的为体系的磁基态。构建不同磁基态有可能需要扩胞。<br>得出体系原子的具体磁矩：用vi编辑器打开OUTCAR或其他方式打开，从最后往前翻动，第一个magnetization (x)开头的表格就是原子的磁矩大小。</p>
+<p>磁矩分布画图：使用chgsplit.sh（可以向组内师兄师姐寻找）。磁性测试输出CHGCAR后，运行命令.&#x2F;chgsplit.sh CHGCAR得到cf1和cf2文件，把cf2文件重命名为CHGCAR-mag，与CONTCAR一起拖入VESTA中画图即可。</p>
+<h1 id="磁耦合"><a href="#磁耦合" class="headerlink" title="磁耦合"></a>磁耦合</h1><p>对于磁性体系的第一性原理计算结果，能量部分可以分<br>为两个部分E &#x3D; E_0 （非磁项） + E_s （磁性相关能量）<br>对比磁性耦合产生的能量，不能够用磁性态的能量跟非<br>磁的去对比<br>E_s 包含交换耦合以及单离子各向异性能（SOC）<br>一般来说，磁性相关的能量可以用下面的公式来表示</p>
+<ol>
+<li>磁性态的构造<br>为了求磁耦合强度，我们需要构造出不同磁构型哈密顿，通过求解这些哈密顿方程<br>组来得到磁耦合参数。例如对于一个体系，我们需要求解最近邻J1和次<br>近邻J2，那么体系能量中有三个未知量H0, J1, J2。这样我们需要构造三个线性独立的方程来求解。<br>磁耦合参数</li>
+</ol>
+<p>四态法</p>
+<p>接下来，我们以一个例子来看四态法<br>是如何用来求磁耦合的。</p>
+<ol>
+<li>构建超胞<br>这里我们以二维六角晶格为例，原胞<br>中有两个磁性原子，我们构建一个<br>8<em>8</em>1的超胞，目标是求下图中A、B<br>之间的磁耦合作用。<br>构建四个磁性态 ，分别<br>为<br>其中第一项是DFT中的非磁项，联立这四个方程组就<br>可以求解<br>注意这里的超胞大小，只要满足这个8*8的超胞里的A、<br>B与周期外的A、B格点之间没有作用或者作用可忽略就<br>可以。</li>
+</ol>
+<h1 id="居里温度"><a href="#居里温度" class="headerlink" title="居里温度"></a>居里温度</h1><p>对于铁磁有序材料，当温度达到某一临界值之后，在没有外磁场的情况下，材料会变成<br>顺磁态，这个温度点便是居里温度（Curie temperature: Tc）<br>铁磁是一种铁性材料，所谓铁磁是指在外场作用下，极化随着外场的翻转会有一个滞后，<br>自旋极化随着外场的变化曲线形成磁滞回线。对于反铁磁有序材料，当温度达到某一临界值之后，在没有外磁场的情况下，材料同样会变成<br>顺磁态，这个温度点便是奈尔温度（Neel temperature: TN）</p>
+<p>对于反铁磁有序材料，一般可以使用测试磁化率来判断其相变温度，磁化率满足居里外斯定律</p>
+<ol>
+<li>平均场近似</li>
+<li>自旋波方法详细推导见文件夹mean-field-theory</li>
+<li>Monte Carlo方法</li>
+</ol>
+<p>居里温度的Monte Carlo 模拟</p>
+<ol>
+<li>撒点，给初始磁矩</li>
+<li>计算哈密顿<br>3 尝试随机反转一个格点的磁矩，计算能量<br>4判断，如果能量变低，则翻转，如果能量变高，那么<br>如果 则翻转，否则不翻转<br>5 先进行充足的MC步骤至平衡，然后在进行充足的步骤采样，取平均磁矩。<br>每一个温度点做一次1-5步骤，即每一个温度点有一个平均磁矩，磁矩下降最快的点（斜率绝对值最大）即为<br>居里温度。<br>反铁磁需要计算奈尔温度，那么平均磁矩会一直是0，有两种办法，算其中一个格点的平均磁矩，或者看磁比<br>热</li>
+</ol>
+<h2 id="mcsolver计算XY模型的一个例子。"><a href="#mcsolver计算XY模型的一个例子。" class="headerlink" title="mcsolver计算XY模型的一个例子。"></a>mcsolver计算XY模型的一个例子。</h2><p>在学习的过程中，我发现参数设置非常重要，也比较难，但网上并没有给出一个详细的教程说明，结合网上已有说明和朋友讨论，以下给出我的一点见解，希望大家相互讨论学习，有错误欢迎批评指正。</p>
+<p>1.lattice晶格常数</p>
+<p>关于晶格常数的设置，这步比较简单。</p>
+<p>晶格常数需要采用归一化后的晶格常数，a1、a2、a3分别归一化，例如a1&#x3D;（3，4，0）归一化后就是（0.6，0.8，0）。</p>
+<p>sc（supercell）表示使用的超胞规模，一般情况下尽可能的大，例如16<em>16</em>1或32<em>32</em>1（在二维情况下）。</p>
+<p>2.Orbital list</p>
+<p>这一步是对原胞中不等价磁性原子的设置。</p>
+<p>ID是对设置的原子的编号，在可视化界面中，这一项不用手动设置，程序会自动根据我们的设置进行从0开始的编号。</p>
+<p>type表示原胞中磁性原子的种类，根据具体情况进行设置，如果只有一种磁性原子，都设置成0就可以。</p>
+<p>init spin表示自旋磁矩的设置，比如你用VASP计算出来得到的磁矩是3，那么这一项需要设置为1.5（需要除以一个2，换算成玻尔磁子）。</p>
+<p>pos对磁性原子的位置坐标进行设置，这里最好是采用分数坐标（如果是笛卡尔坐标建议转换成分数坐标进行计算）。（更正：应该是相对于a1、a2、a3的分数坐标，也就是相对于斜的平行四边形的而言的，以其两条邻边为晶格矢量，例如CrI3是0.333   0.666667    0，如果是直角坐标系下的分数坐标的话第一个值应该是负的才对）</p>
+<p>Ani表示单离子在xyz方向上的各向异性系数或单离子磁晶各向异性能(在Ising模型中是无用的，在XY模型中只使用前两个）。对自己的结构做一个易磁化轴位置的判断。一般为Z方向就在DZ处添加。同时，注意各向异性的单位是开尔文。 （1meV&#x3D;11.604609K）</p>
+<p>至此，我们已经完成了第二步Orbital list的设置。</p>
+<p>3.Bond list</p>
+<p>设置第二步里面的磁性原子之间的交换耦合系数，在你的计算中，一共考虑到了多少个相互作用就要添加多少个。比如，对于CrI3来说，考虑到了最近邻、次近邻和第三近邻相互作用，分别有3个、6个和3个，那么你一共就需要添加12条信息。</p>
+<p>对于每一项来说，设置方法如下：</p>
+<p>ID是相互作用的编号，如同第二步一样，系统会从0开始自动编号。</p>
+<p>J是磁性原子之间的交换耦合系数，一个J有九个矩阵元素，分别包括Jxx、Jyy、Jzz、Jxy、Jxz、Jyz、Jyx、Jzx、Jzy。每个元素描述了自旋的两个分量之间的耦合。对于Ising模型，由于只考虑一维自选变数，即只存在自旋向上或自旋向下，因此只使用第一个元素Jxx。对于XY模型也一样，自旋的朝向由up和down解放到了XY平面的任意朝向，因此只使用Jxx、Jyy、Jxy、Jyz。而对于heisenberg模型来说，三个自旋方向都存在相互作用，因此Jxx、Jyy、Jzz、Jxy、Jxz、Jyz、Jyx、Jzx、Jzy九个矩阵元素都需要设置。（对于模型的设置在后面的Model处进行选择。）对于前Ising和XY模型来说，即便你设置了九个矩阵元素，有效输入的也只是对应的起作用的元素，因此选好模型很关键。</p>
+<p>s，t和over lat.表示我们考虑哪两个磁性原子之间的相互作用，s和t要选择我们在第二步中设置的原胞中磁性原子的ID，over lat.的三个元素指代一个晶格矢量，这个晶格矢量表示：在晶格中，你考虑的原子（在该中心原胞平移该晶格矢量后的原胞的t原子），和中心s原子之间的相互作用。（这里比较难，为了便于理解，建议读者找个例子琢磨琢磨或者自己多动手尝试一下）</p>
+<p>注意所有的能量单位都是开尔文（1meV&#x3D;11.604609K）</p>
+<p>至此，我们已经完成了第三步Bond list的设置。</p>
+<p>现在，我们可以在Structure viewer里面看到超胞里磁性原子的分布和相互作用示意图。大家可以根据右上角的图查看自己添加的是否正确。一定要多加尝试。</p>
+<p>4.Other settings其他设置</p>
+<p>关于一些其他参数的设置。</p>
+<p>T start&amp;end表示起始和结束温度，也就是温度的取值范围，total points表示温度插值次数（用于温度扫描），也就是总取点数，一般来说点越多图形越精确。示例给出的0.9,1.2和8只是为了快速计算得到结果，真实输入的时候要视实际情况而定。</p>
+<p>同理，H start&amp;end表示外加磁场的取值范围，total points表示采样次数（用于磁场扫描）。</p>
+<p>nthermal是使系统进入平衡状态的总步骤，nsweep是测量所涉及的总步骤，tau表示每一步的MC更新。</p>
+<p>xAxis表示右边Result viewer的x轴上的物理量，可以是T(表示M-T曲线)或H(表示迟滞回线)。</p>
+<p>Model可以选择Ising模型、XY模型或Heisenberg模型。</p>
+<p>Algorithm选择相应的算法（支持Wolff，Metropolis，Swedsen-Wang）。</p>
+<p>Measure corr. si&amp;sj设置spin＿i和spin＿j以及它们之间的晶格矢量，用于相关拼接。（如果spin＿i&#x3D;spin＿j并且overLat&#x3D;0 0 0，那么你将得到spin＿i的磁化率）。</p>
+<p>nFrame是输出自旋构型的数目，用于说明在平衡或非平衡状态下的自旋构型。</p>
+<p>core设置并行计算的核心资源。</p>
+<p>至此，所有参数都设置完毕。</p>
+<p>5.最后</p>
+<p>save可以选择保存当前参数到文件，以便下一次找到。</p>
+<p>单击StartMC启动计算。</p>
+<p>等待右面板中的关系图更新。之后，你可以在mcsolver的根目录下找到一个result.txt文件，其中有许多有用的信息，包括平均自旋(在步骤5中定义的spin＿i和j上)，spin＿i和j之间的相关性，内能，比热容量和Binder累积量U4等。如果你处理有多个核心的模拟，那么结果可能不会根据温度排序，但是，每一行的对应关系都是可以的。</p>
+<p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_46679797/article/details/134455309">https://blog.csdn.net/qq_46679797/article/details/134455309</a></p>
+<h1 id="MAE"><a href="#MAE" class="headerlink" title="MAE"></a>MAE</h1><p>磁晶各向异性 magnetic anisotropic energy (MAE) 是指自旋方向在不同方向上的能量差。MAE跟体系对称性有关。<br>对于简单体二维系，易磁化轴可能在面内或者垂直于面，我们可以选择计算不同方向的某一磁性态能量对比来求MAE<br>比如CrI3， 我们可以计算沿着x方向的FM能量Ex，然后计算沿着z方向的FM能量Ez。<br>MAE &#x3D; (Ex -Ez)&#x2F;2<br>对于对称性较低的体系，需要每个面去计算MAE。在vasp中，三维体系研究MAE，可以在高对称轴上算能量差</p>
+<p>三步：结构优化，共线计算磁性并输出CHGCAR,读取CHGCAR改为非线性计算不同方向的能量。</p>
+<p>晶体磁各向异性能量由按不同方向旋转所有自旋决定。首先，必须在基态下进行精确（PREC&#x3D;精确，LREAL&#x3D;.False.）共线计算（使用vasp_std版本）。接下来，考虑自旋轨道耦合（LSORBIT&#x3D;.True.，使用vasp_ncl版本）对几种自旋取向进行非自洽计算（ICHARG&#x3D;11）。在大多数情况下，能量变化非常小（有时约为微电子伏）。与共线相比，必须将NBANDS加倍。</p>
+<p>为了修改晶体中自旋的取向，我们考虑这里描述的第二种方法。对于MAGMOM标签，根据z方向编写总局部磁矩（必要时，x和y方向均为0）。自旋取向（𝑢，𝑣，𝑤）由笛卡尔坐标系中的SAXIS标签定义。通过使自旋朝不同方向取向计算晶体磁各向异性能量和以下方程式</p>
+<p>𝐸MAE&#x3D;𝐸（𝑢，𝑣，𝑤）−𝐸0</p>
+<p>其中 𝐸0 是最稳定自旋方向的能量。更多细节请查看SAXIS和LSORBIT页面。</p>
+<p>练习：通过将自旋沿以下路径定向，确定NiO的非自洽方式下的晶体磁各向异性能量：(2,2,2) –&gt; (2,2,1) –&gt; (2,2,0) –&gt; … –&gt; (2,2,-6)。与自洽方法进行比较。</p>
+<p>INCAR:</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">NiO</span> <span class="variable constant_">MAE</span></span><br><span class="line">  <span class="variable constant_">SYSTEM</span>    = <span class="string">&quot;NiO&quot;</span></span><br><span class="line">    </span><br><span class="line"><span class="title class_">Electronic</span> minimization</span><br><span class="line">  <span class="variable constant_">PREC</span> = <span class="title class_">Accurate</span></span><br><span class="line">  <span class="variable constant_">ENCUT</span>         = <span class="number">450</span></span><br><span class="line">  <span class="variable constant_">EDIFF</span>         = <span class="number">1E-7</span></span><br><span class="line">  <span class="variable constant_">LORBIT</span>        = <span class="number">11</span></span><br><span class="line">  <span class="variable constant_">LREAL</span>         = .<span class="property">False</span>.</span><br><span class="line">  <span class="variable constant_">ISYM</span>          = -<span class="number">1</span></span><br><span class="line">  <span class="variable constant_">NELMIN</span>        = <span class="number">6</span></span><br><span class="line">  #  <span class="variable constant_">ICHARG</span> = <span class="number">11</span></span><br><span class="line">  #  <span class="variable constant_">LCHARG</span> = .<span class="property">FALSE</span>.</span><br><span class="line">  #  <span class="variable constant_">LWAVE</span> = .<span class="property">FALSE</span>.</span><br><span class="line">  #  <span class="variable constant_">NBANDS</span> = <span class="number">52</span></span><br><span class="line">  #  <span class="variable constant_">GGA_COMPAT</span> = .<span class="property">FALSE</span>.</span><br><span class="line">    </span><br><span class="line"><span class="variable constant_">DOS</span></span><br><span class="line">  <span class="variable constant_">ISMEAR</span>    = -<span class="number">5</span></span><br><span class="line">    </span><br><span class="line"><span class="title class_">Magnetism</span></span><br><span class="line">  <span class="variable constant_">ISPIN</span>     = <span class="number">2</span></span><br><span class="line">  <span class="variable constant_">MAGMOM</span> = <span class="number">2.0</span> -<span class="number">2.0</span> <span class="number">2</span>*<span class="number">0.0</span></span><br><span class="line">  # <span class="variable constant_">MAGMOM</span>    = <span class="number">0</span> <span class="number">0</span> <span class="number">2</span> <span class="number">0</span> <span class="number">0</span> -<span class="number">2</span> <span class="number">6</span>*<span class="number">0</span> # <span class="title class_">Including</span> <span class="title class_">Spin</span>-orbit</span><br><span class="line">  # <span class="variable constant_">LSORBIT</span>       = .<span class="property">True</span>.</span><br><span class="line">  # <span class="variable constant_">SAXIS</span> = <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> # <span class="title class_">Quantization</span> axis used to rotate all spins <span class="keyword">in</span> a direction defined <span class="keyword">in</span> the (O,x,y,z) <span class="title class_">Cartesian</span> frame</span><br><span class="line">    </span><br><span class="line"><span class="title class_">Orbital</span> mom.</span><br><span class="line">  <span class="variable constant_">LORBMOM</span> = T</span><br><span class="line">    </span><br><span class="line"><span class="title class_">Mixer</span></span><br><span class="line">  <span class="variable constant_">AMIX</span>      = <span class="number">0.2</span></span><br><span class="line">  <span class="variable constant_">BMIX</span>      = <span class="number">0.00001</span></span><br><span class="line">  <span class="variable constant_">AMIX_MAG</span>  = <span class="number">0.8</span></span><br><span class="line">  <span class="variable constant_">BMIX_MAG</span>  = <span class="number">0.00001</span></span><br><span class="line">    </span><br><span class="line"><span class="variable constant_">GGA</span>+U</span><br><span class="line">  <span class="variable constant_">LDAU</span>      = .<span class="property">TRUE</span>.</span><br><span class="line">  <span class="variable constant_">LDAUTYPE</span>  = <span class="number">2</span></span><br><span class="line">  <span class="variable constant_">LDAUL</span>     = <span class="number">2</span> -<span class="number">1</span></span><br><span class="line">  <span class="variable constant_">LDAUU</span>     = <span class="number">5.00</span> <span class="number">0.00</span></span><br><span class="line">  <span class="variable constant_">LDAUJ</span>     = <span class="number">0.00</span> <span class="number">0.00</span></span><br><span class="line">  <span class="variable constant_">LDAUPRINT</span> = <span class="number">1</span></span><br><span class="line">  <span class="variable constant_">LMAXMIX</span>   = <span class="number">4</span> </span><br></pre></td></tr></table></figure>
+<h2 id="vaspkit"><a href="#vaspkit" class="headerlink" title="vaspkit"></a>vaspkit</h2><p>  先执行结构优化计算（略），之后使用以下INCAR参数并选择991 K点进行自旋极化静态计算，运行vasp_std得到CHGCAR文件。</p>
+<p>  MAE的INCAR：</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#<span class="title class_">General</span></span><br><span class="line"><span class="variable constant_">PREC</span> = <span class="variable constant_">ACCURATE</span></span><br><span class="line"><span class="variable constant_">ISTART</span>= <span class="number">0</span></span><br><span class="line"><span class="variable constant_">ICHARG</span>= <span class="number">11</span></span><br><span class="line"><span class="variable constant_">ENCUT</span> = <span class="number">520</span></span><br><span class="line"><span class="variable constant_">EDIFF</span> = <span class="number">1E-8</span></span><br><span class="line"><span class="variable constant_">EDIFFG</span> = -<span class="number">0.001</span></span><br><span class="line"><span class="variable constant_">LREAL</span> = .<span class="property">F</span>.</span><br><span class="line"><span class="variable constant_">NPAR</span> = <span class="number">4</span></span><br><span class="line"><span class="variable constant_">NSW</span>= <span class="number">0</span></span><br><span class="line"><span class="variable constant_">IBRION</span> = -<span class="number">1</span></span><br><span class="line"><span class="variable constant_">ISIF</span> = <span class="number">2</span></span><br><span class="line"><span class="variable constant_">ISMEAR</span> = -<span class="number">5</span></span><br><span class="line"><span class="variable constant_">SIGMA</span> = <span class="number">0.05</span></span><br><span class="line"><span class="variable constant_">LCHARG</span> = .<span class="property">F</span>.</span><br><span class="line"><span class="variable constant_">LWAVE</span> = .<span class="property">F</span>.</span><br><span class="line"><span class="variable constant_">POTIM</span> = <span class="number">0.5</span></span><br><span class="line"><span class="variable constant_">NEDOS</span> = <span class="number">2001</span></span><br><span class="line"><span class="variable constant_">NBANDS</span> = <span class="number">144</span>        # 修改为上一步静态计算<span class="variable constant_">NBANDS</span>数值的<span class="number">2</span>倍</span><br><span class="line"></span><br><span class="line">#<span class="title class_">Magnetic</span> properties</span><br><span class="line"></span><br><span class="line"><span class="variable constant_">MAGMOM</span> = <span class="number">18</span>*<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">4</span> <span class="number">0</span> <span class="number">0</span> <span class="number">4</span></span><br><span class="line"><span class="variable constant_">NELMIN</span> = <span class="number">6</span></span><br><span class="line"><span class="variable constant_">LORBIT</span> = <span class="number">11</span></span><br><span class="line"><span class="variable constant_">ISYM</span> = <span class="number">0</span></span><br><span class="line"><span class="variable constant_">LSORBIT</span> = .<span class="property">True</span>.</span><br><span class="line"><span class="variable constant_">LMAXMIX</span> = <span class="number">4</span>  ! <span class="keyword">for</span> d-elements increase <span class="variable constant_">LMAXMIX</span> to <span class="number">4</span>, f-<span class="attr">elements</span>: <span class="variable constant_">LMAXMIX</span> = <span class="number">6</span></span><br></pre></td></tr></table></figure>
+<p>和VPKIT.in</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1                              ! 1为预处理, 2为后处理</span><br><span class="line">0 360 12                       ! Phi, Spherical coordinate system</span><br><span class="line">0 180 12                       ! 0&lt;= theta &lt;=180, 90 degree means in x-y plane</span><br></pre></td></tr></table></figure>
+
+<p>VPKIT.in说明：<br>第一行：在第二步计算前使用1，第二步计算完后设置为2；</p>
+<p>第二行：三维球坐标系下矢量在xy面投影与x轴正方向的夹角方位角φ，由起始角度0°到终止角度360°(0°)，最后是分割角度的个数；</p>
+<p>第三行：三维球坐标系下矢量与z轴的夹角θ，由起始角度0°到终止角度180°，最后是分割角度的个数(注意包含180°在内需要＋1，所以是7)；</p>
+<p>其中和分别为方位角和极角，其值变化范围分别是从0°到180°和从0°到360°，这里方位角和极角各取12个离散点（共计144个计算作业）。如果计算资源允许，可以选取更小间隔。调用vaspkit-621命令产生如下所示的一系列计算作业。理论上要生成144个计算作业，考虑到一部分相等无需计算，实际上共生成了122个计算作业。预处理时VASPKIT会自动在每个计算作业文件夹里的INCAR后根据公式(1)追加SAXIS &#x3D; </p>
+<p>接下来可使用以下脚本模板批量提交vasp_ncl作业。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"># just for reference</span><br><span class="line">path=`pwd`</span><br><span class="line">for c in *.*</span><br><span class="line">do</span><br><span class="line">   cd $path/$c</span><br><span class="line">   echo `pwd`</span><br><span class="line">   qsub vasp_job_soc.sh   ! vasp_job_soc.sh为vasp_ncl作业脚本</span><br><span class="line">  cd $&#123;path&#125;</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<p>待vasp_ncl计算完成后，把INPUT.in文件中的第一行修改2，然后再次运行vaspkit-621得到MAE.dat文件。我们可利用vaspkit&#x2F;examples&#x2F;MAE文件夹中的MATLAB脚本mae_3D_plot_matlab.m进行可视化。</p>
+<ul>
+<li>如果想得到xy二维平面内的MAE，INPUT.in可设置为:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1                              ! 1为预处理, 2为后处理</span><br><span class="line">0 360 12                       ! Phi, Spherical coordinate system</span><br><span class="line">90 90 1                        ! xy平面内theta始终等于90°</span><br></pre></td></tr></table></figure></li>
+<li>如果想得到xz二维平面内的MAE，INPUT.in可设置为:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1                              ! 1为预处理, 2为后处理</span><br><span class="line">0 0 1                      ! Phi, Spherical coordinate system</span><br><span class="line">0 180 12                       ! xy平面内theta始终等于90°</span><br></pre></td></tr></table></figure></li>
+<li>如果想得到xy二维平面内的MAE，INPUT.in可设置为:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1                              ! 1为预处理, 2为后处理</span><br><span class="line">90 90 1                      ! Phi, Spherical coordinate system</span><br><span class="line">0 180 12                        ! xy平面内theta始终等于90°</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="电子结构分析"><a href="#电子结构分析" class="headerlink" title="电子结构分析"></a>电子结构分析</h1><p>磁性一般来自于d、f轨道的半占据电子，下面以d轨道为例介绍电子结构的分析</p>
+<ol>
+<li>磁矩约等于非成对的电子数，但是电子的占据方式并不仅仅由洪特规则来决定。<br>以一个Mn2+为例，最外层5个电子，按照洪特规则Mn磁矩应该是5，但是在晶体场的作用下，它有可能呈现高自旋、<br>中自旋、低自旋态。</li>
+</ol>
+<p>如何查找结构晶体场：</p>
+<ol>
+<li>确定点群 运行vaspkit</li>
+<li>查表<br><a target="_blank" rel="noopener" href="http://gernot-katzers-spice-/">http://gernot-katzers-spice-</a> pages.com&#x2F;character_tables&#x2F;index.html</li>
+<li>判断能及大小</li>
+</ol>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1>
     </div>
 
     
@@ -250,6 +361,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2024/05/10/18-47-20/" rel="next" title="7.2 磁性计算2">
+                  7.2 磁性计算2 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>

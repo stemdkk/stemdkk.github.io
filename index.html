@@ -123,7 +123,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -159,6 +159,138 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/10/18-47-20/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Keke Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lightchaser">
+      <meta itemprop="description" content="一个小学生的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Lightchaser">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/05/10/18-47-20/" class="post-title-link" itemprop="url">7.2 磁性计算2</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-05-10 18:47:20" itemprop="dateCreated datePublished" datetime="2024-05-10T18:47:20+08:00">2024-05-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-07-16 09:34:51" itemprop="dateModified" datetime="2024-07-16T09:34:51+08:00">2024-07-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DFT%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">DFT学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Sym4state-Manual"><a href="#Sym4state-Manual" class="headerlink" title="Sym4state Manual"></a>Sym4state Manual</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CurrentModule = Sym4state.ModCore</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><figcaption><span>pre_and_post</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">using PrintFileTree</span><br><span class="line">local pair_mat, coeff_array</span><br></pre></td></tr></table></figure>
+
+<p>bilinear Heisenberg model can be described by</p>
+<p>$\mathcal{H} &#x3D; \sum_{i &lt; j} S_i \cdot \mathcal{J}<em>{i j} \cdot S_j + \sum</em>{i} S_i \cdot \mathcal{A} \cdot S_i - m \sum_{i} S_i \cdot \vec{B}$</p>
+<p>where the symbol $\mathcal{J}_{ij}$ denotes the exchange interaction matrix between two spins, $S_i$ and $S_j$, the matrix $\mathcal{A}$ represents the single-ion anisotropy. 四态法计算磁耦合，需要计算4种不同的磁基态，allowing the extraction of individual components for the exchange matrix.</p>
+<p>想计算每一个元素的交换矩阵，就需要计算36个能量，由于一些结构的等价性，手动分析对称性筛选很有挑战，而且有遗漏的风险。</p>
+<h2 id="Pre-process"><a href="#Pre-process" class="headerlink" title="Pre-process"></a>Pre-process</h2><p>One can use our program to streamline the simpilifing and calculating process easily. For example, with a POSCAR file of monolayer CrI3</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Cr2 I6                                  </span><br><span class="line">   1.00000000000000     </span><br><span class="line">     7.1131374882967124    0.0000000000000000    0.0000000000000000</span><br><span class="line">    -3.5565687441483571    6.1601577654763897    0.0000000000000000</span><br><span class="line">     0.0000000000000000    0.0000000000000000   18.0635365764484419</span><br><span class="line">   Cr   I </span><br><span class="line">     2     6</span><br><span class="line">Direct</span><br><span class="line">  0.6666666666666643  0.3333333333333357  0.5000000247180765</span><br><span class="line">  0.3333333333333357  0.6666666666666643  0.5000000501683317</span><br><span class="line">  0.6415738047516142  0.9999977877949036  0.4116659127023310</span><br><span class="line">  0.3584239830432894  0.3584261952483858  0.4116659127023310</span><br><span class="line">  0.0000022122051035  0.6415760169567106  0.4116659127023310</span><br><span class="line">  0.3584241488090230  0.9999980859273947  0.5883340783387269</span><br><span class="line">  0.6415739371183646  0.6415758511909699  0.5883340783387269</span><br><span class="line">  0.0000019140726053  0.3584260628816354  0.5883340783387269</span><br></pre></td></tr></table></figure>
+
+<p>合适设置 INCAR, POTCAR and KPOINTS 用于磁性自洽计算, 可以用 <code>Sym4state.jl</code> 产生所有的输入文件用于计算最近邻交换作用和单离子各向异性，过程如下：</p>
+<figure class="highlight plaintext"><figcaption><span>pre_and_post</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">using Sym4state</span><br><span class="line">cd(&quot;CrI3&quot;) do   # hide</span><br><span class="line">Sym4state.pre_process(</span><br><span class="line">    &quot;./POSCAR&quot;,</span><br><span class="line">    [24],   # Take Cr element as magnetic</span><br><span class="line">    5.0     # There exists an interaction between atoms within a distance of 5 Å.</span><br><span class="line">)</span><br><span class="line">end # hide</span><br></pre></td></tr></table></figure>
+<p>它将会构建超胞，满足两个任意原子无相互作用。给定的单层 ${CrI3}$ with a cutoff radius of 5 Å, a $2 \times 2 \times 1$ supercell will provide sufficient size. The supercell diagram below labels all the ${Cr}$ atoms:</p>
+
+
+<p>Within the 5 Å cutoff radius, the monolayer of <code>\ce&#123;CrI3&#125;</code> exhibits two distinct groups of interactions. The first group corresponds to interactions between nearest neighbors, whereas the second group pertains to interactions arising from single-ion anisotropy. It is important to note that all atom pairs within the same group are considered equivalent. This equivalence implies the existence of symmetric operations that can transform one interaction matrix into another, highlighting the underlying symmetry of the system.</p>
+<p> <code>pre_process</code> function的输出结果中，1组包含6对等价，第2组有2对等价。尽管简化了计算，还是要计算几种磁结构。 在考虑最近邻情况下，至少计算9个磁基态，相反在处理单离子各向异性需要2个。<br>不同参数和能量的关系储存在 <code>cal.jld2</code>. 另外该功能会生成几个目录储存对应输入文件。</p>
+<figure class="highlight plaintext"><figcaption><span>pre_and_post</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">printfiletree(&quot;CrI3&quot;)   # hide</span><br></pre></td></tr></table></figure>
+<p>所有的目录储存在 <code>cal_list</code>, 后续提交任务即可。 <a target="_blank" rel="noopener" href="https://slurm.schedmd.com/">Slurm</a>‘s job array by submitting a shell like:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#SBATCH -n 144</span></span><br><span class="line"><span class="comment">#SBATCH --array=1-11%2</span></span><br><span class="line"></span><br><span class="line">module load vasp-6.3.2-optcell</span><br><span class="line"></span><br><span class="line">target_dir=$(sed -n <span class="string">&quot;<span class="variable">$&#123;SLURM_ARRAY_TASK_ID&#125;</span>p&quot;</span> cal_dir_list)</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$&#123;target_dir&#125;</span></span><br><span class="line"></span><br><span class="line">srun vasp_ncl</span><br></pre></td></tr></table></figure>
+
+<p>这个 shell 脚本创建  Slurm job array 计算所有 11 magnetic configurations, while efficiently managing computational resources by allowing a maximum of 2 jobs to run simultaneously.</p>
+<h2 id="Post-process"><a href="#Post-process" class="headerlink" title="Post-process"></a>Post-process</h2><p>计算完成后 <code>post_process</code> function 提取不同磁结构的能量，最终创建交换矩阵。</p>
+<figure class="highlight plaintext"><figcaption><span>pre_and_post</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cd(&quot;CrI3&quot;) do   # hide</span><br><span class="line">global pair_mat, coeff_array    # hide</span><br><span class="line">mv(&quot;../oszicar.tar.gz&quot;, &quot;./oszicar.tar.gz&quot;) # hide</span><br><span class="line">run(`tar -xvzf oszicar.tar.gz`) # hide</span><br><span class="line">for (idx, dir_name) in enumerate(readlines(&quot;cal_dir_list&quot;)) # hide</span><br><span class="line">    cp(&quot;oszicar/OSZICAR_$(idx)&quot;, dir_name * &quot;OSZICAR&quot;)  # hide</span><br><span class="line">end # hide</span><br><span class="line">pair_mat, coeff_array = Sym4state.post_process(&quot;./cal.jld2&quot;)</span><br><span class="line">end # hide</span><br></pre></td></tr></table></figure>
+<p>我们可以测试 the dimensions of <code>pair_mat</code> and <code>coeff_array</code>, 它分别存储了不同原子对的起始点和结束点的索引及其对应的相互作用矩阵。</p>
+<figure class="highlight plaintext"><figcaption><span>pre_and_post</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">size(pair_mat)</span><br><span class="line">size(coeff_array)</span><br></pre></td></tr></table></figure>
+
+<p>因此我们看到共有8个相互作用在cutoff radius of 5 Å. 让我们检查<code>pair_mat</code>中的一个特定条目，它包含表示原子对的索引：</p>
+<figure class="highlight plaintext"><figcaption><span>pre_and_post</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pair_mat[:, 1]</span><br></pre></td></tr></table></figure>
+
+<p>初始数字和最终数字分别对应于起点原子和终点原子的指数。第二个和第三个数字表示原始单元格沿x轴和y轴的偏移量。</p>
+<h2 id="Monte-Carlo-Simulation"><a href="#Monte-Carlo-Simulation" class="headerlink" title="Monte Carlo Simulation"></a>Monte Carlo Simulation</h2><p>前面 <code>pair_mat</code> and <code>coeff_array</code>的结果，可以通过 Monte Carlo simulation 计算 phase transition temperature or magnetic texture :</p>
+<figure class="highlight plaintext"><figcaption><span>pre_and_post</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">using Unitful, UnitfulAtomic</span><br><span class="line">mcconfig = Sym4state.MC.MCConfig&#123;Float32&#125;(</span><br><span class="line">    lattice_size=[128, 128],</span><br><span class="line">    magmom_vector=[3.5, 3.5],</span><br><span class="line">    pair_mat=pair_mat,</span><br><span class="line">    interact_coeff_array=coeff_array,</span><br><span class="line">    temperature=collect(150:-2:0),</span><br><span class="line">    magnetic_field=zeros(3),</span><br><span class="line">    equilibration_step_num=100_000,</span><br><span class="line">    measuring_step_num=100_000</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>In the aforementioned code snippet, we have configured a simulated annealing simulation, commencing at a temperature of 150 K and progressively reducing it to 0 K in steps of 2 K. The simulation operates on a $128 \times 128$ supercell of ${CrI3}$ using the previously computed interaction matrix. To assess the system, we perform a preliminary equilibration phase consisting of <code>100000</code> sweeps, followed by a measurement phase comprising <code>100000</code> sweeps for acquiring physical quantities. It is worth noting that the magnetic field is absent, rendering the <code>magmom_vector</code> inconsequential.</p>
+<p>With the created <code>mcconfig</code>, one can initiate a Monte Carlo simulation as follows:</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(</span><br><span class="line">    states_over_env,</span><br><span class="line">    norm_mean_mag_over_env,</span><br><span class="line">    susceptibility_over_env,</span><br><span class="line">    specific_heat_over_env</span><br><span class="line">) = Sym4state.MC.mcmc(</span><br><span class="line">    mcconfig,</span><br><span class="line">    backend=Sym4state.MC.CPU()</span><br><span class="line">    progress_enabled=<span class="literal">false</span>,</span><br><span class="line">    log_enabled=<span class="literal">false</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>The parameter <code>backend</code> can be configured to employ <code>CUDABackend()</code> provided by <a target="_blank" rel="noopener" href="https://github.com/JuliaGPU/CUDA.jl"><code>CUDA.jl</code></a> or any other backends supported by <a target="_blank" rel="noopener" href="https://github.com/JuliaGPU/KernelAbstractions.jl"><code>KernelAbstractions.jl</code></a> to enhance performance utilizing the GPU.</p>
+<p>The <code>MCConfig</code> can also be stored into a <code>.toml</code> file by:</p>
+<figure class="highlight plaintext"><figcaption><span>pre_and_post</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd(&quot;CrI3&quot;) do   # hide</span><br><span class="line">Sym4state.MC.save_config(&quot;CrI3.toml&quot;, mcconfig)</span><br><span class="line">end # hide</span><br></pre></td></tr></table></figure>
+
+<p>or it can also be restored by:</p>
+<figure class="highlight plaintext"><figcaption><span>pre_and_post</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd(&quot;CrI3&quot;) do   # hide</span><br><span class="line">mcconfig = Sym4state.MC.load_config(&quot;CrI3.toml&quot;)</span><br><span class="line">end # hide</span><br></pre></td></tr></table></figure>
+
+<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">reduce_interact_mat_for_a_pair</span><br><span class="line">supercell_check</span><br><span class="line">pre_process</span><br><span class="line">post_process</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rm(&quot;CrI3&quot;, recursive=true)</span><br><span class="line">nothing</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -204,7 +336,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-06 10:05:32" itemprop="dateModified" datetime="2024-06-06T10:05:32+08:00">2024-06-06</time>
+      <time title="修改时间：2024-07-30 20:46:53" itemprop="dateModified" datetime="2024-07-30T20:46:53+08:00">2024-07-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -226,7 +358,117 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          
+          <h1 id="vasp磁性参数"><a href="#vasp磁性参数" class="headerlink" title="vasp磁性参数"></a>vasp磁性参数</h1><p>设置ISPIN和MAGMOM参数，详见vasp官网。关闭对称性：ISYM&#x3D;0.一般有的采用先做非磁结构优化，再打开自旋和磁性设置做磁基态计算。确定磁性体系可以直接做磁性计算。磁性计算一般属于过渡金属，要进行DFT+U计算。对于考虑LDAU的情况一般推荐增加参数 LMAXMIX。</p>
+<p>INCAR中的参数设置：<br>LDAU &#x3D; .TRUE. 打开LDAU<br>LDAUTYPE &#x3D;2 LDAU类型LDAUTYPE&#x3D;2： 只考虑U-J的值；LDAUTYPE&#x3D;1： 同时考虑U和J，J基本为常数1 eV<br>LDAUL &#x3D; 2 -1 库伦排斥的轨道<br>LDAUU &#x3D; 2.8 0 库伦排斥的大小<br>LDAUJ &#x3D; 0 0 stoner 交换参数大小<br>LMAXMIX &#x3D; 4 mix轨道</p>
+<p>如果进行非线性计算，LNONCOLLINEAR &#x3D; .TRUE. MAGMOM &#x3D; x y z . . . … 可以读前一步的CHGCAR，进行非线性计算，也可以直接进行非线性计算。为了避免以上报错，增<br>加mix参数：<br>LMAXMIX &#x3D; 4<br>AMIX &#x3D; 0.2<br>BMIX &#x3D; 0.00001<br>AMIX_MAG &#x3D; 0.8<br>BMIX_MAG &#x3D; 0.00001<br>提交任务要使用vasp_ncl版本的程序</p>
+<p>自旋轨道耦合<br>默认 SAXIS &#x3D; 0 0 1<br>加入磁矩参数<br>MAGMOM &#x3D; x y z … … 一般接口wannier90还需要<br>ISYM&#x3D;-1<br>NPAR &#x3D;1 或者将这个开关删除<br>##</p>
+<p>铁磁半导体相对好收敛，遇到不收敛问题，可尝试降低 AMIX，增加 BMIX<br>尝试更换不同的ISMEAR，比如加电场时，会遇到矩阵不厄密。<br>call to ZHEGV failed 问题可能是</p>
+<ol>
+<li>结构不合理</li>
+<li>优化时优化到一个不合理的结构： 尝试改变弛豫算法IBRION ，减小步长POTIM &#x3D; 0.1或者更小</li>
+<li>对角化算法不稳定 ： ALGO &#x3D; Normal&#x2F;Fast</li>
+<li>尝试关掉对称性</li>
+</ol>
+<h1 id="磁基态"><a href="#磁基态" class="headerlink" title="磁基态"></a>磁基态</h1><p>得出体系的具体磁基态：比较三个计算无磁，铁磁，反铁磁的能量，能量更低的为体系的磁基态。构建不同磁基态有可能需要扩胞。<br>得出体系原子的具体磁矩：用vi编辑器打开OUTCAR或其他方式打开，从最后往前翻动，第一个magnetization (x)开头的表格就是原子的磁矩大小。</p>
+<p>磁矩分布画图：使用chgsplit.sh（可以向组内师兄师姐寻找）。磁性测试输出CHGCAR后，运行命令.&#x2F;chgsplit.sh CHGCAR得到cf1和cf2文件，把cf2文件重命名为CHGCAR-mag，与CONTCAR一起拖入VESTA中画图即可。</p>
+<h1 id="磁耦合"><a href="#磁耦合" class="headerlink" title="磁耦合"></a>磁耦合</h1><p>对于磁性体系的第一性原理计算结果，能量部分可以分<br>为两个部分E &#x3D; E_0 （非磁项） + E_s （磁性相关能量）<br>对比磁性耦合产生的能量，不能够用磁性态的能量跟非<br>磁的去对比<br>E_s 包含交换耦合以及单离子各向异性能（SOC）<br>一般来说，磁性相关的能量可以用下面的公式来表示</p>
+<ol>
+<li>磁性态的构造<br>为了求磁耦合强度，我们需要构造出不同磁构型哈密顿，通过求解这些哈密顿方程<br>组来得到磁耦合参数。例如对于一个体系，我们需要求解最近邻J1和次<br>近邻J2，那么体系能量中有三个未知量H0, J1, J2。这样我们需要构造三个线性独立的方程来求解。<br>磁耦合参数</li>
+</ol>
+<p>四态法</p>
+<p>接下来，我们以一个例子来看四态法<br>是如何用来求磁耦合的。</p>
+<ol>
+<li>构建超胞<br>这里我们以二维六角晶格为例，原胞<br>中有两个磁性原子，我们构建一个<br>8<em>8</em>1的超胞，目标是求下图中A、B<br>之间的磁耦合作用。<br>构建四个磁性态 ，分别<br>为<br>其中第一项是DFT中的非磁项，联立这四个方程组就<br>可以求解<br>注意这里的超胞大小，只要满足这个8*8的超胞里的A、<br>B与周期外的A、B格点之间没有作用或者作用可忽略就<br>可以。</li>
+</ol>
+<h1 id="居里温度"><a href="#居里温度" class="headerlink" title="居里温度"></a>居里温度</h1><p>对于铁磁有序材料，当温度达到某一临界值之后，在没有外磁场的情况下，材料会变成<br>顺磁态，这个温度点便是居里温度（Curie temperature: Tc）<br>铁磁是一种铁性材料，所谓铁磁是指在外场作用下，极化随着外场的翻转会有一个滞后，<br>自旋极化随着外场的变化曲线形成磁滞回线。对于反铁磁有序材料，当温度达到某一临界值之后，在没有外磁场的情况下，材料同样会变成<br>顺磁态，这个温度点便是奈尔温度（Neel temperature: TN）</p>
+<p>对于反铁磁有序材料，一般可以使用测试磁化率来判断其相变温度，磁化率满足居里外斯定律</p>
+<ol>
+<li>平均场近似</li>
+<li>自旋波方法详细推导见文件夹mean-field-theory</li>
+<li>Monte Carlo方法</li>
+</ol>
+<p>居里温度的Monte Carlo 模拟</p>
+<ol>
+<li>撒点，给初始磁矩</li>
+<li>计算哈密顿<br>3 尝试随机反转一个格点的磁矩，计算能量<br>4判断，如果能量变低，则翻转，如果能量变高，那么<br>如果 则翻转，否则不翻转<br>5 先进行充足的MC步骤至平衡，然后在进行充足的步骤采样，取平均磁矩。<br>每一个温度点做一次1-5步骤，即每一个温度点有一个平均磁矩，磁矩下降最快的点（斜率绝对值最大）即为<br>居里温度。<br>反铁磁需要计算奈尔温度，那么平均磁矩会一直是0，有两种办法，算其中一个格点的平均磁矩，或者看磁比<br>热</li>
+</ol>
+<h2 id="mcsolver计算XY模型的一个例子。"><a href="#mcsolver计算XY模型的一个例子。" class="headerlink" title="mcsolver计算XY模型的一个例子。"></a>mcsolver计算XY模型的一个例子。</h2><p>在学习的过程中，我发现参数设置非常重要，也比较难，但网上并没有给出一个详细的教程说明，结合网上已有说明和朋友讨论，以下给出我的一点见解，希望大家相互讨论学习，有错误欢迎批评指正。</p>
+<p>1.lattice晶格常数</p>
+<p>关于晶格常数的设置，这步比较简单。</p>
+<p>晶格常数需要采用归一化后的晶格常数，a1、a2、a3分别归一化，例如a1&#x3D;（3，4，0）归一化后就是（0.6，0.8，0）。</p>
+<p>sc（supercell）表示使用的超胞规模，一般情况下尽可能的大，例如16<em>16</em>1或32<em>32</em>1（在二维情况下）。</p>
+<p>2.Orbital list</p>
+<p>这一步是对原胞中不等价磁性原子的设置。</p>
+<p>ID是对设置的原子的编号，在可视化界面中，这一项不用手动设置，程序会自动根据我们的设置进行从0开始的编号。</p>
+<p>type表示原胞中磁性原子的种类，根据具体情况进行设置，如果只有一种磁性原子，都设置成0就可以。</p>
+<p>init spin表示自旋磁矩的设置，比如你用VASP计算出来得到的磁矩是3，那么这一项需要设置为1.5（需要除以一个2，换算成玻尔磁子）。</p>
+<p>pos对磁性原子的位置坐标进行设置，这里最好是采用分数坐标（如果是笛卡尔坐标建议转换成分数坐标进行计算）。（更正：应该是相对于a1、a2、a3的分数坐标，也就是相对于斜的平行四边形的而言的，以其两条邻边为晶格矢量，例如CrI3是0.333   0.666667    0，如果是直角坐标系下的分数坐标的话第一个值应该是负的才对）</p>
+<p>Ani表示单离子在xyz方向上的各向异性系数或单离子磁晶各向异性能(在Ising模型中是无用的，在XY模型中只使用前两个）。对自己的结构做一个易磁化轴位置的判断。一般为Z方向就在DZ处添加。同时，注意各向异性的单位是开尔文。 （1meV&#x3D;11.604609K）</p>
+<p>至此，我们已经完成了第二步Orbital list的设置。</p>
+<p>3.Bond list</p>
+<p>设置第二步里面的磁性原子之间的交换耦合系数，在你的计算中，一共考虑到了多少个相互作用就要添加多少个。比如，对于CrI3来说，考虑到了最近邻、次近邻和第三近邻相互作用，分别有3个、6个和3个，那么你一共就需要添加12条信息。</p>
+<p>对于每一项来说，设置方法如下：</p>
+<p>ID是相互作用的编号，如同第二步一样，系统会从0开始自动编号。</p>
+<p>J是磁性原子之间的交换耦合系数，一个J有九个矩阵元素，分别包括Jxx、Jyy、Jzz、Jxy、Jxz、Jyz、Jyx、Jzx、Jzy。每个元素描述了自旋的两个分量之间的耦合。对于Ising模型，由于只考虑一维自选变数，即只存在自旋向上或自旋向下，因此只使用第一个元素Jxx。对于XY模型也一样，自旋的朝向由up和down解放到了XY平面的任意朝向，因此只使用Jxx、Jyy、Jxy、Jyz。而对于heisenberg模型来说，三个自旋方向都存在相互作用，因此Jxx、Jyy、Jzz、Jxy、Jxz、Jyz、Jyx、Jzx、Jzy九个矩阵元素都需要设置。（对于模型的设置在后面的Model处进行选择。）对于前Ising和XY模型来说，即便你设置了九个矩阵元素，有效输入的也只是对应的起作用的元素，因此选好模型很关键。</p>
+<p>s，t和over lat.表示我们考虑哪两个磁性原子之间的相互作用，s和t要选择我们在第二步中设置的原胞中磁性原子的ID，over lat.的三个元素指代一个晶格矢量，这个晶格矢量表示：在晶格中，你考虑的原子（在该中心原胞平移该晶格矢量后的原胞的t原子），和中心s原子之间的相互作用。（这里比较难，为了便于理解，建议读者找个例子琢磨琢磨或者自己多动手尝试一下）</p>
+<p>注意所有的能量单位都是开尔文（1meV&#x3D;11.604609K）</p>
+<p>至此，我们已经完成了第三步Bond list的设置。</p>
+<p>现在，我们可以在Structure viewer里面看到超胞里磁性原子的分布和相互作用示意图。大家可以根据右上角的图查看自己添加的是否正确。一定要多加尝试。</p>
+<p>4.Other settings其他设置</p>
+<p>关于一些其他参数的设置。</p>
+<p>T start&amp;end表示起始和结束温度，也就是温度的取值范围，total points表示温度插值次数（用于温度扫描），也就是总取点数，一般来说点越多图形越精确。示例给出的0.9,1.2和8只是为了快速计算得到结果，真实输入的时候要视实际情况而定。</p>
+<p>同理，H start&amp;end表示外加磁场的取值范围，total points表示采样次数（用于磁场扫描）。</p>
+<p>nthermal是使系统进入平衡状态的总步骤，nsweep是测量所涉及的总步骤，tau表示每一步的MC更新。</p>
+<p>xAxis表示右边Result viewer的x轴上的物理量，可以是T(表示M-T曲线)或H(表示迟滞回线)。</p>
+<p>Model可以选择Ising模型、XY模型或Heisenberg模型。</p>
+<p>Algorithm选择相应的算法（支持Wolff，Metropolis，Swedsen-Wang）。</p>
+<p>Measure corr. si&amp;sj设置spin＿i和spin＿j以及它们之间的晶格矢量，用于相关拼接。（如果spin＿i&#x3D;spin＿j并且overLat&#x3D;0 0 0，那么你将得到spin＿i的磁化率）。</p>
+<p>nFrame是输出自旋构型的数目，用于说明在平衡或非平衡状态下的自旋构型。</p>
+<p>core设置并行计算的核心资源。</p>
+<p>至此，所有参数都设置完毕。</p>
+<p>5.最后</p>
+<p>save可以选择保存当前参数到文件，以便下一次找到。</p>
+<p>单击StartMC启动计算。</p>
+<p>等待右面板中的关系图更新。之后，你可以在mcsolver的根目录下找到一个result.txt文件，其中有许多有用的信息，包括平均自旋(在步骤5中定义的spin＿i和j上)，spin＿i和j之间的相关性，内能，比热容量和Binder累积量U4等。如果你处理有多个核心的模拟，那么结果可能不会根据温度排序，但是，每一行的对应关系都是可以的。</p>
+<p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_46679797/article/details/134455309">https://blog.csdn.net/qq_46679797/article/details/134455309</a></p>
+<h1 id="MAE"><a href="#MAE" class="headerlink" title="MAE"></a>MAE</h1><p>磁晶各向异性 magnetic anisotropic energy (MAE) 是指自旋方向在不同方向上的能量差。MAE跟体系对称性有关。<br>对于简单体二维系，易磁化轴可能在面内或者垂直于面，我们可以选择计算不同方向的某一磁性态能量对比来求MAE<br>比如CrI3， 我们可以计算沿着x方向的FM能量Ex，然后计算沿着z方向的FM能量Ez。<br>MAE &#x3D; (Ex -Ez)&#x2F;2<br>对于对称性较低的体系，需要每个面去计算MAE。在vasp中，三维体系研究MAE，可以在高对称轴上算能量差</p>
+<p>三步：结构优化，共线计算磁性并输出CHGCAR,读取CHGCAR改为非线性计算不同方向的能量。</p>
+<p>晶体磁各向异性能量由按不同方向旋转所有自旋决定。首先，必须在基态下进行精确（PREC&#x3D;精确，LREAL&#x3D;.False.）共线计算（使用vasp_std版本）。接下来，考虑自旋轨道耦合（LSORBIT&#x3D;.True.，使用vasp_ncl版本）对几种自旋取向进行非自洽计算（ICHARG&#x3D;11）。在大多数情况下，能量变化非常小（有时约为微电子伏）。与共线相比，必须将NBANDS加倍。</p>
+<p>为了修改晶体中自旋的取向，我们考虑这里描述的第二种方法。对于MAGMOM标签，根据z方向编写总局部磁矩（必要时，x和y方向均为0）。自旋取向（𝑢，𝑣，𝑤）由笛卡尔坐标系中的SAXIS标签定义。通过使自旋朝不同方向取向计算晶体磁各向异性能量和以下方程式</p>
+<p>𝐸MAE&#x3D;𝐸（𝑢，𝑣，𝑤）−𝐸0</p>
+<p>其中 𝐸0 是最稳定自旋方向的能量。更多细节请查看SAXIS和LSORBIT页面。</p>
+<p>练习：通过将自旋沿以下路径定向，确定NiO的非自洽方式下的晶体磁各向异性能量：(2,2,2) –&gt; (2,2,1) –&gt; (2,2,0) –&gt; … –&gt; (2,2,-6)。与自洽方法进行比较。</p>
+<p>INCAR:</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">NiO</span> <span class="variable constant_">MAE</span></span><br><span class="line">  <span class="variable constant_">SYSTEM</span>    = <span class="string">&quot;NiO&quot;</span></span><br><span class="line">    </span><br><span class="line"><span class="title class_">Electronic</span> minimization</span><br><span class="line">  <span class="variable constant_">PREC</span> = <span class="title class_">Accurate</span></span><br><span class="line">  <span class="variable constant_">ENCUT</span>         = <span class="number">450</span></span><br><span class="line">  <span class="variable constant_">EDIFF</span>         = <span class="number">1E-7</span></span><br><span class="line">  <span class="variable constant_">LORBIT</span>        = <span class="number">11</span></span><br><span class="line">  <span class="variable constant_">LREAL</span>         = .<span class="property">False</span>.</span><br><span class="line">  <span class="variable constant_">ISYM</span>          = -<span class="number">1</span></span><br><span class="line">  <span class="variable constant_">NELMIN</span>        = <span class="number">6</span></span><br><span class="line">  #  <span class="variable constant_">ICHARG</span> = <span class="number">11</span></span><br><span class="line">  #  <span class="variable constant_">LCHARG</span> = .<span class="property">FALSE</span>.</span><br><span class="line">  #  <span class="variable constant_">LWAVE</span> = .<span class="property">FALSE</span>.</span><br><span class="line">  #  <span class="variable constant_">NBANDS</span> = <span class="number">52</span></span><br><span class="line">  #  <span class="variable constant_">GGA_COMPAT</span> = .<span class="property">FALSE</span>.</span><br><span class="line">    </span><br><span class="line"><span class="variable constant_">DOS</span></span><br><span class="line">  <span class="variable constant_">ISMEAR</span>    = -<span class="number">5</span></span><br><span class="line">    </span><br><span class="line"><span class="title class_">Magnetism</span></span><br><span class="line">  <span class="variable constant_">ISPIN</span>     = <span class="number">2</span></span><br><span class="line">  <span class="variable constant_">MAGMOM</span> = <span class="number">2.0</span> -<span class="number">2.0</span> <span class="number">2</span>*<span class="number">0.0</span></span><br><span class="line">  # <span class="variable constant_">MAGMOM</span>    = <span class="number">0</span> <span class="number">0</span> <span class="number">2</span> <span class="number">0</span> <span class="number">0</span> -<span class="number">2</span> <span class="number">6</span>*<span class="number">0</span> # <span class="title class_">Including</span> <span class="title class_">Spin</span>-orbit</span><br><span class="line">  # <span class="variable constant_">LSORBIT</span>       = .<span class="property">True</span>.</span><br><span class="line">  # <span class="variable constant_">SAXIS</span> = <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> # <span class="title class_">Quantization</span> axis used to rotate all spins <span class="keyword">in</span> a direction defined <span class="keyword">in</span> the (O,x,y,z) <span class="title class_">Cartesian</span> frame</span><br><span class="line">    </span><br><span class="line"><span class="title class_">Orbital</span> mom.</span><br><span class="line">  <span class="variable constant_">LORBMOM</span> = T</span><br><span class="line">    </span><br><span class="line"><span class="title class_">Mixer</span></span><br><span class="line">  <span class="variable constant_">AMIX</span>      = <span class="number">0.2</span></span><br><span class="line">  <span class="variable constant_">BMIX</span>      = <span class="number">0.00001</span></span><br><span class="line">  <span class="variable constant_">AMIX_MAG</span>  = <span class="number">0.8</span></span><br><span class="line">  <span class="variable constant_">BMIX_MAG</span>  = <span class="number">0.00001</span></span><br><span class="line">    </span><br><span class="line"><span class="variable constant_">GGA</span>+U</span><br><span class="line">  <span class="variable constant_">LDAU</span>      = .<span class="property">TRUE</span>.</span><br><span class="line">  <span class="variable constant_">LDAUTYPE</span>  = <span class="number">2</span></span><br><span class="line">  <span class="variable constant_">LDAUL</span>     = <span class="number">2</span> -<span class="number">1</span></span><br><span class="line">  <span class="variable constant_">LDAUU</span>     = <span class="number">5.00</span> <span class="number">0.00</span></span><br><span class="line">  <span class="variable constant_">LDAUJ</span>     = <span class="number">0.00</span> <span class="number">0.00</span></span><br><span class="line">  <span class="variable constant_">LDAUPRINT</span> = <span class="number">1</span></span><br><span class="line">  <span class="variable constant_">LMAXMIX</span>   = <span class="number">4</span> </span><br></pre></td></tr></table></figure>
+<h2 id="vaspkit"><a href="#vaspkit" class="headerlink" title="vaspkit"></a>vaspkit</h2><p>  先执行结构优化计算（略），之后使用以下INCAR参数并选择991 K点进行自旋极化静态计算，运行vasp_std得到CHGCAR文件。</p>
+<p>  MAE的INCAR：</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#<span class="title class_">General</span></span><br><span class="line"><span class="variable constant_">PREC</span> = <span class="variable constant_">ACCURATE</span></span><br><span class="line"><span class="variable constant_">ISTART</span>= <span class="number">0</span></span><br><span class="line"><span class="variable constant_">ICHARG</span>= <span class="number">11</span></span><br><span class="line"><span class="variable constant_">ENCUT</span> = <span class="number">520</span></span><br><span class="line"><span class="variable constant_">EDIFF</span> = <span class="number">1E-8</span></span><br><span class="line"><span class="variable constant_">EDIFFG</span> = -<span class="number">0.001</span></span><br><span class="line"><span class="variable constant_">LREAL</span> = .<span class="property">F</span>.</span><br><span class="line"><span class="variable constant_">NPAR</span> = <span class="number">4</span></span><br><span class="line"><span class="variable constant_">NSW</span>= <span class="number">0</span></span><br><span class="line"><span class="variable constant_">IBRION</span> = -<span class="number">1</span></span><br><span class="line"><span class="variable constant_">ISIF</span> = <span class="number">2</span></span><br><span class="line"><span class="variable constant_">ISMEAR</span> = -<span class="number">5</span></span><br><span class="line"><span class="variable constant_">SIGMA</span> = <span class="number">0.05</span></span><br><span class="line"><span class="variable constant_">LCHARG</span> = .<span class="property">F</span>.</span><br><span class="line"><span class="variable constant_">LWAVE</span> = .<span class="property">F</span>.</span><br><span class="line"><span class="variable constant_">POTIM</span> = <span class="number">0.5</span></span><br><span class="line"><span class="variable constant_">NEDOS</span> = <span class="number">2001</span></span><br><span class="line"><span class="variable constant_">NBANDS</span> = <span class="number">144</span>        # 修改为上一步静态计算<span class="variable constant_">NBANDS</span>数值的<span class="number">2</span>倍</span><br><span class="line"></span><br><span class="line">#<span class="title class_">Magnetic</span> properties</span><br><span class="line"></span><br><span class="line"><span class="variable constant_">MAGMOM</span> = <span class="number">18</span>*<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">4</span> <span class="number">0</span> <span class="number">0</span> <span class="number">4</span></span><br><span class="line"><span class="variable constant_">NELMIN</span> = <span class="number">6</span></span><br><span class="line"><span class="variable constant_">LORBIT</span> = <span class="number">11</span></span><br><span class="line"><span class="variable constant_">ISYM</span> = <span class="number">0</span></span><br><span class="line"><span class="variable constant_">LSORBIT</span> = .<span class="property">True</span>.</span><br><span class="line"><span class="variable constant_">LMAXMIX</span> = <span class="number">4</span>  ! <span class="keyword">for</span> d-elements increase <span class="variable constant_">LMAXMIX</span> to <span class="number">4</span>, f-<span class="attr">elements</span>: <span class="variable constant_">LMAXMIX</span> = <span class="number">6</span></span><br></pre></td></tr></table></figure>
+<p>和VPKIT.in</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1                              ! 1为预处理, 2为后处理</span><br><span class="line">0 360 12                       ! Phi, Spherical coordinate system</span><br><span class="line">0 180 12                       ! 0&lt;= theta &lt;=180, 90 degree means in x-y plane</span><br></pre></td></tr></table></figure>
+
+<p>VPKIT.in说明：<br>第一行：在第二步计算前使用1，第二步计算完后设置为2；</p>
+<p>第二行：三维球坐标系下矢量在xy面投影与x轴正方向的夹角方位角φ，由起始角度0°到终止角度360°(0°)，最后是分割角度的个数；</p>
+<p>第三行：三维球坐标系下矢量与z轴的夹角θ，由起始角度0°到终止角度180°，最后是分割角度的个数(注意包含180°在内需要＋1，所以是7)；</p>
+<p>其中和分别为方位角和极角，其值变化范围分别是从0°到180°和从0°到360°，这里方位角和极角各取12个离散点（共计144个计算作业）。如果计算资源允许，可以选取更小间隔。调用vaspkit-621命令产生如下所示的一系列计算作业。理论上要生成144个计算作业，考虑到一部分相等无需计算，实际上共生成了122个计算作业。预处理时VASPKIT会自动在每个计算作业文件夹里的INCAR后根据公式(1)追加SAXIS &#x3D; </p>
+<p>接下来可使用以下脚本模板批量提交vasp_ncl作业。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"># just for reference</span><br><span class="line">path=`pwd`</span><br><span class="line">for c in *.*</span><br><span class="line">do</span><br><span class="line">   cd $path/$c</span><br><span class="line">   echo `pwd`</span><br><span class="line">   qsub vasp_job_soc.sh   ! vasp_job_soc.sh为vasp_ncl作业脚本</span><br><span class="line">  cd $&#123;path&#125;</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<p>待vasp_ncl计算完成后，把INPUT.in文件中的第一行修改2，然后再次运行vaspkit-621得到MAE.dat文件。我们可利用vaspkit&#x2F;examples&#x2F;MAE文件夹中的MATLAB脚本mae_3D_plot_matlab.m进行可视化。</p>
+<ul>
+<li>如果想得到xy二维平面内的MAE，INPUT.in可设置为:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1                              ! 1为预处理, 2为后处理</span><br><span class="line">0 360 12                       ! Phi, Spherical coordinate system</span><br><span class="line">90 90 1                        ! xy平面内theta始终等于90°</span><br></pre></td></tr></table></figure></li>
+<li>如果想得到xz二维平面内的MAE，INPUT.in可设置为:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1                              ! 1为预处理, 2为后处理</span><br><span class="line">0 0 1                      ! Phi, Spherical coordinate system</span><br><span class="line">0 180 12                       ! xy平面内theta始终等于90°</span><br></pre></td></tr></table></figure></li>
+<li>如果想得到xy二维平面内的MAE，INPUT.in可设置为:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1                              ! 1为预处理, 2为后处理</span><br><span class="line">90 90 1                      ! Phi, Spherical coordinate system</span><br><span class="line">0 180 12                        ! xy平面内theta始终等于90°</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="电子结构分析"><a href="#电子结构分析" class="headerlink" title="电子结构分析"></a>电子结构分析</h1><p>磁性一般来自于d、f轨道的半占据电子，下面以d轨道为例介绍电子结构的分析</p>
+<ol>
+<li>磁矩约等于非成对的电子数，但是电子的占据方式并不仅仅由洪特规则来决定。<br>以一个Mn2+为例，最外层5个电子，按照洪特规则Mn磁矩应该是5，但是在晶体场的作用下，它有可能呈现高自旋、<br>中自旋、低自旋态。</li>
+</ol>
+<p>如何查找结构晶体场：</p>
+<ol>
+<li>确定点群 运行vaspkit</li>
+<li>查表<br><a target="_blank" rel="noopener" href="http://gernot-katzers-spice-/">http://gernot-katzers-spice-</a> pages.com&#x2F;character_tables&#x2F;index.html</li>
+<li>判断能及大小</li>
+</ol>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1>
       
     </div>
 
@@ -1731,7 +1973,7 @@ int1 = hw[:,2]
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-13 11:27:50" itemprop="dateModified" datetime="2024-06-13T11:27:50+08:00">2024-06-13</time>
+      <time title="修改时间：2024-08-27 10:41:09" itemprop="dateModified" datetime="2024-08-27T10:41:09+08:00">2024-08-27</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1792,12 +2034,13 @@ int1 = hw[:,2]
 </ul>
 <p><strong>计算出的声子谱有虚频，往往表示该材料不稳定。</strong> 有些情况下，我们可以利用虚频信息使不稳定的材料变得稳定。如果声子谱的一条声学支存在虚频，主要位于Γ点和M点1&#x2F;2处（对应倒格矢的1&#x2F;4位置）。倒格矢的1&#x2F;4，对应晶格长度的4倍。我们可能需要将原胞沿上述倒格矢方向扩大四倍，进一步优化原子位置，才可能得到比较稳定的晶胞。</p>
 <h1 id="消虚频"><a href="#消虚频" class="headerlink" title="消虚频"></a>消虚频</h1><ol>
-<li>DFPT方法与有限位移法互换尝试。</li>
+<li>DFPT方法与有限位移法互换尝试。或者更换标准胞扩胞计算。</li>
 <li>扩胞，在虚频很小时可以尝试扩大扩胞倍数。</li>
 <li>提高精度优化后计算声子谱。声子谱对力的精度要求特别高，所以提高精度多次优化后再计算声子谱也是可行的。</li>
-<li>修改POTCAR，尝试不同的赝势方法。（不太建议，因为需改之后所有计算都需要统一成稳定构型的赝势。）</li>
+<li>修改POTCAR，尝试不同的赝势方法。（不太建议，因为需改之后所有计算都需要统一成稳定构型的赝势。不过有效）</li>
 <li>修改POSCAR原子坐标，再优化，再计算声子谱。<br>修改方法：对于DFPT计算的声子谱，使用<code>grep cm-1 OUTCAR</code>查看频率，寻找最大的虚频频率。然后在OUTCAR中从最后往前找到最大的虚频频率对应的坐标。<br>dx dy dz对应虚频的位移，把这些坐标与POSCAR中的坐标相加或者0.1-0.9之间的倍数，形成新的POSCAR。进行优化，再计算声子谱。</li>
 <li>不排除真的算不出来没虚频的，据我所知，SnTe就没见到谁大大方方发文章谈声子谱的（算出来虚频消除不了不好意思讲）。</li>
+<li>INCAR参数对虚频的影响：ADDGRID影响很小，LREAL有影响。截断能和K点密度在收敛情况下影响小。</li>
 </ol>
 <h3 id="结构优化消虚频"><a href="#结构优化消虚频" class="headerlink" title="结构优化消虚频"></a>结构优化消虚频</h3><p>X, Y, Z为体系中原子的坐标，也就是POSCAR中的内容。 dx, dy,dz为虚频对应的原子振动方向上的位移。我们将（dx, dy,dz）这个位移乘以一个介于0-1之间的校正因子，然后跟POSCAR中的坐标加起来即可。以z方向为例，<strong>校正因子设为0.1，</strong> 微调后的z方向坐标为： 10.709980 + （-0.676634）0.1。<br>脚本vib_correct.py如下：<a target="_blank" rel="noopener" href="https://www.bigbrosci.com/2022/04/29/A29/">https://www.bigbrosci.com/2022/04/29/A29/</a></p>
 <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"># -*- <span class="attr">coding</span>: utf-<span class="number">8</span> -*-</span><br><span class="line"><span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">Qiang Li</span></span><br><span class="line"><span class="string">Command: python3 vib_correct.py </span></span><br><span class="line"><span class="string">This is a temporary script file.</span></span><br><span class="line"><span class="string">&quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> ase.<span class="property">io</span> <span class="keyword">import</span> read, write</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">#获取虚频开始行</span><br><span class="line">l_position = <span class="number">0</span>  #虚频振动方向部分在<span class="variable constant_">OUTCAR</span>中的起始行数</span><br><span class="line"><span class="keyword">with</span> <span class="title function_">open</span>(<span class="string">&#x27;OUTCAR&#x27;</span>) <span class="keyword">as</span> <span class="attr">f_in</span>:</span><br><span class="line">    lines = f_in.<span class="title function_">readlines</span>()</span><br><span class="line">    wave_num = <span class="number">0.0</span></span><br><span class="line">    <span class="keyword">for</span> num, line <span class="keyword">in</span> <span class="title function_">enumerate</span>(lines):</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;f/i&#x27;</span> <span class="keyword">in</span> <span class="attr">line</span>:</span><br><span class="line">            wave_tem = <span class="title function_">float</span>(line.<span class="title function_">rstrip</span>().<span class="title function_">split</span>()[<span class="number">6</span>])</span><br><span class="line">            <span class="keyword">if</span> wave_tem &gt; <span class="attr">wave_num</span>: #获取最大的虚频</span><br><span class="line">                wave_num = wave_tem</span><br><span class="line">                l_position = num+<span class="number">2</span></span><br><span class="line"># <span class="variable constant_">ASE</span>读<span class="variable constant_">POSCAR</span></span><br><span class="line">model = <span class="title function_">read</span>(<span class="string">&#x27;POSCAR&#x27;</span>)</span><br><span class="line">model_positions = model.<span class="title function_">get_positions</span>()</span><br><span class="line">num_atoms = <span class="title function_">len</span>(model)</span><br><span class="line">#<span class="title function_">print</span>(model_positions)</span><br><span class="line"></span><br><span class="line"># 获取虚频对应的<span class="variable constant_">OUTCAR</span>部分 </span><br><span class="line">vib_lines = lines[<span class="attr">l_position</span>:l_position + num_atoms] #振动部分 <span class="number">7222</span>到<span class="number">7248</span>行</span><br><span class="line">#<span class="title function_">print</span>(vib_lines)</span><br><span class="line">vib_dis = []</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> <span class="attr">vib_lines</span>:</span><br><span class="line">    #model_positions = [<span class="title function_">float</span>(i) <span class="keyword">for</span> i <span class="keyword">in</span> line.<span class="title function_">rstrip</span>().<span class="title function_">split</span>()[:<span class="number">3</span>]]</span><br><span class="line">    vib_infor = [<span class="title function_">float</span>(i) <span class="keyword">for</span> i <span class="keyword">in</span> line.<span class="title function_">rstrip</span>().<span class="title function_">split</span>()[<span class="number">3</span>:]] # dx， dy， dz对应的那三列</span><br><span class="line">    vib_dis.<span class="title function_">append</span>(vib_infor)</span><br><span class="line">vib_dis = np.<span class="title function_">array</span>(vib_dis) #将振动部分写到一个array中。</span><br><span class="line"></span><br><span class="line"># 微调结构</span><br><span class="line">new_positions = model_positions + vib_dis * <span class="number">0.4</span> # <span class="number">0.4</span>是微调的校正因子，即虚频对应振动位移的<span class="number">0.4</span>，具体多大自己根据经验调。</span><br><span class="line">model.<span class="property">positions</span> = new_positions</span><br><span class="line"></span><br><span class="line">###保存结构</span><br><span class="line"><span class="title function_">write</span>(<span class="string">&#x27;POSCAR_new&#x27;</span>, model, vasp5=<span class="title class_">True</span>) # POSCAR_new是微调后的结构，用于下一步的计算（别忘了把POSCAR_new改成<span class="variable constant_">POSCAR</span>）。</span><br></pre></td></tr></table></figure>
@@ -1813,7 +2056,7 @@ int1 = hw[:,2]
 <p>而且具体使用过程中，关于执行命令还有执行文件的tag内容还有一些可替换的关系,–gv, –group_velocity 可在执行计算命令时替代执行文件中的<code>GROUP_VELOCITY = .TRUE.</code>内容， –gv_delta_q 可在执行计算命令时替代执行文件中的(GV_DELTA_Q)内容</p>
 <ol start="3">
 <li>对声子谱重新进行计算，打开phonopy.yaml文件可以看到，phonopy在计算声子谱的过程中考虑到了群速度；打开band.yaml文件中也保存了有关群速度的相关信息；同时在计算声子谱中phonopy所储存的数据文件mesh.yaml和band.yaml文件中也保存了有关群速度的相关信息。</li>
-<li>随后进行数据提取，以vaspkit1.12版本为例，打开vaspkit，输入<code>73</code>，打开VASP2other Interface 子功能，选择<code>739 Sort Phonon Band Structure for Phononpy</code>，运行完成即可获得group velocity相关数据以及各原子的声子谱数据；在运行过程中我们可以看到软件说明<code>find group velocity</code>并写入输出文件中。</li>
+<li>随后进行数据提取，以vaspkit1.12版本为例，打开vaspkit，输入<code>73</code>，打开VASP2other Interface 子功能，选择<code>739 Sort Phonon Band Structure for Phononpy</code>，运行完成即可获得group velocity相关数据以及各原子的声子谱数据；在运行过程中我们可以看到软件说明<code>find group velocity</code>并写入输出文件中。<br>1.5版本为789功能。</li>
 </ol>
 <h1 id="格林艾森常数（Gruneisen-parameters）"><a href="#格林艾森常数（Gruneisen-parameters）" class="headerlink" title="格林艾森常数（Grüneisen parameters）"></a>格林艾森常数（Grüneisen parameters）</h1><p>为表示声子非简谐效应的参数。phonopy计算模式格林艾森参数方式见官网。<br>以NaCl为例，首先需要进行三个声子谱计算，分别是平衡体积（orig），稍小体积（minus）和稍大体积（plus）的结构，计算时改变晶格参数使得体积获得改变。</p>
 <p>计算完成后获得不同体积下的原子间力常数文件FORCE_SETS 或 FORCE_CONSTANTS   （后续命令中需要添加–readfc参数）。</p>
@@ -1868,271 +2111,22 @@ int1 = hw[:,2]
 <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">temperature[K]</span><br><span class="line"><span class="title class_">Free</span> energy [kJ/mol]</span><br><span class="line"><span class="title class_">Entropy</span> [J/K/mol]</span><br><span class="line"><span class="title class_">Heat</span> capacity [J/K/mol]</span><br><span class="line"><span class="title class_">Energy</span> [kJ/mol]</span><br></pre></td></tr></table></figure>
 <h3 id="下面是能用到的各种命令"><a href="#下面是能用到的各种命令" class="headerlink" title="下面是能用到的各种命令"></a>下面是能用到的各种命令</h3><figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">扩胞用</span><br><span class="line">phonopy -d --dim=<span class="string">&quot;2 2 2&quot;</span> -c <span class="variable constant_">POSCAR_UNIT</span></span><br><span class="line">查找晶格对称性</span><br><span class="line">phonopy --symmetry</span><br><span class="line">收集力常数</span><br><span class="line">phonopy --fc vasprun.<span class="property">xml</span></span><br><span class="line">得到band.<span class="property">yalm</span>文件（好像不需要这一步）</span><br><span class="line">phonopy --dim=<span class="string">&quot;2 2 2&quot;</span> -c <span class="variable constant_">POSCAR</span>-<span class="variable constant_">UNIT</span> -p band.<span class="property">conf</span></span><br><span class="line">得到thermal_properties.<span class="property">yaml</span>文件</span><br><span class="line">phonopy -c <span class="variable constant_">POSCAR</span> mesh.<span class="property">conf</span>  -t</span><br></pre></td></tr></table></figure>
 <h3 id="下面是产生e-v-dat文件的脚本，需要根据自己的目录名进行修改："><a href="#下面是产生e-v-dat文件的脚本，需要根据自己的目录名进行修改：" class="headerlink" title="下面是产生e-v.dat文件的脚本，需要根据自己的目录名进行修改："></a>下面是产生e-v.dat文件的脚本，需要根据自己的目录名进行修改：</h3><figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> -<span class="number">0.005</span> -<span class="number">0.004</span> -<span class="number">0.003</span> -<span class="number">0.002</span> -<span class="number">0.001</span> <span class="number">0.001</span> <span class="number">0.002</span> <span class="number">0.003</span> <span class="number">0.004</span> <span class="number">0.005</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"> cd AC_Uni$i;</span><br><span class="line"> pwd;</span><br><span class="line"> volume=<span class="string">`grep volume vasprun.xml | tail -1| awk &#x27;&#123;printf(&quot;%20.13f&quot;, $3)&#125;&#x27;`</span>;</span><br><span class="line"> energy=<span class="string">`grep &#x27;E0&#x27; OSZICAR | tail -1 | awk &#x27;&#123;printf &quot;%12.4f \t&quot;, $5&#125;&#x27;`</span>;</span><br><span class="line"> echo $&#123;volume&#125; $&#123;energy&#125; &gt;&gt; ../e-v.<span class="property">dat</span>;</span><br><span class="line"> cd ../; #<span class="title class_">Exit</span> the <span class="title class_">Strain</span> folder</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
-<h1 id="声子谱振动可视化"><a href="#声子谱振动可视化" class="headerlink" title="声子谱振动可视化"></a>声子谱振动可视化</h1><p>上面生成band.yaml文件，利用JMOL打开。<a target="_blank" rel="noopener" href="https://jmol.sourceforge.net/">https://jmol.sourceforge.net/</a><br>或者网站：<a target="_blank" rel="noopener" href="https://henriquemiranda.github.io/phononwebsite/phonon.html">https://henriquemiranda.github.io/phononwebsite/phonon.html</a></p>
-<p>band.conf添加标签ANIME&#x3D;0 0 0将000这个Q点的振动模式输出到anime.ascii,用v_sim软件打开即可。<a target="_blank" rel="noopener" href="https://l_sim.gitlab.io/v_sim/index.en.html">https://l_sim.gitlab.io/v_sim/index.en.html</a></p>
-<p>运行命令 phonopy -f vasprun.xml-{001,002}得到FORSETS<br>运行phonopy –dim&#x3D;”3 3 3” –ct&#x3D;”0 0 0”得到gamma点的振动模式密度</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/18-47-27/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Keke Liu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lightchaser">
-      <meta itemprop="description" content="一个小学生的博客">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Lightchaser">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/05/09/18-47-27/" class="post-title-link" itemprop="url">2.3 wannier90+wanniertools</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-05-09 18:47:27" itemprop="dateCreated datePublished" datetime="2023-05-09T18:47:27+08:00">2023-05-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-05 10:49:09" itemprop="dateModified" datetime="2024-06-05T10:49:09+08:00">2024-06-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/DFT%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">DFT学习</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>参考：</p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/355317202">https://zhuanlan.zhihu.com/p/355317202</a></p>
-<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzI3MzIyMjI2Nw==&mid=2247488523&idx=1&sn=90a544712f166e248993e1198eb40981&chksm=eb27cb1fdc50420921bb11d3bc8f4833c14418b0d0c0d755af6687fca024fc9d15d999ae7813&scene=21#wechat_redirect">https://mp.weixin.qq.com/s?__biz=MzI3MzIyMjI2Nw==&amp;mid=2247488523&amp;idx=1&amp;sn=90a544712f166e248993e1198eb40981&amp;chksm=eb27cb1fdc50420921bb11d3bc8f4833c14418b0d0c0d755af6687fca024fc9d15d999ae7813&amp;scene=21#wechat_redirect</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.sciencenet.cn/blog-2909108-1154273.html">https://blog.sciencenet.cn/blog-2909108-1154273.html</a></p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/642116307">https://zhuanlan.zhihu.com/p/642116307</a></p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/25432728">https://zhuanlan.zhihu.com/p/25432728</a></p>
-<h1 id="一、安装编译"><a href="#一、安装编译" class="headerlink" title="一、安装编译"></a>一、安装编译</h1><h2 id="wannier90安装"><a href="#wannier90安装" class="headerlink" title="wannier90安装"></a>wannier90安装</h2><p>下载: <a target="_blank" rel="noopener" href="https://wannier.org/download/">https://wannier.org/download/</a></p>
-<p>2.1版本是可以与VASP结合的最新版本。但是2.1版本默认安装与VASP接口并不好，主要是借助肖承诚博士写了一个Fortran的接口（<a target="_blank" rel="noopener" href="https://github.com/Chengcheng-Xiao/VASP2WAN90_v2_fix%EF%BC%89%EF%BC%8C">https://github.com/Chengcheng-Xiao/VASP2WAN90_v2_fix），</a> 需要注意的是这个接口是针对VASP 5.4.4版本的。1.2版本与VASP的接口是好的，所以1.2版本默认安装就好。对比两个版本的不同，1.2版本的主要缺点就在于不能构建向上自旋和向下自旋的能带，也就是没有自旋轨道耦合作用的铁磁和反铁磁体系。 <img src="/gra/0201.jpg" alt="0201"></p>
-<h3 id="1-1-wannier90-2-1安装"><a href="#1-1-wannier90-2-1安装" class="headerlink" title="1.1 wannier90 2.1安装"></a>1.1 wannier90 2.1安装</h3><p>首先，解压安装包</p>
-<p><code>tar -zxvf wannier90-2.1.0.tar.gz</code></p>
-<p>其次，进入文件夹</p>
-<p><code>cd wannier90-2.1.0/</code></p>
-<p>然后，准备编译文件（这里老王用的是ifort，注意要检查ifort和mpiifort执行命令）</p>
-<p><code>cp config/make.inc.ifort make.inc</code></p>
-<p>接着，编译</p>
-<p><code>make</code></p>
-<p>完成后，编译库，得到libwannier.a文件</p>
-<p><code>make lib</code></p>
-<h3 id="1-2-VASP编译（注意以上接口VASP2WAN90-v2-fix只针对VASP-5-4-4）"><a href="#1-2-VASP编译（注意以上接口VASP2WAN90-v2-fix只针对VASP-5-4-4）" class="headerlink" title="1.2 VASP编译（注意以上接口VASP2WAN90_v2_fix只针对VASP 5.4.4）"></a>1.2 VASP编译（注意以上接口VASP2WAN90_v2_fix只针对VASP 5.4.4）</h3><p>首先拷贝VASP2WAN90_v2_fix接口文件中的mlwf.patch 到VASP代码编译目录下。然后执行如下命令。</p>
-<p><code>patch -p0 &lt; mlwf.patch</code></p>
-<p>接着在VASP makefile.include 文件中加入下面两行。注意路径。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CPP_OPTIONS+=-DVASP2WANNIER90v2</span><br><span class="line"></span><br><span class="line">LLIBS+=/path/to/your/wannier90_distro/libwannier.a</span><br></pre></td></tr></table></figure>
-<p>最后编译即可</p>
-<p><code>make all</code></p>
-<h2 id="wannier-tools安装"><a href="#wannier-tools安装" class="headerlink" title="wannier-tools安装"></a>wannier-tools安装</h2><p>开源软件包WannierTools，是一个用于研究新型拓扑材料的软件。此代码在紧束缚模型中工作，可以由另一个软件包Wannier90生成。</p>
-<p>它可以通过计算Wilson loop来帮助对给定材料的拓扑相进行分类，通过角分辨光电发射(ARPES)和红外光谱技术，可以得到表面态光谱扫描隧道显微镜(STM)实验。它还可以识别Weyl&#x2F;Dirac点和节点线结构的位置，计算闭合动量环周围的贝里相位和部分布里渊区(BZ)的贝里曲率。<br>此外，WannierTools还可以计算非磁性金属和半金属的普通磁电阻利用玻尔兹曼输运理论，计算给定磁场方向和强度下的朗道能级谱;并从超胞计算中得到展开的能谱。</p>
-<p>wanniertools官方安装教程</p>
-<p><a target="_blank" rel="noopener" href="http://www.wanniertools.com/installation.html">http://www.wanniertools.com/installation.html</a></p>
-<h3 id="安装依赖环境"><a href="#安装依赖环境" class="headerlink" title="安装依赖环境"></a>安装依赖环境</h3><p>1、Intel编译器即oneapi（Fortran compiler (Gfortran or ifort)，MPICH version higher than 2.1.5，Lapack and Blas library, (Intel MKL recommended)）</p>
-<p>2、Arpack-ng</p>
-<h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><p>下载wanniertools和arpack安装包并分别解压</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">unzip wannier_tools-master.zip</span><br><span class="line">tar vzxf arpack96.tar.gz</span><br></pre></td></tr></table></figure>
-<p>先进入arpack，修改编译文件并编译<br>在ARmake.inc中修改编译路径，这里以实际安装路径为准</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">home = $(HOME)/ARPACK</span><br></pre></td></tr></table></figure>
-<p>修改编译器，参考VASP安装时的makefile.include</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">FC=f77</span><br><span class="line">FFLAGS= -O -cg89</span><br></pre></td></tr></table></figure>
-
-<p>改为</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FC         = mpiifort</span><br><span class="line">FCL        = mpiifort -mkl=sequential</span><br><span class="line">FFLAGS  = -O -cg89</span><br></pre></td></tr></table></figure>
-
-<p>然后执行make编译</p>
-<p>make lib</p>
-<p>直至产生libarpack_SUN4.a文件，该文件会因为不同机器不同环境而不同名称，只要确定好，然后在编译wanniertools的时候指定好就行了</p>
-<p>在wanniertools的src文件夹的makefile文件中该默认值为</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#ARPACK LIBRARY</span><br><span class="line"></span><br><span class="line">ARPACK=/Users/quan/work/workplace/ARPACK/libarpack MAC.a</span><br></pre></td></tr></table></figure>
-<p>修改为刚刚已经生成的文件路径，这里使用的是Makefile.intel-mpi，重命名为makefile</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp Makefile.intel-mpi Makefile</span><br></pre></td></tr></table></figure>
-<p>然后编译即可</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make</span><br></pre></td></tr></table></figure>
-
-<p>最后生成wt.x文件即为安装成功</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp -f wt.x../bin</span><br></pre></td></tr></table></figure>
-<h1 id="二、计算过程-以石墨烯为例"><a href="#二、计算过程-以石墨烯为例" class="headerlink" title="二、计算过程(以石墨烯为例)"></a>二、计算过程(以石墨烯为例)</h1><h2 id="1、结构优化加自洽计算"><a href="#1、结构优化加自洽计算" class="headerlink" title="1、结构优化加自洽计算"></a>1、结构优化加自洽计算</h2><p>POSCAR为<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Surf</span>-mp-<span class="number">48</span>                             </span><br><span class="line">   <span class="number">1.00000000000000</span>     </span><br><span class="line">     <span class="number">1.2344083195740001</span>   -<span class="number">2.1380573715510001</span>    <span class="number">0.0000000000000000</span></span><br><span class="line">     <span class="number">1.2344083195740001</span>    <span class="number">2.1380573715510001</span>    <span class="number">0.0000000000000000</span></span><br><span class="line">     <span class="number">0.0000000000000000</span>    <span class="number">0.0000000000000000</span>   <span class="number">12.0000000000000000</span></span><br><span class="line">   C </span><br><span class="line">     <span class="number">2</span></span><br><span class="line"><span class="title class_">Direct</span></span><br><span class="line">  <span class="number">0.0000000000000000</span>  <span class="number">0.0000000000000000</span>  <span class="number">0.5000000000000000</span></span><br><span class="line">  <span class="number">0.3333329999917112</span>  <span class="number">0.6666670000099160</span>  <span class="number">0.5000000000000000</span></span><br></pre></td></tr></table></figure><br>INCAR为</p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">SYSTEM</span>=<span class="title class_">Graphene</span></span><br><span class="line"><span class="title class_">Global</span> <span class="title class_">Parameters</span></span><br><span class="line"><span class="variable constant_">ISTART</span> =  <span class="number">0</span>            (<span class="title class_">Read</span> existing wavefunction; <span class="keyword">if</span> there)</span><br><span class="line"><span class="variable constant_">ISPIN</span>  =  <span class="number">1</span>            (<span class="title class_">Non</span>-<span class="title class_">Spin</span> polarised <span class="variable constant_">DFT</span>)</span><br><span class="line"><span class="variable constant_">ICHARG</span> =  <span class="number">2</span>           (<span class="title class_">Non</span>-self-<span class="attr">consistent</span>: <span class="variable constant_">GGA</span>/<span class="variable constant_">LDA</span> band structures)</span><br><span class="line"><span class="variable constant_">LREAL</span>  = .<span class="property">FALSE</span>.       (<span class="title class_">Projection</span> <span class="attr">operators</span>: automatic)</span><br><span class="line"><span class="variable constant_">ENCUT</span>  =  <span class="number">500</span>          (<span class="title class_">Cut</span>-off energy <span class="keyword">for</span> plane wave basis set, <span class="keyword">in</span> eV)</span><br><span class="line"><span class="variable constant_">PREC</span>   =  A            (<span class="title class_">Precision</span> level)</span><br><span class="line"><span class="variable constant_">ADDGRID</span>= .<span class="property">TRUE</span>.        (<span class="title class_">Increase</span> grid; helps <span class="variable constant_">GGA</span> convergence)</span><br><span class="line"> </span><br><span class="line"><span class="title class_">Electronic</span> <span class="title class_">Relaxation</span></span><br><span class="line"><span class="variable constant_">ALGO</span> = N</span><br><span class="line"><span class="variable constant_">ISMEAR</span> =  <span class="number">0</span>            (<span class="title class_">Gaussian</span> smearing; <span class="attr">metals</span>:<span class="number">1</span>)</span><br><span class="line"><span class="variable constant_">SIGMA</span>  =  <span class="number">0.05</span>         (<span class="title class_">Smearing</span> value <span class="keyword">in</span> eV; <span class="attr">metals</span>:<span class="number">0.2</span>)</span><br><span class="line"><span class="variable constant_">NELM</span>   =  <span class="number">90</span>           (<span class="title class_">Max</span> electronic <span class="variable constant_">SCF</span> steps)</span><br><span class="line"><span class="variable constant_">NELMIN</span> =  <span class="number">6</span>            (<span class="title class_">Min</span> electronic <span class="variable constant_">SCF</span> steps)</span><br><span class="line"><span class="variable constant_">EDIFF</span>  =  <span class="number">1E-08</span>        (<span class="variable constant_">SCF</span> energy convergence; <span class="keyword">in</span> eV)</span><br><span class="line"> </span><br><span class="line"><span class="title class_">Ionic</span> <span class="title class_">Relaxation</span></span><br><span class="line"><span class="variable constant_">NSW</span>    =  <span class="number">0</span>            (<span class="title class_">Max</span> ionic steps)</span><br><span class="line"><span class="variable constant_">IBRION</span> = -<span class="number">1</span>            (<span class="title class_">Algorithm</span>: <span class="number">0</span>-<span class="variable constant_">MD</span>; <span class="number">1</span>-<span class="title class_">Quasi</span>-<span class="title class_">New</span>; <span class="number">2</span>-<span class="variable constant_">CG</span>)</span><br><span class="line"><span class="variable constant_">ISIF</span>   =  <span class="number">3</span>            (<span class="title class_">Stress</span>/<span class="attr">relaxation</span>: <span class="number">2</span>-<span class="title class_">Ions</span>, <span class="number">3</span>-<span class="title class_">Shape</span>/<span class="title class_">Ions</span>/V, <span class="number">4</span>-<span class="title class_">Shape</span>/<span class="title class_">Ions</span>)</span><br><span class="line"><span class="variable constant_">EDIFFG</span> = -<span class="number">2E-02</span>        (<span class="title class_">Ionic</span> convergence; eV/<span class="variable constant_">AA</span>)</span><br></pre></td></tr></table></figure>
-<p>加SOC在自洽计算加上<br><code>LSORBIT=T</code></p>
-<h2 id="2、非自洽计算投影能带"><a href="#2、非自洽计算投影能带" class="headerlink" title="2、非自洽计算投影能带"></a>2、非自洽计算投影能带</h2><p>在自洽计算基础上，<code>cp -r scf band</code><br>修改INCAR</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ISTART =  1         </span><br><span class="line">ICHARG =  11 </span><br><span class="line">LORBIT =  10/11</span><br></pre></td></tr></table></figure>
-<p>KPOINTS 改为高对称点路径。</p>
-<p>画一下能带结构，然后再做一下Fatband分析，了解费米面附近能带是有哪些成分构成的。以C的pz轨道。</p>
-<h2 id="3、非自洽vasp产生-win文件"><a href="#3、非自洽vasp产生-win文件" class="headerlink" title="3、非自洽vasp产生.win文件"></a>3、非自洽vasp产生.win文件</h2><p>在自洽计算基础上 <code>cp -r scf wan1</code><br>修改INCAR</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ISTART =  1         </span><br><span class="line">ICHARG =  11 </span><br><span class="line">NBANDS = 40</span><br><span class="line">LWANNIER90 = .TRUE.</span><br><span class="line">NUM_WANN = 2</span><br></pre></td></tr></table></figure>
-<p><strong>注意，INCAR中使用NPAR参数会出错</strong> </p>
-<p>KPOINTS、POSCAR、POTCAR不改。</p>
-<p>准备好wannier90.win文件，同时在INCAR里头添加一行LWANNIER90&#x3D;.TRUE.和一行ICHARG&#x3D;11，然后再运行一遍VASP。 顺利的话，会产生 <strong>wannier90.amn, wannier90.mmn, wannier90.eig, wannier90.chk</strong> 等4个文件。wannier90.win里头的内容也有可能会被改变。包括结构信息，k点信息。有了这三个文件就可以进一步调节参数，构造wannier函数了。请注意wannier90.win里头的num_bands要和OUTCAR里头的NBANDS一致。.mmn积分矩阵和.amn布洛赫态在轨道上的尝试投影和UNK0000x.1存储实空间单胞的布洛赫态相关信息，这些文件是运行链接wannier90的DFT计算输出的结果，而gaas.win是计算参数设置文件</p>
-<h2 id="4、wannier90-x计算"><a href="#4、wannier90-x计算" class="headerlink" title="4、wannier90.x计算"></a>4、wannier90.x计算</h2><p>运行wannier90主程序。<code>mpirun -np 40 wannier90.x wannier90 &amp;</code></p>
-<p><strong>注意在第3步打开<code>hr_plot = T</code>，关闭<code>write_hr = true</code>；在第4步打开<code>write_hr = true</code>，关闭<code>hr_plot = T</code>。</strong></p>
-<p>这里后面一个winner90代表wannier90.win的文件.win前面的部分。如果你的win文件是name.win运行的地方就可以是</p>
-<p><code>wannier90.x name &amp;</code></p>
-<p>运行过程中当num_bands &gt; num_wann 有个迭代过程，控制迭代步数可以通过</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dis_num_iter  =  200   # 迭代1，默认200步</span><br><span class="line">num_iter      =  200   # 迭代2，默认200步</span><br></pre></td></tr></table></figure>
-<p>最后会生成wannier90.chk文件，restart计算会读取这个文件。</p>
-<p>加入能带部分的话第一次运行就会出来，wannier90_band.dat文件，这个可以用来和DFT结果对比。<br>构造好Wannier函数以后，仔细检查一下wannier90.wout，<br>搜索”Final State”，在这里可以看到每条Wannier轨道的展宽，由此可以检查你构造的Wannier函数是否足够局域。如果有某个Wannier函数的展宽<br>比晶格常数大许多，就表明你的Wannier函数构造不是很理想，需要不断调节投影轨道，解纠缠窗口以及Frozen窗口等。从这些轨道的中心和展宽也能<br>看出轨道之间的简并性如何，由此也可以判断所构造的Wannier函数对称性如何，这个也会影响后续的分析，特别是表面态的计算。查看wannier90.wout末尾的Final State的最后一列小于3，其结果是可以的。</p>
-<h2 id="5、"><a href="#5、" class="headerlink" title="5、"></a>5、</h2><p>紧接着，你就可以开始书写WannierTools的主输入文件了，<br>目前叫input.dat，以后会改成<a target="_blank" rel="noopener" href="http://wt.in/">http://wt.in</a> (WannierTools v2.2之后)。 这里不具体介绍每一个参数，在说明文档中有详细的介绍，中文版的说明文档正在翻译中。<br>input.dat文件有模板，使用的时候直接拷贝然后加以修改。很多内容都可以直接从wannier90.win和wannier90.wout中拷<br>贝。 Bi2Se3的主输入文件input.dat可以在附件中下载得到。我们可以通过控制输入文件中的一些参数来实现我们所需要的功能。</p>
-<h1 id="常见报错"><a href="#常见报错" class="headerlink" title="常见报错"></a>常见报错</h1><ol>
-<li><p>首先跑接口会生成3个文件.amm .mmm .eig通过这三个文件构造wannier函数。也可以提前把.win文件准备好放进去。以上三个文件生成后运行wannier90.x会成.chk文件</p>
+<h1 id="声子谱振动可视化"><a href="#声子谱振动可视化" class="headerlink" title="声子谱振动可视化"></a>声子谱振动可视化</h1><ol>
+<li><p>上面生成band.yaml文件，利用JMOL打开。<a target="_blank" rel="noopener" href="https://jmol.sourceforge.net/">https://jmol.sourceforge.net/</a><br>或者网站：<a target="_blank" rel="noopener" href="https://henriquemiranda.github.io/phononwebsite/phonon.html">https://henriquemiranda.github.io/phononwebsite/phonon.html</a></p>
 </li>
-<li><p>Restar&#x3D;T是需要读取.chk文件的</p>
+<li><p>band.conf添加标签ANIME&#x3D;0 0 0将000这个Q点的振动模式输出到anime.ascii,用v_sim软件打开即可。<a target="_blank" rel="noopener" href="https://l_sim.gitlab.io/v_sim/index.en.html">https://l_sim.gitlab.io/v_sim/index.en.html</a></p>
+</li>
+<li><p>运行命令 phonopy -f vasprun.xml-{001,002}得到FORSETS<br>运行phonopy –dim&#x3D;”3 3 3” –ct&#x3D;”0 0 0”得到gamma点的振动模式密度</p>
+</li>
+<li><p>DFPT方法得到的OUTCAR可以利用PyVibMS、JMOL</p>
+</li>
+<li><p>从band.yaml生成vesta读取：<a target="_blank" rel="noopener" href="https://github.com/AdityaRoy-1996/Phonopy_VESTA">https://github.com/AdityaRoy-1996/Phonopy_VESTA</a></p>
 </li>
 </ol>
-<p>Error: restart requested but wannier90.chkfile not found</p>
-<p>原因：加了restart &#x3D; plot 这个命令，但却没有wannier90.chk这个文件。Restart是需要读取wannier90.chk的。</p>
-<p>解决办法：注释掉restart &#x3D; plot，然后重新运行wannier90.x wannier90 &amp;得到wannier90.chk.</p>
-<ol start="3">
-<li>问题：Wannier90 is running in LIBRARY MODE</li>
-</ol>
-<p>Setting up k-point neighbours…</p>
-<p>Ignoring <num_bands> in input file</p>
-<p>解决办法：尽量串行，不要并行。请再次运行 $postw90 wannier90的为输出的数据</p>
-<ol start="4">
-<li><p>Spinors与文件INCAR中的ISPIN的设置有关，同时存在或者同时去掉，否则影响.amn文件的形成。（自旋轨道耦合）</p>
-</li>
-<li><p>谨慎用use_bloch_phases&#x3D;T一般是F</p>
-</li>
-<li><p>问题：param_read: mismatch in wannier90.eig</p>
-</li>
-</ol>
-<p>解决办法：每一步计算的核数要相等</p>
-<ol start="7">
-<li>问题：dis_windows: More states in the forze window than target WFs</li>
-</ol>
-<p>解决办法：把dis_windows改大点</p>
-<ol start="8">
-<li>Fewer projections defined than the number of wannier functions requested.</li>
-</ol>
-<p>投影的轨道太少</p>
-<p>解决办法：增加投影的轨道</p>
-<ol start="9">
-<li>Kmesh_get_bvector: Not enongh bevectors found</li>
-</ol>
-<p>解决办法：添加kemsh_tol</p>
-<ol start="10">
-<li>Wanted band:1 found band:17</li>
-</ol>
-<p>Wanted kpoint:2 found kpoint:1</p>
-<p>解决办法：常见原因是num_bands设置错误，返回band计算文件夹查看NBANDS</p>
-<ol start="11">
-<li>Dis_windows: Energy window contains fewer states than number sf target WFs</li>
-</ol>
-<p>解决办法：把dis_windows改大点</p>
-<ol start="12">
-<li>Dis_windows: more states in the frozen window than WFs</li>
-</ol>
-<p>解决办法：调节frozen window, 投影太多或者这个窗口太大涉及到别的轨道</p>
-<ol start="13">
-<li>Wannier 运行有两种模式一是library mode，一种是单机模式stand-alone mode</li>
-</ol>
-<p>解决办法：library mode是需要进行串行。</p>
-<ol start="14">
-<li>param_get_projection: too many projections defined</li>
-</ol>
-<p>解决办法：begin projections random</p>
-<p>原因：num_wann 与设置投影数不匹配。</p>
-<p>解决办法：不加soc：num_wann 等于每种原子投影轨道数之和</p>
-<p>soc：num_wann 等于两倍的每种原子投影轨道数之和</p>
-<ol start="15">
-<li><p>Gnuplot的报错信息”arc_bulk.gnu”, line 26: warning: No unsable data in this plot to auto-scale axis range</p>
-</li>
-<li><p>param_get_projection: Problem reading m state into string</p>
-</li>
-</ol>
-<p>解决办法：已解决Fe: s;px;py;pz;dz2;dxz;dyz;dx2-y2;dxy</p>
-<p>不是Fe:s;p;d</p>
-<ol start="17">
-<li>能带拟合的不好可能是因为，投影的不对，还有核数和能带数的关系</li>
-</ol>
-<p>解决办法：太马虎了，这样的问题肯定是K点写错了</p>
-<p>能带布里渊区的宽度不一样有可能是wannier里规定的K点数并没有完全计算。</p>
-<ol start="18">
-<li>num_iter &#x3D; 2000 #wannier center 迭代次数</li>
-</ol>
-<p>num_print_cycles &#x3D; 40 #wannier center 迭代每40步输出一次</p>
-<ol start="19">
-<li><p>dis_num_iter &#x3D; 1200 #解纠缠的迭代步数#</p>
-</li>
-<li><p>num_iter最小化过程中的总迭代次数。如果您希望生成投影wf而不是最大本地化的wf，则设置num_iter&#x3D;0(请参阅教程中的示例8)？默认值为100</p>
-</li>
-<li><p>dis_mix_ratio &#x3D; 1.d0 # 0.5&lt;dis_mix_ratio&lt;1, 默认值0.5</p>
-</li>
-</ol>
-<p>#在解纠缠过程中，要利用混合参数进行收敛，值为0.5是“安全”的选择。使用1.0(即不混合)通常会得到更快的收敛，但可能会导致 最小化，在某些情况下是不稳定的。</p>
-<p>dis_conv_tol &#x3D; 1.0E-10 # Delta &lt; 1.000E-10 over 3 iterations</p>
-<ol start="22">
-<li>dis_win_max &#x3D; 15</li>
-</ol>
-<p>dis_froz_max &#x3D; 14</p>
-<p>num_wan &#x3D; 12</p>
-<p>exclude_bands : 1-11,26 #在使用这个参数时，num_bands &#x3D; 总能带数减去排除在外的能带数</p>
-<p>num_bands &#x3D; 14</p>
-<p>#如果使用能量窗口规定想要拟合的能带区间，需要同时使用这个几个参数</p>
-<ol start="23">
-<li><p>wannier_plot_supercell &#x3D;2 #在一个对应于“超胞”的网格上生成WFs</p>
-</li>
-<li><p>wannier_plot_list &#x3D;2 #列举要画出WFs的序号，与wannier center 的序号是一致的</p>
-</li>
-<li><p>运行接口的情况有三种，一是选择投影能带数发生了改变，二是，需要写入wannier90.win的输入文件；三是需要在INCAR添加关键参数，输出wannier.x需要的文件。（仅仅是调节能量窗口是不需要重新运行接口的）</p>
-</li>
-<li><p>无没有projection是肯定没有amn的</p>
-</li>
+<p>注意不要输出声子群速度。</p>
+<p>从OUTCAR生成vesta读取：<a target="_blank" rel="noopener" href="https://github.com/Stanford-MCTG/VASP-plot-modes">https://github.com/Stanford-MCTG/VASP-plot-modes</a></p>
+<ol start="6">
+<li>其他参考：<a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv11848434/">https://www.bilibili.com/read/cv11848434/</a></li>
 </ol>
 
       
