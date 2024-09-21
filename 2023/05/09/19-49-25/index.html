@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.16.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="介绍ALAMODE中非谐声子计算部分采用了自洽声子计算方法。 具体教程：https:&#x2F;&#x2F;alamode.readthedocs.io&#x2F;en&#x2F;latest&#x2F;anphondir&#x2F;formalism_anphon.html#self-consistent-phonon-scph-calculation https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1mv411M7W7&#x2F;?spm_id">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3.4 非谐声子">
+<meta property="og:url" content="http://example.com/2023/05/09/19-49-25/index.html">
+<meta property="og:site_name" content="Lightchaser">
+<meta property="og:description" content="介绍ALAMODE中非谐声子计算部分采用了自洽声子计算方法。 具体教程：https:&#x2F;&#x2F;alamode.readthedocs.io&#x2F;en&#x2F;latest&#x2F;anphondir&#x2F;formalism_anphon.html#self-consistent-phonon-scph-calculation https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1mv411M7W7&#x2F;?spm_id">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-05-09T11:49:25.000Z">
+<meta property="article:modified_time" content="2024-09-21T10:00:31.363Z">
+<meta property="article:author" content="Keke Liu">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/05/09/19-49-25/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/05/09/19-49-25/","path":"2023/05/09/19-49-25/","title":"3.4 非谐声子"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>3.4 非谐声子 | Lightchaser</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Lightchaser</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">三人行，必有我师</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ALAMODE"><span class="nav-number">1.1.</span> <span class="nav-text">ALAMODE</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ALAMODE%E8%AE%A1%E7%AE%97Si%E7%AE%80%E8%B0%90%E5%A3%B0%E5%AD%90%E8%B0%B1"><span class="nav-number">1.1.2.</span> <span class="nav-text">ALAMODE计算Si简谐声子谱</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E5%88%A9%E7%94%A8ALM%E8%AE%A1%E7%AE%97displacement-patterns"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">1、利用ALM计算displacement patterns</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E8%AE%A1%E7%AE%97%E5%8E%9F%E5%AD%90%E9%97%B4%E5%8A%9B"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">2、计算原子间力</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E6%8B%9F%E5%90%88%E5%8A%9B%E5%B8%B8%E6%95%B0"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">3、拟合力常数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4%E3%80%81%E8%AE%A1%E7%AE%97%E5%A3%B0%E5%AD%90%E8%B0%B1%E5%92%8CDOS"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">4、计算声子谱和DOS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E4%BC%B0%E7%AE%97%E5%AF%B9%E7%83%AD%E5%AF%BC%E7%8E%87%E7%9A%84%E7%AB%8B%E6%96%B9IFCs-%E9%9D%9E%E7%AE%80%E8%B0%90IFCs"><span class="nav-number">1.1.2.5.</span> <span class="nav-text">5. 估算对热导率的立方IFCs(非简谐IFCs)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dynaphopy"><span class="nav-number">1.2.</span> <span class="nav-text">dynaphopy</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Alamode%E8%AE%A1%E7%AE%97%E9%AB%98%E6%B8%A9%E5%A3%B0%E5%AD%90%E8%89%B2%E6%95%A3"><span class="nav-number">2.</span> <span class="nav-text">Alamode计算高温声子色散</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">输入文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PRINTSYM-x3D-1"><span class="nav-number">3.</span> <span class="nav-text">PRINTSYM&#x3D;1</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Keke Liu</p>
+  <div class="site-description" itemprop="description">一个小学生的博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/stemdkk" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;stemdkk" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:257198@whut.edu.cn" title="E-Mail → mailto:257198@whut.edu.cn" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/19-49-25/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Keke Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lightchaser">
+      <meta itemprop="description" content="一个小学生的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="3.4 非谐声子 | Lightchaser">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          3.4 非谐声子
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-09 19:49:25" itemprop="dateCreated datePublished" datetime="2023-05-09T19:49:25+08:00">2023-05-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-09-21 18:00:31" itemprop="dateModified" datetime="2024-09-21T18:00:31+08:00">2024-09-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DFT%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">DFT学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>ALAMODE中非谐声子计算部分采用了自洽声子计算方法。</p>
+<p>具体教程：<a target="_blank" rel="noopener" href="https://alamode.readthedocs.io/en/latest/anphondir/formalism_anphon.html#self-consistent-phonon-scph-calculation">https://alamode.readthedocs.io/en/latest/anphondir/formalism_anphon.html#self-consistent-phonon-scph-calculation</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1mv411M7W7/?spm_id_from=333.999.0.0&vd_source=17084cc867ff3bb86398ff1a79b443f2">https://www.bilibili.com/video/BV1mv411M7W7/?spm_id_from=333.999.0.0&amp;vd_source=17084cc867ff3bb86398ff1a79b443f2</a></p>
+<p>TDEP 是其采用技术Temperature dependent effective potential的缩写。<br>下面是开发者的网站，但是并不能下载到源代码。<a target="_blank" rel="noopener" href="http://ollehellman.github.io/page/index.html%E5%A5%BD%E6%B6%88%E6%81%AF%E6%98%AF%E7%AC%AC%E4%B8%80%E6%80%A7%E5%8E%9F%E7%90%86%E8%AE%A1%E7%AE%97%E8%BD%AF%E4%BB%B6ABINIT%E4%B8%AD%E9%9B%86%E6%88%90%E4%BA%86TDEP%E6%96%B9%E6%B3%95%EF%BC%8C%E5%AE%98%E7%BD%91user">http://ollehellman.github.io/page/index.html好消息是第一性原理计算软件ABINIT中集成了TDEP方法，官网user</a> guide&gt;a-TDEP。需要研究的可以自行研究。ABINIT官网：<a target="_blank" rel="noopener" href="https://www.abinit.org/">https://www.abinit.org/</a></p>
+<p>Dynaphopy 是采用了一种基于AIMD（第一性原理分子动力学）的杂化方法的python程序包：<a target="_blank" rel="noopener" href="http://abelcarreras.github.io/DynaPhoPy/index.html">http://abelcarreras.github.io/DynaPhoPy/index.html</a><br>文中给出了参考文献，需要的自行下载。</p>
+<h2 id="ALAMODE"><a href="#ALAMODE" class="headerlink" title="ALAMODE"></a>ALAMODE</h2><p><a target="_blank" rel="noopener" href="https://alamode.readthedocs.io/en/latest/index.html#">https://alamode.readthedocs.io/en/latest/index.html#</a></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><a target="_blank" rel="noopener" href="https://alamode.readthedocs.io/en/latest/index.html#">https://alamode.readthedocs.io/en/latest/index.html#</a></p>
+<h3 id="ALAMODE计算Si简谐声子谱"><a href="#ALAMODE计算Si简谐声子谱" class="headerlink" title="ALAMODE计算Si简谐声子谱"></a>ALAMODE计算Si简谐声子谱</h3><h4 id="1、利用ALM计算displacement-patterns"><a href="#1、利用ALM计算displacement-patterns" class="headerlink" title="1、利用ALM计算displacement patterns"></a>1、利用ALM计算displacement patterns</h4><p>优化后的超胞结构重命名<strong>POSCAR.orig</strong>，准备输入文件<strong>si_alm.in</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&amp;general</span><br><span class="line">  PREFIX = si222</span><br><span class="line">  MODE = suggest</span><br><span class="line">  NAT = 64; NKD = 1</span><br><span class="line">  KD = Si</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;interaction</span><br><span class="line">  NORDER = 1  # 1: harmonic, 2: cubic, ..</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;cell</span><br><span class="line">  20.406 # factor in Bohr unit</span><br><span class="line">  1.0 0.0 0.0 # a1</span><br><span class="line">  0.0 1.0 0.0 # a2</span><br><span class="line">  0.0 0.0 1.0 # a3</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;cutoff </span><br><span class="line">  Si-Si None</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;position</span><br><span class="line">  1 0.0000000000000000 0.0000000000000000 0.0000000000000000   </span><br><span class="line">  1 0.0000000000000000 0.0000000000000000 0.5000000000000000</span><br><span class="line">  1 0.0000000000000000 0.2500000000000000 0.2500000000000000</span><br><span class="line">  1 0.0000000000000000 0.2500000000000000 0.7500000000000000</span><br><span class="line">  1 0.0000000000000000 0.5000000000000000 0.0000000000000000</span><br><span class="line">  1 0.0000000000000000 0.5000000000000000 0.5000000000000000</span><br><span class="line">  1 0.0000000000000000 0.7500000000000000 0.2500000000000000</span><br></pre></td></tr></table></figure>
+<p>晶格常数替代为自己的超胞结构。</p>
+<p>运行ALM: <code>alm si_alm.in &gt; si_alm.log1</code>，将会生成<strong>si222.pattern_HARMONIC</strong>文件，包含坐标信息。对于Si只有一个displacement patterns。</p>
+<h4 id="2、计算原子间力"><a href="#2、计算原子间力" class="headerlink" title="2、计算原子间力"></a>2、计算原子间力</h4><p>在此之前要确定位移的大小，一般简谐0.01-0.04，0.01大多可以。运行<code>python displace.py --VASP=POSCAR.orig --mag=0.01 -pf si222.pattern_HARMONIC</code></p>
+<p>之后对每个结构提交计算，脚本：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line"># Assume we have 20 displaced configurations for QE [disp01.pw.in,..., disp20.pw.in].</span><br><span class="line"></span><br><span class="line">for ((i=1;i&lt;=20;i++))</span><br><span class="line">do</span><br><span class="line">    num=`echo $i | awk &#x27;&#123;printf(&quot;%02d&quot;,$1)&#125;&#x27;`</span><br><span class="line">    mkdir $&#123;num&#125;</span><br><span class="line">    cd $&#123;num&#125;</span><br><span class="line">    cp ../disp$&#123;num&#125;.pw.in .</span><br><span class="line">    pw.x &lt; disp$&#123;num&#125;.pw.in &gt; disp$&#123;num&#125;.pw.out</span><br><span class="line">    cd ../</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<p>计算完成后，提取信息：<code>python extract.py --VASP=POSCAR.orig vasprun*.xml &gt; DFSET_harmonic</code>，生成<strong>DFSET_harmonic</strong>文件。</p>
+<h4 id="3、拟合力常数"><a href="#3、拟合力常数" class="headerlink" title="3、拟合力常数"></a>3、拟合力常数</h4><p>修改1中的 <strong>si_alm.in</strong> ：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&amp;general</span><br><span class="line">  PREFIX = si222</span><br><span class="line">  MODE = optimize   # &lt;-- here</span><br><span class="line">  NAT = 64; NKD = 1</span><br><span class="line">  KD = Si</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;optimize</span><br><span class="line">  DFSET = DFSET_harmonic</span><br><span class="line">/</span><br></pre></td></tr></table></figure>
+<p>运行<code>alm si_alm.in &gt; si_alm.log2</code>，生成<strong>si222.fcs and si222.xml</strong></p>
+<h4 id="4、计算声子谱和DOS"><a href="#4、计算声子谱和DOS" class="headerlink" title="4、计算声子谱和DOS"></a>4、计算声子谱和DOS</h4><p>准备<strong>si_phband.in</strong>文件，结构中用晶胞结构，注意&amp;cell中单位是Bohr，具体可设置如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&amp;general</span><br><span class="line">  PREFIX = si</span><br><span class="line">  MODE   = phonons</span><br><span class="line">  FCSXML = si.xml</span><br><span class="line"></span><br><span class="line">  NKD = 1; KD = Si</span><br><span class="line">  MASS = 28.085</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;cell</span><br><span class="line">  10.184247326051628 </span><br><span class="line">  0.0000000000000000    0.5071343999939496    0.5071343999939496</span><br><span class="line">  0.5071343999939496    0.0000000000000000    0.5071343999939496</span><br><span class="line">  0.5071343999939496    0.5071343999939496    0.0000000000000000</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;kpoint</span><br><span class="line">  1   # KPMODE = 1: line mode</span><br><span class="line">  G 0.0 0.0 0.0 X 0.5 0.5 0.0 51</span><br><span class="line">  X 0.5 0.5 1.0 G 0.0 0.0 0.0 51</span><br><span class="line">  G 0.0 0.0 0.0 L 0.5 0.5 0.5 51</span><br><span class="line">/</span><br></pre></td></tr></table></figure>
+<p>执行<code>anphon si_phband.in &gt; si_phband.log</code>会产生<strong>si.bands</strong>文件，可以用plotband.py脚本画图。执行python plotband.py si.bands得到</p>
+<p>准备si_phdos.in文件，结构中用晶胞结构，注意&amp;cell中单位是Bohr，具体可设置如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&amp;general</span><br><span class="line">  PREFIX = si</span><br><span class="line">  MODE   = phonons</span><br><span class="line">  FCSXML = si.xml</span><br><span class="line"></span><br><span class="line">  NKD = 1; KD = Si</span><br><span class="line">  MASS = 28.085</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;cell</span><br><span class="line">  10.184247326051628 </span><br><span class="line">  0.0000000000000000    0.5071343999939496    0.5071343999939496</span><br><span class="line">  0.5071343999939496    0.0000000000000000    0.5071343999939496</span><br><span class="line">  0.5071343999939496    0.5071343999939496    0.0000000000000000</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;kpoint</span><br><span class="line">  2   # KPMODE = 2: uniform mesh mode</span><br><span class="line">  20 20 20</span><br><span class="line">/</span><br></pre></td></tr></table></figure>
+<p>执行<code>anphon si_phdos.in &gt; si_phdos.log</code>会产生<strong>si.dos</strong>文件，可以用plotdos.py脚本画图。执行python plotdos.py –emax 550 –nokey si.dos得到</p>
+<h4 id="5-估算对热导率的立方IFCs-非简谐IFCs"><a href="#5-估算对热导率的立方IFCs-非简谐IFCs" class="headerlink" title="5. 估算对热导率的立方IFCs(非简谐IFCs)"></a>5. 估算对热导率的立方IFCs(非简谐IFCs)</h4><p>这里计算非简谐IFCs，我们把si_alm1.in复制为si_alm3.in，将NORDER &#x3D; 1改为NORDER &#x3D; 2.我们还要注意这里考虑计算三阶力常数，所以&amp;cutoff下的参数我们要再指定个截止半径，一般要求略大于第二近邻的距离（可以从si_alm1.log查看，如下图）。当然你接着用None也行，这样可能大大增加参数的数量，从而增加计算成本。</p>
+<p>运行alm si_alm3.in &gt; si_alm3.log，可以看到多了si_cubic.相关文件。运行python displace.py –OpenMX&#x3D;Si.dat –mag&#x3D;0.04 -pf si_cubic.pattern_ANHARM3，可见产生了disp01.dat到disp11.dat11个OpenMX输入文件，我们准备shell脚本批量提交，shell脚本命名为pbs.sh，具体为<br>#!&#x2F;bin&#x2F;bash</p>
+<p>for ((i&#x3D;1;i&lt;&#x3D;11;i++))<br>do<br>    num&#x3D;<code>echo $i | awk &#39;&#123;printf(&quot;%02d&quot;,$1)&#125;&#39;</code><br>    mkdir ${num}<br>    cd ${num}<br>    cp ..&#x2F;disp${num}.dat .<br>    cp disp${num}.dat Si.dat<br>    cp ..&#x2F;openmx.pbs .<br>    qsub openmx.pbs<br>    cd ..&#x2F;<br>done</p>
+<h2 id="dynaphopy"><a href="#dynaphopy" class="headerlink" title="dynaphopy"></a>dynaphopy</h2><ol>
+<li>简谐声子谱的计算。<br>dynaphopy的非谐修正是在phonopy的力常数基础上进行的，需要先进行0k声子谱的计算。<br>结构优化的INCAR，力的收敛标准是E-3，大部分的文献也是在这个精度范围内。结构优化的结构是单胞，10个原子。<br>这是phonopy计算的声子谱，计算的结构为2<em>2</em>2的超胞，80个原子，在gmma点和X点有很强的虚频。这个虚频即使提高收敛精度和扩大超胞也是无法消除的。</li>
+<li>AIMD计算<br>dynaphopy通过读取AIMD的计算结构进行拟合（说法不准确），需要预先准备AIMD的outcar或xdatcar。<br>AIMD的计算设置，基本参考dynaphopy的example中的设置，详细的参数涵义，都有教程介绍。<br>这里只是采用了3000步的计算，步长是2fs，能量的收敛精度是E-6，不算太高。同样是采用80个原子的超胞。大部分做非谐计算的文献，所采用的都是在80-160原子数范围内的超胞，步长多是1-2fs，总步数大概是3000-6000，总的时长是5ps-10ps。从下面的非谐声子谱结果来看，这个设置对于非谐计算是合适的？</li>
+<li>dynaphopy非谐声子谱计算。<br>dynaphopy的官网如下：Dynaphopy (abelcarreras.github.io)。<br>将结构优化的原始晶胞POSCAR，phonopy输出的力常数，和AIMD的OUTCAR放在一个文件夹内。<br>设置dynaphopy的输入文件input如下：分别是输入结构文件，力常数文件，原胞和超胞与POSCAR的关系设置，band是声子谱的高对称点路径，设置方式和vasp计算PBE能带一致。<br>然后输入dynaphopy input OUTCAR -i，进入下的界面，选择6，进入非谐声子谱计算，再选择1，可以同时输出简谐声子谱和非简谐声子谱，此时会对peak进行拟合。拟合结束后，会输出声子谱。<br>一开始使用默认设置，输出的声子谱，可以看到高温声子谱虚频加重了。从@get-it 大佬处了解到，dynaphopy默认使用最大熵方法拟合，效果可能不如fftw有效。于是小弟将拟合方式改为fftw,通过指令dynaphopy input OUTCAR -i -psm 3,采用快速傅里叶变换拟合。得到300k下的声子谱，可以看到，原来gamma点和X点的虚频，已经被成功消除了。而实验上，这个材料在室温下肯定是稳定的。</li>
+</ol>
+<p>当然，如果想要得到更准确的声子谱，需要提高优化精度，采用更大的超胞计算力常数，AIMD需要更多的步数和更小的步长，比如dynaphopy的例子是采用0.7 fs,跑200000步。如果只是想得到一个比较合理的声子谱，适当降低精度是没问题的。比如这个计算，在24核的机器上，结构优化用时不到3小时，dfpt计算1小时，AIMD计算14小时，差不多用时一天，能够得到一个比较合适的声子谱。如果提高精度，计算用时可能会提升数倍，但是声子谱的提升可能并不会太明显。</p>
+<h1 id="Alamode计算高温声子色散"><a href="#Alamode计算高温声子色散" class="headerlink" title="Alamode计算高温声子色散"></a>Alamode计算高温声子色散</h1><p>Anharmonic Phonons (self-consistent phonon theory)<br>主要使用alamode软件。 版本：alamode-1.1.0</p>
+<h2 id="输入文件"><a href="#输入文件" class="headerlink" title="输入文件"></a>输入文件</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vasprun.xml #分子动力学输出文件</span><br><span class="line">Dfile  #包含原子的力和位移</span><br><span class="line">extract_disp.py #选取结构，并计算位移</span><br><span class="line">extract_force.py #选取结构，并获得受力</span><br><span class="line">PPOSCAR #初始超胞</span><br><span class="line">alm.in #提取力常数的输入文件</span><br><span class="line">anphono.in #计算声子谱的输入文件</span><br></pre></td></tr></table></figure>
+<ol>
+<li>从分子动力学数据中选取一定数量的结构，并提取它们的力和计算与初始状态相比的位移，输出到<strong>Dfile</strong>文件当中</li>
+</ol>
+<p><code>python extract_disp.py </code><br>#运行后根据提示输入开始的步数和间隔步数<br>#例如总共1000步，从第一步开始提取，每间隔五步提取一次<br>#得到disp.dat</p>
+<figure class="highlight python"><figcaption><span>extract_force.py``` #方法同上</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#得到force.dat</span></span><br><span class="line">将disp.dat和force.dat文件按如下形式合并到一起</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>disp1x  disp1y  disp1z   force1x  force1y  force1z<br>       ……<br>       ……<br>dispNx  dispNy  dispNz   forceNx  forceNy  forceNz</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2.  获取力常数</span><br><span class="line"></span><br><span class="line">提取四阶力常数的**alm.in**文件如下（使用LASSO方法）：</span><br><span class="line"></span><br><span class="line">二阶力常数可以通过有限位移法提取(详见官网手册)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>&amp;general<br>  PREFIX &#x3D; ThO2_ENET<br>  MODE &#x3D; optimize<br>  NAT &#x3D; 81; NKD &#x3D; 2<br>  KD &#x3D; Th O</p>
+<h1 id="PRINTSYM-x3D-1"><a href="#PRINTSYM-x3D-1" class="headerlink" title="PRINTSYM&#x3D;1"></a>PRINTSYM&#x3D;1</h1><p>&#x2F;</p>
+<p>&amp;interaction<br>  NORDER &#x3D; 5  # 1: harmonic, 2: cubic, ..<br>  NBODY &#x3D; 2 3 3 2 2<br>&#x2F;</p>
+<p>&amp;cell<br>  1 # factor in Bohr unit<br>  0.0000000000000   15.919498944104   15.919498944104<br>  15.919498944104   0.0000000000000   15.919498944104<br>  15.919498944104   15.919498944104   0.0000000000000<br>&#x2F;</p>
+<p>&amp;optimize<br>  LMODEL&#x3D; enet<br>  FC2XML &#x3D; ThO2_2nd.xml<br>  DFSET&#x3D;ThO2_dffile</p>
+<p>  CV &#x3D; 0<br>  L1_RATIO &#x3D; 1.0<br>  L1_ALPHA &#x3D; 1.0e-06<br>  CV_MINALPHA &#x3D; 1.0e-6<br>  CV_MAXALPHA &#x3D; 0.02<br>  CV_NALPHA &#x3D; 100</p>
+<p>  STANDARDIZE &#x3D; 1<br>  CONV_TOL &#x3D; 1.0e-9<br>&#x2F;</p>
+<p>&amp;cutoff<br>  <em>-</em> None None 12.0 12.0 12.0<br>&#x2F;</p>
+<p>&amp;position<br>1  0.0000000000000000  0.0000000000000000  0.0000000000000000<br>1  0.3333333333333333  0.0000000000000000  0.0000000000000000<br>………………</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">注意晶格常数单位的转换 $1 Bohr= 0.529177208 Angstrom$</span><br><span class="line"></span><br><span class="line">在终端运行：</span><br><span class="line"></span><br><span class="line">bash</span><br><span class="line">```alm alm.in &gt; alm.log```</span><br><span class="line">得到**Nb.xml**</span><br><span class="line"></span><br><span class="line">3.  Anharmonic Phonon</span><br><span class="line"></span><br><span class="line">**anphono.in**输入文件如下：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>&amp;general<br> PREFIX &#x3D;scph<br> MODE &#x3D; SCPH<br> FCSXML &#x3D;Nb.xml #forceconstant file</p>
+<p> NKD &#x3D; 1; KD &#x3D; Nb<br> MASS &#x3D; 92.90638</p>
+<p> #NONANALYTIC &#x3D; 0; BORNINFO &#x3D; PbTe.born</p>
+<p> TMIN &#x3D; 0; TMAX &#x3D; 300; DT &#x3D; 100   #Temperature and step<br>&#x2F;</p>
+<p>&amp;scph<br> KMESH_SCPH        &#x3D; 6 6 6<br> KMESH_INTERPOLATE &#x3D; 6 6 6</p>
+<p> SELF_OFFDIAG &#x3D; 0<br> RESTART_SCPH &#x3D; 0</p>
+<p> MIXALPHA &#x3D; 0.1<br> MAXITER &#x3D; 500<br> TOL_SCPH &#x3D; 1.0e-10<br>&#x2F;</p>
+<p>&amp;cell   ## primitive cell is best<br>  6.2507550151332<br>  -0.5  0.5  0.5<br>   0.5 -0.5  0.5<br>   0.5  0.5 -0.5<br>&#x2F;</p>
+<p>&amp;kpoint<br>  1  # KPMODE &#x3D; 1: get phonon band  2: get others properties<br>  G 0.0 0.0 0.0 H 0.5 -0.5 0.5 201<br>  H 0.5 -0.5 0.5 P 0.25 0.25 0.25 201<br>  P 0.25 0.25 0.25 G 0.0 0.0 0.0 201<br>  G 0.0 0.0 0.0  N 0.0 0.0 0.5 201<br>&#x2F;</p>
+<pre><code>在终端运行：
+
+```anphon anphono.in &gt; anphono.log```
+得到**scph.scph_bands**，里面有不同温度下的声子谱
+</code></pre>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/05/09/18-49-25/" rel="prev" title="3.3 电声耦合">
+                  <i class="fa fa-chevron-left"></i> 3.3 电声耦合
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/05/10/18-47-24/" rel="next" title="4.1 力学性质">
+                  4.1 力学性质 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Keke Liu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

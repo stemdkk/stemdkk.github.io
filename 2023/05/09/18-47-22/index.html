@@ -28,7 +28,7 @@
 <meta property="og:description" content="加压可通过施加静水压强、调整晶格常数的方法实现结构压缩 vi INCAR 增加标签 PSTRESS&#x3D;50（单位为 0.1 GPa） 其他不变 加电场在vasp中根据自己所需要添加电场的场强更改INCAR中的如下参数： 123LDIPOL&#x3D;.TRUE.IDIPOL&#x3D;1&#x2F;2&#x2F;3&#x2F;4EFIELD&#x3D; ？ 对于IDIPOL参数的设置，需注意：对于IDIPOL&#x3D;1-3，偶极矩将分别平行于第一、第二或">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-05-09T10:47:22.000Z">
-<meta property="article:modified_time" content="2024-06-17T07:06:20.776Z">
+<meta property="article:modified_time" content="2024-09-13T02:05:34.206Z">
 <meta property="article:author" content="Keke Liu">
 <meta property="article:tag" content="vasp">
 <meta property="article:tag" content="建模">
@@ -115,7 +115,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A0%E5%8E%8B"><span class="nav-number">1.</span> <span class="nav-text">加压</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A0%E7%94%B5%E5%9C%BA"><span class="nav-number">2.</span> <span class="nav-text">加电场</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E6%96%B9%E7%A8%8B%E6%8B%9F%E5%90%88"><span class="nav-number">3.</span> <span class="nav-text">状态方程拟合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E8%87%B4%E6%B5%81%E7%A8%8B%EF%BC%88%E4%BB%A5%E5%A4%A7%E5%B8%88%E5%85%84%E6%8F%90%E4%BE%9B%E8%84%9A%E6%9C%AC%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="nav-number">3.0.1.</span> <span class="nav-text">大致流程（以大师兄提供脚本为例）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E6%95%B0%E5%8D%A0%E6%8D%AE"><span class="nav-number">4.</span> <span class="nav-text">分数占据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#disorder"><span class="nav-number">4.1.</span> <span class="nav-text">disorder</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">4.1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%901%EF%BC%9ASnxPb1-xTe"><span class="nav-number">4.1.2.</span> <span class="nav-text">例子1：SnxPb1-xTe</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ATAT%E8%BD%AF%E4%BB%B6"><span class="nav-number">5.</span> <span class="nav-text">ATAT软件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">5.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MAPs"><span class="nav-number">5.2.</span> <span class="nav-text">MAPs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MCSQS"><span class="nav-number">5.3.</span> <span class="nav-text">MCSQS</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B1%82%E9%97%B4%E7%BB%93%E5%90%88%E8%83%BD%E3%80%81%E7%BB%93%E5%90%88%E5%8A%9B"><span class="nav-number">6.</span> <span class="nav-text">层间结合能、结合力</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Graphite-interlayer-distance"><span class="nav-number">6.0.1.</span> <span class="nav-text">Graphite interlayer distance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Graphite-MBD-binding-energy"><span class="nav-number">6.0.2.</span> <span class="nav-text">Graphite MBD binding energy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Graphite-TS-binding-energy"><span class="nav-number">6.0.3.</span> <span class="nav-text">Graphite TS binding energy</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A0%E5%8E%8B"><span class="nav-number">1.</span> <span class="nav-text">加压</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A0%E7%94%B5%E5%9C%BA"><span class="nav-number">2.</span> <span class="nav-text">加电场</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E6%96%B9%E7%A8%8B%E6%8B%9F%E5%90%88"><span class="nav-number">3.</span> <span class="nav-text">状态方程拟合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E8%87%B4%E6%B5%81%E7%A8%8B%EF%BC%88%E4%BB%A5%E5%A4%A7%E5%B8%88%E5%85%84%E6%8F%90%E4%BE%9B%E8%84%9A%E6%9C%AC%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="nav-number">3.0.1.</span> <span class="nav-text">大致流程（以大师兄提供脚本为例）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E6%95%B0%E5%8D%A0%E6%8D%AE"><span class="nav-number">4.</span> <span class="nav-text">分数占据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#disorder"><span class="nav-number">4.1.</span> <span class="nav-text">disorder</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">4.1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%901%EF%BC%9ASnxPb1-xTe"><span class="nav-number">4.1.2.</span> <span class="nav-text">例子1：SnxPb1-xTe</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ATAT%E8%BD%AF%E4%BB%B6"><span class="nav-number">5.</span> <span class="nav-text">ATAT软件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">5.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MAPs"><span class="nav-number">5.2.</span> <span class="nav-text">MAPs</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">5.2.0.1.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5%E8%AE%A1%E7%AE%97%E7%BB%93%E6%9E%9C"><span class="nav-number">5.2.0.2.</span> <span class="nav-text">检查计算结果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%93%E6%9E%9C%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="nav-number">5.2.0.3.</span> <span class="nav-text">结果可视化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6"><span class="nav-number">5.2.0.4.</span> <span class="nav-text">输出文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%8E%E5%A4%84%E7%90%86"><span class="nav-number">5.2.0.5.</span> <span class="nav-text">后处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%83%AD%E5%8A%9B%E5%AD%A6%E8%AE%A1%E7%AE%97"><span class="nav-number">5.2.0.6.</span> <span class="nav-text">热力学计算</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#emc2%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="nav-number">5.2.0.6.1.</span> <span class="nav-text">emc2使用示例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%9B%BE%E8%AE%A1%E7%AE%97"><span class="nav-number">5.2.0.7.</span> <span class="nav-text">相图计算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%84%E5%BB%BASQS-x2F-SQoS"><span class="nav-number">5.2.0.8.</span> <span class="nav-text">构建SQS&#x2F;SQoS</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MCSQS"><span class="nav-number">5.3.</span> <span class="nav-text">MCSQS</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B1%82%E9%97%B4%E7%BB%93%E5%90%88%E8%83%BD%E3%80%81%E7%BB%93%E5%90%88%E5%8A%9B"><span class="nav-number">6.</span> <span class="nav-text">层间结合能、结合力</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Graphite-interlayer-distance"><span class="nav-number">6.0.1.</span> <span class="nav-text">Graphite interlayer distance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Graphite-MBD-binding-energy"><span class="nav-number">6.0.2.</span> <span class="nav-text">Graphite MBD binding energy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Graphite-TS-binding-energy"><span class="nav-number">6.0.3.</span> <span class="nav-text">Graphite TS binding energy</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -128,7 +128,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -210,7 +210,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-17 15:06:20" itemprop="dateModified" datetime="2024-06-17T15:06:20+08:00">2024-06-17</time>
+      <time title="修改时间：2024-09-13 10:05:34" itemprop="dateModified" datetime="2024-09-13T10:05:34+08:00">2024-09-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -310,6 +310,129 @@
 <p>vasp.wrap文件</p>
 <p>sub.sh文件</p>
 <p>2）提交脚本文件即可</p>
+<p>说明：</p>
+<ul>
+<li>缺少<code>.machines.rc</code>文件的提示可忽略，该文件用于跨节点的并行</li>
+<li><code>maps</code>不断产生结构和构建团簇展开模型，<code>-d</code>表示使用默认参数，直接输入<code>maps</code>可查看可用参数</li>
+<li><code>runstruct_vasp</code>调用<code>vasp</code>计算所产生的结构的能量，每个目录包含一个结构及其计算结果，每个目录下的<code>energy</code>文件即从vasp的计算中读取的能量</li>
+<li><code>maps.log</code>中记载了现有的团簇展开模型的状态，包括对基态构型的预测和LOOCV等</li>
+</ul>
+<p>什么时候停止计算：</p>
+<ul>
+<li>团簇展开模型能够成功预测基态 (查看maps.log)</li>
+<li>LOOCV足够小 (&lt;0.025 eV suggested by ATAT manual) </li>
+<li>有效团簇相互作用随着团簇距离的增大而衰减</li>
+</ul>
+<p>以上的三个判据并不是绝对的，判断一个团簇展开模型是合理的还可以有其它方式。</p>
+<p>停止计算：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ touch stop</span><br><span class="line">$ touch stoppoll</span><br></pre></td></tr></table></figure>
+
+<p>重启计算: 与正常开始一个计算相同，如果之前的计算不是正常结束则需要删除一些文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rm maps_is_running pollmach_is_running ready</span><br><span class="line">maps -d &amp;</span><br><span class="line">pollmach runstruct_vasp</span><br></pre></td></tr></table></figure>
+
+<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><ul>
+<li><p><code>corrdump -2= -3= -4=</code> 产生团簇</p>
+</li>
+<li><p><code>getclus</code> 查看团簇</p>
+<ul>
+<li>第一列为团簇的阶数，第二列为团簇直径，第三列为团簇的多重度</li>
+<li><code>clusters.out</code>中有团簇格点位置的详细信息</li>
+</ul>
+</li>
+<li><p><code>clusterexpand -e -cv energy</code> 得到团簇展开系数</p>
+<ul>
+<li>此时产生的ECI文件为<code>energy.eci</code>，而<code>maps</code>产生的ECI为<code>eci.out</code>，后者是形成能的团簇展开结果，前者是直接对vasp能量(即<code>energy</code>文件)的团簇展开</li>
+<li>如果需要对其它性质做团簇展开，例如带隙，则可以在每个结构的目录下创建一个<code>bandgap</code>文件,其内容即为带隙的大小，然后运行<code>clusterexpand -e -cv -pa bandgap</code>以得到带隙团簇展开的系数<code>bandgap.eci</code>，其中<code>-pa</code>表示所展开的量已经是一个平均的量</li>
+</ul>
+</li>
+</ul>
+<h4 id="检查计算结果"><a href="#检查计算结果" class="headerlink" title="检查计算结果"></a>检查计算结果</h4><ul>
+<li>VASP是否正常结束<ul>
+<li>ATAT会自动检查一些错误(<code>checkerr_vasp</code>)</li>
+<li>但如果结构优化的离子步数不够大，不会有提示，因此建议在<code>vasp.wrap</code>中将<code>NSW</code>设置大一些</li>
+</ul>
+</li>
+<li>晶胞的应变是否很大<ul>
+<li><code>checkrelax</code> (&lt;0.1 suggested by ATAT）</li>
+</ul>
+</li>
+</ul>
+<h4 id="结果可视化"><a href="#结果可视化" class="headerlink" title="结果可视化"></a>结果可视化</h4><ul>
+<li><code>mapsrep</code> 会调用<code>gnuplot</code>作图并产生相应的脚本<code>mapsrep.gnu</code></li>
+</ul>
+<h4 id="输出文件"><a href="#输出文件" class="headerlink" title="输出文件"></a>输出文件</h4><ol>
+<li><p>maps.log：开始可能的warnings:<br>’Not enough known energies to fit CE’<br>’True ground states not &#x3D; fitted ground states’<br>’New ground states predicted, see predstr.out’<br>随着结构增多:<br>’Among structures of known energy, true and predicted ground states agree.’<br>’No other ground states of xx atoms&#x2F;unit cell or less exist.’<br>最后一行有crossvalidation score (in eV&#x2F;atom)，该值要小于0.025。精确小于0.001.</p>
+</li>
+<li><p>fit.out:拟合的结构，一个结构一行，共6列，分别代表concentration、 energy 、fitted_energy (energy-fitted_energy)、 weight 、index</p>
+</li>
+<li><p>predstr.out：预测的能量，一个结构一行，共5列，分别代表concentration、 energy 、predicted_energy、index、status.其中status包括status is either<br>b for busy (being calculated),<br>e for error,<br>u for unknown (not yet calculated) or<br>g if that structure is predicted to be a ground state (g can be combined with the above).</p>
+</li>
+<li><p>gs.out：基态能量，一个结构一行，四列，分别是concentration、 energy、 fitted_energy、 index</p>
+</li>
+<li><p>gs_str.out：基态的结构，格式和str.out一样。每一个结构后面会有end和一个空行隔开。</p>
+</li>
+<li><p>eci.out：eci值对应的cluster在clusters.out文件。</p>
+</li>
+<li><p>clusters.out：对于每一个团簇，第一行是多重度 multiplicity，第二行是团簇维度cluster diameter，第三行是团簇的格点数，下一行是格点对应的坐标。最后空行隔开每一个团簇。</p>
+</li>
+<li><p>str.out：在每个数字文件夹下面，和晶格输入文件相似，不同是坐标写成3*3矩阵，一个位置只写一个原子。</p>
+</li>
+<li><p>ref_energy.out：用于计算形成能的参考能量。</p>
+</li>
+</ol>
+<h4 id="后处理"><a href="#后处理" class="headerlink" title="后处理"></a>后处理</h4><p>一系列用于分析ATAT计算结果的python脚本，GitHub地址为：<a target="_blank" rel="noopener" href="https://github.com/xu-xi/clusterexpansion%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87">https://github.com/xu-xi/clusterexpansion可以通过</a> git clone 下载到本地服务器。用“-h”命令可以查看每个脚本的帮助文档。最常用的几个脚本是：</p>
+<p>1）cv_scan.py，测试CE模型对团簇截断半径的收敛性。</p>
+<p>2）lc.py，测试CE模型对训练集大小的收敛性。通常~80个构型就可以得到比较精确的团簇展开模型。</p>
+<p>3）ce_plot.py，这个脚本绘制的是拟合能量-计算能量分布图，默认-p&#x3D;energy（调用的是每个数字目录下的energy文件）。energy文件是ATAT完成一个构型的DFT (relax+static) 计算后自动生成的能量文件。在实际应用中，拟合能量-计算能量分布图需要的往往不是energy而是formation energy，所以就需要编写脚本手动在每一个数字目录下生成一个形成能文件formation_energy，该值需要将目标目录下energy的值与0文件夹的energy和1文件夹的energy作线性变换得到，再写入到每一个数字目录中，读者可自行尝试。下面的脚本仅供参考，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line">import os,subprocess,numpy,argparse,sys,subprocess,math</span><br><span class="line">energy_0 = float(subprocess.check_output(&#x27;cat ./0/energy&#x27;, shell = True))</span><br><span class="line">energy_1 = float(subprocess.check_output(&#x27;cat ./1/energy&#x27;, shell = True))</span><br><span class="line">for item in os.listdir(os.getcwd()):</span><br><span class="line">    fullpath = os.path.join(os.getcwd(),item)</span><br><span class="line">    if os.path.isdir(fullpath):</span><br><span class="line">        os.chdir(fullpath)</span><br><span class="line">        if not os.path.isfile(&#x27;error&#x27;):</span><br><span class="line">            sc_atom_number = len(file(&#x27;str.out&#x27;).readlines())-6</span><br><span class="line">            # print sc_atom_number</span><br><span class="line">            energy = float(subprocess.check_output(&#x27;cat energy&#x27;, shell = True))</span><br><span class="line">            energy /= sc_atom_number</span><br><span class="line">            #energy *= 5 normalize to unit cell,5 atoms in CsPbI3</span><br><span class="line">            sc_x = float(subprocess.check_output(&#x27;corrdump -pc -l=../lat.in&#x27;,shell=True).strip().split()[0])</span><br><span class="line">            formation_energy = energy - (1 - sc_x) * energy_0 - sc_x * energy_1</span><br><span class="line">            # print formation_energy</span><br><span class="line">            with open(&#x27;formation energy&#x27;,&#x27;w&#x27;) as f:</span><br><span class="line">                f.write(&#x27;%.7f\n&#x27; % formation_energy)</span><br><span class="line">        os.chdir(&#x27;../&#x27;)</span><br></pre></td></tr></table></figure>
+<p>注：这里如果报错：NameError: name ‘file’ is not defined. Did you mean: ‘filter’?将file改成open</p>
+<p>得到formation_energy文件后，执行命令ce_plot.py -p&#x3D;formation_energy -s&#x3D;”formation energy”，还可以用Origin手动绘制出形成能-掺杂浓度分布图；在得到了比较精确的CE模型后，可以进行蒙特卡罗模拟，得到团簇关联函数、系综平均能量和方差随温度变化示意图。</p>
+<h4 id="热力学计算"><a href="#热力学计算" class="headerlink" title="热力学计算"></a>热力学计算</h4><p>必要的输入文件：</p>
+<ul>
+<li><code>lat.in</code></li>
+<li><code>clusters.out</code></li>
+<li><code>eci.out</code></li>
+<li><code>gs_str.out</code></li>
+</ul>
+<h5 id="emc2使用示例"><a href="#emc2使用示例" class="headerlink" title="emc2使用示例"></a><code>emc2</code>使用示例</h5><p>蒙特卡洛模拟</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">emc2 -T0=300 -T1=3000 -dT=100 -cm -x=0 -keV -gs=-1 -er=30 -aq=0 -dx=1e-5 -sigdig=12</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>-cm</code>表示正则系综</li>
+<li><code>-x</code>其实是点团簇函数，若c表示格点的占据浓度，则x&#x3D;2c-1</li>
+<li><code>-sigdig=12</code>是为了表示有足够的位数输出能量的方差以判断相变</li>
+<li><code>-aq</code>和<code>-dx</code>是自动确定MC平衡步数和取样步数的算法，其原理可参考文献<a href="#ref_1">Ref.1</a>，也可以用<code>-eq</code>和<code>-n</code>来直接指定步数，需要做收敛性测试</li>
+<li>主要输出文件为<code>mc.out</code>，输入<code>emc2 -h</code>可查看每一列所表示的内容</li>
+<li>输出文件<code>mcsnapshot.out</code>为最后一个模拟温度下的MC快照。如果想得到某个温度下的snapshot，可以只设置T0而不设置T1和dT。  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cp</span> mcsnapshot.out str.out</span><br><span class="line">$ runstruct_vasp -nr </span><br><span class="line">$ vesta POSCAR</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="相图计算"><a href="#相图计算" class="headerlink" title="相图计算"></a>相图计算</h4><p>基本原理可参考文献<a href="#ref_1">Ref.1</a>，Martin Baker的<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1907.10151">笔记</a>提供了更多的例子和细节</p>
+<p>例子：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">phb -dT=10 -ltep=1e-3 -er=30 -gs1=0 -gs2=1 -o=phb.out -keV -dx=1e-5</span><br></pre></td></tr></table></figure>
+
+<h4 id="构建SQS-x2F-SQoS"><a href="#构建SQS-x2F-SQoS" class="headerlink" title="构建SQS&#x2F;SQoS"></a>构建SQS&#x2F;SQoS</h4><p>SQS&#x2F;SQoS是对无序体系的代表性结构，其中SQS假定原子完全随机的占据，而SQoS是SQS的扩展，可以考虑一定的短程有序性，其基本原理可参考相关文献<a href="#ref_2">Ref.2</a></p>
+<p>必要文件：</p>
+<ul>
+<li>rndstr.in</li>
+<li>clusters.out</li>
+</ul>
+<p><code>rndstr.in</code>的一个例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">4.1000 0.000000 0.000000</span><br><span class="line">0.000000 4.1000 0.000000</span><br><span class="line">0.000000 0.000000 4.1000</span><br><span class="line">1.000000 0.000000 0.000000</span><br><span class="line">0.000000 1.000000 0.000000</span><br><span class="line">0.000000 0.000000 1.000000</span><br><span class="line">0.000000 0.500000 0.500000 O=0.6667,N=0.3333</span><br><span class="line">0.500000 0.000000 0.500000 O=0.6667,N=0.3333</span><br><span class="line">0.500000 0.500000 0.000000 O=0.6667,N=0.3333</span><br><span class="line">0.000000 0.000000 0.000000 Ba</span><br><span class="line">0.500000 0.500000 0.500000 Ta</span><br></pre></td></tr></table></figure>
+
+<p>产生团簇文件<code>clusters.out</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">corrdump -l=rndstr.in -clus -noe -nop -2= -3= -4=</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li><code>-noe</code>和<code>-nop</code>表示忽略空团簇和点团簇</li>
+<li>用<code>getclus</code>查看所产生的团簇。如果团簇数目过少，则后续产生SQS有可能很容易完全匹配团簇函数，导致SQS实际上不够随机；而如果团簇过多，则有可能导致近邻的团簇匹配得不够好，而通常近邻的团簇是更为重要的，可以通过<code>-wd</code>加上权重以避免这种情况</li>
+</ul>
+<p>运行<code>mcsqs -n= &amp;</code><br>说明：</p>
+<ul>
+<li><code>-n</code>设定SQS晶胞的原子数</li>
+<li>可通过<code>-tcf</code>设定目标团簇函数（可从<code>mc.out</code>中提取），即SQoS方法</li>
+<li><code>mcsqs</code>不会自动停下来，可用<code>touch stopsqs</code>停止</li>
+<li>输出文件<code>mcsqs.log</code>中有对团簇函数匹配的优化记录</li>
+<li>输出文件<code>bestsqs.out</code>为目前找到的最佳的SQS，可将其复制为<code>str.out</code>，然后运行<code>runstruct_vasp -nr</code>生成vasp的输入文件用于后续计算</li>
+</ul>
 <h2 id="MCSQS"><a href="#MCSQS" class="headerlink" title="MCSQS"></a>MCSQS</h2><p>一、原理</p>
 <p>无序态的关联函数已知，因此只需要备选态的关联函数和无序态关联函数差别最小就可以，即让下方公式中的目标函数最小。</p>
 <p>二、运行步骤</p>

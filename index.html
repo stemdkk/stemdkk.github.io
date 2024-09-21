@@ -123,7 +123,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1633,6 +1633,157 @@ int1 = hw[:,2]
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/19-49-25/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Keke Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lightchaser">
+      <meta itemprop="description" content="一个小学生的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Lightchaser">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/05/09/19-49-25/" class="post-title-link" itemprop="url">3.4 非谐声子</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-09 19:49:25" itemprop="dateCreated datePublished" datetime="2023-05-09T19:49:25+08:00">2023-05-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-09-21 18:00:31" itemprop="dateModified" datetime="2024-09-21T18:00:31+08:00">2024-09-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DFT%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">DFT学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>ALAMODE中非谐声子计算部分采用了自洽声子计算方法。</p>
+<p>具体教程：<a target="_blank" rel="noopener" href="https://alamode.readthedocs.io/en/latest/anphondir/formalism_anphon.html#self-consistent-phonon-scph-calculation">https://alamode.readthedocs.io/en/latest/anphondir/formalism_anphon.html#self-consistent-phonon-scph-calculation</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1mv411M7W7/?spm_id_from=333.999.0.0&vd_source=17084cc867ff3bb86398ff1a79b443f2">https://www.bilibili.com/video/BV1mv411M7W7/?spm_id_from=333.999.0.0&amp;vd_source=17084cc867ff3bb86398ff1a79b443f2</a></p>
+<p>TDEP 是其采用技术Temperature dependent effective potential的缩写。<br>下面是开发者的网站，但是并不能下载到源代码。<a target="_blank" rel="noopener" href="http://ollehellman.github.io/page/index.html%E5%A5%BD%E6%B6%88%E6%81%AF%E6%98%AF%E7%AC%AC%E4%B8%80%E6%80%A7%E5%8E%9F%E7%90%86%E8%AE%A1%E7%AE%97%E8%BD%AF%E4%BB%B6ABINIT%E4%B8%AD%E9%9B%86%E6%88%90%E4%BA%86TDEP%E6%96%B9%E6%B3%95%EF%BC%8C%E5%AE%98%E7%BD%91user">http://ollehellman.github.io/page/index.html好消息是第一性原理计算软件ABINIT中集成了TDEP方法，官网user</a> guide&gt;a-TDEP。需要研究的可以自行研究。ABINIT官网：<a target="_blank" rel="noopener" href="https://www.abinit.org/">https://www.abinit.org/</a></p>
+<p>Dynaphopy 是采用了一种基于AIMD（第一性原理分子动力学）的杂化方法的python程序包：<a target="_blank" rel="noopener" href="http://abelcarreras.github.io/DynaPhoPy/index.html">http://abelcarreras.github.io/DynaPhoPy/index.html</a><br>文中给出了参考文献，需要的自行下载。</p>
+<h2 id="ALAMODE"><a href="#ALAMODE" class="headerlink" title="ALAMODE"></a>ALAMODE</h2><p><a target="_blank" rel="noopener" href="https://alamode.readthedocs.io/en/latest/index.html#">https://alamode.readthedocs.io/en/latest/index.html#</a></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><a target="_blank" rel="noopener" href="https://alamode.readthedocs.io/en/latest/index.html#">https://alamode.readthedocs.io/en/latest/index.html#</a></p>
+<h3 id="ALAMODE计算Si简谐声子谱"><a href="#ALAMODE计算Si简谐声子谱" class="headerlink" title="ALAMODE计算Si简谐声子谱"></a>ALAMODE计算Si简谐声子谱</h3><h4 id="1、利用ALM计算displacement-patterns"><a href="#1、利用ALM计算displacement-patterns" class="headerlink" title="1、利用ALM计算displacement patterns"></a>1、利用ALM计算displacement patterns</h4><p>优化后的超胞结构重命名<strong>POSCAR.orig</strong>，准备输入文件<strong>si_alm.in</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&amp;general</span><br><span class="line">  PREFIX = si222</span><br><span class="line">  MODE = suggest</span><br><span class="line">  NAT = 64; NKD = 1</span><br><span class="line">  KD = Si</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;interaction</span><br><span class="line">  NORDER = 1  # 1: harmonic, 2: cubic, ..</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;cell</span><br><span class="line">  20.406 # factor in Bohr unit</span><br><span class="line">  1.0 0.0 0.0 # a1</span><br><span class="line">  0.0 1.0 0.0 # a2</span><br><span class="line">  0.0 0.0 1.0 # a3</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;cutoff </span><br><span class="line">  Si-Si None</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;position</span><br><span class="line">  1 0.0000000000000000 0.0000000000000000 0.0000000000000000   </span><br><span class="line">  1 0.0000000000000000 0.0000000000000000 0.5000000000000000</span><br><span class="line">  1 0.0000000000000000 0.2500000000000000 0.2500000000000000</span><br><span class="line">  1 0.0000000000000000 0.2500000000000000 0.7500000000000000</span><br><span class="line">  1 0.0000000000000000 0.5000000000000000 0.0000000000000000</span><br><span class="line">  1 0.0000000000000000 0.5000000000000000 0.5000000000000000</span><br><span class="line">  1 0.0000000000000000 0.7500000000000000 0.2500000000000000</span><br></pre></td></tr></table></figure>
+<p>晶格常数替代为自己的超胞结构。</p>
+<p>运行ALM: <code>alm si_alm.in &gt; si_alm.log1</code>，将会生成<strong>si222.pattern_HARMONIC</strong>文件，包含坐标信息。对于Si只有一个displacement patterns。</p>
+<h4 id="2、计算原子间力"><a href="#2、计算原子间力" class="headerlink" title="2、计算原子间力"></a>2、计算原子间力</h4><p>在此之前要确定位移的大小，一般简谐0.01-0.04，0.01大多可以。运行<code>python displace.py --VASP=POSCAR.orig --mag=0.01 -pf si222.pattern_HARMONIC</code></p>
+<p>之后对每个结构提交计算，脚本：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line"># Assume we have 20 displaced configurations for QE [disp01.pw.in,..., disp20.pw.in].</span><br><span class="line"></span><br><span class="line">for ((i=1;i&lt;=20;i++))</span><br><span class="line">do</span><br><span class="line">    num=`echo $i | awk &#x27;&#123;printf(&quot;%02d&quot;,$1)&#125;&#x27;`</span><br><span class="line">    mkdir $&#123;num&#125;</span><br><span class="line">    cd $&#123;num&#125;</span><br><span class="line">    cp ../disp$&#123;num&#125;.pw.in .</span><br><span class="line">    pw.x &lt; disp$&#123;num&#125;.pw.in &gt; disp$&#123;num&#125;.pw.out</span><br><span class="line">    cd ../</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<p>计算完成后，提取信息：<code>python extract.py --VASP=POSCAR.orig vasprun*.xml &gt; DFSET_harmonic</code>，生成<strong>DFSET_harmonic</strong>文件。</p>
+<h4 id="3、拟合力常数"><a href="#3、拟合力常数" class="headerlink" title="3、拟合力常数"></a>3、拟合力常数</h4><p>修改1中的 <strong>si_alm.in</strong> ：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&amp;general</span><br><span class="line">  PREFIX = si222</span><br><span class="line">  MODE = optimize   # &lt;-- here</span><br><span class="line">  NAT = 64; NKD = 1</span><br><span class="line">  KD = Si</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;optimize</span><br><span class="line">  DFSET = DFSET_harmonic</span><br><span class="line">/</span><br></pre></td></tr></table></figure>
+<p>运行<code>alm si_alm.in &gt; si_alm.log2</code>，生成<strong>si222.fcs and si222.xml</strong></p>
+<h4 id="4、计算声子谱和DOS"><a href="#4、计算声子谱和DOS" class="headerlink" title="4、计算声子谱和DOS"></a>4、计算声子谱和DOS</h4><p>准备<strong>si_phband.in</strong>文件，结构中用晶胞结构，注意&amp;cell中单位是Bohr，具体可设置如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&amp;general</span><br><span class="line">  PREFIX = si</span><br><span class="line">  MODE   = phonons</span><br><span class="line">  FCSXML = si.xml</span><br><span class="line"></span><br><span class="line">  NKD = 1; KD = Si</span><br><span class="line">  MASS = 28.085</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;cell</span><br><span class="line">  10.184247326051628 </span><br><span class="line">  0.0000000000000000    0.5071343999939496    0.5071343999939496</span><br><span class="line">  0.5071343999939496    0.0000000000000000    0.5071343999939496</span><br><span class="line">  0.5071343999939496    0.5071343999939496    0.0000000000000000</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;kpoint</span><br><span class="line">  1   # KPMODE = 1: line mode</span><br><span class="line">  G 0.0 0.0 0.0 X 0.5 0.5 0.0 51</span><br><span class="line">  X 0.5 0.5 1.0 G 0.0 0.0 0.0 51</span><br><span class="line">  G 0.0 0.0 0.0 L 0.5 0.5 0.5 51</span><br><span class="line">/</span><br></pre></td></tr></table></figure>
+<p>执行<code>anphon si_phband.in &gt; si_phband.log</code>会产生<strong>si.bands</strong>文件，可以用plotband.py脚本画图。执行python plotband.py si.bands得到</p>
+<p>准备si_phdos.in文件，结构中用晶胞结构，注意&amp;cell中单位是Bohr，具体可设置如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&amp;general</span><br><span class="line">  PREFIX = si</span><br><span class="line">  MODE   = phonons</span><br><span class="line">  FCSXML = si.xml</span><br><span class="line"></span><br><span class="line">  NKD = 1; KD = Si</span><br><span class="line">  MASS = 28.085</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;cell</span><br><span class="line">  10.184247326051628 </span><br><span class="line">  0.0000000000000000    0.5071343999939496    0.5071343999939496</span><br><span class="line">  0.5071343999939496    0.0000000000000000    0.5071343999939496</span><br><span class="line">  0.5071343999939496    0.5071343999939496    0.0000000000000000</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;kpoint</span><br><span class="line">  2   # KPMODE = 2: uniform mesh mode</span><br><span class="line">  20 20 20</span><br><span class="line">/</span><br></pre></td></tr></table></figure>
+<p>执行<code>anphon si_phdos.in &gt; si_phdos.log</code>会产生<strong>si.dos</strong>文件，可以用plotdos.py脚本画图。执行python plotdos.py –emax 550 –nokey si.dos得到</p>
+<h4 id="5-估算对热导率的立方IFCs-非简谐IFCs"><a href="#5-估算对热导率的立方IFCs-非简谐IFCs" class="headerlink" title="5. 估算对热导率的立方IFCs(非简谐IFCs)"></a>5. 估算对热导率的立方IFCs(非简谐IFCs)</h4><p>这里计算非简谐IFCs，我们把si_alm1.in复制为si_alm3.in，将NORDER &#x3D; 1改为NORDER &#x3D; 2.我们还要注意这里考虑计算三阶力常数，所以&amp;cutoff下的参数我们要再指定个截止半径，一般要求略大于第二近邻的距离（可以从si_alm1.log查看，如下图）。当然你接着用None也行，这样可能大大增加参数的数量，从而增加计算成本。</p>
+<p>运行alm si_alm3.in &gt; si_alm3.log，可以看到多了si_cubic.相关文件。运行python displace.py –OpenMX&#x3D;Si.dat –mag&#x3D;0.04 -pf si_cubic.pattern_ANHARM3，可见产生了disp01.dat到disp11.dat11个OpenMX输入文件，我们准备shell脚本批量提交，shell脚本命名为pbs.sh，具体为<br>#!&#x2F;bin&#x2F;bash</p>
+<p>for ((i&#x3D;1;i&lt;&#x3D;11;i++))<br>do<br>    num&#x3D;<code>echo $i | awk &#39;&#123;printf(&quot;%02d&quot;,$1)&#125;&#39;</code><br>    mkdir ${num}<br>    cd ${num}<br>    cp ..&#x2F;disp${num}.dat .<br>    cp disp${num}.dat Si.dat<br>    cp ..&#x2F;openmx.pbs .<br>    qsub openmx.pbs<br>    cd ..&#x2F;<br>done</p>
+<h2 id="dynaphopy"><a href="#dynaphopy" class="headerlink" title="dynaphopy"></a>dynaphopy</h2><ol>
+<li>简谐声子谱的计算。<br>dynaphopy的非谐修正是在phonopy的力常数基础上进行的，需要先进行0k声子谱的计算。<br>结构优化的INCAR，力的收敛标准是E-3，大部分的文献也是在这个精度范围内。结构优化的结构是单胞，10个原子。<br>这是phonopy计算的声子谱，计算的结构为2<em>2</em>2的超胞，80个原子，在gmma点和X点有很强的虚频。这个虚频即使提高收敛精度和扩大超胞也是无法消除的。</li>
+<li>AIMD计算<br>dynaphopy通过读取AIMD的计算结构进行拟合（说法不准确），需要预先准备AIMD的outcar或xdatcar。<br>AIMD的计算设置，基本参考dynaphopy的example中的设置，详细的参数涵义，都有教程介绍。<br>这里只是采用了3000步的计算，步长是2fs，能量的收敛精度是E-6，不算太高。同样是采用80个原子的超胞。大部分做非谐计算的文献，所采用的都是在80-160原子数范围内的超胞，步长多是1-2fs，总步数大概是3000-6000，总的时长是5ps-10ps。从下面的非谐声子谱结果来看，这个设置对于非谐计算是合适的？</li>
+<li>dynaphopy非谐声子谱计算。<br>dynaphopy的官网如下：Dynaphopy (abelcarreras.github.io)。<br>将结构优化的原始晶胞POSCAR，phonopy输出的力常数，和AIMD的OUTCAR放在一个文件夹内。<br>设置dynaphopy的输入文件input如下：分别是输入结构文件，力常数文件，原胞和超胞与POSCAR的关系设置，band是声子谱的高对称点路径，设置方式和vasp计算PBE能带一致。<br>然后输入dynaphopy input OUTCAR -i，进入下的界面，选择6，进入非谐声子谱计算，再选择1，可以同时输出简谐声子谱和非简谐声子谱，此时会对peak进行拟合。拟合结束后，会输出声子谱。<br>一开始使用默认设置，输出的声子谱，可以看到高温声子谱虚频加重了。从@get-it 大佬处了解到，dynaphopy默认使用最大熵方法拟合，效果可能不如fftw有效。于是小弟将拟合方式改为fftw,通过指令dynaphopy input OUTCAR -i -psm 3,采用快速傅里叶变换拟合。得到300k下的声子谱，可以看到，原来gamma点和X点的虚频，已经被成功消除了。而实验上，这个材料在室温下肯定是稳定的。</li>
+</ol>
+<p>当然，如果想要得到更准确的声子谱，需要提高优化精度，采用更大的超胞计算力常数，AIMD需要更多的步数和更小的步长，比如dynaphopy的例子是采用0.7 fs,跑200000步。如果只是想得到一个比较合理的声子谱，适当降低精度是没问题的。比如这个计算，在24核的机器上，结构优化用时不到3小时，dfpt计算1小时，AIMD计算14小时，差不多用时一天，能够得到一个比较合适的声子谱。如果提高精度，计算用时可能会提升数倍，但是声子谱的提升可能并不会太明显。</p>
+<h1 id="Alamode计算高温声子色散"><a href="#Alamode计算高温声子色散" class="headerlink" title="Alamode计算高温声子色散"></a>Alamode计算高温声子色散</h1><p>Anharmonic Phonons (self-consistent phonon theory)<br>主要使用alamode软件。 版本：alamode-1.1.0</p>
+<h2 id="输入文件"><a href="#输入文件" class="headerlink" title="输入文件"></a>输入文件</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vasprun.xml #分子动力学输出文件</span><br><span class="line">Dfile  #包含原子的力和位移</span><br><span class="line">extract_disp.py #选取结构，并计算位移</span><br><span class="line">extract_force.py #选取结构，并获得受力</span><br><span class="line">PPOSCAR #初始超胞</span><br><span class="line">alm.in #提取力常数的输入文件</span><br><span class="line">anphono.in #计算声子谱的输入文件</span><br></pre></td></tr></table></figure>
+<ol>
+<li>从分子动力学数据中选取一定数量的结构，并提取它们的力和计算与初始状态相比的位移，输出到<strong>Dfile</strong>文件当中</li>
+</ol>
+<p><code>python extract_disp.py </code><br>#运行后根据提示输入开始的步数和间隔步数<br>#例如总共1000步，从第一步开始提取，每间隔五步提取一次<br>#得到disp.dat</p>
+<figure class="highlight python"><figcaption><span>extract_force.py``` #方法同上</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#得到force.dat</span></span><br><span class="line">将disp.dat和force.dat文件按如下形式合并到一起</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>disp1x  disp1y  disp1z   force1x  force1y  force1z<br>       ……<br>       ……<br>dispNx  dispNy  dispNz   forceNx  forceNy  forceNz</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2.  获取力常数</span><br><span class="line"></span><br><span class="line">提取四阶力常数的**alm.in**文件如下（使用LASSO方法）：</span><br><span class="line"></span><br><span class="line">二阶力常数可以通过有限位移法提取(详见官网手册)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>&amp;general<br>  PREFIX &#x3D; ThO2_ENET<br>  MODE &#x3D; optimize<br>  NAT &#x3D; 81; NKD &#x3D; 2<br>  KD &#x3D; Th O</p>
+<h1 id="PRINTSYM-x3D-1"><a href="#PRINTSYM-x3D-1" class="headerlink" title="PRINTSYM&#x3D;1"></a>PRINTSYM&#x3D;1</h1><p>&#x2F;</p>
+<p>&amp;interaction<br>  NORDER &#x3D; 5  # 1: harmonic, 2: cubic, ..<br>  NBODY &#x3D; 2 3 3 2 2<br>&#x2F;</p>
+<p>&amp;cell<br>  1 # factor in Bohr unit<br>  0.0000000000000   15.919498944104   15.919498944104<br>  15.919498944104   0.0000000000000   15.919498944104<br>  15.919498944104   15.919498944104   0.0000000000000<br>&#x2F;</p>
+<p>&amp;optimize<br>  LMODEL&#x3D; enet<br>  FC2XML &#x3D; ThO2_2nd.xml<br>  DFSET&#x3D;ThO2_dffile</p>
+<p>  CV &#x3D; 0<br>  L1_RATIO &#x3D; 1.0<br>  L1_ALPHA &#x3D; 1.0e-06<br>  CV_MINALPHA &#x3D; 1.0e-6<br>  CV_MAXALPHA &#x3D; 0.02<br>  CV_NALPHA &#x3D; 100</p>
+<p>  STANDARDIZE &#x3D; 1<br>  CONV_TOL &#x3D; 1.0e-9<br>&#x2F;</p>
+<p>&amp;cutoff<br>  <em>-</em> None None 12.0 12.0 12.0<br>&#x2F;</p>
+<p>&amp;position<br>1  0.0000000000000000  0.0000000000000000  0.0000000000000000<br>1  0.3333333333333333  0.0000000000000000  0.0000000000000000<br>………………</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">注意晶格常数单位的转换 $1 Bohr= 0.529177208 Angstrom$</span><br><span class="line"></span><br><span class="line">在终端运行：</span><br><span class="line"></span><br><span class="line">bash</span><br><span class="line">```alm alm.in &gt; alm.log```</span><br><span class="line">得到**Nb.xml**</span><br><span class="line"></span><br><span class="line">3.  Anharmonic Phonon</span><br><span class="line"></span><br><span class="line">**anphono.in**输入文件如下：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>&amp;general<br> PREFIX &#x3D;scph<br> MODE &#x3D; SCPH<br> FCSXML &#x3D;Nb.xml #forceconstant file</p>
+<p> NKD &#x3D; 1; KD &#x3D; Nb<br> MASS &#x3D; 92.90638</p>
+<p> #NONANALYTIC &#x3D; 0; BORNINFO &#x3D; PbTe.born</p>
+<p> TMIN &#x3D; 0; TMAX &#x3D; 300; DT &#x3D; 100   #Temperature and step<br>&#x2F;</p>
+<p>&amp;scph<br> KMESH_SCPH        &#x3D; 6 6 6<br> KMESH_INTERPOLATE &#x3D; 6 6 6</p>
+<p> SELF_OFFDIAG &#x3D; 0<br> RESTART_SCPH &#x3D; 0</p>
+<p> MIXALPHA &#x3D; 0.1<br> MAXITER &#x3D; 500<br> TOL_SCPH &#x3D; 1.0e-10<br>&#x2F;</p>
+<p>&amp;cell   ## primitive cell is best<br>  6.2507550151332<br>  -0.5  0.5  0.5<br>   0.5 -0.5  0.5<br>   0.5  0.5 -0.5<br>&#x2F;</p>
+<p>&amp;kpoint<br>  1  # KPMODE &#x3D; 1: get phonon band  2: get others properties<br>  G 0.0 0.0 0.0 H 0.5 -0.5 0.5 201<br>  H 0.5 -0.5 0.5 P 0.25 0.25 0.25 201<br>  P 0.25 0.25 0.25 G 0.0 0.0 0.0 201<br>  G 0.0 0.0 0.0  N 0.0 0.0 0.5 201<br>&#x2F;</p>
+<pre><code>在终端运行：
+
+```anphon anphono.in &gt; anphono.log```
+得到**scph.scph_bands**，里面有不同温度下的声子谱
+</code></pre>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/18-49-25/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1911,223 +2062,6 @@ int1 = hw[:,2]
 <li><p>官方网站：<a target="_blank" rel="noopener" href="https://www.shengbte.org/">https://www.shengbte.org/</a></p>
 </li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/18-49-23/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Keke Liu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lightchaser">
-      <meta itemprop="description" content="一个小学生的博客">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Lightchaser">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/05/09/18-49-23/" class="post-title-link" itemprop="url">3.1 热输运1 声子谱</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-05-09 18:49:23" itemprop="dateCreated datePublished" datetime="2023-05-09T18:49:23+08:00">2023-05-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-08-27 10:41:09" itemprop="dateModified" datetime="2024-08-27T10:41:09+08:00">2024-08-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/DFT%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">DFT学习</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="声子谱"><a href="#声子谱" class="headerlink" title="声子谱"></a>声子谱</h1><p>声子谱的计算主要有两种方法，一种是直接法，另一种是微扰密度泛函方法（DFPT）。</p>
-<ul>
-<li>直接法，或称frozen-phonon方法，是通过在优化后的平衡结构中引入原子位移，计算作用在原子上的Hellmann-Feynman力，进而由动力学矩阵算出声子色散曲线。直接法的缺陷在于它要求声子波矢与原胞边界supersize<br>正交，或者原胞足够大使得Hellmann-Feynman力在原胞外可以忽略不计。这使得对于复杂系统，如对称性高的晶体、合金、超晶格等材料需要采用超原胞。超原胞的采用使计算量急剧增加，极大的限制了该方法的使用。</li>
-<li>1987年，Baroni、Giannozzi和Testa提出了DFPT方法。DFPT通过计算系统能量对外场微扰的响应来求出晶格动力学性质。该方法最大的优势在于它不限定微扰的波矢与原胞边界正交，不需要超原胞也可以对任意波矢求解。Castep、Vasp等采用的是一种linear response theory 的方法（或者称为 density perturbation functional theory，DFPT），直接计算出原子的移动而导致的势场变化，再进一步构造出动力学矩阵。进而计算出声子谱。</li>
-</ul>
-<h2 id="DFPT计算步骤"><a href="#DFPT计算步骤" class="headerlink" title="DFPT计算步骤"></a>DFPT计算步骤</h2><ul>
-<li>结构优化<br><strong>声子谱的计算需要对原胞结构做高精度的充分优化，否则很容易出现虚频；</strong> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">EDIFF</span>  = <span class="number">1E-08</span></span><br><span class="line"><span class="variable constant_">EDIFFG</span> = -<span class="number">1E-06</span> </span><br></pre></td></tr></table></figure>
-可以采用分步优化，直到达到精度。然后优化后的结果，cp CONTCAR POSCAR：</li>
-</ul>
-<p> <code>$ phonopy -d --dim=&quot;4 4 1&quot; </code></p>
-<p>之后会生成一堆文件，其中有  SPOSCAR 和POSCAR-00* ，分别对应不同的方法密度泛函微扰法 (DFPT) 以及有限位移法。<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ ls</span><br><span class="line">phonopy_disp.<span class="property">yaml</span>  <span class="variable constant_">POSCAR</span>-<span class="number">002</span>  <span class="variable constant_">POSCAR</span>-<span class="number">005</span>  <span class="variable constant_">POSCAR</span>-<span class="number">008</span>  <span class="variable constant_">POSCAR</span>-<span class="number">011</span>  <span class="variable constant_">POSCAR</span>-<span class="number">014</span>  <span class="variable constant_">SPOSCAR</span></span><br><span class="line"><span class="variable constant_">POSCAR</span>             <span class="variable constant_">POSCAR</span>-<span class="number">003</span>  <span class="variable constant_">POSCAR</span>-<span class="number">006</span>  <span class="variable constant_">POSCAR</span>-<span class="number">009</span>  <span class="variable constant_">POSCAR</span>-<span class="number">012</span>  <span class="variable constant_">POSCAR</span>-<span class="number">015</span></span><br><span class="line"><span class="variable constant_">POSCAR</span>-<span class="number">001</span>         <span class="variable constant_">POSCAR</span>-<span class="number">004</span>  <span class="variable constant_">POSCAR</span>-<span class="number">007</span>  <span class="variable constant_">POSCAR</span>-<span class="number">010</span>  <span class="variable constant_">POSCAR</span>-<span class="number">013</span>  <span class="variable constant_">POSCAR</span>-<span class="number">016</span></span><br><span class="line">$ cp <span class="variable constant_">POSCAR</span> <span class="variable constant_">POSCAR</span>-unitcell</span><br><span class="line">$ cp <span class="variable constant_">SPOSCAR</span> <span class="variable constant_">POSCAR</span></span><br></pre></td></tr></table></figure><br><strong>KPOINTS需适当减小，可以的话最好再进行一次收敛测试</strong><br><strong>INCAR</strong><br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">IBRION</span> =  <span class="number">8</span>            (determines the <span class="title class_">Hessian</span> matrix using <span class="variable constant_">DFPT</span>)</span><br><span class="line"><span class="variable constant_">EDIFF</span>  =  <span class="number">1E-08</span>        (<span class="variable constant_">SCF</span> energy convergence; <span class="keyword">in</span> eV) </span><br><span class="line"><span class="variable constant_">PREC</span>   =  <span class="title class_">Accurate</span>     (<span class="title class_">Precision</span> level)  </span><br><span class="line"><span class="variable constant_">ENCUT</span>  =  <span class="number">500</span>          (<span class="title class_">Cut</span>-off energy <span class="keyword">for</span> plane wave basis set, <span class="keyword">in</span> eV) </span><br><span class="line"><span class="variable constant_">IALGO</span>  =  <span class="number">38</span>           (<span class="title class_">Davidson</span> block iteration scheme)</span><br><span class="line"><span class="variable constant_">LREAL</span>  = .<span class="property">FALSE</span>.       (<span class="title class_">Projection</span> <span class="attr">operators</span>: <span class="literal">false</span>)</span><br><span class="line"><span class="variable constant_">LWAVE</span>  = .<span class="property">FLASE</span>.       (<span class="title class_">Write</span> <span class="variable constant_">WAVECAR</span> or not)</span><br><span class="line"><span class="variable constant_">LCHARG</span> = .<span class="property">FLASE</span>.       (<span class="title class_">Write</span> <span class="variable constant_">CHGCAR</span> or not) </span><br><span class="line"><span class="variable constant_">ADDGRID</span>= .<span class="property">TRUE</span>.        (<span class="title class_">Increase</span> grid; helps <span class="variable constant_">GGA</span> convergence) </span><br><span class="line"><span class="variable constant_">NSW</span>    = <span class="number">1</span></span><br></pre></td></tr></table></figure><br>上面参数 IBRION &#x3D;  8   NSW    &#x3D; 1是注意修改的。<br><strong>提交VASP计算</strong></p>
-<p><strong>后处理</strong><br> <code>phonopy --fc vasprun.xml </code></p>
-<p>读取vasprun.xml，生成FORCE_CONSTANTS文件。</p>
-<p>编辑band.conf文件，该文件给出了高对称点路径的信息<br>Note:<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">ATOM_NAME</span> = * *  #元素名称，顺序与<span class="variable constant_">POSCAR</span>保持一致</span><br><span class="line"><span class="variable constant_">DIM</span> = <span class="number">4</span> <span class="number">4</span> <span class="number">1</span>      #建立超胞的大小，--dim后面的</span><br><span class="line"><span class="variable constant_">BAND</span> = <span class="number">0.5</span> <span class="number">0.0</span> <span class="number">0.0</span>  <span class="number">0.0</span> <span class="number">0.0</span> <span class="number">0.0</span>  <span class="number">0.333333</span> <span class="number">0.333333</span> <span class="number">0.0</span>  <span class="number">0.5</span> <span class="number">0.0</span> <span class="number">0.0</span> #高对称点路径，每组高对称点之间用两个空格隔开</span><br><span class="line"><span class="variable constant_">FORCE_CONSTANTS</span> = <span class="variable constant_">READ</span> #表示读取力常数文件<span class="variable constant_">FORCE_CONSTANTS</span></span><br><span class="line"><span class="variable constant_">FC_SYMMETRY</span> = .<span class="property">TRUE</span>.</span><br></pre></td></tr></table></figure><br>准备mesh.conf文件，如下所示：<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">ATOM_NAME</span> = <span class="title class_">Si</span></span><br><span class="line"><span class="variable constant_">DIM</span> = <span class="number">2</span> <span class="number">2</span> <span class="number">2</span></span><br><span class="line"><span class="variable constant_">MP</span> = <span class="number">24</span> <span class="number">24</span> <span class="number">24</span></span><br></pre></td></tr></table></figure></p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">phonopy --dim=<span class="string">&quot;4 4 1&quot;</span> -c <span class="variable constant_">POSCAR</span>-unitcell -p -s band.<span class="property">conf</span></span><br><span class="line">(单位是<span class="title class_">THz</span>)或者</span><br><span class="line">phonopy --dim=<span class="string">&quot;4 4 1&quot;</span> --factor=<span class="number">524.147</span> -c <span class="variable constant_">POSCAR</span>-unitcell -p -s band.<span class="property">conf</span></span><br><span class="line">(单位是cm-<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<p>（读取band.conf、FORCE_CONSTANTS、POSCAR-unitcell，输出band.yaml、phonopy.yaml以及pdf图）<br> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">phonopy-bandplot  --gnuplot&gt; phono.dat</span><br><span class="line">如果上述命令不行，可以用旧版本phonopy </span><br><span class="line">bandplot --gnuplot&gt; phonon.dat</span><br></pre></td></tr></table></figure><br>读取band.yaml，就可以获得二阶力常数矩阵声子谱的数据，其中第一行为高对称点的坐标。</p>
-<p>准备mesh.conf以计算态密度和PDOS：</p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">ATOM_NAME</span> = </span><br><span class="line"><span class="variable constant_">DIM</span> = <span class="number">4</span> <span class="number">4</span> <span class="number">1</span></span><br><span class="line"><span class="variable constant_">MP</span>=<span class="number">12</span> <span class="number">12</span> <span class="number">1</span></span><br><span class="line"><span class="variable constant_">PDOS</span>=<span class="number">1</span> <span class="number">2</span>, <span class="number">3</span> <span class="number">4</span>, <span class="number">5</span> <span class="number">6</span></span><br><span class="line"><span class="variable constant_">FORCE_CONSTANTS</span> = <span class="variable constant_">READ</span></span><br><span class="line"><span class="variable constant_">BAND_POINTS</span> = <span class="number">71</span></span><br></pre></td></tr></table></figure>
-<p>运行命令：<code>phonopy –dim=&#39;4 4 1&#39; -c POSCAR-unitcell mesh.conf</code>或者乘上因子修改单位。<code>phonopy –dim=&#39;4 4 1&#39; --factor=524.147 -c POSCAR-unitcell mesh.conf</code><br>得到projected_dos.dat文件，拖到Origin中画图，得到声子态密度图像（从第二列数据开始，每一列对应每个原子的态密度），对比着之前计算得到的声子谱可以分析声学支与光学支之间的相互作用关系</p>
-<h2 id="有限位移方法"><a href="#有限位移方法" class="headerlink" title="有限位移方法"></a>有限位移方法</h2><p>这里需要准备和 POSCAR-00* 数目一样的文件夹，并把 POSCAR-00* 复制到每个文件夹中并命名为 POSCAR 。每个文件夹内都需要准备 POTCAR 、 POSCAR 、 INCAR 、 KPOINTS 。并且分别计算。<br><strong>可用以下sh脚本快速进行：手动修改第一行文件夹数目和vasp运行文件名称。</strong></p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;<span class="number">001</span>.<span class="number">.006</span>&#125;</span><br><span class="line"><span class="keyword">do</span> </span><br><span class="line">mkdir $i</span><br><span class="line">cd $i</span><br><span class="line">cp ../<span class="variable constant_">POSCAR</span>-$i <span class="variable constant_">POSCAR</span></span><br><span class="line">cp ../&#123;<span class="variable constant_">INCAR</span>,<span class="variable constant_">KPOINTS</span>,<span class="variable constant_">POTCAR</span>,sub.<span class="property">sh</span>&#125; .</span><br><span class="line">运行提交任务命令</span><br><span class="line">cd ../</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
-<p><strong>INCAR 可以设置为如下内容：</strong><br>INCAR设置如下(静态计算)：</p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">PREC</span> = <span class="title class_">Accurate</span></span><br><span class="line"><span class="variable constant_">IBRION</span> = -<span class="number">1</span></span><br><span class="line"><span class="variable constant_">NSW</span> = <span class="number">1</span></span><br><span class="line"><span class="variable constant_">ENCUT</span> = <span class="number">500</span></span><br><span class="line"><span class="variable constant_">EDIFF</span> = <span class="number">1.0e-08</span></span><br><span class="line"><span class="variable constant_">EDIFFG</span> = -<span class="number">0.001</span></span><br><span class="line"><span class="variable constant_">ISMEAR</span> = <span class="number">0</span></span><br><span class="line"><span class="variable constant_">SIGMA</span> = <span class="number">0.05</span></span><br><span class="line"><span class="variable constant_">IALGO</span> = <span class="number">38</span></span><br><span class="line"><span class="variable constant_">LREAL</span> = .<span class="property">FALSE</span>.</span><br><span class="line"><span class="variable constant_">LWAVE</span> = .<span class="property">FALSE</span>.</span><br><span class="line"><span class="variable constant_">LCHARG</span> = .<span class="property">FALSE</span>.</span><br></pre></td></tr></table></figure>
-<p>里面IBRION &#x3D; -1  NSW &#x3D; 1注意修改</p>
-<p><strong>KPOINTS需适当减小，可以的话最好再进行一次收敛测试</strong><br><strong>提交VASP计算</strong></p>
-<p><strong>后处理</strong></p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">phonopy -f ./disp-*/vasprun.<span class="property">xml</span></span><br></pre></td></tr></table></figure>
-<p>准备band.conf</p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">ATOM_NAME</span> = <span class="title class_">In</span> <span class="title class_">Se</span></span><br><span class="line"><span class="variable constant_">DIM</span> = <span class="number">4</span> <span class="number">4</span> <span class="number">1</span></span><br><span class="line"><span class="variable constant_">BAND</span> = <span class="number">0.5</span> <span class="number">0.0</span> <span class="number">0.0</span>  <span class="number">0.0</span> <span class="number">0.0</span> <span class="number">0.0</span>  <span class="number">0.333333</span> <span class="number">0.333333</span> <span class="number">0.0</span>  <span class="number">0.5</span> <span class="number">0.0</span> <span class="number">0.0</span></span><br><span class="line"><span class="variable constant_">FORCE_CONSTANTS</span> = <span class="variable constant_">WRITE</span>  #注意这里是 <span class="variable constant_">WRITE</span></span><br><span class="line"><span class="variable constant_">FC_SYMMETRY</span> = .<span class="property">TRUE</span>.</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">phonopy -c <span class="variable constant_">POSCAR</span>-unitcell band.<span class="property">conf</span> -p -s</span><br><span class="line">phonopy --factor=<span class="number">524.147</span> -c <span class="variable constant_">POSCAR</span>-unitcell -p -s band.<span class="property">conf</span></span><br><span class="line">#旧版本phonopy</span><br><span class="line">bandplot  --gnuplot&gt; phonon.<span class="property">dat</span></span><br><span class="line">就可以获得二阶力常数矩阵 <span class="variable constant_">FORCE_CONSTANTS</span> 和声子谱的数据</span><br><span class="line">#新版本phonopy</span><br><span class="line">phonopy-bandplot --gnuplot &gt; phonon.<span class="property">dat</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>Mind</strong></p>
-<ul>
-<li>如果计算完的声子谱其他地方都好，就是在Γ点有一点点虚频，那么这个材料很可能是稳定的，只是你优化做得不够好，进一步提高优化的精度可消除这一点点虚频。</li>
-<li>对于二维材料，如果在Γ点出现很小的虚频，基本可以认为这个材料是稳定的，大部分二维材料都会有此现象；尤其是VASP结合phonopy code计算二维材料的声子谱在Γ点更是容易出现虚频；使用Quantum-ESPRESSO的PWSCF和PH模块计算声子谱对于内存的需求较小一些，且对于二维材料的声子谱计算更友好一些，后期会详细介绍Quantum-ESPRESSO计算声子谱的具体步骤。</li>
-<li>声子谱是表示组成材料原子的集体振动模式。如果材料的原胞包含n个原子，那么声子谱总共有3n支，其中有3条声学支，3n-3条光学支。声学支表示原胞的整体振动，光学支表示原胞内原子间的相对振动。</li>
-</ul>
-<p><strong>计算出的声子谱有虚频，往往表示该材料不稳定。</strong> 有些情况下，我们可以利用虚频信息使不稳定的材料变得稳定。如果声子谱的一条声学支存在虚频，主要位于Γ点和M点1&#x2F;2处（对应倒格矢的1&#x2F;4位置）。倒格矢的1&#x2F;4，对应晶格长度的4倍。我们可能需要将原胞沿上述倒格矢方向扩大四倍，进一步优化原子位置，才可能得到比较稳定的晶胞。</p>
-<h1 id="消虚频"><a href="#消虚频" class="headerlink" title="消虚频"></a>消虚频</h1><ol>
-<li>DFPT方法与有限位移法互换尝试。或者更换标准胞扩胞计算。</li>
-<li>扩胞，在虚频很小时可以尝试扩大扩胞倍数。</li>
-<li>提高精度优化后计算声子谱。声子谱对力的精度要求特别高，所以提高精度多次优化后再计算声子谱也是可行的。</li>
-<li>修改POTCAR，尝试不同的赝势方法。（不太建议，因为需改之后所有计算都需要统一成稳定构型的赝势。不过有效）</li>
-<li>修改POSCAR原子坐标，再优化，再计算声子谱。<br>修改方法：对于DFPT计算的声子谱，使用<code>grep cm-1 OUTCAR</code>查看频率，寻找最大的虚频频率。然后在OUTCAR中从最后往前找到最大的虚频频率对应的坐标。<br>dx dy dz对应虚频的位移，把这些坐标与POSCAR中的坐标相加或者0.1-0.9之间的倍数，形成新的POSCAR。进行优化，再计算声子谱。</li>
-<li>不排除真的算不出来没虚频的，据我所知，SnTe就没见到谁大大方方发文章谈声子谱的（算出来虚频消除不了不好意思讲）。</li>
-<li>INCAR参数对虚频的影响：ADDGRID影响很小，LREAL有影响。截断能和K点密度在收敛情况下影响小。</li>
-</ol>
-<h3 id="结构优化消虚频"><a href="#结构优化消虚频" class="headerlink" title="结构优化消虚频"></a>结构优化消虚频</h3><p>X, Y, Z为体系中原子的坐标，也就是POSCAR中的内容。 dx, dy,dz为虚频对应的原子振动方向上的位移。我们将（dx, dy,dz）这个位移乘以一个介于0-1之间的校正因子，然后跟POSCAR中的坐标加起来即可。以z方向为例，<strong>校正因子设为0.1，</strong> 微调后的z方向坐标为： 10.709980 + （-0.676634）0.1。<br>脚本vib_correct.py如下：<a target="_blank" rel="noopener" href="https://www.bigbrosci.com/2022/04/29/A29/">https://www.bigbrosci.com/2022/04/29/A29/</a></p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"># -*- <span class="attr">coding</span>: utf-<span class="number">8</span> -*-</span><br><span class="line"><span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">Qiang Li</span></span><br><span class="line"><span class="string">Command: python3 vib_correct.py </span></span><br><span class="line"><span class="string">This is a temporary script file.</span></span><br><span class="line"><span class="string">&quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> ase.<span class="property">io</span> <span class="keyword">import</span> read, write</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">#获取虚频开始行</span><br><span class="line">l_position = <span class="number">0</span>  #虚频振动方向部分在<span class="variable constant_">OUTCAR</span>中的起始行数</span><br><span class="line"><span class="keyword">with</span> <span class="title function_">open</span>(<span class="string">&#x27;OUTCAR&#x27;</span>) <span class="keyword">as</span> <span class="attr">f_in</span>:</span><br><span class="line">    lines = f_in.<span class="title function_">readlines</span>()</span><br><span class="line">    wave_num = <span class="number">0.0</span></span><br><span class="line">    <span class="keyword">for</span> num, line <span class="keyword">in</span> <span class="title function_">enumerate</span>(lines):</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;f/i&#x27;</span> <span class="keyword">in</span> <span class="attr">line</span>:</span><br><span class="line">            wave_tem = <span class="title function_">float</span>(line.<span class="title function_">rstrip</span>().<span class="title function_">split</span>()[<span class="number">6</span>])</span><br><span class="line">            <span class="keyword">if</span> wave_tem &gt; <span class="attr">wave_num</span>: #获取最大的虚频</span><br><span class="line">                wave_num = wave_tem</span><br><span class="line">                l_position = num+<span class="number">2</span></span><br><span class="line"># <span class="variable constant_">ASE</span>读<span class="variable constant_">POSCAR</span></span><br><span class="line">model = <span class="title function_">read</span>(<span class="string">&#x27;POSCAR&#x27;</span>)</span><br><span class="line">model_positions = model.<span class="title function_">get_positions</span>()</span><br><span class="line">num_atoms = <span class="title function_">len</span>(model)</span><br><span class="line">#<span class="title function_">print</span>(model_positions)</span><br><span class="line"></span><br><span class="line"># 获取虚频对应的<span class="variable constant_">OUTCAR</span>部分 </span><br><span class="line">vib_lines = lines[<span class="attr">l_position</span>:l_position + num_atoms] #振动部分 <span class="number">7222</span>到<span class="number">7248</span>行</span><br><span class="line">#<span class="title function_">print</span>(vib_lines)</span><br><span class="line">vib_dis = []</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> <span class="attr">vib_lines</span>:</span><br><span class="line">    #model_positions = [<span class="title function_">float</span>(i) <span class="keyword">for</span> i <span class="keyword">in</span> line.<span class="title function_">rstrip</span>().<span class="title function_">split</span>()[:<span class="number">3</span>]]</span><br><span class="line">    vib_infor = [<span class="title function_">float</span>(i) <span class="keyword">for</span> i <span class="keyword">in</span> line.<span class="title function_">rstrip</span>().<span class="title function_">split</span>()[<span class="number">3</span>:]] # dx， dy， dz对应的那三列</span><br><span class="line">    vib_dis.<span class="title function_">append</span>(vib_infor)</span><br><span class="line">vib_dis = np.<span class="title function_">array</span>(vib_dis) #将振动部分写到一个array中。</span><br><span class="line"></span><br><span class="line"># 微调结构</span><br><span class="line">new_positions = model_positions + vib_dis * <span class="number">0.4</span> # <span class="number">0.4</span>是微调的校正因子，即虚频对应振动位移的<span class="number">0.4</span>，具体多大自己根据经验调。</span><br><span class="line">model.<span class="property">positions</span> = new_positions</span><br><span class="line"></span><br><span class="line">###保存结构</span><br><span class="line"><span class="title function_">write</span>(<span class="string">&#x27;POSCAR_new&#x27;</span>, model, vasp5=<span class="title class_">True</span>) # POSCAR_new是微调后的结构，用于下一步的计算（别忘了把POSCAR_new改成<span class="variable constant_">POSCAR</span>）。</span><br></pre></td></tr></table></figure>
-
-<h3 id="过渡态虚频"><a href="#过渡态虚频" class="headerlink" title="过渡态虚频"></a>过渡态虚频</h3><p>如果过渡态计算的时候出现好几个虚频，自己直接写个python脚本也能实现。不过使用ASE可以很方便地获取POSCAR中原子数目，保存原子固定的信息。参考如下。</p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">#!<span class="regexp">/usr/</span>bin/env python</span><br><span class="line"># -*- <span class="attr">coding</span>: utf-<span class="number">8</span> -*-</span><br><span class="line"><span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">Qiang Li</span></span><br><span class="line"><span class="string">Command: python3 vib_correct.py</span></span><br><span class="line"><span class="string">This is a temporary script file.</span></span><br><span class="line"><span class="string">&quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">#获取虚频开始行</span><br><span class="line">l_position = <span class="number">0</span>  #虚频振动方向部分在<span class="variable constant_">OUTCAR</span>中的起始行数</span><br><span class="line"><span class="keyword">with</span> <span class="title function_">open</span>(<span class="string">&#x27;OUTCAR&#x27;</span>) <span class="keyword">as</span> <span class="attr">f_in</span>:</span><br><span class="line">    lines = f_in.<span class="title function_">readlines</span>()</span><br><span class="line">    wave_num = <span class="number">0.0</span></span><br><span class="line">    <span class="keyword">for</span> num, line <span class="keyword">in</span> <span class="title function_">enumerate</span>(lines):</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;f/i&#x27;</span> <span class="keyword">in</span> <span class="attr">line</span>:</span><br><span class="line">            wave_tem = <span class="title function_">float</span>(line.<span class="title function_">rstrip</span>().<span class="title function_">split</span>()[<span class="number">6</span>])</span><br><span class="line">            <span class="keyword">if</span> wave_tem &gt; <span class="attr">wave_num</span>: #获取最大的虚频</span><br><span class="line">                wave_num = wave_tem</span><br><span class="line">                l_position = num+<span class="number">2</span></span><br><span class="line"># 读<span class="variable constant_">POSCAR</span></span><br><span class="line"><span class="keyword">with</span> <span class="title function_">open</span>(<span class="string">&#x27;POSCAR&#x27;</span>) <span class="keyword">as</span> <span class="attr">f_pos</span>:</span><br><span class="line">    lines_pos = f_pos.<span class="title function_">readlines</span>()</span><br><span class="line"></span><br><span class="line"># 获取虚频对应的<span class="variable constant_">OUTCAR</span>部分    </span><br><span class="line">num_atoms = <span class="title function_">sum</span>([<span class="title function_">int</span>(i) <span class="keyword">for</span> i <span class="keyword">in</span> lines_pos[<span class="number">6</span>].<span class="title function_">rstrip</span>().<span class="title function_">split</span>()])</span><br><span class="line">vib_lines = lines[<span class="attr">l_position</span>:l_position + num_atoms] #振动部分 <span class="number">7222</span>到<span class="number">7248</span>行</span><br><span class="line"></span><br><span class="line">model_positions = []</span><br><span class="line">vib_dis = []</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> <span class="attr">vib_lines</span>:</span><br><span class="line">    position = [<span class="title function_">float</span>(i) <span class="keyword">for</span> i <span class="keyword">in</span> line.<span class="title function_">rstrip</span>().<span class="title function_">split</span>()[:<span class="number">3</span>]]</span><br><span class="line">    vib_infor = [<span class="title function_">float</span>(i) <span class="keyword">for</span> i <span class="keyword">in</span> line.<span class="title function_">rstrip</span>().<span class="title function_">split</span>()[<span class="number">3</span>:]] # dx， dy， dz对应的那三列</span><br><span class="line">    model_positions.<span class="title function_">append</span>(position)</span><br><span class="line">    vib_dis.<span class="title function_">append</span>(vib_infor)</span><br><span class="line"></span><br><span class="line"># 微调结构</span><br><span class="line">model_positions = np.<span class="title function_">array</span>(model_positions)</span><br><span class="line">vib_dis = np.<span class="title function_">array</span>(vib_dis) #将振动部分写到一个array中。</span><br><span class="line">new_positions = model_positions + vib_dis * <span class="number">0.4</span> # <span class="number">0.4</span>是微调的校正因子，即虚频对应振动位移的<span class="number">0.4</span>，具体多大自己根据经验调。</span><br><span class="line"></span><br><span class="line">###保存结构</span><br><span class="line">f_out = <span class="title function_">open</span>(<span class="string">&#x27;POSCAR_new&#x27;</span>,<span class="string">&#x27;w&#x27;</span>)</span><br><span class="line">f_out.<span class="title function_">writelines</span>(lines_pos[:<span class="number">8</span>])</span><br><span class="line">f_out.<span class="title function_">write</span>(<span class="string">&#x27;Cartesian\n&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="attr">new_positions</span>:</span><br><span class="line">    f_out.<span class="title function_">write</span>(<span class="string">&#x27; &#x27;</span>.<span class="title function_">join</span>([<span class="title function_">str</span>(coord) <span class="keyword">for</span> coord <span class="keyword">in</span> i]) + <span class="string">&#x27;  F  F  F\n&#x27;</span>)</span><br><span class="line">f_out.<span class="title function_">close</span>()</span><br></pre></td></tr></table></figure>
-
-<h1 id="phonopy声子群速度"><a href="#phonopy声子群速度" class="headerlink" title="phonopy声子群速度"></a>phonopy声子群速度</h1><p>操作步骤</p>
-<ol>
-<li>首先对结构高精度优化后扩胞，计算得到没有虚频的声子谱；</li>
-<li>对band.conf文件进行修改，并添加群速度计算相关参数<code>GROUP_VELOCITY = .TRUE.</code>和<code>GV_DELTA_Q = 0.01</code>，程序需要读取本征值和本征矢，所以必须设置 EIGENVECTORS &#x3D;.TRUE.，此外为了防止vaspkit在导出数据时报错，需要删除BAND_LABELS高对称路径名称，修改后band.conf文件内容如下；</li>
-</ol>
-<p>而且具体使用过程中，关于执行命令还有执行文件的tag内容还有一些可替换的关系,–gv, –group_velocity 可在执行计算命令时替代执行文件中的<code>GROUP_VELOCITY = .TRUE.</code>内容， –gv_delta_q 可在执行计算命令时替代执行文件中的(GV_DELTA_Q)内容</p>
-<ol start="3">
-<li>对声子谱重新进行计算，打开phonopy.yaml文件可以看到，phonopy在计算声子谱的过程中考虑到了群速度；打开band.yaml文件中也保存了有关群速度的相关信息；同时在计算声子谱中phonopy所储存的数据文件mesh.yaml和band.yaml文件中也保存了有关群速度的相关信息。</li>
-<li>随后进行数据提取，以vaspkit1.12版本为例，打开vaspkit，输入<code>73</code>，打开VASP2other Interface 子功能，选择<code>739 Sort Phonon Band Structure for Phononpy</code>，运行完成即可获得group velocity相关数据以及各原子的声子谱数据；在运行过程中我们可以看到软件说明<code>find group velocity</code>并写入输出文件中。<br>1.5版本为789功能。</li>
-</ol>
-<h1 id="格林艾森常数（Gruneisen-parameters）"><a href="#格林艾森常数（Gruneisen-parameters）" class="headerlink" title="格林艾森常数（Grüneisen parameters）"></a>格林艾森常数（Grüneisen parameters）</h1><p>为表示声子非简谐效应的参数。phonopy计算模式格林艾森参数方式见官网。<br>以NaCl为例，首先需要进行三个声子谱计算，分别是平衡体积（orig），稍小体积（minus）和稍大体积（plus）的结构，计算时改变晶格参数使得体积获得改变。</p>
-<p>计算完成后获得不同体积下的原子间力常数文件FORCE_SETS 或 FORCE_CONSTANTS   （后续命令中需要添加–readfc参数）。</p>
-<p>随后通过phonopy-gruneisen（旧版gruneisen）命令获得对应于声子带结构中倒易空间中的路径的模式格林艾森常数（具体设定可根据自身计算情况更改）<br><code>phonopy-gruneisen orig plus minus --dim=&quot;2 2 2&quot; --pa=&quot;0 1/2 1/2 1/2 0 1/2 1/2 1/2 0&quot; --band=&quot;1/2 1/4 3/4 0 0 0 1/2 1/2 1/2 1/2 0.0 1/2&quot; -p -c POSCAR-unitcell</code><br>在倒易网格中的模式格林艾森常数（具体设定可根据自身计算情况更改）：<br><code>phonopy-gruneisen orig plus minus --dim=&quot;2 2 2&quot; --pa=&quot;0 1/2 1/2 1/2 0 1/2 1/2 1/2 0&quot; --mesh=&quot;20 20 20&quot; -p -c POSCAR-unitcell --color=&quot;RB&quot;</code><br>phonopy-gruneisen 命令选项包括–dim，–mp, –mesh，–band，–pa, –primitive_axis，–readfc，–band_points，–nac，–factor，–nomeshsym，-p，-c，-s, –save，-o等，功能上均与phonopy命令相同，但除上述列出的选项外，可以在phonopy命令上使用的其它选项是不能在phonopy-gruneisen 上使用的。如有必要，可以自行修改phonopy-gruneisen代码。</p>
-<p>如查看帮助，可输入<br><code>phonopy-gruneisen -h</code><br>通过 <code>phonopy-gruneisenplot </code>命令导出计算得到的数据，使用方式类似于<code>phonopy-bandplot</code>。</p>
-<p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/icehoqion/article/details/130550807">https://blog.csdn.net/icehoqion/article/details/130550807</a></p>
-<h1 id="热学性质"><a href="#热学性质" class="headerlink" title="热学性质"></a>热学性质</h1><p>参考：<br><a target="_blank" rel="noopener" href="http://supersunsir.com/2020/08/01/vasp/vasp_phonopy/">http://supersunsir.com/2020/08/01/vasp/vasp_phonopy/</a></p>
-<h2 id="热膨胀系数"><a href="#热膨胀系数" class="headerlink" title="热膨胀系数"></a>热膨胀系数</h2><p>我们通过准简谐近似（QHA）的方法计算热膨胀系数和等压热容等性质，</p>
-<ul>
-<li>首先，我们要把优化好的POSCAR加应变（比如0.96 0.97 0.98 0.99 1 1.01 1.02 1.03 1.04的缩放系数，这样就有9个结构文件），</li>
-<li>然后 把每一个POSCAR都去重复步骤（2）也就是去计算每一个缩放系数声子谱。大概就是这个效果</li>
-<li>最后我们通过phonopy里面的QHA模块 去得到此材料的非偕性质<code>phonopy-qha -p -s e-v.dat *00/thermal_properties.yaml</code>就可以得到很多热力学性质比如热膨胀系数，格林爱森参数，自由能，等压热容等等。</li>
-</ul>
-<ol>
-<li>先进行高精度的晶格优化。</li>
-<li>修改缩放系数为0.95-1.05新建10个POSCAR.</li>
-<li>对11个POSCAR晶体进行声子谱计算</li>
-<li>thermo.conf文件后处理生成11个对应的thermal_properties.yaml</li>
-<li>QHA计算热膨胀系数</li>
-</ol>
-<p>另一个写的步骤：</p>
-<ol>
-<li>高精度的原胞优化</li>
-<li>在此基础上施加形变（梯度可以设置为千分之一）</li>
-<li>优化多个结构</li>
-<li>使用DFPT方法计算每个结构的声子谱（如果结构有问题，使用phonopy –symmetry）</li>
-<li>在每个文件夹中得到thermal_properties.yaml</li>
-<li>运行脚本得到e-v.dat</li>
-<li>运行phonopy-qha的相关命令得到各种dat文件</li>
-<li>Over</li>
-</ol>
-<p>可以参考作者的thermo.conf文件：<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">DIM</span> = <span class="number">2</span> <span class="number">2</span> <span class="number">2</span></span><br><span class="line"><span class="variable constant_">ATOM_NAME</span> = sio</span><br><span class="line"><span class="variable constant_">MP</span> = <span class="number">31</span> <span class="number">31</span> <span class="number">31</span></span><br><span class="line"><span class="variable constant_">TPROP</span> = .<span class="property">TRUE</span>.</span><br><span class="line"><span class="variable constant_">TMAX</span> = <span class="number">2000</span></span><br><span class="line"><span class="variable constant_">TSTEP</span> = <span class="number">2</span></span><br><span class="line"><span class="variable constant_">FORCE_CONSTANTS</span> = <span class="variable constant_">READ</span></span><br></pre></td></tr></table></figure><br>然后是如何写e-v.dat文件</p>
-<ul>
-<li>大概意思就是找到之前计算的那11个POSCAR的vasprun.xml结果文件，然后记事本打开搜索最后一个e_wo_entrp。</li>
-<li>下载phonopy官方文件中Si-QHA的example，</li>
-<li>解压vasprun_xmls.tar.lzma我们可以得到算例中用到的vasprun.xml文件。</li>
-</ul>
-<h2 id="不同温度下热力学性质计算（自由能、热容、振动熵）"><a href="#不同温度下热力学性质计算（自由能、热容、振动熵）" class="headerlink" title="不同温度下热力学性质计算（自由能、热容、振动熵）"></a>不同温度下热力学性质计算（自由能、热容、振动熵）</h2><ul>
-<li><p>在DFPT或者Finite displacement方法计算声子谱的基础上，得到mesh.yaml文件</p>
-</li>
-<li><p>新建一个文件夹，将FORCE_CONSTANTS、POSCAR、mesh.conf放入该文件夹中（POSCAR为原胞）</p>
-</li>
-<li><p>得到mesh.yaml文件</p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">phonopy mesh.<span class="property">conf</span> -c <span class="variable constant_">POSCAR</span></span><br></pre></td></tr></table></figure>
-<p>mesh.conf的内容</p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">ATOM_NAME</span> = <span class="title class_">Hf</span> <span class="title class_">Si</span> O</span><br><span class="line"><span class="variable constant_">DIM</span> = <span class="number">2</span> <span class="number">2</span> <span class="number">2</span></span><br><span class="line"><span class="variable constant_">MP</span> = <span class="number">13</span> <span class="number">13</span> <span class="number">13</span></span><br><span class="line"><span class="variable constant_">FORCE_CONSTANTS</span> = <span class="variable constant_">READ</span></span><br></pre></td></tr></table></figure>
-<p>得到thermal_properties.yaml文件</p>
-</li>
-</ul>
-<p><code>phonopy -c POSCAR mesh.conf  -t</code><br>得到thermal_properties.dat文件<br><code>phonopy-propplot --gnuplot thermal_properties.yaml &gt;thermal_properties.dat</code><br>将dat文件导入到Origin中画图</p>
-<p>dat文件的5列数据分别为：</p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">temperature[K]</span><br><span class="line"><span class="title class_">Free</span> energy [kJ/mol]</span><br><span class="line"><span class="title class_">Entropy</span> [J/K/mol]</span><br><span class="line"><span class="title class_">Heat</span> capacity [J/K/mol]</span><br><span class="line"><span class="title class_">Energy</span> [kJ/mol]</span><br></pre></td></tr></table></figure>
-<h3 id="下面是能用到的各种命令"><a href="#下面是能用到的各种命令" class="headerlink" title="下面是能用到的各种命令"></a>下面是能用到的各种命令</h3><figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">扩胞用</span><br><span class="line">phonopy -d --dim=<span class="string">&quot;2 2 2&quot;</span> -c <span class="variable constant_">POSCAR_UNIT</span></span><br><span class="line">查找晶格对称性</span><br><span class="line">phonopy --symmetry</span><br><span class="line">收集力常数</span><br><span class="line">phonopy --fc vasprun.<span class="property">xml</span></span><br><span class="line">得到band.<span class="property">yalm</span>文件（好像不需要这一步）</span><br><span class="line">phonopy --dim=<span class="string">&quot;2 2 2&quot;</span> -c <span class="variable constant_">POSCAR</span>-<span class="variable constant_">UNIT</span> -p band.<span class="property">conf</span></span><br><span class="line">得到thermal_properties.<span class="property">yaml</span>文件</span><br><span class="line">phonopy -c <span class="variable constant_">POSCAR</span> mesh.<span class="property">conf</span>  -t</span><br></pre></td></tr></table></figure>
-<h3 id="下面是产生e-v-dat文件的脚本，需要根据自己的目录名进行修改："><a href="#下面是产生e-v-dat文件的脚本，需要根据自己的目录名进行修改：" class="headerlink" title="下面是产生e-v.dat文件的脚本，需要根据自己的目录名进行修改："></a>下面是产生e-v.dat文件的脚本，需要根据自己的目录名进行修改：</h3><figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> -<span class="number">0.005</span> -<span class="number">0.004</span> -<span class="number">0.003</span> -<span class="number">0.002</span> -<span class="number">0.001</span> <span class="number">0.001</span> <span class="number">0.002</span> <span class="number">0.003</span> <span class="number">0.004</span> <span class="number">0.005</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"> cd AC_Uni$i;</span><br><span class="line"> pwd;</span><br><span class="line"> volume=<span class="string">`grep volume vasprun.xml | tail -1| awk &#x27;&#123;printf(&quot;%20.13f&quot;, $3)&#125;&#x27;`</span>;</span><br><span class="line"> energy=<span class="string">`grep &#x27;E0&#x27; OSZICAR | tail -1 | awk &#x27;&#123;printf &quot;%12.4f \t&quot;, $5&#125;&#x27;`</span>;</span><br><span class="line"> echo $&#123;volume&#125; $&#123;energy&#125; &gt;&gt; ../e-v.<span class="property">dat</span>;</span><br><span class="line"> cd ../; #<span class="title class_">Exit</span> the <span class="title class_">Strain</span> folder</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
-<h1 id="声子谱振动可视化"><a href="#声子谱振动可视化" class="headerlink" title="声子谱振动可视化"></a>声子谱振动可视化</h1><ol>
-<li><p>上面生成band.yaml文件，利用JMOL打开。<a target="_blank" rel="noopener" href="https://jmol.sourceforge.net/">https://jmol.sourceforge.net/</a><br>或者网站：<a target="_blank" rel="noopener" href="https://henriquemiranda.github.io/phononwebsite/phonon.html">https://henriquemiranda.github.io/phononwebsite/phonon.html</a></p>
-</li>
-<li><p>band.conf添加标签ANIME&#x3D;0 0 0将000这个Q点的振动模式输出到anime.ascii,用v_sim软件打开即可。<a target="_blank" rel="noopener" href="https://l_sim.gitlab.io/v_sim/index.en.html">https://l_sim.gitlab.io/v_sim/index.en.html</a></p>
-</li>
-<li><p>运行命令 phonopy -f vasprun.xml-{001,002}得到FORSETS<br>运行phonopy –dim&#x3D;”3 3 3” –ct&#x3D;”0 0 0”得到gamma点的振动模式密度</p>
-</li>
-<li><p>DFPT方法得到的OUTCAR可以利用PyVibMS、JMOL</p>
-</li>
-<li><p>从band.yaml生成vesta读取：<a target="_blank" rel="noopener" href="https://github.com/AdityaRoy-1996/Phonopy_VESTA">https://github.com/AdityaRoy-1996/Phonopy_VESTA</a></p>
-</li>
-</ol>
-<p>注意不要输出声子群速度。</p>
-<p>从OUTCAR生成vesta读取：<a target="_blank" rel="noopener" href="https://github.com/Stanford-MCTG/VASP-plot-modes">https://github.com/Stanford-MCTG/VASP-plot-modes</a></p>
-<ol start="6">
-<li>其他参考：<a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv11848434/">https://www.bilibili.com/read/cv11848434/</a></li>
-</ol>
 
       
     </div>
