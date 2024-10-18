@@ -28,7 +28,7 @@
 <meta property="og:description" content="介绍ALAMODE中非谐声子计算部分采用了自洽声子计算方法。 具体教程：https:&#x2F;&#x2F;alamode.readthedocs.io&#x2F;en&#x2F;latest&#x2F;anphondir&#x2F;formalism_anphon.html#self-consistent-phonon-scph-calculation https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1mv411M7W7&#x2F;?spm_id">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-05-09T11:49:25.000Z">
-<meta property="article:modified_time" content="2024-09-21T10:00:31.363Z">
+<meta property="article:modified_time" content="2024-10-18T02:28:35.843Z">
 <meta property="article:author" content="Keke Liu">
 <meta name="twitter:card" content="summary">
 
@@ -113,7 +113,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ALAMODE"><span class="nav-number">1.1.</span> <span class="nav-text">ALAMODE</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ALAMODE%E8%AE%A1%E7%AE%97Si%E7%AE%80%E8%B0%90%E5%A3%B0%E5%AD%90%E8%B0%B1"><span class="nav-number">1.1.2.</span> <span class="nav-text">ALAMODE计算Si简谐声子谱</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E5%88%A9%E7%94%A8ALM%E8%AE%A1%E7%AE%97displacement-patterns"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">1、利用ALM计算displacement patterns</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E8%AE%A1%E7%AE%97%E5%8E%9F%E5%AD%90%E9%97%B4%E5%8A%9B"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">2、计算原子间力</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E6%8B%9F%E5%90%88%E5%8A%9B%E5%B8%B8%E6%95%B0"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">3、拟合力常数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4%E3%80%81%E8%AE%A1%E7%AE%97%E5%A3%B0%E5%AD%90%E8%B0%B1%E5%92%8CDOS"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">4、计算声子谱和DOS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E4%BC%B0%E7%AE%97%E5%AF%B9%E7%83%AD%E5%AF%BC%E7%8E%87%E7%9A%84%E7%AB%8B%E6%96%B9IFCs-%E9%9D%9E%E7%AE%80%E8%B0%90IFCs"><span class="nav-number">1.1.2.5.</span> <span class="nav-text">5. 估算对热导率的立方IFCs(非简谐IFCs)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dynaphopy"><span class="nav-number">1.2.</span> <span class="nav-text">dynaphopy</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Alamode%E8%AE%A1%E7%AE%97%E9%AB%98%E6%B8%A9%E5%A3%B0%E5%AD%90%E8%89%B2%E6%95%A3"><span class="nav-number">2.</span> <span class="nav-text">Alamode计算高温声子色散</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">输入文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PRINTSYM-x3D-1"><span class="nav-number">3.</span> <span class="nav-text">PRINTSYM&#x3D;1</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ALAMODE"><span class="nav-number">1.1.</span> <span class="nav-text">ALAMODE</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ALAMODE%E8%AE%A1%E7%AE%97Si%E7%AE%80%E8%B0%90%E5%A3%B0%E5%AD%90%E8%B0%B1"><span class="nav-number">1.1.2.</span> <span class="nav-text">ALAMODE计算Si简谐声子谱</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E5%88%A9%E7%94%A8ALM%E8%AE%A1%E7%AE%97displacement-patterns"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">1、利用ALM计算displacement patterns</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E8%AE%A1%E7%AE%97%E5%8E%9F%E5%AD%90%E9%97%B4%E5%8A%9B"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">2、计算原子间力</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E6%8B%9F%E5%90%88%E5%8A%9B%E5%B8%B8%E6%95%B0"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">3、拟合力常数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4%E3%80%81%E8%AE%A1%E7%AE%97%E5%A3%B0%E5%AD%90%E8%B0%B1%E5%92%8CDOS"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">4、计算声子谱和DOS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E4%BC%B0%E7%AE%97%E5%AF%B9%E7%83%AD%E5%AF%BC%E7%8E%87%E7%9A%84%E7%AB%8B%E6%96%B9IFCs-%E9%9D%9E%E7%AE%80%E8%B0%90IFCs"><span class="nav-number">1.1.2.5.</span> <span class="nav-text">5. 估算对热导率的立方IFCs(非简谐IFCs)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dynaphopy"><span class="nav-number">1.2.</span> <span class="nav-text">dynaphopy</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Alamode%E8%AE%A1%E7%AE%97%E9%AB%98%E6%B8%A9%E5%A3%B0%E5%AD%90%E8%89%B2%E6%95%A3"><span class="nav-number">2.</span> <span class="nav-text">Alamode计算高温声子色散</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">输入文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Alamode-to-ShengBTE"><span class="nav-number">3.</span> <span class="nav-text">Alamode_to_ShengBTE</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Alamode%E8%AE%A1%E7%AE%97%E7%83%AD%E5%AF%BC%E7%8E%87%E6%AD%A5%E9%AA%A4"><span class="nav-number">3.1.</span> <span class="nav-text">Alamode计算热导率步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4%E5%88%86%E6%9E%90"><span class="nav-number">3.2.</span> <span class="nav-text">步骤分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Alamode-%E8%BF%9E%E6%8E%A5-shengBTE"><span class="nav-number">3.3.</span> <span class="nav-text">Alamode 连接 shengBTE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Authors-and-references"><span class="nav-number">3.4.</span> <span class="nav-text">Authors and references</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-09-21 18:00:31" itemprop="dateModified" datetime="2024-09-21T18:00:31+08:00">2024-09-21</time>
+      <time title="修改时间：2024-10-18 10:28:35" itemprop="dateModified" datetime="2024-10-18T10:28:35+08:00">2024-10-18</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -269,33 +269,70 @@
 <li>从分子动力学数据中选取一定数量的结构，并提取它们的力和计算与初始状态相比的位移，输出到<strong>Dfile</strong>文件当中</li>
 </ol>
 <p><code>python extract_disp.py </code><br>#运行后根据提示输入开始的步数和间隔步数<br>#例如总共1000步，从第一步开始提取，每间隔五步提取一次<br>#得到disp.dat</p>
-<figure class="highlight python"><figcaption><span>extract_force.py``` #方法同上</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#得到force.dat</span></span><br><span class="line">将disp.dat和force.dat文件按如下形式合并到一起</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>disp1x  disp1y  disp1z   force1x  force1y  force1z<br>       ……<br>       ……<br>dispNx  dispNy  dispNz   forceNx  forceNy  forceNz</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2.  获取力常数</span><br><span class="line"></span><br><span class="line">提取四阶力常数的**alm.in**文件如下（使用LASSO方法）：</span><br><span class="line"></span><br><span class="line">二阶力常数可以通过有限位移法提取(详见官网手册)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>&amp;general<br>  PREFIX &#x3D; ThO2_ENET<br>  MODE &#x3D; optimize<br>  NAT &#x3D; 81; NKD &#x3D; 2<br>  KD &#x3D; Th O</p>
-<h1 id="PRINTSYM-x3D-1"><a href="#PRINTSYM-x3D-1" class="headerlink" title="PRINTSYM&#x3D;1"></a>PRINTSYM&#x3D;1</h1><p>&#x2F;</p>
-<p>&amp;interaction<br>  NORDER &#x3D; 5  # 1: harmonic, 2: cubic, ..<br>  NBODY &#x3D; 2 3 3 2 2<br>&#x2F;</p>
-<p>&amp;cell<br>  1 # factor in Bohr unit<br>  0.0000000000000   15.919498944104   15.919498944104<br>  15.919498944104   0.0000000000000   15.919498944104<br>  15.919498944104   15.919498944104   0.0000000000000<br>&#x2F;</p>
-<p>&amp;optimize<br>  LMODEL&#x3D; enet<br>  FC2XML &#x3D; ThO2_2nd.xml<br>  DFSET&#x3D;ThO2_dffile</p>
-<p>  CV &#x3D; 0<br>  L1_RATIO &#x3D; 1.0<br>  L1_ALPHA &#x3D; 1.0e-06<br>  CV_MINALPHA &#x3D; 1.0e-6<br>  CV_MAXALPHA &#x3D; 0.02<br>  CV_NALPHA &#x3D; 100</p>
-<p>  STANDARDIZE &#x3D; 1<br>  CONV_TOL &#x3D; 1.0e-9<br>&#x2F;</p>
-<p>&amp;cutoff<br>  <em>-</em> None None 12.0 12.0 12.0<br>&#x2F;</p>
-<p>&amp;position<br>1  0.0000000000000000  0.0000000000000000  0.0000000000000000<br>1  0.3333333333333333  0.0000000000000000  0.0000000000000000<br>………………</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">注意晶格常数单位的转换 $1 Bohr= 0.529177208 Angstrom$</span><br><span class="line"></span><br><span class="line">在终端运行：</span><br><span class="line"></span><br><span class="line">bash</span><br><span class="line">```alm alm.in &gt; alm.log```</span><br><span class="line">得到**Nb.xml**</span><br><span class="line"></span><br><span class="line">3.  Anharmonic Phonon</span><br><span class="line"></span><br><span class="line">**anphono.in**输入文件如下：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>&amp;general<br> PREFIX &#x3D;scph<br> MODE &#x3D; SCPH<br> FCSXML &#x3D;Nb.xml #forceconstant file</p>
-<p> NKD &#x3D; 1; KD &#x3D; Nb<br> MASS &#x3D; 92.90638</p>
-<p> #NONANALYTIC &#x3D; 0; BORNINFO &#x3D; PbTe.born</p>
-<p> TMIN &#x3D; 0; TMAX &#x3D; 300; DT &#x3D; 100   #Temperature and step<br>&#x2F;</p>
-<p>&amp;scph<br> KMESH_SCPH        &#x3D; 6 6 6<br> KMESH_INTERPOLATE &#x3D; 6 6 6</p>
-<p> SELF_OFFDIAG &#x3D; 0<br> RESTART_SCPH &#x3D; 0</p>
-<p> MIXALPHA &#x3D; 0.1<br> MAXITER &#x3D; 500<br> TOL_SCPH &#x3D; 1.0e-10<br>&#x2F;</p>
-<p>&amp;cell   ## primitive cell is best<br>  6.2507550151332<br>  -0.5  0.5  0.5<br>   0.5 -0.5  0.5<br>   0.5  0.5 -0.5<br>&#x2F;</p>
-<p>&amp;kpoint<br>  1  # KPMODE &#x3D; 1: get phonon band  2: get others properties<br>  G 0.0 0.0 0.0 H 0.5 -0.5 0.5 201<br>  H 0.5 -0.5 0.5 P 0.25 0.25 0.25 201<br>  P 0.25 0.25 0.25 G 0.0 0.0 0.0 201<br>  G 0.0 0.0 0.0  N 0.0 0.0 0.5 201<br>&#x2F;</p>
-<pre><code>在终端运行：
+<p><code>python extract_force.py</code> </p>
+<p>方法同上得到force.dat<br>将disp.dat和force.dat文件按如下形式合并到一起</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">disp1x  disp1y  disp1z   force1x  force1y  force1z</span><br><span class="line">       ......</span><br><span class="line">       ......</span><br><span class="line">dispNx  dispNy  dispNz   forceNx  forceNy  forceNz</span><br></pre></td></tr></table></figure>
 
-```anphon anphono.in &gt; anphono.log```
-得到**scph.scph_bands**，里面有不同温度下的声子谱
-</code></pre>
+<ol start="2">
+<li>获取力常数</li>
+</ol>
+<p>提取四阶力常数的<strong>alm.in</strong>文件如下（使用LASSO方法）：</p>
+<p>二阶力常数可以通过有限位移法提取(详见官网手册)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&amp;general</span><br><span class="line">  PREFIX = ThO2_ENET</span><br><span class="line">  MODE = optimize</span><br><span class="line">  NAT = 81; NKD = 2</span><br><span class="line">  KD = Th O</span><br><span class="line">#  PRINTSYM=1</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;interaction</span><br><span class="line">  NORDER = 5  # 1: harmonic, 2: cubic, ..</span><br><span class="line">  NBODY = 2 3 3 2 2</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;cell</span><br><span class="line">  1 # factor in Bohr unit</span><br><span class="line">  0.0000000000000   15.919498944104   15.919498944104</span><br><span class="line">  15.919498944104   0.0000000000000   15.919498944104</span><br><span class="line">  15.919498944104   15.919498944104   0.0000000000000</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;optimize</span><br><span class="line">  LMODEL= enet</span><br><span class="line">  FC2XML = ThO2_2nd.xml</span><br><span class="line">  DFSET=ThO2_dffile</span><br><span class="line"></span><br><span class="line">  CV = 0</span><br><span class="line">  L1_RATIO = 1.0</span><br><span class="line">  L1_ALPHA = 1.0e-06</span><br><span class="line">  CV_MINALPHA = 1.0e-6</span><br><span class="line">  CV_MAXALPHA = 0.02</span><br><span class="line">  CV_NALPHA = 100</span><br><span class="line"></span><br><span class="line">  STANDARDIZE = 1</span><br><span class="line">  CONV_TOL = 1.0e-9</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;cutoff </span><br><span class="line">  *-* None None 12.0 12.0 12.0</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;position</span><br><span class="line">1  0.0000000000000000  0.0000000000000000  0.0000000000000000</span><br><span class="line">1  0.3333333333333333  0.0000000000000000  0.0000000000000000</span><br><span class="line">..................</span><br></pre></td></tr></table></figure>
+<p>注意晶格常数单位的转换 $1 Bohr&#x3D; 0.529177208 Angstrom$</p>
+<p>在终端运行：</p>
+<p>bash<br><code>alm alm.in &gt; alm.log</code><br>得到<strong>Nb.xml</strong></p>
+<ol start="3">
+<li>Anharmonic Phonon</li>
+</ol>
+<p><strong>anphono.in</strong>输入文件如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&amp;general</span><br><span class="line"> PREFIX =scph</span><br><span class="line"> MODE = SCPH</span><br><span class="line"> FCSXML =Nb.xml #forceconstant file</span><br><span class="line"></span><br><span class="line"> NKD = 1; KD = Nb</span><br><span class="line"> MASS = 92.90638</span><br><span class="line"></span><br><span class="line"> #NONANALYTIC = 0; BORNINFO = PbTe.born</span><br><span class="line"></span><br><span class="line"> TMIN = 0; TMAX = 300; DT = 100   #Temperature and step</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;scph</span><br><span class="line"> KMESH_SCPH        = 6 6 6</span><br><span class="line"> KMESH_INTERPOLATE = 6 6 6</span><br><span class="line"></span><br><span class="line"> SELF_OFFDIAG = 0</span><br><span class="line"> RESTART_SCPH = 0</span><br><span class="line"></span><br><span class="line"> MIXALPHA = 0.1</span><br><span class="line"> MAXITER = 500</span><br><span class="line"> TOL_SCPH = 1.0e-10</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;cell   ## primitive cell is best</span><br><span class="line">  6.2507550151332</span><br><span class="line">  -0.5  0.5  0.5</span><br><span class="line">   0.5 -0.5  0.5</span><br><span class="line">   0.5  0.5 -0.5</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;kpoint</span><br><span class="line">  1  # KPMODE = 1: get phonon band  2: get others properties</span><br><span class="line">  G 0.0 0.0 0.0 H 0.5 -0.5 0.5 201</span><br><span class="line">  H 0.5 -0.5 0.5 P 0.25 0.25 0.25 201</span><br><span class="line">  P 0.25 0.25 0.25 G 0.0 0.0 0.0 201</span><br><span class="line">  G 0.0 0.0 0.0  N 0.0 0.0 0.5 201</span><br><span class="line">/</span><br></pre></td></tr></table></figure>
+<p>在终端运行：</p>
+<p><code>anphon anphono.in &gt; anphono.log</code><br>得到<strong>scph.scph_bands</strong>，里面有不同温度下的声子谱</p>
+<h1 id="Alamode-to-ShengBTE"><a href="#Alamode-to-ShengBTE" class="headerlink" title="Alamode_to_ShengBTE"></a>Alamode_to_ShengBTE</h1><h2 id="Alamode计算热导率步骤"><a href="#Alamode计算热导率步骤" class="headerlink" title="Alamode计算热导率步骤"></a>Alamode计算热导率步骤</h2><ol>
+<li>所有的计算都是基于密度泛函软件 VASP 来进行的。</li>
+<li>首先利用第一性原理的密度泛函对晶体结构进行优化，弛豫出稳定的晶格结构，然后利用密度泛函微扰理论计算出波恩有效电荷和静态介电张量，以便用于后续求解动力学矩阵的非解析部分。 </li>
+<li>随后为了获得更加精准的二阶力常数，通过差分位移的方法生成微扰结构，后利用静态密度泛函理论计算出力和位移信息，再利用最小二乘法得到所需要的二阶力常数。 </li>
+<li>对于高阶力常数，本文利用分子动力学模拟得到 80 个准随机结构，对每个准随机结构的原子施加随机方向的微小位移，以便得到更加随机的结构，最后利用最小绝对收缩和选择算子的方法得到高阶力常数。 </li>
+<li>结合上述已经得到的介电张量、波恩有效电荷、二阶力常数和三阶力常数作为输入，最后通过ShengBTE声子玻尔兹曼输运方程求得简谐近似下晶格热导率、声子群速度、 声子散射率等热输运系数。 </li>
+<li>结合介电张量、波恩有效电荷、二阶力常数和四阶力常数作为输入进行自洽声子理论的计算，这将得到与温度相关的非谐动力学矩阵，对其进行傅里叶变换得到与温度相关的有效二阶力常数，用有效二阶力常数代替上述的二阶力常数，在此基础上求解声子玻尔兹曼输运方程求得自洽声子理论下晶格热导率、声子群速度、声子散射率等热输运系数。</li>
+<li>在简谐近似下存在虚频，与实验观察到的稳定性不一致。因此，传统的基于简谐原子间力常数的玻尔兹曼输运方程解的结果不再有效，并且非谐效应在足够大的位移振幅内变得显著。在 ALAMODE 软件包中，通过有限位移法在 2×2×2 超胞中获得简谐原子间力常数 (IFCs) ，位移大小设置为 0.01Å。<br>随后，通过压缩感知晶格动力学方法训练三阶和四阶力常数。具体来说，本文首先模拟了在 300 K、时间步长为 2fs 的 4000 步的从头算分子动力学，得到了 80 个快照。为了得到准随机结构， 本文将到得到快照中的原子向随机方向移动 0.1 Å。随后，本文将获得的准随机结构在 4×4×4 的 k 点网格中进行了静态 DFT 计算，以计算 Hellmann–Feynman 力。最终，利用得到的 80 个准随机结构的位移和力组成的数据集通过最小绝对收缩和选择算子 (least absolute shrinkage and selection operator，简称 LASSO)方法训练出非谐力常数。<br>在计算中本文考虑了超胞内的所有原子间最近邻相互作用来计算简谐和三阶力常数，四阶力常数只考虑了第五最近邻内的相互作用，由于五阶和六阶力常数 对结果的影响很小，因此只考虑了次近邻相互作用。<br>本文根据 ALAMODE 软件包中采用的 SCP 理论，利用获得的简谐和非谐力常数来计算非谐声子频率。<br>声子玻尔兹曼输运方程的解是通过 ShengBTE 的修订版 FourPhonon 软件包来实现的，并建立了具有高斯涂抹 (scale broad 参数为 0.05) 的 18×18×18 的 q 点网格来模拟相关积分和声子波矢量。此外，在计算中得到了大约 2.3×105 个三声子过程和 1.2×109 个四声子过程。因此，对于三声子散射，本文采用迭代方案来求解玻尔兹曼输运方程，而通过单模弛豫时间近似(SMRTA) 来处理四声子散射过程，这是因为计算成本巨大。</li>
+</ol>
+<h2 id="步骤分析"><a href="#步骤分析" class="headerlink" title="步骤分析"></a>步骤分析</h2><ul>
+<li>上面第3步，利用alm来算大概分为三步，mode设为suggest产生随机位移，vasp求力和能量，mode设为opt拟合二阶力常数即可。<strong>alm模块</strong>。</li>
+<li>上面第4步，利用AIMD产生随机位移，vasp求力和能量，压缩感知晶格动力学方法训练三阶和四阶力常数mode设为cv，随后mode设为opt拟合高阶力常数，<strong>alm模块</strong>。最后mode设为SCPH获得变温声子谱和有效二阶力常数,<strong>anphon模块</strong>。</li>
+<li>上面第5步，为了产生ShengBTE的力常数输入文件，在拟合高阶力常数时，alm 的输入文件&amp;general 部分加入 FC3_SHENGBTE&#x3D;1、 FC4_SHENGBTE&#x3D;1即可。如果简谐声子谱有虚频，上面的有效二阶力常数也需要，即第7步所述。</li>
+<li>上面第6步见ShengBTE教程3.2节。</li>
+<li>Alamode可以得到的结果包括格林艾森常数、声子群速度、三声子相空间、热导率原子贡献率和元素、变温声子谱和态密度、MSD、可视化振动模式、QHA等,<strong>anphon模块</strong>。</li>
+</ul>
+<h2 id="Alamode-连接-shengBTE"><a href="#Alamode-连接-shengBTE" class="headerlink" title="Alamode 连接 shengBTE"></a>Alamode 连接 shengBTE</h2><p>首先，github上安装最新版本的develop branches 或 feature&#x2F;shengbte_4ph branches</p>
+<p>[<strong>3rd 4th IFCs</strong>]  </p>
+<p>拟合力常数时，alm 的输入文件&amp;general 部分加入 FC3_SHENGBTE&#x3D;1、 FC4_SHENGBTE&#x3D;1即可。</p>
+<hr>
+<p>&amp;general</p>
+<p> PREFIX &#x3D; BN-1000</p>
+<p> MODE &#x3D; opt</p>
+<p> NAT &#x3D; 128</p>
+<p> NKD &#x3D; 2; KD &#x3D; B N</p>
+<p> TOLERANCE &#x3D; 1.0e-3</p>
+<p> FC3_SHENGBTE&#x3D;1</p>
+<p> FC4_SHENGBTE&#x3D;1</p>
+<p>&#x2F;</p>
+<hr>
+<p>Note：输出的文件名为：FORCE_CONSTANT_3RD、FORCE_CONSTANT_4TH，和ShengBTE的文件名差一个S，FORCE_CONSTANTS_3RD、FORCE_CONSTANTS_4TH</p>
+<p>[<strong>2nd IFCs</strong>]  </p>
+<p>首先通过QE的DFPT计算一个不含SCP的二阶力常数，BN.ifc2。</p>
+<p>做SCPH计算，会生成计算温度点的二阶力常数SCP等效修正部分，例如BN.scph_dfc2（仅考虑四声子散射对重整化的影响），若进一步考虑三声子散射的重整化作用，文件名为BN.scph+bubble(0)_dfc2。</p>
+<p>alamode&#x2F;tools&#x2F;scph_to_qefc.py    可以将SCP的修正部分与QE计算的二阶力常数相加，得到指定温度重整化后的二阶力常数。</p>
+<p>Usage:</p>
+<blockquote>
+<p>python scph_to_qefc.py  original_QEfc2 scph_fc2_correction temperature &gt; scp_fc2</p>
+<p>python scph_to_qefc.py BN.ifc2    BN.scph_dfc2    1000 &gt; espresso.ifc2</p>
+</blockquote>
+<h2 id="Authors-and-references"><a href="#Authors-and-references" class="headerlink" title="Authors and references"></a>Authors and references</h2><p>Weizhe Yuan <u><a href="mailto:&#x79;&#117;&#97;&#110;&#x77;&#x7a;&#x40;&#x73;&#x74;&#x75;&#x2e;&#x68;&#x69;&#x74;&#x2e;&#101;&#x64;&#110;&#x2e;&#x63;&#x6e;">&#x79;&#117;&#97;&#110;&#x77;&#x7a;&#x40;&#x73;&#x74;&#x75;&#x2e;&#x68;&#x69;&#x74;&#x2e;&#101;&#x64;&#110;&#x2e;&#x63;&#x6e;</a></u></p>
+<ul>
+<li>W. Yuan et al., <a target="_blank" rel="noopener" href="https://www.researchgate.net/journal/Physical-Review-B-1095-3795?_tp=eyJjb250ZXh0Ijp7ImZpcnN0UGFnZSI6ImhvbWUiLCJwYWdlIjoicHVibGljYXRpb24iLCJwcmV2aW91c1BhZ2UiOiJwcm9maWxlIiwicG9zaXRpb24iOiJwYWdlSGVhZGVyIn19">Physical Review B</a> 110, 165412 (2024).</li>
+</ul>
 
     </div>
 

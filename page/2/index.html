@@ -204,7 +204,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-09-21 18:00:31" itemprop="dateModified" datetime="2024-09-21T18:00:31+08:00">2024-09-21</time>
+      <time title="修改时间：2024-10-17 21:47:05" itemprop="dateModified" datetime="2024-10-17T21:47:05+08:00">2024-10-17</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -354,11 +354,12 @@
 <li><p>从band.yaml生成vesta读取：<a target="_blank" rel="noopener" href="https://github.com/AdityaRoy-1996/Phonopy_VESTA">https://github.com/AdityaRoy-1996/Phonopy_VESTA</a></p>
 </li>
 </ol>
-<p>注意不要输出声子群速度。</p>
+<p>注意不要输出声子群速度，写出声子本征矢量。需要POSCAR.vesta格式。</p>
 <p>从OUTCAR生成vesta读取：<a target="_blank" rel="noopener" href="https://github.com/Stanford-MCTG/VASP-plot-modes">https://github.com/Stanford-MCTG/VASP-plot-modes</a></p>
 <ol start="6">
 <li>其他参考：<a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv11848434/">https://www.bilibili.com/read/cv11848434/</a></li>
 </ol>
+<h1 id="声子谱反折叠"><a href="#声子谱反折叠" class="headerlink" title="声子谱反折叠"></a>声子谱反折叠</h1><p><a target="_blank" rel="noopener" href="https://github.com/yuzie007/upho">https://github.com/yuzie007/upho</a></p>
 <h1 id="Phonopy其他功能"><a href="#Phonopy其他功能" class="headerlink" title="Phonopy其他功能"></a>Phonopy其他功能</h1><ul>
 <li>phonopy –symmetry -c POSCAR-unit</li>
 </ul>
@@ -1158,7 +1159,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-05 10:10:11" itemprop="dateModified" datetime="2024-06-05T10:10:11+08:00">2024-06-05</time>
+      <time title="修改时间：2024-09-30 19:15:02" itemprop="dateModified" datetime="2024-09-30T19:15:02+08:00">2024-09-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1234,6 +1235,7 @@
 <p>vaspkit命令行</p>
 <p><code>for i in *; do mkdir $i &amp;&amp; cp INCAR KPOINTS POSCAR POTCAR sub.sh $i &amp;&amp; sed -i &quot;3s/0.05/$i/g&quot; $i/INCAR ; done</code></p>
 <p>批量修改INCAR</p>
+<p><code>sed -i &#39;5s/\&lt;0\&gt;/0.5/&#39; filename  </code><br>请将 filename 替换为您要修改的文件名。<br>5s&#x2F;&lt;0&gt;&#x2F;0.5&#x2F;：<br>5：指定要修改的行号（第 5 行）。<br>s：表示替换操作。<br>&lt;0&gt;：匹配完整的数字 0，确保只替换单独的 0。<br>0.5：要替换成的新值。</p>
 
       
     </div>

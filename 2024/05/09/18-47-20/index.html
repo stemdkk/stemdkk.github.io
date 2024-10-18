@@ -20,15 +20,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.16.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="vasp磁性参数设置ISPIN和MAGMOM参数，详见vasp官网。关闭对称性：ISYM&#x3D;0.一般有的采用先做非磁结构优化，再打开自旋和磁性设置做磁基态计算。确定磁性体系可以直接做磁性计算。磁性计算一般属于过渡金属，要进行DFT+U计算。对于考虑LDAU的情况一般推荐增加参数 LMAXMIX。 INCAR中的参数设置：LDAU &#x3D; .TRUE. 打开LDAULDAUTYPE &amp;">
+    <meta name="description" content="vasp磁性参数设置ISPIN和MAGMOM参数，详见vasp官网。关闭对称性：ISYM&#x3D;0.一般有的采用先做非磁结构优化，再打开自旋和磁性设置做磁基态计算。确定磁性体系可以直接做磁性计算。磁性计算一般属于过渡金属，要进行DFT+U计算。对于考虑LDAU的情况一般推荐增加参数 LMAXMIX。 INCAR中的参数设置： 1234567LORBIT &#x3D; 11LDAU &#x3D; .TRUE. 打开">
 <meta property="og:type" content="article">
 <meta property="og:title" content="7.1 磁性计算1">
 <meta property="og:url" content="http://example.com/2024/05/09/18-47-20/index.html">
 <meta property="og:site_name" content="Lightchaser">
-<meta property="og:description" content="vasp磁性参数设置ISPIN和MAGMOM参数，详见vasp官网。关闭对称性：ISYM&#x3D;0.一般有的采用先做非磁结构优化，再打开自旋和磁性设置做磁基态计算。确定磁性体系可以直接做磁性计算。磁性计算一般属于过渡金属，要进行DFT+U计算。对于考虑LDAU的情况一般推荐增加参数 LMAXMIX。 INCAR中的参数设置：LDAU &#x3D; .TRUE. 打开LDAULDAUTYPE &amp;">
+<meta property="og:description" content="vasp磁性参数设置ISPIN和MAGMOM参数，详见vasp官网。关闭对称性：ISYM&#x3D;0.一般有的采用先做非磁结构优化，再打开自旋和磁性设置做磁基态计算。确定磁性体系可以直接做磁性计算。磁性计算一般属于过渡金属，要进行DFT+U计算。对于考虑LDAU的情况一般推荐增加参数 LMAXMIX。 INCAR中的参数设置： 1234567LORBIT &#x3D; 11LDAU &#x3D; .TRUE. 打开">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-09T10:47:20.000Z">
-<meta property="article:modified_time" content="2024-07-30T12:46:53.017Z">
+<meta property="article:modified_time" content="2024-10-11T01:44:23.901Z">
 <meta property="article:author" content="Keke Liu">
 <meta property="article:tag" content="vasp">
 <meta name="twitter:card" content="summary">
@@ -209,7 +209,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-07-30 20:46:53" itemprop="dateModified" datetime="2024-07-30T20:46:53+08:00">2024-07-30</time>
+      <time title="修改时间：2024-10-11 09:44:23" itemprop="dateModified" datetime="2024-10-11T09:44:23+08:00">2024-10-11</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -231,9 +231,13 @@
     
     
     <div class="post-body" itemprop="articleBody"><h1 id="vasp磁性参数"><a href="#vasp磁性参数" class="headerlink" title="vasp磁性参数"></a>vasp磁性参数</h1><p>设置ISPIN和MAGMOM参数，详见vasp官网。关闭对称性：ISYM&#x3D;0.一般有的采用先做非磁结构优化，再打开自旋和磁性设置做磁基态计算。确定磁性体系可以直接做磁性计算。磁性计算一般属于过渡金属，要进行DFT+U计算。对于考虑LDAU的情况一般推荐增加参数 LMAXMIX。</p>
-<p>INCAR中的参数设置：<br>LDAU &#x3D; .TRUE. 打开LDAU<br>LDAUTYPE &#x3D;2 LDAU类型LDAUTYPE&#x3D;2： 只考虑U-J的值；LDAUTYPE&#x3D;1： 同时考虑U和J，J基本为常数1 eV<br>LDAUL &#x3D; 2 -1 库伦排斥的轨道<br>LDAUU &#x3D; 2.8 0 库伦排斥的大小<br>LDAUJ &#x3D; 0 0 stoner 交换参数大小<br>LMAXMIX &#x3D; 4 mix轨道</p>
-<p>如果进行非线性计算，LNONCOLLINEAR &#x3D; .TRUE. MAGMOM &#x3D; x y z . . . … 可以读前一步的CHGCAR，进行非线性计算，也可以直接进行非线性计算。为了避免以上报错，增<br>加mix参数：<br>LMAXMIX &#x3D; 4<br>AMIX &#x3D; 0.2<br>BMIX &#x3D; 0.00001<br>AMIX_MAG &#x3D; 0.8<br>BMIX_MAG &#x3D; 0.00001<br>提交任务要使用vasp_ncl版本的程序</p>
-<p>自旋轨道耦合<br>默认 SAXIS &#x3D; 0 0 1<br>加入磁矩参数<br>MAGMOM &#x3D; x y z … … 一般接口wannier90还需要<br>ISYM&#x3D;-1<br>NPAR &#x3D;1 或者将这个开关删除<br>##</p>
+<p>INCAR中的参数设置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">LORBIT = 11</span><br><span class="line">LDAU = .TRUE. 打开LDAU</span><br><span class="line">LDAUTYPE =2 LDAU类型LDAUTYPE=2： 只考虑U-J的值；LDAUTYPE=1： 同时考虑U和J，J基本为常数1 eV</span><br><span class="line">LDAUL = 2 -1 库伦排斥的轨道</span><br><span class="line">LDAUU = 2.8 0 库伦排斥的大小</span><br><span class="line">LDAUJ = 0 0 stoner 交换参数大小</span><br><span class="line">LMAXMIX = 4 mix轨道</span><br></pre></td></tr></table></figure>
+<p>如果进行非线性计算，LNONCOLLINEAR &#x3D; .TRUE. MAGMOM &#x3D; x y z . . . … 可以读前一步的CHGCAR，进行非线性自洽计算（不用结构优化），也可以直接进行非线性计算。为了避免以上报错，增<br>加mix参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">LMAXMIX = 4</span><br><span class="line">AMIX = 0.2</span><br><span class="line">BMIX = 0.00001</span><br><span class="line">AMIX_MAG = 0.8</span><br><span class="line">BMIX_MAG = 0.00001</span><br></pre></td></tr></table></figure>
+<p>提交任务要使用vasp_ncl版本的程序</p>
+<p>自旋轨道耦合<br>默认 SAXIS &#x3D; 0 0 1<br>加入磁矩参数<br>MAGMOM &#x3D; x y z … … </p>
+<p>一般接口wannier90还需要<br>ISYM&#x3D;-1<br>NPAR &#x3D;1 或者将这个开关删除<br>##</p>
 <p>铁磁半导体相对好收敛，遇到不收敛问题，可尝试降低 AMIX，增加 BMIX<br>尝试更换不同的ISMEAR，比如加电场时，会遇到矩阵不厄密。<br>call to ZHEGV failed 问题可能是</p>
 <ol>
 <li>结构不合理</li>
@@ -241,7 +245,8 @@
 <li>对角化算法不稳定 ： ALGO &#x3D; Normal&#x2F;Fast</li>
 <li>尝试关掉对称性</li>
 </ol>
-<h1 id="磁基态"><a href="#磁基态" class="headerlink" title="磁基态"></a>磁基态</h1><p>得出体系的具体磁基态：比较三个计算无磁，铁磁，反铁磁的能量，能量更低的为体系的磁基态。构建不同磁基态有可能需要扩胞。<br>得出体系原子的具体磁矩：用vi编辑器打开OUTCAR或其他方式打开，从最后往前翻动，第一个magnetization (x)开头的表格就是原子的磁矩大小。</p>
+<h1 id="磁基态"><a href="#磁基态" class="headerlink" title="磁基态"></a>磁基态</h1><p>得出体系的具体磁基态：比较三个计算无磁，铁磁，反铁磁的能量，能量更低的为体系的磁基态。构建不同磁基态有可能需要扩胞。</p>
+<p>得出体系原子的具体磁矩：用vi编辑器打开OUTCAR或其他方式打开，从最后往前翻动，第一个magnetization (x)开头的表格就是原子的磁矩大小。需要打开LORBIT&#x3D;11</p>
 <p>磁矩分布画图：使用chgsplit.sh（可以向组内师兄师姐寻找）。磁性测试输出CHGCAR后，运行命令.&#x2F;chgsplit.sh CHGCAR得到cf1和cf2文件，把cf2文件重命名为CHGCAR-mag，与CONTCAR一起拖入VESTA中画图即可。</p>
 <h1 id="磁耦合"><a href="#磁耦合" class="headerlink" title="磁耦合"></a>磁耦合</h1><p>对于磁性体系的第一性原理计算结果，能量部分可以分<br>为两个部分E &#x3D; E_0 （非磁项） + E_s （磁性相关能量）<br>对比磁性耦合产生的能量，不能够用磁性态的能量跟非<br>磁的去对比<br>E_s 包含交换耦合以及单离子各向异性能（SOC）<br>一般来说，磁性相关的能量可以用下面的公式来表示</p>
 <ol>
@@ -252,6 +257,7 @@
 <ol>
 <li>构建超胞<br>这里我们以二维六角晶格为例，原胞<br>中有两个磁性原子，我们构建一个<br>8<em>8</em>1的超胞，目标是求下图中A、B<br>之间的磁耦合作用。<br>构建四个磁性态 ，分别<br>为<br>其中第一项是DFT中的非磁项，联立这四个方程组就<br>可以求解<br>注意这里的超胞大小，只要满足这个8*8的超胞里的A、<br>B与周期外的A、B格点之间没有作用或者作用可忽略就<br>可以。</li>
 </ol>
+<p>单离子各向异性，对于沿Z轴具有三重四重六重旋转对称性的体系，只需要计算一个Azz  − Axx 。</p>
 <h1 id="居里温度"><a href="#居里温度" class="headerlink" title="居里温度"></a>居里温度</h1><p>对于铁磁有序材料，当温度达到某一临界值之后，在没有外磁场的情况下，材料会变成<br>顺磁态，这个温度点便是居里温度（Curie temperature: Tc）<br>铁磁是一种铁性材料，所谓铁磁是指在外场作用下，极化随着外场的翻转会有一个滞后，<br>自旋极化随着外场的变化曲线形成磁滞回线。对于反铁磁有序材料，当温度达到某一临界值之后，在没有外磁场的情况下，材料同样会变成<br>顺磁态，这个温度点便是奈尔温度（Neel temperature: TN）</p>
 <p>对于反铁磁有序材料，一般可以使用测试磁化率来判断其相变温度，磁化率满足居里外斯定律</p>
 <ol>
@@ -327,8 +333,7 @@
 <p>待vasp_ncl计算完成后，把INPUT.in文件中的第一行修改2，然后再次运行vaspkit-621得到MAE.dat文件。我们可利用vaspkit&#x2F;examples&#x2F;MAE文件夹中的MATLAB脚本mae_3D_plot_matlab.m进行可视化。</p>
 <ul>
 <li>如果想得到xy二维平面内的MAE，INPUT.in可设置为:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1                              ! 1为预处理, 2为后处理</span><br><span class="line">0 360 12                       ! Phi, Spherical coordinate system</span><br><span class="line">90 90 1                        ! xy平面内theta始终等于90°</span><br></pre></td></tr></table></figure></li>
-<li>如果想得到xz二维平面内的MAE，INPUT.in可设置为:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1                              ! 1为预处理, 2为后处理</span><br><span class="line">0 0 1                      ! Phi, Spherical coordinate system</span><br><span class="line">0 180 12                       ! xy平面内theta始终等于90°</span><br></pre></td></tr></table></figure></li>
-<li>如果想得到xy二维平面内的MAE，INPUT.in可设置为:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1                              ! 1为预处理, 2为后处理</span><br><span class="line">90 90 1                      ! Phi, Spherical coordinate system</span><br><span class="line">0 180 12                        ! xy平面内theta始终等于90°</span><br></pre></td></tr></table></figure></li>
+<li>如果想得到xz二维平面内的MAE，INPUT.in可设置为:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1                              ! 1为预处理, 2为后处理</span><br><span class="line">0 0 1                      ! Phi, Spherical coordinate system</span><br><span class="line">0 180 12                       ! </span><br></pre></td></tr></table></figure></li>
 </ul>
 <h1 id="电子结构分析"><a href="#电子结构分析" class="headerlink" title="电子结构分析"></a>电子结构分析</h1><p>磁性一般来自于d、f轨道的半占据电子，下面以d轨道为例介绍电子结构的分析</p>
 <ol>
