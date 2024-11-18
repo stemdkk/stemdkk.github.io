@@ -123,7 +123,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -134,7 +134,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">40</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -159,6 +159,101 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/11/18-47-24/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Keke Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lightchaser">
+      <meta itemprop="description" content="一个小学生的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Lightchaser">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/10/11/18-47-24/" class="post-title-link" itemprop="url">8.1 QE基础教程</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-10-11 18:47:24" itemprop="dateCreated datePublished" datetime="2024-10-11T18:47:24+08:00">2024-10-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-10-28 08:59:44" itemprop="dateModified" datetime="2024-10-28T08:59:44+08:00">2024-10-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DFT%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">DFT学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="QE简介"><a href="#QE简介" class="headerlink" title="QE简介"></a>QE简介</h1><p>(1)EPW模块:计算载流子迁移率与超导转变温度。<br>(2)声子模块:计算电声耦合以及动力学矩阵。<br>(3)微动弹性带模块:计算化学反应过渡态与反应路径。<br>（4）开源软件，完全免费多种泛函可供选择，提供外部泛函库(libxc)赝势种类众多，根据需求生成</p>
+<h1 id="输入文件"><a href="#输入文件" class="headerlink" title="输入文件"></a>输入文件</h1><p>pw.x处理的计算包括以下7种类型，在输入文件中用calculation设置：</p>
+<p>‘scf’：自洽计算，self-consistent field，通过迭代的方式数值求解微分-积分方程（Kohn-Sham方程），迭代收敛以电荷的变化足够小为准，最终得到自洽电荷。</p>
+<p>‘nscf’：非自洽计算，scf计算常在k空间的网格上进行，网格要足够密以完成k空间上的积分，在DOS等计算需要更密的k<br>点，这时在自洽电荷基础上，计算这些更多的k<br>点，nscf计算保持自洽电荷不变。</p>
+<p>‘bands’：也是一种nscf计算，k<br>点按照三维k空间中的特殊路径选取。</p>
+<p>‘relax’：一系列scf计算，通过Hellman-Feynman力计算离子坐标驰豫（通过优化算法找到受力为零的结构），relax计算时固定cell不变。</p>
+<p>‘vc-relax’: 允许cell变化的relax，通过应力的计算改变cell。</p>
+<p>‘md’：分子动力学，将电子对离子的作用看成离子感受到的势，根据势能和离子初始速度求解离子运动的经典力学方程。</p>
+<p>‘vc-md’：允许cell改变的md。</p>
+<p>pw.x的输入说明见INPUT_PW。注意默认的单位，其中原子单位制为（以下数值见源程序q-e-qe-6.3&#x2F;Modules&#x2F;constants.f90）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1 bohr = 1 a.u. (atomic unit) = 0.52917720859 angstroms.</span><br><span class="line">1 Rydberg (Ry) = 13.60569193 eV</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -400,7 +495,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-10-11 09:44:23" itemprop="dateModified" datetime="2024-10-11T09:44:23+08:00">2024-10-11</time>
+      <time title="修改时间：2024-11-18 16:26:53" itemprop="dateModified" datetime="2024-11-18T16:26:53+08:00">2024-11-18</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -525,7 +620,18 @@
 <p>待vasp_ncl计算完成后，把INPUT.in文件中的第一行修改2，然后再次运行vaspkit-621得到MAE.dat文件。我们可利用vaspkit&#x2F;examples&#x2F;MAE文件夹中的MATLAB脚本mae_3D_plot_matlab.m进行可视化。</p>
 <ul>
 <li>如果想得到xy二维平面内的MAE，INPUT.in可设置为:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1                              ! 1为预处理, 2为后处理</span><br><span class="line">0 360 12                       ! Phi, Spherical coordinate system</span><br><span class="line">90 90 1                        ! xy平面内theta始终等于90°</span><br></pre></td></tr></table></figure></li>
-<li>如果想得到xz二维平面内的MAE，INPUT.in可设置为:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1                              ! 1为预处理, 2为后处理</span><br><span class="line">0 0 1                      ! Phi, Spherical coordinate system</span><br><span class="line">0 180 12                       ! </span><br></pre></td></tr></table></figure></li>
+<li>如果想得到xz二维平面内的MAE，INPUT.in可设置为:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1                              ! 1为预处理, 2为后处理</span><br><span class="line">0 0 1                      ! Phi, Spherical coordinate system</span><br><span class="line">0 180 12                       ! </span><br></pre></td></tr></table></figure>
+tips:</li>
+</ul>
+<p>根据提示我们需要先执行一步sta，然后读取WAVECAR和CHGCAR进行Nocollinear的计算，当读取WAVECAR进行测试的时候，计算是一定会报错的，因为俩步计算电子的自由度是不同。这时候VASP一定会提示：ERROR: while reading WACECAR,plane wave coefficidents changed</p>
+<p>那么继续根据官网的操作手册</p>
+<ul>
+<li><p>我们第一步只计算无磁性基态的CHGCAR,第二步去读取CHGCAR进行计算。<br>这里只比对了x方向和z方向的结果：发现计算的结果是一模一样的，无法区分。</p>
+</li>
+<li><p>接下来不读取之前的CHGCAR进行计算，还是依照之前的设置.这时候发现计算的结果是有区分的。方向不同。</p>
+</li>
+<li><p>还有一种计算方式是读取写入磁基态的CHGCAR，再进行自旋轨道耦合的计算。这样计算的结果是，无论选择量子化轴在哪个方向，计算的结果都是在Z轴方向，但是能量有所差距。但是根据以上俩种结果去推断Cr原子的磁晶各向异性能，发现这种计算的结果跟文献的600-800eV的结果更为接近。 所以姑且认为进行计算是合理的结果。</p>
+</li>
 </ul>
 <h1 id="电子结构分析"><a href="#电子结构分析" class="headerlink" title="电子结构分析"></a>电子结构分析</h1><p>磁性一般来自于d、f轨道的半占据电子，下面以d轨道为例介绍电子结构的分析</p>
 <ol>
@@ -1738,7 +1844,7 @@ int1 = hw[:,2]
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-10-19 08:48:13" itemprop="dateModified" datetime="2024-10-19T08:48:13+08:00">2024-10-19</time>
+      <time title="修改时间：2024-10-29 17:26:26" itemprop="dateModified" datetime="2024-10-29T17:26:26+08:00">2024-10-29</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1765,8 +1871,7 @@ int1 = hw[:,2]
 <p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1mv411M7W7/?spm_id_from=333.999.0.0&vd_source=17084cc867ff3bb86398ff1a79b443f2">https://www.bilibili.com/video/BV1mv411M7W7/?spm_id_from=333.999.0.0&amp;vd_source=17084cc867ff3bb86398ff1a79b443f2</a></p>
 <p>TDEP 是其采用技术Temperature dependent effective potential的缩写。<br>下面是开发者的网站，但是并不能下载到源代码。<a target="_blank" rel="noopener" href="http://ollehellman.github.io/page/index.html%E5%A5%BD%E6%B6%88%E6%81%AF%E6%98%AF%E7%AC%AC%E4%B8%80%E6%80%A7%E5%8E%9F%E7%90%86%E8%AE%A1%E7%AE%97%E8%BD%AF%E4%BB%B6ABINIT%E4%B8%AD%E9%9B%86%E6%88%90%E4%BA%86TDEP%E6%96%B9%E6%B3%95%EF%BC%8C%E5%AE%98%E7%BD%91user">http://ollehellman.github.io/page/index.html好消息是第一性原理计算软件ABINIT中集成了TDEP方法，官网user</a> guide&gt;a-TDEP。需要研究的可以自行研究。ABINIT官网：<a target="_blank" rel="noopener" href="https://www.abinit.org/">https://www.abinit.org/</a></p>
 <p>Dynaphopy 是采用了一种基于AIMD（第一性原理分子动力学）的杂化方法的python程序包：<a target="_blank" rel="noopener" href="http://abelcarreras.github.io/DynaPhoPy/index.html">http://abelcarreras.github.io/DynaPhoPy/index.html</a><br>文中给出了参考文献，需要的自行下载。</p>
-<h1 id="ALAMODE"><a href="#ALAMODE" class="headerlink" title="ALAMODE"></a>ALAMODE</h1><p><a target="_blank" rel="noopener" href="https://alamode.readthedocs.io/en/latest/index.html#">https://alamode.readthedocs.io/en/latest/index.html#</a></p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a target="_blank" rel="noopener" href="https://alamode.readthedocs.io/en/latest/index.html#">https://alamode.readthedocs.io/en/latest/index.html#</a></p>
+<h1 id="ALAMODE"><a href="#ALAMODE" class="headerlink" title="ALAMODE"></a>ALAMODE</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a target="_blank" rel="noopener" href="https://alamode.readthedocs.io/en/latest/index.html#">https://alamode.readthedocs.io/en/latest/index.html#</a></p>
 <h2 id="ALAMODE计算Si简谐声子谱"><a href="#ALAMODE计算Si简谐声子谱" class="headerlink" title="ALAMODE计算Si简谐声子谱"></a>ALAMODE计算Si简谐声子谱</h2><h3 id="1、利用ALM计算displacement-patterns"><a href="#1、利用ALM计算displacement-patterns" class="headerlink" title="1、利用ALM计算displacement patterns"></a>1、利用ALM计算displacement patterns</h3><p>优化后的超胞结构重命名<strong>POSCAR.orig</strong>，准备输入文件<strong>si_alm.in</strong>：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&amp;general</span><br><span class="line">  PREFIX = si222</span><br><span class="line">  MODE = suggest</span><br><span class="line">  NAT = 64; NKD = 1</span><br><span class="line">  KD = Si</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;interaction</span><br><span class="line">  NORDER = 1  # 1: harmonic, 2: cubic, ..</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;cell</span><br><span class="line">  20.406 # factor in Bohr unit</span><br><span class="line">  1.0 0.0 0.0 # a1</span><br><span class="line">  0.0 1.0 0.0 # a2</span><br><span class="line">  0.0 0.0 1.0 # a3</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;cutoff </span><br><span class="line">  Si-Si None</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;position</span><br><span class="line">  1 0.0000000000000000 0.0000000000000000 0.0000000000000000   </span><br><span class="line">  1 0.0000000000000000 0.0000000000000000 0.5000000000000000</span><br><span class="line">  1 0.0000000000000000 0.2500000000000000 0.2500000000000000</span><br><span class="line">  1 0.0000000000000000 0.2500000000000000 0.7500000000000000</span><br><span class="line">  1 0.0000000000000000 0.5000000000000000 0.0000000000000000</span><br><span class="line">  1 0.0000000000000000 0.5000000000000000 0.5000000000000000</span><br><span class="line">  1 0.0000000000000000 0.7500000000000000 0.2500000000000000</span><br></pre></td></tr></table></figure>
 <p>晶格常数替代为自己的超胞结构。</p>
@@ -1827,6 +1932,10 @@ int1 = hw[:,2]
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&amp;general</span><br><span class="line"> PREFIX =scph</span><br><span class="line"> MODE = SCPH</span><br><span class="line"> FCSXML =Nb.xml #forceconstant file</span><br><span class="line"></span><br><span class="line"> NKD = 1; KD = Nb</span><br><span class="line"> MASS = 92.90638</span><br><span class="line"></span><br><span class="line"> #NONANALYTIC = 0; BORNINFO = PbTe.born</span><br><span class="line"></span><br><span class="line"> TMIN = 0; TMAX = 300; DT = 100   #Temperature and step</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;scph</span><br><span class="line"> KMESH_SCPH        = 6 6 6</span><br><span class="line"> KMESH_INTERPOLATE = 6 6 6</span><br><span class="line"></span><br><span class="line"> SELF_OFFDIAG = 0</span><br><span class="line"> RESTART_SCPH = 0</span><br><span class="line"></span><br><span class="line"> MIXALPHA = 0.1</span><br><span class="line"> MAXITER = 500</span><br><span class="line"> TOL_SCPH = 1.0e-10</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;cell   ## primitive cell is best</span><br><span class="line">  6.2507550151332</span><br><span class="line">  -0.5  0.5  0.5</span><br><span class="line">   0.5 -0.5  0.5</span><br><span class="line">   0.5  0.5 -0.5</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;kpoint</span><br><span class="line">  1  # KPMODE = 1: get phonon band  2: get others properties</span><br><span class="line">  G 0.0 0.0 0.0 H 0.5 -0.5 0.5 201</span><br><span class="line">  H 0.5 -0.5 0.5 P 0.25 0.25 0.25 201</span><br><span class="line">  P 0.25 0.25 0.25 G 0.0 0.0 0.0 201</span><br><span class="line">  G 0.0 0.0 0.0  N 0.0 0.0 0.5 201</span><br><span class="line">/</span><br></pre></td></tr></table></figure>
 <p>在终端运行：</p>
 <p><code>anphon anphono.in &gt; anphono.log</code><br>得到<strong>scph.scph_bands</strong>，里面有不同温度下的声子谱</p>
+<ol start="4">
+<li>进入安装目录下的tools文件夹：make Makefile，编译df2c。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[scf1355@ln151%nc-l ah]$ ~/soft/alamode/tools/dfc2 </span><br><span class="line"> DFC2 -- a generator of renormalized harmonic FCs from SCPH outputs.</span><br><span class="line"> XML file containing original FC2 : crte2-442.xml</span><br><span class="line"> Output xml filename with anharmonic correction : crte2-new.xml</span><br><span class="line"> FC2 correction file from SCPH calculation : crte2-442.scph_dfc2</span><br><span class="line"> Target temperature : 300</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p> 输出crte2-new.xml.利用<a target="_blank" rel="noopener" href="https://github.com/ttadano/alamode/discussions/192">https://github.com/ttadano/alamode/discussions/192</a> 中提到的脚本转换成phonopy格式。此时的力常数文件由于对称性数量不匹配，利用phonopy读取并写出FULL_FORCE_CONSTANTS。</p>
 <h2 id="Alamode-to-ShengBTE"><a href="#Alamode-to-ShengBTE" class="headerlink" title="Alamode_to_ShengBTE"></a>Alamode_to_ShengBTE</h2><h3 id="Alamode计算热导率步骤"><a href="#Alamode计算热导率步骤" class="headerlink" title="Alamode计算热导率步骤"></a>Alamode计算热导率步骤</h3><ol>
 <li>所有的计算都是基于密度泛函软件 VASP 来进行的。</li>
 <li>首先利用第一性原理的密度泛函对晶体结构进行优化，弛豫出稳定的晶格结构，然后利用密度泛函微扰理论计算出波恩有效电荷和静态介电张量，以便用于后续求解动力学矩阵的非解析部分。 </li>
@@ -1838,7 +1947,7 @@ int1 = hw[:,2]
 </ol>
 <h3 id="步骤分析"><a href="#步骤分析" class="headerlink" title="步骤分析"></a>步骤分析</h3><ul>
 <li>上面第3步，利用alm来算大概分为三步，mode设为suggest产生随机位移，vasp求力和能量，mode设为opt拟合二阶力常数即可。<strong>alm模块</strong>。</li>
-<li>上面第4步，利用AIMD产生随机位移，vasp求力和能量，压缩感知晶格动力学方法训练三阶和四阶力常数mode设为cv，随后mode设为opt拟合高阶力常数，<strong>alm模块</strong>。最后mode设为SCPH获得变温声子谱和有效二阶力常数,<strong>anphon模块</strong>。</li>
+<li>上面第4步，利用AIMD产生随机位移，vasp求力和能量，压缩感知晶格动力学方法训练三阶和四阶力常数mode设为cv，随后mode设为opt拟合高阶力常数，<strong>alm模块</strong>。最后mode设为SCPH获得变温声子谱和有效二阶力常数,<strong>anphon模块</strong>。后续运行<strong>dfc2</strong>模块生成指定温度的有效二阶力常数，用<a target="_blank" rel="noopener" href="https://github.com/ttadano/alamode/discussions/192">https://github.com/ttadano/alamode/discussions/192</a> 中提到的脚本转换成phonopy格式。</li>
 <li>上面第5步，为了产生ShengBTE的力常数输入文件，在拟合高阶力常数时，alm 的输入文件&amp;general 部分加入 FC3_SHENGBTE&#x3D;1、 FC4_SHENGBTE&#x3D;1即可。如果简谐声子谱有虚频，上面的有效二阶力常数也需要，即第7步所述。</li>
 <li>上面第6步见ShengBTE教程3.2节。</li>
 <li>Alamode可以得到的结果包括格林艾森常数、声子群速度、三声子相空间、热导率原子贡献率和元素、变温声子谱和态密度、MSD、可视化振动模式、QHA等,<strong>anphon模块</strong>。</li>
@@ -1867,10 +1976,37 @@ int1 = hw[:,2]
 <p>python scph_to_qefc.py  original_QEfc2 scph_fc2_correction temperature &gt; scp_fc2</p>
 <p>python scph_to_qefc.py BN.ifc2    BN.scph_dfc2    1000 &gt; espresso.ifc2</p>
 </blockquote>
-<h2 id="Authors-and-references"><a href="#Authors-and-references" class="headerlink" title="Authors and references"></a>Authors and references</h2><p>Weizhe Yuan <u><a href="mailto:&#x79;&#x75;&#x61;&#110;&#119;&#x7a;&#64;&#x73;&#x74;&#117;&#46;&#104;&#x69;&#116;&#46;&#x65;&#x64;&#x6e;&#46;&#99;&#x6e;">&#x79;&#x75;&#x61;&#110;&#119;&#x7a;&#64;&#x73;&#x74;&#117;&#46;&#104;&#x69;&#116;&#46;&#x65;&#x64;&#x6e;&#46;&#99;&#x6e;</a></u></p>
+<h2 id="Authors-and-references"><a href="#Authors-and-references" class="headerlink" title="Authors and references"></a>Authors and references</h2><p>Weizhe Yuan <u><a href="mailto:&#x79;&#117;&#x61;&#x6e;&#x77;&#122;&#x40;&#115;&#116;&#117;&#x2e;&#104;&#x69;&#x74;&#x2e;&#x65;&#x64;&#x6e;&#46;&#x63;&#x6e;">&#x79;&#117;&#x61;&#x6e;&#x77;&#122;&#x40;&#115;&#116;&#117;&#x2e;&#104;&#x69;&#x74;&#x2e;&#x65;&#x64;&#x6e;&#46;&#x63;&#x6e;</a></u></p>
 <ul>
 <li>W. Yuan et al., <a target="_blank" rel="noopener" href="https://www.researchgate.net/journal/Physical-Review-B-1095-3795?_tp=eyJjb250ZXh0Ijp7ImZpcnN0UGFnZSI6ImhvbWUiLCJwYWdlIjoicHVibGljYXRpb24iLCJwcmV2aW91c1BhZ2UiOiJwcm9maWxlIiwicG9zaXRpb24iOiJwYWdlSGVhZGVyIn19">Physical Review B</a> 110, 165412 (2024).</li>
 </ul>
+<h2 id="注意的问题"><a href="#注意的问题" class="headerlink" title="注意的问题"></a>注意的问题</h2><ol>
+<li><p>The accuracy of the anharmonic force constants can be checked by increasing the size of the training dataset. If the physical properties, such as thermal conductivity and free energy, change significantly with the size of the training dataset, it indicates that the training is insufficient. If the change is minor, your force constants may be OK.</p>
+</li>
+<li><p>报错：Warning: The following force constant doesn’t exist in the original file:<br>You can neglect this warning as long as the correction term (the last column) is small.<br>This warning is raised when the absolute value of the correction is larger than 1.0e-10 and the corresponding force constant does not exist in the original FCSXML file. In your case, the correction term is only slightly above the tolerance. So, it should not cause any problems hopefully.<br>When the correction term is much larger than 1.0e-10, this warning indicates a possible error in the inputs. Likely errors are the input structure is not fully symmetrized, or the numerical digits of lattice vectors and fractional coordinates are insufficient.<br>the given KMESH_INTERPOLATE is not commensurate with the supercell size of the original FCSXML.</p>
+</li>
+<li><p>In the current implementation of alamode, only the former choice,<br>renormalized 2FCs + conventional (old) 3FCs,<br>is supported. Another possible choice may be<br>renormalized 2FCs + renormalized 3FCs,<br>but it is not supported within alamode yet.<br>When MODE &#x3D; RTA, the anphon code only reads the 2FCs and 3FCs from given XML files. By contrast, when MODE &#x3D; SCPH, the code additionally reads the 4FCs because they are necessary to compute the renormalized 2FCs based on the self-consistent phonon theory.<br>Therefore, the second combination of<br>renormalized 2FCs + high order FCs using SCPH<br>is not possible.</p>
+</li>
+<li><p>I performed the SCPH calculation. It is not converged at low temperatures (0K, 100K, 200K), while it achieved convergence at high temperatures (300~1200K).A potential solution is to use a smaller MIXALPHA and a smaller DT.</p>
+</li>
+<li><p>I would like to use second-order, third-order, and fourth-order force constants to obtain anharmonic potentials and calculate the potential energy as a function of atomic displacement. My goal is to generate a plot similar to the one in the paper “Orbitally driven giant phonon anharmonicity in SnSe” (Nature Phys. 2015).Please use <a target="_blank" rel="noopener" href="https://github.com/ttadano/alamode/blob/develop/tools/calcpes.py">https://github.com/ttadano/alamode/blob/develop/tools/calcpes.py</a>.</p>
+</li>
+<li><p>now that I have obtained the renormalized force constant file xxx.xml at a finite temperature, I now want to convert the renormalized force constant file directly to FORCE_CONSTANS</p>
+</li>
+<li><p>How to convert a second-order force constant matrix obtained by almode to FORCE_CONSTANTS in phonopy format？</p>
+<blockquote>
+<p>python convert.py alamode.xml &gt; FORCE_CONSTANTS</p>
+</blockquote>
+</li>
+</ol>
+<p>Could you give me some suggestion? How shoud I covert this with phonopy?</p>
+<blockquote>
+<p>FULL_FORCE_CONSTANTS &#x3D; .TRUE.<br>WRITE_FORCE_CONSTANTS &#x3D; .TRUE.<br>Note: the old FORCE_CONSTANTS will be overwrited</p>
+</blockquote>
+<ol start="8">
+<li>How small the fitting error should be?</li>
+</ol>
+<p>It depends on the Taylor expansion potential and displacement magnitude you choose.<br>In the standard harmonic calculation where –mag&#x3D;0.01 is used in displace.py and the all harmonic interactions are considered (cutoff &#x3D; None), the fitting error is usually less than 5% (~1–2% in most cases).<br>In the calculation of third-order force constants with –mag&#x3D;0.04, the fitting error should be small as well. Indeed, in many cases, we obtain much smaller fitting errors (&lt; 1%) than the harmonic case.<br>In the temperature-dependent effective potential method, we try to fit the harmonic potential to the displacement-force datasets sampled by ab initio molecular dynamics at finite temperature. Therefore, the fitting error tends to be much larger (&gt; 10%).</p>
 <h1 id="dynaphopy"><a href="#dynaphopy" class="headerlink" title="dynaphopy"></a>dynaphopy</h1><ol>
 <li>简谐声子谱的计算。<br>dynaphopy的非谐修正是在phonopy的力常数基础上进行的，需要先进行0k声子谱的计算。<br>结构优化的INCAR，力的收敛标准是E-3，大部分的文献也是在这个精度范围内。结构优化的结构是单胞，10个原子。<br>这是phonopy计算的声子谱，计算的结构为2<em>2</em>2的超胞，80个原子，在gmma点和X点有很强的虚频。这个虚频即使提高收敛精度和扩大超胞也是无法消除的。</li>
 <li>AIMD计算<br>dynaphopy通过读取AIMD的计算结构进行拟合（说法不准确），需要预先准备AIMD的outcar或xdatcar。<br>AIMD的计算设置，基本参考dynaphopy的example中的设置，详细的参数涵义，都有教程介绍。<br>这里只是采用了3000步的计算，步长是2fs，能量的收敛精度是E-6，不算太高。同样是采用80个原子的超胞。大部分做非谐计算的文献，所采用的都是在80-160原子数范围内的超胞，步长多是1-2fs，总步数大概是3000-6000，总的时长是5ps-10ps。从下面的非谐声子谱结果来看，这个设置对于非谐计算是合适的？</li>
@@ -2040,208 +2176,6 @@ int1 = hw[:,2]
 </li>
 <li><p>严格来说，将体积效应添加到电子-声子相互作用的正确方法是<strong>首先为每个温度更改体积，然后为该温度计算电子-声子相互作用</strong>。在这个教程和参考文献[5]中，我们是反过来做的。因此，电子-声子相互作用只需要计算一次。在参考文献[5]中，我们观察到这两种方法给出了非常相似的结果。</p>
 </li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/18-49-24/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Keke Liu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lightchaser">
-      <meta itemprop="description" content="一个小学生的博客">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Lightchaser">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/05/09/18-49-24/" class="post-title-link" itemprop="url">3.2 热输运2</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-05-09 18:49:24" itemprop="dateCreated datePublished" datetime="2023-05-09T18:49:24+08:00">2023-05-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-10-18 10:46:56" itemprop="dateModified" datetime="2024-10-18T10:46:56+08:00">2024-10-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/DFT%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">DFT学习</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="三阶力常数矩阵"><a href="#三阶力常数矩阵" class="headerlink" title="三阶力常数矩阵"></a>三阶力常数矩阵</h1><p>需要用到thirdorder程序。</p>
-<h3 id="使用方法："><a href="#使用方法：" class="headerlink" title="使用方法："></a>使用方法：</h3><ol>
-<li>准备好POSCAR,INCAR,KPOINTS,POTCAR和提交任务脚本（以sub.sh为例）；<br>其中POSCAR与二阶力常数矩阵求解时的POSCAR-unit一致，KPOINTS也与二阶一致。INCAR文件与二阶力常数求解时的有限位移法一致，其他不变。完成后运行thirdorder实现扩胞。</li>
-</ol>
-<p><code>~/安装目录/thirdorder_vasp.py sow 2 2 2 -12</code><br>2 2 2是扩胞倍数，要和二阶力常数矩阵保持一致或者略小。-12指的是考虑多少个近邻原子，需要测试，但是如果计算资源紧缺的时候取个-10就行了，但有风险；正值是指截断半径。之后生成成功以后会出现一堆3RD开头的文件，那些都是POSCAR，一般有几百上千个。</p>
-<ol start="2">
-<li>参考phonopy计算声子谱的有限位移法，需要把这些POSCAR单独计算。也就是有多少POSCAR，建立多少文件夹，分别进行多少次计算。</li>
-<li><code>find job* -name vasprun.xml|sort -n|/ thirdorder_vasp.py reap a b c -d</code>  a b c和-d与前面一致。该命令可获得FORCE_CONSTANT_3RD也即是三阶力常数矩阵。</li>
-</ol>
-<h3 id="脚本方法"><a href="#脚本方法" class="headerlink" title="脚本方法"></a>脚本方法</h3><ul>
-<li><p>测试-d参数（秦光照老师） </p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#!<span class="regexp">/bin/</span>bash</span><br><span class="line">#</span><br><span class="line"># <span class="title class_">Construct</span> the 3nd files based on the finished calculations</span><br><span class="line">#</span><br><span class="line"># <span class="title class_">Written</span> <span class="variable constant_">BY</span> <span class="variable constant_">QIN</span>, <span class="title class_">GuangZhao</span> &lt;qin.<span class="property">phys</span>@gmail.<span class="property">com</span>&gt;</span><br><span class="line"># <span class="number">2016</span>-<span class="number">11</span>-<span class="number">22</span></span><br><span class="line"></span><br><span class="line"><span class="variable constant_">DIR</span>=<span class="string">&quot;/vol-th/home/xhaiyan/WangN/Au6S2/third241-14&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ ! -d <span class="string">&quot;$DIR&quot;</span> ];then</span><br><span class="line">    echo <span class="title class_">Please</span> specify the source directory.</span><br><span class="line">    exit</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> <span class="variable constant_">NAME</span> <span class="keyword">in</span> 3RD.<span class="property">POSCAR</span>.*</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="variable constant_">NUM</span>=<span class="string">&quot;$&#123;NAME#3RD.POSCAR.&#125;&quot;</span>   # the number <span class="keyword">of</span> the 3nd <span class="variable constant_">POSCAR</span> file</span><br><span class="line">    <span class="variable constant_">CODE</span>=$(head -<span class="number">1</span> $NAME)       # the code <span class="keyword">of</span> the <span class="variable constant_">POSCAR</span> file</span><br><span class="line"># find the source <span class="variable constant_">POSCAR</span> file <span class="keyword">in</span> the source directory</span><br><span class="line">    <span class="variable constant_">INFO</span>=$(grep $CODE $DIR/3RD.<span class="property">POSCAR</span>.* | head -<span class="number">1</span>)</span><br><span class="line">    [ x<span class="string">&quot;$INFO&quot;</span> == x ] &amp;&amp; echo <span class="string">&quot;NOT FOUND for job-$NUM&quot;</span> &amp;&amp; <span class="keyword">continue</span></span><br><span class="line">    <span class="variable constant_">SOURCE_NUM</span>=<span class="string">&quot;$&#123;INFO%:*&#125;&quot;</span>     # the number <span class="keyword">of</span> the source <span class="variable constant_">POSCAR</span> file</span><br><span class="line">    <span class="variable constant_">SOURCE_NUM</span>=<span class="string">&quot;$&#123;SOURCE_NUM##*.&#125;&quot;</span></span><br><span class="line"></span><br><span class="line">    echo <span class="string">&quot;$DIR/job-$SOURCE_NUM/ --&gt; job-$NUM/&quot;</span></span><br><span class="line">#    diff 3RD.<span class="property">POSCAR</span>.<span class="property">$NUM</span> $DIR/3RD.<span class="property">POSCAR</span>.<span class="property">$SOURCE_NUM</span></span><br><span class="line">    rsync -a $DIR/job-$SOURCE_NUM/vasprun.<span class="property">xml</span> ./job-$NUM/</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>针对大量POSCAR批量建立文件夹</p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#<span class="variable language_">module</span> load spglib/master</span><br><span class="line">#thirdorder_vasp.<span class="property">py</span> sow <span class="number">3</span> <span class="number">3</span> <span class="number">1</span> -<span class="number">10</span></span><br><span class="line">#生成<span class="number">2</span>*<span class="number">2</span>*<span class="number">2</span>的超胞 <span class="number">0.6</span>表示截断半径为<span class="number">6</span>埃。</span><br><span class="line">#sow a b c m  abc表示生成的超胞大小，m为正数的时候表示截断半径（单位：nm）（例如<span class="number">0.6</span>，表示截断半径为<span class="number">6.0</span>埃）；为负数时表示第几近邻截断（此时应取负整数，例如-<span class="number">3</span>表示第三近邻）</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> 3RD.<span class="property">POSCAR</span>.*</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">s=$(echo $i| cut -d <span class="string">&quot;.&quot;</span> -f <span class="number">3</span>)</span><br><span class="line">d=job-$s</span><br><span class="line">mkdir $d</span><br><span class="line">cp $i $d/<span class="variable constant_">POSCAR</span></span><br><span class="line">cp ./<span class="variable constant_">INCAR</span> ./sub.<span class="property">sh</span> ./<span class="variable constant_">KPOINTS</span> ./<span class="variable constant_">POTCAR</span> $d</span><br><span class="line">pushd $d</span><br><span class="line">popd</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>批量提交任务</p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#!<span class="regexp">/bin/</span>sh</span><br><span class="line">root_path=<span class="string">&#x27;pwd&#x27;</span></span><br><span class="line"></span><br><span class="line">#在每个job文件夹里进行静态计算。</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;<span class="number">001</span>.<span class="number">.1050</span>&#125; #按顺序从job-<span class="number">001</span>到<span class="number">1050</span>做静态vasp计算,根据生成的文件夹设定</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">cd job-$i</span><br><span class="line">echo <span class="string">&quot;job-$i&quot;</span>, time </span><br><span class="line">sbatch sub.<span class="property">sh</span></span><br><span class="line">wait</span><br><span class="line">cd ..</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">#上述静态计算完成后提取三阶力常数文件</span><br><span class="line">#cd $&#123;root_path&#125;</span><br><span class="line"></span><br><span class="line">#find job* -name vasprun.<span class="property">xml</span>| sort -n| python thirdorder_vasp.<span class="property">py</span> reap <span class="number">2</span>  <span class="number">2</span>  <span class="number">1</span> -<span class="number">12</span> #最后四个数字跟你扩胞时一致</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>脚本赋予权限：chmod +x .sh;运行脚本：.&#x2F;sh</p>
-<h1 id="ShengBTE获得热输运性质"><a href="#ShengBTE获得热输运性质" class="headerlink" title="ShengBTE获得热输运性质"></a>ShengBTE获得热输运性质</h1><h3 id="运行ShengBTE计算热输运性质"><a href="#运行ShengBTE计算热输运性质" class="headerlink" title="运行ShengBTE计算热输运性质"></a>运行ShengBTE计算热输运性质</h3><ul>
-<li>获得二阶力常数计算：<br>计算流程与声子谱计算流程相同，用DFPT和有限位移法都可以。将得到的FORCE_CONSTANTS重命名为FORCE_CONSTANTS_2ND。</li>
-<li>获得三阶力常数计算：见上，输出为FORCE_CONSTANTS_3RD文件。</li>
-<li>准备CONTROL文件：格式如下:<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#<span class="variable constant_">CONTROL</span> <span class="keyword">for</span> <span class="title class_">ShengBTE</span></span><br><span class="line">&amp;allocations</span><br><span class="line">        nelements=<span class="number">2</span>              #元素种类</span><br><span class="line">        natoms=<span class="number">6</span>                 #原子个数</span><br><span class="line">        <span class="title function_">ngrid</span>(:)=<span class="number">20</span> <span class="number">20</span> <span class="number">5</span>         #计算网格密度</span><br><span class="line">&amp;end</span><br><span class="line">&amp;crystal</span><br><span class="line">        lfactor=<span class="number">0.1</span>              #软件长度单位换算</span><br><span class="line">        <span class="title function_">lattvec</span>(:,<span class="number">1</span>)=<span class="number">3.1613337552503711</span>    <span class="number">0.0000000000000025</span>    <span class="number">0.0000000000000000</span> #原胞晶胞参数</span><br><span class="line">        <span class="title function_">lattvec</span>(:,<span class="number">2</span>)=-<span class="number">1.5806668776251651</span>    <span class="number">2.7377953418477841</span>    <span class="number">0.0000000000000000</span></span><br><span class="line">        <span class="title function_">lattvec</span>(:,<span class="number">3</span>)=-<span class="number">0.0000000000000000</span>    <span class="number">0.0000000000000000</span>   <span class="number">12.3318234981499426</span></span><br><span class="line">        elements= <span class="string">&quot;Mo&quot;</span> <span class="string">&quot;S&quot;</span>  #原子顺序</span><br><span class="line">        types= <span class="number">1</span> <span class="number">1</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span>  #原子个数，<span class="number">2</span>代表第二种元素，<span class="number">4</span>个<span class="number">2</span>代表有<span class="number">4</span>个第二类原子</span><br><span class="line">       <span class="title function_">positions</span>(:,<span class="number">1</span>)= <span class="number">0.3333333449999998</span>  <span class="number">0.6666666890000030</span>  <span class="number">0.2500000000000000</span> #原子坐标，按顺序</span><br><span class="line">       <span class="title function_">positions</span>(:,<span class="number">2</span>)=<span class="number">0.6666666240000012</span>  <span class="number">0.3333333229999980</span>  <span class="number">0.7500000189999980</span></span><br><span class="line">       <span class="title function_">positions</span>(:,<span class="number">3</span>)= <span class="number">0.3333333449999998</span>  <span class="number">0.6666666890000030</span>  <span class="number">0.6230719397502427</span></span><br><span class="line">       <span class="title function_">positions</span>(:,<span class="number">4</span>)=<span class="number">0.6666666240000012</span>  <span class="number">0.3333333229999980</span>  <span class="number">0.3769280602499874</span></span><br><span class="line">       <span class="title function_">positions</span>(:,<span class="number">5</span>)=<span class="number">0.6666666240000012</span>  <span class="number">0.3333333229999980</span>  <span class="number">0.1230720067501656</span></span><br><span class="line">       <span class="title function_">positions</span>(:,<span class="number">6</span>)=<span class="number">0.3333333449999998</span>  <span class="number">0.6666666890000030</span>  <span class="number">0.8769280222497613</span></span><br><span class="line">       <span class="title function_">scell</span>(:)=<span class="number">4</span> <span class="number">4</span> <span class="number">1</span> #扩胞倍数，和前面一致</span><br><span class="line">&amp;end</span><br><span class="line">&amp;parameters</span><br><span class="line">       T=<span class="number">300</span>  #温度</span><br><span class="line">&amp;end</span><br><span class="line">&amp;flags</span><br><span class="line">      nonanalytic=.<span class="property">TRUE</span>.</span><br><span class="line">      nanowires=.<span class="property">FALSE</span>.</span><br><span class="line">      convergence=.<span class="property">TRUE</span>.  #迭代法，默认最大<span class="number">1000</span>步</span><br><span class="line">&amp;end</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>详细参数可参考手册。</p>
-<ul>
-<li>提交任务</li>
-<li>获得不同温度的数据，只需要依次修改CONTROL文件的T tag。或者通过脚本：</li>
-</ul>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;<span class="number">350.</span><span class="number">.1350</span>.<span class="number">.100</span>&#125; # 对i赋值，区间为<span class="number">300</span>到<span class="number">900</span>，每搁<span class="number">10</span>取一个数，即（<span class="number">300</span> <span class="number">310</span> <span class="number">320</span> <span class="number">330</span> ...<span class="number">.890</span> <span class="number">900</span>），可以根据自身情况自行设置</span><br><span class="line"><span class="keyword">do</span>  #开始循环</span><br><span class="line">mkdir $i #建立单一任务文件夹</span><br><span class="line">cp sub.<span class="property">sh</span> <span class="variable constant_">CONTROL</span> <span class="variable constant_">FORCE_CONSTANTS_2ND</span> <span class="variable constant_">FORCE_CONSTANTS_3RD</span> $i  </span><br><span class="line">#将二阶三阶力学常数文件和<span class="variable constant_">CONTROL</span>文件复制到单一任务文件夹</span><br><span class="line">#注意，这里的<span class="variable constant_">CONTROL</span>文件夹是删减过的</span><br><span class="line">cd $i #进入单一文件夹内</span><br><span class="line">echo \&amp;parameters &gt;&gt; <span class="variable constant_">CONTROL</span>      #补充<span class="variable constant_">CONTROL</span>文件</span><br><span class="line">  echo  T= $i  &gt;&gt; <span class="variable constant_">CONTROL</span>    #补充<span class="variable constant_">CONTROL</span>文件 </span><br><span class="line">  #温度设置 如果同时设置多个温度，同一行只会算第一个并报错。如果多次设定一个温度到同一个<span class="variable constant_">CONTROL</span>文件，只会运算最后一个。</span><br><span class="line">#echo   scalebroad=<span class="number">0.1</span>    &gt;&gt; <span class="variable constant_">CONTROL</span>    #补充<span class="variable constant_">CONTROL</span>文件</span><br><span class="line">echo \&amp;end    &gt;&gt; <span class="variable constant_">CONTROL</span>    #补充<span class="variable constant_">CONTROL</span>文件</span><br><span class="line">echo \&amp;flags  &gt;&gt; <span class="variable constant_">CONTROL</span>    #补充<span class="variable constant_">CONTROL</span>文件</span><br><span class="line">echo    nonanalytic=.<span class="property">TRUE</span>.   &gt;&gt; <span class="variable constant_">CONTROL</span>    #补充<span class="variable constant_">CONTROL</span>文件</span><br><span class="line">echo    nanowires=.<span class="property">FALSE</span>.   &gt;&gt; <span class="variable constant_">CONTROL</span>    #补充<span class="variable constant_">CONTROL</span>文件</span><br><span class="line">echo    convergence=.<span class="property">True</span>. &gt;&gt; <span class="variable constant_">CONTROL</span></span><br><span class="line">echo \&amp;end  &gt;&gt; <span class="variable constant_">CONTROL</span>    #补充<span class="variable constant_">CONTROL</span>文件</span><br><span class="line"> #这里补充<span class="variable constant_">CONTROL</span>文件用的是笨方法，如果有相应改进方法可以自行更改，简洁代码</span><br><span class="line">sbatch sub.<span class="property">sh</span>  #执行<span class="title class_">ShengBTE</span>计算，这里的执行命令应视情况而定。</span><br><span class="line">cd .. #返回初始目录</span><br><span class="line">done  #结束任务</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h2><ul>
-<li>计算完成后，先检查收敛情况，找到T300K文件夹下的BTE.kappa,第一列代表迭代步数，一般未达到默认1000步可认为收敛正常。</li>
-<li>计算完成后在当前目录下会生成T300K文件夹和一些输出文件。文件处理参见天玑算b站视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Yh411n7tx/?spm_id_from=333.788&vd_source=17084cc867ff3bb86398ff1a79b443f2">https://www.bilibili.com/video/BV1Yh411n7tx/?spm_id_from=333.788&amp;vd_source=17084cc867ff3bb86398ff1a79b443f2</a></li>
-</ul>
-<p>其他参考：<a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv22090733/">https://www.bilibili.com/read/cv22090733/</a></p>
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
-<li><p>计算得到的热导率和文献报道有较大偏差，可能偏大或者偏小，可能的原因有：</p>
-<p>1.采用的2阶力常数FORCE_CONSTANT中超胞内原子排序不是按照ucatom<em>sc_z</em>sc_y*sc_x排列；力常数文件与control文件中原胞内原子次序是否一致；</p>
-<p>2.shengBTE的control文件中晶格参数单位默认nm，有转换系数的参数；</p>
-<p>3.使用QE利用phonopy计算得到的FORCE_CONSTANT文件中，单位需要转换，不能直接利用shengBTE计算，vasp利用phonopy则单位正确；</p>
-<ol start="4">
-<li><p>3阶力常数的计算量较大，但精度要求很高，如0.0003Rh&#x2F;bohr^2量级的力的误差，也会导致最终热导率的数值出现大的偏离；如使用cp2k计算力常数，通常使用QE等平面波软件，对于超胞体系，随着扩胞，在较大的截断半径下，所需计算量非常大，使用CP2K中的QS模块也能进行第一性原理计算，具有相对较高的计算效率，但是CP2K不同于平面波的QE等，计算中仅有gamma点计算，需要采用实空间较大超胞，如果使用和QE等相同的超胞，则会导致原子受力精度不高，一般在~0.0003Rh&#x2F;bohr^2量级的误差，也会对某些体系，特别是二维体系的热导率有很大的影响。在使用cp2k进行3阶力常数大量计算之前，先进行超胞收敛测试，可以在相同的位移构型下，不断扩胞，判断力计算的变化情况和误差。用QE等计算也建议先进行k点等计算参数的收敛判断，否则会浪费大量时间，热导率计算结果却有很大偏离。</p>
-</li>
-<li><p>使用经验势能模型，在通过lammps进行热输运计算之前，可以先利用分子静力学软件GULP结合shengBTE模块，预判势能应用于热输运计算的准确性。但经验势能用于热输运精度和前景一般，机器势能表现更好。</p>
-</li>
-</ol>
-<p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/odin_linux/article/details/130084321">https://blog.csdn.net/odin_linux/article/details/130084321</a></p>
-</li>
-<li><p>静态计算可以各个job文件夹同时分别计算，不用按顺序来。等所有job文件夹计算完后，自行运行“find job…” 提取三阶力常数的命令。严格来说，胞的大小和三阶力常数计算的截断半径都应该进行测试，测试以所计算得到的热导率的收敛进行判断。计算资源有限无法测试的话，尽可能取大一点。Born有效电荷和介电常数的计算应该不是必要的，如果你要考虑在Gamma点附近LO-TO劈裂的话(主要针对离子晶体)，则需要进行计算。可以加上，感觉要好点。<br>二阶力常数和三阶力常数所用的超胞大小可以不统一，我看文献中有这种情形，不过一般作者采用的二阶力常数的超胞都是大于等于三阶力常数超胞的大小。<br>原文链接：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/147810223">https://zhuanlan.zhihu.com/p/147810223</a></p>
-</li>
-<li><p>官方网站：<a target="_blank" rel="noopener" href="https://www.shengbte.org/">https://www.shengbte.org/</a></p>
-</li>
-</ul>
-<h1 id="四声子过程"><a href="#四声子过程" class="headerlink" title="四声子过程"></a>四声子过程</h1><p>除了ShengBTE的CONTROL文件中的常规输入，FourPhonon还需要四阶力常数和一些新的标签在CONTROL文件中。请检查ShengBTE网站以获取其他标签的定义。  </p>
-<h2 id="并行环境"><a href="#并行环境" class="headerlink" title="并行环境"></a>并行环境</h2><p>1.1和1.0版本是为MPI并行性编写的。从1.2版本开始，支持四声子散射的迭代求解器，我们已经迁移到OpenMP，以处理该迭代求解器所需的大内存。未来我们可能会支持MPI+OpenMP混合并行性，以允许更多灵活性。确保在编译时添加-qopenmp，或者：  </p>
-<p>export FFLAGS&#x3D;-qopenmp -traceback -debug -O2 -static_intel  </p>
-<h2 id="四阶IFCs文件：FORCE-CONSTANTS-4TH"><a href="#四阶IFCs文件：FORCE-CONSTANTS-4TH" class="headerlink" title="四阶IFCs文件：FORCE_CONSTANTS_4TH"></a>四阶IFCs文件：FORCE_CONSTANTS_4TH</h2><p>该文件包含四阶原子间力常数矩阵，并使用稀疏描述来节省空间。要构建四阶力常数，可以参考Fourthorder的python脚本。该力常数的格式是对三阶力常数的直接扩展，包含nb个这样的矩阵块：  </p>
-<ul>
-<li>一行空白  </li>
-<li>一个从1开始的顺序索引（从1到nb）  </li>
-<li>一行表示第二个晶胞的笛卡尔坐标（单位：Å）  </li>
-<li>一行表示第三个晶胞的笛卡尔坐标（单位：Å）  </li>
-<li>一行表示第四个晶胞的笛卡尔坐标（单位：Å）  </li>
-<li>一行表示四个相关原子的从1开始的索引，每个原子索引从1到natoms  </li>
-<li>81行的力常数矩阵（单位：eV Å⁴）。开头的索引用于标记笛卡尔坐标轴。<br>该文件的一个示例：</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1</span><br><span class="line">0.0000000000e+00 0.0000000000e+00 0.0000000000e+00</span><br><span class="line">0.0000000000e+00 0.0000000000e+00 0.0000000000e+00</span><br><span class="line">0.0000000000e+00 0.0000000000e+00 0.0000000000e+00</span><br><span class="line">     1      1      1      1</span><br><span class="line"> 1  1  1  1       -42.0002584218</span><br><span class="line"> 1  1  1  2         0.0000000000</span><br><span class="line"> 1  1  1  3         0.0000000000</span><br><span class="line"> 1  1  2  1         0.0000000000</span><br><span class="line"> 1  1  2  2        40.3875689003</span><br><span class="line"> 1  1  2  3         0.0000000000</span><br><span class="line"> 1  1  3  1         0.0000000000</span><br><span class="line"> 1  1  3  2         0.0000000000</span><br><span class="line"> 1  1  3  3        40.3875689003</span><br><span class="line"> 1  2  1  1         0.0000000000</span><br><span class="line"> 1  2  1  2        40.3875689003</span><br><span class="line"> 1  2  1  3         0.0000000000</span><br><span class="line"> 1  2  2  1        40.3875689003</span><br><span class="line"> 1  2  2  2         0.0000000000</span><br><span class="line"> 1  2  2  3         0.0000000000</span><br><span class="line"> 1  2  3  1         0.0000000000</span><br><span class="line"> 1  2  3  2         0.0000000000</span><br><span class="line"> 1  2  3  3         0.0000000000</span><br><span class="line"> 1  3  1  1         0.0000000000</span><br><span class="line"> 1  3  1  2         0.0000000000</span><br><span class="line"> 1  3  1  3        40.3875689003</span><br><span class="line"> 1  3  2  1         0.0000000000</span><br><span class="line"> 1  3  2  2         0.0000000000</span><br><span class="line"> 1  3  2  3         0.0000000000</span><br><span class="line"> 1  3  3  1        40.3875689003</span><br><span class="line"> 1  3  3  2         0.0000000000</span><br><span class="line"> 1  3  3  3         0.0000000000</span><br><span class="line"> 2  1  1  1         0.0000000000</span><br><span class="line"> 2  1  1  2        40.3875689003</span><br><span class="line"> 2  1  1  3         0.0000000000</span><br><span class="line"> 2  1  2  1        40.3875689003</span><br><span class="line"> 2  1  2  2         0.0000000000</span><br><span class="line"> 2  1  2  3         0.0000000000</span><br><span class="line"> 2  1  3  1         0.0000000000</span><br><span class="line"> 2  1  3  2         0.0000000000</span><br><span class="line"> 2  1  3  3         0.0000000000</span><br><span class="line"> 2  2  1  1        40.3875689003</span><br><span class="line"> 2  2  1  2         0.0000000000</span><br><span class="line"> 2  2  1  3         0.0000000000</span><br><span class="line"> 2  2  2  1         0.0000000000</span><br><span class="line"> 2  2  2  2       -42.0002584218</span><br><span class="line"> 2  2  2  3         0.0000000000</span><br><span class="line"> 2  2  3  1         0.0000000000</span><br><span class="line"> 2  2  3  2         0.0000000000</span><br><span class="line"> 2  2  3  3        40.3875689003</span><br><span class="line"> 2  3  1  1         0.0000000000</span><br><span class="line"> 2  3  1  2         0.0000000000</span><br><span class="line"> 2  3  1  3         0.0000000000</span><br><span class="line"> 2  3  2  1         0.0000000000</span><br><span class="line"> 2  3  2  2         0.0000000000</span><br><span class="line"> 2  3  2  3        40.3875689003</span><br><span class="line"> 2  3  3  1         0.0000000000</span><br><span class="line"> 2  3  3  2        40.3875689003</span><br><span class="line"> 2  3  3  3         0.0000000000</span><br><span class="line"> 3  1  1  1         0.0000000000</span><br><span class="line"> 3  1  1  2         0.0000000000</span><br><span class="line"> 3  1  1  3        40.3875689003</span><br><span class="line"> 3  1  2  1         0.0000000000</span><br><span class="line"> 3  1  2  2         0.0000000000</span><br><span class="line"> 3  1  2  3         0.0000000000</span><br><span class="line"> 3  1  3  1        40.3875689003</span><br><span class="line"> 3  1  3  2         0.0000000000</span><br><span class="line"> 3  1  3  3         0.0000000000</span><br><span class="line"> 3  2  1  1         0.0000000000</span><br><span class="line"> 3  2  1  2         0.0000000000</span><br><span class="line"> 3  2  1  3         0.0000000000</span><br><span class="line"> 3  2  2  1         0.0000000000</span><br><span class="line"> 3  2  2  2         0.0000000000</span><br><span class="line"> 3  2  2  3        40.3875689003</span><br><span class="line"> 3  2  3  1         0.0000000000</span><br><span class="line"> 3  2  3  2        40.3875689003</span><br><span class="line"> 3  2  3  3         0.0000000000</span><br><span class="line"> 3  3  1  1        40.3875689003</span><br><span class="line"> 3  3  1  2         0.0000000000</span><br><span class="line"> 3  3  1  3         0.0000000000</span><br><span class="line"> 3  3  2  1         0.0000000000</span><br><span class="line"> 3  3  2  2        40.3875689003</span><br><span class="line"> 3  3  2  3         0.0000000000</span><br><span class="line"> 3  3  3  1         0.0000000000</span><br><span class="line"> 3  3  3  2         0.0000000000</span><br><span class="line"> 3  3  3  3       -42.0002584218</span><br></pre></td></tr></table></figure>
-<h2 id="CONTROL-文件设置"><a href="#CONTROL-文件设置" class="headerlink" title="CONTROL 文件设置"></a>CONTROL 文件设置</h2><p>此 CONTROL 文件包含所有用户指定的设置和参数，包括晶体结构信息、展宽因子、q 网格、温度、函数等。</p>
-<h3 id="一般用法"><a href="#一般用法" class="headerlink" title="一般用法"></a>一般用法</h3><p>要启用 FourPhonon 功能，您需要添加一个新的 &amp;flags 名称列表：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">four_phonon （逻辑，默认为 .false.）：计算四声子相空间和四声子散射率。</span><br><span class="line">four_phonon_iteration （逻辑，默认为 .false.）：精确计算四声子散射并求解玻尔兹曼输运方程（BTE）。这仅在 four_phonon=.true. 时有效。</span><br></pre></td></tr></table></figure>
-<p>标志的实际用法<br>以下是这些标志的一些实用组合：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">onlyharmonic=.true. 和 four_phonon=.true.：仅计算四声子相空间。</span><br><span class="line">convergence=.false. 和 four_phonon=.true.：在 RTA 层面计算三声子和四声子散射的热导率；此设置将输出不同四声子通道的贡献。</span><br><span class="line">four_phonon=.true. （收敛默认值为 .true.）：使用三声子迭代方案计算热导率，但将四声子散射处理为 RTA 层面。</span><br><span class="line">four_phonon=.true. 和 four_phonon_iteration=.true.：利用 BTE 的精确解计算三声子和四声子散射的热导率。</span><br></pre></td></tr></table></figure>
-<p>注意： CONTROL 文件中的所有其他参数，例如温度或 q 网格，适用于三声子和四声子过程。FourPhonon 包不支持纳米线功能。</p>
-<h3 id="加速-RTA-解的采样方法"><a href="#加速-RTA-解的采样方法" class="headerlink" title="加速 RTA 解的采样方法"></a>加速 RTA 解的采样方法</h3><p>为了从散射过程样本中估计散射率，请引用 [Z. Guo 等人，npj Comput. Mater. 10, 31 (2024).] 并使用相关标签。</p>
-<h4 id="参数设置"><a href="#参数设置" class="headerlink" title="参数设置"></a>参数设置</h4><h4 id="num-sample-process-3ph-和-num-sample-process-3ph-phase-space"><a href="#num-sample-process-3ph-和-num-sample-process-3ph-phase-space" class="headerlink" title="num_sample_process_3ph 和 num_sample_process_3ph_phase_space"></a>num_sample_process_3ph 和 num_sample_process_3ph_phase_space</h4><p><code>num_sample_process_3ph</code> 和 <code>num_sample_process_3ph_phase_space</code> （整数，默认值为 -1）：表示从每个模式中提取的样本数，以用于估计三声子相空间和散射率。 -1 表示不进行取样，执行严格计算。注意，当 <code>convergence=.true.</code>，即使用迭代方案计算三声子散射时，<code>num_sample_process_3ph</code> 必须为 -1，因为取样方法基于弛豫时间近似。</p>
-<h4 id="num-sample-process-4ph-和-num-sample-process-4ph-phase-space"><a href="#num-sample-process-4ph-和-num-sample-process-4ph-phase-space" class="headerlink" title="num_sample_process_4ph 和 num_sample_process_4ph_phase_space"></a>num_sample_process_4ph 和 num_sample_process_4ph_phase_space</h4><p><code>num_sample_process_4ph</code> 和 <code>num_sample_process_4ph_phase_space</code> （整数，默认值为 -1）：表示从每个模式中提取的样本数，以用于估计四声子相空间和散射率。 -1 表示不进行取样，执行严格计算。注意，当 <code>four_phonon=.false.</code> 时，<code>num_sample_process_4ph</code> 和 <code>num_sample_process_4ph_phase_space</code> 必须均为 -1。</p>
-<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><p>计算三声子散射率（精确计算，迭代），并在 RTA 层面采用 100,000 个样本过程计算四声子散射：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&amp;parameters</span><br><span class="line">    T=300</span><br><span class="line">    scalebroad=1</span><br><span class="line">    num_sample_process_3ph_phase_space = -1</span><br><span class="line">    num_sample_process_3ph = -1</span><br><span class="line">    num_sample_process_4ph_phase_space = 100000</span><br><span class="line">    num_sample_process_4ph = 100000         </span><br><span class="line">&amp;end</span><br></pre></td></tr></table></figure>
-
-<h2 id="TDEP-IFCs-的输入"><a href="#TDEP-IFCs-的输入" class="headerlink" title="TDEP IFCs 的输入"></a>TDEP IFCs 的输入</h2><p>对于 TDEP 格式的谐波力常数，请使用以下描述的标签&#x2F;脚本：</p>
-<p><code>tdep=.true.</code> 启用 TDEP 格式谐波 IFCs 的处理，该输入文件名应始终为 <code>infile.forceconstant</code>。如果系统是极性材料，除了常规参数（如 Born 有效电荷和介电常数）外，我们还需要用户手动输入耦合参数 (\lambda_{Ewald})，该参数在 TDEP IFCs 的末尾近似写出，如下所示：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0.675614929199219       # Coupling parameter in Ewald summation</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注意：输入的谐波 IFCs 是未带极性修正的裸 IFCs，以便 FourPhonon 能够处理并在内部添加修正。该模块在很大程度上依赖 TDEP 源代码，我们无法保证成功。建议用户检查处理后的频率和三声子散射率。</p>
-</blockquote>
-<p>对于非极性材料，我们还开发了一种脚本，将 TDEP 格式转换为 Phonopy 格式，名为 <code>tdep2phonopy.f90</code>。这样您无需激活 tdep 标志。编译 Fortran 后，运行可执行文件（以下是示例）：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./tdep2phonopy outfile.forceconstant 10 10 1 2</span><br></pre></td></tr></table></figure>
-
-<p>这将 TDEP IFCs （<code>outfile.forceconstant</code>）转换为 Phonopy 格式，构建一个来自双原子单位胞的 (10 \times 10 \times 1) 超胞。请检查转换后的声子色散。我们建议使用足够大的超胞来存储所有的第二阶 IFC 中的成对相互作用。</p>
-<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h3><p>计算三声子散射率（精确计算，迭代），并在 RTA 层面计算四声子散射。使用的 TDEP 格式谐波 IFCs 并应用非解析修正，Ewald 参数为 (\lambda &#x3D;0.675614929199219)。同样需要 Born 有效电荷（此处未列出），与 ShengBTE 对极性系统的处理相似。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&amp;parameters</span><br><span class="line">    T=300</span><br><span class="line">    scalebroad=0.1</span><br><span class="line">    Ewald=0.675614929199219</span><br><span class="line">&amp;end</span><br><span class="line">&amp;flags</span><br><span class="line">    tdep=.TRUE.</span><br><span class="line">    nonanalytic=.TRUE. ! 此标签现在需要明确指定</span><br><span class="line">    convergence=.TRUE.</span><br><span class="line">    four_phonon=.TRUE.</span><br><span class="line">&amp;end</span><br></pre></td></tr></table></figure>
-
-<h2 id="TDEP-格式的-3阶-x2F-4阶-IFCs"><a href="#TDEP-格式的-3阶-x2F-4阶-IFCs" class="headerlink" title="TDEP 格式的 3阶&#x2F;4阶 IFCs"></a>TDEP 格式的 3阶&#x2F;4阶 IFCs</h2><p>对于 TDEP 格式的 3阶&#x2F;4阶 IFCs，我们开发了一个独立的脚本，将其转换为 ShengBTE 格式，名为 <code>tdep2ShengBTE.f90</code>。我们需要在同一目录下有 <code>infile.ucposcar</code>。编译 Fortran 后，运行可执行文件：</p>
-<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./tdep2ShengBTE 3 2 outfile.forceconstant_thirdorder</span><br></pre></td></tr></table></figure>
-
-<p>这将 TDEP 的 3 阶 IFCs（<code>outfile.forceconstant_thirdorder</code>）转换为 ShengBTE 格式。</p>
-<h2 id="Output-files"><a href="#Output-files" class="headerlink" title="Output files"></a>Output files</h2><p>Besides the routine output files from previous ShengBTE program, FourPhonon generates these output files:</p>
-<ul>
-<li>BTE.Numprocess_4ph: number of allowed four-phonon scattering processes, for each irreducible q point and phonon band</li>
-<li>BTE.P4: phase space available for four-phonon processes, for each irreducible q point and phonon band</li>
-<li>BTE.P4_total: total volume in phase space available for four-phonon processes</li>
-<li>BTE.P4_plusplus*, BTE.P4_plusminus*, BTE.P4_minusminus*: similar to BTE.P4 but only includes contributions from ++&#x2F;+-&#x2F;- - processes</li>
-</ul>
-<p>*Note for four-phonon scatterings, there are three different channels: recombination (++), redistribution (+-) and splitting (- -) processes.</p>
-<p>Under temperature-dependent directories: (the unit of scattering rates is ps−1 if not specified)</p>
-<ul>
-<li>BTE.WP4: weighted phase space available for four-phonon processes ([rad&#x2F;ps]$^{-5}$, 2nd column) vs angular frequency (rad&#x2F;ps, 1st column) for each irreducible q point and phonon band</li>
-<li>BTE.WP4_plusplus*, BTE.WP4_plusminus*, BTE.WP4_minusminus*: similar to BTE.WP4 but only includes contributions from ++&#x2F;+-&#x2F;- - processes</li>
-<li>BTE.w_3ph: three-phonon scattering rates for each irreducible q point and phonon band, this file replaces the original output BTE.w_anharmonic. Absorption and emission processes are written out into BTE.w_3ph_plus and BTE.w_3ph_minus</li>
-<li>BTE.w_4ph: four-phonon scattering rates for each irreducible q point and phonon band. Similarly, we provide the contributions from different channels: BTE.w_4ph_plusplus, BTE.w_4ph_plusminus and BTE.w_4ph_minusminus</li>
-<li>BTE.w_4ph_normal: four-phonon scattering rates of normal processes, for each irreducible q point and phonon band. This file has 5 columns and each one represents: angular frequency in rad&#x2F;ps, recombination channel, redistribution channel, splitting channel, overall scattering rates from normal processes</li>
-<li>BTE.w_4ph_Umklapp: four-phonon scattering rates of Umklapp processes, for each irreducible q point and phonon band. The format is the same as BTE.w_4ph_normal</li>
-<li>BTE.kappa*: thermal conductivity results are written out as usual</li>
 </ul>
 
       

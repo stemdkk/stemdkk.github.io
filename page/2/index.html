@@ -123,7 +123,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -134,7 +134,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">40</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -159,6 +159,208 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/18-49-24/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Keke Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lightchaser">
+      <meta itemprop="description" content="一个小学生的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Lightchaser">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/05/09/18-49-24/" class="post-title-link" itemprop="url">3.2 热输运2</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-09 18:49:24" itemprop="dateCreated datePublished" datetime="2023-05-09T18:49:24+08:00">2023-05-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-10-18 10:46:56" itemprop="dateModified" datetime="2024-10-18T10:46:56+08:00">2024-10-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DFT%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">DFT学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="三阶力常数矩阵"><a href="#三阶力常数矩阵" class="headerlink" title="三阶力常数矩阵"></a>三阶力常数矩阵</h1><p>需要用到thirdorder程序。</p>
+<h3 id="使用方法："><a href="#使用方法：" class="headerlink" title="使用方法："></a>使用方法：</h3><ol>
+<li>准备好POSCAR,INCAR,KPOINTS,POTCAR和提交任务脚本（以sub.sh为例）；<br>其中POSCAR与二阶力常数矩阵求解时的POSCAR-unit一致，KPOINTS也与二阶一致。INCAR文件与二阶力常数求解时的有限位移法一致，其他不变。完成后运行thirdorder实现扩胞。</li>
+</ol>
+<p><code>~/安装目录/thirdorder_vasp.py sow 2 2 2 -12</code><br>2 2 2是扩胞倍数，要和二阶力常数矩阵保持一致或者略小。-12指的是考虑多少个近邻原子，需要测试，但是如果计算资源紧缺的时候取个-10就行了，但有风险；正值是指截断半径。之后生成成功以后会出现一堆3RD开头的文件，那些都是POSCAR，一般有几百上千个。</p>
+<ol start="2">
+<li>参考phonopy计算声子谱的有限位移法，需要把这些POSCAR单独计算。也就是有多少POSCAR，建立多少文件夹，分别进行多少次计算。</li>
+<li><code>find job* -name vasprun.xml|sort -n|/ thirdorder_vasp.py reap a b c -d</code>  a b c和-d与前面一致。该命令可获得FORCE_CONSTANT_3RD也即是三阶力常数矩阵。</li>
+</ol>
+<h3 id="脚本方法"><a href="#脚本方法" class="headerlink" title="脚本方法"></a>脚本方法</h3><ul>
+<li><p>测试-d参数（秦光照老师） </p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#!<span class="regexp">/bin/</span>bash</span><br><span class="line">#</span><br><span class="line"># <span class="title class_">Construct</span> the 3nd files based on the finished calculations</span><br><span class="line">#</span><br><span class="line"># <span class="title class_">Written</span> <span class="variable constant_">BY</span> <span class="variable constant_">QIN</span>, <span class="title class_">GuangZhao</span> &lt;qin.<span class="property">phys</span>@gmail.<span class="property">com</span>&gt;</span><br><span class="line"># <span class="number">2016</span>-<span class="number">11</span>-<span class="number">22</span></span><br><span class="line"></span><br><span class="line"><span class="variable constant_">DIR</span>=<span class="string">&quot;/vol-th/home/xhaiyan/WangN/Au6S2/third241-14&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ ! -d <span class="string">&quot;$DIR&quot;</span> ];then</span><br><span class="line">    echo <span class="title class_">Please</span> specify the source directory.</span><br><span class="line">    exit</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> <span class="variable constant_">NAME</span> <span class="keyword">in</span> 3RD.<span class="property">POSCAR</span>.*</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="variable constant_">NUM</span>=<span class="string">&quot;$&#123;NAME#3RD.POSCAR.&#125;&quot;</span>   # the number <span class="keyword">of</span> the 3nd <span class="variable constant_">POSCAR</span> file</span><br><span class="line">    <span class="variable constant_">CODE</span>=$(head -<span class="number">1</span> $NAME)       # the code <span class="keyword">of</span> the <span class="variable constant_">POSCAR</span> file</span><br><span class="line"># find the source <span class="variable constant_">POSCAR</span> file <span class="keyword">in</span> the source directory</span><br><span class="line">    <span class="variable constant_">INFO</span>=$(grep $CODE $DIR/3RD.<span class="property">POSCAR</span>.* | head -<span class="number">1</span>)</span><br><span class="line">    [ x<span class="string">&quot;$INFO&quot;</span> == x ] &amp;&amp; echo <span class="string">&quot;NOT FOUND for job-$NUM&quot;</span> &amp;&amp; <span class="keyword">continue</span></span><br><span class="line">    <span class="variable constant_">SOURCE_NUM</span>=<span class="string">&quot;$&#123;INFO%:*&#125;&quot;</span>     # the number <span class="keyword">of</span> the source <span class="variable constant_">POSCAR</span> file</span><br><span class="line">    <span class="variable constant_">SOURCE_NUM</span>=<span class="string">&quot;$&#123;SOURCE_NUM##*.&#125;&quot;</span></span><br><span class="line"></span><br><span class="line">    echo <span class="string">&quot;$DIR/job-$SOURCE_NUM/ --&gt; job-$NUM/&quot;</span></span><br><span class="line">#    diff 3RD.<span class="property">POSCAR</span>.<span class="property">$NUM</span> $DIR/3RD.<span class="property">POSCAR</span>.<span class="property">$SOURCE_NUM</span></span><br><span class="line">    rsync -a $DIR/job-$SOURCE_NUM/vasprun.<span class="property">xml</span> ./job-$NUM/</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>针对大量POSCAR批量建立文件夹</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#<span class="variable language_">module</span> load spglib/master</span><br><span class="line">#thirdorder_vasp.<span class="property">py</span> sow <span class="number">3</span> <span class="number">3</span> <span class="number">1</span> -<span class="number">10</span></span><br><span class="line">#生成<span class="number">2</span>*<span class="number">2</span>*<span class="number">2</span>的超胞 <span class="number">0.6</span>表示截断半径为<span class="number">6</span>埃。</span><br><span class="line">#sow a b c m  abc表示生成的超胞大小，m为正数的时候表示截断半径（单位：nm）（例如<span class="number">0.6</span>，表示截断半径为<span class="number">6.0</span>埃）；为负数时表示第几近邻截断（此时应取负整数，例如-<span class="number">3</span>表示第三近邻）</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> 3RD.<span class="property">POSCAR</span>.*</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">s=$(echo $i| cut -d <span class="string">&quot;.&quot;</span> -f <span class="number">3</span>)</span><br><span class="line">d=job-$s</span><br><span class="line">mkdir $d</span><br><span class="line">cp $i $d/<span class="variable constant_">POSCAR</span></span><br><span class="line">cp ./<span class="variable constant_">INCAR</span> ./sub.<span class="property">sh</span> ./<span class="variable constant_">KPOINTS</span> ./<span class="variable constant_">POTCAR</span> $d</span><br><span class="line">pushd $d</span><br><span class="line">popd</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>批量提交任务</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#!<span class="regexp">/bin/</span>sh</span><br><span class="line">root_path=<span class="string">&#x27;pwd&#x27;</span></span><br><span class="line"></span><br><span class="line">#在每个job文件夹里进行静态计算。</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;<span class="number">001</span>.<span class="number">.1050</span>&#125; #按顺序从job-<span class="number">001</span>到<span class="number">1050</span>做静态vasp计算,根据生成的文件夹设定</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">cd job-$i</span><br><span class="line">echo <span class="string">&quot;job-$i&quot;</span>, time </span><br><span class="line">sbatch sub.<span class="property">sh</span></span><br><span class="line">wait</span><br><span class="line">cd ..</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">#上述静态计算完成后提取三阶力常数文件</span><br><span class="line">#cd $&#123;root_path&#125;</span><br><span class="line"></span><br><span class="line">#find job* -name vasprun.<span class="property">xml</span>| sort -n| python thirdorder_vasp.<span class="property">py</span> reap <span class="number">2</span>  <span class="number">2</span>  <span class="number">1</span> -<span class="number">12</span> #最后四个数字跟你扩胞时一致</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>脚本赋予权限：chmod +x .sh;运行脚本：.&#x2F;sh</p>
+<h1 id="ShengBTE获得热输运性质"><a href="#ShengBTE获得热输运性质" class="headerlink" title="ShengBTE获得热输运性质"></a>ShengBTE获得热输运性质</h1><h3 id="运行ShengBTE计算热输运性质"><a href="#运行ShengBTE计算热输运性质" class="headerlink" title="运行ShengBTE计算热输运性质"></a>运行ShengBTE计算热输运性质</h3><ul>
+<li>获得二阶力常数计算：<br>计算流程与声子谱计算流程相同，用DFPT和有限位移法都可以。将得到的FORCE_CONSTANTS重命名为FORCE_CONSTANTS_2ND。</li>
+<li>获得三阶力常数计算：见上，输出为FORCE_CONSTANTS_3RD文件。</li>
+<li>准备CONTROL文件：格式如下:<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#<span class="variable constant_">CONTROL</span> <span class="keyword">for</span> <span class="title class_">ShengBTE</span></span><br><span class="line">&amp;allocations</span><br><span class="line">        nelements=<span class="number">2</span>              #元素种类</span><br><span class="line">        natoms=<span class="number">6</span>                 #原子个数</span><br><span class="line">        <span class="title function_">ngrid</span>(:)=<span class="number">20</span> <span class="number">20</span> <span class="number">5</span>         #计算网格密度</span><br><span class="line">&amp;end</span><br><span class="line">&amp;crystal</span><br><span class="line">        lfactor=<span class="number">0.1</span>              #软件长度单位换算</span><br><span class="line">        <span class="title function_">lattvec</span>(:,<span class="number">1</span>)=<span class="number">3.1613337552503711</span>    <span class="number">0.0000000000000025</span>    <span class="number">0.0000000000000000</span> #原胞晶胞参数</span><br><span class="line">        <span class="title function_">lattvec</span>(:,<span class="number">2</span>)=-<span class="number">1.5806668776251651</span>    <span class="number">2.7377953418477841</span>    <span class="number">0.0000000000000000</span></span><br><span class="line">        <span class="title function_">lattvec</span>(:,<span class="number">3</span>)=-<span class="number">0.0000000000000000</span>    <span class="number">0.0000000000000000</span>   <span class="number">12.3318234981499426</span></span><br><span class="line">        elements= <span class="string">&quot;Mo&quot;</span> <span class="string">&quot;S&quot;</span>  #原子顺序</span><br><span class="line">        types= <span class="number">1</span> <span class="number">1</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span>  #原子个数，<span class="number">2</span>代表第二种元素，<span class="number">4</span>个<span class="number">2</span>代表有<span class="number">4</span>个第二类原子</span><br><span class="line">       <span class="title function_">positions</span>(:,<span class="number">1</span>)= <span class="number">0.3333333449999998</span>  <span class="number">0.6666666890000030</span>  <span class="number">0.2500000000000000</span> #原子坐标，按顺序</span><br><span class="line">       <span class="title function_">positions</span>(:,<span class="number">2</span>)=<span class="number">0.6666666240000012</span>  <span class="number">0.3333333229999980</span>  <span class="number">0.7500000189999980</span></span><br><span class="line">       <span class="title function_">positions</span>(:,<span class="number">3</span>)= <span class="number">0.3333333449999998</span>  <span class="number">0.6666666890000030</span>  <span class="number">0.6230719397502427</span></span><br><span class="line">       <span class="title function_">positions</span>(:,<span class="number">4</span>)=<span class="number">0.6666666240000012</span>  <span class="number">0.3333333229999980</span>  <span class="number">0.3769280602499874</span></span><br><span class="line">       <span class="title function_">positions</span>(:,<span class="number">5</span>)=<span class="number">0.6666666240000012</span>  <span class="number">0.3333333229999980</span>  <span class="number">0.1230720067501656</span></span><br><span class="line">       <span class="title function_">positions</span>(:,<span class="number">6</span>)=<span class="number">0.3333333449999998</span>  <span class="number">0.6666666890000030</span>  <span class="number">0.8769280222497613</span></span><br><span class="line">       <span class="title function_">scell</span>(:)=<span class="number">4</span> <span class="number">4</span> <span class="number">1</span> #扩胞倍数，和前面一致</span><br><span class="line">&amp;end</span><br><span class="line">&amp;parameters</span><br><span class="line">       T=<span class="number">300</span>  #温度</span><br><span class="line">&amp;end</span><br><span class="line">&amp;flags</span><br><span class="line">      nonanalytic=.<span class="property">TRUE</span>.</span><br><span class="line">      nanowires=.<span class="property">FALSE</span>.</span><br><span class="line">      convergence=.<span class="property">TRUE</span>.  #迭代法，默认最大<span class="number">1000</span>步</span><br><span class="line">&amp;end</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>详细参数可参考手册。</p>
+<ul>
+<li>提交任务</li>
+<li>获得不同温度的数据，只需要依次修改CONTROL文件的T tag。或者通过脚本：</li>
+</ul>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;<span class="number">350.</span><span class="number">.1350</span>.<span class="number">.100</span>&#125; # 对i赋值，区间为<span class="number">300</span>到<span class="number">900</span>，每搁<span class="number">10</span>取一个数，即（<span class="number">300</span> <span class="number">310</span> <span class="number">320</span> <span class="number">330</span> ...<span class="number">.890</span> <span class="number">900</span>），可以根据自身情况自行设置</span><br><span class="line"><span class="keyword">do</span>  #开始循环</span><br><span class="line">mkdir $i #建立单一任务文件夹</span><br><span class="line">cp sub.<span class="property">sh</span> <span class="variable constant_">CONTROL</span> <span class="variable constant_">FORCE_CONSTANTS_2ND</span> <span class="variable constant_">FORCE_CONSTANTS_3RD</span> $i  </span><br><span class="line">#将二阶三阶力学常数文件和<span class="variable constant_">CONTROL</span>文件复制到单一任务文件夹</span><br><span class="line">#注意，这里的<span class="variable constant_">CONTROL</span>文件夹是删减过的</span><br><span class="line">cd $i #进入单一文件夹内</span><br><span class="line">echo \&amp;parameters &gt;&gt; <span class="variable constant_">CONTROL</span>      #补充<span class="variable constant_">CONTROL</span>文件</span><br><span class="line">  echo  T= $i  &gt;&gt; <span class="variable constant_">CONTROL</span>    #补充<span class="variable constant_">CONTROL</span>文件 </span><br><span class="line">  #温度设置 如果同时设置多个温度，同一行只会算第一个并报错。如果多次设定一个温度到同一个<span class="variable constant_">CONTROL</span>文件，只会运算最后一个。</span><br><span class="line">#echo   scalebroad=<span class="number">0.1</span>    &gt;&gt; <span class="variable constant_">CONTROL</span>    #补充<span class="variable constant_">CONTROL</span>文件</span><br><span class="line">echo \&amp;end    &gt;&gt; <span class="variable constant_">CONTROL</span>    #补充<span class="variable constant_">CONTROL</span>文件</span><br><span class="line">echo \&amp;flags  &gt;&gt; <span class="variable constant_">CONTROL</span>    #补充<span class="variable constant_">CONTROL</span>文件</span><br><span class="line">echo    nonanalytic=.<span class="property">TRUE</span>.   &gt;&gt; <span class="variable constant_">CONTROL</span>    #补充<span class="variable constant_">CONTROL</span>文件</span><br><span class="line">echo    nanowires=.<span class="property">FALSE</span>.   &gt;&gt; <span class="variable constant_">CONTROL</span>    #补充<span class="variable constant_">CONTROL</span>文件</span><br><span class="line">echo    convergence=.<span class="property">True</span>. &gt;&gt; <span class="variable constant_">CONTROL</span></span><br><span class="line">echo \&amp;end  &gt;&gt; <span class="variable constant_">CONTROL</span>    #补充<span class="variable constant_">CONTROL</span>文件</span><br><span class="line"> #这里补充<span class="variable constant_">CONTROL</span>文件用的是笨方法，如果有相应改进方法可以自行更改，简洁代码</span><br><span class="line">sbatch sub.<span class="property">sh</span>  #执行<span class="title class_">ShengBTE</span>计算，这里的执行命令应视情况而定。</span><br><span class="line">cd .. #返回初始目录</span><br><span class="line">done  #结束任务</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h2><ul>
+<li>计算完成后，先检查收敛情况，找到T300K文件夹下的BTE.kappa,第一列代表迭代步数，一般未达到默认1000步可认为收敛正常。</li>
+<li>计算完成后在当前目录下会生成T300K文件夹和一些输出文件。文件处理参见天玑算b站视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Yh411n7tx/?spm_id_from=333.788&vd_source=17084cc867ff3bb86398ff1a79b443f2">https://www.bilibili.com/video/BV1Yh411n7tx/?spm_id_from=333.788&amp;vd_source=17084cc867ff3bb86398ff1a79b443f2</a></li>
+</ul>
+<p>其他参考：<a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv22090733/">https://www.bilibili.com/read/cv22090733/</a></p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<li><p>计算得到的热导率和文献报道有较大偏差，可能偏大或者偏小，可能的原因有：</p>
+<p>1.采用的2阶力常数FORCE_CONSTANT中超胞内原子排序不是按照ucatom<em>sc_z</em>sc_y*sc_x排列；力常数文件与control文件中原胞内原子次序是否一致；</p>
+<p>2.shengBTE的control文件中晶格参数单位默认nm，有转换系数的参数；</p>
+<p>3.使用QE利用phonopy计算得到的FORCE_CONSTANT文件中，单位需要转换，不能直接利用shengBTE计算，vasp利用phonopy则单位正确；</p>
+<ol start="4">
+<li><p>3阶力常数的计算量较大，但精度要求很高，如0.0003Rh&#x2F;bohr^2量级的力的误差，也会导致最终热导率的数值出现大的偏离；如使用cp2k计算力常数，通常使用QE等平面波软件，对于超胞体系，随着扩胞，在较大的截断半径下，所需计算量非常大，使用CP2K中的QS模块也能进行第一性原理计算，具有相对较高的计算效率，但是CP2K不同于平面波的QE等，计算中仅有gamma点计算，需要采用实空间较大超胞，如果使用和QE等相同的超胞，则会导致原子受力精度不高，一般在~0.0003Rh&#x2F;bohr^2量级的误差，也会对某些体系，特别是二维体系的热导率有很大的影响。在使用cp2k进行3阶力常数大量计算之前，先进行超胞收敛测试，可以在相同的位移构型下，不断扩胞，判断力计算的变化情况和误差。用QE等计算也建议先进行k点等计算参数的收敛判断，否则会浪费大量时间，热导率计算结果却有很大偏离。</p>
+</li>
+<li><p>使用经验势能模型，在通过lammps进行热输运计算之前，可以先利用分子静力学软件GULP结合shengBTE模块，预判势能应用于热输运计算的准确性。但经验势能用于热输运精度和前景一般，机器势能表现更好。</p>
+</li>
+</ol>
+<p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/odin_linux/article/details/130084321">https://blog.csdn.net/odin_linux/article/details/130084321</a></p>
+</li>
+<li><p>静态计算可以各个job文件夹同时分别计算，不用按顺序来。等所有job文件夹计算完后，自行运行“find job…” 提取三阶力常数的命令。严格来说，胞的大小和三阶力常数计算的截断半径都应该进行测试，测试以所计算得到的热导率的收敛进行判断。计算资源有限无法测试的话，尽可能取大一点。Born有效电荷和介电常数的计算应该不是必要的，如果你要考虑在Gamma点附近LO-TO劈裂的话(主要针对离子晶体)，则需要进行计算。可以加上，感觉要好点。<br>二阶力常数和三阶力常数所用的超胞大小可以不统一，我看文献中有这种情形，不过一般作者采用的二阶力常数的超胞都是大于等于三阶力常数超胞的大小。<br>原文链接：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/147810223">https://zhuanlan.zhihu.com/p/147810223</a></p>
+</li>
+<li><p>官方网站：<a target="_blank" rel="noopener" href="https://www.shengbte.org/">https://www.shengbte.org/</a></p>
+</li>
+</ul>
+<h1 id="四声子过程"><a href="#四声子过程" class="headerlink" title="四声子过程"></a>四声子过程</h1><p>除了ShengBTE的CONTROL文件中的常规输入，FourPhonon还需要四阶力常数和一些新的标签在CONTROL文件中。请检查ShengBTE网站以获取其他标签的定义。  </p>
+<h2 id="并行环境"><a href="#并行环境" class="headerlink" title="并行环境"></a>并行环境</h2><p>1.1和1.0版本是为MPI并行性编写的。从1.2版本开始，支持四声子散射的迭代求解器，我们已经迁移到OpenMP，以处理该迭代求解器所需的大内存。未来我们可能会支持MPI+OpenMP混合并行性，以允许更多灵活性。确保在编译时添加-qopenmp，或者：  </p>
+<p>export FFLAGS&#x3D;-qopenmp -traceback -debug -O2 -static_intel  </p>
+<h2 id="四阶IFCs文件：FORCE-CONSTANTS-4TH"><a href="#四阶IFCs文件：FORCE-CONSTANTS-4TH" class="headerlink" title="四阶IFCs文件：FORCE_CONSTANTS_4TH"></a>四阶IFCs文件：FORCE_CONSTANTS_4TH</h2><p>该文件包含四阶原子间力常数矩阵，并使用稀疏描述来节省空间。要构建四阶力常数，可以参考Fourthorder的python脚本。该力常数的格式是对三阶力常数的直接扩展，包含nb个这样的矩阵块：  </p>
+<ul>
+<li>一行空白  </li>
+<li>一个从1开始的顺序索引（从1到nb）  </li>
+<li>一行表示第二个晶胞的笛卡尔坐标（单位：Å）  </li>
+<li>一行表示第三个晶胞的笛卡尔坐标（单位：Å）  </li>
+<li>一行表示第四个晶胞的笛卡尔坐标（单位：Å）  </li>
+<li>一行表示四个相关原子的从1开始的索引，每个原子索引从1到natoms  </li>
+<li>81行的力常数矩阵（单位：eV Å⁴）。开头的索引用于标记笛卡尔坐标轴。<br>该文件的一个示例：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1</span><br><span class="line">0.0000000000e+00 0.0000000000e+00 0.0000000000e+00</span><br><span class="line">0.0000000000e+00 0.0000000000e+00 0.0000000000e+00</span><br><span class="line">0.0000000000e+00 0.0000000000e+00 0.0000000000e+00</span><br><span class="line">     1      1      1      1</span><br><span class="line"> 1  1  1  1       -42.0002584218</span><br><span class="line"> 1  1  1  2         0.0000000000</span><br><span class="line"> 1  1  1  3         0.0000000000</span><br><span class="line"> 1  1  2  1         0.0000000000</span><br><span class="line"> 1  1  2  2        40.3875689003</span><br><span class="line"> 1  1  2  3         0.0000000000</span><br><span class="line"> 1  1  3  1         0.0000000000</span><br><span class="line"> 1  1  3  2         0.0000000000</span><br><span class="line"> 1  1  3  3        40.3875689003</span><br><span class="line"> 1  2  1  1         0.0000000000</span><br><span class="line"> 1  2  1  2        40.3875689003</span><br><span class="line"> 1  2  1  3         0.0000000000</span><br><span class="line"> 1  2  2  1        40.3875689003</span><br><span class="line"> 1  2  2  2         0.0000000000</span><br><span class="line"> 1  2  2  3         0.0000000000</span><br><span class="line"> 1  2  3  1         0.0000000000</span><br><span class="line"> 1  2  3  2         0.0000000000</span><br><span class="line"> 1  2  3  3         0.0000000000</span><br><span class="line"> 1  3  1  1         0.0000000000</span><br><span class="line"> 1  3  1  2         0.0000000000</span><br><span class="line"> 1  3  1  3        40.3875689003</span><br><span class="line"> 1  3  2  1         0.0000000000</span><br><span class="line"> 1  3  2  2         0.0000000000</span><br><span class="line"> 1  3  2  3         0.0000000000</span><br><span class="line"> 1  3  3  1        40.3875689003</span><br><span class="line"> 1  3  3  2         0.0000000000</span><br><span class="line"> 1  3  3  3         0.0000000000</span><br><span class="line"> 2  1  1  1         0.0000000000</span><br><span class="line"> 2  1  1  2        40.3875689003</span><br><span class="line"> 2  1  1  3         0.0000000000</span><br><span class="line"> 2  1  2  1        40.3875689003</span><br><span class="line"> 2  1  2  2         0.0000000000</span><br><span class="line"> 2  1  2  3         0.0000000000</span><br><span class="line"> 2  1  3  1         0.0000000000</span><br><span class="line"> 2  1  3  2         0.0000000000</span><br><span class="line"> 2  1  3  3         0.0000000000</span><br><span class="line"> 2  2  1  1        40.3875689003</span><br><span class="line"> 2  2  1  2         0.0000000000</span><br><span class="line"> 2  2  1  3         0.0000000000</span><br><span class="line"> 2  2  2  1         0.0000000000</span><br><span class="line"> 2  2  2  2       -42.0002584218</span><br><span class="line"> 2  2  2  3         0.0000000000</span><br><span class="line"> 2  2  3  1         0.0000000000</span><br><span class="line"> 2  2  3  2         0.0000000000</span><br><span class="line"> 2  2  3  3        40.3875689003</span><br><span class="line"> 2  3  1  1         0.0000000000</span><br><span class="line"> 2  3  1  2         0.0000000000</span><br><span class="line"> 2  3  1  3         0.0000000000</span><br><span class="line"> 2  3  2  1         0.0000000000</span><br><span class="line"> 2  3  2  2         0.0000000000</span><br><span class="line"> 2  3  2  3        40.3875689003</span><br><span class="line"> 2  3  3  1         0.0000000000</span><br><span class="line"> 2  3  3  2        40.3875689003</span><br><span class="line"> 2  3  3  3         0.0000000000</span><br><span class="line"> 3  1  1  1         0.0000000000</span><br><span class="line"> 3  1  1  2         0.0000000000</span><br><span class="line"> 3  1  1  3        40.3875689003</span><br><span class="line"> 3  1  2  1         0.0000000000</span><br><span class="line"> 3  1  2  2         0.0000000000</span><br><span class="line"> 3  1  2  3         0.0000000000</span><br><span class="line"> 3  1  3  1        40.3875689003</span><br><span class="line"> 3  1  3  2         0.0000000000</span><br><span class="line"> 3  1  3  3         0.0000000000</span><br><span class="line"> 3  2  1  1         0.0000000000</span><br><span class="line"> 3  2  1  2         0.0000000000</span><br><span class="line"> 3  2  1  3         0.0000000000</span><br><span class="line"> 3  2  2  1         0.0000000000</span><br><span class="line"> 3  2  2  2         0.0000000000</span><br><span class="line"> 3  2  2  3        40.3875689003</span><br><span class="line"> 3  2  3  1         0.0000000000</span><br><span class="line"> 3  2  3  2        40.3875689003</span><br><span class="line"> 3  2  3  3         0.0000000000</span><br><span class="line"> 3  3  1  1        40.3875689003</span><br><span class="line"> 3  3  1  2         0.0000000000</span><br><span class="line"> 3  3  1  3         0.0000000000</span><br><span class="line"> 3  3  2  1         0.0000000000</span><br><span class="line"> 3  3  2  2        40.3875689003</span><br><span class="line"> 3  3  2  3         0.0000000000</span><br><span class="line"> 3  3  3  1         0.0000000000</span><br><span class="line"> 3  3  3  2         0.0000000000</span><br><span class="line"> 3  3  3  3       -42.0002584218</span><br></pre></td></tr></table></figure>
+<h2 id="CONTROL-文件设置"><a href="#CONTROL-文件设置" class="headerlink" title="CONTROL 文件设置"></a>CONTROL 文件设置</h2><p>此 CONTROL 文件包含所有用户指定的设置和参数，包括晶体结构信息、展宽因子、q 网格、温度、函数等。</p>
+<h3 id="一般用法"><a href="#一般用法" class="headerlink" title="一般用法"></a>一般用法</h3><p>要启用 FourPhonon 功能，您需要添加一个新的 &amp;flags 名称列表：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">four_phonon （逻辑，默认为 .false.）：计算四声子相空间和四声子散射率。</span><br><span class="line">four_phonon_iteration （逻辑，默认为 .false.）：精确计算四声子散射并求解玻尔兹曼输运方程（BTE）。这仅在 four_phonon=.true. 时有效。</span><br></pre></td></tr></table></figure>
+<p>标志的实际用法<br>以下是这些标志的一些实用组合：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">onlyharmonic=.true. 和 four_phonon=.true.：仅计算四声子相空间。</span><br><span class="line">convergence=.false. 和 four_phonon=.true.：在 RTA 层面计算三声子和四声子散射的热导率；此设置将输出不同四声子通道的贡献。</span><br><span class="line">four_phonon=.true. （收敛默认值为 .true.）：使用三声子迭代方案计算热导率，但将四声子散射处理为 RTA 层面。</span><br><span class="line">four_phonon=.true. 和 four_phonon_iteration=.true.：利用 BTE 的精确解计算三声子和四声子散射的热导率。</span><br></pre></td></tr></table></figure>
+<p>注意： CONTROL 文件中的所有其他参数，例如温度或 q 网格，适用于三声子和四声子过程。FourPhonon 包不支持纳米线功能。</p>
+<h3 id="加速-RTA-解的采样方法"><a href="#加速-RTA-解的采样方法" class="headerlink" title="加速 RTA 解的采样方法"></a>加速 RTA 解的采样方法</h3><p>为了从散射过程样本中估计散射率，请引用 [Z. Guo 等人，npj Comput. Mater. 10, 31 (2024).] 并使用相关标签。</p>
+<h4 id="参数设置"><a href="#参数设置" class="headerlink" title="参数设置"></a>参数设置</h4><h4 id="num-sample-process-3ph-和-num-sample-process-3ph-phase-space"><a href="#num-sample-process-3ph-和-num-sample-process-3ph-phase-space" class="headerlink" title="num_sample_process_3ph 和 num_sample_process_3ph_phase_space"></a>num_sample_process_3ph 和 num_sample_process_3ph_phase_space</h4><p><code>num_sample_process_3ph</code> 和 <code>num_sample_process_3ph_phase_space</code> （整数，默认值为 -1）：表示从每个模式中提取的样本数，以用于估计三声子相空间和散射率。 -1 表示不进行取样，执行严格计算。注意，当 <code>convergence=.true.</code>，即使用迭代方案计算三声子散射时，<code>num_sample_process_3ph</code> 必须为 -1，因为取样方法基于弛豫时间近似。</p>
+<h4 id="num-sample-process-4ph-和-num-sample-process-4ph-phase-space"><a href="#num-sample-process-4ph-和-num-sample-process-4ph-phase-space" class="headerlink" title="num_sample_process_4ph 和 num_sample_process_4ph_phase_space"></a>num_sample_process_4ph 和 num_sample_process_4ph_phase_space</h4><p><code>num_sample_process_4ph</code> 和 <code>num_sample_process_4ph_phase_space</code> （整数，默认值为 -1）：表示从每个模式中提取的样本数，以用于估计四声子相空间和散射率。 -1 表示不进行取样，执行严格计算。注意，当 <code>four_phonon=.false.</code> 时，<code>num_sample_process_4ph</code> 和 <code>num_sample_process_4ph_phase_space</code> 必须均为 -1。</p>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><p>计算三声子散射率（精确计算，迭代），并在 RTA 层面采用 100,000 个样本过程计算四声子散射：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&amp;parameters</span><br><span class="line">    T=300</span><br><span class="line">    scalebroad=1</span><br><span class="line">    num_sample_process_3ph_phase_space = -1</span><br><span class="line">    num_sample_process_3ph = -1</span><br><span class="line">    num_sample_process_4ph_phase_space = 100000</span><br><span class="line">    num_sample_process_4ph = 100000         </span><br><span class="line">&amp;end</span><br></pre></td></tr></table></figure>
+
+<h2 id="TDEP-IFCs-的输入"><a href="#TDEP-IFCs-的输入" class="headerlink" title="TDEP IFCs 的输入"></a>TDEP IFCs 的输入</h2><p>对于 TDEP 格式的谐波力常数，请使用以下描述的标签&#x2F;脚本：</p>
+<p><code>tdep=.true.</code> 启用 TDEP 格式谐波 IFCs 的处理，该输入文件名应始终为 <code>infile.forceconstant</code>。如果系统是极性材料，除了常规参数（如 Born 有效电荷和介电常数）外，我们还需要用户手动输入耦合参数 (\lambda_{Ewald})，该参数在 TDEP IFCs 的末尾近似写出，如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0.675614929199219       # Coupling parameter in Ewald summation</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：输入的谐波 IFCs 是未带极性修正的裸 IFCs，以便 FourPhonon 能够处理并在内部添加修正。该模块在很大程度上依赖 TDEP 源代码，我们无法保证成功。建议用户检查处理后的频率和三声子散射率。</p>
+</blockquote>
+<p>对于非极性材料，我们还开发了一种脚本，将 TDEP 格式转换为 Phonopy 格式，名为 <code>tdep2phonopy.f90</code>。这样您无需激活 tdep 标志。编译 Fortran 后，运行可执行文件（以下是示例）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./tdep2phonopy outfile.forceconstant 10 10 1 2</span><br></pre></td></tr></table></figure>
+
+<p>这将 TDEP IFCs （<code>outfile.forceconstant</code>）转换为 Phonopy 格式，构建一个来自双原子单位胞的 (10 \times 10 \times 1) 超胞。请检查转换后的声子色散。我们建议使用足够大的超胞来存储所有的第二阶 IFC 中的成对相互作用。</p>
+<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h3><p>计算三声子散射率（精确计算，迭代），并在 RTA 层面计算四声子散射。使用的 TDEP 格式谐波 IFCs 并应用非解析修正，Ewald 参数为 (\lambda &#x3D;0.675614929199219)。同样需要 Born 有效电荷（此处未列出），与 ShengBTE 对极性系统的处理相似。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&amp;parameters</span><br><span class="line">    T=300</span><br><span class="line">    scalebroad=0.1</span><br><span class="line">    Ewald=0.675614929199219</span><br><span class="line">&amp;end</span><br><span class="line">&amp;flags</span><br><span class="line">    tdep=.TRUE.</span><br><span class="line">    nonanalytic=.TRUE. ! 此标签现在需要明确指定</span><br><span class="line">    convergence=.TRUE.</span><br><span class="line">    four_phonon=.TRUE.</span><br><span class="line">&amp;end</span><br></pre></td></tr></table></figure>
+
+<h2 id="TDEP-格式的-3阶-x2F-4阶-IFCs"><a href="#TDEP-格式的-3阶-x2F-4阶-IFCs" class="headerlink" title="TDEP 格式的 3阶&#x2F;4阶 IFCs"></a>TDEP 格式的 3阶&#x2F;4阶 IFCs</h2><p>对于 TDEP 格式的 3阶&#x2F;4阶 IFCs，我们开发了一个独立的脚本，将其转换为 ShengBTE 格式，名为 <code>tdep2ShengBTE.f90</code>。我们需要在同一目录下有 <code>infile.ucposcar</code>。编译 Fortran 后，运行可执行文件：</p>
+<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./tdep2ShengBTE 3 2 outfile.forceconstant_thirdorder</span><br></pre></td></tr></table></figure>
+
+<p>这将 TDEP 的 3 阶 IFCs（<code>outfile.forceconstant_thirdorder</code>）转换为 ShengBTE 格式。</p>
+<h2 id="Output-files"><a href="#Output-files" class="headerlink" title="Output files"></a>Output files</h2><p>Besides the routine output files from previous ShengBTE program, FourPhonon generates these output files:</p>
+<ul>
+<li>BTE.Numprocess_4ph: number of allowed four-phonon scattering processes, for each irreducible q point and phonon band</li>
+<li>BTE.P4: phase space available for four-phonon processes, for each irreducible q point and phonon band</li>
+<li>BTE.P4_total: total volume in phase space available for four-phonon processes</li>
+<li>BTE.P4_plusplus*, BTE.P4_plusminus*, BTE.P4_minusminus*: similar to BTE.P4 but only includes contributions from ++&#x2F;+-&#x2F;- - processes</li>
+</ul>
+<p>*Note for four-phonon scatterings, there are three different channels: recombination (++), redistribution (+-) and splitting (- -) processes.</p>
+<p>Under temperature-dependent directories: (the unit of scattering rates is ps−1 if not specified)</p>
+<ul>
+<li>BTE.WP4: weighted phase space available for four-phonon processes ([rad&#x2F;ps]$^{-5}$, 2nd column) vs angular frequency (rad&#x2F;ps, 1st column) for each irreducible q point and phonon band</li>
+<li>BTE.WP4_plusplus*, BTE.WP4_plusminus*, BTE.WP4_minusminus*: similar to BTE.WP4 but only includes contributions from ++&#x2F;+-&#x2F;- - processes</li>
+<li>BTE.w_3ph: three-phonon scattering rates for each irreducible q point and phonon band, this file replaces the original output BTE.w_anharmonic. Absorption and emission processes are written out into BTE.w_3ph_plus and BTE.w_3ph_minus</li>
+<li>BTE.w_4ph: four-phonon scattering rates for each irreducible q point and phonon band. Similarly, we provide the contributions from different channels: BTE.w_4ph_plusplus, BTE.w_4ph_plusminus and BTE.w_4ph_minusminus</li>
+<li>BTE.w_4ph_normal: four-phonon scattering rates of normal processes, for each irreducible q point and phonon band. This file has 5 columns and each one represents: angular frequency in rad&#x2F;ps, recombination channel, redistribution channel, splitting channel, overall scattering rates from normal processes</li>
+<li>BTE.w_4ph_Umklapp: four-phonon scattering rates of Umklapp processes, for each irreducible q point and phonon band. The format is the same as BTE.w_4ph_normal</li>
+<li>BTE.kappa*: thermal conductivity results are written out as usual</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -204,7 +406,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-10-17 21:47:05" itemprop="dateModified" datetime="2024-10-17T21:47:05+08:00">2024-10-17</time>
+      <time title="修改时间：2024-11-14 21:28:11" itemprop="dateModified" datetime="2024-11-14T21:28:11+08:00">2024-11-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -360,19 +562,42 @@
 <li>其他参考：<a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv11848434/">https://www.bilibili.com/read/cv11848434/</a></li>
 </ol>
 <h1 id="声子谱反折叠"><a href="#声子谱反折叠" class="headerlink" title="声子谱反折叠"></a>声子谱反折叠</h1><p><a target="_blank" rel="noopener" href="https://github.com/yuzie007/upho">https://github.com/yuzie007/upho</a></p>
+<h1 id="热位移"><a href="#热位移" class="headerlink" title="热位移"></a>热位移</h1><p>热学性质是根据倒易空间采样网格上的声子频率计算得出的，必须设置Mesh tag进行使用，并且必须检查它们相对于取样网格的收敛性。 通常这种计算对计算量要求不高，因此随着采样网格密度的增加，收敛性很容易达到。此外，计算时Phonopy对频率的默认单位为Thz。<br>在DFPT和冷冻声子的计算基础上，在thermal_properties.conf 中设置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">TPROP = .TRUE. #进行热学性质计算</span><br><span class="line">DIM = 1 1 1 #扩胞情况</span><br><span class="line">MP = 16 16 8 #Mesh网格密度</span><br><span class="line">TMAX = 2000</span><br><span class="line">TMIN = 0</span><br><span class="line">TSTEP = 10 #温度上下限默认为100,0，step默认值为10</span><br></pre></td></tr></table></figure>
+
+<p>计算得到thermal_properties.yaml文件：</p>
+<p><code>phonopy -c POSCAR thermal_properties.conf -t</code></p>
+<p>得到thermal_properties.dat文件：</p>
+<p><code>phonopy-propplot --gnuplot thermal_properties.yaml &gt;thermal_properties.dat</code></p>
+<p>五列数据分别为：temperature[K]、Free energy [kJ&#x2F;mol]、Entropy [J&#x2F;K&#x2F;mol]、Heat capacity [J&#x2F;K&#x2F;mol]、Energy [kJ&#x2F;mol]。</p>
+<p>Phonopy官网还给出了两个参数：<br><code>PRETEND_REAL = .TRUE. </code><br>这里将虚频声子当成实声子进入计算，仅在有小虚频实作测试用；<br><code>CUTOFF_FREQUENCY = 0.1</code><br>默认值为0，将虚频声子频率视为负值，计算高于截止频率的声子。</p>
+<h2 id="热位移计算"><a href="#热位移计算" class="headerlink" title="热位移计算"></a>热位移计算</h2><p>计算投影到笛卡尔轴上的均方位移与温度的函数关系。声子频率以 THz 为单位（phononopy 的默认设置），用于获得均方位移。同样需要与Mesh tag共同使用，温度设置与前述相同。新建thermal_displacements.conf用于输入tag。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">TDISP = .TRUE. #进行均方位移计算</span><br><span class="line">DIM = 1 1 1 #扩胞情况</span><br><span class="line">MP = 16 16 8 #Mesh网格密度</span><br><span class="line">TMAX = 2000</span><br><span class="line">TMIN = 0</span><br><span class="line">TSTEP = 10 #温度上下限默认为100,0，step默认值为10</span><br></pre></td></tr></table></figure>
+
+<p><code>XYZ_PROJECTION = .TRUE.</code><br>打开该tag，将对特征向量按实空间进行投影，得到不同原子在a,b,c三个轴向上的位移投影，数据存储为<code>frequency atom1_x atom1_y atom1_z atom2_x atom2_y atom2_z…</code>形式。</p>
+<p><code>PROJECTION_DIRECTION = 1 1 0</code><br>打开该tag，将原子位移在指定实空间轴向上进行投影。<br>phonopy -c POSCAR thermal_displacements.conf -p -s<br>执行后，输出结果将保存在thermal_displacements.yaml中。注意，计算的原子位移为均方位移。<br>phonopy-bandplot –gnuplot &gt; displacements.dat</p>
+<p>此外的两个tag：</p>
+<p><code>TDISPMAT = .TRUE.</code><br>打开该tag时，将以3*3矩阵形式储存原子在六个方向上的均方位移xx, yy, zz, yz, xz, xy，结果写入thermal_displacement_matrices.yaml中。</p>
+<p><code>TDISPMAT_CIF = 1273.0</code><br>该tag用于指定计算在某温度（1273K）下，原子的均方位移矩阵，结果输出在tdispmat.cif中。</p>
 <h1 id="Phonopy其他功能"><a href="#Phonopy其他功能" class="headerlink" title="Phonopy其他功能"></a>Phonopy其他功能</h1><ul>
-<li>phonopy –symmetry -c POSCAR-unit</li>
+<li><code>phonopy --symmetry -c POSCAR-unit</code></li>
 </ul>
 <p>BPOSCAR和PPOSCAR生成，分别是标准胞和原胞，vasp格式。</p>
 <ul>
-<li>phonopy –rd 10 –dim 2 2 2 –pa auto –amplitude 0.03 -c POSCAR-unitcell</li>
+<li><code>phonopy --rd 10 --dim 2 2 2 --pa auto --amplitude 0.03 -c POSCAR-unitcell</code></li>
 </ul>
 <p>–rd 10 代表生成10个随机位移结构，–dim 2 2 2扩胞倍数，–pa auto沿三个坐标轴投影方向，–amplitude 0.03位移幅度，-c指定对象。</p>
 <p>输出”phonopy_disp.yaml” and supercells</p>
 <ul>
-<li>phonopy-load phonopy_disp_orig.yaml –rd 1000 –temperature 300</li>
+<li><code>phonopy-load phonopy_disp_orig.yaml --rd 1000 --temperature 300</code></li>
 </ul>
 <p>generate 1000 supercells with displacements at 300K.</p>
+<ul>
+<li>New in v2.25 Symfc (symfc&#x2F;symfc) is based on fitting approach and any displacements set of atoms in supercell can be handled. For example, random displacements generated by RANDOM_DISPLACEMENTS can be used to compute force constants. To use symfc, its python module has to be installed via conda-forge or pip.</li>
+</ul>
+<p>New in v2.3 ALM (ttadano&#x2F;ALM) is based on fitting approach and any displacements set of atoms in supercell can be handled. For example, random displacements generated by RANDOM_DISPLACEMENTS can be used to compute force constants. To use ALM, its python module has to be installed via conda-forge or building it. The installation instruction is found here.</p>
+<p>When ALM is used, please cite the paper: T. Tadano and S. Tsuneyuki, J. Phys. Soc. Jpn. 87, 041015 (2018).</p>
+<p><code>FC_CALCULATOR = ALM</code></p>
 
       
     </div>
@@ -890,7 +1115,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-09-14 09:34:59" itemprop="dateModified" datetime="2024-09-14T09:34:59+08:00">2024-09-14</time>
+      <time title="修改时间：2024-11-15 16:33:45" itemprop="dateModified" datetime="2024-11-15T16:33:45+08:00">2024-11-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -975,7 +1200,7 @@
 <ul>
 <li><p>1.准备POSCAR，调用vaspkit- 303（体相材料）或-302（二维材料）得到KPATH.in和PRIMCELL.in文件；对于二维体系，需要检查POSCAR文件的真空层是否沿z方向，如果没有，可调用vaspkit-923或vaspkit-407强制真空层沿z方向。另外，如果需要改变识别结构对称性精度（symprec默认值为1E-5），可通过vaspkit -task 302 -symprec 1E-6实现或者在~&#x2F;.vaspkit中修改SYMPREC默认值。</p>
 </li>
-<li><p>2.执行cp PRIMCELL.vasp POSCAR命名。KPATH.in推荐能带路径只针对于PRIMITIVE CELL，缺少这一步，你可能得到错误的结果。如果有必要，比较KPATH.in文件中的能带路径是否与在线能带路径产生工具SeeK-Path产生的一致，包括比较PRIMCELL.vasp和HIGH_SYMMETRY_POINTS文件。需要指出的是SeeK-Path只用于体相结构能带路径的产生。自1.3.0版本，对于二维体系不需要执行cp PRIMCELL.vasp POSCAR。</p>
+<li><p>2.执行cp PRIMCELL.vasp POSCAR命名。（如果PRIMCELL.vasp 和POSCAR不一样，并且要读取电荷密度和波函数，要从SCF计算保持结构一致。）KPATH.in推荐能带路径只针对于PRIMITIVE CELL，缺少这一步，你可能得到错误的结果。如果有必要，比较KPATH.in文件中的能带路径是否与在线能带路径产生工具SeeK-Path产生的一致，包括比较PRIMCELL.vasp和HIGH_SYMMETRY_POINTS文件。需要指出的是SeeK-Path只用于体相结构能带路径的产生。自1.3.0版本，对于二维体系不需要执行cp PRIMCELL.vasp POSCAR。</p>
 </li>
 </ul>
 <h2 id="投影电荷密度"><a href="#投影电荷密度" class="headerlink" title="投影电荷密度"></a>投影电荷密度</h2><p>复制能带结构文件，<br>vi INCAR<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">增加标签 <span class="variable constant_">LPARD</span>=.<span class="property">T</span>.</span><br><span class="line">增加标签 <span class="variable constant_">IBAND</span>=<span class="number">16</span> <span class="number">17</span></span><br><span class="line">增加标签 <span class="variable constant_">LSEPB</span>=.<span class="property">T</span>.</span><br></pre></td></tr></table></figure></p>
@@ -2107,177 +2332,6 @@
 <li>输入文件KPOINTS比较简单，可以手动，注意格式；INCAR参数众多，直接参考，不知道的参数不加；POTCAR文件比较大，我们只关注赝势对应的元素顺序与POSCAR是否一致；POSCAR结构文件VESTA直接输出。提交任务脚本由超算代理提供，不同超算不同。</li>
 <li>任务提交后关注是否正常结束，另外关注计算的时间等。</li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/08/10-12-25/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Keke Liu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lightchaser">
-      <meta itemprop="description" content="一个小学生的博客">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Lightchaser">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/05/08/10-12-25/" class="post-title-link" itemprop="url">0.5 声子软件安装</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-05-08 10:12:25" itemprop="dateCreated datePublished" datetime="2023-05-08T10:12:25+08:00">2023-05-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-12-19 17:16:24" itemprop="dateModified" datetime="2023-12-19T17:16:24+08:00">2023-12-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" itemprop="url" rel="index"><span itemprop="name">软件安装</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Anaconda安装"><a href="#Anaconda安装" class="headerlink" title="Anaconda安装"></a>Anaconda安装</h1><ol>
-<li><p>Anaconda-Linux版本安装包 【包含了phonopy安装所需的依赖包】<br><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/">https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/</a><br><a target="_blank" rel="noopener" href="https://www.anaconda.com/download/">https://www.anaconda.com/download/</a></p>
-</li>
-<li><p>将下载的准备文件上传到Linux系统<br>cd 到Anaconda文件的目录下，赋予权限，运行下列命令<br>sh [Anaconda文件名]<br>例如：<br>sh Anaconda3-2019.10-Linux-x86_64.sh</p>
-<p> 没什么特殊要求的话，之后一路回车即可安装成功。</p>
-<p> 输入conda list 如果显示已安装的包名和版本号便已安装成功。</p>
-</li>
-<li><p>修改配置:<br>输入vi ~&#x2F;.bashrc （配置python环境）<br>在配置文件末尾中加入下列语句（引号内的路径更换为自己的相对应路径即可）<br> export PATH&#x3D;”&#x2F;路径&#x2F;anaconda3&#x2F;bin:$PATH”</p>
-<p> <strong>添加后保存退出，运行 source ~&#x2F;.bashrc 使配置生效</strong></p>
-</li>
-</ol>
-<p>命令终端输入 python 如果出现python版本号则配置成功，输入 exit() 即可退出python命令模式。</p>
-<h3 id="adaconda使用介绍："><a href="#adaconda使用介绍：" class="headerlink" title="adaconda使用介绍："></a>adaconda使用介绍：</h3><p>1 管理conda<br>(1) 检查conda<br>conda –version     Conda会返回你安装Anaconda软件的版本。</p>
-<p>(2) 升级conda<br>conda update conda     Conda会检查可升级版本，并同时显示可升级的包。</p>
-<p>2 管理运行环境<br>(1) 创建新运行环境<br>conda create –name snowflakes biopython     创建名为snowflakes的新运行环境，其中包含包biopython</p>
-<p>(2) 激活新运行环境<br>Windows: activate snowflakes<br>Linux and macOS: source activate snowflakes<br>(3) 查看所有运行环境<br>conda info –envs     查看所有运行环境</p>
-<p>base &#x2F;home&#x2F;username&#x2F;Anaconda3<br>snowflakes * &#x2F;home&#x2F;username&#x2F;Anaconda3&#x2F;envs&#x2F;snowflakes<br>当前激活的运行环境有且只有一个，且前面有星号(*)</p>
-<p>(4) 查看当前运行环境<br>conda info -envis<br>当前运行环境会显示在括号中：(snowflakes)</p>
-<p>(5) 修改当前运行环境为非激活状态<br>Windows: deactivate<br>Linux and macOS: source deactivate<br>(6) 复制运行环境<br>conda create -n flowers –clone snowflakes</p>
-<p>(7)删除运行环境<br>conda remove -n flowers –all<br>删除运行环境之后可以通过命令查看运行环境是否删除： conda info -e</p>
-<p>3 管理Python<br>(1) 创建包含Python运行的新运行环境<br>conda create –name snakes python&#x3D;3.5 创建名为snakes并包含Python3.5的新运行环境</p>
-<p>(2) 激活新运行环境<br>Windows: activate snakes<br>Linux and macOS: source activate snakes<br>(3) 查看所有运行环境<br>conda info –envs     查看所有运行环境</p>
-<p>base &#x2F;home&#x2F;username&#x2F;Anaconda3<br>snakes * &#x2F;home&#x2F;username&#x2F;anaconda3&#x2F;envs&#x2F;snakes<br>snowflakes &#x2F;home&#x2F;username&#x2F;Anaconda3&#x2F;envs&#x2F;snowflakes<br>当前激活的运行环境有且只有一个，且前面有星号(*)</p>
-<p>(4) 查看当前运行环境<br>conda info -envis 或者 conda info -e<br>当前运行环境会显示在括号中：(snakes)</p>
-<p>(5) 查看Python版本<br>pyhton –version</p>
-<p>(6) 修改当前运行环境为非激活状态<br>Windows: deactivate<br>Linux and macOS: source deactivate<br>4 管理包<br>(1) 查看已安装包<br>conda list</p>
-<p>(2) 安装指定包到当前运行环境<br>conda install beautifulsoup4</p>
-<p>(3) 查找可安装包<br>conda search beautifulsoup4</p>
-<p>(4) 移除包<br>conda remove -n beautifulsoup4 –all</p>
-<p>作者：ZHOUZAIHUI<br>链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/6e4c045a12a1">https://www.jianshu.com/p/6e4c045a12a1</a></p>
-<h1 id="Phonopy安装"><a href="#Phonopy安装" class="headerlink" title="Phonopy安装"></a>Phonopy安装</h1><ol>
-<li><p>下载phonopy：<a target="_blank" rel="noopener" href="https://pypi.org/project/phonopy/#files">https://pypi.org/project/phonopy/#files</a></p>
-</li>
-<li><p>上传解压：tar -xzvf phonopy-2.17.0.tar.gz  &#x2F;&#x2F;解压phonopy文件</p>
-</li>
-<li><p>cd phonopy-2.17.0<br>python setup.py install 安装phonopy<br>安装完成后在命令端输入： phonopy 如果出现如下图案则安装成功<br><img src="/gra/0201.png" alt="0201"></p>
-<p>Installed &#x2F;home&#x2F;hptem001&#x2F;intel&#x2F;oneapi&#x2F;intelpython&#x2F;python3.7&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;phonopy-2.21.0-py3.7-linux-x86_64.egg</p>
-</li>
-</ol>
-<p>Processing dependencies for phonopy&#x3D;&#x3D;2.21.0<br>Searching for spglib&gt;&#x3D;2.0<br>Reading <a target="_blank" rel="noopener" href="https://pypi.org/simple/spglib/">https://pypi.org/simple/spglib/</a></p>
-<p>出现报错：查看phonopy2.21说明依赖要求</p>
-<ul>
-<li>python&gt;&#x3D;3.8</li>
-<li>numpy&gt;&#x3D;1.17.0</li>
-<li>PyYAML&gt;&#x3D;5.3</li>
-<li>matplotlib&gt;&#x3D;2.2.2</li>
-<li>h5py&gt;&#x3D;3.0</li>
-<li>spglib&gt;&#x3D;2.0</li>
-<li>scipy (optional)</li>
-<li>seekpath (optional)</li>
-</ul>
-<p>需要h5py&gt;&#x3D;3.0   、spglib&gt;&#x3D;2.0，<br>在这里对于类似安装都有三种：</p>
-<ul>
-<li><p>可以联网：pip install spglib或者spglib-2.2.0</p>
-</li>
-<li><p>不能联网已安装python：<br>下载：<a target="_blank" rel="noopener" href="https://pypi.org/project/spglib/#modal-close">https://pypi.org/project/spglib/#modal-close</a>  二进制文件，由于python3.7，所以选择CP37。<br>pip install spglib-2.2.0-cp37-cp37m-manylinux_2_17_x86_64.whl</p>
-</li>
-<li><p>不能联网已安装python：<br>下载压缩包解压，同样安装python setup.py install。</p>
-</li>
-<li><p>我在安装h5py老是报错，<br><img src="/gra/0202.png" alt="0202"></p>
-<p>安装cached-property。</p>
-</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://pypi.org/project/cached-property/1.5.2/#files">https://pypi.org/project/cached-property/1.5.2/#files</a></p>
-<p>  再安装h5py即可。</p>
-<h1 id="thirdorder安装"><a href="#thirdorder安装" class="headerlink" title="thirdorder安装"></a>thirdorder安装</h1><ol>
-<li>下载：<a target="_blank" rel="noopener" href="https://drive.google.com/file/d/1N7bwTFwsP75Dw4FH0O-2DEodE7TVw2ub/view">https://drive.google.com/file/d/1N7bwTFwsP75Dw4FH0O-2DEodE7TVw2ub/view</a></li>
-<li>解压完之后进入文件夹修改setup.py文件<br>主要给出spglib的INCLUDE_DIRS和LIBRARY_DIRS即include和lib64文件夹的路径.</li>
-<li>修改完成后运行python setup.py install</li>
-</ol>
-<h1 id="ShengBTE安装"><a href="#ShengBTE安装" class="headerlink" title="ShengBTE安装"></a>ShengBTE安装</h1><ol>
-<li><p>下载：<a target="_blank" rel="noopener" href="https://drive.google.com/file/d/1Kur3BviQjEby34j0yxbkMF45ADJf2U0J/view">https://drive.google.com/file/d/1Kur3BviQjEby34j0yxbkMF45ADJf2U0J/view</a></p>
-</li>
-<li><p>解压完进入文件夹cp arch.make.example arch.make<br>修改前：<img src="/gra/0203.png" alt="0203"><br>修改后：<img src="/gra/0204.png" alt="0204"></p>
-</li>
-<li><p>在Src文件夹内执行命令make  </p>
-</li>
-<li><p>测试：mpirun -np 16 ShengBTE 2&gt;BTE.err &gt;BTE.out</p>
-</li>
-<li><p>添加环境变量：</p>
-<p> vim ~&#x2F;.bashrc</p>
-<p> #加入如下命令<br> export PATH&#x3D;&#x2F;$dir&#x2F;src:$PATH #$dir：ShengBTE文件夹路径</p>
-</li>
-</ol>
-<p>#保存退出</p>
-<pre><code>source ~/.bashrc
-</code></pre>
 
       
     </div>
