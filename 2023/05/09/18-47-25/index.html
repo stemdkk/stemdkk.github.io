@@ -28,7 +28,7 @@
 <meta property="og:description" content="自洽计算VASP做静态自洽的目的主要是为了得到好的电子密度和波函数文件，为了使后续的性质计算可以读取电子密度和波函数，进而增加收敛速度。首先进行 高精度 的结构优化。然后复制文件， cp CONTCAR POSCAR 做一次自洽计算。自洽计算要求有密的k网格点，在计算条件允许的情况下要求自洽的k网格点大致为优化时的2倍左右。修改标签 &amp;#123;.line-numbers&amp;#125;1234IBR">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-05-09T10:47:25.000Z">
-<meta property="article:modified_time" content="2024-11-15T08:33:45.851Z">
+<meta property="article:modified_time" content="2024-12-13T12:40:25.034Z">
 <meta property="article:author" content="Keke Liu">
 <meta property="article:tag" content="vasp">
 <meta property="article:tag" content="电子结构">
@@ -210,7 +210,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-11-15 16:33:45" itemprop="dateModified" datetime="2024-11-15T16:33:45+08:00">2024-11-15</time>
+      <time title="修改时间：2024-12-13 20:40:25" itemprop="dateModified" datetime="2024-12-13T20:40:25+08:00">2024-12-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -243,7 +243,28 @@
 </ul>
 <p>李强博士《learn vasp the hard way》<a target="_blank" rel="noopener" href="https://www.bigbrosci.com/2011/12/24/A08/">https://www.bigbrosci.com/2011/12/24/A08/</a> Bader电荷与原子电荷着色：<br><a target="_blank" rel="noopener" href="https://www.bigbrosci.com/2011/12/23/A07/">https://www.bigbrosci.com/2011/12/23/A07/</a> <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/BNzjhz8SI_HXkaEnyL29Bg">https://mp.weixin.qq.com/s/BNzjhz8SI_HXkaEnyL29Bg</a></p>
 <h2 id="成键反键"><a href="#成键反键" class="headerlink" title="成键反键"></a>成键反键</h2><p>自洽时添加：<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">NBANDS</span>=<span class="number">96</span></span><br><span class="line"><span class="variable constant_">ISYM</span>=-<span class="number">1</span></span><br><span class="line"><span class="variable constant_">IBRION</span>=-<span class="number">1</span></span><br><span class="line"><span class="variable constant_">NSW</span>=<span class="number">0</span></span><br><span class="line"><span class="variable constant_">LWAVE</span> = T</span><br></pre></td></tr></table></figure></p>
-<p><code>vi lobsterin</code><br>原子编号改为 8 和 6<br><code>lobster &lt; lobsterin</code><br>1、删除存在的WAVECAR文件，做单点计算，计算需要保存波函数文件；<br>2、做完单点计算在当前目录下运行lobster软件；<br>3、用wxDragon软件打开COHPCAR.lobster文件。<br><a target="_blank" rel="noopener" href="https://github.com/JaGeo/LobsterPy">https://github.com/JaGeo/LobsterPy</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/470592188">https://zhuanlan.zhihu.com/p/470592188</a></p>
+<p><code>vi lobsterin</code><br>原子编号改为自己的，例如</p>
+<p>lobsterin：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">COHPstartEnergy  -14</span><br><span class="line">COHPendEnergy     6   </span><br><span class="line">basisSet Bunge</span><br><span class="line">basisfunctions Ga 4s 4p 3d</span><br><span class="line">basisfunctions As 4s 4p</span><br><span class="line"></span><br><span class="line">cohpbetween atom 1 and atom 2</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>前两行代表提取的能量范围；第三行代表选择的基组，如果不设置(空行)就是默认基组，如果要覆盖默认基集，可使用此关键字进行覆盖。它目前支持bunge、koga和pbeVaspFit2015；第四行代表为每个元素指定所使用的基函数；最后一行代表选择一对两个原子进行键合分析。</p>
+<p><code>lobster &lt; lobsterin</code></p>
+<p>1、删除存在的WAVECAR文件，做单点计算，计算需要保存波函数文件；<br>2、做完单点计算在当前目录下运行lobster软件；<br>3、用wxDragon软件打开COHPCAR.lobster文件。<br>4、COHPCAR.lobster 文件包含COHP结果，第二列为pCOHP，将第二列乘-1可得-pCOHP<br><a target="_blank" rel="noopener" href="https://github.com/JaGeo/LobsterPy">https://github.com/JaGeo/LobsterPy</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/470592188">https://zhuanlan.zhihu.com/p/470592188</a></p>
+<p>注：</p>
+<ul>
+<li>orbitalWise 这个参数一般加在cohpBetween或者cohpGenerator之后，用以把原子之间的相互作用具体分到s p d 这些轨道上，比如计算s-s, p-p, d-d之间的pCOOP, pCOHP；<br>比如：<code>cohpBetween atom 1 atom 2 orbitalWise</code></li>
+</ul>
+<p><code>cohpGenerator from 1.4 to 1.5 type Ga type Sr orbitalWise</code></p>
+<ul>
+<li><p>不要使用US-PP超软赝势，使用PAW赝势；请使用vasp_std版本，不要使用vasp_gam<br>；不支持处理对称:ISYM&#x3D;0或ISYM&#x3D;-1</p>
+</li>
+<li><p>由于需要把基于平面波的波函数投影到原子轨道的基函数上，所以计算的能带的数量要多于投影的基函数，VASP计算的时候，默认的NBANDS达不到要求，需要加大NBANDS，只要查看OUTCAR里面的NBANDS多少，<code>grep NBANDS OUTCAR</code>；在INCAR里面，NBANDS关键词设置成1.5倍NBANDS，足以满足计算的投影要求，在计算过程中一定要记住设置足够的NBANDS，否则会出现报错，一直不能正常算出COHP</p>
+</li>
+<li><p>cohpGenerator 这里通过距离或者元素类别告诉想要计算什么原子之间的COHP；<code>cohpGenerator from 1.5 to 2.3 type Fe type N orbitalwise</code>  #输出Fe-N原子对距离在1.5到2.3的所有数据之和。</p>
+</li>
+<li><p>gaussianSmearingWidth 高斯展宽，如果VASP中用的ISMEAR&#x3D;0，那么gaussianSmearingWidth的数值和SIGMA一样，默认值是0.2 eV，但是过大了，所以需要减小。设置格式：<code>gaussianSmearingWidth 0.05</code></p>
+</li>
+</ul>
 <h2 id="ELF电子局域函数计算"><a href="#ELF电子局域函数计算" class="headerlink" title="ELF电子局域函数计算"></a>ELF电子局域函数计算</h2><p>电子局域函数（Electron Localization Function—ELF）是研究电子结构的手段之一。用来描述以某个位置处的电子为参考，在其附近找到与他同自旋的电子的概率，可以表征这个作为参考的电子的局域化程度，也是一种描述在多电子体系中的电子对概率的方法。<br>ELF的取值范围是[0，1]。<br>ELF&#x3D;1 对应完全局域化；<br>ELF&#x3D;1&#x2F;2，对应类电子气型的成对概率；<br>ELF&#x3D;0，对应电子完全离域化。</p>
 <p>计算流程：做自洽的时候在INCAR中加入：<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">PREC</span>=A</span><br><span class="line"><span class="variable constant_">LELF</span>=T</span><br><span class="line"><span class="variable constant_">IBRION</span>=-<span class="number">1</span></span><br><span class="line"><span class="variable constant_">NSW</span>=<span class="number">0</span> </span><br></pre></td></tr></table></figure><br>运行vasp得到ELFCAR文件。</p>
 <p>将ELFCAR拖入Vesta <a target="_blank" rel="noopener" href="http://www.jp-minerals.org/vesta/en/download.html">http://www.jp-minerals.org/vesta/en/download.html</a></p>
