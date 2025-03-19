@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.16.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="介绍铁电极化强度（ferroelectric polarization）是指在铁电材料中，由外加电场引起的电偶极矩的强度。铁电材料是一类具有自发极化特性的材料，即在没有外加电场时，这些材料内部的电偶极矩已经排列成某种方向。铁电极化强度描述了这种极化的强弱，它是材料的重要电学特性之一。 四种常见的铁电起源 离子偏移这种是最常见的铁电类型，比如BaTiO3中的Ti离子偏移中心位置；CuInP2S6中C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="10.1 铁电极化计算">
+<meta property="og:url" content="http://example.com/2025/03/11/18-47-24/index.html">
+<meta property="og:site_name" content="Lightchaser">
+<meta property="og:description" content="介绍铁电极化强度（ferroelectric polarization）是指在铁电材料中，由外加电场引起的电偶极矩的强度。铁电材料是一类具有自发极化特性的材料，即在没有外加电场时，这些材料内部的电偶极矩已经排列成某种方向。铁电极化强度描述了这种极化的强弱，它是材料的重要电学特性之一。 四种常见的铁电起源 离子偏移这种是最常见的铁电类型，比如BaTiO3中的Ti离子偏移中心位置；CuInP2S6中C">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-03-11T10:47:24.000Z">
+<meta property="article:modified_time" content="2025-03-19T03:48:50.771Z">
+<meta property="article:author" content="Keke Liu">
+<meta property="article:tag" content="铁电">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2025/03/11/18-47-24/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2025/03/11/18-47-24/","path":"2025/03/11/18-47-24/","title":"10.1 铁电极化计算"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>10.1 铁电极化计算 | Lightchaser</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Lightchaser</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">三人行，必有我师</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E7%A7%8D%E5%B8%B8%E8%A7%81%E7%9A%84%E9%93%81%E7%94%B5%E8%B5%B7%E6%BA%90"><span class="nav-number">1.1.</span> <span class="nav-text">四种常见的铁电起源</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BE%8B%E5%AD%901%EF%BC%9A%E7%A6%BB%E5%AD%90%E5%9E%8B%E9%93%81%E7%94%B5"><span class="nav-number">2.</span> <span class="nav-text">例子1：离子型铁电</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96"><span class="nav-number">3.</span> <span class="nav-text">1 结构优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E4%BA%A7%E7%94%9F%E7%9B%B8%E5%AF%B9%E4%BD%8D%E7%A7%BB%E7%BB%93%E6%9E%84"><span class="nav-number">3.1.</span> <span class="nav-text">2 产生相对位移结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E8%87%AA%E6%B4%BD%E6%9E%81%E5%8C%96%E5%BC%BA%E5%BA%A6%E8%AE%A1%E7%AE%97"><span class="nav-number">3.2.</span> <span class="nav-text">3 自洽极化强度计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%A4%84%E7%90%86%E5%92%8C%E5%88%86%E6%9E%90%E6%95%B0%E6%8D%AE%E3%80%82"><span class="nav-number">3.3.</span> <span class="nav-text">4 处理和分析数据。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BB%91%E7%A7%BB%E9%93%81%E7%94%B5"><span class="nav-number">4.</span> <span class="nav-text">滑移铁电</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E9%A6%96%E5%85%88%E5%87%86%E5%A4%87%E4%BC%98%E5%8C%96%E5%A5%BD%E7%9A%84%E9%93%81%E7%94%B5%E7%9B%B8%EF%BC%8C%E5%8D%B3AB%E5%A0%86%E5%8F%A0%E7%9A%84POSCAR%EF%BC%9A"><span class="nav-number">4.1.</span> <span class="nav-text">1 首先准备优化好的铁电相，即AB堆叠的POSCAR：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E8%87%AA%E6%B4%BD%E8%AE%A1%E7%AE%97"><span class="nav-number">4.2.</span> <span class="nav-text">2 自洽计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%8E%A5%E4%B8%8B%E6%9D%A5%E8%AE%A1%E7%AE%97%E9%A1%BA%E7%94%B5%E7%9B%B8%EF%BC%8C%E5%8D%B3AA%E5%A0%86%E5%8F%A0%EF%BC%8C"><span class="nav-number">4.3.</span> <span class="nav-text">3 接下来计算顺电相，即AA堆叠，</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="nav-number">4.4.</span> <span class="nav-text">4 数据处理</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Keke Liu</p>
+  <div class="site-description" itemprop="description">一个小学生的博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/stemdkk" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;stemdkk" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:257198@whut.edu.cn" title="E-Mail → mailto:257198@whut.edu.cn" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/11/18-47-24/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Keke Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lightchaser">
+      <meta itemprop="description" content="一个小学生的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="10.1 铁电极化计算 | Lightchaser">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          10.1 铁电极化计算
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-03-11 18:47:24" itemprop="dateCreated datePublished" datetime="2025-03-11T18:47:24+08:00">2025-03-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-19 11:48:50" itemprop="dateModified" datetime="2025-03-19T11:48:50+08:00">2025-03-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DFT%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">DFT学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>铁电极化强度（ferroelectric polarization）是指在铁电材料中，由外加电场引起的电偶极矩的强度。铁电材料是一类具有自发极化特性的材料，即在没有外加电场时，这些材料内部的电偶极矩已经排列成某种方向。铁电极化强度描述了这种极化的强弱，它是材料的重要电学特性之一。</p>
+<h2 id="四种常见的铁电起源"><a href="#四种常见的铁电起源" class="headerlink" title="四种常见的铁电起源"></a>四种常见的铁电起源</h2><ol>
+<li><p>离子偏移<br>这种是最常见的铁电类型，比如BaTiO3中的Ti离子偏移中心位置；CuInP2S6中Cu离子上(下)偏移中心位置诱导的极化上(下)</p>
+</li>
+<li><p>极性分子团(polar molecular groups)比如有机-无机杂化材料的中一维（1D）和二维（2D）结构的杂化铁电材料，由极性分子诱导铁电。</p>
+</li>
+<li><p>电荷重布居(Charge redistribution)通过相邻层的占据态与邻近层的未占据态之间的杂化，可以实现层间电荷的重新分布，从而诱导出平面外的电偶极子，比如滑移铁电。</p>
+</li>
+<li><p>自旋比如正交晶系的TbMnO3，它具有非共线自旋结构的反铁磁性，通过逆Dzyaloshinskii Moriya相互作用产生净电极化。</p>
+</li>
+</ol>
+<p>下面介绍两种VASP计算铁电极化强度的方法。第一种，也是目前文献中最常见的方法，Berry phase方法。此外，还可以通过其他方法来计算。偶极矫正法是一种通过直接计算材料中偶极矩来估算铁电材料极化强度的简化方法。它通常用于快速评估铁电材料的极化强度，特别是在不需要高精度结果或没有使用现代极化理论（如 Berry 相位方法）的情况下。</p>
+<h1 id="例子1：离子型铁电"><a href="#例子1：离子型铁电" class="headerlink" title="例子1：离子型铁电"></a>例子1：离子型铁电</h1><p>本文主要计算经典的铁电材料 BaTiO3 的极化强度。</p>
+<p>原文链接:<a target="_blank" rel="noopener" href="https://www.cnblogs.com/ghzhan/articles/16305679.html">https://www.cnblogs.com/ghzhan/articles/16305679.html</a></p>
+<p>BaTiO3 是钙钛矿结构，它的铁电相结构和中心对称结构如图所示，属于四方晶系。<br>该铁电材料是沿着 c 方向极化，主要是 O 离子和 Ti 离子的移动的贡献。 例如，上图中的左边铁电相极化方向朝下，右边铁电相极化方向朝上。极化强度详细计算步骤如下:</p>
+<h1 id="1-结构优化"><a href="#1-结构优化" class="headerlink" title="1 结构优化"></a>1 结构优化</h1><p>先构造 BaTiO3 两种极化方向的晶格结构，并用 VASP 进行结构优化得到 CONTCAR；<br>铁电相POSCAR<br> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Ti   Ba   O    </span><br><span class="line">1.00000000000000       </span><br><span class="line"> 3.9944999999999999   0.0000000000000000   0.0000000000000000   </span><br><span class="line"> 0.0000000000000000   3.9944999999999999  -0.0000000000000000   </span><br><span class="line"> 0.0000000000000000   0.0000000000000000   4.0335000000000001</span><br><span class="line"> Ti   Ba   O </span><br><span class="line"> 1  1  3  </span><br><span class="line"> Direct  </span><br><span class="line"> 0.5000000000000000  0.5000000000000000  0.5142700000000000    </span><br><span class="line"> 0.0000000000000000 -0.0000000000000000  0.0000000000000000    </span><br><span class="line"> 0.5000000000000000  0.5000000000000000  0.9744770000000000    </span><br><span class="line"> 0.5000000000000000  0.0000000000000000  0.4876180000000000    </span><br><span class="line"> 0.0000000000000000  0.5000000000000000  0.4876180000000000</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Ti   Ba   O    </span><br><span class="line">1.00000000000000        </span><br><span class="line">3.9944999999999999   0.0000000000000000   0.0000000000000000   </span><br><span class="line">0.0000000000000000   3.9944999999999999  -0.0000000000000000   </span><br><span class="line">0.0000000000000000   0.0000000000000000   4.0335000000000001</span><br><span class="line">Ti   Ba   O </span><br><span class="line">1  1  3  </span><br><span class="line">Direct  </span><br><span class="line">0.5000000000000000  0.5000000000000000  0.4857300000000000    </span><br><span class="line">0.0000000000000000 -0.0000000000000000  0.0000000000000000    </span><br><span class="line">0.5000000000000000  0.5000000000000000  0.0255230000000000    </span><br><span class="line">0.5000000000000000  0.0000000000000000  0.5123820000000000    </span><br><span class="line">0.0000000000000000  0.5000000000000000  0.5123820000000000</span><br></pre></td></tr></table></figure>
+
+<p>中心对称相POSCAR</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Ti   Ba   O    </span><br><span class="line">1.00000000000000        </span><br><span class="line">3.9944999999999999   0.0000000000000000   0.0000000000000000   </span><br><span class="line">0.0000000000000000   3.9944999999999999  -0.0000000000000000   </span><br><span class="line">0.0000000000000000   0.0000000000000000   4.0335000000000001</span><br><span class="line">Ti   Ba   O </span><br><span class="line">1  1  3  </span><br><span class="line">Direct  </span><br><span class="line">0.5000000000000000  0.5000000000000000  0.5000000000000000    </span><br><span class="line">0.0000000000000000  0.0000000000000000  0.0000000000000000    </span><br><span class="line">0.5000000000000000  0.5000000000000000  0.0000000000000000    </span><br><span class="line">0.5000000000000000  0.0000000000000000  0.5000000000000000    </span><br><span class="line">0.0000000000000000  0.5000000000000000  0.5000000000000000</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-产生相对位移结构"><a href="#2-产生相对位移结构" class="headerlink" title="2 产生相对位移结构"></a>2 产生相对位移结构</h2><p>将上一步优化后的两个结构分别放入创建好的 ini, fin 文件夹。利用 NEB 的 nebmake.pl 命令产生这两种极化方向的中间过渡结构 (vtst下载地址: Download — Transition State Tools for VASP (utexas.edu))，具体命令为：nebmake.pl ini&#x2F;CONTCAR fin&#x2F;CONTCAR 32<br>这里的 ‘32’ 是表示产生中间过渡的 32 种结构。执行上述命令后，当前文件夹下会产生 00, 01, 02, …, 33 个文件夹，每个文件夹下有一个 POSCAR 文件。</p>
+<h2 id="3-自洽极化强度计算"><a href="#3-自洽极化强度计算" class="headerlink" title="3 自洽极化强度计算"></a>3 自洽极化强度计算</h2><p>对每个文件夹的结构进行一次 VASP 自洽运算，INCAR 文件里面需要额外设置 DIPOL 和 LCALPOL 参数。DIPOL 参数可以选取任一坐标，但是保证同一体系采用相同值。 LCALPOL 参数是打开 极化运算。</p>
+<p>INCAR 文件:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">SYSTEM=BaTiO3</span><br><span class="line">ISTART =0</span><br><span class="line">ICHARG =2</span><br><span class="line">PREC   =Accurate</span><br><span class="line">ENCUT  =520</span><br><span class="line">EDIFF  =0.1E-07</span><br><span class="line">ISMEAR = 0</span><br><span class="line">LWAVE=.FALSE.</span><br><span class="line">LCHARG = .FALSE.</span><br><span class="line">NELM = 200</span><br><span class="line">DIPOL = 0.5 0.5 0.5</span><br><span class="line">LCALCPOL=.TRUE</span><br></pre></td></tr></table></figure>
+
+<p>INCAR要注意：<br>铁电极化计算建议设置高精度；DIPOL &#x3D; 不要设置在原子及迁移路径上，设置在真空层的一边&#x2F;质心。</p>
+<p>批量化计算，计算程序根据相应计算环境调整。</p>
+<p><code>grep &#39;dipole moment&#39; */OUTCAR|rev| awk &#39;&#123;printf (&quot;%s &quot;, $4)&#125;&#39;|rev|awk &#39;&#123;printf (&quot;%f\n&quot;, $1+$2)&#125;&#39; &gt;&gt; dipole_c.dat </code></p>
+<p><code>grep &#39;free  energy   TOTEN&#39; */OUTCAR | awk &#39;&#123;printf (&quot;%s\n&quot;,$5)&#125;&#39; &gt;&gt; energy.dat </code></p>
+<p>注意，这里通过 grep 命令产生的 dipole_c.dat 文件记录的是沿着 c 方向的极化值，这是因为 BaTiO3 是沿着 c 方向极化的。对于具体的情况需要自行修改。离子与电子相加即可，然后用NP相-铁电相即可得到极化强度P。</p>
+<p>注意：在铁电极化计算过程中经常会出现参考相为非半导体的情况，这种情况下可以：①镜像法：以FE以NP为参照中心，建立一个-FE相 (PhaseB’, 即铁电极化方向相反)。然后按照上述方法计算极化，再以FE相的极化-（-FE相）的极化值，然后除以2即得到极化强度。可以理解为1-(-1) &#x3D; 2，2&#x2F;2&#x3D;1；<br>②线性插值法：在FE和NP相中间插入一系列中间过渡相(0%（FE）,10%,20%,30%….100%(NP))，计算它们的极化，然后可以用Origin做拟合，100%时即为NP相的极化。(100%-0%)则是极化强度P。</p>
+<h2 id="4-处理和分析数据。"><a href="#4-处理和分析数据。" class="headerlink" title="4 处理和分析数据。"></a>4 处理和分析数据。</h2><p>首先要理清数据单位。VASP 计算得到的 dipole moment 的单位是 e*Å，它与库仑之间换算为:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1e =  1.602176634 * 10^-19 C  </span><br><span class="line">1Å = 10^-10 m</span><br></pre></td></tr></table></figure>
+
+<p>三维体系的极化强度： 极化值除以体积。单位为 $e&#x2F;Å^2$；</p>
+<p>二维体系的极化强度：极化值除以面积。单位为 $e&#x2F;Å$。</p>
+<p>在这个例子中，BaTiO3 的体积为 64.3586 $Å^3$。</p>
+<p>不同 image  的极化强度不是连续的，这是和选取的原胞有关，需要考虑极化量子的影响。BaTiO3 沿着 c 方向极化，所以需要对该极化值加减整数倍的 c 方向的晶格常数。</p>
+<p>选取最靠近中间极化强度为 0 的那条曲线，即为 BaTiO3 的极化强度曲线：除以体积并进行简单的单位换算后为:另外，我们也可以绘制极化值 P 与能量 E 曲线</p>
+<p>因此， BaTiO3 的极化强度大约为 0.248 $C&#x2F;m^2$，与文献中的实验结果 0.26 $C&#x2F;m^2$ 吻合。（Physical Review, 99(4), 1161–1165, 1955 ）</p>
+<p>拟合 Landau-Ginzburg 公式<br>$$<br>E &#x3D; \sum_{i} \left( \frac{A}{2} P_i^2 + \frac{B}{4} P_i^4 + \frac{C}{6} P_i^6 \right) + \frac{D}{2} \sum_{i,j} (P_i - P_j)^2<br>$$</p>
+<p>分别计算各个原子位移（原子移动方式可以类似于线性插值法）后结构的极化值，通过L-G公式拟合极化与能量得到前三项的系数A,B和C。由具有铁电性的原胞（FE结构）建立441超胞，计算超胞能量E1。然后将441超胞中其中一个原胞的FE结构换成-FE结构（-FE结构），代表一个dipole发生了翻转，计算出超胞能量E2，根据朗道有效哈密顿量在这两种情况下的表达式，并比较能量E1和E2，就可以得到D的数值。</p>
+<p>拟合该多项式曲线，得到$E &#x3D; 6062.434883706029<em>P^6 +2437.756598493882</em>P^4 + -340.5806845162749*P^2 +10.339600058315137$ 其中参数 A, B,  C 分别为<br>$$<br>A &#x3D; -0.68116 eV *(m^2&#x2F;C)^2<br>B &#x3D;  9.75103  eV *(m^2&#x2F;C)^4<br>C &#x3D; 36.37461  eV *(m^2&#x2F;C)^6<br>$$</p>
+<p> 绘制能量曲线的脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">with open(&#x27;energy.dat&#x27;,&#x27;r&#x27;) as f:</span><br><span class="line">    content = f.readlines()</span><br><span class="line">res = [float(i.strip(&#x27;\n&#x27;)) for i in content]</span><br><span class="line">minres = min(res)</span><br><span class="line">res = [1e3*(i-minres) for i in res]</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">plt.figure()</span><br><span class="line">plt.plot(res,&#x27;b.-&#x27;)</span><br><span class="line">plt.xlabel(&#x27;displacement&#x27;)</span><br><span class="line">plt.ylabel(&#x27;Energy ($meV$)&#x27;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>绘制dipole曲线，以及考虑极化量子的脚本:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">with open(&#x27;dipole_c.dat&#x27;,&#x27;r&#x27;) as f:</span><br><span class="line">   content = f.readlines()</span><br><span class="line">res = [float(i.strip(&#x27;\n&#x27;)) for i in content]</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">plt.figure()</span><br><span class="line">plt.xlabel(&#x27;displacement&#x27;)</span><br><span class="line">plt.ylabel(&#x27;Polarization ($e*&#123;\AA&#125;$)&#x27;)</span><br><span class="line">plt.xlim([0,32])</span><br><span class="line">plt.plot(res,&#x27;r.&#x27;)</span><br><span class="line"></span><br><span class="line">### 考虑极化量子</span><br><span class="line"></span><br><span class="line">c = 4.0335000000000001</span><br><span class="line">tmp = []</span><br><span class="line">N = 20</span><br><span class="line">for j in range(N):</span><br><span class="line">   start = -N/2+j</span><br><span class="line">   tmp1 = [i+start*c for i in res]</span><br><span class="line">   # print(tmp1[0])</span><br><span class="line">   tmp.append(tmp1)</span><br><span class="line">plt.figure()</span><br><span class="line">for i in tmp: </span><br><span class="line">   plt.plot(i,&#x27;.&#x27;)</span><br><span class="line"></span><br><span class="line">#plt.ylim([-2,2])</span><br><span class="line">plt.xlabel(&#x27;displacement&#x27;)</span><br><span class="line">plt.ylabel(&#x27;Polarization ($e*&#123;\AA&#125;$)&#x27;)</span><br><span class="line">plt.xlim([0,32])</span><br><span class="line"></span><br><span class="line">### 单位换算</span><br><span class="line"></span><br><span class="line">P = [-1.1965400000000006, -1.1288099999999996, -1.060039999999999, -0.990219999999999, -0.9193599999999993, -0.8474299999999992, -0.7744599999999995, -0.7004900000000003, -0.6255299999999995, -0.5496499999999997, -0.4728999999999992, -0.3953799999999994, -0.31716999999999906, -0.2384000000000004, -0.1591799999999992,-0.11827, 0.0, 0.11827, 0.1591799999999992, 0.2384000000000004, 0.31716999999999906, 0.3953799999999994, 0.4728999999999992, 0.5496499999999997, 0.6255299999999995, 0.7004900000000003, 0.7744599999999995, 0.8474299999999992, 0.9193599999999993, 0.990219999999999, 1.060039999999999, 1.1288099999999996, 1.1965400000000006]</span><br><span class="line">plt.figure()</span><br><span class="line">P = [i*0.248945227832799346 for i in P]</span><br><span class="line">plt.xlabel(&#x27;displacement&#x27;)</span><br><span class="line">plt.ylabel(&#x27;Polarization ($C/m^2$)&#x27;)</span><br><span class="line">plt.xlim([0,32])</span><br><span class="line">plt.plot(P,&#x27;r.&#x27;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>绘制极化值 P 与能量 E 曲线的脚本:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">E = [0.0035557599999975764, 0.0016252999999935014, 0.0004821100000000911, 0.0, 5.983999999870093e-05, 0.0005505999999968481, 0.0013690299999993272, 0.0024182999999950994, 0.003608839999998281, 0.004859239999994713, 0.006096989999996083, 0.007258279999994954, 0.008287759999994648, 0.009138139999997463, 0.00977216999999797, 0.010162939999993625, 0.010294929999993485, 0.010162939999993625, 0.00977216999999797, 0.009138139999997463, 0.008287759999994648, 0.007258279999994954, 0.006096989999996083, 0.004859239999994713, 0.003608839999998281, 0.0024182999999950994, 0.0013690299999993272, 0.0005505999999968481, 5.983999999870093e-05, 0.0, 0.0004821100000000911, 0.0016252999999935014, 0.0035557599999975764]</span><br><span class="line">P = [-1.1965400000000006, -1.1288099999999996, -1.060039999999999, -0.990219999999999, -0.9193599999999993, -0.8474299999999992, -0.7744599999999995, -0.7004900000000003, -0.6255299999999995, -0.5496499999999997, -0.4728999999999992, -0.3953799999999994, -0.31716999999999906, -0.2384000000000004, -0.1591799999999992,-0.11827, 0.0, 0.11827, 0.1591799999999992, 0.2384000000000004, 0.31716999999999906, 0.3953799999999994, 0.4728999999999992, 0.5496499999999997, 0.6255299999999995, 0.7004900000000003, 0.7744599999999995, 0.8474299999999992, 0.9193599999999993, 0.990219999999999, 1.060039999999999, 1.1288099999999996, 1.1965400000000006]</span><br><span class="line"></span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import numpy as np</span><br><span class="line">E = [1e3*i for i in E]</span><br><span class="line">P = [i*0.248945227832799346 for i in P]</span><br><span class="line"></span><br><span class="line">plt.figure()</span><br><span class="line">plt.plot(P,E,&#x27;b.-&#x27;)</span><br><span class="line">plt.xlabel(&#x27;Polarization ($C/m^2$)&#x27;)</span><br><span class="line">plt.ylabel(&#x27;Energy ($meV$)&#x27;)</span><br><span class="line">f1 = np.polyfit(P, E, 6)</span><br><span class="line">poly = &#x27;&#x27;for i in range(len(f1)): </span><br><span class="line">   poly += &#x27;&#123;&#125;*x^&#123;&#125;  +  &#x27;.format(f1[i],len(f1)-i-1)</span><br><span class="line">print(poly)</span><br><span class="line">x = [ -0.35+0.7*i/99 for i in range(100)]</span><br><span class="line">Eval = np.polyval(f1,x)</span><br><span class="line">plt.figure()</span><br><span class="line">plt.plot(x,Eval,&#x27;b&#x27;)</span><br><span class="line">plt.plot(P,E,&#x27;r*&#x27;)</span><br><span class="line">plt.xlabel(&#x27;Polarization ($C/m^2$)&#x27;)</span><br><span class="line">plt.ylabel(&#x27;Energy ($meV$)&#x27;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>参考:</p>
+<p><a target="_blank" rel="noopener" href="https://chengcheng-xiao.github.io/post/2019/12/25/Wannier_center_polarization.html">https://chengcheng-xiao.github.io/post/2019/12/25/Wannier_center_polarization.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv14756243/">https://www.bilibili.com/read/cv14756243/</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/358517335">https://zhuanlan.zhihu.com/p/358517335</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/537595648">https://zhuanlan.zhihu.com/p/537595648</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ghzhan/articles/16341122.html">https://www.cnblogs.com/ghzhan/articles/16341122.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/445884561">https://zhuanlan.zhihu.com/p/445884561</a></p>
+<p>5). 居里温度计算的两种方法</p>
+<ol>
+<li>AIMD方法计算居里温度Tc（计算量巨大，准确）使用AIMD分别计算不同温度下的超胞，通过统计学得到平均极化距离d，通过d找到对应温度下的极化值，然后通过slogical1函数拟合得到$T_c$。</li>
+<li>MC方法计算居里温度$T_c$（计算速度极快，建议）通过L-G公式进行拟合即可，代码及教程详细可看<a target="_blank" rel="noopener" href="https://github.com/Chengcheng-Xiao/mpiPyMC">https://github.com/Chengcheng-Xiao/mpiPyMC</a></li>
+</ol>
+<h1 id="滑移铁电"><a href="#滑移铁电" class="headerlink" title="滑移铁电"></a>滑移铁电</h1><p>华中科技大学的吴梦昊教授，在2017年首次提出层间滑移铁电，通过两层之间的滑移，实现电极化翻转。</p>
+<p>下面以双层GdI2为例，计算这个材料的铁电极化强度。</p>
+<p>Xun W, Wu C, Sun H, et al. Coexisting magnetism, ferroelectric, and ferrovalley multiferroic in stacking-dependent two-dimensional materials[J]. Nano letters, 2024, 24(11): 3541-3547.</p>
+<h2 id="1-首先准备优化好的铁电相，即AB堆叠的POSCAR："><a href="#1-首先准备优化好的铁电相，即AB堆叠的POSCAR：" class="headerlink" title="1 首先准备优化好的铁电相，即AB堆叠的POSCAR："></a>1 首先准备优化好的铁电相，即AB堆叠的POSCAR：</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">CONTCAR                                    </span><br><span class="line">1.00000000000000          </span><br><span class="line">4.1426458804503365    0.0000000000000000    0.0000000508502232    </span><br><span class="line">-2.0713229953957617    3.5876365788074991   -0.0000000399383119     </span><br><span class="line">0.0000004448876875    0.0000000102694673   30.0000000000000000   </span><br><span class="line">I    Gd     </span><br><span class="line">4     2</span><br><span class="line">Direct  </span><br><span class="line">0.3333333244151952  0.6666666877589731  0.2311447203064440  </span><br><span class="line">0.3333333924379757  0.6666666704222977  0.0889274910801614  </span><br><span class="line">0.6666666411760427  0.3333333528368931  0.4864429969506502  </span><br><span class="line">0.6666666937613037  0.3333333375676722  0.3442418595816502  </span><br><span class="line">0.6666666947651289  0.3333333427541252  0.1601182205842356  </span><br><span class="line">0.0000000004443691  0.0000000116600432  0.4152546984968589</span><br></pre></td></tr></table></figure>
+<p>在INCAR中加入参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DIPOL = 0.5 0.5 0.3</span><br><span class="line">LCALCPOL = .TRUE.   #计算铁电极化开关 </span><br></pre></td></tr></table></figure>
+
+
+<h2 id="2-自洽计算"><a href="#2-自洽计算" class="headerlink" title="2 自洽计算"></a>2 自洽计算</h2><p>计算完成后，在OUTCAR中查找关键字dipole：由于我们关注的是c方向，因此只要看最后一列，用-397.00967 + 7.0125 &#x3D; -389.99717，即为铁电相的极化值。</p>
+<h2 id="3-接下来计算顺电相，即AA堆叠，"><a href="#3-接下来计算顺电相，即AA堆叠，" class="headerlink" title="3 接下来计算顺电相，即AA堆叠，"></a>3 接下来计算顺电相，即AA堆叠，</h2><p>优化好的POSCAR如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">CONTCAR                                    </span><br><span class="line">1.00000000000000          </span><br><span class="line">4.1426458804503365    0.0000000000000000    0.0000000508502232    </span><br><span class="line">-2.0713229953957617    3.5876365788074991   -0.0000000399383119     </span><br><span class="line">0.0000004448876875    0.0000000102694673   30.0000000000000000   </span><br><span class="line">I    Gd     </span><br><span class="line">4     2</span><br><span class="line">Direct  </span><br><span class="line">0.6756282937225784  0.3441349445403583  0.2202487956955387  </span><br><span class="line">0.6756257399639071  0.3441404853191938  0.0779182529604372  </span><br><span class="line">0.6708730704449056  0.3402390499976288  0.4974588775154418  </span><br><span class="line">0.6708673133601825  0.3402448262892301  0.3551273278370464  </span><br><span class="line">0.0089448210006132  0.0107926773902162  0.1491235435481827  </span><br><span class="line">0.0042207755078186  0.0069279784633755  0.4262532274433494</span><br></pre></td></tr></table></figure>
+<p>同样在自洽的INCAR中加入参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DIPOL = 0.5 0.5 0.3</span><br><span class="line">LCALCPOL = .TRUE.  #计算铁电极化开关</span><br></pre></td></tr></table></figure>
+<p>计算完成后查看顺电相的极化：</p>
+<p>极化值为：-397.00991 + 7.00991 &#x3D; -390</p>
+<h2 id="4-数据处理"><a href="#4-数据处理" class="headerlink" title="4 数据处理"></a>4 数据处理</h2><p>铁电相减去顺电相，得到的值为：-389.99717-(-390)&#x3D;0.00283，单位是电子&#x2F;埃。</p>
+<p>极化强度是单位面积上的极化值，进行单位转换，最终结果3.0467x10-13 C&#x2F;m。</p>
+<p>对比文献中的结果：数值还是非常接近的，差距可能在结构优化，或者参数设置的一些细节方面。至于为什么文献中是-12次方，我的是-13次方，我特地联系了通讯作者询问了一下，是他们笔误搞错了，正确结果就是-13次方。最后可能有人发现了，似乎没用到极化量子，由于计算的结果比较凑巧，刚好在同一个极化量子的范围内。一般情况下，可能算出来的极化值会相差很多个极化量子。</p>
+<p>原链接：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/1j97g5A1Ny95EOn3cqKh-A">https://mp.weixin.qq.com/s/1j97g5A1Ny95EOn3cqKh-A</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%93%81%E7%94%B5/" rel="tag"># 铁电</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/12/19/18-47-20/" rel="prev" title="9.1 转角结构">
+                  <i class="fa fa-chevron-left"></i> 9.1 转角结构
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Keke Liu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

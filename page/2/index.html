@@ -123,7 +123,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -134,7 +134,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-count">41</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -159,6 +159,401 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/19-49-25/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Keke Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lightchaser">
+      <meta itemprop="description" content="一个小学生的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Lightchaser">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/05/09/19-49-25/" class="post-title-link" itemprop="url">3.4 非谐声子</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-09 19:49:25" itemprop="dateCreated datePublished" datetime="2023-05-09T19:49:25+08:00">2023-05-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-10-29 17:26:26" itemprop="dateModified" datetime="2024-10-29T17:26:26+08:00">2024-10-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DFT%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">DFT学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>ALAMODE中非谐声子计算部分采用了自洽声子计算方法。</p>
+<p>具体教程：<a target="_blank" rel="noopener" href="https://alamode.readthedocs.io/en/latest/anphondir/formalism_anphon.html#self-consistent-phonon-scph-calculation">https://alamode.readthedocs.io/en/latest/anphondir/formalism_anphon.html#self-consistent-phonon-scph-calculation</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1mv411M7W7/?spm_id_from=333.999.0.0&vd_source=17084cc867ff3bb86398ff1a79b443f2">https://www.bilibili.com/video/BV1mv411M7W7/?spm_id_from=333.999.0.0&amp;vd_source=17084cc867ff3bb86398ff1a79b443f2</a></p>
+<p>TDEP 是其采用技术Temperature dependent effective potential的缩写。<br>下面是开发者的网站，但是并不能下载到源代码。<a target="_blank" rel="noopener" href="http://ollehellman.github.io/page/index.html%E5%A5%BD%E6%B6%88%E6%81%AF%E6%98%AF%E7%AC%AC%E4%B8%80%E6%80%A7%E5%8E%9F%E7%90%86%E8%AE%A1%E7%AE%97%E8%BD%AF%E4%BB%B6ABINIT%E4%B8%AD%E9%9B%86%E6%88%90%E4%BA%86TDEP%E6%96%B9%E6%B3%95%EF%BC%8C%E5%AE%98%E7%BD%91user">http://ollehellman.github.io/page/index.html好消息是第一性原理计算软件ABINIT中集成了TDEP方法，官网user</a> guide&gt;a-TDEP。需要研究的可以自行研究。ABINIT官网：<a target="_blank" rel="noopener" href="https://www.abinit.org/">https://www.abinit.org/</a></p>
+<p>Dynaphopy 是采用了一种基于AIMD（第一性原理分子动力学）的杂化方法的python程序包：<a target="_blank" rel="noopener" href="http://abelcarreras.github.io/DynaPhoPy/index.html">http://abelcarreras.github.io/DynaPhoPy/index.html</a><br>文中给出了参考文献，需要的自行下载。</p>
+<h1 id="ALAMODE"><a href="#ALAMODE" class="headerlink" title="ALAMODE"></a>ALAMODE</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a target="_blank" rel="noopener" href="https://alamode.readthedocs.io/en/latest/index.html#">https://alamode.readthedocs.io/en/latest/index.html#</a></p>
+<h2 id="ALAMODE计算Si简谐声子谱"><a href="#ALAMODE计算Si简谐声子谱" class="headerlink" title="ALAMODE计算Si简谐声子谱"></a>ALAMODE计算Si简谐声子谱</h2><h3 id="1、利用ALM计算displacement-patterns"><a href="#1、利用ALM计算displacement-patterns" class="headerlink" title="1、利用ALM计算displacement patterns"></a>1、利用ALM计算displacement patterns</h3><p>优化后的超胞结构重命名<strong>POSCAR.orig</strong>，准备输入文件<strong>si_alm.in</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&amp;general</span><br><span class="line">  PREFIX = si222</span><br><span class="line">  MODE = suggest</span><br><span class="line">  NAT = 64; NKD = 1</span><br><span class="line">  KD = Si</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;interaction</span><br><span class="line">  NORDER = 1  # 1: harmonic, 2: cubic, ..</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;cell</span><br><span class="line">  20.406 # factor in Bohr unit</span><br><span class="line">  1.0 0.0 0.0 # a1</span><br><span class="line">  0.0 1.0 0.0 # a2</span><br><span class="line">  0.0 0.0 1.0 # a3</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;cutoff </span><br><span class="line">  Si-Si None</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;position</span><br><span class="line">  1 0.0000000000000000 0.0000000000000000 0.0000000000000000   </span><br><span class="line">  1 0.0000000000000000 0.0000000000000000 0.5000000000000000</span><br><span class="line">  1 0.0000000000000000 0.2500000000000000 0.2500000000000000</span><br><span class="line">  1 0.0000000000000000 0.2500000000000000 0.7500000000000000</span><br><span class="line">  1 0.0000000000000000 0.5000000000000000 0.0000000000000000</span><br><span class="line">  1 0.0000000000000000 0.5000000000000000 0.5000000000000000</span><br><span class="line">  1 0.0000000000000000 0.7500000000000000 0.2500000000000000</span><br></pre></td></tr></table></figure>
+<p>晶格常数替代为自己的超胞结构。</p>
+<p>运行ALM: <code>alm si_alm.in &gt; si_alm.log1</code>，将会生成<strong>si222.pattern_HARMONIC</strong>文件，包含坐标信息。对于Si只有一个displacement patterns。</p>
+<h3 id="2、计算原子间力"><a href="#2、计算原子间力" class="headerlink" title="2、计算原子间力"></a>2、计算原子间力</h3><p>在此之前要确定位移的大小，一般简谐0.01-0.04，0.01大多可以。运行<code>python displace.py --VASP=POSCAR.orig --mag=0.01 -pf si222.pattern_HARMONIC</code></p>
+<p>之后对每个结构提交计算，脚本：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line"># Assume we have 20 displaced configurations for QE [disp01.pw.in,..., disp20.pw.in].</span><br><span class="line"></span><br><span class="line">for ((i=1;i&lt;=20;i++))</span><br><span class="line">do</span><br><span class="line">    num=`echo $i | awk &#x27;&#123;printf(&quot;%02d&quot;,$1)&#125;&#x27;`</span><br><span class="line">    mkdir $&#123;num&#125;</span><br><span class="line">    cd $&#123;num&#125;</span><br><span class="line">    cp ../disp$&#123;num&#125;.pw.in .</span><br><span class="line">    pw.x &lt; disp$&#123;num&#125;.pw.in &gt; disp$&#123;num&#125;.pw.out</span><br><span class="line">    cd ../</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<p>计算完成后，提取信息：<code>python extract.py --VASP=POSCAR.orig vasprun*.xml &gt; DFSET_harmonic</code>，生成<strong>DFSET_harmonic</strong>文件。</p>
+<h3 id="3、拟合力常数"><a href="#3、拟合力常数" class="headerlink" title="3、拟合力常数"></a>3、拟合力常数</h3><p>修改1中的 <strong>si_alm.in</strong> ：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&amp;general</span><br><span class="line">  PREFIX = si222</span><br><span class="line">  MODE = optimize   # &lt;-- here</span><br><span class="line">  NAT = 64; NKD = 1</span><br><span class="line">  KD = Si</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;optimize</span><br><span class="line">  DFSET = DFSET_harmonic</span><br><span class="line">/</span><br></pre></td></tr></table></figure>
+<p>运行<code>alm si_alm.in &gt; si_alm.log2</code>，生成<strong>si222.fcs and si222.xml</strong></p>
+<h3 id="4、计算声子谱和DOS"><a href="#4、计算声子谱和DOS" class="headerlink" title="4、计算声子谱和DOS"></a>4、计算声子谱和DOS</h3><p>准备<strong>si_phband.in</strong>文件，结构中用晶胞结构，注意&amp;cell中单位是Bohr，具体可设置如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&amp;general</span><br><span class="line">  PREFIX = si</span><br><span class="line">  MODE   = phonons</span><br><span class="line">  FCSXML = si.xml</span><br><span class="line"></span><br><span class="line">  NKD = 1; KD = Si</span><br><span class="line">  MASS = 28.085</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;cell</span><br><span class="line">  10.184247326051628 </span><br><span class="line">  0.0000000000000000    0.5071343999939496    0.5071343999939496</span><br><span class="line">  0.5071343999939496    0.0000000000000000    0.5071343999939496</span><br><span class="line">  0.5071343999939496    0.5071343999939496    0.0000000000000000</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;kpoint</span><br><span class="line">  1   # KPMODE = 1: line mode</span><br><span class="line">  G 0.0 0.0 0.0 X 0.5 0.5 0.0 51</span><br><span class="line">  X 0.5 0.5 1.0 G 0.0 0.0 0.0 51</span><br><span class="line">  G 0.0 0.0 0.0 L 0.5 0.5 0.5 51</span><br><span class="line">/</span><br></pre></td></tr></table></figure>
+<p>执行<code>anphon si_phband.in &gt; si_phband.log</code>会产生<strong>si.bands</strong>文件，可以用plotband.py脚本画图。执行python plotband.py si.bands得到</p>
+<p>准备si_phdos.in文件，结构中用晶胞结构，注意&amp;cell中单位是Bohr，具体可设置如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&amp;general</span><br><span class="line">  PREFIX = si</span><br><span class="line">  MODE   = phonons</span><br><span class="line">  FCSXML = si.xml</span><br><span class="line"></span><br><span class="line">  NKD = 1; KD = Si</span><br><span class="line">  MASS = 28.085</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;cell</span><br><span class="line">  10.184247326051628 </span><br><span class="line">  0.0000000000000000    0.5071343999939496    0.5071343999939496</span><br><span class="line">  0.5071343999939496    0.0000000000000000    0.5071343999939496</span><br><span class="line">  0.5071343999939496    0.5071343999939496    0.0000000000000000</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;kpoint</span><br><span class="line">  2   # KPMODE = 2: uniform mesh mode</span><br><span class="line">  20 20 20</span><br><span class="line">/</span><br></pre></td></tr></table></figure>
+<p>执行<code>anphon si_phdos.in &gt; si_phdos.log</code>会产生<strong>si.dos</strong>文件，可以用plotdos.py脚本画图。执行python plotdos.py –emax 550 –nokey si.dos得到</p>
+<h3 id="5-估算对热导率的立方IFCs-非简谐IFCs"><a href="#5-估算对热导率的立方IFCs-非简谐IFCs" class="headerlink" title="5. 估算对热导率的立方IFCs(非简谐IFCs)"></a>5. 估算对热导率的立方IFCs(非简谐IFCs)</h3><p>这里计算非简谐IFCs，我们把si_alm1.in复制为si_alm3.in，将NORDER &#x3D; 1改为NORDER &#x3D; 2.我们还要注意这里考虑计算三阶力常数，所以&amp;cutoff下的参数我们要再指定个截止半径，一般要求略大于第二近邻的距离（可以从si_alm1.log查看，如下图）。当然你接着用None也行，这样可能大大增加参数的数量，从而增加计算成本。</p>
+<p>运行alm si_alm3.in &gt; si_alm3.log，可以看到多了si_cubic.相关文件。运行python displace.py –OpenMX&#x3D;Si.dat –mag&#x3D;0.04 -pf si_cubic.pattern_ANHARM3，可见产生了disp01.dat到disp11.dat11个OpenMX输入文件，我们准备shell脚本批量提交，shell脚本命名为pbs.sh，具体为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">for ((i=1;i&lt;=11;i++))</span><br><span class="line">do</span><br><span class="line">    num=`echo $i | awk &#x27;&#123;printf(&quot;%02d&quot;,$1)&#125;&#x27;`</span><br><span class="line">    mkdir $&#123;num&#125;</span><br><span class="line">    cd $&#123;num&#125;</span><br><span class="line">    cp ../disp$&#123;num&#125;.dat .</span><br><span class="line">    cp disp$&#123;num&#125;.dat Si.dat</span><br><span class="line">    cp ../openmx.pbs .</span><br><span class="line">    qsub openmx.pbs</span><br><span class="line">    cd ../</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><h4 id="简谐计算步骤"><a href="#简谐计算步骤" class="headerlink" title="简谐计算步骤"></a>简谐计算步骤</h4><ol>
+<li>输入文件： 优化后的超胞结构重命名<strong>POSCAR.orig</strong>，准备输入文件<strong>si_alm.in</strong>（其中mode：suggest）；输出：<strong>si222.pattern_HARMONIC</strong>文件，包含坐标信息。</li>
+<li>displace.py对上面的.pattern文件处理，得到随机位移结构；对随机位移机构进行力的计算，生成不同vasprun.xml；extract.py处理上面vasprun.xml，生成<strong>DFSET_harmonic</strong>文件。</li>
+<li><font color=red>力常数拟合输入文件：</font><strong>DFSET_harmonic</strong>文件，修改1中的 <strong>si_alm.in</strong>，其中mode改成opt, 添加下面；生成<strong>si222.fcs and si222.xml</strong>。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&amp;optimize</span><br><span class="line">  DFSET = DFSET_harmonic</span><br><span class="line">/</span><br></pre></td></tr></table></figure></li>
+<li>后处理输入文件：准备<strong>phband.in</strong>文件，修改MODE   &#x3D; phonons<br>  FCSXML &#x3D; si.xml；修改kmesh格式可得到声子谱、态密度、热性质等。</li>
+</ol>
+<h4 id="非谐计算"><a href="#非谐计算" class="headerlink" title="非谐计算"></a>非谐计算</h4><ol>
+<li>准备简谐计算得到的<strong>si222.fcs and si222.xml</strong>，AIMD得到的vasprun.xml，超胞结构。</li>
+<li>displace.py 对AIMD的vasprun.xml处理，得到随机结构；对随机位移机构进行力的计算，生成不同vasprun.xml；extract.py处理上面vasprun.xml，生成<strong>DFSET_AIMD_random</strong>文件。</li>
+<li><font color=red>Cross validation (CV)：</font>alm_cv.in文件中添加简谐力常数 FC2XML &#x3D; ..&#x2F;harmonic.xml，添加高阶力常数部分标签和cv相关标签，<strong>mode &#x3D; cv</strong>；得到*cvset文件；python3 cvscore.py *cvset &gt; si222.cvscore得到Minimum cvscore</li>
+<li><font color=red>拟合力常数输入文件：</font>alm_opt.in中mode&#x3D;opt；修改cv相关标签；生成高阶力常数<strong>cv.fcs and cv.xml</strong>.在这一步alm 的输入文件&amp;general 部分加入 FC3_SHENGBTE&#x3D;1、 FC4_SHENGBTE&#x3D;1可输出ShengBTE格式的输入文件。</li>
+<li><font color=red>SCPH计算：</font>scph.in文件中修改MODE&#x3D;SCPH和温度标签；添加&amp;scph模块，见上面例子。anphon scph.in &gt; scph.log提交，查看收敛：grep “conv” scph.log。生成输出文件：.scph_dymat、.scph_dfc2、.scph_bands。对.scph_dfc2处理得到有效二阶力常数文件，用于后续计算。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;dfc2</span><br><span class="line">DFC2--a generator of renormalized harmonic FCs from SCPH outputs.</span><br><span class="line">XML file containing original Fc2 : STo222.xml </span><br><span class="line">Output xml filename with anharmonic correction : ST0222_SCPH2-2_300K.xml</span><br><span class="line">FC2 correction file fromSCPH calculation :STo_scph2-2.scph_dfc2</span><br><span class="line">Target temperature : 300</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">New XML file STo222_SCPH2-2_300K.xml was created successfully.</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="Alamode计算高温声子色散"><a href="#Alamode计算高温声子色散" class="headerlink" title="Alamode计算高温声子色散"></a>Alamode计算高温声子色散</h2><p>Anharmonic Phonons (self-consistent phonon theory)<br>主要使用alamode软件。 版本：alamode-1.1.0</p>
+<h3 id="输入文件"><a href="#输入文件" class="headerlink" title="输入文件"></a>输入文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vasprun.xml #分子动力学输出文件</span><br><span class="line">Dfile  #包含原子的力和位移</span><br><span class="line">extract_disp.py #选取结构，并计算位移</span><br><span class="line">extract_force.py #选取结构，并获得受力</span><br><span class="line">PPOSCAR #初始超胞</span><br><span class="line">alm.in #提取力常数的输入文件</span><br><span class="line">anphono.in #计算声子谱的输入文件</span><br></pre></td></tr></table></figure>
+<ol>
+<li>从分子动力学数据中选取一定数量的结构，并提取它们的力和计算与初始状态相比的位移，输出到<strong>Dfile</strong>文件当中</li>
+</ol>
+<p><code>python extract_disp.py </code><br>#运行后根据提示输入开始的步数和间隔步数<br>#例如总共1000步，从第一步开始提取，每间隔五步提取一次<br>#得到disp.dat</p>
+<p><code>python extract_force.py</code> </p>
+<p>方法同上得到force.dat<br>将disp.dat和force.dat文件按如下形式合并到一起</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">disp1x  disp1y  disp1z   force1x  force1y  force1z</span><br><span class="line">       ......</span><br><span class="line">       ......</span><br><span class="line">dispNx  dispNy  dispNz   forceNx  forceNy  forceNz</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>获取力常数</li>
+</ol>
+<p>提取四阶力常数的<strong>alm.in</strong>文件如下（使用LASSO方法）：</p>
+<p>二阶力常数可以通过有限位移法提取(详见官网手册)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&amp;general</span><br><span class="line">  PREFIX = ThO2_ENET</span><br><span class="line">  MODE = optimize</span><br><span class="line">  NAT = 81; NKD = 2</span><br><span class="line">  KD = Th O</span><br><span class="line">#  PRINTSYM=1</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;interaction</span><br><span class="line">  NORDER = 5  # 1: harmonic, 2: cubic, ..</span><br><span class="line">  NBODY = 2 3 3 2 2</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;cell</span><br><span class="line">  1 # factor in Bohr unit</span><br><span class="line">  0.0000000000000   15.919498944104   15.919498944104</span><br><span class="line">  15.919498944104   0.0000000000000   15.919498944104</span><br><span class="line">  15.919498944104   15.919498944104   0.0000000000000</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;optimize</span><br><span class="line">  LMODEL= enet</span><br><span class="line">  FC2XML = ThO2_2nd.xml</span><br><span class="line">  DFSET=ThO2_dffile</span><br><span class="line"></span><br><span class="line">  CV = 0</span><br><span class="line">  L1_RATIO = 1.0</span><br><span class="line">  L1_ALPHA = 1.0e-06</span><br><span class="line">  CV_MINALPHA = 1.0e-6</span><br><span class="line">  CV_MAXALPHA = 0.02</span><br><span class="line">  CV_NALPHA = 100</span><br><span class="line"></span><br><span class="line">  STANDARDIZE = 1</span><br><span class="line">  CONV_TOL = 1.0e-9</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;cutoff </span><br><span class="line">  *-* None None 12.0 12.0 12.0</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;position</span><br><span class="line">1  0.0000000000000000  0.0000000000000000  0.0000000000000000</span><br><span class="line">1  0.3333333333333333  0.0000000000000000  0.0000000000000000</span><br><span class="line">..................</span><br></pre></td></tr></table></figure>
+<p>注意晶格常数单位的转换 $1 Bohr&#x3D; 0.529177208 Angstrom$</p>
+<p>在终端运行：</p>
+<p>bash<br><code>alm alm.in &gt; alm.log</code><br>得到<strong>Nb.xml</strong></p>
+<ol start="3">
+<li>Anharmonic Phonon</li>
+</ol>
+<p><strong>anphono.in</strong>输入文件如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&amp;general</span><br><span class="line"> PREFIX =scph</span><br><span class="line"> MODE = SCPH</span><br><span class="line"> FCSXML =Nb.xml #forceconstant file</span><br><span class="line"></span><br><span class="line"> NKD = 1; KD = Nb</span><br><span class="line"> MASS = 92.90638</span><br><span class="line"></span><br><span class="line"> #NONANALYTIC = 0; BORNINFO = PbTe.born</span><br><span class="line"></span><br><span class="line"> TMIN = 0; TMAX = 300; DT = 100   #Temperature and step</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;scph</span><br><span class="line"> KMESH_SCPH        = 6 6 6</span><br><span class="line"> KMESH_INTERPOLATE = 6 6 6</span><br><span class="line"></span><br><span class="line"> SELF_OFFDIAG = 0</span><br><span class="line"> RESTART_SCPH = 0</span><br><span class="line"></span><br><span class="line"> MIXALPHA = 0.1</span><br><span class="line"> MAXITER = 500</span><br><span class="line"> TOL_SCPH = 1.0e-10</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;cell   ## primitive cell is best</span><br><span class="line">  6.2507550151332</span><br><span class="line">  -0.5  0.5  0.5</span><br><span class="line">   0.5 -0.5  0.5</span><br><span class="line">   0.5  0.5 -0.5</span><br><span class="line">/</span><br><span class="line"></span><br><span class="line">&amp;kpoint</span><br><span class="line">  1  # KPMODE = 1: get phonon band  2: get others properties</span><br><span class="line">  G 0.0 0.0 0.0 H 0.5 -0.5 0.5 201</span><br><span class="line">  H 0.5 -0.5 0.5 P 0.25 0.25 0.25 201</span><br><span class="line">  P 0.25 0.25 0.25 G 0.0 0.0 0.0 201</span><br><span class="line">  G 0.0 0.0 0.0  N 0.0 0.0 0.5 201</span><br><span class="line">/</span><br></pre></td></tr></table></figure>
+<p>在终端运行：</p>
+<p><code>anphon anphono.in &gt; anphono.log</code><br>得到<strong>scph.scph_bands</strong>，里面有不同温度下的声子谱</p>
+<ol start="4">
+<li>进入安装目录下的tools文件夹：make Makefile，编译df2c。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[scf1355@ln151%nc-l ah]$ ~/soft/alamode/tools/dfc2 </span><br><span class="line"> DFC2 -- a generator of renormalized harmonic FCs from SCPH outputs.</span><br><span class="line"> XML file containing original FC2 : crte2-442.xml</span><br><span class="line"> Output xml filename with anharmonic correction : crte2-new.xml</span><br><span class="line"> FC2 correction file from SCPH calculation : crte2-442.scph_dfc2</span><br><span class="line"> Target temperature : 300</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p> 输出crte2-new.xml.利用<a target="_blank" rel="noopener" href="https://github.com/ttadano/alamode/discussions/192">https://github.com/ttadano/alamode/discussions/192</a> 中提到的脚本转换成phonopy格式。此时的力常数文件由于对称性数量不匹配，利用phonopy读取并写出FULL_FORCE_CONSTANTS。</p>
+<h2 id="Alamode-to-ShengBTE"><a href="#Alamode-to-ShengBTE" class="headerlink" title="Alamode_to_ShengBTE"></a>Alamode_to_ShengBTE</h2><h3 id="Alamode计算热导率步骤"><a href="#Alamode计算热导率步骤" class="headerlink" title="Alamode计算热导率步骤"></a>Alamode计算热导率步骤</h3><ol>
+<li>所有的计算都是基于密度泛函软件 VASP 来进行的。</li>
+<li>首先利用第一性原理的密度泛函对晶体结构进行优化，弛豫出稳定的晶格结构，然后利用密度泛函微扰理论计算出波恩有效电荷和静态介电张量，以便用于后续求解动力学矩阵的非解析部分。 </li>
+<li>随后为了获得更加精准的二阶力常数，通过差分位移的方法生成微扰结构，后利用静态密度泛函理论计算出力和位移信息，再利用最小二乘法得到所需要的二阶力常数。 </li>
+<li>对于高阶力常数，本文利用分子动力学模拟得到 80 个准随机结构，对每个准随机结构的原子施加随机方向的微小位移，以便得到更加随机的结构，最后利用最小绝对收缩和选择算子的方法得到高阶力常数。 </li>
+<li>结合上述已经得到的介电张量、波恩有效电荷、二阶力常数和三阶力常数作为输入，最后通过ShengBTE声子玻尔兹曼输运方程求得简谐近似下晶格热导率、声子群速度、 声子散射率等热输运系数。 </li>
+<li>结合介电张量、波恩有效电荷、二阶力常数和四阶力常数作为输入进行自洽声子理论的计算，这将得到与温度相关的非谐动力学矩阵，对其进行傅里叶变换得到与温度相关的有效二阶力常数，用有效二阶力常数代替上述的二阶力常数，在此基础上求解声子玻尔兹曼输运方程求得自洽声子理论下晶格热导率、声子群速度、声子散射率等热输运系数。</li>
+<li>在简谐近似下存在虚频，与实验观察到的稳定性不一致。因此，传统的基于简谐原子间力常数的玻尔兹曼输运方程解的结果不再有效，并且非谐效应在足够大的位移振幅内变得显著。在 ALAMODE 软件包中，通过有限位移法在 2×2×2 超胞中获得简谐原子间力常数 (IFCs) ，位移大小设置为 0.01Å。<br>随后，通过压缩感知晶格动力学方法训练三阶和四阶力常数。具体来说，本文首先模拟了在 300 K、时间步长为 2fs 的 4000 步的从头算分子动力学，得到了 80 个快照。为了得到准随机结构， 本文将到得到快照中的原子向随机方向移动 0.1 Å。随后，本文将获得的准随机结构在 4×4×4 的 k 点网格中进行了静态 DFT 计算，以计算 Hellmann–Feynman 力。最终，利用得到的 80 个准随机结构的位移和力组成的数据集通过最小绝对收缩和选择算子 (least absolute shrinkage and selection operator，简称 LASSO)方法训练出非谐力常数。<br>在计算中本文考虑了超胞内的所有原子间最近邻相互作用来计算简谐和三阶力常数，四阶力常数只考虑了第五最近邻内的相互作用，由于五阶和六阶力常数 对结果的影响很小，因此只考虑了次近邻相互作用。<br>本文根据 ALAMODE 软件包中采用的 SCP 理论，利用获得的简谐和非谐力常数来计算非谐声子频率。<br>声子玻尔兹曼输运方程的解是通过 ShengBTE 的修订版 FourPhonon 软件包来实现的，并建立了具有高斯涂抹 (scale broad 参数为 0.05) 的 18×18×18 的 q 点网格来模拟相关积分和声子波矢量。此外，在计算中得到了大约 2.3×105 个三声子过程和 1.2×109 个四声子过程。因此，对于三声子散射，本文采用迭代方案来求解玻尔兹曼输运方程，而通过单模弛豫时间近似(SMRTA) 来处理四声子散射过程，这是因为计算成本巨大。</li>
+</ol>
+<h3 id="步骤分析"><a href="#步骤分析" class="headerlink" title="步骤分析"></a>步骤分析</h3><ul>
+<li>上面第3步，利用alm来算大概分为三步，mode设为suggest产生随机位移，vasp求力和能量，mode设为opt拟合二阶力常数即可。<strong>alm模块</strong>。</li>
+<li>上面第4步，利用AIMD产生随机位移，vasp求力和能量，压缩感知晶格动力学方法训练三阶和四阶力常数mode设为cv，随后mode设为opt拟合高阶力常数，<strong>alm模块</strong>。最后mode设为SCPH获得变温声子谱和有效二阶力常数,<strong>anphon模块</strong>。后续运行<strong>dfc2</strong>模块生成指定温度的有效二阶力常数，用<a target="_blank" rel="noopener" href="https://github.com/ttadano/alamode/discussions/192">https://github.com/ttadano/alamode/discussions/192</a> 中提到的脚本转换成phonopy格式。</li>
+<li>上面第5步，为了产生ShengBTE的力常数输入文件，在拟合高阶力常数时，alm 的输入文件&amp;general 部分加入 FC3_SHENGBTE&#x3D;1、 FC4_SHENGBTE&#x3D;1即可。如果简谐声子谱有虚频，上面的有效二阶力常数也需要，即第7步所述。</li>
+<li>上面第6步见ShengBTE教程3.2节。</li>
+<li>Alamode可以得到的结果包括格林艾森常数、声子群速度、三声子相空间、热导率原子贡献率和元素、变温声子谱和态密度、MSD、可视化振动模式、QHA等,<strong>anphon模块</strong>。</li>
+</ul>
+<h3 id="Alamode-连接-shengBTE"><a href="#Alamode-连接-shengBTE" class="headerlink" title="Alamode 连接 shengBTE"></a>Alamode 连接 shengBTE</h3><p>首先，github上安装最新版本的develop branches 或 feature&#x2F;shengbte_4ph branches</p>
+<p>[<strong>3rd 4th IFCs</strong>]  </p>
+<p>拟合力常数时，alm 的输入文件&amp;general 部分加入 FC3_SHENGBTE&#x3D;1、 FC4_SHENGBTE&#x3D;1即可。</p>
+<hr>
+<p>&amp;general</p>
+<p> PREFIX &#x3D; BN-1000</p>
+<p> MODE &#x3D; opt</p>
+<p> NAT &#x3D; 128</p>
+<p> NKD &#x3D; 2; KD &#x3D; B N</p>
+<p> TOLERANCE &#x3D; 1.0e-3</p>
+<p> FC3_SHENGBTE&#x3D;1</p>
+<p> FC4_SHENGBTE&#x3D;1</p>
+<p>&#x2F;</p>
+<hr>
+<p>Note：输出的文件名为：FORCE_CONSTANT_3RD、FORCE_CONSTANT_4TH，和ShengBTE的文件名差一个S，FORCE_CONSTANTS_3RD、FORCE_CONSTANTS_4TH</p>
+<p>[<strong>2nd IFCs</strong>]  </p>
+<p>首先通过QE的DFPT计算一个不含SCP的二阶力常数，BN.ifc2。</p>
+<p>做SCPH计算，会生成计算温度点的二阶力常数SCP等效修正部分，例如BN.scph_dfc2（仅考虑四声子散射对重整化的影响），若进一步考虑三声子散射的重整化作用，文件名为BN.scph+bubble(0)_dfc2。</p>
+<p>alamode&#x2F;tools&#x2F;scph_to_qefc.py    可以将SCP的修正部分与QE计算的二阶力常数相加，得到指定温度重整化后的二阶力常数。</p>
+<p>Usage:</p>
+<blockquote>
+<p>python scph_to_qefc.py  original_QEfc2 scph_fc2_correction temperature &gt; scp_fc2</p>
+<p>python scph_to_qefc.py BN.ifc2    BN.scph_dfc2    1000 &gt; espresso.ifc2</p>
+</blockquote>
+<h2 id="Authors-and-references"><a href="#Authors-and-references" class="headerlink" title="Authors and references"></a>Authors and references</h2><p>Weizhe Yuan <u><a href="mailto:&#x79;&#117;&#x61;&#x6e;&#x77;&#122;&#x40;&#115;&#116;&#117;&#x2e;&#104;&#x69;&#x74;&#x2e;&#x65;&#x64;&#x6e;&#46;&#x63;&#x6e;">&#x79;&#117;&#x61;&#x6e;&#x77;&#122;&#x40;&#115;&#116;&#117;&#x2e;&#104;&#x69;&#x74;&#x2e;&#x65;&#x64;&#x6e;&#46;&#x63;&#x6e;</a></u></p>
+<ul>
+<li>W. Yuan et al., <a target="_blank" rel="noopener" href="https://www.researchgate.net/journal/Physical-Review-B-1095-3795?_tp=eyJjb250ZXh0Ijp7ImZpcnN0UGFnZSI6ImhvbWUiLCJwYWdlIjoicHVibGljYXRpb24iLCJwcmV2aW91c1BhZ2UiOiJwcm9maWxlIiwicG9zaXRpb24iOiJwYWdlSGVhZGVyIn19">Physical Review B</a> 110, 165412 (2024).</li>
+</ul>
+<h2 id="注意的问题"><a href="#注意的问题" class="headerlink" title="注意的问题"></a>注意的问题</h2><ol>
+<li><p>The accuracy of the anharmonic force constants can be checked by increasing the size of the training dataset. If the physical properties, such as thermal conductivity and free energy, change significantly with the size of the training dataset, it indicates that the training is insufficient. If the change is minor, your force constants may be OK.</p>
+</li>
+<li><p>报错：Warning: The following force constant doesn’t exist in the original file:<br>You can neglect this warning as long as the correction term (the last column) is small.<br>This warning is raised when the absolute value of the correction is larger than 1.0e-10 and the corresponding force constant does not exist in the original FCSXML file. In your case, the correction term is only slightly above the tolerance. So, it should not cause any problems hopefully.<br>When the correction term is much larger than 1.0e-10, this warning indicates a possible error in the inputs. Likely errors are the input structure is not fully symmetrized, or the numerical digits of lattice vectors and fractional coordinates are insufficient.<br>the given KMESH_INTERPOLATE is not commensurate with the supercell size of the original FCSXML.</p>
+</li>
+<li><p>In the current implementation of alamode, only the former choice,<br>renormalized 2FCs + conventional (old) 3FCs,<br>is supported. Another possible choice may be<br>renormalized 2FCs + renormalized 3FCs,<br>but it is not supported within alamode yet.<br>When MODE &#x3D; RTA, the anphon code only reads the 2FCs and 3FCs from given XML files. By contrast, when MODE &#x3D; SCPH, the code additionally reads the 4FCs because they are necessary to compute the renormalized 2FCs based on the self-consistent phonon theory.<br>Therefore, the second combination of<br>renormalized 2FCs + high order FCs using SCPH<br>is not possible.</p>
+</li>
+<li><p>I performed the SCPH calculation. It is not converged at low temperatures (0K, 100K, 200K), while it achieved convergence at high temperatures (300~1200K).A potential solution is to use a smaller MIXALPHA and a smaller DT.</p>
+</li>
+<li><p>I would like to use second-order, third-order, and fourth-order force constants to obtain anharmonic potentials and calculate the potential energy as a function of atomic displacement. My goal is to generate a plot similar to the one in the paper “Orbitally driven giant phonon anharmonicity in SnSe” (Nature Phys. 2015).Please use <a target="_blank" rel="noopener" href="https://github.com/ttadano/alamode/blob/develop/tools/calcpes.py">https://github.com/ttadano/alamode/blob/develop/tools/calcpes.py</a>.</p>
+</li>
+<li><p>now that I have obtained the renormalized force constant file xxx.xml at a finite temperature, I now want to convert the renormalized force constant file directly to FORCE_CONSTANS</p>
+</li>
+<li><p>How to convert a second-order force constant matrix obtained by almode to FORCE_CONSTANTS in phonopy format？</p>
+<blockquote>
+<p>python convert.py alamode.xml &gt; FORCE_CONSTANTS</p>
+</blockquote>
+</li>
+</ol>
+<p>Could you give me some suggestion? How shoud I covert this with phonopy?</p>
+<blockquote>
+<p>FULL_FORCE_CONSTANTS &#x3D; .TRUE.<br>WRITE_FORCE_CONSTANTS &#x3D; .TRUE.<br>Note: the old FORCE_CONSTANTS will be overwrited</p>
+</blockquote>
+<ol start="8">
+<li>How small the fitting error should be?</li>
+</ol>
+<p>It depends on the Taylor expansion potential and displacement magnitude you choose.<br>In the standard harmonic calculation where –mag&#x3D;0.01 is used in displace.py and the all harmonic interactions are considered (cutoff &#x3D; None), the fitting error is usually less than 5% (~1–2% in most cases).<br>In the calculation of third-order force constants with –mag&#x3D;0.04, the fitting error should be small as well. Indeed, in many cases, we obtain much smaller fitting errors (&lt; 1%) than the harmonic case.<br>In the temperature-dependent effective potential method, we try to fit the harmonic potential to the displacement-force datasets sampled by ab initio molecular dynamics at finite temperature. Therefore, the fitting error tends to be much larger (&gt; 10%).</p>
+<h1 id="dynaphopy"><a href="#dynaphopy" class="headerlink" title="dynaphopy"></a>dynaphopy</h1><ol>
+<li>简谐声子谱的计算。<br>dynaphopy的非谐修正是在phonopy的力常数基础上进行的，需要先进行0k声子谱的计算。<br>结构优化的INCAR，力的收敛标准是E-3，大部分的文献也是在这个精度范围内。结构优化的结构是单胞，10个原子。<br>这是phonopy计算的声子谱，计算的结构为2<em>2</em>2的超胞，80个原子，在gmma点和X点有很强的虚频。这个虚频即使提高收敛精度和扩大超胞也是无法消除的。</li>
+<li>AIMD计算<br>dynaphopy通过读取AIMD的计算结构进行拟合（说法不准确），需要预先准备AIMD的outcar或xdatcar。<br>AIMD的计算设置，基本参考dynaphopy的example中的设置，详细的参数涵义，都有教程介绍。<br>这里只是采用了3000步的计算，步长是2fs，能量的收敛精度是E-6，不算太高。同样是采用80个原子的超胞。大部分做非谐计算的文献，所采用的都是在80-160原子数范围内的超胞，步长多是1-2fs，总步数大概是3000-6000，总的时长是5ps-10ps。从下面的非谐声子谱结果来看，这个设置对于非谐计算是合适的？</li>
+<li>dynaphopy非谐声子谱计算。<br>dynaphopy的官网如下：Dynaphopy (abelcarreras.github.io)。<br>将结构优化的原始晶胞POSCAR，phonopy输出的力常数，和AIMD的OUTCAR放在一个文件夹内。<br>设置dynaphopy的输入文件input如下：分别是输入结构文件，力常数文件，原胞和超胞与POSCAR的关系设置，band是声子谱的高对称点路径，设置方式和vasp计算PBE能带一致。<br>然后输入dynaphopy input OUTCAR -i，进入下的界面，选择6，进入非谐声子谱计算，再选择1，可以同时输出简谐声子谱和非简谐声子谱，此时会对peak进行拟合。拟合结束后，会输出声子谱。<br>一开始使用默认设置，输出的声子谱，可以看到高温声子谱虚频加重了。从@get-it 大佬处了解到，dynaphopy默认使用最大熵方法拟合，效果可能不如fftw有效。于是小弟将拟合方式改为fftw,通过指令dynaphopy input OUTCAR -i -psm 3,采用快速傅里叶变换拟合。得到300k下的声子谱，可以看到，原来gamma点和X点的虚频，已经被成功消除了。而实验上，这个材料在室温下肯定是稳定的。</li>
+</ol>
+<p>当然，如果想要得到更准确的声子谱，需要提高优化精度，采用更大的超胞计算力常数，AIMD需要更多的步数和更小的步长，比如dynaphopy的例子是采用0.7 fs,跑200000步。如果只是想得到一个比较合理的声子谱，适当降低精度是没问题的。比如这个计算，在24核的机器上，结构优化用时不到3小时，dfpt计算1小时，AIMD计算14小时，差不多用时一天，能够得到一个比较合适的声子谱。如果提高精度，计算用时可能会提升数倍，但是声子谱的提升可能并不会太明显。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/18-49-25/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Keke Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lightchaser">
+      <meta itemprop="description" content="一个小学生的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Lightchaser">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/05/09/18-49-25/" class="post-title-link" itemprop="url">3.3 电声耦合</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-09 18:49:25" itemprop="dateCreated datePublished" datetime="2023-05-09T18:49:25+08:00">2023-05-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-15 15:59:43" itemprop="dateModified" datetime="2024-06-15T15:59:43+08:00">2024-06-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DFT%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">DFT学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="MC-电声耦合"><a href="#MC-电声耦合" class="headerlink" title="MC-电声耦合"></a>MC-电声耦合</h1><p>需要vasp6.0之后的版本,INCAR开启</p>
+<p>PHON_LMC &#x3D; .TRUE.<br>IBRION &#x3D; 6</p>
+<h2 id="全MC采样"><a href="#全MC采样" class="headerlink" title="全MC采样"></a>全MC采样</h2><ul>
+<li><p>标签PHON_NSTRUCT设置由于MC抽样而生成的结构的数量。应该监视观测值相对于这个数量的收敛。</p>
+</li>
+<li><p>标签TEBEG&#x3D;0也是需要的，用于选择运行抽样的温度。</p>
+</li>
+<li><p>另外，PHON_LBOSE可以设置为.TRUE.或.FALSE. (默认PHON_LBOSE&#x3D;.TRUE.)，分别选择玻色-爱因斯坦统计或麦克斯韦-玻尔兹曼统计。</p>
+</li>
+</ul>
+<p>0K的一个INCAR文件如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">System = DEFAULT</span><br><span class="line">PREC = Accurate</span><br><span class="line">ISMEAR = 0; SIGMA = 0.1;</span><br><span class="line">IBRION = 6</span><br><span class="line"></span><br><span class="line">PHON_LMC = .TRUE.</span><br><span class="line">PHON_NSTRUCT = 100</span><br><span class="line">TEBEG = 0.0</span><br></pre></td></tr></table></figure>
+<p>随后生成Wycoff positions畸变的许多POSCAR，输出为POSCAR.TEBEG.NUMBER</p>
+<h2 id="ZG-configuration即时采样（one-shot）"><a href="#ZG-configuration即时采样（one-shot）" class="headerlink" title="ZG configuration即时采样（one-shot）"></a>ZG configuration即时采样（one-shot）</h2><p>这种方法仅使用单一的扭曲结构，因此比完全的MC抽样快上几个数量级，同时保持了与收敛的超晶胞尺寸的完全MC抽样非常接近的准确性。例如，我们展示了对于带隙的零点重整化，准确度在ZG配置和完全MC抽样之间在5毫电子伏特之内。因此，我们建议优先使用这种方法，当很难实现超晶胞尺寸的收敛或者5毫电子伏特的精度已经足够时。</p>
+<ol>
+<li>输入<br>要选择ZG配置，必须在INCAR文件中设置<code>PHON_NSTRUCT=0</code>。不同温度的数量和温度列表（以K为单位）必须使用标签<code>PHON_NTLIST</code>和<code>PHON_TLIST</code>，在INCAR文件中分别提供。一个示例如下：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PHON_NTLIST = 4</span><br><span class="line">PHON_TLIST = 0.0 100.0 200.0 350.0</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>给出了一个温度范围为0-700K（步长为100K）的示例INCAR文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">System = DEFAULT</span><br><span class="line">PREC = Accurate</span><br><span class="line">ISMEAR = 0; SIGMA = 0.1;</span><br><span class="line">IBRION = 6</span><br><span class="line">PHON_NTLIST = 8</span><br><span class="line">PHON_TLIST = 0.0 100.0 200.0 300.0 400.0 500.0 600.0 700.0</span><br><span class="line">PHON_NSTRUCT = 0</span><br><span class="line">PHON_LMC = .TRUE.</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>输出</li>
+</ol>
+<p>类似于MC抽样，ZG配置方法会产生多个具有不同扭曲Wycoff位置但不变的布里渊矩阵的POSCAR文件。这些文件被标记为</p>
+<p><code>POSCAR.TEMP</code><br>其中TEMP遍历由PHON_TLIST定义的所有温度。</p>
+<h2 id="one-shot例子（金刚石带隙重整化）"><a href="#one-shot例子（金刚石带隙重整化）" class="headerlink" title="one-shot例子（金刚石带隙重整化）"></a>one-shot例子（金刚石带隙重整化）</h2><h3 id="输入文件"><a href="#输入文件" class="headerlink" title="输入文件"></a>输入文件</h3><p>INCAR：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">general:</span><br><span class="line"> System = cd-C</span><br><span class="line"> PREC = Accurate</span><br><span class="line"> ALGO = FAST</span><br><span class="line"> ISMEAR = 0 </span><br><span class="line"> SIGMA = 0.1;</span><br><span class="line"> IBRION = 6         #获得动力学矩阵声子计算</span><br><span class="line"> PHON_LMC = .TRUE.  #开启电声耦合计算</span><br><span class="line"> PHON_NSTRUCT = 0   #选择one-shot方法</span><br><span class="line"> PHON_NTLIST = 1    #温度点个数</span><br><span class="line"> PHON_TLIST = 0.0   #对应温度</span><br></pre></td></tr></table></figure>
+<p>准备优化后的结构，需要扩胞，以保证声子准确。KPOINTS、POTCAR根据POSCAR调整。</p>
+<h3 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h3><p>一、获得结构</p>
+<p>按照超胞结构和上面的INCAR提交任务，结束后获得OUTCAR。<br>执行： <code>cp OUTCAR OUTCAR.init</code><br>新的畸变后的结构输出为POSCAR.T&#x3D;0.</p>
+<p>二、计算特定位移畸变结构的电子能级</p>
+<p> <code>cp POSCAR.T=0. POSCAR</code></p>
+<p>INCAR 修改为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> System = cd-C</span><br><span class="line">PREC = Accurate</span><br><span class="line">ALGO = FAST</span><br><span class="line">ISMEAR = 0 </span><br><span class="line">SIGMA = 0.1  #去掉PHON_标签</span><br></pre></td></tr></table></figure>
+<p>执行计算，完成后<code>cp OUTCAR OUTCAR.T=0.</code></p>
+<p>三、 提取ZPR</p>
+<p>具有特殊位移的带隙减去没有特殊位移的带隙，就可以得到零点带隙重整的值。带隙保存在OUTCAR文件里。</p>
+<p>执行例子中的脚本：<code>bash extract_zpr.sh</code>,<br>脚本内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash </span><br><span class="line"></span><br><span class="line">i=&quot;OUTCAR.T=0.&quot;</span><br><span class="line">j=&quot;OUTCAR.init&quot;</span><br><span class="line"></span><br><span class="line">homo1=`awk &#x27;/NELECT/ &#123;print $3/2&#125;&#x27; $i`</span><br><span class="line">homo2=`awk &#x27;/NELECT/ &#123;print $3/2-1&#125;&#x27; $i`</span><br><span class="line">homo3=`awk &#x27;/NELECT/ &#123;print $3/2-2&#125;&#x27; $i`</span><br><span class="line">lumo1=`awk &#x27;/NELECT/ &#123;print $3/2+var+1&#125;&#x27; $i`</span><br><span class="line">lumo2=`awk &#x27;/NELECT/ &#123;print $3/2+var+2&#125;&#x27; $i`</span><br><span class="line">lumo3=`awk &#x27;/NELECT/ &#123;print $3/2+var+3&#125;&#x27; $i`</span><br><span class="line">lumo4=`awk &#x27;/NELECT/ &#123;print $3/2+var+4&#125;&#x27; $i`</span><br><span class="line">lumo5=`awk &#x27;/NELECT/ &#123;print $3/2+var+5&#125;&#x27; $i`</span><br><span class="line">lumo6=`awk &#x27;/NELECT/ &#123;print $3/2+var+6&#125;&#x27; $i`</span><br><span class="line">e1a=`grep &quot;   $homo1  &quot; $i | head -$nkpt | sort -n -k 2 | tail -1 | awk &#x27;&#123;print $2&#125;&#x27;`</span><br><span class="line">e1b=`grep &quot;   $homo2  &quot; $i | head -$nkpt | sort -n -k 2 | tail -1 | awk &#x27;&#123;print $2&#125;&#x27;`</span><br><span class="line">e1c=`grep &quot;   $homo3  &quot; $i | head -$nkpt | sort -n -k 2 | tail -1 | awk &#x27;&#123;print $2&#125;&#x27;`</span><br><span class="line">e2a=`grep &quot;   $lumo1  &quot; $i | head -$nkpt | sort -n -k 2 | head -1 | awk &#x27;&#123;print $2&#125;&#x27;`</span><br><span class="line">e2b=`grep &quot;   $lumo2  &quot; $i | head -$nkpt | sort -n -k 2 | head -1 | awk &#x27;&#123;print $2&#125;&#x27;`</span><br><span class="line">e2c=`grep &quot;   $lumo3  &quot; $i | head -$nkpt | sort -n -k 2 | head -1 | awk &#x27;&#123;print $2&#125;&#x27;`</span><br><span class="line">e2d=`grep &quot;   $lumo4  &quot; $i | head -$nkpt | sort -n -k 2 | head -1 | awk &#x27;&#123;print $2&#125;&#x27;`</span><br><span class="line">e2e=`grep &quot;   $lumo5  &quot; $i | head -$nkpt | sort -n -k 2 | head -1 | awk &#x27;&#123;print $2&#125;&#x27;`</span><br><span class="line">e2f=`grep &quot;   $lumo6  &quot; $i | head -$nkpt | sort -n -k 2 | head -1 | awk &#x27;&#123;print $2&#125;&#x27;`   </span><br><span class="line"> </span><br><span class="line">homo_ref=`awk &#x27;/NELECT/ &#123;print $3/2&#125;&#x27; $j`</span><br><span class="line">lumo_ref=`awk &#x27;/NELECT/ &#123;print $3/2+var+1&#125;&#x27; $j`</span><br><span class="line"></span><br><span class="line">h_ref=`grep &quot;   $homo_ref  &quot; $j | head -$nkpt | sort -n -k 2 | tail -1 | awk &#x27;&#123;print $2&#125;&#x27;`</span><br><span class="line">l_ref=`grep &quot;   $lumo_ref  &quot; $j | head -$nkpt | sort -n -k 2 | head -1 | awk &#x27;&#123;print $2&#125;&#x27;`  </span><br><span class="line"> </span><br><span class="line">echo &quot;The band gap (in eV) without zero-point vibrations is:&quot;</span><br><span class="line">echo &quot;$h_ref $l_ref&quot; |awk &#x27;&#123;print ($2-$1)&#125;&#x27;</span><br><span class="line">echo &quot;The band gap (in eV) including zero-point vibrations is:&quot;</span><br><span class="line">echo &quot;$e1a $e1b $e1c $e2a $e2b $e2c $e2d $e2e $e2f&quot; |awk &#x27;&#123;print (($4+$5+$6+$7+$8+$9)/6.0-($1+$2+$3)/3.0)&#125;&#x27;</span><br><span class="line">echo &quot;The zero-point renormalization of the band gap (in eV) is:&quot; </span><br><span class="line">echo &quot;$e1a $e1b $e1c $e2a $e2b $e2c $e2d $e2e $e2f $h_ref $l_ref&quot; |awk &#x27;&#123;print (($4+$5+$6+$7+$8+$9)/6.0-($1+$2+$3)/3.0)-($11-$10)&#125;&#x27;</span><br></pre></td></tr></table></figure>
+<p>输出如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">The band gap (in eV) without zero-point vibrations is:</span><br><span class="line">4.4049</span><br><span class="line">The band gap (in eV) including zero-point vibrations is:</span><br><span class="line">4.05102</span><br><span class="line">The zero-point renormalization of the band gap (in eV) is:</span><br><span class="line">-0.353883</span><br></pre></td></tr></table></figure>
+<h3 id="精度"><a href="#精度" class="headerlink" title="精度"></a>精度</h3><p>精度取决于超胞大小。超胞越大越准确。</p>
+<h2 id="温度依赖的带隙计算"><a href="#温度依赖的带隙计算" class="headerlink" title="温度依赖的带隙计算"></a>温度依赖的带隙计算</h2><h3 id="输入文件-1"><a href="#输入文件-1" class="headerlink" title="输入文件"></a>输入文件</h3><p>INCAR：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> System = cd-C</span><br><span class="line"> PREC = Accurate</span><br><span class="line"> ALGO = FAST</span><br><span class="line"> ISMEAR = 0 </span><br><span class="line"> SIGMA = 0.1;</span><br><span class="line"> IBRION = 6         #获得动力学矩阵声子计算</span><br><span class="line"> PHON_LMC = .TRUE.  #开启电声耦合计算</span><br><span class="line"> PHON_NSTRUCT = 0   #选择one-shot方法</span><br><span class="line">PHON_NTLIST = 8     #温度个数</span><br><span class="line">PHON_TLIST = 0.0 100.0 200.0 300.0 400.0 500.0 600.0 700.0</span><br></pre></td></tr></table></figure>
+<p>准备优化后的结构，需要扩胞，以保证声子准确。KPOINTS、POTCAR根据POSCAR调整。</p>
+<h3 id="计算-1"><a href="#计算-1" class="headerlink" title="计算"></a>计算</h3><p>一、 获取特定位移的结构</p>
+<p>按照超胞结构和上面的INCAR提交任务，结束后获得OUTCAR。<br>执行： <code>cp OUTCAR OUTCAR.init</code><br>新的畸变后的结构输出为POSCAR.T&#x3D;0. ~ POSCAR.T&#x3D;700.</p>
+<p>二、计算特定位移畸变结构的电子能级<br> <code>cp POSCAR.T=0. POSCAR</code></p>
+<p>INCAR 修改为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> System = cd-C</span><br><span class="line">PREC = Accurate</span><br><span class="line">ALGO = FAST</span><br><span class="line">ISMEAR = 0 </span><br><span class="line">SIGMA = 0.1  #去掉PHON_标签</span><br></pre></td></tr></table></figure>
+<p>对每个温度下的结构执行计算。可通过脚本<code>run_temperature.sh</code>批量提交。<br>脚本内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line"># please enter your executable path here</span><br><span class="line">vasp_exec=./vasp_gam</span><br><span class="line"></span><br><span class="line">#please enter the number of processors used for VASP here</span><br><span class="line">np=8</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">for i in 0 100 200 300 400 500 600 700</span><br><span class="line">do</span><br><span class="line">   cp POSCAR.T\=$i. POSCAR</span><br><span class="line">   mpirun -np $np $vasp_exec</span><br><span class="line">   mv OUTCAR OUTCAR.T\=$i</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<p>三、 分析OUTCAR</p>
+<p>利用脚本<code>extract_temp.sh</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">!/bin/bash </span><br><span class="line"></span><br><span class="line">if [ -f gap_vs_temp.dat ]</span><br><span class="line">then</span><br><span class="line">   rm gap_vs_temp.dat</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">touch gap_vs_temp.dat</span><br><span class="line">counter=0</span><br><span class="line"></span><br><span class="line">for temp in 0 100 200 300 400 500 600 700</span><br><span class="line">do</span><br><span class="line">   i=&quot;OUTCAR.T=$temp&quot;</span><br><span class="line"></span><br><span class="line">   homo1=`awk &#x27;/NELECT/ &#123;print $3/2&#125;&#x27; $i`</span><br><span class="line">   homo2=`awk &#x27;/NELECT/ &#123;print $3/2-1&#125;&#x27; $i`</span><br><span class="line">   homo3=`awk &#x27;/NELECT/ &#123;print $3/2-2&#125;&#x27; $i`</span><br><span class="line">   lumo1=`awk &#x27;/NELECT/ &#123;print $3/2+var+1&#125;&#x27; $i`</span><br><span class="line">   lumo2=`awk &#x27;/NELECT/ &#123;print $3/2+var+2&#125;&#x27; $i`</span><br><span class="line">   lumo3=`awk &#x27;/NELECT/ &#123;print $3/2+var+3&#125;&#x27; $i`</span><br><span class="line">   lumo4=`awk &#x27;/NELECT/ &#123;print $3/2+var+4&#125;&#x27; $i`</span><br><span class="line">   lumo5=`awk &#x27;/NELECT/ &#123;print $3/2+var+5&#125;&#x27; $i`</span><br><span class="line">   lumo6=`awk &#x27;/NELECT/ &#123;print $3/2+var+6&#125;&#x27; $i`</span><br><span class="line">   e1a=`grep &quot;^    $homo1   &quot; $i | head -$nkpt | sort -n -k 2 | tail -1 | awk &#x27;&#123;print $2&#125;&#x27;`</span><br><span class="line">   e1b=`grep &quot;^    $homo2   &quot; $i | head -$nkpt | sort -n -k 2 | tail -1 | awk &#x27;&#123;print $2&#125;&#x27;`</span><br><span class="line">   e1c=`grep &quot;^    $homo3   &quot; $i | head -$nkpt | sort -n -k 2 | tail -1 | awk &#x27;&#123;print $2&#125;&#x27;`</span><br><span class="line">   e2a=`grep &quot;^    $lumo1   &quot; $i | head -$nkpt | sort -n -k 2 | head -1 | awk &#x27;&#123;print $2&#125;&#x27;`</span><br><span class="line">   e2b=`grep &quot;^    $lumo2   &quot; $i | head -$nkpt | sort -n -k 2 | head -1 | awk &#x27;&#123;print $2&#125;&#x27;`</span><br><span class="line">   e2c=`grep &quot;^    $lumo3   &quot; $i | head -$nkpt | sort -n -k 2 | head -1 | awk &#x27;&#123;print $2&#125;&#x27;`</span><br><span class="line">   e2d=`grep &quot;^    $lumo4   &quot; $i | head -$nkpt | sort -n -k 2 | head -1 | awk &#x27;&#123;print $2&#125;&#x27;`</span><br><span class="line">   e2e=`grep &quot;^    $lumo5   &quot; $i | head -$nkpt | sort -n -k 2 | head -1 | awk &#x27;&#123;print $2&#125;&#x27;`</span><br><span class="line">   e2f=`grep &quot;^    $lumo6   &quot; $i | head -$nkpt | sort -n -k 2 | head -1 | awk &#x27;&#123;print $2&#125;&#x27;`</span><br><span class="line"></span><br><span class="line">   if [ $temp -eq &quot;0&quot; ]</span><br><span class="line">   then</span><br><span class="line">      ref=`echo &quot;$e1a $e1b $e1c $e2a $e2b $e2c $e2d $e2e $e2f&quot; |awk &#x27;&#123;print (($4+$5+$6+$7+$8+$9)/6.0-($1+$2+$3)/3.0)&#125;&#x27;`</span><br><span class="line">   fi</span><br><span class="line"></span><br><span class="line">   echo &quot;$e1a $e1b $e1c $e2a $e2b $e2c $e2d $e2e $e2f $temp $ref&quot; |awk &#x27;&#123;print $10,(($4+$5+$6+$7+$8+$9)/6.0-($1+$2+$3)/3.0)-$11&#125;&#x27; &gt;&gt; gap_vs_temp.dat</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<p>运行脚本后生成gap_vs_temp.dat文件，画图即可。</p>
+<p>gnuplot画图：<br><code>gnuplot -e &quot;set terminal jpeg;set xlabel &#39;T (K)&#39;; set ylabel &#39;band gap&#39;; set style data lines; plot &#39;gap_vs_temp.dat&#39;, &#39;C_exp_points_offset0.dat&#39; w circles, &#39;C_exp_fit_offset0.dat&#39;&quot; &gt; gap_vs_temp.jpg</code></p>
+<h2 id="包含体积效应的温度依赖带隙"><a href="#包含体积效应的温度依赖带隙" class="headerlink" title="包含体积效应的温度依赖带隙"></a>包含体积效应的温度依赖带隙</h2><p>仅考虑温度效应会低估带隙，要考虑体积效应。</p>
+<p>一、准简谐近似方法获得体积变化</p>
+<p>三个脚本：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">quasi_harm_4x4x4_diamond_create_pos_and_run_vasp.sh</span><br><span class="line">quasi_harm_4x4x4_diamond_make_energy_vs_volume_plots.sh</span><br><span class="line">quasi_harm_4x4x4_diamond_obtain_fitting.sh</span><br></pre></td></tr></table></figure>
+
+
+<p>对超胞结构创建不同体积的结构进行体积-能量计算：</p>
+<p>运行脚本：<code>quasi_harm_4x4x4_diamond_create_pos_and_run_vasp.sh</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#! /bin/bash</span><br><span class="line"></span><br><span class="line"># please enter your executable path here</span><br><span class="line">vasp_exec=./vasp_gam</span><br><span class="line"></span><br><span class="line">#please enter the number of processors used for VASP here</span><br><span class="line">np=8</span><br><span class="line"></span><br><span class="line">cp INCAR.qh INCAR</span><br><span class="line"></span><br><span class="line">for i in 6.13521592 6.27789536 6.4205748 6.56325424 6.70593368 6.84861312 6.99129256 7.133972 7.27665144 7.41933088 7.56201032 7.70468976 7.8473692 7.99004864 8.13272808</span><br><span class="line">do</span><br><span class="line">sed &quot;s/7.13397200/$&#123;i&#125;/g&quot; POSCAR.4x4x4 &gt; POSCAR_$i</span><br><span class="line">cp POSCAR_$i POSCAR</span><br><span class="line">mpirun -np 8 $vasp_exec</span><br><span class="line"></span><br><span class="line">mv OUTCAR OUTCAR_$i</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<p>该脚本创建15个POSCAR，体积每步变化2%,运行脚本<code>quasi_harm_4x4x4_diamond_create_pos_and_run_vasp.sh</code>提交计算。</p>
+<p>二、计算完成后运行<code>quasi_harm_4x4x4_diamond_make_energy_vs_volume_plots.sh</code>数据处理。<br>脚本内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">bandshift=0</span><br><span class="line">gwrun=-1</span><br><span class="line">dgbd=-1</span><br><span class="line">val=-1</span><br><span class="line">con=-1</span><br><span class="line">gwldadiff=-1</span><br><span class="line">test=-1</span><br><span class="line">while [[ $# -gt 0 ]]</span><br><span class="line">do</span><br><span class="line">   key=&quot;$1&quot;</span><br><span class="line">   case $key in</span><br><span class="line">   esac</span><br><span class="line">   shift</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">if [ -f &quot;helpscript.perl&quot; ]; then</span><br><span class="line">   rm helpscript.perl</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">cat &gt; helpscript.perl  &lt;&lt;EOF</span><br><span class="line">#!/bin/perl</span><br><span class="line"></span><br><span class="line">use strict;</span><br><span class="line">use warnings;</span><br><span class="line"></span><br><span class="line">my \$zahler=0;</span><br><span class="line">my @entropy=0;</span><br><span class="line">my \$ezp=0;</span><br><span class="line">my \$fhelmholtz=0;</span><br><span class="line">my \$uenergy;</span><br><span class="line">my \$kboltzmann=8.6173303*10**(-5.0);</span><br><span class="line">my \$ntemp=8;</span><br><span class="line">my \$tmax=700;</span><br><span class="line">my \$tmin=0;</span><br><span class="line">my \$tstep=100;</span><br><span class="line">for (my \$itemp=1;\$itemp&lt;=\$ntemp;\$itemp++)</span><br><span class="line">&#123;</span><br><span class="line">   \$entropy[\$itemp]=0;</span><br><span class="line">&#125;</span><br><span class="line">while (&lt;&gt;)</span><br><span class="line">&#123;</span><br><span class="line">   chomp;</span><br><span class="line">   \$_=~s/^/ /;</span><br><span class="line">   my @help=split(/[\t,\s]+/);</span><br><span class="line">   \$zahler=\$zahler+1;</span><br><span class="line">   if (\$zahler == 1) &#123;\$uenergy=\$help[1];&#125;</span><br><span class="line">   else </span><br><span class="line">   &#123;</span><br><span class="line">      my \$homega=\$help[2]/1000;</span><br><span class="line">      \$ezp=\$ezp+\$homega*0.5;</span><br><span class="line">      for (my \$itemp=1;\$itemp&lt;=\$ntemp;\$itemp++)</span><br><span class="line">      &#123;</span><br><span class="line">         my \$temp=(\$itemp-1)*\$tstep+\$tmin;</span><br><span class="line">         my \$kbt=\$kboltzmann*\$temp;</span><br><span class="line">         if (\$temp &lt; 0.0000001) </span><br><span class="line">         &#123;</span><br><span class="line">         &#125;</span><br><span class="line">         else</span><br><span class="line">         &#123;</span><br><span class="line">              \$entropy[\$itemp]=\$entropy[\$itemp]-\$kboltzmann*log(1-exp(-\$homega/\$kbt));</span><br><span class="line">              \$entropy[\$itemp]=\$entropy[\$itemp]+\$kboltzmann*\$homega/\$kbt*(1/(exp(\$homega/\$kbt)-1));</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   last if eof;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">\$ezp=\$ezp; #/ \$zahler;</span><br><span class="line"></span><br><span class="line">for (my \$itemp=1;\$itemp&lt;=\$ntemp;\$itemp++)</span><br><span class="line">&#123;</span><br><span class="line">    my \$temp=(\$itemp-1)*\$tstep+\$tmin;</span><br><span class="line">        </span><br><span class="line">    \$entropy[\$itemp]=\$entropy[\$itemp]; # / \$zahler; </span><br><span class="line">    \$fhelmholtz=\$uenergy+\$ezp-\$temp*\$entropy[\$itemp];</span><br><span class="line">    printf (&quot;%15.8e %15.8e\n&quot;,\$temp,\$fhelmholtz);</span><br><span class="line">&#125;</span><br><span class="line">printf (&quot;#NOTEMP %15.8e\n&quot;,\$uenergy);</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">rm OUTTEMP*</span><br><span class="line">first=0</span><br><span class="line">for i in OUTCAR_*; do</span><br><span class="line"></span><br><span class="line">   echo &quot;Starting $i&quot;</span><br><span class="line">   v2=$&#123;i##OUTCAR_&#125;</span><br><span class="line">   if [ -f &quot;helpfile.help&quot; ]; then</span><br><span class="line">      rm helpfile.help</span><br><span class="line">   fi</span><br><span class="line">   touch helpfile.help</span><br><span class="line">   cp OUTCAR_$v2 OUTCAR</span><br><span class="line">   awk &#x27;/free energy/&#x27; OUTCAR | tail -n 1| awk &#x27;&#123;print $5&#125;&#x27; &gt;&gt; helpfile.help</span><br><span class="line">   awk &#x27;/[0-9]* f .* THz/ &#123;print $1,$10&#125;&#x27; OUTCAR &gt;&gt; helpfile.help</span><br><span class="line">   awk &#x27;/[0-9]* f.i.*THz/ &#123;print $1,$9&#125;&#x27; OUTCAR &gt;&gt; helpfile.help</span><br><span class="line">   volume=`awk &#x27;/volume of cell/ &#123;print $5&#125;&#x27; OUTCAR | tail -n 1`</span><br><span class="line"></span><br><span class="line">   perl helpscript.perl helpfile.help &gt; hhhhelp.txt</span><br><span class="line"></span><br><span class="line">   runcount=0</span><br><span class="line">   while read line; do</span><br><span class="line">      runcount=$((runcount+1))</span><br><span class="line">      if [[ $first -eq 0 ]]; then</span><br><span class="line">         echo $line | awk -v var=&quot;$volume&quot; &#x27;&#123;print var,$2,$1&#125;&#x27; &gt; OUTTEMP_$runcount</span><br><span class="line">      else</span><br><span class="line">         echo $line | awk -v var=&quot;$volume&quot; &#x27;&#123;print var,$2&#125;&#x27; &gt;&gt; OUTTEMP_$runcount</span><br><span class="line">      fi</span><br><span class="line">   done &lt; ./hhhhelp.txt</span><br><span class="line"></span><br><span class="line">   first=1</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">for i in OUTTEMP_*; do</span><br><span class="line">   v2=$&#123;i##OUTTEMP_&#125;</span><br><span class="line">   mv OUTTEMP_$v2 OUTHELP</span><br><span class="line">   sort -n -k 1 OUTHELP &gt; OUTTEMP_$v2</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">rm helpfile.help</span><br><span class="line">rm helpscript.perl</span><br><span class="line">rm hhhhelp.txt</span><br><span class="line">rm OUTHELP</span><br></pre></td></tr></table></figure>
+<p>自由能曲线保存在OUTTEMP_*.</p>
+<p>运行脚本<code>quasi_harm_4x4x4_diamond_obtain_fitting.sh</code>获得温度-体积关系。<br>脚本内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">for i in OUTTEMP_*</span><br><span class="line">do</span><br><span class="line">   cp $i OUTTEMP.current</span><br><span class="line">   #extract temperature</span><br><span class="line">   temp=`head -n 1 OUTTEMP.current|awk &#x27;&#123;print $3&#125;&#x27;`</span><br><span class="line">   #do fitting</span><br><span class="line">   gnuplot -e &quot;E(V)=E0+9.0/8.0*B0*V0*((V0/V)**(2.0/3.0)-1)**2 + 9.0/16.0*B0*\</span><br><span class="line">      (B0P-4)*V0*((V0/V)**(2.0/3.0)-1.0)**3.0 + R*((V0/V)**(2.0/3.0)-1.0)**4.0;\</span><br><span class="line">      B0P = 1;B0 = 1;V0 = 720;E0 = -1150;R  = -1.0;fit E(x) &#x27;OUTTEMP.current&#x27;  u 1:2 via B0P,B0,V0,E0,R&quot; &amp;&gt; suppress_output</span><br><span class="line">   #extract volume from fit</span><br><span class="line">   a=`grep &quot;V0&quot; fit.log|grep &quot;=&quot; |tail -n 1|awk &#x27;&#123;print ($3/2.0)**(1.0/3.0)&#125;&#x27;`</span><br><span class="line">   #print temperature and volume to </span><br><span class="line">   echo &quot;temperature: $temp, a_latt: $a&quot; </span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">rm suppress_output</span><br><span class="line">rm OUTTEMP.current</span><br></pre></td></tr></table></figure>
+<p>输出如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">temperature: 0.00000000e+00, a_latt: 7.18012</span><br><span class="line">temperature: 1.00000000e+02, a_latt: 7.18014</span><br><span class="line">temperature: 2.00000000e+02, a_latt: 7.18064</span><br><span class="line">temperature: 3.00000000e+02, a_latt: 7.18267</span><br><span class="line">temperature: 4.00000000e+02, a_latt: 7.18613</span><br><span class="line">temperature: 5.00000000e+02, a_latt: 7.19037</span><br><span class="line">temperature: 6.00000000e+02, a_latt: 7.19493</span><br><span class="line">temperature: 7.00000000e+02, a_latt: 7.19959</span><br><span class="line">temperature: #NOTEMP, a_latt: 7.15218</span><br></pre></td></tr></table></figure>
+<p>三、 最后将QHA获得的晶胞参数，替换掉POSCAR.T&#x3D;* files中的晶胞参数。再次运行<code>run_temperature.sh</code> 和<code>extract_temp.sh.</code>获得数据画图。</p>
+<ul>
+<li><p>通过添加体积效应，与实验获得了更好的一致性。在这个教程中，我们只使用了一个4x4x4的单元格，因为更大的单元格已经相当耗时，但对于收敛的5x5x5单元格，两条曲线都应该与实验相比略有变差。由于在本例中使用的PBE无法充分描述电子交换和相关性，因此预计实验与理论之间会有差异。为了获得真正的优异一致性，<strong>需要使用GW近似方法</strong>。</p>
+</li>
+<li><p>严格来说，将体积效应添加到电子-声子相互作用的正确方法是<strong>首先为每个温度更改体积，然后为该温度计算电子-声子相互作用</strong>。在这个教程和参考文献[5]中，我们是反过来做的。因此，电子-声子相互作用只需要计算一次。在参考文献[5]中，我们观察到这两种方法给出了非常相似的结果。</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1405,7 +1800,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-09-30 19:15:02" itemprop="dateModified" datetime="2024-09-30T19:15:02+08:00">2024-09-30</time>
+      <time title="修改时间：2025-03-18 21:46:08" itemprop="dateModified" datetime="2025-03-18T21:46:08+08:00">2025-03-18</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1465,6 +1860,12 @@
 <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">#!<span class="regexp">/usr/</span>bin/env python</span><br><span class="line"># -*- <span class="attr">coding</span>: utf-<span class="number">8</span> -*-</span><br><span class="line"><span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">Qiang Li</span></span><br><span class="line"><span class="string">Command: python3 vib_correct.py</span></span><br><span class="line"><span class="string">This is a temporary script file.</span></span><br><span class="line"><span class="string">&quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">#获取虚频开始行</span><br><span class="line">l_position = <span class="number">0</span>  #虚频振动方向部分在<span class="variable constant_">OUTCAR</span>中的起始行数</span><br><span class="line"><span class="keyword">with</span> <span class="title function_">open</span>(<span class="string">&#x27;OUTCAR&#x27;</span>) <span class="keyword">as</span> <span class="attr">f_in</span>:</span><br><span class="line">    lines = f_in.<span class="title function_">readlines</span>()</span><br><span class="line">    wave_num = <span class="number">0.0</span></span><br><span class="line">    <span class="keyword">for</span> num, line <span class="keyword">in</span> <span class="title function_">enumerate</span>(lines):</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;f/i&#x27;</span> <span class="keyword">in</span> <span class="attr">line</span>:</span><br><span class="line">            wave_tem = <span class="title function_">float</span>(line.<span class="title function_">rstrip</span>().<span class="title function_">split</span>()[<span class="number">6</span>])</span><br><span class="line">            <span class="keyword">if</span> wave_tem &gt; <span class="attr">wave_num</span>: #获取最大的虚频</span><br><span class="line">                wave_num = wave_tem</span><br><span class="line">                l_position = num+<span class="number">2</span></span><br><span class="line"># 读<span class="variable constant_">POSCAR</span></span><br><span class="line"><span class="keyword">with</span> <span class="title function_">open</span>(<span class="string">&#x27;POSCAR&#x27;</span>) <span class="keyword">as</span> <span class="attr">f_pos</span>:</span><br><span class="line">    lines_pos = f_pos.<span class="title function_">readlines</span>()</span><br><span class="line"></span><br><span class="line"># 获取虚频对应的<span class="variable constant_">OUTCAR</span>部分    </span><br><span class="line">num_atoms = <span class="title function_">sum</span>([<span class="title function_">int</span>(i) <span class="keyword">for</span> i <span class="keyword">in</span> lines_pos[<span class="number">6</span>].<span class="title function_">rstrip</span>().<span class="title function_">split</span>()])</span><br><span class="line">vib_lines = lines[<span class="attr">l_position</span>:l_position + num_atoms] #振动部分 <span class="number">7222</span>到<span class="number">7248</span>行</span><br><span class="line"></span><br><span class="line">model_positions = []</span><br><span class="line">vib_dis = []</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> <span class="attr">vib_lines</span>:</span><br><span class="line">    position = [<span class="title function_">float</span>(i) <span class="keyword">for</span> i <span class="keyword">in</span> line.<span class="title function_">rstrip</span>().<span class="title function_">split</span>()[:<span class="number">3</span>]]</span><br><span class="line">    vib_infor = [<span class="title function_">float</span>(i) <span class="keyword">for</span> i <span class="keyword">in</span> line.<span class="title function_">rstrip</span>().<span class="title function_">split</span>()[<span class="number">3</span>:]] # dx， dy， dz对应的那三列</span><br><span class="line">    model_positions.<span class="title function_">append</span>(position)</span><br><span class="line">    vib_dis.<span class="title function_">append</span>(vib_infor)</span><br><span class="line"></span><br><span class="line"># 微调结构</span><br><span class="line">model_positions = np.<span class="title function_">array</span>(model_positions)</span><br><span class="line">vib_dis = np.<span class="title function_">array</span>(vib_dis) #将振动部分写到一个array中。</span><br><span class="line">new_positions = model_positions + vib_dis * <span class="number">0.4</span> # <span class="number">0.4</span>是微调的校正因子，即虚频对应振动位移的<span class="number">0.4</span>，具体多大自己根据经验调。</span><br><span class="line"></span><br><span class="line">###保存结构</span><br><span class="line">f_out = <span class="title function_">open</span>(<span class="string">&#x27;POSCAR_new&#x27;</span>,<span class="string">&#x27;w&#x27;</span>)</span><br><span class="line">f_out.<span class="title function_">writelines</span>(lines_pos[:<span class="number">8</span>])</span><br><span class="line">f_out.<span class="title function_">write</span>(<span class="string">&#x27;Cartesian\n&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="attr">new_positions</span>:</span><br><span class="line">    f_out.<span class="title function_">write</span>(<span class="string">&#x27; &#x27;</span>.<span class="title function_">join</span>([<span class="title function_">str</span>(coord) <span class="keyword">for</span> coord <span class="keyword">in</span> i]) + <span class="string">&#x27;  F  F  F\n&#x27;</span>)</span><br><span class="line">f_out.<span class="title function_">close</span>()</span><br></pre></td></tr></table></figure>
 
 
+<h1 id="滑移堆叠能计算"><a href="#滑移堆叠能计算" class="headerlink" title="滑移堆叠能计算"></a>滑移堆叠能计算</h1><p>该脚本是计算双层的堆叠能，滑移能类似。准备优化好的POSCAR和其他输入文件。<br>stack.sh如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line"># 参数设置</span><br><span class="line">slip_step_x=$(echo &quot;scale=5; 1/12&quot; | bc)  # x方向滑移步长 (1/12) scale=5 设置浮点数精度为 5 位小数</span><br><span class="line">slip_step_y=$(echo &quot;scale=5; 1/12&quot; | bc)  # y方向滑移步长 (1/12)</span><br><span class="line">slip_steps=11                             # 滑移步数（从0到11，共12步）</span><br><span class="line"></span><br><span class="line"># 循环生成滑移结构</span><br><span class="line">for i in $(seq 0 $slip_steps); do</span><br><span class="line">    for j in $(seq 0 $slip_steps); do</span><br><span class="line">        # 格式化文件夹名称（固定宽度，两位数字）</span><br><span class="line">        folder_name=$(printf &quot;slip_%02d_%02d&quot; &quot;$i&quot; &quot;$j&quot;)</span><br><span class="line">        mkdir -p &quot;$folder_name&quot;</span><br><span class="line">        </span><br><span class="line">        # 复制输入文件（排除目录）</span><br><span class="line">        find . -maxdepth 1 -type f -name &quot;[IKPs]*&quot; -exec cp &#123;&#125; &quot;$folder_name/&quot; \;   #这里排除复制文件夹</span><br><span class="line">        cp ./sub.sh &quot;$folder_name/&quot;   # 复制 sub.sh提交任务的脚本</span><br><span class="line">        find . -maxdepth 1 -type f -name &quot;vdw-*&quot; -exec cp &#123;&#125; &quot;$folder_name/&quot; \;  # 这里使用opt86b范德华修正，自行选择</span><br><span class="line">        </span><br><span class="line">        # 计算滑移量</span><br><span class="line">        slip_x=$(echo &quot;scale=5; $i * $slip_step_x&quot; | bc)</span><br><span class="line">        slip_y=$(echo &quot;scale=5; $j * $slip_step_y&quot; | bc)</span><br><span class="line">        </span><br><span class="line">        # 修改POSCAR文件</span><br><span class="line">        awk -v slip_x=&quot;$slip_x&quot; -v slip_y=&quot;$slip_y&quot; &#x27;</span><br><span class="line">        &#123;</span><br><span class="line">            if (NR &gt; 9 &amp;&amp; $3 &gt; 0.5) &#123;</span><br><span class="line">                print $1 + slip_x, $2 + slip_y, $3, $4, $5, $6</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                print $0</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;&#x27; POSCAR &gt; &quot;$folder_name/POSCAR&quot;</span><br><span class="line">    done</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">echo &quot;滑移结构生成完成。&quot;</span><br></pre></td></tr></table></figure>
+
+<p>解释： 由于是六方结构，所有滑移步长1&#x2F;12,可自行更改。if (NR &gt; 9 &amp;&amp; $3 &gt; 0.5)里的0.5在两层之间，大于0.5的移动，小于等于不移动。要固定晶格 ISIF &#x3D; 2，离子要优化，要固定一些原子的xy方向的坐标，防止平面间的滑移，优化z方向。</p>
+<p>批量提交任务：for dir in slip_*&#x2F;; do cd “$dir”；qsub sub.sh； cd .. ；done</p>
+<p>取消所有任务(slurm)：scancel -u $USER</p>
 <h1 id="常用命令行"><a href="#常用命令行" class="headerlink" title="常用命令行"></a>常用命令行</h1><p><code>grep &quot;33  81&quot; -A3 FORCE_CONSTANTS | xargs echo -n| awk &#39;&#123;print $1,$2,$3+$7+$11&#125;&#39; &gt;&gt; trace.dat </code></p>
 <p>计算原子间二阶力常数矩阵的迹</p>
 <p><code>grep &#39;F=&#39; OSZICAR|awk &#39;&#123;print $1, &quot;\t&quot;$3,&quot;\t&quot;$9&#125;&#39; &gt;AIMD.dat</code></p>
@@ -1952,425 +2353,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/18-47-21/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Keke Liu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lightchaser">
-      <meta itemprop="description" content="一个小学生的博客">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Lightchaser">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/05/09/18-47-21/" class="post-title-link" itemprop="url">1.2 结构优化2</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-05-09 18:47:21" itemprop="dateCreated datePublished" datetime="2023-05-09T18:47:21+08:00">2023-05-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-21 09:04:08" itemprop="dateModified" datetime="2024-06-21T09:04:08+08:00">2024-06-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/DFT%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">DFT学习</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>结构优化完成后，我们已经可以从输出文件得到很多性质。这里我们先关注能量。</p>
-<h1 id="VASP输出的能量是什么"><a href="#VASP输出的能量是什么" class="headerlink" title="VASP输出的能量是什么"></a>VASP输出的能量是什么</h1><p>在优化完的文件夹下输入<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[scf1355@ln151%nc-l 2h]$ tail -<span class="number">1</span> <span class="variable constant_">OSZICAR</span> </span><br><span class="line"><span class="number">3</span> F= -<span class="number">.44829871E+02</span> <span class="variable constant_">E0</span>= -<span class="number">.44829871E+02</span>  d E =-<span class="number">.169526E-03</span>  mag=    -<span class="number">0.0000</span></span><br></pre></td></tr></table></figure><br><strong>这里的F和下面free energy含义相同，E0代表体系内能。</strong><br>另外在OUTCAR中还可以找到这些<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">free  energy   <span class="variable constant_">TOTEN</span>  =       -<span class="number">44.82987077</span> eV</span><br><span class="line">energy  without entropy=      -<span class="number">44.82987077</span>  <span class="title function_">energy</span>(sigma-&gt;<span class="number">0</span>) =      -<span class="number">44.82987077</span></span><br><span class="line">atomic energy  <span class="variable constant_">EATOM</span>  =      <span class="number">1542.31592482</span></span><br></pre></td></tr></table></figure></p>
-<p>free energy指的是亥姆霍兹自由能(Helmholtz free energy)，在VASP手册中被称为自由电子能(free electronic energy)，它可以用F表示： <code>F = E-TS+PV </code>.而F和E对应上面的F和E0。<br>TOTEN和without entropy分别代表考虑和未考虑熵的贡献时自由能的值。而energy(sigma-&gt;0)为展宽趋近于零时的自由能，可以外推得到：  <code>energy(sigma-&gt;0) = E0 =1/2（F+E） </code></p>
-<p>其中上面的展宽对应于INCAR中设置的ISMEAR参数，详情可以查看手册或者参考 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/384626631%E3%80%82">https://zhuanlan.zhihu.com/p/384626631。</a><br> <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV19L4y1i7mC/?vd_source=17084cc867ff3bb86398ff1a79b443f2">https://www.bilibili.com/video/BV19L4y1i7mC/?vd_source=17084cc867ff3bb86398ff1a79b443f2</a><br>简单理解费米面内电子全占据，费米面外没有电子。这种阶梯函数就使得，随着K点数目变化，K点处积分值变化很大，不易收敛。于是我们需要一个连续函数，代替该阶梯函数进行积分，这种替代方法就叫smear。在VASP计算中，只有在ISMEAR&#x3D;-5时，才能严格满足费米能级的定义；而在其他情况下，允许电子在费米能级附近的宽度内“波动”，即将阶梯函数替代为一个平滑的函数，从而在不破坏和的精度的情况下获得更快的收敛速度。</p>
-<p><strong>明白非常重要的一点，从OUTCAR中直接提取的能量在不同赝势下不具备重复性，是不能够直接写到论文中去的。一般计算相对能量的时候只要保持取一样的值即可 比较绝对能量没啥意义。</strong></p>
-<h1 id="形成能"><a href="#形成能" class="headerlink" title="形成能"></a>形成能</h1><p>形成能很简单，参考高中化学形成焓的计算可以知道对于反应A+B&#x3D;C+D，那么形成能&#x3D;E(C)+E(D)-E(A)-E(B)<br>同样对于MoS2的生成焓我们可以知道：  $\Delta$ H&#x3D;E(MoS2)-E(Mo)-2E(S)<br>因此还需要计算Mo单质和S单质的单原子能量。计算过程和1.1完全一致，只需要获得结构，利用vaspkit生成KPOINTS和POTCAR文件，INCAR可以不用改。能量用F或者E0或者上面说的哪一项都可以，但要保持一致。代入计算即可。</p>
-<p>除此之外还可以计算产生一个Mo的空位的形成能： $\Delta$ H&#x3D;E(空位，MoS2)+E(Mo)-E（MoS2）<br>但是此时没有考虑缺陷的电荷。<br>可以计算分解能，剥离能，滑移能，表面能，偏聚能，吸附能等等。但是具体结构的优化会有一些处理上的不同。</p>
-<h1 id="单点能SP"><a href="#单点能SP" class="headerlink" title="单点能SP"></a>单点能SP</h1><p>参考： <a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv10064345">https://www.bilibili.com/read/cv10064345</a></p>
-<p>单点计算是指对结果不做优化，直接输出能量。因此优化只会进行一步。</p>
-<p><strong>设置NSW &#x3D; 0 也可以不设置，因为默认值就是0。</strong> 其他文件和参数不需要改变。提交即可。</p>
-<p>对于一个结构在结构优化（NSW不等于0）时，第一步输出的1F和单点能的结果是一样的。</p>
-<h1 id="自洽计算"><a href="#自洽计算" class="headerlink" title="自洽计算"></a>自洽计算</h1><p>自洽计算其实也是单点计算，静态自洽计算前需要提供 <strong>较稳定体系</strong> 的晶格结构信息（即结构优化完的CONTCAR），从而通过电子自洽计算，通过自洽迭代求解薛定谔方程（微观中描述电子的状态，相当于宏观的运动方程））  完整地计算出体系基态下费米能级（准确值，The fermi level location is accurate only in self-consistent calculation.）、 电子的波函数、电荷密度等信息，可以直接分析原子间的键合作用，也可以在非自洽之后进一步分析晶体的电子结构和材料的相关性质。</p>
-<p>因此对于电子结构计算之前必须进行一步自洽计算优化电子分布，以便加速后续计算。</p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">NSW</span>=<span class="number">0</span>  不再进行原子迟豫</span><br><span class="line"><span class="variable constant_">LWAVE</span>=.<span class="property">TRUE</span>  （需要在<span class="variable constant_">WAVECAR</span>中输出波函数）</span><br><span class="line"><span class="variable constant_">LCHARGE</span>=.<span class="property">TRUE</span>    （需要在<span class="variable constant_">CHG</span>和<span class="variable constant_">CHGCAR</span>中输出电荷密度）</span><br></pre></td></tr></table></figure>
-
-<h1 id="气体优化"><a href="#气体优化" class="headerlink" title="气体优化"></a>气体优化</h1><p>在涉及单质结构优化时，可能会涉及到气体分子的优化。</p>
-<ul>
-<li>一般情况下选择建一个相对大的格子，里面放入一个气体分子，格子的大小保证分子间不会影响。其他的和前面结构优化保持一致即可。</li>
-<li>另一个办法就是找数据库， ChemScpider。网址：<a target="_blank" rel="noopener" href="http://www.chemspider.com/">http://www.chemspider.com</a></li>
-</ul>
-<h1 id="IVDW参数"><a href="#IVDW参数" class="headerlink" title="IVDW参数"></a>IVDW参数</h1><p>有两大类的范德华斯作用修正：</p>
-<ol>
-<li>基于半经验的，包括了D2, D3, D3-BJ, TS, TS+SCS等等，这些都是在常用的交换关联泛函比如PBE的基础上，考虑色散力的作用，在PBE计算出来的总能基础上增加了额外半经验项，这一项需要设置一些参数，至于是哪种半经验公式，由IVDW的设置来决定，具体的参考VASP的手册。<br><strong>范德华力计算方法，在DFT能量计算基础上增加范德华力修正。IVDW&#x3D;10：DFT-D2方法；IVDW&#x3D;11：DFT-D3方法。推荐首选更新的DFT-D3方法。</strong></li>
-<li>另一类就是vdW-DF，也就是修改交换关联项来考虑范德华修正。包括你所提到的optPBE-vdW, optB88-vdW, and optB86b-vdW等。它们的设置由修改GGA赋值，以及额外相关的一些参数来设置。 这些在vasp手册上有明确的说明。<br>乱谈DFT-D：<a target="_blank" rel="noopener" href="http://sobereva.com/83">http://sobereva.com/83</a><br>DFT-D色散校正的使用：<a target="_blank" rel="noopener" href="http://sobereva.com/210">http://sobereva.com/210</a><br>大体系弱相互作用计算的解决之道：<a target="_blank" rel="noopener" href="http://sobereva.com/214">http://sobereva.com/214</a><br>LUSE_VDW：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Yaris_liu/article/details/124683272">https://blog.csdn.net/Yaris_liu/article/details/124683272</a>                <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/47619708">https://zhuanlan.zhihu.com/p/47619708</a><br>包含vdW-DF，optPBE-vdW, optB88-vdW, optB88b-vdW, vdw-DF2。需要在所在的文件夹下放置一个名叫vdw_kernel.bindat的文件。</li>
-</ol>
-<ul>
-<li>vdW-DF：采用该范德瓦尔斯修正需在INCAR中加上以下开关： <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">GGA</span>=<span class="variable constant_">RE</span></span><br><span class="line"><span class="variable constant_">LUSE_VDW</span>=.<span class="property">TRUE</span>.</span><br><span class="line"><span class="variable constant_">AGGAC</span>=<span class="number">0.0000</span></span><br></pre></td></tr></table></figure></li>
-<li>optB88-vdW：采用该范德瓦尔斯修正需在INCAR中加上以下开关：</li>
-</ul>
- <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125; GGA</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">PARAM1</span>=<span class="number">0.1833333333</span></span><br><span class="line"><span class="title class_">PARAM2</span>=<span class="number">0.2200000000</span></span><br><span class="line"><span class="variable constant_">LUSE_VDW</span>=.<span class="property">TRUE</span>.</span><br><span class="line"><span class="variable constant_">AGGAC</span>=<span class="number">0.0000</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>optB86b-vdW：采用该范德瓦尔斯修正需在INCAR中加上以下开关：</li>
-</ul>
- <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125; GGA</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">PARAM1</span>=<span class="number">0.1234</span></span><br><span class="line"><span class="title class_">PARAM2</span>=<span class="number">1.0000</span></span><br><span class="line"><span class="variable constant_">LUSE_VDW</span>=.<span class="property">TRUE</span>.</span><br><span class="line"><span class="variable constant_">AGGAC</span>=<span class="number">0.0000</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>vdW-DF2：采用该范德瓦尔斯修正需在INCAR中加上以下开关：</li>
-</ul>
- <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125; GGA</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">LUSE_VDW</span>=.<span class="property">TRUE</span>.</span><br><span class="line"><span class="title class_">Zab</span>_vdW=-<span class="number">1.8867</span></span><br><span class="line"><span class="variable constant_">AGGAC</span>=<span class="number">0.0000</span></span><br></pre></td></tr></table></figure>
-<p><strong>在考虑DFT-D2或者DFT-D3计算的过程中可同时考虑自旋轨道耦合（SOC），但是在vdW-DF、optB88-vdW 、optB86b-vdW和vdW-DF2中无法同时考虑自旋轨道耦合进行计算。</strong></p>
-<h1 id="DFT-U"><a href="#DFT-U" class="headerlink" title="DFT+U"></a>DFT+U</h1><ol>
-<li>为什么加U?<br><strong>对于含有d、f轨道电子的强关联体系(Hubbard模型)，电子间存在强烈的在位库仑相互作用，而交换相关泛函中的局域密度近似（LDA）或广义梯度近似（GGA）对电子之间的强在位库仑相互作用描述不准，</strong> 此时可将研究体系的交换相关泛函分成两部分计算，也就是用DFT+U的方法进行求解，公式如下：<br>其中一部分电子用DFT算法（如LDA，GGA）等可以比较准确地描述；另外的d、f轨道电子通过引入Hubbard项得到正确的描述（U值就是考虑了同一个原子自旋相反的局域电子之间的库仑排斥）</li>
-<li>如何加U?<br>DFT计算时输入文件的U值由以下参数确定： <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">LDAU</span>= .<span class="property">TRUE</span>.|.<span class="property">FALSE</span>.：开启/关闭+U功能，默认值为.<span class="property">FALSE</span>.；</span><br><span class="line"><span class="variable constant_">LDAUTYPE</span>=<span class="number">1</span>|<span class="number">2</span>|<span class="number">4</span>指的是+U的类型，默认值是<span class="number">2</span>；其中<span class="number">1</span>为<span class="title class_">Liechtenstein</span>等提出的旋转不变<span class="variable constant_">LSDA</span>+U方法；<span class="number">2</span>为 <span class="title class_">Dudarev</span>等提出的简化 <span class="variable constant_">LSDA</span>+U方法；<span class="number">4</span>与<span class="number">1</span>类似, 但不考虑<span class="variable constant_">LSDA</span>交换劈裂；</span><br><span class="line"><span class="variable constant_">LDAUL</span>=-<span class="number">1</span>|<span class="number">1</span>|<span class="number">2</span>|<span class="number">3</span>分别对应不加U、p、d、f轨道加U；</span><br><span class="line"><span class="variable constant_">LDAUU</span>、<span class="variable constant_">LDAUJ</span>分别指定电子库伦相互作用项和交换相互作用项（U和J值）；</span><br><span class="line"><span class="variable constant_">LMAXMIX</span> =<span class="number">2</span>/<span class="number">4</span>/<span class="number">6</span>：默认为<span class="number">2</span>，加U计算时该值需大于轨道量子数，对于含有d轨道或f轨道电子的体系需对应增加至<span class="number">4</span>或<span class="number">6</span>。</span><br></pre></td></tr></table></figure>
-注意：<br><strong>1）必须为每一类原子指定一个U值，其顺序与结构文件POSCAR中元素排序一致；</strong><br><strong>2）同一种元素在不同的体系中U值不同；</strong><br><strong>3）U在所有电子中都存在，不管自旋是否相同，J只存在于自旋相同的电子上；当LDAUTYPE &#x3D;2时，U-J的差值才有意义，即有效的U参数。</strong><br>该参数需要测试或者参考文献。</li>
-</ol>
-<h1 id="磁性体系"><a href="#磁性体系" class="headerlink" title="磁性体系"></a>磁性体系</h1><p>很多体系都有磁性，磁性体系的计算需要打开自旋。以FeO为例：<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">ISPIN</span>=<span class="number">2</span></span><br><span class="line"><span class="variable constant_">MAGMOM</span>=原子数目*初始磁矩，eg <span class="number">3</span>*<span class="number">2</span> <span class="number">4</span>*<span class="number">5</span> （注：*号前后不要有空格，且对应顺序）</span><br></pre></td></tr></table></figure><br>对于一些简单的磁性体系，我们可以直接使用ISPIN&#x3D;2, MAGMOM不必进行设置。对于复杂的体系则需要设置。初始值不需要与实验值完全一致，一般设置1.5倍即可。</p>
-<ol>
-<li><p>有4个Fe原子，如果考虑铁磁态，则可以设置 <code>MAGMON= 4*3 4*0 （Fe初设的磁矩为3，O元素为0） </code></p>
-</li>
-<li><p>有4个Fe原子，如果考虑反铁磁态，则可以设置 <code>MAGMON=3 -3 3 -3 0 0 0 0或者MAGMON=3 3 -3 -3 0 0 0 0 </code></p>
-</li>
-</ol>
-<h1 id="表面优化"><a href="#表面优化" class="headerlink" title="表面优化"></a>表面优化</h1><h2 id="1-Bulk计算，获得稳定构型。"><a href="#1-Bulk计算，获得稳定构型。" class="headerlink" title="1. Bulk计算，获得稳定构型。"></a>1. Bulk计算，获得稳定构型。</h2><p>   注意LREAL、PREC、ENCUT、EDIFF、ISMEAR保持一致。</p>
-<h2 id="2-考虑不同晶面、层数。"><a href="#2-考虑不同晶面、层数。" class="headerlink" title="2. 考虑不同晶面、层数。"></a>2. 考虑不同晶面、层数。</h2><p>对于表面结构，有以下几个需要注意的:</p>
-<ul>
-<li>xy 方向上表面的大小（15 Å或者100原子左右）;<br>A 这个影响表面吸附物种的覆盖度;<br>B 影响体系的尺寸大小和计算时间;<br>C 不同的大小需要选取对应的K点；回想一下我们前面提到的经验规则。</li>
-<li>不同的晶面，(111)， (100)，(110);<br>A 这取决于你研究的方向;低指数面、解离面。<br>B 不同晶面的表面能;<br>C 不同晶面的表面结构，反应活性等。</li>
-<li>表面结构的层数（3+3以上，6Å+6Å）<br>A 层数多了，原子变多，体系在 z 方向的尺寸增加，也会影响计算速度；<br>B 计算中需要弛豫的层数；<br>C 不同层数对你要计算的性质会产生影响，比如表面能；<br>D 不同晶面需要的层数也不尽相同，一般开放的表面需要更多的层数；<br>E 根据自己感兴趣的性质，选择合适的层数，也就是需要你去测试一番。</li>
-<li>Slab模型有两种，一种是上下表面对称的，一种是非对称的。对称性结构往往需要很多层，体系较大。 非对称的结构体系较小，但存在偶极矩的影响，要注意加LDIPOL 和IDIPOL这两个参数来消除。1、2、3分表代表在x、y和z 方向上进行校正，4代表在所有方向上。真空层15-20埃。</li>
-</ul>
-<h2 id="3-工具：MS、ASE、P4vasp、vaspkit。"><a href="#3-工具：MS、ASE、P4vasp、vaspkit。" class="headerlink" title="3. 工具：MS、ASE、P4vasp、vaspkit。"></a>3. <strong>工具：MS、ASE、P4vasp、vaspkit。</strong></h2><h3 id="MS操作。"><a href="#MS操作。" class="headerlink" title="MS操作。"></a>MS操作。</h3><p>一般用conventional cell。<br>MS操作。Windows<br>VESTA将CONTCAR转成cif,导入MS。<br>build-surface-cleave surface 切面<br>Surface mesh-surface vectors 可调整vector。</p>
-
-
-<p>Surface box-top&#x2F;thickness，调整终端和厚度。<br>Build-crystals-build vaccum slab-图2-build。</p>
-
-
-<p>Lattice parameters-advanced-re-orient to startard把真空层沿Z轴  图3。</p>
-
-<p>转换成POSCAR，可优化后进一步扩胞。</p>
-<h3 id="ASE操作。python"><a href="#ASE操作。python" class="headerlink" title="ASE操作。python"></a>ASE操作。python</h3><p>块体优化后<br>module load python&#x2F;3.7.3<br>python </p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>from ase.io import read<br>from ase.io import write<br>from ase.build import surface<br>a&#x3D;read(”CONTCAR”,format&#x3D;’vasp’)<br>b&#x3D;surface(a,(1,1,1),6,vacuum&#x3D;7.5)   6层，真空层15Å<br>write(”POSCAR”,b,format&#x3D;’vasp’)<br>Ctrl+D （退出 python） </p>
-</blockquote>
-</blockquote>
-</blockquote>
-<h3 id="大师兄ASE脚本：切金属"><a href="#大师兄ASE脚本：切金属" class="headerlink" title="大师兄ASE脚本：切金属"></a>大师兄ASE脚本：切金属</h3><p>python3 cssm.py</p>
-<h3 id="vaspkit"><a href="#vaspkit" class="headerlink" title="vaspkit"></a>vaspkit</h3><p><strong>块体优化后复制成POSCAR</strong><br><strong>vaspkit –task 803</strong><br><strong>生成SLAB***.vasp</strong></p>
-<h2 id="4-表面弛豫计算"><a href="#4-表面弛豫计算" class="headerlink" title="4 表面弛豫计算"></a>4 表面弛豫计算</h2><h3 id="单点能"><a href="#单点能" class="headerlink" title="单点能"></a>单点能</h3><p><strong>转换成POSCAR单点计算。或表面优化时第一个离子步的能量，但要保证这一步收敛。</strong><br><strong>KPOINTS设置，20-30。</strong><br><strong>INCAR设置，NSW&#x3D;0或默认0.偶极矩矫正 LDIPOL &#x3D; .TRUE. ; IDIPOL &#x3D; 3。</strong><br><strong>POTCAR准备，提交任务脚本。完成后 grep without OUTCAR 获取单点能。</strong></p>
-<h3 id="表面优化-1"><a href="#表面优化-1" class="headerlink" title="表面优化"></a>表面优化</h3><p>1）POSCAR第7行后面加一行加S，  <code>Sed –i ‘7a S’  POSCAR </code><br>原子坐标加F&#x2F;T。  <code>Sed  –i  ’10,11s/$/  F F F/g’  POSCAR </code><br>                 <code>Sed  –i  ’12,13,14s/$/  T T T/g’  POSCAR </code><br> <code>vaspkit –task 402/403  </code>或者ctrl+v,选中列-大写A-输入  <code>T T T </code> - ESC.<br>2）POTCAR和KPOINTS不变。<br>INCAR设置：IBRION&#x3D;1、2，EDIFF&#x3D;1E-6，EDIFFG&#x3D;-0.03（比块体小一点），ISIF&#x3D;2，<br>提交任务。</p>
-<h2 id="5-表面能计算"><a href="#5-表面能计算" class="headerlink" title="5  表面能计算"></a>5  表面能计算</h2><p>表面能是创造物质表面时，破坏分子间化学键所需消耗的能量。在固体物理理论中，表面原子比物质内部的原子具有更多的能量，因此，根据能量最低原理，原子会自发的趋于物质内部而不是表面。表面能的另一种定义是，材料表面相对于材料内部所多出的能量。把一个固体材料分解成小块需要破坏它内部的化学键，所以需要消耗能量。如果这个分解的过程是可逆的，那么把材料分解成小块所需要的能量就和小块材料表面所增加的能量相等。但事实上，只有在真空中刚刚形成的表面才符合上述能量守恒。因为新形成的表面是非常不稳定的，它们通过表面原子重组和相互间的反应，或者对周围其他分子或原子的吸附，从而使表面能量降低。<br> γ&#x3D;($E_{surf}$ - N * $E_{bulkatom}$)&#x2F;(2A)</p>
-<p>  1ev&#x2F;$Å^2$ &#x3D;16.02J&#x2F;$m^2$<br> $E_{surf}$是未弛豫的表面能量,A是表面积a*b。</p>
-<h1 id="吸附能扫描"><a href="#吸附能扫描" class="headerlink" title="吸附能扫描"></a>吸附能扫描</h1><p>算吸附能时一般只需要算分子在高对称点的吸附能，比如算Li在铜表面的吸附能，我们只需算Li在Cu(111）面的Top，HCP，FCC和Bridge位的吸附能即可。但是这些离散的点没法帮你构建一个“势能面”，也就是无法得到吸附能在表面究竟是怎么分布的. 下面的文献里DOI：10.1063&#x2F;1.4901055有一张图非常生动，讲的分别是Li在Li(001)以及Mg在Mg(0001)表面的吸附势能分布，我们不仅可以知道哪些位置有利于吸附，还可以根据吸附能分布，描绘出分子在表面的扩散路径，这有助于我们使用NEB方法算扩散能垒。</p>
-<p>图片</p>
-<p>其实思路很简单，就是将表面网格化，算分子在格点的吸附能，再画出等高线图。但是大部分吸附位点其实是不稳定的，所以我们采取固定吸附分子x,y方向，在z方向弛豫以达到吸附平衡的策略。</p>
-<p>其实手动撒点，再采集数据也是可行的，但是会比较麻烦，因此作者根据实际需要开发了一款脚本scan_adsorption_energy用于自动完成这个过程。脚本使用Python编写，需要numpy和matplotlib第三方库。 我们首先算好一个吸附例子得到CONTCAR,这个可以让我们得到吸附分子的元素信息和理想的吸附高度。如下图，吸附的Li是第97号，也是最后一个原子，接着就可以变换这个结构得到不同的吸附结构。 </p>
-<p>图片</p>
-<p>首先我们需要在目录下准备以下几个文件CONTCAR,INCAR,KPOINTS,POTCAR以及排队脚本文件(我的是vasp.pbs)，然后使用脚本产生不同的结构：</p>
-<p>tamas@tamas-PC:~&#x2F;Desktop&#x2F;scan$ python scan_adsorption_energy.py -g<br>Input which atom you want to move to scan adsorption energy–&gt;-1<br>脚本提示我们移动第几个原子产生不同的吸附结构，我们可以输入97或者-1，移动最后一个Li。这个Cu(111)面是(331)的超胞，因此我们最需要取左下角的1&#x2F;9的小区域撒点即可，然后程序会将小区域内的数据点进行平移得到整个表面的数据。如何根据不同的表面调整这个参数以及撒点的密度呢？可以使用-u参数进行自定义设置。</p>
-<p>Input how many supercells in x axis–&gt;3<br>Input how many supercells in y axis–&gt;3<br>Input interporate how many points for each unit cell in x axis,even number are suggested–&gt;2<br>Input interporate how many points for each unit cell in y axis,even number are suggested–&gt;2<br>command to submit jobs,e.g. qsub vasp.pbs–&gt;qsub vasp.pbs<br>Input which atom you want to move to scan adsorption energy–&gt;-1<br>手动选择x方向的超胞数3，y方向的超胞数3,在小区域内的x方向的撒点数，y方向的撒点数（为了包含中心点，建议选择偶数）和提交排队脚本的命令（我的是qsub vasp.pbs）。脚本会自动产生4个结构（2*2），并会将每个计算所需的文件都复制到相应的文件夹内，并提交排队脚本进行计算。同时脚本会写出一个grid.info里面包含了超胞数，选择移动的原子以及晶格常数信息。 在所有的计算完成后，同样使用该脚本提取数据。</p>
-<p>python scan_adsorption_energy.py -e<br>脚本会自动从每个结构文件夹内读取能量数据和吸附原子的坐标。生成两个dat文件new_direct.dat和new_dat-3D.dat。前者是原子的分数坐标和总能量，后者有4列，分别为原子的笛卡尔x分量坐标，y分量坐标，z分量坐标以及总能量。我们需要使用第1,2,4列绘制等高线图。如果需要绘制吸附能，需要自己手动将第四列的数据减去吸附原子和表面的能量。 脚本会尝试使用matplotlib绘制等高线图，如下图，你也可以使用Origin Pro绘图。 </p>
-<p>图片</p>
-<p>脚本可以在我的Github仓库下载(<a target="_blank" rel="noopener" href="https://github.com/tamaswells/VASP_script/blob/master/scan_adsorption_energy.py">https://github.com/tamaswells/VASP_script/blob/master/scan_adsorption_energy.py</a>).</p>
-<h1 id="固定基矢优化结构"><a href="#固定基矢优化结构" class="headerlink" title="固定基矢优化结构"></a>固定基矢优化结构</h1><p>在第一性原理计算时，二维材料的建模会采用在某一方向（一般是z轴方向）添加15-20 Å的真空层的方式来抵消层与层之间的相互作用。但是，当我们优化晶格常数的时候会遇到一个问题：那就是使用ISIF&#x3D;3来优化平面内晶格常数（一般是a和b）时，c轴方向的晶格长度总是随着优化变的越来越小。</p>
-<ol>
-<li><p>采用ISIF&#x3D;4的固定晶胞体积的方法来计算。这样采用实验参数建的晶胞，由于a和b方向的变化，c轴也会变化。解决了越是优化c轴越小的问题，但是计算量还是很大。</p>
-</li>
-<li><p>编译vasp，就自己编译了固定z轴的脚本，专门计算二维材料。这种方法优点是直接换脚本就能解决上面优化时c轴缩小的问题，但是我想固定两个轴就需要再编译一份脚本。比较麻烦。</p>
-</li>
-</ol>
-<p>修改constr_cell_relax.F实现固定基矢优化结构的原理：</p>
-<p>FCELL contains the forces on the basis vectors. These forces are used to modify the basis vectors according to the following equations:</p>
-<p>FCELL 是个3 * 3的矩阵，包含了晶格矢量的受力，当ISIF &#x3D; 3时，晶格矢量会按照如下的方法更新：</p>
-<p>A_OLD(1:3,1:3)&#x3D;A(1:3,1:3) ! F90 style<br>DO J&#x3D;1,3<br>DO I&#x3D;1,3<br>DO K&#x3D;1,3<br>   A(I,J)&#x3D;A(I,J) + FCELL(I,K)*A_OLD(K,J)*STEP_SIZE<br>ENDDO<br>ENDDO<br>ENDDO<br>当通过OPTCELL文件把晶格矢量在某个方向的受力改成0以后，</p>
-<p>IF (ICELL(I,J)&#x3D;&#x3D;0) FCELL(I,J)&#x3D;0.0</p>
-<p>在结构更新的时候，该方向就不会改变。完成编译后，在 INCAR 文件中设置 ISIF&#x3D;3，便可实现固定 Z 轴的结构优化。<br>对于其他方向晶格基矢的修改同理：对于a方向基矢，将 FCELL(3,I) 和 FCELL(I,3) 分别改为 FCELL(1,I) 和 FCELL(I,1) ；对于b方向基矢，则分别改为 FCELL(2,I) 和 FCELL(I,2) ；固定两个基矢则应该同时将两个方向对应的矩阵元设置为0。或参考 VASP并行可执行软件包，可对晶胞参数进行部分优化 可实现添加参数文件实现不同基矢方向固定。（未做测试）</p>
-<ol start="3">
-<li>肖承诚博士的补丁，按照肖博士的方法安装以后，在INCAR中添加如下参数即可。</li>
-</ol>
-<p>IOPTCELL &#x3D; xx xy xz yx yy yz zx zy zz</p>
-<p>上面的九个参数对应晶格常数矩阵。</p>
-<p>1 xx xy xz</p>
-<p>2 yx yy yz</p>
-<p>3 zx zy zz</p>
-<p>1代表驰豫，0代表固定</p>
-<p>此时固定c轴的设置就是如下：</p>
-<p>IOPTCELL &#x3D; 1 1 0 1 1 0 0 0 0</p>
-<p>下载地址：<a target="_blank" rel="noopener" href="https://github.com/Chengcheng-Xiao/VASP_OPT_AXIS">https://github.com/Chengcheng-Xiao/VASP_OPT_AXIS</a></p>
-<h1 id="滑移能和剥离能"><a href="#滑移能和剥离能" class="headerlink" title="滑移能和剥离能"></a>滑移能和剥离能</h1><p>材料的塑性行为主要是由于材料的结构和化学键决定的。材料发生塑性形<br>变在原子尺度上可以分解成两个过程。</p>
-<p>一个是由于原子、位错或者晶界沿着某<br>一特定方向自由运动；第二个是在这种运动过程中存在束缚力保证在其它方向<br>不会产生裂纹，导致材料的断裂。因此任何一个塑性材料必须满足两个要求，<br>一是对某些原子层存在势垒相对低的滑动方式，以确保原子、位错或者晶界可<br>以沿着这些方向滑动。另一个是在这些滑动过程中，滑移平面两侧的原子依然<br>存在某种相对强的作用力，以确保滑移过程中材料的完整性。如金属键，其自<br>由电子容易发生变形和转移，在滑移过程中金属键不断的断裂和产生，从而导致了金属的滑移能量很小。而金属键的键强度很大，保证的金属滑移过程的完<br>整性。而离子键和共价键由于配位数和方向性等要求，在滑移时必须先发生键<br>的断裂，从而阻碍滑移的进行。由范德华力连接的层状材料，虽然层与层之间<br>容易发生滑移，但其层间作用力较弱，材料在滑移过程中容易发生破坏。</p>
-<p>为了研究 α-Ag2S 的塑性行为，我们通过第一性原理对 α-Ag2S 的滑移过程进<br>行了计算。其中，我们计算的滑移面为（100）方向，滑移方向为[001]方向。其<br>滑移过程如图 6.10 所示，α-Ag2S 的滑移面沿着能量最低点进行滑移，滑移面不<br>仅发生相对移动，其面间距也会发生。因此，整个滑移路径成波浪形。 我们将滑移一个周期（滑移一个晶格常数）均分 12 步。每一步我们计算系<br>统总能量与滑移面之间距离的关系，对于塑性材料而<br>言，它需要同时具有足够小的滑移能来保证材料的滑移可以进行；以及大的解离<br>能以至于材料不会发生断裂。 </p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/18-47-20/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Keke Liu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lightchaser">
-      <meta itemprop="description" content="一个小学生的博客">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Lightchaser">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/05/09/18-47-20/" class="post-title-link" itemprop="url">1.1 结构优化1</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-05-09 18:47:20" itemprop="dateCreated datePublished" datetime="2023-05-09T18:47:20+08:00">2023-05-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-05 10:55:03" itemprop="dateModified" datetime="2024-06-05T10:55:03+08:00">2024-06-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/DFT%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">DFT学习</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>这里主要分享怎样快速开始第一个结构优化过程。</p>
-<h1 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h1><ul>
-<li>如果是个人服务器，需要安装Linux系统或者Windows+虚拟机+Linux；如果租用超算，安装对应超算客户端或者SSH。</li>
-<li>这部分内容需要自己熟练，对于命令的意义在操作中就会明白。<a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-command-manual.html">https://www.runoob.com/linux/linux-command-manual.html</a></li>
-<li>常用命令如下：<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_46422300/article/details/104645072">https://blog.csdn.net/m0_46422300/article/details/104645072</a></li>
-</ul>
-<h2 id="目录操作"><a href="#目录操作" class="headerlink" title="目录操作"></a>目录操作</h2><h3 id="1-切换目录（cd）"><a href="#1-切换目录（cd）" class="headerlink" title="1 切换目录（cd）"></a>1 切换目录（cd）</h3> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd /                 <span class="comment">//切换到根目录</span></span><br><span class="line">cd /bin              <span class="comment">//切换到根目录下的bin目录</span></span><br><span class="line">cd ../               <span class="comment">//切换到上一级目录 或者使用命令：cd ..</span></span><br><span class="line">cd ~                 <span class="comment">//切换到home目录</span></span><br><span class="line">cd -                 <span class="comment">//切换到上次访问的目录</span></span><br><span class="line">cd <span class="title function_">xx</span>(文件夹名)       <span class="comment">//切换到本目录下的名为xx的文件目录，如果目录不存在报错</span></span><br><span class="line">cd /xxx/xx/x         <span class="comment">//可以输入完整的路径，直接切换到目标目录，输入过程中可以使用tab键快速补全</span></span><br></pre></td></tr></table></figure>
-<h3 id="2-查看目录（ls）"><a href="#2-查看目录（ls）" class="headerlink" title="2 查看目录（ls）"></a>2 查看目录（ls）</h3>  <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ls                   <span class="comment">//查看当前目录下的所有目录和文件</span></span><br><span class="line">ls -a                <span class="comment">//查看当前目录下的所有目录和文件（包括隐藏的文件）</span></span><br><span class="line">ls -l                <span class="comment">//列表查看当前目录下的所有目录和文件（列表查看，显示更多信息），与命令&quot;ll&quot;效果一样</span></span><br><span class="line">ls /bin              <span class="comment">//查看指定目录下的所有目录和文件 </span></span><br></pre></td></tr></table></figure>
-<h3 id="3-创建目录（mkdir）"><a href="#3-创建目录（mkdir）" class="headerlink" title="3 创建目录（mkdir）"></a>3 创建目录（mkdir）</h3>  <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir tools          <span class="comment">//在当前目录下创建一个名为tools的目录</span></span><br><span class="line">mkdir /bin/tools     <span class="comment">//在指定目录下创建一个名为tools的目录</span></span><br></pre></td></tr></table></figure>
-<h3 id="4-删除目录与文件（rm）"><a href="#4-删除目录与文件（rm）" class="headerlink" title="4 删除目录与文件（rm）"></a>4 删除目录与文件（rm）</h3> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">rm 文件名              <span class="comment">//删除当前目录下的文件</span></span><br><span class="line">rm -f 文件名           <span class="comment">//删除当前目录的的文件（不询问）</span></span><br><span class="line">rm -r 文件夹名         <span class="comment">//递归删除当前目录下此名的目录</span></span><br><span class="line">rm -rf 文件夹名        <span class="comment">//递归删除当前目录下此名的目录（不询问）</span></span><br><span class="line">rm -rf *              <span class="comment">//将当前目录下的所有目录和文件全部删除</span></span><br><span class="line">rm -rf <span class="comment">/*             //将根目录下的所有文件全部删除【慎用！相当于格式化系统】</span></span><br></pre></td></tr></table></figure>
-<h3 id="5-修改目录（mv）"><a href="#5-修改目录（mv）" class="headerlink" title="5 修改目录（mv）"></a>5 修改目录（mv）</h3> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mv 当前目录名 新目录名        <span class="comment">//修改目录名，同样适用与文件操作</span></span><br><span class="line">mv /usr/tmp/tool /opt       <span class="comment">//将/usr/tmp目录下的tool目录剪切到 /opt目录下面</span></span><br><span class="line">mv -r /usr/tmp/tool /opt    <span class="comment">//递归剪切目录中所有文件和文件夹</span></span><br></pre></td></tr></table></figure>
-<h3 id="6-拷贝目录（cp）"><a href="#6-拷贝目录（cp）" class="headerlink" title="6 拷贝目录（cp）"></a>6 拷贝目录（cp）</h3>  <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/tmp/tool /opt       <span class="comment">//将/usr/tmp目录下的tool目录复制到 /opt目录下面</span></span><br><span class="line">cp -r /usr/tmp/tool /opt    <span class="comment">//递归剪复制目录中所有文件和文件夹</span></span><br></pre></td></tr></table></figure>
-<h3 id="7-搜索目录（find）"><a href="#7-搜索目录（find）" class="headerlink" title="7 搜索目录（find）"></a>7 搜索目录（find）</h3>  <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /bin -name <span class="string">&#x27;a*&#x27;</span>        <span class="comment">//查找/bin目录下的所有以a开头的文件或者目录</span></span><br></pre></td></tr></table></figure>
-<h3 id="8-查看当前目录（pwd）"><a href="#8-查看当前目录（pwd）" class="headerlink" title="8 查看当前目录（pwd）"></a>8 查看当前目录（pwd）</h3>  <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pwd                         <span class="comment">//显示当前位置路径</span></span><br></pre></td></tr></table></figure>
-<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><h3 id="1-新增文件（touch）"><a href="#1-新增文件（touch）" class="headerlink" title="1 新增文件（touch）"></a>1 新增文件（touch）</h3>  <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch  a.<span class="property">txt</span>         <span class="comment">//在当前目录下创建名为a的txt文件（文件不存在），如果文件存在，将文件时间属性修改为当前系统时间</span></span><br></pre></td></tr></table></figure>
-<h3 id="2-删除文件（rm）"><a href="#2-删除文件（rm）" class="headerlink" title="2 删除文件（rm）"></a>2 删除文件（rm）</h3>  <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;rm 文件名</span><a target="_blank" rel="noopener" href="//删除当前目录下的文件">link</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -f 文件名           <span class="comment">//删除当前目录的的文件（不询问）</span></span><br></pre></td></tr></table></figure>
-<h3 id="3-编辑文件（vi、vim）"><a href="#3-编辑文件（vi、vim）" class="headerlink" title="3 编辑文件（vi、vim）"></a>3 编辑文件（vi、vim）</h3><figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi 文件名              <span class="comment">//打开需要编辑的文件</span></span><br></pre></td></tr></table></figure>
-<p>  –进入后，操作界面有三种模式：命令模式（command mode）、插入模式（Insert mode）和底行模式（last line mode）<br>  命令模式<br>  -刚进入文件就是命令模式，通过方向键控制光标位置，<br>  -使用命令”dd”删除当前整行<br>  -使用命令”&#x2F;字段”进行查找<br>  -按”i”在光标所在字符前开始插入<br>  -按”a”在光标所在字符后开始插入<br>  -按”o”在光标所在行的下面另起一新行插入<br>  -按”：”进入底行模式<br>  插入模式<br>  -此时可以对文件内容进行编辑，左下角会显示 “– 插入 –””<br>  -按”ESC”进入底行模式<br>  底行模式<br>  -退出编辑：      :q<br>  -强制退出：      :q!<br>  -保存并退出：    :wq</p>
-<h4 id="操作步骤示例"><a href="#操作步骤示例" class="headerlink" title="操作步骤示例"></a>操作步骤示例</h4><p> 1.保存文件：按”ESC” -&gt; 输入”:” -&gt; 输入”wq”,回车           &#x2F;&#x2F;保存并退出编辑<br> 2.取消操作：按”ESC” -&gt; 输入”:” -&gt; 输入”q!”,回车             &#x2F;&#x2F;撤销本次修改并退出编辑</p>
-<h4 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h4> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim +<span class="number">10</span> filename.<span class="property">txt</span>                   <span class="comment">//打开文件并跳到第10行</span></span><br><span class="line">vim -R /etc/passwd                     <span class="comment">//以只读模式打开文件</span></span><br></pre></td></tr></table></figure>
-<h3 id="4-查看文件"><a href="#4-查看文件" class="headerlink" title="4 查看文件"></a>4 查看文件</h3> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat a.<span class="property">txt</span>          <span class="comment">//查看文件最后一屏内容</span></span><br><span class="line">less a.<span class="property">txt</span>         <span class="comment">//PgUp向上翻页，PgDn向下翻页，&quot;q&quot;退出查看</span></span><br><span class="line">more a.<span class="property">txt</span>         <span class="comment">//显示百分比，回车查看下一行，空格查看下一页，&quot;q&quot;退出查看</span></span><br><span class="line">tail -<span class="number">100</span> a.<span class="property">txt</span>    <span class="comment">//查看文件的后100行，&quot;Ctrl+C&quot;退出查看</span></span><br></pre></td></tr></table></figure>
-<h3 id="5-grep"><a href="#5-grep" class="headerlink" title="5 grep"></a>5 grep</h3> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grep -i <span class="string">&quot;the&quot;</span> demo_file              <span class="comment">//在文件中查找字符串(不区分大小写)</span></span><br><span class="line">grep -A <span class="number">3</span> -i <span class="string">&quot;example&quot;</span> demo_text     <span class="comment">//输出成功匹配的行，以及该行之后的三行</span></span><br><span class="line">grep -r <span class="string">&quot;ramesh&quot;</span> *                   <span class="comment">//在一个文件夹中递归查询包含指定字符串的文</span></span><br></pre></td></tr></table></figure>
-<h2 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h2><h3 id="1-权限说明"><a href="#1-权限说明" class="headerlink" title="1 权限说明"></a>1 权限说明</h3><p>  文件权限简介：’r’ 代表可读（4），’w’ 代表可写（2），’x’ 代表执行权限（1），括号内代表”8421法”<br>  ##文件权限信息示例：-rwxrw-r–<br>  -第一位：’-‘就代表是文件，’d’代表是文件夹<br>  -第一组三位：拥有者的权限<br>  -第二组三位：拥有者所在的组，组员的权限<br>  -第三组三位：代表的是其他用户的权限</p>
-<h3 id="2-文件权限"><a href="#2-文件权限" class="headerlink" title="2 文件权限"></a>2 文件权限</h3><p>  普通授权     <code>chmod +x a.txt  </code><br>  8421法     <code>chmod 777 a.txt      //1+2+4=7，&quot;7&quot;说明授予所有权限</code></p>
-<h2 id="打包与解压"><a href="#打包与解压" class="headerlink" title="打包与解压"></a>打包与解压</h2><h3 id="1-说明"><a href="#1-说明" class="headerlink" title="1 说明"></a>1 说明</h3> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">zip</span>、.<span class="property">rar</span>        <span class="comment">//windows系统中压缩文件的扩展名</span></span><br><span class="line">.<span class="property">tar</span>              <span class="comment">//Linux中打包文件的扩展名</span></span><br><span class="line">.<span class="property">gz</span>               <span class="comment">//Linux中压缩文件的扩展名</span></span><br><span class="line">.<span class="property">tar</span>.<span class="property">gz</span>           <span class="comment">//Linux中打包并压缩文件的扩展名</span></span><br></pre></td></tr></table></figure>
-<h3 id="2-打包文件"><a href="#2-打包文件" class="headerlink" title="2 打包文件"></a>2 打包文件</h3><p>  tar -zcvf 打包压缩后的文件名 要打包的文件<br>  参数说明：z：调用gzip压缩命令进行压缩; c：打包文件; v：显示运行过程; f：指定文件名;<br>  示例：</p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zcvf a.<span class="property">tar</span> file1 file2,...      <span class="comment">//多个文件压缩打包</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="3-解压文件"><a href="#3-解压文件" class="headerlink" title="3 解压文件"></a>3 解压文件</h3> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf a.<span class="property">tar</span>                      <span class="comment">//解包至当前目录</span></span><br><span class="line">tar -zxvf a.<span class="property">tar</span> -C /usr------        <span class="comment">//指定解压的位置</span></span><br><span class="line">unzip test.<span class="property">zip</span>             <span class="comment">//解压*.zip文件 </span></span><br><span class="line">unzip -l test.<span class="property">zip</span>          <span class="comment">//查看*.zip文件的内容 </span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_46422300/article/details/104645072">https://blog.csdn.net/m0_46422300/article/details/104645072</a></p>
-<h1 id="其他准备"><a href="#其他准备" class="headerlink" title="其他准备"></a>其他准备</h1><p>安装好VASP、vaspkit，个人电脑安装好VESTA、MS或者qvasp等建模可视化软件中的一个。如果是租用超算，还需要准备好提交任务的脚本文件，一般工程师会帮我们编好，软件安装只需要给他们提供安装包或官网即可。</p>
-<h1 id="vaspkit运行的五种方式"><a href="#vaspkit运行的五种方式" class="headerlink" title="vaspkit运行的五种方式"></a>vaspkit运行的五种方式</h1><p><strong>方法一</strong> ：交换式菜单模式，直接输入vaspkit；</p>
-<p><strong>方法二</strong> ：命令+参数模式，适合批处理。如vaspkit -task 102 -kpr 0.03，详细介绍见vaspki-help, 注意部分功能不支持这种模式；</p>
-<p><strong>方法三</strong> ：利用bash管道传递参数,如echo -e “102\n2\n0.04\n”| vaspkit</p>
-<p><strong>方法四</strong> ：同样利用bash管道传递参数, (echo 102; echo 2; echo 0.04)|vaspkit</p>
-<p><strong>方法五</strong> ：vi cmd.in（文件名任意，非必须是cmd.in）包含以下三行内容</p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">102</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">0.04</span></span><br></pre></td></tr></table></figure>
-<p>然后运行<code>vaspkit &lt; cmd.in</code>，产生KPOINTS文件，其他命令格式类似。</p>
-<h1 id="输入文件"><a href="#输入文件" class="headerlink" title="输入文件"></a>输入文件</h1><figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">INCAR</span>      <span class="keyword">in</span>    **</span><br><span class="line"><span class="variable constant_">STOPCAR</span>    <span class="keyword">in</span></span><br><span class="line">stout      out</span><br><span class="line"><span class="variable constant_">POTCAR</span>     <span class="keyword">in</span>     **</span><br><span class="line"><span class="variable constant_">KPOINTS</span>    <span class="keyword">in</span>     **</span><br><span class="line"><span class="variable constant_">IBZKPT</span>     out</span><br><span class="line"><span class="variable constant_">POSCAR</span>     <span class="keyword">in</span>     **</span><br><span class="line"><span class="variable constant_">CONTCAR</span>    out</span><br><span class="line"><span class="variable constant_">CHGCAR</span>     <span class="keyword">in</span>/out</span><br><span class="line"><span class="variable constant_">CHG</span>        out</span><br><span class="line"><span class="variable constant_">WAVECAR</span>    <span class="keyword">in</span>/out</span><br><span class="line"><span class="variable constant_">TMPCAR</span>     <span class="keyword">in</span>/out</span><br><span class="line"><span class="variable constant_">EIGENVAL</span>   out</span><br><span class="line"><span class="variable constant_">DOSCAR</span>     out</span><br><span class="line"><span class="variable constant_">PROCAR</span>     out</span><br><span class="line"><span class="variable constant_">OSZICAR</span>    out</span><br><span class="line"><span class="variable constant_">PCDAT</span>      out</span><br><span class="line"><span class="variable constant_">XDATCAR</span>    out</span><br><span class="line"><span class="variable constant_">LOCPOT</span>     out</span><br><span class="line"><span class="variable constant_">ELFCAR</span>     out</span><br><span class="line"><span class="variable constant_">PROOUT</span>     out</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<ul>
-<li>必要的输入文件有四个：<strong>INCAR，KPOINTS，POSCAR，POTCAR</strong> 。<ul>
-<li><strong>INCAR</strong> 告诉VASP算什么，怎么算。</li>
-<li><strong>KPOINTS</strong> 包含计算的倒空间K点信息。</li>
-<li><strong>POSCAR</strong> 是结构信息，包括元素、晶胞参数及各个原子的坐标信息。</li>
-<li><strong>POTCAR</strong> 元素的赝势文件，描述体系中对应的原子核和电子的相关信息。</li>
-<li>提交任务的脚本或者命令，需要你自己准备。</li>
-</ul>
-</li>
-</ul>
-<p>下面由简单到复杂介绍</p>
-<h2 id="POSCAR"><a href="#POSCAR" class="headerlink" title="POSCAR"></a>POSCAR</h2><p>结构文件信息格式如下：</p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Mo</span> <span class="variable constant_">S2</span>                  #结构名称，可不写或随便写，不能没有这一行</span><br><span class="line"><span class="number">1.0</span>                   # universal scaling parameters，缩放系数</span><br><span class="line">    <span class="number">3.1500000954</span>     <span class="number">0.0000000000</span>     <span class="number">0.0000000000</span> # 晶格矢量 <span class="title function_">a</span>(<span class="number">1</span>) </span><br><span class="line">    -<span class="number">1.5750000477</span>    <span class="number">2.7279801045</span>     <span class="number">0.0000000000</span> # 晶格矢量 <span class="title function_">a</span>(<span class="number">2</span>)</span><br><span class="line">     <span class="number">0.0000000000</span>    <span class="number">0.0000000000</span>    <span class="number">12.3000001907</span> # 晶格矢量 <span class="title function_">a</span>(<span class="number">3</span>)</span><br><span class="line">   <span class="title class_">Mo</span>    S                                         # 元素名称，种类</span><br><span class="line">    <span class="number">2</span>    <span class="number">4</span>                                         #对应元素的原子个数，顺序要对应</span><br><span class="line"><span class="title class_">Direct</span>                                             #</span><br><span class="line">     <span class="number">0.333333345</span>       <span class="number">0.666666689</span>       <span class="number">0.250000000</span></span><br><span class="line">     <span class="number">0.666666624</span>       <span class="number">0.333333323</span>       <span class="number">0.750000019</span></span><br><span class="line">     <span class="number">0.333333345</span>       <span class="number">0.666666689</span>       <span class="number">0.620999986</span></span><br><span class="line">     <span class="number">0.666666624</span>       <span class="number">0.333333323</span>       <span class="number">0.379000014</span></span><br><span class="line">     <span class="number">0.666666624</span>       <span class="number">0.333333323</span>       <span class="number">0.121000053</span></span><br><span class="line">     <span class="number">0.333333345</span>       <span class="number">0.666666689</span>       <span class="number">0.878999976</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>对于自己建模的结构，按照该格式自己写；</li>
-<li>对于<a target="_blank" rel="noopener" href="https://materialsproject.org/">Materials projiect</a>数据库可以直接下载POSCAR格式；</li>
-<li>对于.cif文件，可以导入 <strong>VEASTA</strong> 等输出为POSCAR的格式，或者用 <strong>vaspkit</strong> 的411&#x2F;412功能。</li>
-</ul>
-<h4 id="Mind："><a href="#Mind：" class="headerlink" title="Mind："></a>Mind：</h4><p><strong>POSCAR文件非常重要，大部分报错都是结构不合理导致的。一个好的初始结构不仅可以加快收敛速度，也会增加准确性。文件中元素的顺序非常重要。</strong></p>
-<h2 id="KPOINTS"><a href="#KPOINTS" class="headerlink" title="KPOINTS"></a>KPOINTS</h2><p>文件一般格式如下：</p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">K-<span class="variable constant_">POINTS</span>      #  第一行随便写或者空着不写，但不能没有这一行</span><br><span class="line"><span class="number">0</span>             # 零，表示自动生成</span><br><span class="line"><span class="title class_">Gamma</span>         #  gamma点centered </span><br><span class="line"><span class="number">1</span> <span class="number">1</span> <span class="number">1</span>         #  <span class="number">1</span>*<span class="number">1</span>*<span class="number">1</span>格子，K点密度</span><br><span class="line"><span class="number">0</span> <span class="number">0</span> <span class="number">0</span>         #  <span class="variable constant_">S1</span> <span class="variable constant_">S2</span> <span class="variable constant_">S3</span>，shift的值，一般保持 <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> 不变。</span><br></pre></td></tr></table></figure>
-
-<p><strong>大家需要修改的是第三行和第四行，其他可不改。</strong></p>
-<ul>
-<li><p>第三行：VASP只认第一个字母，大小写均可。当然这一行也可以直接写字母G或者g。G表示的是以gamma点为中心生成网格。<br>另外一种是原始的Monkhorst-Pack 网格，两者的区别是 M 或者 m 在 G的基础上在三个方向上平移了1&#x2F;（2N）个单位。G，也叫 gamma centered Monkhorst-Pack Grid；所以，gamma centered 只是MP网格的一种特殊情况。<br><strong>因此这一行也可以一直用G不变。</strong></p>
-</li>
-<li><p>第四行，在xyz三个方向上生成对应数目的K点；__这个一般需要测试__。如果开始不想测试，官网也给出了经验方法，</p>
-<ul>
-<li>d区金属，k*a ~ 30 Å</li>
-<li>普通金属，k*a ~ 25 Å</li>
-<li>半导体，k*a ~ 20 Å</li>
-<li>绝缘体，k*a ~ 15 Å</li>
-</ul>
-<p>其中a对应三个方向的晶胞参数，也就是对应方向的k点与该方向晶胞参数乘积最好在20-30之间。</p>
-</li>
-</ul>
-<p><strong>如果已经安装了vaspkit程序，可以通过102功能自动生成KPOINTS文件。</strong></p>
-<h2 id="POTCAR"><a href="#POTCAR" class="headerlink" title="POTCAR"></a>POTCAR</h2><p>POTCAR赝势文件相对来说最复杂也最简单。其中有很多信息，大部分信息我们不需要关注，一般只需要关注前几行。特别是赝势的种类信息。以Mo为例：</p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">PAW_PBE</span> <span class="title class_">Mo</span> 08Apr2002                   </span><br><span class="line">   <span class="number">6.00000000000000</span>     </span><br><span class="line"> parameters <span class="keyword">from</span> <span class="variable constant_">PSCTR</span> <span class="attr">are</span>:</span><br><span class="line">   <span class="variable constant_">VRHFIN</span> =<span class="title class_">Mo</span>: 4p5s4d</span><br><span class="line">   <span class="variable constant_">LEXCH</span>  = <span class="variable constant_">PE</span></span><br><span class="line">   <span class="variable constant_">EATOM</span>  =   <span class="number">217.5176</span> eV,   <span class="number">15.9871</span> <span class="title class_">Ry</span></span><br><span class="line"></span><br><span class="line">   <span class="variable constant_">TITEL</span>  = <span class="variable constant_">PAW_PBE</span> <span class="title class_">Mo</span> 08Apr2002</span><br><span class="line">   <span class="variable constant_">LULTRA</span> =        F    use ultrasoft <span class="variable constant_">PP</span> ?</span><br><span class="line">   <span class="variable constant_">IUNSCR</span> =        <span class="number">1</span>    <span class="attr">unscreen</span>: <span class="number">0</span>-lin <span class="number">1</span>-nonlin <span class="number">2</span>-no</span><br><span class="line">   <span class="variable constant_">RPACOR</span> =    <span class="number">2.200</span>    partial core radius</span><br><span class="line">   <span class="variable constant_">POMASS</span> =   <span class="number">95.940</span>; <span class="variable constant_">ZVAL</span>   =    <span class="number">6.000</span>    mass and valenz</span><br><span class="line">   <span class="variable constant_">RCORE</span>  =    <span class="number">2.750</span>    outmost cutoff radius</span><br><span class="line">   <span class="variable constant_">RWIGS</span>  =    <span class="number">2.750</span>; <span class="variable constant_">RWIGS</span>  =    <span class="number">1.455</span>    wigner-seitz radius (au A)</span><br><span class="line">   <span class="variable constant_">ENMAX</span>  =  <span class="number">224.584</span>; <span class="variable constant_">ENMIN</span>  =  <span class="number">168.438</span> eV</span><br></pre></td></tr></table></figure>
-<p>除此之外，一种元素也有很多赝势，例如Mo：</p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[scf1355@ln151%nc-l potpaw_PBE<span class="number">.52</span>]$ ls <span class="title class_">Mo</span>*</span><br><span class="line"><span class="title class_">Mo</span>:</span><br><span class="line"><span class="variable constant_">POTCAR</span>  <span class="variable constant_">PSCTR</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Mo</span><span class="attr">_pv</span>:</span><br><span class="line"><span class="variable constant_">POTCAR</span>  <span class="variable constant_">PSCTR</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Mo</span><span class="attr">_sv</span>:</span><br><span class="line"><span class="variable constant_">POTCAR</span>  <span class="variable constant_">PSCTR</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Mo</span><span class="attr">_sv_GW</span>:</span><br><span class="line"><span class="variable constant_">POTCAR</span>  <span class="variable constant_">PSCTR</span></span><br></pre></td></tr></table></figure>
-<p>如果没有特别的需求，直接采用VASP官网推荐的即可。参考链接：<br><a target="_blank" rel="noopener" href="https://cms.mpi.univie.ac.at/vasp/vasp/Recommended_PAW_potentials_DFT_calculations_using_vasp_5_2.html">https://cms.mpi.univie.ac.at/vasp/vasp/Recommended_PAW_potentials_DFT_calculations_using_vasp_5_2.html</a><br>不知道选哪一个就选第一个，使用方法如下：</p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~<span class="regexp">/pot/</span><span class="title class_">Mo</span>/<span class="variable constant_">POTCAR</span> ~<span class="regexp">/pot/</span>S/<span class="variable constant_">POTCAR</span>  &gt; <span class="variable constant_">POTCAR</span></span><br></pre></td></tr></table></figure>
-<p>或者用vaspkit的103命令自动生成。</p>
-<h4 id="Mind：-1"><a href="#Mind：-1" class="headerlink" title="Mind："></a>Mind：</h4><p><strong>该文件看似复杂，使用时只需要查看元素种类和POSCAR是否对应即可。</strong><br>可以通过<code>grep PBE POTCAR</code>查看顺序是否正确。</p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[scf1355@ln151%nc-l 2h]$ grep <span class="variable constant_">PBE</span> <span class="variable constant_">POTCAR</span> </span><br><span class="line">  <span class="variable constant_">PAW_PBE</span> <span class="title class_">Mo</span> 08Apr2002                   </span><br><span class="line">   <span class="variable constant_">TITEL</span>  = <span class="variable constant_">PAW_PBE</span> <span class="title class_">Mo</span> 08Apr2002</span><br><span class="line">  <span class="variable constant_">PAW_PBE</span> S 06Sep2000                    </span><br><span class="line">   <span class="variable constant_">TITEL</span>  = <span class="variable constant_">PAW_PBE</span> S 06Sep2000</span><br></pre></td></tr></table></figure>
-
-<h2 id="INCAR"><a href="#INCAR" class="headerlink" title="INCAR"></a>INCAR</h2><p>这个控制计算过程的文件最为复杂，手册上相关参数多达三百多个。因此前期我们记住一点：不知道含义的参数不要加。不加对于有些参数意味着用默认值，一般是合理的。INCAR参数查找参考官方：<a target="_blank" rel="noopener" href="https://www.vasp.at/wiki/index.php/Category:INCAR_tag">https://www.vasp.at/wiki/index.php/Category:INCAR_tag</a></p>
-<p>贴一个我的结构优化的INCAR：</p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">ISTART</span> =  <span class="number">0</span>            (<span class="title class_">Read</span> existing wavefunction; <span class="keyword">if</span> there)</span><br><span class="line"><span class="variable constant_">ISPIN</span>  =  <span class="number">2</span>           (<span class="title class_">Non</span>-<span class="title class_">Spin</span> polarised <span class="variable constant_">DFT</span>) </span><br><span class="line"><span class="variable constant_">ICHARG</span> =  <span class="number">2</span>         (<span class="title class_">Non</span>-self-<span class="attr">consistent</span>: <span class="variable constant_">GGA</span>/<span class="variable constant_">LDA</span> band structures)</span><br><span class="line"><span class="variable constant_">ENCUT</span>  =  <span class="number">500</span>        (<span class="title class_">Cut</span>-off energy <span class="keyword">for</span> plane wave basis set, <span class="keyword">in</span> eV)</span><br><span class="line"><span class="variable constant_">PREC</span>   =  A       (<span class="title class_">Precision</span> level)</span><br><span class="line"><span class="variable constant_">LWAVE</span>  = .<span class="property">F</span>.        (<span class="title class_">Write</span> <span class="variable constant_">WAVECAR</span> or not)</span><br><span class="line"><span class="variable constant_">LCHARG</span> = .<span class="property">F</span>.        (<span class="title class_">Write</span> <span class="variable constant_">CHGCAR</span> or not)</span><br><span class="line"><span class="variable constant_">ISMEAR</span> =  <span class="number">0</span>            (<span class="title class_">Gaussian</span> smearing; <span class="attr">metals</span>:<span class="number">1</span>)</span><br><span class="line"><span class="variable constant_">SIGMA</span>  =  <span class="number">0.05</span>         (<span class="title class_">Smearing</span> value <span class="keyword">in</span> eV; <span class="attr">metals</span>:<span class="number">0.2</span></span><br><span class="line"><span class="variable constant_">EDIFF</span>  =  <span class="number">1E-08</span>        (<span class="variable constant_">SCF</span> energy convergence; <span class="keyword">in</span> eV)</span><br><span class="line"><span class="variable constant_">EDIFFG</span> = -<span class="number">1E-02</span>        (<span class="title class_">Ionic</span> convergence; eV/<span class="variable constant_">AA</span>) </span><br><span class="line"><span class="variable constant_">NSW</span>    =  <span class="number">100</span>          (<span class="title class_">Max</span> ionic steps)</span><br><span class="line"><span class="variable constant_">IBRION</span> =  <span class="number">2</span>            (<span class="title class_">Algorithm</span>: <span class="number">0</span>-<span class="variable constant_">MD</span>; <span class="number">1</span>-<span class="title class_">Quasi</span>-<span class="title class_">New</span>; <span class="number">2</span>-<span class="variable constant_">CG</span>)</span><br><span class="line"><span class="variable constant_">POTIM</span> = <span class="number">0.1</span></span><br><span class="line"><span class="variable constant_">ISIF</span>  =  <span class="number">3</span>            (<span class="title class_">Stress</span>/<span class="attr">relaxation</span>: <span class="number">2</span>-<span class="title class_">Ions</span>, <span class="number">3</span>-<span class="title class_">Shape</span>/<span class="title class_">Ions</span>/V, <span class="number">4</span>-<span class="title class_">Shape</span>/<span class="title class_">Ions</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="上面参数详细介绍"><a href="#上面参数详细介绍" class="headerlink" title="上面参数详细介绍"></a>上面参数详细介绍</h3><ul>
-<li><strong>ISTART</strong> ：初始波函数。WAVECAR存在默认1，不存在默认0。<br>0：随机生成波函数<br>1：从 WAVECAR 读取波函数，若读取失败则随机生成。</li>
-<li><strong>ICHARG</strong> ：初始电荷密度。当ISTART&#x3D;0默认2，其他默认1。<br>0：通过 WAVECAR 生成电荷密度，若读取失败则通过原子电荷密度叠加生成<br>1：从 CHGCAR 读取电荷密度<br>2：通过原子电荷密度叠加生成电荷密度<br>11：从 CHGCAR 读取电荷密度，且在（非自洽）循环中保持不变</li>
-<li><strong>ISPIN</strong> ：自旋极化。默认1，关闭。不知道是否打开，可以打开，结果不会有影响。<br>1：非自旋极化（每个轨道上自旋向上和自旋向下的电子数量相等，适合非磁性体系）<br>2：自旋极化（适合铁磁、反铁磁体系）</li>
-<li><strong>ENCUT</strong> ：平面波截断能（单位 eV）<br>默认元素中最大的ENMAX。一般为 POTCAR 中 最大ENMAX 参数值的 1.0 到 1.3 倍。500适用大部分体系。</li>
-<li><strong>PREC</strong> ：总体计算精度，默认Normal。可设为 Low、Med、High、Normal、Single、Accurate。具体参照手册，设为A或者Accurate足够精确。</li>
-<li><strong>LWAVE  LCHARG</strong> ：控制WAVECAR和CHGCAR输出，默认输出，在结构优化可以关闭，节省储存空间。</li>
-<li><strong>ISMEAR</strong> ：轨道分数占据<br>−5：四面体方法（适合半导体和绝缘体）<br>0：高斯方法（适合导体、半导体和绝缘体），展宽由 SIGMA 确定<br>N：Methfessel-Paxton 方法（适合导体）</li>
-<li><strong>EDIFF</strong> ：自洽循环收敛标准（系统能量变化），单位为 eV。默认1E-4，可以设的更精确一些。一般设置为 1E-6或更高。</li>
-<li>__EDIFFG__：离子位置优化收敛标准。默认EDIFF*10。正值为系统能量变化，负值为原子上残余力。随着体系维数下降，可适当增加原子残余力。</li>
-<li><strong>NSW</strong> ：离子位置优化最大步数（IBRION&#x3D;1、2）。默认0。设为100足够大，也可以继续加大。<br>分子动力学开启时代表分子动力学模拟步数（IBRION&#x3D;0）</li>
-<li><strong>IBRION</strong> ：离子位置优化算法。默认NSW&#x3D;0&#x2F;1时为-1，其他默认0。<br>-1：离子不移动<br>0：分子动力学模拟<br>1：准牛顿法<br>2：共轭梯度法<br>5：振动频率计算<br>6：弹性常数计算<br>7&#x2F;8：DFPT方法</li>
-<li><strong>POTIM</strong> ：有限差分法步长。当IBRION&#x3D;1&#x2F;2&#x2F;3默认值 0.5。当IBRION&#x3D;0（MD）时必须指定。</li>
-<li><strong>ISIF</strong> ：需要结构优化变量。默认IBRION&#x3D;0时为0，其他默认2。结构优化一般设为3，全部优化。</li>
-</ul>
-
-
-<h4 id="Mind"><a href="#Mind" class="headerlink" title="Mind"></a>Mind</h4><ul>
-<li><strong>上面四个输入文件都是纯文本文件，且文件名不能更改，格式不能错误。</strong></li>
-<li><strong>vaspkit可以同时产生INCAR、POTCAR、KPOINTS文件。</strong></li>
-</ul>
-<h1 id="提交任务"><a href="#提交任务" class="headerlink" title="提交任务"></a>提交任务</h1><p>在超算上提交或者集群上提交，只需要把四个输入文件和提交任务的脚本文件放在同一文件夹下，运行脚本即可。<br>在个人服务器、虚拟机提交可以通过<code>nohup mpirun -np 核数 vasp_std &gt; std.out &amp;</code>提交</p>
-<h4 id="Mind-1"><a href="#Mind-1" class="headerlink" title="Mind"></a>Mind</h4><ul>
-<li><strong>提交后经常查看作业收敛情况，有问题及时暂停，避免浪费时间</strong></li>
-</ul>
-<h1 id="查看任务完成"><a href="#查看任务完成" class="headerlink" title="查看任务完成"></a>查看任务完成</h1><p>实时查看任务日志<code>tail -f 日志文件</code><br>任务停止后，判断任务是否正常结束，输入<code>grep reached 日志文件</code>或者<code>tail 日志文件</code><br>如果输出<code>reached required accuracy - stopping structural energy minimisation</code>代表正常结束，否则很可能没有收敛或者出错中断。</p>
-<h1 id="输出文件"><a href="#输出文件" class="headerlink" title="输出文件"></a>输出文件</h1><p>任务一旦提交，会立刻生成输出文件，不过此时可能是空的。运行片刻大部分文件会产生内容。<br><a target="_blank" rel="noopener" href="https://www.vasp.at/wiki/index.php/Category:Output_files">https://www.vasp.at/wiki/index.php/Category:Output_files</a><br>其中我们先关注几个输出文件。</p>
-<h2 id="CONTCAR"><a href="#CONTCAR" class="headerlink" title="CONTCAR"></a>CONTCAR</h2><p>优化后的结构文件，与POSCAR相对应。为最后一个离子步的结构。当然如果要提高精度或者续算，可以<code>cp CONTCAR POSCAR</code>继续计算。</p>
-<h2 id="OSZICAR"><a href="#OSZICAR" class="headerlink" title="OSZICAR"></a>OSZICAR</h2><p>包含自洽计算中能量收敛等信息。</p>
-<h2 id="OUTCAR"><a href="#OUTCAR" class="headerlink" title="OUTCAR"></a>OUTCAR</h2><p>这个是VASP最主要的输出文件，包含计算过程中大量信息，依次主要包括：<br>VASP版本；<br>计算开始时间和并行性CPU数；<br>赝势信息；<br>最近邻列表；<br>对称性信息；<br>晶格信息和k点坐标;<br>INCAR中读入的参数和其他大部分的默认参数值；<br>平面波个数和FFT信息；<br>每一步离子步数和其中每一个电子自洽的时间、内存、能量等信息；<br>自洽完成后的费米能和能量本征值；<br>应力；力；<br>电荷数和磁矩；<br>程序运行时间。<br>总而言之想找而不知道去哪里找，就在这里。</p>
-<h2 id="IBZKPT"><a href="#IBZKPT" class="headerlink" title="IBZKPT"></a>IBZKPT</h2><p>由VASP自动生成，包含所有不等价k点的坐标和权重以及可能的四面体链接情况，它的格式与KPOINTS文件的格式是完全一样的。</p>
-<h2 id="WAVECAR"><a href="#WAVECAR" class="headerlink" title="WAVECAR"></a>WAVECAR</h2><p>波函数文件，二进制文件，不能直接用文本编辑器直接打开。<br>波函数文件较大，可以通过(LWAVE)来控制输出。结构优化不需要输出。<br>它也可以作为输入文件，为后续计算提供初始波函数。</p>
-<h2 id="CHGCAR和CHG"><a href="#CHGCAR和CHG" class="headerlink" title="CHGCAR和CHG"></a>CHGCAR和CHG</h2><p>电荷密度文件，包含晶格矢量，原子坐标，总电荷密度以及PAW的单中心占据情况等信息。 该文件既是输出文件(由LCHARG控制)，也可以是输入文件。结构优化不需要输出。<br>在计算能带或者态密度时，需要读入电荷密度进行非自洽计算。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
-<li>输入文件KPOINTS比较简单，可以手动，注意格式；INCAR参数众多，直接参考，不知道的参数不加；POTCAR文件比较大，我们只关注赝势对应的元素顺序与POSCAR是否一致；POSCAR结构文件VESTA直接输出。提交任务脚本由超算代理提供，不同超算不同。</li>
-<li>任务提交后关注是否正常结束，另外关注计算的时间等。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -2384,7 +2366,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
