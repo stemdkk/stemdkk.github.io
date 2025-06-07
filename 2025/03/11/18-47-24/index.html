@@ -28,7 +28,7 @@
 <meta property="og:description" content="介绍铁电极化强度（ferroelectric polarization）是指在铁电材料中，由外加电场引起的电偶极矩的强度。铁电材料是一类具有自发极化特性的材料，即在没有外加电场时，这些材料内部的电偶极矩已经排列成某种方向。铁电极化强度描述了这种极化的强弱，它是材料的重要电学特性之一。 四种常见的铁电起源 离子偏移这种是最常见的铁电类型，比如BaTiO3中的Ti离子偏移中心位置；CuInP2S6中C">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-03-11T10:47:24.000Z">
-<meta property="article:modified_time" content="2025-03-19T03:48:50.771Z">
+<meta property="article:modified_time" content="2025-04-22T09:23:12.816Z">
 <meta property="article:author" content="Keke Liu">
 <meta property="article:tag" content="铁电">
 <meta name="twitter:card" content="summary">
@@ -114,7 +114,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E7%A7%8D%E5%B8%B8%E8%A7%81%E7%9A%84%E9%93%81%E7%94%B5%E8%B5%B7%E6%BA%90"><span class="nav-number">1.1.</span> <span class="nav-text">四种常见的铁电起源</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BE%8B%E5%AD%901%EF%BC%9A%E7%A6%BB%E5%AD%90%E5%9E%8B%E9%93%81%E7%94%B5"><span class="nav-number">2.</span> <span class="nav-text">例子1：离子型铁电</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96"><span class="nav-number">3.</span> <span class="nav-text">1 结构优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E4%BA%A7%E7%94%9F%E7%9B%B8%E5%AF%B9%E4%BD%8D%E7%A7%BB%E7%BB%93%E6%9E%84"><span class="nav-number">3.1.</span> <span class="nav-text">2 产生相对位移结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E8%87%AA%E6%B4%BD%E6%9E%81%E5%8C%96%E5%BC%BA%E5%BA%A6%E8%AE%A1%E7%AE%97"><span class="nav-number">3.2.</span> <span class="nav-text">3 自洽极化强度计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%A4%84%E7%90%86%E5%92%8C%E5%88%86%E6%9E%90%E6%95%B0%E6%8D%AE%E3%80%82"><span class="nav-number">3.3.</span> <span class="nav-text">4 处理和分析数据。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BB%91%E7%A7%BB%E9%93%81%E7%94%B5"><span class="nav-number">4.</span> <span class="nav-text">滑移铁电</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E9%A6%96%E5%85%88%E5%87%86%E5%A4%87%E4%BC%98%E5%8C%96%E5%A5%BD%E7%9A%84%E9%93%81%E7%94%B5%E7%9B%B8%EF%BC%8C%E5%8D%B3AB%E5%A0%86%E5%8F%A0%E7%9A%84POSCAR%EF%BC%9A"><span class="nav-number">4.1.</span> <span class="nav-text">1 首先准备优化好的铁电相，即AB堆叠的POSCAR：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E8%87%AA%E6%B4%BD%E8%AE%A1%E7%AE%97"><span class="nav-number">4.2.</span> <span class="nav-text">2 自洽计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%8E%A5%E4%B8%8B%E6%9D%A5%E8%AE%A1%E7%AE%97%E9%A1%BA%E7%94%B5%E7%9B%B8%EF%BC%8C%E5%8D%B3AA%E5%A0%86%E5%8F%A0%EF%BC%8C"><span class="nav-number">4.3.</span> <span class="nav-text">3 接下来计算顺电相，即AA堆叠，</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="nav-number">4.4.</span> <span class="nav-text">4 数据处理</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E7%A7%8D%E5%B8%B8%E8%A7%81%E7%9A%84%E9%93%81%E7%94%B5%E8%B5%B7%E6%BA%90"><span class="nav-number">1.1.</span> <span class="nav-text">四种常见的铁电起源</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BE%8B%E5%AD%901%EF%BC%9A%E7%A6%BB%E5%AD%90%E5%9E%8B%E9%93%81%E7%94%B5"><span class="nav-number">2.</span> <span class="nav-text">例子1：离子型铁电</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96"><span class="nav-number">2.1.</span> <span class="nav-text">1 结构优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E4%BA%A7%E7%94%9F%E7%9B%B8%E5%AF%B9%E4%BD%8D%E7%A7%BB%E7%BB%93%E6%9E%84"><span class="nav-number">2.2.</span> <span class="nav-text">2 产生相对位移结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E8%87%AA%E6%B4%BD%E6%9E%81%E5%8C%96%E5%BC%BA%E5%BA%A6%E8%AE%A1%E7%AE%97"><span class="nav-number">2.3.</span> <span class="nav-text">3 自洽极化强度计算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F"><span class="nav-number">2.3.1.</span> <span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%A4%84%E7%90%86%E5%92%8C%E5%88%86%E6%9E%90%E6%95%B0%E6%8D%AE%E3%80%82"><span class="nav-number">2.4.</span> <span class="nav-text">4 处理和分析数据。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BB%91%E7%A7%BB%E9%93%81%E7%94%B5"><span class="nav-number">3.</span> <span class="nav-text">滑移铁电</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E9%A6%96%E5%85%88%E5%87%86%E5%A4%87%E4%BC%98%E5%8C%96%E5%A5%BD%E7%9A%84%E9%93%81%E7%94%B5%E7%9B%B8%EF%BC%8C%E5%8D%B3AB%E5%A0%86%E5%8F%A0%E7%9A%84POSCAR%EF%BC%9A"><span class="nav-number">3.1.</span> <span class="nav-text">1 首先准备优化好的铁电相，即AB堆叠的POSCAR：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E8%87%AA%E6%B4%BD%E8%AE%A1%E7%AE%97"><span class="nav-number">3.2.</span> <span class="nav-text">2 自洽计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%8E%A5%E4%B8%8B%E6%9D%A5%E8%AE%A1%E7%AE%97%E9%A1%BA%E7%94%B5%E7%9B%B8%EF%BC%8C%E5%8D%B3AA%E5%A0%86%E5%8F%A0%EF%BC%8C"><span class="nav-number">3.3.</span> <span class="nav-text">3 接下来计算顺电相，即AA堆叠，</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="nav-number">3.4.</span> <span class="nav-text">4 数据处理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%9F%E5%87%BD%E6%95%B0%E5%92%8C%E9%9D%99%E7%94%B5%E5%8A%BF%E8%AE%A1%E7%AE%97"><span class="nav-number">4.</span> <span class="nav-text">功函数和静电势计算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F-1"><span class="nav-number">4.1.</span> <span class="nav-text">注意</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -127,7 +127,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -138,7 +138,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-count">44</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -209,7 +209,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-19 11:48:50" itemprop="dateModified" datetime="2025-03-19T11:48:50+08:00">2025-03-19</time>
+      <time title="修改时间：2025-04-22 17:23:12" itemprop="dateModified" datetime="2025-04-22T17:23:12+08:00">2025-04-22</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -245,7 +245,7 @@
 <h1 id="例子1：离子型铁电"><a href="#例子1：离子型铁电" class="headerlink" title="例子1：离子型铁电"></a>例子1：离子型铁电</h1><p>本文主要计算经典的铁电材料 BaTiO3 的极化强度。</p>
 <p>原文链接:<a target="_blank" rel="noopener" href="https://www.cnblogs.com/ghzhan/articles/16305679.html">https://www.cnblogs.com/ghzhan/articles/16305679.html</a></p>
 <p>BaTiO3 是钙钛矿结构，它的铁电相结构和中心对称结构如图所示，属于四方晶系。<br>该铁电材料是沿着 c 方向极化，主要是 O 离子和 Ti 离子的移动的贡献。 例如，上图中的左边铁电相极化方向朝下，右边铁电相极化方向朝上。极化强度详细计算步骤如下:</p>
-<h1 id="1-结构优化"><a href="#1-结构优化" class="headerlink" title="1 结构优化"></a>1 结构优化</h1><p>先构造 BaTiO3 两种极化方向的晶格结构，并用 VASP 进行结构优化得到 CONTCAR；<br>铁电相POSCAR<br> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Ti   Ba   O    </span><br><span class="line">1.00000000000000       </span><br><span class="line"> 3.9944999999999999   0.0000000000000000   0.0000000000000000   </span><br><span class="line"> 0.0000000000000000   3.9944999999999999  -0.0000000000000000   </span><br><span class="line"> 0.0000000000000000   0.0000000000000000   4.0335000000000001</span><br><span class="line"> Ti   Ba   O </span><br><span class="line"> 1  1  3  </span><br><span class="line"> Direct  </span><br><span class="line"> 0.5000000000000000  0.5000000000000000  0.5142700000000000    </span><br><span class="line"> 0.0000000000000000 -0.0000000000000000  0.0000000000000000    </span><br><span class="line"> 0.5000000000000000  0.5000000000000000  0.9744770000000000    </span><br><span class="line"> 0.5000000000000000  0.0000000000000000  0.4876180000000000    </span><br><span class="line"> 0.0000000000000000  0.5000000000000000  0.4876180000000000</span><br></pre></td></tr></table></figure></p>
+<h2 id="1-结构优化"><a href="#1-结构优化" class="headerlink" title="1 结构优化"></a>1 结构优化</h2><p>先构造 BaTiO3 两种极化方向的晶格结构，并用 VASP 进行结构优化得到 CONTCAR；<br>铁电相POSCAR<br> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Ti   Ba   O    </span><br><span class="line">1.00000000000000       </span><br><span class="line"> 3.9944999999999999   0.0000000000000000   0.0000000000000000   </span><br><span class="line"> 0.0000000000000000   3.9944999999999999  -0.0000000000000000   </span><br><span class="line"> 0.0000000000000000   0.0000000000000000   4.0335000000000001</span><br><span class="line"> Ti   Ba   O </span><br><span class="line"> 1  1  3  </span><br><span class="line"> Direct  </span><br><span class="line"> 0.5000000000000000  0.5000000000000000  0.5142700000000000    </span><br><span class="line"> 0.0000000000000000 -0.0000000000000000  0.0000000000000000    </span><br><span class="line"> 0.5000000000000000  0.5000000000000000  0.9744770000000000    </span><br><span class="line"> 0.5000000000000000  0.0000000000000000  0.4876180000000000    </span><br><span class="line"> 0.0000000000000000  0.5000000000000000  0.4876180000000000</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Ti   Ba   O    </span><br><span class="line">1.00000000000000        </span><br><span class="line">3.9944999999999999   0.0000000000000000   0.0000000000000000   </span><br><span class="line">0.0000000000000000   3.9944999999999999  -0.0000000000000000   </span><br><span class="line">0.0000000000000000   0.0000000000000000   4.0335000000000001</span><br><span class="line">Ti   Ba   O </span><br><span class="line">1  1  3  </span><br><span class="line">Direct  </span><br><span class="line">0.5000000000000000  0.5000000000000000  0.4857300000000000    </span><br><span class="line">0.0000000000000000 -0.0000000000000000  0.0000000000000000    </span><br><span class="line">0.5000000000000000  0.5000000000000000  0.0255230000000000    </span><br><span class="line">0.5000000000000000  0.0000000000000000  0.5123820000000000    </span><br><span class="line">0.0000000000000000  0.5000000000000000  0.5123820000000000</span><br></pre></td></tr></table></figure>
 
 <p>中心对称相POSCAR</p>
@@ -261,7 +261,7 @@
 <p><code>grep &#39;dipole moment&#39; */OUTCAR|rev| awk &#39;&#123;printf (&quot;%s &quot;, $4)&#125;&#39;|rev|awk &#39;&#123;printf (&quot;%f\n&quot;, $1+$2)&#125;&#39; &gt;&gt; dipole_c.dat </code></p>
 <p><code>grep &#39;free  energy   TOTEN&#39; */OUTCAR | awk &#39;&#123;printf (&quot;%s\n&quot;,$5)&#125;&#39; &gt;&gt; energy.dat </code></p>
 <p>注意，这里通过 grep 命令产生的 dipole_c.dat 文件记录的是沿着 c 方向的极化值，这是因为 BaTiO3 是沿着 c 方向极化的。对于具体的情况需要自行修改。离子与电子相加即可，然后用NP相-铁电相即可得到极化强度P。</p>
-<p>注意：在铁电极化计算过程中经常会出现参考相为非半导体的情况，这种情况下可以：①镜像法：以FE以NP为参照中心，建立一个-FE相 (PhaseB’, 即铁电极化方向相反)。然后按照上述方法计算极化，再以FE相的极化-（-FE相）的极化值，然后除以2即得到极化强度。可以理解为1-(-1) &#x3D; 2，2&#x2F;2&#x3D;1；<br>②线性插值法：在FE和NP相中间插入一系列中间过渡相(0%（FE）,10%,20%,30%….100%(NP))，计算它们的极化，然后可以用Origin做拟合，100%时即为NP相的极化。(100%-0%)则是极化强度P。</p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>在铁电极化计算过程中经常会出现参考相为非半导体的情况，这种情况下可以：①镜像法：以FE相以NP为参照中心，建立一个-FE相 (PhaseB’, 即铁电极化方向相反)。然后按照上述方法计算极化，再以FE相的极化-（-FE相）的极化值，然后除以2即得到极化强度。可以理解为1-(-1) &#x3D; 2，2&#x2F;2&#x3D;1；<br>②线性插值法：在FE和NP相中间插入一系列中间过渡相(0%（FE）,10%,20%,30%….100%(NP))，计算它们的极化，然后可以用Origin做拟合，100%时即为NP相的极化。(100%-0%)则是极化强度P。</p>
 <h2 id="4-处理和分析数据。"><a href="#4-处理和分析数据。" class="headerlink" title="4 处理和分析数据。"></a>4 处理和分析数据。</h2><p>首先要理清数据单位。VASP 计算得到的 dipole moment 的单位是 e*Å，它与库仑之间换算为:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1e =  1.602176634 * 10^-19 C  </span><br><span class="line">1Å = 10^-10 m</span><br></pre></td></tr></table></figure>
 
@@ -311,6 +311,26 @@
 <p>极化强度是单位面积上的极化值，进行单位转换，最终结果3.0467x10-13 C&#x2F;m。</p>
 <p>对比文献中的结果：数值还是非常接近的，差距可能在结构优化，或者参数设置的一些细节方面。至于为什么文献中是-12次方，我的是-13次方，我特地联系了通讯作者询问了一下，是他们笔误搞错了，正确结果就是-13次方。最后可能有人发现了，似乎没用到极化量子，由于计算的结果比较凑巧，刚好在同一个极化量子的范围内。一般情况下，可能算出来的极化值会相差很多个极化量子。</p>
 <p>原链接：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/1j97g5A1Ny95EOn3cqKh-A">https://mp.weixin.qq.com/s/1j97g5A1Ny95EOn3cqKh-A</a></p>
+<h1 id="功函数和静电势计算"><a href="#功函数和静电势计算" class="headerlink" title="功函数和静电势计算"></a>功函数和静电势计算</h1><p>VASP 中可使用 LVHAR 参数进行功函数计算控制，输出文件中 LOCPOT 就是我们想要的静电势贡献，格式和 CHGCAR 一样，需计算 Z 方向的平均贡献,利用vaspkit -task 422&#x2F;426.</p>
+<p>VASP 中直接使用 LDIPOL 和 IDPOL 即可开启它的偶极校正功能</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LDIPOL = .TRUE. 表示打开偶极校正</span><br><span class="line">IDIPOL = 3 表示偶极校正方向为第三晶格矢</span><br><span class="line">DIPOL = 0.5 0.5 0.5 表示体系的中心，以分数坐标表示</span><br><span class="line">LVHAR = .TRUE.</span><br></pre></td></tr></table></figure>
+
+<p>真空能级在打开 LVHAR 时可能去读取 OUTCAR 直接得到</p>
+<p><code>grep vacuum OUTCAR</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># vacuum level on the upper side and lower side of the slab         2.807         3.188</span><br></pre></td></tr></table></figure>
+<p>注意 OUTCAR 中的真空能级需进行费米能级修正，即减去 OUTCAR 中的 E-fremi</p>
+<h2 id="注意-1"><a href="#注意-1" class="headerlink" title="注意"></a>注意</h2><p>功函数：将一个固体内部的电子移动到真空所需的能量。（类似于逸出功）。</p>
+<p>真空能级：固体表面外真空中自由电子所具有的能量。换句话说，电子跑出固体表面并达到这个能级后即可认为它自由。</p>
+<ol>
+<li><p>因 VASP 所适用的体系是周期性体系，使用它来模拟实验中的 Slab 模型时会取一个相当大的真空层来隔绝相邻两个周期中 Slab 的相互作用。理想情况下，真空层中的功函数应当是一条水平的直线（函数值为定值）。但如果表面的两侧并非对称，即其中一侧吸附了分子时， 这两侧的功函数存在差异，此时如果不进行偶极校正，真空中的功函数会是一条斜线；而经过偶极校正后，功函数会出现一个阶梯，阶梯两侧附近的曲接近水平。</p>
+</li>
+<li><p>在 VASP 中 LVHAR 参数可以使 VASP 输出体系的功函数文件 LOCPOT 。LOCPOT 文件本身是 Volumetric data ，它的格式与 CHGCAR 一样。一般而言，用户关心的功函数是垂直于表面方向上的数据，因此在得到 LOCPOT 后需要对 xy平面内的数据做平均，然后乘以晶胞的体积，就得到我们需要的功函数信息。</p>
+</li>
+<li><p>若体系难以收敛可手动计算原子坐标平均值并设置 DIPOL &#x3D; 0.5 0.5 <z averaged z>，若修正效果不到预期可以打开偶极校正并设置上述 DIPOL &#x3D; 0.5 0.5 <z averaged> 进行弛豫计算；<br>关闭 DIPOL，再次进行弛豫计算；<br>关闭 DIPOL，打开 LVHAR &#x3D; .TRUE. 进去静态计算得到功函数；<br>若出现功函数台阶即为计算成功。</p>
+</li>
+<li><p>如果计算失败请检查 POSCAR 中晶格基矢对应分量是否为 0。如计算第三个方向偶极修正请保证前两个基矢的 z 分量为零且第三个基矢只有 z 分量不为零。另外要注销并行参数。</p>
+</li>
+</ol>
 
     </div>
 

@@ -123,7 +123,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -134,7 +134,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-count">44</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -204,7 +204,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-03-19 11:48:50" itemprop="dateModified" datetime="2025-03-19T11:48:50+08:00">2025-03-19</time>
+      <time title="修改时间：2025-04-22 17:23:12" itemprop="dateModified" datetime="2025-04-22T17:23:12+08:00">2025-04-22</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -241,7 +241,7 @@
 <h1 id="例子1：离子型铁电"><a href="#例子1：离子型铁电" class="headerlink" title="例子1：离子型铁电"></a>例子1：离子型铁电</h1><p>本文主要计算经典的铁电材料 BaTiO3 的极化强度。</p>
 <p>原文链接:<a target="_blank" rel="noopener" href="https://www.cnblogs.com/ghzhan/articles/16305679.html">https://www.cnblogs.com/ghzhan/articles/16305679.html</a></p>
 <p>BaTiO3 是钙钛矿结构，它的铁电相结构和中心对称结构如图所示，属于四方晶系。<br>该铁电材料是沿着 c 方向极化，主要是 O 离子和 Ti 离子的移动的贡献。 例如，上图中的左边铁电相极化方向朝下，右边铁电相极化方向朝上。极化强度详细计算步骤如下:</p>
-<h1 id="1-结构优化"><a href="#1-结构优化" class="headerlink" title="1 结构优化"></a>1 结构优化</h1><p>先构造 BaTiO3 两种极化方向的晶格结构，并用 VASP 进行结构优化得到 CONTCAR；<br>铁电相POSCAR<br> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Ti   Ba   O    </span><br><span class="line">1.00000000000000       </span><br><span class="line"> 3.9944999999999999   0.0000000000000000   0.0000000000000000   </span><br><span class="line"> 0.0000000000000000   3.9944999999999999  -0.0000000000000000   </span><br><span class="line"> 0.0000000000000000   0.0000000000000000   4.0335000000000001</span><br><span class="line"> Ti   Ba   O </span><br><span class="line"> 1  1  3  </span><br><span class="line"> Direct  </span><br><span class="line"> 0.5000000000000000  0.5000000000000000  0.5142700000000000    </span><br><span class="line"> 0.0000000000000000 -0.0000000000000000  0.0000000000000000    </span><br><span class="line"> 0.5000000000000000  0.5000000000000000  0.9744770000000000    </span><br><span class="line"> 0.5000000000000000  0.0000000000000000  0.4876180000000000    </span><br><span class="line"> 0.0000000000000000  0.5000000000000000  0.4876180000000000</span><br></pre></td></tr></table></figure></p>
+<h2 id="1-结构优化"><a href="#1-结构优化" class="headerlink" title="1 结构优化"></a>1 结构优化</h2><p>先构造 BaTiO3 两种极化方向的晶格结构，并用 VASP 进行结构优化得到 CONTCAR；<br>铁电相POSCAR<br> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Ti   Ba   O    </span><br><span class="line">1.00000000000000       </span><br><span class="line"> 3.9944999999999999   0.0000000000000000   0.0000000000000000   </span><br><span class="line"> 0.0000000000000000   3.9944999999999999  -0.0000000000000000   </span><br><span class="line"> 0.0000000000000000   0.0000000000000000   4.0335000000000001</span><br><span class="line"> Ti   Ba   O </span><br><span class="line"> 1  1  3  </span><br><span class="line"> Direct  </span><br><span class="line"> 0.5000000000000000  0.5000000000000000  0.5142700000000000    </span><br><span class="line"> 0.0000000000000000 -0.0000000000000000  0.0000000000000000    </span><br><span class="line"> 0.5000000000000000  0.5000000000000000  0.9744770000000000    </span><br><span class="line"> 0.5000000000000000  0.0000000000000000  0.4876180000000000    </span><br><span class="line"> 0.0000000000000000  0.5000000000000000  0.4876180000000000</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Ti   Ba   O    </span><br><span class="line">1.00000000000000        </span><br><span class="line">3.9944999999999999   0.0000000000000000   0.0000000000000000   </span><br><span class="line">0.0000000000000000   3.9944999999999999  -0.0000000000000000   </span><br><span class="line">0.0000000000000000   0.0000000000000000   4.0335000000000001</span><br><span class="line">Ti   Ba   O </span><br><span class="line">1  1  3  </span><br><span class="line">Direct  </span><br><span class="line">0.5000000000000000  0.5000000000000000  0.4857300000000000    </span><br><span class="line">0.0000000000000000 -0.0000000000000000  0.0000000000000000    </span><br><span class="line">0.5000000000000000  0.5000000000000000  0.0255230000000000    </span><br><span class="line">0.5000000000000000  0.0000000000000000  0.5123820000000000    </span><br><span class="line">0.0000000000000000  0.5000000000000000  0.5123820000000000</span><br></pre></td></tr></table></figure>
 
 <p>中心对称相POSCAR</p>
@@ -257,7 +257,7 @@
 <p><code>grep &#39;dipole moment&#39; */OUTCAR|rev| awk &#39;&#123;printf (&quot;%s &quot;, $4)&#125;&#39;|rev|awk &#39;&#123;printf (&quot;%f\n&quot;, $1+$2)&#125;&#39; &gt;&gt; dipole_c.dat </code></p>
 <p><code>grep &#39;free  energy   TOTEN&#39; */OUTCAR | awk &#39;&#123;printf (&quot;%s\n&quot;,$5)&#125;&#39; &gt;&gt; energy.dat </code></p>
 <p>注意，这里通过 grep 命令产生的 dipole_c.dat 文件记录的是沿着 c 方向的极化值，这是因为 BaTiO3 是沿着 c 方向极化的。对于具体的情况需要自行修改。离子与电子相加即可，然后用NP相-铁电相即可得到极化强度P。</p>
-<p>注意：在铁电极化计算过程中经常会出现参考相为非半导体的情况，这种情况下可以：①镜像法：以FE以NP为参照中心，建立一个-FE相 (PhaseB’, 即铁电极化方向相反)。然后按照上述方法计算极化，再以FE相的极化-（-FE相）的极化值，然后除以2即得到极化强度。可以理解为1-(-1) &#x3D; 2，2&#x2F;2&#x3D;1；<br>②线性插值法：在FE和NP相中间插入一系列中间过渡相(0%（FE）,10%,20%,30%….100%(NP))，计算它们的极化，然后可以用Origin做拟合，100%时即为NP相的极化。(100%-0%)则是极化强度P。</p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>在铁电极化计算过程中经常会出现参考相为非半导体的情况，这种情况下可以：①镜像法：以FE相以NP为参照中心，建立一个-FE相 (PhaseB’, 即铁电极化方向相反)。然后按照上述方法计算极化，再以FE相的极化-（-FE相）的极化值，然后除以2即得到极化强度。可以理解为1-(-1) &#x3D; 2，2&#x2F;2&#x3D;1；<br>②线性插值法：在FE和NP相中间插入一系列中间过渡相(0%（FE）,10%,20%,30%….100%(NP))，计算它们的极化，然后可以用Origin做拟合，100%时即为NP相的极化。(100%-0%)则是极化强度P。</p>
 <h2 id="4-处理和分析数据。"><a href="#4-处理和分析数据。" class="headerlink" title="4 处理和分析数据。"></a>4 处理和分析数据。</h2><p>首先要理清数据单位。VASP 计算得到的 dipole moment 的单位是 e*Å，它与库仑之间换算为:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1e =  1.602176634 * 10^-19 C  </span><br><span class="line">1Å = 10^-10 m</span><br></pre></td></tr></table></figure>
 
@@ -307,6 +307,26 @@
 <p>极化强度是单位面积上的极化值，进行单位转换，最终结果3.0467x10-13 C&#x2F;m。</p>
 <p>对比文献中的结果：数值还是非常接近的，差距可能在结构优化，或者参数设置的一些细节方面。至于为什么文献中是-12次方，我的是-13次方，我特地联系了通讯作者询问了一下，是他们笔误搞错了，正确结果就是-13次方。最后可能有人发现了，似乎没用到极化量子，由于计算的结果比较凑巧，刚好在同一个极化量子的范围内。一般情况下，可能算出来的极化值会相差很多个极化量子。</p>
 <p>原链接：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/1j97g5A1Ny95EOn3cqKh-A">https://mp.weixin.qq.com/s/1j97g5A1Ny95EOn3cqKh-A</a></p>
+<h1 id="功函数和静电势计算"><a href="#功函数和静电势计算" class="headerlink" title="功函数和静电势计算"></a>功函数和静电势计算</h1><p>VASP 中可使用 LVHAR 参数进行功函数计算控制，输出文件中 LOCPOT 就是我们想要的静电势贡献，格式和 CHGCAR 一样，需计算 Z 方向的平均贡献,利用vaspkit -task 422&#x2F;426.</p>
+<p>VASP 中直接使用 LDIPOL 和 IDPOL 即可开启它的偶极校正功能</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LDIPOL = .TRUE. 表示打开偶极校正</span><br><span class="line">IDIPOL = 3 表示偶极校正方向为第三晶格矢</span><br><span class="line">DIPOL = 0.5 0.5 0.5 表示体系的中心，以分数坐标表示</span><br><span class="line">LVHAR = .TRUE.</span><br></pre></td></tr></table></figure>
+
+<p>真空能级在打开 LVHAR 时可能去读取 OUTCAR 直接得到</p>
+<p><code>grep vacuum OUTCAR</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># vacuum level on the upper side and lower side of the slab         2.807         3.188</span><br></pre></td></tr></table></figure>
+<p>注意 OUTCAR 中的真空能级需进行费米能级修正，即减去 OUTCAR 中的 E-fremi</p>
+<h2 id="注意-1"><a href="#注意-1" class="headerlink" title="注意"></a>注意</h2><p>功函数：将一个固体内部的电子移动到真空所需的能量。（类似于逸出功）。</p>
+<p>真空能级：固体表面外真空中自由电子所具有的能量。换句话说，电子跑出固体表面并达到这个能级后即可认为它自由。</p>
+<ol>
+<li><p>因 VASP 所适用的体系是周期性体系，使用它来模拟实验中的 Slab 模型时会取一个相当大的真空层来隔绝相邻两个周期中 Slab 的相互作用。理想情况下，真空层中的功函数应当是一条水平的直线（函数值为定值）。但如果表面的两侧并非对称，即其中一侧吸附了分子时， 这两侧的功函数存在差异，此时如果不进行偶极校正，真空中的功函数会是一条斜线；而经过偶极校正后，功函数会出现一个阶梯，阶梯两侧附近的曲接近水平。</p>
+</li>
+<li><p>在 VASP 中 LVHAR 参数可以使 VASP 输出体系的功函数文件 LOCPOT 。LOCPOT 文件本身是 Volumetric data ，它的格式与 CHGCAR 一样。一般而言，用户关心的功函数是垂直于表面方向上的数据，因此在得到 LOCPOT 后需要对 xy平面内的数据做平均，然后乘以晶胞的体积，就得到我们需要的功函数信息。</p>
+</li>
+<li><p>若体系难以收敛可手动计算原子坐标平均值并设置 DIPOL &#x3D; 0.5 0.5 <z averaged z>，若修正效果不到预期可以打开偶极校正并设置上述 DIPOL &#x3D; 0.5 0.5 <z averaged> 进行弛豫计算；<br>关闭 DIPOL，再次进行弛豫计算；<br>关闭 DIPOL，打开 LVHAR &#x3D; .TRUE. 进去静态计算得到功函数；<br>若出现功函数台阶即为计算成功。</p>
+</li>
+<li><p>如果计算失败请检查 POSCAR 中晶格基矢对应分量是否为 0。如计算第三个方向偶极修正请保证前两个基矢的 z 分量为零且第三个基矢只有 z 分量不为零。另外要注销并行参数。</p>
+</li>
+</ol>
 
       
     </div>
@@ -361,9 +381,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2024-12-19 18:47:20 / 修改时间：22:31:26" itemprop="dateCreated datePublished" datetime="2024-12-19T18:47:20+08:00">2024-12-19</time>
+      <time title="创建时间：2024-12-19 18:47:20" itemprop="dateCreated datePublished" datetime="2024-12-19T18:47:20+08:00">2024-12-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-06-07 11:18:15" itemprop="dateModified" datetime="2025-06-07T11:18:15+08:00">2025-06-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -386,8 +412,54 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="转角结构简介"><a href="#转角结构简介" class="headerlink" title="转角结构简介"></a>转角结构简介</h1><h1 id="构建转角结构原理"><a href="#构建转角结构原理" class="headerlink" title="构建转角结构原理"></a>构建转角结构原理</h1><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/j6dARDTRI_4c6yiSijTvHQ">https://mp.weixin.qq.com/s/j6dARDTRI_4c6yiSijTvHQ</a></p>
-<p>转移矩阵这一步看不懂可先从三步看构建超胞我们是是用转移矩阵的方法来分别转角两层结构的。<br>这里先记住两个转移矩阵：第一层转移矩阵：<br>第二层转移矩阵：整数 越大超胞越大，单层原子数&#x3D; 单胞原子数 转移矩阵的行列式 ：N &#x3D; n  det(T)转角 满足：这里举个例子：对于石墨烯单胞原子数n&#x3D;2，如果我们i取2，则转移矩阵的行列式&#x3D;19，则单层原子数为</p>
-<h1 id="构建转角结构的方法和程序"><a href="#构建转角结构的方法和程序" class="headerlink" title="构建转角结构的方法和程序"></a>构建转角结构的方法和程序</h1><h1 id="小角度转角构建及哈密顿"><a href="#小角度转角构建及哈密顿" class="headerlink" title="小角度转角构建及哈密顿"></a>小角度转角构建及哈密顿</h1>
+<p>转移矩阵这一步看不懂可先从三步看构建超胞我们是是用转移矩阵的方法来分别转角两层结构的。<br>这里先记住两个转移矩阵：第一层转移矩阵：<br>第二层转移矩阵：整数 越大超胞越大，单层原子数&#x3D; 单胞原子数 转移矩阵的行列式 ：$N &#x3D; n  det(T)$转角 满足：这里举个例子：对于石墨烯单胞原子数n&#x3D;2，如果我们i取2，则转移矩阵的行列式&#x3D;19，则单层原子数为</p>
+<h1 id="构建转角结构的方法和程序"><a href="#构建转角结构的方法和程序" class="headerlink" title="构建转角结构的方法和程序"></a>构建转角结构的方法和程序</h1><h2 id="Twist2D"><a href="#Twist2D" class="headerlink" title="Twist2D"></a>Twist2D</h2><p>Python code for twisting the 2D materials.</p>
+<p>链接：<a target="_blank" rel="noopener" href="https://github.com/kYangLi/Twist2D">https://github.com/kYangLi/Twist2D</a></p>
+<p>使用：<code>python demo.py  #将twist2d.py放到同一文件夹</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;Twist2D Demo.&quot;&quot;&quot;</span><br><span class="line">#%%</span><br><span class="line"># +------------+</span><br><span class="line"># | Usage Demo |</span><br><span class="line"># +------------+</span><br><span class="line">from twist2d import *</span><br><span class="line"></span><br><span class="line"># Create an object for t2d</span><br><span class="line">twist_demo = Twist2D()</span><br><span class="line"></span><br><span class="line"># Initialize the different twisted layers</span><br><span class="line">#  - super_a1_mult,  super_a2_mult: supercell vector a1&#x27;,a2&#x27; based on a1,a2</span><br><span class="line">#  - layer_dis: the layer distance of this layer to next layer, default 2A.</span><br><span class="line">#  - scs_x, scs_y: supercell shift in x,y direction in angstroms, default 0A.</span><br><span class="line">#  - prim_poscar: POSCAR for primitive cell of current layer, default &#x27;POSCAR&#x27;. </span><br><span class="line">m = 6</span><br><span class="line">n = 7</span><br><span class="line">#--&gt; 1st layer </span><br><span class="line">#    The 1st layer is also the base layer, which all of other layers will </span><br><span class="line">#    try to add some strain to match the 1st layer&#x27;s cell constants.</span><br><span class="line">super_a1_mult = [m, n]</span><br><span class="line">super_a2_mult = [-n, m+n]</span><br><span class="line">twist_demo.add_layer(super_a1_mult, super_a2_mult, layer_dis=3, prim_poscar=&quot;POSCAR&quot;)</span><br><span class="line">#--&gt; 2nd layer</span><br><span class="line">super_a1_mult = [n, m]</span><br><span class="line">super_a2_mult = [-m, n+m]</span><br><span class="line">twist_demo.add_layer(super_a1_mult, super_a2_mult, prim_poscar=&quot;POSCAR&quot;)</span><br><span class="line"># #--&gt; 3rd layer</span><br><span class="line"># super_a1_mult = [n, m]</span><br><span class="line"># super_a2_mult = [-m, n+m]</span><br><span class="line"># twist_demo.add_layer(super_a1_mult, super_a2_mult, prim_poscar=&quot;POSCAR-BN&quot;)</span><br><span class="line"></span><br><span class="line"># Twisting the layers</span><br><span class="line">#  - start_z: The lowest atom&#x27;s fractional coordinates in z, default 0.1</span><br><span class="line">#  - super_a3_z: The length of the c vector in z direction, default 20A.</span><br><span class="line">twist_demo.twist_layers(start_z=0.1)</span><br><span class="line"></span><br><span class="line"># Write results to the file</span><br><span class="line">twist_demo.write_res_to_poscar()</span><br><span class="line"></span><br><span class="line"># (Optional) Calculate the twisted angles of each layer in degree </span><br><span class="line">twisted_angles = twist_demo.calc_layers_twist_angles()</span><br><span class="line">print(twisted_angles)</span><br><span class="line"></span><br><span class="line"># PROGRAM END</span><br><span class="line"></span><br><span class="line">#%%</span><br><span class="line"># +-------------------+</span><br><span class="line"># | Special condition |</span><br><span class="line"># +-------------------+</span><br><span class="line">from twist2d import *</span><br><span class="line"></span><br><span class="line"># If you are twisting a bilayer graphene-like system, </span><br><span class="line">#   you can write more simply like this:</span><br><span class="line"></span><br><span class="line"># Twist bilayer graphene-like structures</span><br><span class="line">tbg_demo = TwistBGL()</span><br><span class="line">tbg_demo.gen_TBGL(6, 7)</span><br><span class="line">#tbg_demo.gen_TBG(m=6, n=7, prim_poscar=&#x27;POSCAR&#x27;, poscar_out=&quot;POSCAR.T2D.vasp&quot;, start_z=0.1, super_a3_z=20.0, layer_dis=2.0, scs_x=0.0, scs_y=0.0)</span><br><span class="line"></span><br><span class="line"># (Optional) Calculate the twisted angles of each layer in degree </span><br><span class="line">twisted_angles = tbg_demo.calc_layers_twist_angles()</span><br><span class="line">print(twisted_angles)</span><br><span class="line"></span><br><span class="line">#PROGRAM END</span><br></pre></td></tr></table></figure>
+<h2 id="Twister"><a href="#Twister" class="headerlink" title="Twister"></a>Twister</h2><p>印度科学研究所Manish Jain教授课题组开发了相应的Twister程序。</p>
+<p>To construct a super lattice:</p>
+<ol>
+<li><p>Select the angle you wish to use from the table.</p>
+</li>
+<li><p>Use the corresponding twist angle (in radians), (m,n) and (p,q)   in the input file: twist.inp (see Graphene&#x2F; and MoS2&#x2F; examples)</p>
+</li>
+<li><p>Provide the basis atoms in crystal units in a file:   basis_pos_crys (additionally provide another basis file for layer 2. See MoS2&#x2F;Angle_63.48 for an example)</p>
+</li>
+<li><p>Run twister:python path_to_Twister_1.0&#x2F;src&#x2F;twister.py</p>
+</li>
+</ol>
+<p>链接：<a target="_blank" rel="noopener" href="http://www.physics.iisc.ac.in/~mjain/software/twister">http://www.physics.iisc.ac.in/~mjain/software/twister</a></p>
+<h3 id="转角异质结构建："><a href="#转角异质结构建：" class="headerlink" title="转角异质结构建："></a>转角异质结构建：</h3><p>新建文件夹heterbilayer从其中一个例子中考入3个输入文件：basis_pos_crys  basis_pos_crys_layer2  get_ang.inp </p>
+<p>basis_pos_crys 和 basis_pos_crys_layer2是两层二维材料的晶体的原子坐标信息</p>
+<p>get_ang.inp 为输入文件：自动搜索指定角度范围（theta_range）的扭转角，并输出精确扭转角、超晶格基矢和新的晶格参数</p>
+<p>并行支持：-n 5 表示使用5个MPI进程加速计算。运行get_angle.py</p>
+<p>输出文件：结果默认保存到文档</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">range_nm:  # 建立超胞的尺寸范围，尽量大点</span><br><span class="line">-10 11</span><br><span class="line">celldm_a:</span><br><span class="line">2.512 2.512 25.0  #第1原子层的晶格常数</span><br><span class="line">a1:</span><br><span class="line">0.5 0.8660254 0.0 #单胞1矢量a</span><br><span class="line">a2:</span><br><span class="line">-0.5 0.8660254 0.0 #单胞1矢量b</span><br><span class="line">a3:</span><br><span class="line">0.0 0.0 1.0 #单胞1矢量c</span><br><span class="line">Number_basis_atoms_a: #单胞1原子数</span><br><span class="line">2</span><br><span class="line">celldm_b:</span><br><span class="line">3.301 3.301 25.0 #第2原子层的晶格常数</span><br><span class="line">b1:</span><br><span class="line">0.5 0.8660254 0.0 #单胞2矢量a</span><br><span class="line">b2:</span><br><span class="line">-0.5 0.8660254 0.0 #单胞2矢量b</span><br><span class="line">b3:</span><br><span class="line">0.0 0.0 1.0       #单胞2矢量c</span><br><span class="line">Number_basis_atoms_b: #单胞2原子数</span><br><span class="line">3</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">theta_range: </span><br><span class="line">19.05 19.15 0.01 #角度搜索参数（°）：上限 下限 步长；根据对称性：0-30°和30-60°结果相同initial mismatch threshold (Angstrom):不开启深度搜索的失配阈值。</span><br><span class="line">0.02512  #这个值很关键，太小了通常搜索不到,个人建议单胞晶格常数的1%</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">final mismatch threshold (Angstrom):#开启深度搜索后的最终失配阈值。</span><br><span class="line">0.00001</span><br><span class="line">strain_tensor_vector:  #如果设置为TRUE，则单位向量会受到应变；如果设置为FALSE，则晶格参数会受到应变</span><br><span class="line">&#x27;False&#x27;  # 只能是&#x27;False&#x27; 或者 True，大小写都不能错</span><br><span class="line">strain_per: #应变变化所允许的最大百分比范围</span><br><span class="line">1.0</span><br><span class="line">strain_layer: #&#x27;Top&#x27;,&#x27;Bottom&#x27;or&#x27;Both&#x27;</span><br><span class="line">&#x27;Top&#x27;  # Top就是拉伸第2层，Bottom，就是拉伸第一层,具体拉伸那一层看你研究的对象</span><br><span class="line">DeepSearch:</span><br><span class="line">&#x27;False&#x27;</span><br><span class="line">fix_ang:</span><br><span class="line">&#x27;True&#x27;</span><br><span class="line">f_ang:</span><br><span class="line">60</span><br><span class="line">plot:</span><br><span class="line">&#x27;N&#x27;</span><br></pre></td></tr></table></figure>
+
+
+<p>编辑输入文件 twist.inp，包含以下关键参数：</p>
+<p>从 get_angle.py 输出的 共格扭转角、超晶格矢量 和 晶格参数。</p>
+<p>原子基矢位置文件：basis_pos_crys（底层）和 basis_pos_crys_layer2（顶层）。</p>
+<p>运行命令生成原子坐标</p>
+<p>关于twist.inp的设置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">a1_l:</span><br><span class="line">1.000000000 0.000000000 0.000000000</span><br><span class="line">a2_l:</span><br><span class="line">0.500000000 0.866025400 0.000000000 </span><br><span class="line">a3_l:</span><br><span class="line">0.0 0.0 1.0</span><br><span class="line"></span><br><span class="line">celldm1_l, celldm2_l, celldm3_l: (Angstrom)</span><br><span class="line">3.164000000 3.164000000 25.000000000</span><br><span class="line"></span><br><span class="line">a1_u:</span><br><span class="line">1.000000000 0.000000000 0.000000000</span><br><span class="line">a2_u:</span><br><span class="line">0.500000000 0.866025400 0.000000000</span><br><span class="line">a3_u:</span><br><span class="line">0.0 0.0 1.0</span><br><span class="line"></span><br><span class="line">celldm1_u, celldm2_u, celldm3_u: (Angstrom)</span><br><span class="line">2.895032860 2.895032860 25.000000000</span><br><span class="line"></span><br><span class="line">angle: (radians)</span><br><span class="line">0.132454782</span><br><span class="line">layer2_from_file:</span><br><span class="line">True basis_pos_crys_layer2</span><br><span class="line">translate_z: (Angstrom)</span><br><span class="line">6.2</span><br><span class="line"></span><br><span class="line">Superlattice1: (m,n)</span><br><span class="line">-6.000000000 0.000000000  #.out文件中的第5行</span><br><span class="line"></span><br><span class="line">Superlattice2: (p,q)</span><br><span class="line">-6.000000000 6.000000000  #.out文件中的第6行</span><br><span class="line"></span><br><span class="line">Plot_lattice:False</span><br></pre></td></tr></table></figure>
+
+<p>晶格参数默认以Å为单位，角度为弧度。</p>
+<h2 id="CellMatch"><a href="#CellMatch" class="headerlink" title="CellMatch"></a>CellMatch</h2><p>CellMatch代码的目的是给定所选材料的两个单胞来生成这种共同的超胞。CellMatch代码在给定的组合空间内进行搜索，并根据施加在其中一个成分上的应变对结果进行排序，而另一个成分则经历零应变。</p>
+<p>链接：<a target="_blank" rel="noopener" href="https://data.mendeley.com/datasets/drx9wzhn75/1">https://data.mendeley.com/datasets/drx9wzhn75/1</a></p>
+<h2 id="online工具1"><a href="#online工具1" class="headerlink" title="online工具1"></a>online工具1</h2><p><a target="_blank" rel="noopener" href="https://materialsweb.org/lattice_matching/app">https://materialsweb.org/lattice_matching/app</a></p>
+<ol>
+<li>Upload two POSCARs for your monolayer materials</li>
+<li>Enter the maximum acceptable area of the resultant unit cell</li>
+<li>Enter the maximum acceptable strain in the resultant unit cell</li>
+<li>Hit submit</li>
+</ol>
+<p>You can download the result POSCAR files using the Download POSCAR button. Keep in mind that POSCAR 1 will be the top part of the heterostructure and POSCAR 2 will be the bottom part of the heterostructure. The structures will be the same regardless unless either of the monolayers is asymmetric.</p>
+<h2 id="online工具2"><a href="#online工具2" class="headerlink" title="online工具2"></a>online工具2</h2><p><a target="_blank" rel="noopener" href="http://www.latticemixer.com/">http://www.latticemixer.com</a></p>
+<p>视频教程：<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=OKRRmAPyX7w&t=370s">https://www.youtube.com/watch?v=OKRRmAPyX7w&amp;t=370s</a></p>
+<h2 id="vaspkit"><a href="#vaspkit" class="headerlink" title="vaspkit"></a>vaspkit</h2><p>vaspkit pro版本的825功能：Build Hexagonal Moire Superlattices</p>
+<h1 id="小角度转角构建及哈密顿"><a href="#小角度转角构建及哈密顿" class="headerlink" title="小角度转角构建及哈密顿"></a>小角度转角构建及哈密顿</h1>
       
     </div>
 
@@ -736,6 +808,91 @@
 <p>configuration is the name of the magnetic configuration to use for the Monte Carlo simulation (usually you want to put here the name of the configuration with lowest energy, obtained at the previous step);<br>configuration 是用于 Monte 的磁性配置的名称 Carlo 模拟（通常您希望在此处使用 最低能量，在上一步获得）;<br>cutoff_radius is the maximum distance between two magnetic atoms to be considered as interacting neighbors;<br>cutoff_radius 是两个磁性原子之间的最大距离 被视为互动邻居;<br>control_group_size is the relative size of the control group used to evaluate the accuracy of the Heisenberg model;<br>control_group_size 是用于评估的对照组的相对大小 海森堡模型的准确性;<br>append_coupling_constants is a boolean flag which tells Automag whether or not to append the computed values of the coupling constants to the file input.py, which are needed by the script 2_write_vampire_ucf.py.<br>append_coupling_constants 是一个布尔标志，它告诉 Automag 是否 要将耦合常量的计算值附加到文件 input.py， 脚本2_write_vampire_ucf.py需要。<br>In addition, the following optional parameter can be specified:<br>此外，还可以指定以下可选参数：</p>
 <p>magnetic_atoms contains the atomic types to be considered magnetic (defaults to transition metals).<br>magnetic_atoms 包含要被视为磁性的原子类型（默认值 过渡到过渡金属）。<br>Once the input parameters have been inserted in the file input.py, you can launch the script 1_coupling_constants.py. It will compute the coupling constants for the given cutoff radius and it will print their values on screen. In addition, it will create a file model.png, which contains a plot of the Heisenberg model energies versus the DFT energies for all the configurations in the control group. The values of the distances between neighbors, the amounts of neighboring pairs of magnetic atoms in the unit cell at each distance and the value of the PCC are also printed on screen.<br>将输入参数插入文件 input.py 后，您可以 1_coupling_constants.py启动脚本。它将计算耦合 常量，它将在屏幕上打印它们的值。 此外，它还将创建一个文件model.png，其中包含 海森堡模型能量与 DFT 能量的关系 Control 组。相邻要素之间的距离值、 晶胞中每个距离处的相邻磁原子对和 PCC 的值也打印在屏幕上。</p>
 <p>We suggest to run the script 1_coupling_constants.py a couple of times with the append_coupling_constants flag set to False and with different values of the cutoff_radius, in order to investigate how many neighbors you need to include for obtaining a well-converged Heisenberg model. Once you are satisfied with the model’s accuracy, run the script a last time with the append_coupling_constants flag set to True and Automag will append the values of the coupling constants and the distances between neighbors to the file input.py. Now you are ready to run the script 2_write_vampire_ucf.py, which will read the file input.py and will produce a VAMPIRE unit cell file vamp.ucf. Now you can run VAMPIRE on your cluster using the unit cell file written by Automag, an input file and a material file specific for your problem. Automag contains a sample input file and a sample material file in the folder 3_monte_carlo&#x2F;vampire_input, which can be simply edited and adapted to the problem under study. Once the VAMPIRE run is done, you can copy the output file in the folder 3_monte_carlo and run the last script 3_plot_results.py. It will produce a plot of the mean magnetization length (of the spin-up channel for antiferromagnetic materials) versus temperature obtained from the Monte Carlo simulation and it will fit the data using the analytical expression of the mean magnetization length, obtaining the values of the critical temperature and of the critical exponent. The fitted values of these two parameters are printed on screen.<br>1_coupling_constants.py我们建议使用 append_coupling_constants标志设置为 False，并且 cutoff_radius，为了调查您需要包含多少个邻居 获得收敛良好的 Heisenberg 模型。一旦您对 model 的 accuracy 时，请使用 append_coupling_constants flag 设置为 True 将附加耦合常量的值 以及 input.py 的邻居之间的距离。现在您已准备好 运行脚本 2_write_vampire_ucf.py，它将读取文件 input.py 将生成一个 VAMPIRE 晶胞文件 vamp.ucf。现在，您可以在 使用 Automag 编写的晶胞文件、输入文件和材质的簇 特定于您的问题的文件。Automag 包含一个样本输入文件和一个样本 material 文件，可以是 3_monte_carlo&#x2F;vampire_input 文件夹中，也可以是简单的 编辑并改编了正在研究的问题。VAMPIRE 运行完成后，您 可以复制 3_monte_carlo 文件夹中output文件并运行最后一个脚本 3_plot_results.py。它将生成平均磁化长度 （的 反铁磁材料的自旋向上通道）与温度的关系 来自 Monte Carlo 模拟，它将使用分析来拟合数据 平均磁化长度的表达式，得到临界 温度和临界指数。这两个的拟合值 参数打印在屏幕上。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/10/18-47-20/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Keke Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lightchaser">
+      <meta itemprop="description" content="一个小学生的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Lightchaser">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/05/10/18-47-20/" class="post-title-link" itemprop="url">7.3 DMFT</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-05-10 18:47:20" itemprop="dateCreated datePublished" datetime="2024-05-10T18:47:20+08:00">2024-05-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-06-07 11:33:55" itemprop="dateModified" datetime="2025-06-07T11:33:55+08:00">2025-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DFT%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">DFT学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="DFT-DMFT-calculations-vasp6-5"><a href="#DFT-DMFT-calculations-vasp6-5" class="headerlink" title="DFT+DMFT calculations(vasp6.5)"></a>DFT+DMFT calculations(vasp6.5)</h1><p><a target="_blank" rel="noopener" href="https://www-.vasp.at/wiki/index.php/DFT%2BDMFT_calculations#">https://www-.vasp.at/wiki/index.php/DFT%2BDMFT_calculations#</a></p>
 
       
     </div>
@@ -1597,6 +1754,94 @@ INPUT.txt其余的参数在前面的案例中，已经介绍了。可以看出�
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/09/09/18-47-22/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Keke Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lightchaser">
+      <meta itemprop="description" content="一个小学生的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Lightchaser">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/09/09/18-47-22/" class="post-title-link" itemprop="url">5.3 非绝热分子动力学</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-09 18:47:22" itemprop="dateCreated datePublished" datetime="2023-09-09T18:47:22+08:00">2023-09-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-06-07 11:29:14" itemprop="dateModified" datetime="2025-06-07T11:29:14+08:00">2025-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DFT%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">DFT学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>参考官网：<br><a target="_blank" rel="noopener" href="https://www.vasp.at/wiki/index.php/Machine_learning_force_field_calculations:_Basics">https://www.vasp.at/wiki/index.php/Machine_learning_force_field_calculations:_Basics</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.vasp.at/wiki/index.php/Best_practices_for_machine-learned_force_fields">https://www.vasp.at/wiki/index.php/Best_practices_for_machine-learned_force_fields</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.vasp.at/wiki/index.php/Machine_learning_force_field:_Theory">https://www.vasp.at/wiki/index.php/Machine_learning_force_field:_Theory</a></p>
+<h1 id="Hefei-NAMD"><a href="#Hefei-NAMD" class="headerlink" title="Hefei-NAMD"></a>Hefei-NAMD</h1><p>on-the-fly训练是基于分子动力学(MD)模拟来采样训练结构。逐步自动组装数据集，并在可行时用于生成MLFF。相反，在每个时间步骤中，当前力场预测能量、力和相应的贝叶斯误差估计。简单来说，如果误差超过一定阈值，将执行另一个从头开始的计算，并将参考能量和力添加到训练数据集中。相反的情况下，从头开始的步骤将被省略，系统将通过MLFF预测进行传播。随着轨迹上力场的改善，许多从头开始的步骤可以被避免，MD模拟将显著加速。最终，现场训练会产生一个准备投入生产的MLFF，即以预测模式运行MD模拟。以下步骤概述了从开始到生产运行的路径：</p>
+<h1 id="PYXAID"><a href="#PYXAID" class="headerlink" title="PYXAID"></a>PYXAID</h1>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/09/09/18-47-21/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1787,324 +2032,8 @@ INPUT.txt其余的参数在前面的案例中，已经介绍了。可以看出�
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/11/18-47-24/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Keke Liu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lightchaser">
-      <meta itemprop="description" content="一个小学生的博客">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Lightchaser">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/05/11/18-47-24/" class="post-title-link" itemprop="url">4.2 光学性质</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-05-11 18:47:24" itemprop="dateCreated datePublished" datetime="2023-05-11T18:47:24+08:00">2023-05-11</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-12-26 19:54:58" itemprop="dateModified" datetime="2023-12-26T19:54:58+08:00">2023-12-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/DFT%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">DFT学习</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="介电常数"><a href="#介电常数" class="headerlink" title="介电常数"></a>介电常数</h1><p>首先进行结构优化,参考官网： <a target="_blank" rel="noopener" href="https://www.vasp.at/wiki/index.php/Dielectric_properties_of_SiC">https://www.vasp.at/wiki/index.php/Dielectric_properties_of_SiC</a></p>
-<h3 id="静态介电常数："><a href="#静态介电常数：" class="headerlink" title="静态介电常数："></a>静态介电常数：</h3><p>方法1：DFPT方法;<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">IBRION</span> = <span class="number">8</span></span><br><span class="line"><span class="variable constant_">NSW</span>=<span class="number">1</span></span><br><span class="line"><span class="variable constant_">LEPSILON</span> = .<span class="property">TRUE</span>.</span><br><span class="line"><span class="variable constant_">LRPA</span>=.<span class="property">TRUE</span>.#<span class="variable constant_">RPA</span>考虑局域场效应，默认关闭，即<span class="variable constant_">IP</span>近似</span><br><span class="line"><span class="variable constant_">LPEAD</span>=.<span class="property">TRUE</span>.#有限差分法</span><br></pre></td></tr></table></figure><br>方法2：Response to finite electric fields</p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">LCALCEPS</span> = .<span class="property">TRUE</span>.</span><br><span class="line"><span class="variable constant_">IBRION</span>=<span class="number">6</span></span><br><span class="line"><span class="variable constant_">NFREE</span>=<span class="number">2</span></span><br><span class="line"><span class="variable constant_">ISMEAR</span> =  <span class="number">0</span></span><br><span class="line"><span class="variable constant_">SIGMA</span>  =  <span class="number">0.01</span></span><br></pre></td></tr></table></figure>
-<p> 在OUTCAR中抓取：</p>
-<figure class="highlight plaintext"><figcaption><span>STATIC DIELECTRIC TENSOR (including local field effects in DFT)``` 电子贡献或者</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">```MACROSCOPIC STATIC DIELECTRIC TENSOR (including local field effects in RPA (Hartree))```</span><br><span class="line">```MACROSCOPIC STATIC DIELECTRIC TENSOR IONIC CONTRIBUTION``` 离子贡献</span><br><span class="line">```BORN EFFECTIVE CHARGES (in e, cummulative output)```</span><br><span class="line">```ELASTIC MODULI IONIC CONTR (kBar)```</span><br><span class="line">```PIEZOELECTRIC TENSOR IONIC CONTR  for field in x, y, z        (C/m^2)```</span><br><span class="line">### 频率依赖介电函数：读取WAVECAR</span><br><span class="line">IPA：</span><br><span class="line"> ```javascript  &#123;.line-numbers&#125;</span><br><span class="line"> ALGO = Exact</span><br><span class="line"> NBANDS  = 64</span><br><span class="line"> LOPTICS = .TRUE. </span><br><span class="line"> CSHIFT = 0.100</span><br><span class="line"> NEDOS = 2000  </span><br><span class="line"> #and you might try with the following</span><br><span class="line"> #LPEAD = .TRUE.</span><br></pre></td></tr></table></figure>
-
-<p><code>frequency dependent IMAGINARY DIELECTRIC FUNCTION (independent particle, no local field effects)</code><br>and<br><code>frequency dependent      REAL DIELECTRIC FUNCTION (independent particle, no local field effects)</code></p>
-<p>Note：对于光学性质的计算，也就是计算材料的介电函数，需要足够多的空带和致密的K网格点，使其达到非常好的收敛状态，我们才可以得到合理的光学性质；因此通常计算中，一般设置NBANDS为默认值（可在自洽的OUTCAR中以关键字NBANDS查找到）的2-3倍，K网格点为自洽值或适当增加。<br>使用optics.sh脚本得到介电函数的实部和虚部</p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># extract image and real parts <span class="keyword">of</span> dielectric <span class="keyword">function</span> <span class="keyword">from</span> vasprun.<span class="property">xml</span></span><br><span class="line">awk <span class="string">&#x27;BEGIN&#123;i=1&#125; /&lt;imag&gt;/,\</span></span><br><span class="line"><span class="string">               /&lt;\/imag&gt;/ \</span></span><br><span class="line"><span class="string">                &#123;a[i]=$2 ; b[i]=$3 ; c[i]=$4; d[i]=$5 ; e[i]=$6 ; f[i]=$7; g[i]=$8; i=i+1&#125; \</span></span><br><span class="line"><span class="string">    END&#123;for (j=12;j&lt;i-3;j++) print a[j],b[j],c[j],d[j],e[j],f[j],g[j]&#125;&#x27;</span> vasprun.<span class="property">xml</span> &gt; <span class="variable constant_">IMAG</span>.<span class="property">in</span></span><br><span class="line">#awk <span class="string">&#x27;BEGIN&#123;i=1&#125; /imag/,\</span></span><br><span class="line"><span class="string">#                /\/imag/ \</span></span><br><span class="line"><span class="string">#                 &#123;a[i]=$2 ; b[i]=$3 ; c[i]=$4; d[i]=$5 ; e[i]=$6 ; f[i]=$7; g[i]=$8; i=i+1&#125; \</span></span><br><span class="line"><span class="string">#     END&#123;for (j=12;j&lt;i-3;j++) print a[j],b[j],c[j],d[j],e[j],f[j],g[j]&#125;&#x27;</span> vasprun.<span class="property">xml</span> &gt; <span class="variable constant_">IMAG</span>.<span class="property">in</span></span><br><span class="line">awk <span class="string">&#x27;BEGIN&#123;i=1&#125; /&lt;real&gt;/,\</span></span><br><span class="line"><span class="string">               /&lt;\/real&gt;/ \</span></span><br><span class="line"><span class="string">                &#123;a[i]=$2 ; b[i]=$3 ; c[i]=$4; d[i]=$5 ; e[i]=$6 ; f[i]=$7; g[i]=$8; i=i+1&#125; \</span></span><br><span class="line"><span class="string">    END&#123;for (j=12;j&lt;i-3;j++) print a[j],b[j],c[j],d[j],e[j],f[j],g[j]&#125;&#x27;</span> vasprun.<span class="property">xml</span> &gt; <span class="variable constant_">REAL</span>.<span class="property">in</span></span><br></pre></td></tr></table></figure>
-<p>vaspkit处理：<br><code>vaspkit-task 711  </code></p>
-<h3 id="压电常数"><a href="#压电常数" class="headerlink" title="压电常数"></a>压电常数</h3><p>上面计算完介电常数后，一般正交晶系。<br><code>grep &quot;PIEZOELECTRIC TENSOR IONIC CONTR  for field in x, y, z        (C/m^2)&quot; OUTCAR  -A10 </code><br> &amp;<br><code>grep &quot;PIEZOELECTRIC TENSOR  for field in x, y, z        (C/m^2)&quot; OUTCAR -A10 </code></p>
-<h1 id="极化强度"><a href="#极化强度" class="headerlink" title="极化强度"></a>极化强度</h1><ol>
-<li>极化强度计算<br>首先选取极化相FE（PhaseB, P, 铁电相）和参考相NP（PhaseA, P&#x3D;0, 中心对称相），分别以下列INCAR计算，<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> <span class="variable constant_">SYSTEM</span> = <span class="variable constant_">FE</span></span><br><span class="line"> <span class="variable constant_">ENCUT</span> = <span class="number">600</span>  #铁电极化计算建议设置高精度</span><br><span class="line"> <span class="variable constant_">EDIFF</span> = <span class="number">1E-6</span></span><br><span class="line"> <span class="variable constant_">IBRION</span> = -<span class="number">1</span></span><br><span class="line"> <span class="variable constant_">POTIM</span> = <span class="number">0.3</span></span><br><span class="line"> <span class="variable constant_">NSW</span> = <span class="number">0</span></span><br><span class="line"> <span class="variable constant_">EDIFFG</span> = -<span class="number">5E-3</span></span><br><span class="line"> <span class="variable constant_">ISMEAR</span> = <span class="number">0</span></span><br><span class="line"> <span class="variable constant_">SIGMA</span> = <span class="number">0.05</span></span><br><span class="line"> <span class="variable constant_">PREC</span> = <span class="title class_">Accurate</span></span><br><span class="line"> <span class="variable constant_">ISIF</span> = <span class="number">2</span></span><br><span class="line"> #<span class="variable constant_">NPAR</span> = <span class="number">4</span></span><br><span class="line"><span class="variable constant_">LWAVE</span> = .<span class="property">FALSE</span>.</span><br><span class="line"><span class="variable constant_">LCHARG</span> = .<span class="property">FALSE</span>.</span><br><span class="line"><span class="variable constant_">LREAL</span> = .<span class="property">FALSE</span>. </span><br><span class="line"><span class="variable constant_">LDIPOL</span> = .<span class="property">T</span>.</span><br><span class="line"><span class="variable constant_">DIPOL</span> = <span class="number">0.2</span> <span class="number">0.2</span> <span class="number">0.2</span> #不要设置在原子及迁移路径上，设置在真空层的一边/质心</span><br><span class="line"><span class="variable constant_">LCALCPOL</span> = .<span class="property">TRUE</span>. #计算铁电极化开关 </span><br><span class="line"><span class="variable constant_">IPEAD</span>=<span class="number">4</span></span><br><span class="line"><span class="variable constant_">LPEAD</span>=.<span class="property">True</span>.</span><br></pre></td></tr></table></figure></li>
-<li>收集结果：grep “Total electronic dipole momen” OUTCAR &amp; grep “Ionic dipole moment” OUTCAR，离子与电子相加即可，然后用NP相-铁电相即可得到极化强度P，注意单位换算。<br>首先要理清数据单位。VASP 计算得到的 dipole moment 的单位是 e*Å，它与库仑之间换算为:<br>$1e &#x3D;  1.602176634 * 10^{-19} C$<br>$1Å &#x3D; 10^{-10} m$<br>三维体系的极化强度： 极化值除以体积。单位为 $e&#x2F;Å^2$；二维体系的极化强度：极化值除以面积。单位为 e&#x2F;Å。</li>
-</ol>
-<h3 id="Note："><a href="#Note：" class="headerlink" title="Note："></a>Note：</h3><p>在铁电极化计算过程中经常会出现参考相为非半导体的情况，这种情况下可以：①镜像法：以FE以NP为参照中心，建立一个-FE相（PhaseB’, 即铁电极化方向相反）。然后按照上述方法计算极化，再以FE相的极化-（-FE相）的极化值，然后除以2即得到极化强度。可以理解为1-（-1）&#x3D;2，2&#x2F;2&#x3D;1；②线性插值法：在FE和NP相中间插入一系列中间过渡相（0%（FE）,10%,20%,30%….100%(NP)），计算它们的极化，然后可以用Origin做拟合，100%时即为NP相的极化。（100%-0%）则是极化强度P。</p>
-<h2 id="线性插值法计算极化强度"><a href="#线性插值法计算极化强度" class="headerlink" title="线性插值法计算极化强度"></a>线性插值法计算极化强度</h2><p>原文链接:</p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ghzhan/articles/16305679.html">https://www.cnblogs.com/ghzhan/articles/16305679.html</a></p>
-<p>BaTiO3 是钙钛矿结构，它的铁电相结构和中心对称结构如图所示<img src="/gra/0401.png" alt="0401">，属于四方晶系。</p>
-<ol>
-<li><p>先构造 BaTiO3 两种极化方向的晶格结构，并用 VASP 进行结构优化得到 CONTCAR；</p>
-</li>
-<li><p>将上一步优化后的两个结构分别放入创建好的 ini, fin 文件夹。利用 NEB 的 nebmake.pl 命令产生这两种极化方向的中间过渡结构 (vtst下载地址: Download — Transition State Tools for VASP (utexas.edu))，具体命令为：</p>
-<p> <code>nebmake.pl ini/CONTCAR fin/CONTCAR 32</code></p>
-<p>这里的 ‘32’ 是表示产生中间过渡的 32 种结构。执行上述命令后，当前文件夹下会产生 00, 01, 02, …, 33 个文件夹，每个文件夹下有一个 POSCAR 文件。</p>
-</li>
-<li><p>对每个文件夹的结构进行一次 VASP 自洽运算，INCAR 文件里面需要额外设置 DIPOL 和 LCALPOL 参数。</p>
-<p> DIPOL 参数可以选取任一坐标，但是保证同一体系采用相同值。 </p>
-<p>LCALPOL 参数是打开 极化运算。</p>
-<p>INCAR 文件:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">SYSTEM=BaTiO3</span><br><span class="line">ISTART =0</span><br><span class="line">ICHARG =2</span><br><span class="line">PREC   =Accurate</span><br><span class="line">ENCUT  =520</span><br><span class="line">EDIFF  =0.1E-07</span><br><span class="line">ISMEAR = 0</span><br><span class="line">LWAVE=.FALSE.</span><br><span class="line">LCHARG = .FALSE.</span><br><span class="line">NELM = 200</span><br><span class="line">DIPOL = 0.5 0.5 0.5</span><br><span class="line">LCALCPOL=.TRUE</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>计算完成后运行命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grep &#x27;dipole moment&#x27; OUTCAR|rev| awk &#x27;&#123;printf (&quot;%s &quot;, $4)&#125;&#x27;|rev|awk &#x27;&#123;printf (&quot;%f\n&quot;, $1+$2)&#125;&#x27; &gt;&gt; ../dipole_c.dat</span><br><span class="line"></span><br><span class="line">grep &#x27;free  energy   TOTEN&#x27; OUTCAR | awk &#x27;&#123;printf (&quot;%s\n&quot;,$5)&#125;&#x27; &gt;&gt; ../energy.dat</span><br></pre></td></tr></table></figure>
-<p>这里通过 grep 命令产生的 dipole_c.dat 文件记录的是沿着 c 方向的极化值，这是因为 BaTiO3 是沿着 c 方向极化的。对于具体的情况需要自行修改。</p>
-</li>
-<li><p>处理和分析数据。</p>
-<p>首先要理清数据单位。VASP 计算得到的 dipole moment 的单位是 e*Å，它与库仑之间换算为:</p>
-<p> $1e &#x3D;  1.602176634 * 10^{-19} C$</p>
-<p> $1Å &#x3D; 10^{-10} m$</p>
-<p>三维体系的极化强度： 极化值除以体积。单位为 e&#x2F;Å2；二维体系的极化强度：极化值除以面积。单位为 e&#x2F;Å。</p>
-<p>在这个例子中，BaTiO3 的体积为 64.3586 Å3。接下来，我们来处理数据。用energy.dat 文件 (单位为 eV)，这样，我们就得到每个中间结构 (image) 的总能：<img src="/gra/0402.png" alt="0402"><br>用dipole_c.dat 文件 (单位: e*Å):不同 image  的极化值如图所示<img src="/gra/0403.png" alt="0403"><br>可以发现，该极化强度不是连续的，这是和选取的原胞有关，需要考虑极化量子的影响。BaTiO3 沿着 c 方向极化，所以需要对该极化值加减整数倍的 c 方向的晶格常数。这样我们得到下图：<img src="/gra/0404.png" alt="0404"></p>
-<p>选取最靠近中间极化强度为 0 的那条曲线，即为 BaTiO3 的极化强度曲线：<img src="/gra/0405.png" alt="0405"></p>
-<p>除以体积并进行简单的单位换算后为:<img src="/gra/0406.png" alt="0406"><br>另外，我们也可以绘制极化值 P 与能量 E 曲线<img src="/gra/0407.png" alt="0407"><br>因此， BaTiO3 的极化强度大约为 0.248 C&#x2F;m2，与文献中的实验结果 0.26 C&#x2F;m2 吻合。（Physical Review, 99(4), 1161–1165, 1955 ）</p>
-<p>拟合 Landau-Ginzburg 公式</p>
-<p>$E&#x3D; \sum_{i} A&#x2F;2 * P_i^2 + B&#x2F;4 * P_i^4 + C&#x2F;6 * P_i^6 + D&#x2F;2 * \sum_{i,j}(P_i-P_j)^2$</p>
-</li>
-</ol>
-<p>  拟合该多项式曲线，得到</p>
-<p>   $E &#x3D; 6062.434883706029<em>P^6   +  2437.756598493882</em>P^4  +  -340.5806845162749*P^2   +  10.339600058315137$<br>   其中参数 A, B,  C 分别为</p>
-<p>   $A &#x3D; -0.68116 eV *(m^2&#x2F;C)^2<br>   B &#x3D;  9.75103  eV *(m^2&#x2F;C)^4<br>   C &#x3D; 36.37461  eV *(m^2&#x2F;C)^6$<br>   <img src="/gra/0408.png" alt="0408"></p>
-<ol start="6">
-<li>绘制能量曲线的脚本<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="title function_">open</span>(<span class="string">&#x27;energy.dat&#x27;</span>,<span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> <span class="attr">f</span>:</span><br><span class="line">    content = f.<span class="title function_">readlines</span>()</span><br><span class="line">res = [<span class="title function_">float</span>(i.<span class="title function_">strip</span>(<span class="string">&#x27;\n&#x27;</span>)) <span class="keyword">for</span> i <span class="keyword">in</span> content]</span><br><span class="line">minres = <span class="title function_">min</span>(res)</span><br><span class="line">res = [<span class="number">1e3</span>*(i-minres) <span class="keyword">for</span> i <span class="keyword">in</span> res]</span><br><span class="line"><span class="keyword">import</span> matplotlib.<span class="property">pyplot</span> <span class="keyword">as</span> plt</span><br><span class="line">plt.<span class="title function_">figure</span>()</span><br><span class="line">plt.<span class="title function_">plot</span>(res,<span class="string">&#x27;b.-&#x27;</span>)</span><br><span class="line">plt.<span class="title function_">xlabel</span>(<span class="string">&#x27;displacement&#x27;</span>)</span><br><span class="line">plt.<span class="title function_">ylabel</span>(<span class="string">&#x27;Energy ($meV$)&#x27;</span>)</span><br><span class="line">plt.<span class="title function_">show</span>()</span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>绘制dipole曲线，以及考虑极化量子的脚本:</p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="title function_">open</span>(<span class="string">&#x27;dipole_c.dat&#x27;</span>,<span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> <span class="attr">f</span>:</span><br><span class="line">    content = f.<span class="title function_">readlines</span>()</span><br><span class="line">res = [<span class="title function_">float</span>(i.<span class="title function_">strip</span>(<span class="string">&#x27;\n&#x27;</span>)) <span class="keyword">for</span> i <span class="keyword">in</span> content]</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> matplotlib.<span class="property">pyplot</span> <span class="keyword">as</span> plt</span><br><span class="line">plt.<span class="title function_">figure</span>()</span><br><span class="line">plt.<span class="title function_">xlabel</span>(<span class="string">&#x27;displacement&#x27;</span>)</span><br><span class="line">plt.<span class="title function_">ylabel</span>(<span class="string">&#x27;Polarization ($e*&#123;\AA&#125;$)&#x27;</span>)</span><br><span class="line">plt.<span class="title function_">xlim</span>([<span class="number">0</span>,<span class="number">32</span>])</span><br><span class="line">plt.<span class="title function_">plot</span>(res,<span class="string">&#x27;r.&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 考虑极化量子</span><br><span class="line">c = <span class="number">4.0335000000000001</span></span><br><span class="line">tmp = []</span><br><span class="line">N = <span class="number">20</span></span><br><span class="line"><span class="keyword">for</span> j <span class="keyword">in</span> <span class="title function_">range</span>(N):</span><br><span class="line">    start = -N/<span class="number">2</span>+j</span><br><span class="line">    tmp1 = [i+start*c <span class="keyword">for</span> i <span class="keyword">in</span> res]</span><br><span class="line">    # <span class="title function_">print</span>(tmp1[<span class="number">0</span>])</span><br><span class="line">    tmp.<span class="title function_">append</span>(tmp1)</span><br><span class="line">plt.<span class="title function_">figure</span>()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="attr">tmp</span>:</span><br><span class="line">    plt.<span class="title function_">plot</span>(i,<span class="string">&#x27;.&#x27;</span>)</span><br><span class="line"></span><br><span class="line">#plt.<span class="title function_">ylim</span>([-<span class="number">2</span>,<span class="number">2</span>])</span><br><span class="line">plt.<span class="title function_">xlabel</span>(<span class="string">&#x27;displacement&#x27;</span>)</span><br><span class="line">plt.<span class="title function_">ylabel</span>(<span class="string">&#x27;Polarization ($e*&#123;\AA&#125;$)&#x27;</span>)</span><br><span class="line">plt.<span class="title function_">xlim</span>([<span class="number">0</span>,<span class="number">32</span>])</span><br><span class="line"></span><br><span class="line">### 单位换算</span><br><span class="line">P = [-<span class="number">1.1965400000000006</span>, -<span class="number">1.1288099999999996</span>, -<span class="number">1.060039999999999</span>, -<span class="number">0.990219999999999</span>, -<span class="number">0.9193599999999993</span>, -<span class="number">0.8474299999999992</span>, -<span class="number">0.7744599999999995</span>, -<span class="number">0.7004900000000003</span>, -<span class="number">0.6255299999999995</span>, -<span class="number">0.5496499999999997</span>, -<span class="number">0.4728999999999992</span>, -<span class="number">0.3953799999999994</span>, -<span class="number">0.31716999999999906</span>, -<span class="number">0.2384000000000004</span>, -<span class="number">0.1591799999999992</span>,-<span class="number">0.11827</span>, <span class="number">0.0</span>, <span class="number">0.11827</span>, <span class="number">0.1591799999999992</span>, <span class="number">0.2384000000000004</span>, <span class="number">0.31716999999999906</span>, <span class="number">0.3953799999999994</span>, <span class="number">0.4728999999999992</span>, <span class="number">0.5496499999999997</span>, <span class="number">0.6255299999999995</span>, <span class="number">0.7004900000000003</span>, <span class="number">0.7744599999999995</span>, <span class="number">0.8474299999999992</span>, <span class="number">0.9193599999999993</span>, <span class="number">0.990219999999999</span>, <span class="number">1.060039999999999</span>, <span class="number">1.1288099999999996</span>, <span class="number">1.1965400000000006</span>]</span><br><span class="line">plt.<span class="title function_">figure</span>()</span><br><span class="line">P = [i*<span class="number">0.248945227832799346</span> <span class="keyword">for</span> i <span class="keyword">in</span> P]</span><br><span class="line">plt.<span class="title function_">xlabel</span>(<span class="string">&#x27;displacement&#x27;</span>)</span><br><span class="line">plt.<span class="title function_">ylabel</span>(<span class="string">&#x27;Polarization ($C/m^2$)&#x27;</span>)</span><br><span class="line">plt.<span class="title function_">xlim</span>([<span class="number">0</span>,<span class="number">32</span>])</span><br><span class="line">plt.<span class="title function_">plot</span>(P,<span class="string">&#x27;r.&#x27;</span>)</span><br><span class="line">plt.<span class="title function_">show</span>()</span><br></pre></td></tr></table></figure>
-<p>绘制极化值 P 与能量 E 曲线的脚本:</p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">E = [<span class="number">0.0035557599999975764</span>, <span class="number">0.0016252999999935014</span>, <span class="number">0.0004821100000000911</span>, <span class="number">0.0</span>, <span class="number">5.983999999870093e-05</span>, <span class="number">0.0005505999999968481</span>, <span class="number">0.0013690299999993272</span>, <span class="number">0.0024182999999950994</span>, <span class="number">0.003608839999998281</span>, <span class="number">0.004859239999994713</span>, <span class="number">0.006096989999996083</span>, <span class="number">0.007258279999994954</span>, <span class="number">0.008287759999994648</span>, <span class="number">0.009138139999997463</span>, <span class="number">0.00977216999999797</span>, <span class="number">0.010162939999993625</span>, <span class="number">0.010294929999993485</span>, <span class="number">0.010162939999993625</span>, <span class="number">0.00977216999999797</span>, <span class="number">0.009138139999997463</span>, <span class="number">0.008287759999994648</span>, <span class="number">0.007258279999994954</span>, <span class="number">0.006096989999996083</span>, <span class="number">0.004859239999994713</span>, <span class="number">0.003608839999998281</span>, <span class="number">0.0024182999999950994</span>, <span class="number">0.0013690299999993272</span>, <span class="number">0.0005505999999968481</span>, <span class="number">5.983999999870093e-05</span>, <span class="number">0.0</span>, <span class="number">0.0004821100000000911</span>, <span class="number">0.0016252999999935014</span>, <span class="number">0.0035557599999975764</span>]</span><br><span class="line">P = [-<span class="number">1.1965400000000006</span>, -<span class="number">1.1288099999999996</span>, -<span class="number">1.060039999999999</span>, -<span class="number">0.990219999999999</span>, -<span class="number">0.9193599999999993</span>, -<span class="number">0.8474299999999992</span>, -<span class="number">0.7744599999999995</span>, -<span class="number">0.7004900000000003</span>, -<span class="number">0.6255299999999995</span>, -<span class="number">0.5496499999999997</span>, -<span class="number">0.4728999999999992</span>, -<span class="number">0.3953799999999994</span>, -<span class="number">0.31716999999999906</span>, -<span class="number">0.2384000000000004</span>, -<span class="number">0.1591799999999992</span>,-<span class="number">0.11827</span>, <span class="number">0.0</span>, <span class="number">0.11827</span>, <span class="number">0.1591799999999992</span>, <span class="number">0.2384000000000004</span>, <span class="number">0.31716999999999906</span>, <span class="number">0.3953799999999994</span>, <span class="number">0.4728999999999992</span>, <span class="number">0.5496499999999997</span>, <span class="number">0.6255299999999995</span>, <span class="number">0.7004900000000003</span>, <span class="number">0.7744599999999995</span>, <span class="number">0.8474299999999992</span>, <span class="number">0.9193599999999993</span>, <span class="number">0.990219999999999</span>, <span class="number">1.060039999999999</span>, <span class="number">1.1288099999999996</span>, <span class="number">1.1965400000000006</span>]</span><br><span class="line"><span class="keyword">import</span> matplotlib.<span class="property">pyplot</span> <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">E = [<span class="number">1e3</span>*i <span class="keyword">for</span> i <span class="keyword">in</span> E]</span><br><span class="line">P = [i*<span class="number">0.248945227832799346</span> <span class="keyword">for</span> i <span class="keyword">in</span> P]</span><br><span class="line"></span><br><span class="line">plt.<span class="title function_">figure</span>()</span><br><span class="line">plt.<span class="title function_">plot</span>(P,E,<span class="string">&#x27;b.-&#x27;</span>)</span><br><span class="line">plt.<span class="title function_">xlabel</span>(<span class="string">&#x27;Polarization ($C/m^2$)&#x27;</span>)</span><br><span class="line">plt.<span class="title function_">ylabel</span>(<span class="string">&#x27;Energy ($meV$)&#x27;</span>)</span><br><span class="line"></span><br><span class="line">f1 = np.<span class="title function_">polyfit</span>(P, E, <span class="number">6</span>)</span><br><span class="line">poly = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="title function_">range</span>(<span class="title function_">len</span>(f1)):</span><br><span class="line">    poly += <span class="string">&#x27;&#123;&#125;*x^&#123;&#125;  +  &#x27;</span>.<span class="title function_">format</span>(f1[i],<span class="title function_">len</span>(f1)-i-<span class="number">1</span>)</span><br><span class="line"><span class="title function_">print</span>(poly)</span><br><span class="line"></span><br><span class="line">x = [ -<span class="number">0.35</span>+<span class="number">0.7</span>*i/<span class="number">99</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="title function_">range</span>(<span class="number">100</span>)]</span><br><span class="line"><span class="title class_">Eval</span> = np.<span class="title function_">polyval</span>(f1,x)</span><br><span class="line">plt.<span class="title function_">figure</span>()</span><br><span class="line">plt.<span class="title function_">plot</span>(x,<span class="title class_">Eval</span>,<span class="string">&#x27;b&#x27;</span>)</span><br><span class="line">plt.<span class="title function_">plot</span>(P,E,<span class="string">&#x27;r*&#x27;</span>)</span><br><span class="line">plt.<span class="title function_">xlabel</span>(<span class="string">&#x27;Polarization ($C/m^2$)&#x27;</span>)</span><br><span class="line">plt.<span class="title function_">ylabel</span>(<span class="string">&#x27;Energy ($meV$)&#x27;</span>)</span><br><span class="line">plt.<span class="title function_">show</span>()</span><br></pre></td></tr></table></figure>
-<h1 id="拉曼计算"><a href="#拉曼计算" class="headerlink" title="拉曼计算"></a>拉曼计算</h1><p>VASP中计算拉曼谱主要使用vasp_raman.py这个脚本，见github：<br>  <a target="_blank" rel="noopener" href="https://github.com/raman-sc/VASP">https://github.com/raman-sc/VASP</a></p>
-<p>使用raman-sc有几个注意的地方：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/354651066">https://zhuanlan.zhihu.com/p/354651066</a></p>
-<p>作者这里提供了一个算例。供大家参考链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1dTCP_0bRcRo0uIy0rBGttQ">https://pan.baidu.com/s/1dTCP_0bRcRo0uIy0rBGttQ</a><br>提取码：4vp8</p>
-<ol>
-<li>这个代码已经年代久远，使用python2写的，对大部分新学vasp的同学来说可能装的anaconda3，既使用的是python3，与python2代码是不兼容的，作者这里对vasp_raman.py进行了改写，方便python3环境运行这段代码。下载见附件。</li>
-<li>raman.sub既提交代码的脚本，需要根据自己的软件环境进行更改，我这里给出我的提交脚本供大家参考:<br>export VASP_RAMAN_RUN&#x3D;’mpirun -np 64 &#x2F;public&#x2F;home&#x2F;wangxiaohui&#x2F;vasp&#x2F;vasp.5.4.4&#x2F;bin&#x2F;vasp_std &amp;&gt; job.out ‘意思是运行vasp的命令，找一下vasp_std所在路径</li>
-</ol>
-<p>python &#x2F;public&#x2F;home&#x2F;wangxiaohui&#x2F;WORKSPACE&#x2F;Ti3C2Li2&#x2F;raman&#x2F;zhenraman&#x2F;vasp_raman.py &gt; vasp_raman.out这里是运行raman.py代码的意思，既raman.py代码所在路径</p>
-<ol start="3">
-<li>查看raman.py代码内容得知，POSCAR.phon和OUTCAR.phon是前一步计算的结果文件，不要被作者的例子给坑了。并且POSCAR.phon，OUTCAR.phon和INCAR等文件放在同一个文件夹下。</li>
-</ol>
-<h3 id="按照脚本VASP需要计算两步："><a href="#按照脚本VASP需要计算两步：" class="headerlink" title="按照脚本VASP需要计算两步："></a>按照脚本VASP需要计算两步：</h3><p>第一步，计算Gamma点声子。用有限位移方法或者DFPT方法。</p>
-<p>第一步结束后，执行，</p>
-<p> cp POSCAR POSCAR.phon</p>
-<p> cp OUTCAR OUTCAR.phon</p>
-<p>第二步，计算宏观介电常数的导数。用vasp_raman.py 脚本。</p>
-<p>DFPT: LEPSILON&#x3D;.TRUE.</p>
-<p>频率依赖的介电矩阵: LOPTICS&#x3D;.TRUE.</p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#!<span class="regexp">/bin/</span>bash</span><br><span class="line">#<span class="variable constant_">PBS</span> -l select=<span class="number">1</span>:ncpus=<span class="number">32</span>:mpiprocs=<span class="number">32</span></span><br><span class="line">#<span class="variable constant_">PBS</span> -l walltime=<span class="number">01</span>:<span class="number">00</span>:<span class="number">00</span></span><br><span class="line">#<span class="variable constant_">PBS</span> -q debug</span><br><span class="line">#<span class="variable constant_">PBS</span> -j oe</span><br><span class="line">#<span class="variable constant_">PBS</span> -N <span class="title class_">Example</span></span><br><span class="line">#<span class="variable constant_">PBS</span> -V</span><br><span class="line"></span><br><span class="line">cd $PBS_O_WORKDIR</span><br><span class="line"></span><br><span class="line">ulimit -s unlimited  # remove limit on stack size</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="variable constant_">VASP_RAMAN_RUN</span>=<span class="string">&#x27;mpirun -n 12 /u/afonari/vasp.5.3.2/vasp.5.3/vasp &amp;&gt; job.out&#x27;</span>   #a按照自己路径更改</span><br><span class="line"><span class="keyword">export</span> <span class="variable constant_">VASP_RAMAN_PARAMS</span>=<span class="string">&#x27;01_10_2_0.01&#x27;</span>  #b按照自己材料更改</span><br><span class="line"></span><br><span class="line">python27 vasp_raman.<span class="property">py</span> &gt; vasp_raman.<span class="property">out</span></span><br></pre></td></tr></table></figure>
-
-<p>a. VASP_RAMAN_RUN设置调用VASP的命令</p>
-<p>b. VASP_RAMAN_PARAMS&#x3D;01_10_2_0.01</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FIRST_MODE - 整数, 第一个计算的振动模</span><br><span class="line">LAST-MODE - 整数, 最后一个计算的振动模</span><br><span class="line">NDERIV - 整数, 有限位移的策略选择，目前只有2这一种选择</span><br><span class="line">STEPSIZE - 浮点数, 有限位移步长，单位是Angstroms，一般选默认就可以</span><br></pre></td></tr></table></figure>
-<p>注意：以上这种设置格式允许我们并行计算大体系拉曼，我们可以在计算大体系的时候将Γ点的振动频率分为很多段分别计算，这样会大大提高我们计算大体系的效率。</p>
-<p>在多段计算的时候。具体细节上要把每一段计算的OUTCAR.000n.-1.out和OUTCAR.000n.-1.out文件拷贝到同一个文件夹下，然后注释掉vasp_raman.py脚本中的运行VASP的命令。运行python2.7 vasp_raman.py &gt; vasp_raman.out 即可得到整段的数据。</p>
-<p>vasp_raman.py文件中执行VASP的行为331行：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">else: # run VASP here</span><br><span class="line">                  print &quot;[__main__]: Running VASP...&quot;</span><br><span class="line">                  os.system(VASP_RAMAN_RUN) #注释掉这一行</span><br></pre></td></tr></table></figure>
-<h3 id="加展宽"><a href="#加展宽" class="headerlink" title="加展宽"></a>加展宽</h3><p>使用脚本broaden.py给出展宽谱，可以选择洛伦兹线型或者高斯线型。</p>
-<p>$ python2 broaden.py result.txt<br>生成result.txt-broaden.dat文件，画图即可。</p>
-<p>需要注意的是，broaden.py的第23和24行分别代表频率和强度所在列。其设置文件中对应的列。</p>
-<pre><code>cm1 = hw[:,1]
-int1 = hw[:,2]
-</code></pre>
-<h1 id="红外谱计算"><a href="#红外谱计算" class="headerlink" title="红外谱计算"></a>红外谱计算</h1><ol>
-<li><p>红外谱主要是因为振动模在振动前后偶极矩发生变化，从而产生后外吸收。在振动过程中引起偶极矩改变的振动都具有红外活性。</p>
-</li>
-<li><p>根据上述原理，我们首先需要在计算过程中计算Gamma点的振动模，其次，我们需要计算伯恩有效电荷。</p>
-</li>
-</ol>
-<p>有限位移方法INCAR关键参数：</p>
-<p>IBRION &#x3D; 5<br>NWRITE &#x3D; 3<br>POTIM &#x3D; 0.015<br>LEPSILON &#x3D; .TRUE<br>DFPT方法INCAR关键参数：</p>
-<p>IBRION &#x3D; 7<br>NWRITE &#x3D; 3<br>NSW &#x3D; 1<br>LEPSILON &#x3D; .TRUE.<br>NELMIN&#x3D;6</p>
-<p>另外，建议进行k点测试直到伯恩有效常数收敛。</p>
-<ol start="3">
-<li><p>后处理</p>
-<p> 计算得到OUTCAR，然后文件夹下运行脚本。运行结果如下：</p>
-</li>
-</ol>
-<p> sh IR.sh </p>
-<p>上面的振动模和活性是归一化以后的结果，也就是运行结果intensities&#x2F;results&#x2F;results.txt的内容。文件intensities&#x2F;results&#x2F;exact.res.txt是归一化之前的内容。</p>
-<ol start="4">
-<li>展宽</li>
-</ol>
-<p>使用脚本broaden.py给出展宽谱，可以选择洛伦兹线型或者高斯线型。</p>
-<p>$ python2 broaden.py result.txt<br>生成result.txt-broaden.dat文件，画图即可。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/10/18-47-24/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Keke Liu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lightchaser">
-      <meta itemprop="description" content="一个小学生的博客">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Lightchaser">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/05/10/18-47-24/" class="post-title-link" itemprop="url">4.1 力学性质</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-05-10 18:47:24" itemprop="dateCreated datePublished" datetime="2023-05-10T18:47:24+08:00">2023-05-10</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-12-17 14:56:40" itemprop="dateModified" datetime="2023-12-17T14:56:40+08:00">2023-12-17</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/DFT%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">DFT学习</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="弹性常数"><a href="#弹性常数" class="headerlink" title="弹性常数"></a>弹性常数</h1><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>弹性常数描述了晶体对外加应变的响应的刚度。在材料的线性变形范围内（应变较小的情况下），体系的应力与应变满足胡克定律。也就是说，对于足够的小的变形，应力与应变成正比，即应力分量(S)是应变分量(E)的线性函数，三维材料的弹性刚度常数矩阵是6×6的。公式中Cij就是我们通常所说的弹性常数。因为刚度矩阵是对称矩阵，因此，弹性常数的独立张量元数目至多只有21个。<strong>对不同的晶系的晶体，因为对称性的关系，其独立的弹性常数是确定的。因此，晶系的对称性越高，独立的张量元数目越少。</strong><br><strong>立方晶系</strong> ——只有3个独立矩阵元（C11，C12，C44）<br><strong>六角晶系</strong> ——有5个独立矩阵元（C11，C12，C13，C33，C44）<br><strong>三角晶系</strong><br>a)  32，3m，-32&#x2F;m——有6个独立矩阵元（C11，C12，C13，C14，C33，C44）<br>b)  3，-3,——有8个独立矩阵元（C11，C12，C13，C14，C15，C33，C44，C45）<br><strong>四方晶系</strong><br>a) 422，4mm，-42m，4&#x2F;mmm——有6个独立矩阵元（C11，C12，C13，C33，C44，C66）<br>b) 4，-4，4&#x2F;m——有7个独立矩阵元（C11，C12，C13，C16，C33，C44，C66）<br><strong>正交晶系</strong> ——有9个独立矩阵元（C11，C12，C13，C22，C23，C33，C44，C55，C66）<br><strong>单斜晶系</strong> ——有13个独立矩阵元<br><strong>三斜晶系</strong> ——有21个独立矩阵元</p>
-<h3 id="计算过程"><a href="#计算过程" class="headerlink" title="计算过程"></a>计算过程</h3><p>采用第一性原理计算弹性常数有两种方法，<strong>第一种方法是应力-应变方法，</strong> 即通过给结构施加不同应变，分别计算出所对应的应力大小，然后利用公式（1）拟合得到一次项系数，从而得到。<strong>第二种方法是能量-应变方法，</strong> 即通过给结构施加不同应变后计算出体系总能相对于基态能量变化（应变能），再利用公式（2）进行二次多项式拟合，其中二次多项式系数是晶体的某个弹性常数或者弹性常数组合。第一种方法优点是每进行一次计算可一次得到六个独立分量，缺点是为了得到准确的应力大小，必须选择更高的截断能和更密集的K格点。<strong>在同样的精度下，能量-应变法相比应力-应变方法要求的截断能和K点数目相对较少，缺点是计算应变数目有所增加。VASPKIT中弹性常数计算基于能量-应变法，目前不支持三斜晶系。</strong><br>一般计算弹性常数我们可以采用应变应力或者应变能量关系，进行拟合。或者可以直接通过VASP直接计算。</p>
-<h4 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h4><p>首先介绍直接用VASP在输入文件中添加参数进行计算的方法。</p>
-<ol>
-<li><p>当然首先要进行结构优化，</p>
-</li>
-<li><p>在INCAR中添加关键参数，进行弹性常数的计算</p>
- <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">NSW</span>=<span class="number">1</span></span><br><span class="line"><span class="variable constant_">EDIFFG</span>=-<span class="number">1e-3</span></span><br><span class="line"><span class="variable constant_">ISIF</span>=<span class="number">3</span></span><br><span class="line"><span class="variable constant_">IBRION</span>=<span class="number">6</span> #计算弹性常数</span><br><span class="line"><span class="variable constant_">POTIM</span>=<span class="number">0.015</span></span><br><span class="line"><span class="variable constant_">NFREE</span> = <span class="number">4</span></span><br></pre></td></tr></table></figure></li>
-<li><p>计算完成后可以查看OUTCAR得到弹性刚度矩阵。或者可以利用VASPKIT直接得到弹性常数。<br>请注意OUTCAR中的刚度矩阵是未经过处理的刚度矩阵，二维材料需要乘以C轴长度的0.01，还需要了解Voigt简标，11&gt;1 22&gt;2 33&gt;3 23&gt;4 13&gt;5 12&gt;6。然后我们通过Origin等工具绘图即可得到材料的杨氏模量，泊松比等力学性质。</p>
-</li>
-</ol>
-<h4 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h4><p>VASPKIT和VASP计算晶体的弹性常数具体计算步骤分为：</p>
-<ol>
-<li><p>准备优化彻底的POSCAR文件，注意通常采用标准的惯用原胞计算弹性常数，如果不确信POSCAR文件中是否是标准的惯用原胞，可以用vaspkit-603&#x2F;604生成标准结构；</p>
-</li>
-<li><p>运行vaspkit 选择102生成KPOINTS，由于计算弹性常数对K-mesh要求很高，因此对于半导体（金属体）体系，生成K点的精度应不小于 0.03(0.02)×2π {\AA}^{-1}</p>
-</li>
-<li><p>INCAR参考设置如下；</p>
- <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Global</span> <span class="title class_">Parameters</span></span><br><span class="line"> <span class="variable constant_">ISTART</span> =  <span class="number">0</span>        </span><br><span class="line"> <span class="variable constant_">LREAL</span>  =  F      </span><br><span class="line"> <span class="variable constant_">PREC</span>   =  <span class="title class_">High</span>  （截断能设置默认值<span class="number">1.5</span>-<span class="number">2</span>倍）</span><br><span class="line"> <span class="variable constant_">LWAVE</span>  = F       </span><br><span class="line"> <span class="variable constant_">LCHARG</span> = F     </span><br><span class="line"> <span class="variable constant_">ADDGRID</span>= .<span class="property">TRUE</span>.    </span><br><span class="line"><span class="title class_">Electronic</span> <span class="title class_">Relaxation</span></span><br><span class="line"> <span class="variable constant_">ISMEAR</span> =  <span class="number">0</span>          </span><br><span class="line"> <span class="variable constant_">SIGMA</span>  =  <span class="number">0.05</span>       </span><br><span class="line"> <span class="variable constant_">NELM</span>   =  <span class="number">40</span>           </span><br><span class="line"> <span class="variable constant_">NELMIN</span> =  <span class="number">4</span>           </span><br><span class="line"> <span class="variable constant_">EDIFF</span>  =  <span class="number">1E-08</span>       </span><br><span class="line"><span class="title class_">Ionic</span> <span class="title class_">Relaxation</span></span><br><span class="line"> <span class="variable constant_">NELMIN</span> =  <span class="number">6</span>          </span><br><span class="line"> <span class="variable constant_">NSW</span>    =  <span class="number">100</span>         </span><br><span class="line"> <span class="variable constant_">IBRION</span> =  <span class="number">2</span>           </span><br><span class="line"> <span class="variable constant_">ISIF</span>   =  <span class="number">2</span>    （切记选择<span class="number">2</span>,如果选择<span class="number">3</span>会把施加应变后原胞重新优化成平衡原胞）</span><br><span class="line"> <span class="variable constant_">EDIFFG</span> = -<span class="number">1E-02</span>  </span><br></pre></td></tr></table></figure></li>
-<li><p>准备VPKIT.in文件并设置第一行为1（预处理）；运行vaspkit并选择201, 将生成用于计算弹性常数文件；</p>
- <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>                    ! 设置<span class="number">1</span>将产生计算弹性常数的输入文件，<span class="number">2</span>则计算弹性常数</span><br><span class="line">3D                   ! 2D为二维体系，3D为三维体系</span><br><span class="line"><span class="number">7</span>                    ! <span class="number">7</span>个应变</span><br><span class="line">-<span class="number">0.015</span> -<span class="number">0.010</span> -<span class="number">0.005</span> <span class="number">0.000</span> <span class="number">0.005</span> <span class="number">0.010</span> <span class="number">0.015</span>  ! 应变变化范围</span><br></pre></td></tr></table></figure></li>
-<li><p>批量提交vasp作业；<br>总计有9个大文件夹，分别以该空间群所需要的独立弹性常数来命名；在每个大文件夹内则是以应变强度命名的实际计算执行的文件夹，文件夹的数量可根据预处理的VPKIT.in文件的最后一行的应变设置来更改。在每一个应变文件夹内则是施加了应变的POSCAR和事先准备好的INCAR、KPOINTS和POTCAR文件的链接，可直接进行vasp计算。<br>这里通过一个简单的两重for循环命令依次序完成所需要的计算任务。<br>脚本 :</p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#!<span class="regexp">/bin/</span>bash</span><br><span class="line">path=<span class="string">`pwd`</span></span><br><span class="line">#记录当前文件夹位置并定义到变量 path中，称为初始目录</span><br><span class="line">pwd</span><br><span class="line"><span class="keyword">for</span> cij <span class="keyword">in</span> <span class="string">`ls -F | grep /$`</span></span><br><span class="line">#ls -F| grep /$ 命令为返回当前文件夹中所有子目录</span><br><span class="line">#将所有子目录添加到变量cij中，并准备进行<span class="keyword">for</span>循环</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">cd $&#123;path&#125;/$cij</span><br><span class="line">#进入cij变量所代表的子目录中</span><br><span class="line">pwd</span><br><span class="line"><span class="keyword">for</span> s <span class="keyword">in</span> strain_*</span><br><span class="line">#将cij代表的子目录中所有strain文件夹添加到变量s中</span><br><span class="line">#此部添加变量s的方式可更改为添加变量cij的方式，但不建议这么做</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">cd $&#123;path&#125;/$cij/$s</span><br><span class="line">#进入初始目录下变量cij和变量s组成的目录，由于<span class="keyword">for</span>循环的设置，将遍历所有可计算的strain文件夹</span><br><span class="line">pwd</span><br><span class="line"> mpirun -np <span class="number">16</span> vasp_std</span><br><span class="line"> #执行vasp计算</span><br><span class="line">cd $&#123;path&#125;</span><br><span class="line">#返回初始目录</span><br><span class="line">pwd</span><br><span class="line">done</span><br><span class="line">done</span><br></pre></td></tr></table></figure></li>
-<li><p>再次修改VPKIT.in文件中第一行为2（后处理），然后再次运行vaspkit并选择201，得到以下结果；</p>
-</li>
-<li><p>如果在计算弹性常数时希望强制固定某个体系的空间群，可在SYMMETRY.in文件第二行设置空间群，这样晶系将通过指定空间群判断并计算相应的独立弹性常数，这对于掺杂或者合金体系比较有用。</p>
-</li>
-</ol>
-<h3 id="根据弹性常数计算和三维可视化材料力学量"><a href="#根据弹性常数计算和三维可视化材料力学量" class="headerlink" title="根据弹性常数计算和三维可视化材料力学量"></a>根据弹性常数计算和三维可视化材料力学量</h3><p>首先利用VASPKIT-204命令得到体弹性模量、杨氏模量、剪切模量及泊松比随角度的依赖关系，具体算法可参考文献【J. Phys. Condens. Matter, 28, 275201 (2016)和Comput. Phys. Commun. 181, 2102–2115 (2010)】。接下来我们以某单斜体系的弹性常数为例来演示如何进行材料力学量三维可视化。</p>
-<ul>
-<li>第一步新建ELASTIC_TENSOR.in并输入6x6弹性常数矩阵，注意第一行是注释行不可省略。如果是二维体系，则输入文件为ELASTIC_TENSOR_2D.in，注意二维体系弹性常数矩阵大小为3x3。 <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># comment line (<span class="keyword">in</span> <span class="title class_">GPa</span>)</span><br><span class="line">   <span class="number">228.38</span>   <span class="number">85.741</span>   <span class="number">81.503</span>        <span class="number">0</span>   -<span class="number">0.737</span>        <span class="number">0</span></span><br><span class="line">   <span class="number">85.741</span>   <span class="number">217.47</span>   <span class="number">94.201</span>        <span class="number">0</span>  -<span class="number">20.213</span>        <span class="number">0</span></span><br><span class="line">   <span class="number">81.503</span>   <span class="number">94.201</span>   <span class="number">178.81</span>        <span class="number">0</span>   -<span class="number">9.472</span>        <span class="number">0</span></span><br><span class="line">        <span class="number">0</span>        <span class="number">0</span>        <span class="number">0</span>   <span class="number">35.094</span>        <span class="number">0</span>  -<span class="number">17.851</span></span><br><span class="line">   -<span class="number">0.737</span>  -<span class="number">20.213</span>   -<span class="number">9.472</span>        <span class="number">0</span>   <span class="number">37.778</span>        <span class="number">0</span></span><br><span class="line">        <span class="number">0</span>        <span class="number">0</span>        <span class="number">0</span>  -<span class="number">17.851</span>        <span class="number">0</span>   <span class="number">42.708</span></span><br></pre></td></tr></table></figure></li>
-<li>第二步运行VASPKIT 204命令得到MECHANICS_3D.dat<br>打开MECHANICS_3D.dat可看到第一行给出了每一列数据所代表的物理量，第二行给出了球坐标系下分别划分仰角θ∈[0,180]和方位角ϕ∈[0,360]的格点大小。</li>
-<li>第三步从vaspkit&#x2F;examples&#x2F;angular_dependent_mechanics (VASPKIT ver. &gt;&#x3D; 1.3.2)文件夹中拷贝mechanics_3d_plot_matlab.m到当前目录，调用Matlab软件运行该脚本，得到以下信息.<br>如果我们想可视化杨氏模量，则输入2回车即可得到。</li>
-<li>另外，以下两个软件也可以实现材料力学量三维可视化。<br>Elate<br>ElasticPOST</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>

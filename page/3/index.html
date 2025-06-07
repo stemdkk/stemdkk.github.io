@@ -123,7 +123,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -134,7 +134,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-count">44</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -159,6 +159,605 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/18-47-24/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Keke Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lightchaser">
+      <meta itemprop="description" content="一个小学生的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Lightchaser">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/05/09/18-47-24/" class="post-title-link" itemprop="url">1.5 提高效率与准确性</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-09 18:47:24" itemprop="dateCreated datePublished" datetime="2023-05-09T18:47:24+08:00">2023-05-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-04-03 11:54:44" itemprop="dateModified" datetime="2025-04-03T11:54:44+08:00">2025-04-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DFT%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">DFT学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="截断能"><a href="#截断能" class="headerlink" title="截断能"></a>截断能</h1><p>截断能设置在INCAR文件的ENCUT参数。截断能（energy cutoff）指定了展开波函数用到的平面波基组（planewave basis set）所对应的截断能量。<br>参考： <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/348826693">https://zhuanlan.zhihu.com/p/348826693</a><br><strong>截断能越大，代表用来描述波函数的平面波基组越多，计算精度越高，同时计算耗时也越长。</strong><br><strong>如果没有指定ENCUT，程序将默认ENCUT&#x3D;ENMAX（注意：当PREC &#x3D; High时, ENCUT &#x3D; 1.3*ENMAX）。扩胞并不会影响ENCUT的设置。</strong></p>
+<ul>
+<li>测试标准<br>ENMAX在保证定性正确的基础上大幅度降低计算耗时，如果想要定量计算某些性质就需要增大截断能了。所以ENCUT测试通常从ENMAX开始测试，一般截止到 <strong>1.5*ENMAX</strong> 即可（注意：比ENMAX小的测试可能会得到错误的能量）。当体系中每个原子的能量差收敛至0.001 eV&#x2F;atom时，此ENCUT即为最终取值。</li>
+</ul>
+<p>简单测试：<br><code>for i in &#123;1..8&#125;; do cp 400 $((400+$i*50)); sed -i &quot;s/400/$((400+$i*50))/g&quot;  $((400+$i*50))/INCAR ; done</code> </p>
+<p><strong>encut.sh脚本：</strong>  参考 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/115235135">https://zhuanlan.zhihu.com/p/115235135</a></p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">#!<span class="regexp">/bin/</span>bash</span><br><span class="line"></span><br><span class="line">#生成<span class="variable constant_">KPOINTS</span>文件，<span class="variable constant_">KPOINTS</span>不能与<span class="variable constant_">INCAR</span>中的<span class="variable constant_">KSPACING</span>参数共用，二选一</span><br><span class="line">cat &gt; <span class="variable constant_">KPOINTS</span> &lt;&lt;!</span><br><span class="line">A</span><br><span class="line"><span class="number">0</span></span><br><span class="line">M</span><br><span class="line"><span class="number">9</span>  <span class="number">9</span>  <span class="number">9</span></span><br><span class="line"><span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span></span><br><span class="line">!</span><br><span class="line"></span><br><span class="line">#产生计算所需<span class="variable constant_">POSCAR</span></span><br><span class="line">cat &gt; <span class="variable constant_">POSCAR</span>&lt;&lt;!</span><br><span class="line"><span class="title class_">Si8</span></span><br><span class="line"><span class="number">1.0000000000</span></span><br><span class="line">    <span class="number">5.4687280000</span>        <span class="number">0.0000000000</span>        <span class="number">0.0000000000</span></span><br><span class="line">    <span class="number">0.0000000000</span>        <span class="number">5.4687280000</span>        <span class="number">0.0000000000</span></span><br><span class="line">    <span class="number">0.0000000000</span>        <span class="number">0.0000000000</span>        <span class="number">5.4687280000</span></span><br><span class="line"><span class="title class_">Si</span></span><br><span class="line"><span class="number">8</span></span><br><span class="line"><span class="title class_">Direct</span></span><br><span class="line">    <span class="number">0.0000000000</span>        <span class="number">0.0000000000</span>        <span class="number">0.0000000000</span></span><br><span class="line">    <span class="number">0.2500000000</span>        <span class="number">0.7500000000</span>        <span class="number">0.7500000000</span></span><br><span class="line">    <span class="number">0.5000000000</span>        <span class="number">0.0000000000</span>        <span class="number">0.5000000000</span></span><br><span class="line">    <span class="number">0.0000000000</span>        <span class="number">0.5000000000</span>        <span class="number">0.5000000000</span></span><br><span class="line">    <span class="number">0.5000000000</span>        <span class="number">0.5000000000</span>        <span class="number">0.0000000000</span></span><br><span class="line">    <span class="number">0.7500000000</span>        <span class="number">0.2500000000</span>        <span class="number">0.7500000000</span></span><br><span class="line">    <span class="number">0.7500000000</span>        <span class="number">0.7500000000</span>        <span class="number">0.2500000000</span></span><br><span class="line">    <span class="number">0.2500000000</span>        <span class="number">0.2500000000</span>        <span class="number">0.2500000000</span></span><br><span class="line">!</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> $(seq <span class="number">400</span> <span class="number">50</span> <span class="number">700</span>) #截断能从<span class="number">450</span>-<span class="number">800</span>，步数为<span class="number">50</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"></span><br><span class="line">#生成vasp静态计算的<span class="variable constant_">INCAR</span></span><br><span class="line">cat &gt; INCAR_static &lt;&lt;!</span><br><span class="line"><span class="title class_">Global</span> <span class="title class_">Parameters</span></span><br><span class="line">  <span class="variable constant_">ISTART</span> =  <span class="number">0</span>            (<span class="title class_">Read</span> existing wavefunction; <span class="keyword">if</span> there)</span><br><span class="line">  <span class="variable constant_">ICHARG</span> =  <span class="number">2</span>            (<span class="title class_">Non</span>-self-<span class="attr">consistent</span>: <span class="variable constant_">GGA</span>/<span class="variable constant_">LDA</span> band structures)</span><br><span class="line">  <span class="variable constant_">LREAL</span>  = .<span class="property">FALSE</span>.       (<span class="title class_">Projection</span> <span class="attr">operators</span>: automatic)</span><br><span class="line">  <span class="variable constant_">ENCUT</span>  =  $i           (<span class="title class_">Cut</span>-off energy <span class="keyword">for</span> plane wave basis set, <span class="keyword">in</span> eV)</span><br><span class="line">  <span class="variable constant_">PREC</span>   =  <span class="title class_">Accurate</span>     (<span class="title class_">Precision</span> level)  </span><br><span class="line">  <span class="variable constant_">LWAVE</span>  = .<span class="property">FALSE</span>.       (<span class="title class_">Write</span> <span class="variable constant_">WAVECAR</span> or not)</span><br><span class="line">  <span class="variable constant_">LCHARG</span> = .<span class="property">FALSE</span>.       (<span class="title class_">Write</span> <span class="variable constant_">CHGCAR</span> or not) </span><br><span class="line">  <span class="variable constant_">ADDGRID</span>= .<span class="property">TRUE</span>.        (<span class="title class_">Increase</span> grid; helps <span class="variable constant_">GGA</span> convergence)</span><br><span class="line"></span><br><span class="line"><span class="title class_">Electronic</span> <span class="title class_">Relaxation</span></span><br><span class="line">  <span class="variable constant_">ISMEAR</span> =  -<span class="number">5</span>           (<span class="title class_">Gaussian</span> smearing; <span class="attr">metals</span>:<span class="number">1</span>)</span><br><span class="line">  #<span class="variable constant_">SIGMA</span>  =  <span class="number">0.05</span>        (<span class="title class_">Smearing</span> value <span class="keyword">in</span> eV; <span class="attr">metals</span>:<span class="number">0.2</span>)</span><br><span class="line">  <span class="variable constant_">NELM</span>   =  <span class="number">60</span>           (<span class="title class_">Max</span> electronic <span class="variable constant_">SCF</span> steps)  </span><br><span class="line">  <span class="variable constant_">NELMIN</span> =  <span class="number">4</span>            (<span class="title class_">Min</span> electronic <span class="variable constant_">SCF</span> steps)</span><br><span class="line">  <span class="variable constant_">EDIFF</span>  =  <span class="number">1E-06</span>        (<span class="variable constant_">SCF</span> energy convergence; <span class="keyword">in</span> eV)</span><br><span class="line">  <span class="variable constant_">GGA</span>  =  <span class="variable constant_">PE</span>             (<span class="title class_">PBEsol</span> exchange-correlation)</span><br><span class="line"></span><br><span class="line"><span class="title class_">Ionic</span> <span class="title class_">Relaxation</span></span><br><span class="line">  <span class="variable constant_">ISIF</span>   =  <span class="number">2</span>            (<span class="title class_">Stress</span>/<span class="attr">relaxation</span>: <span class="number">2</span>-<span class="title class_">Ions</span>, <span class="number">3</span>-<span class="title class_">Shape</span>/<span class="title class_">Ions</span>/V，<span class="number">4</span>-<span class="title class_">Shape</span>/<span class="title class_">Ions</span>)</span><br><span class="line">  <span class="variable constant_">EDIFFG</span> = -<span class="number">0.001</span>        (<span class="title class_">Ionic</span> convergence; eV/<span class="variable constant_">AA</span>)</span><br><span class="line">  #<span class="variable constant_">KSPACING</span> = <span class="number">0.10</span></span><br><span class="line">!</span><br><span class="line"></span><br><span class="line">cp INCAR_static <span class="variable constant_">INCAR</span></span><br><span class="line">echo <span class="string">&quot;ENCUT = $i eV&quot;</span> ; time mpirun -np <span class="number">16</span> vasp_std #vasp并行运行命令，根据系统自行修改</span><br><span class="line"></span><br><span class="line">rm INCAR_static</span><br><span class="line">rm <span class="variable constant_">INCAR</span></span><br><span class="line">#提取计算得到的能量</span><br><span class="line">E=$(grep <span class="string">&quot;TOTEN&quot;</span> <span class="variable constant_">OUTCAR</span> | tail -<span class="number">1</span> | awk <span class="string">&#x27;&#123;printf &quot;%12.9f \n&quot;, $5 &#125;&#x27;</span>)</span><br><span class="line">echo $i $E &gt;&gt;encut_energy.<span class="property">out</span></span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<h1 id="K点测试"><a href="#K点测试" class="headerlink" title="K点测试"></a>K点测试</h1><p>是倒空间（动量空间）的基本构成点，只取在一个倒空间晶格向量的范围内来描述 k 。总能量计算是对布里渊区内的波函数进行积分，而积分是通过对部分特殊K点的求和完成的。因此，计算一个体系时，需要确定所用KPOINTS的大小。<br><strong>k.sh如下：</strong></p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">#!<span class="regexp">/bin/</span>bash</span><br><span class="line">#生成vasp静态计算的<span class="variable constant_">INCAR</span></span><br><span class="line">cat &gt; INCAR_static &lt;&lt;!</span><br><span class="line"><span class="title class_">Global</span> <span class="title class_">Parameters</span></span><br><span class="line">  <span class="variable constant_">ISTART</span> =  <span class="number">0</span>            (<span class="title class_">Read</span> existing wavefunction; <span class="keyword">if</span> there)</span><br><span class="line">  <span class="variable constant_">ICHARG</span> =  <span class="number">2</span>            (<span class="title class_">Non</span>-self-<span class="attr">consistent</span>: <span class="variable constant_">GGA</span>/<span class="variable constant_">LDA</span> band structures)</span><br><span class="line">  <span class="variable constant_">LREAL</span>  = .<span class="property">FALSE</span>.       (<span class="title class_">Projection</span> <span class="attr">operators</span>: automatic)</span><br><span class="line">  <span class="variable constant_">ENCUT</span>  =  <span class="number">500</span>           (<span class="title class_">Cut</span>-off energy <span class="keyword">for</span> plane wave basis set, <span class="keyword">in</span> eV)</span><br><span class="line">  <span class="variable constant_">PREC</span>   =  <span class="title class_">Accurate</span>     (<span class="title class_">Precision</span> level)  </span><br><span class="line">  <span class="variable constant_">LWAVE</span>  = .<span class="property">FALSE</span>.       (<span class="title class_">Write</span> <span class="variable constant_">WAVECAR</span> or not)</span><br><span class="line">  <span class="variable constant_">LCHARG</span> = .<span class="property">FALSE</span>.       (<span class="title class_">Write</span> <span class="variable constant_">CHGCAR</span> or not) </span><br><span class="line">  <span class="variable constant_">ADDGRID</span>= .<span class="property">TRUE</span>.        (<span class="title class_">Increase</span> grid; helps <span class="variable constant_">GGA</span> convergence)</span><br><span class="line"></span><br><span class="line"><span class="title class_">Electronic</span> <span class="title class_">Relaxation</span></span><br><span class="line">  <span class="variable constant_">ISMEAR</span> =  -<span class="number">5</span>           (<span class="title class_">Gaussian</span> smearing; <span class="attr">metals</span>:<span class="number">1</span>)</span><br><span class="line">  #<span class="variable constant_">SIGMA</span>  =  <span class="number">0.05</span>        (<span class="title class_">Smearing</span> value <span class="keyword">in</span> eV; <span class="attr">metals</span>:<span class="number">0.2</span>)</span><br><span class="line">  <span class="variable constant_">NELM</span>   =  <span class="number">60</span>           (<span class="title class_">Max</span> electronic <span class="variable constant_">SCF</span> steps)  </span><br><span class="line">  <span class="variable constant_">NELMIN</span> =  <span class="number">4</span>            (<span class="title class_">Min</span> electronic <span class="variable constant_">SCF</span> steps)</span><br><span class="line">  <span class="variable constant_">EDIFF</span>  =  <span class="number">1E-06</span>        (<span class="variable constant_">SCF</span> energy convergence; <span class="keyword">in</span> eV)</span><br><span class="line">  <span class="variable constant_">GGA</span>  =  <span class="variable constant_">PE</span>             (<span class="title class_">PBEsol</span> exchange-correlation)</span><br><span class="line"></span><br><span class="line"><span class="title class_">Ionic</span> <span class="title class_">Relaxation</span></span><br><span class="line">  <span class="variable constant_">ISIF</span>   =  <span class="number">2</span>            (<span class="title class_">Stress</span>/<span class="attr">relaxation</span>: <span class="number">2</span>-<span class="title class_">Ions</span>, <span class="number">3</span>-<span class="title class_">Shape</span>/<span class="title class_">Ions</span>/V，<span class="number">4</span>-<span class="title class_">Shape</span>/<span class="title class_">Ions</span>)</span><br><span class="line">  <span class="variable constant_">EDIFFG</span> = -<span class="number">0.001</span>        (<span class="title class_">Ionic</span> convergence; eV/<span class="variable constant_">AA</span>)</span><br><span class="line">  #<span class="variable constant_">KSPACING</span> = <span class="number">0.10</span></span><br><span class="line">!</span><br><span class="line"></span><br><span class="line">cp INCAR_static <span class="variable constant_">INCAR</span></span><br><span class="line"></span><br><span class="line">#产生计算所需<span class="variable constant_">POSCAR</span></span><br><span class="line">cat &gt; <span class="variable constant_">POSCAR</span>&lt;&lt;!</span><br><span class="line"><span class="title class_">Si8</span></span><br><span class="line"><span class="number">1.0000000000</span></span><br><span class="line">    <span class="number">5.4687280000</span>        <span class="number">0.0000000000</span>        <span class="number">0.0000000000</span></span><br><span class="line">    <span class="number">0.0000000000</span>        <span class="number">5.4687280000</span>        <span class="number">0.0000000000</span></span><br><span class="line">    <span class="number">0.0000000000</span>        <span class="number">0.0000000000</span>        <span class="number">5.4687280000</span></span><br><span class="line"><span class="title class_">Si</span></span><br><span class="line"><span class="number">8</span></span><br><span class="line"><span class="title class_">Direct</span></span><br><span class="line">    <span class="number">0.0000000000</span>        <span class="number">0.0000000000</span>        <span class="number">0.0000000000</span></span><br><span class="line">    <span class="number">0.2500000000</span>        <span class="number">0.7500000000</span>        <span class="number">0.7500000000</span></span><br><span class="line">    <span class="number">0.5000000000</span>        <span class="number">0.0000000000</span>        <span class="number">0.5000000000</span></span><br><span class="line">    <span class="number">0.0000000000</span>        <span class="number">0.5000000000</span>        <span class="number">0.5000000000</span></span><br><span class="line">    <span class="number">0.5000000000</span>        <span class="number">0.5000000000</span>        <span class="number">0.0000000000</span></span><br><span class="line">    <span class="number">0.7500000000</span>        <span class="number">0.2500000000</span>        <span class="number">0.7500000000</span></span><br><span class="line">    <span class="number">0.7500000000</span>        <span class="number">0.7500000000</span>        <span class="number">0.2500000000</span></span><br><span class="line">    <span class="number">0.2500000000</span>        <span class="number">0.2500000000</span>        <span class="number">0.2500000000</span></span><br><span class="line">!</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> $(seq <span class="number">6</span> <span class="number">3</span> <span class="number">15</span>) #K点从<span class="number">6</span>-<span class="number">24</span>，步数为<span class="number">3</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"></span><br><span class="line">#生成<span class="variable constant_">KPOINTS</span>文件，K点类型：<span class="title class_">Monkhorst</span>-<span class="title class_">Pack</span> (M) 或者 <span class="title class_">Gamma</span> (G)</span><br><span class="line">cat &gt; <span class="variable constant_">KPOINTS</span> &lt;&lt;!</span><br><span class="line"><span class="title class_">Automatic</span> mesh</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="title class_">Monkhorst</span>-<span class="title class_">Pack</span></span><br><span class="line">$i $i $i</span><br><span class="line"><span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span></span><br><span class="line">!</span><br><span class="line"></span><br><span class="line">echo <span class="string">&quot;KPOINTS = $i&quot;</span> ; time mpirun -n <span class="number">16</span> vasp_std #vasp并行运行命令，根据系统自行修改</span><br><span class="line"></span><br><span class="line">rm <span class="variable constant_">KPOINTS</span></span><br><span class="line">#提取计算得到的能量</span><br><span class="line">E=$(grep <span class="string">&quot;TOTEN&quot;</span> <span class="variable constant_">OUTCAR</span> | tail -<span class="number">1</span> | awk <span class="string">&#x27;&#123;printf &quot;%12.9f \n&quot;, $5 &#125;&#x27;</span>)</span><br><span class="line">echo $i $E &gt;&gt;kpoints_energy.<span class="property">out</span></span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<h1 id="显示收敛情况的脚本"><a href="#显示收敛情况的脚本" class="headerlink" title="显示收敛情况的脚本"></a>显示收敛情况的脚本</h1><p>参考：<a target="_blank" rel="noopener" href="https://blog.shishiruqi.com/2019/08/19/paili-energyforce/">https://blog.shishiruqi.com/2019/08/19/paili-energyforce/</a></p>
+<ul>
+<li>简单版：</li>
+</ul>
+<p><code>grep F= OSZICAR |awk &#39;&#123;print $1,$5&#125;&#39;</code><br><code>grep F= OSZICAR |awk &#39;&#123;print $1,$5&#125;&#39; &gt; conv.dat</code></p>
+<ul>
+<li>小脚本：<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#!<span class="regexp">/usr/</span>bin/env bash</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> *; <span class="keyword">do</span></span><br><span class="line"><span class="keyword">if</span> [ -e $i/<span class="variable constant_">OUTCAR</span> ]; then</span><br><span class="line">echo -e  $i <span class="string">&quot;\t&quot;</span> $(grep <span class="string">&#x27;  without&#x27;</span> $i/<span class="variable constant_">OUTCAR</span> |tail -n <span class="number">1</span> | awk <span class="string">&#x27;&#123;print $7&#125;&#x27;</span>)</span><br><span class="line">fi</span><br><span class="line">done</span><br></pre></td></tr></table></figure></li>
+<li>复杂：<br><strong>ediff.sh如下：（安装gnuplot）</strong><figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">#!<span class="regexp">/bin/</span>sh</span><br><span class="line">#lipai@mail.<span class="property">ustc</span>.<span class="property">edu</span>.<span class="property">cn</span></span><br><span class="line"></span><br><span class="line">begin=$1</span><br><span class="line"><span class="keyword">if</span> [ $begin ==<span class="string">&#x27;&#x27;</span> ]; then begin=<span class="number">0</span>; fi    </span><br><span class="line">awk -v begin=$begin <span class="string">&#x27;/E0/&#123;if ( i&lt;begin  ) i++;else print $0 &#125;&#x27;</span> <span class="variable constant_">OSZICAR</span> &gt;temp.<span class="property">e</span></span><br><span class="line">    </span><br><span class="line">awk <span class="string">&#x27;/POSITION/,/drift/&#123;</span></span><br><span class="line"><span class="string">    if(NF==6) print $4,$5,$6;</span></span><br><span class="line"><span class="string">    else if($1==&quot;total&quot;) print $1 &#125;&#x27;</span> <span class="variable constant_">OUTCAR</span> &gt;temp.<span class="property">f</span></span><br><span class="line"></span><br><span class="line">awk <span class="string">&#x27;&#123;if($4==&quot;F&quot;||$4==&quot;T&quot;) print $4,$5,$6&#125;&#x27;</span> <span class="variable constant_">CONTCAR</span> &gt;temp.<span class="property">fix</span></span><br><span class="line">flag=<span class="string">`wc temp.fix|awk &#x27;&#123;print $1&#125;&#x27;`</span></span><br><span class="line">steps=<span class="string">`grep E0 OSZICAR |tail -1 |awk &#x27;&#123;print $1&#125;&#x27;`</span></span><br><span class="line"><span class="keyword">if</span> [ flag != <span class="string">&#x27;0&#x27;</span> ] ; then</span><br><span class="line">    <span class="keyword">if</span> [ -f temp.<span class="property">fixx</span> ] ; then rm temp.<span class="property">fixx</span> ; fi</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="string">`seq $steps`</span>;<span class="keyword">do</span></span><br><span class="line">        cat temp.<span class="property">fix</span> &gt;&gt;temp.<span class="property">fixx</span></span><br><span class="line">        echo &gt;&gt;temp.<span class="property">fixx</span></span><br><span class="line">    done</span><br><span class="line">    paste temp.<span class="property">f</span> temp.<span class="property">fixx</span> &gt;temp.<span class="property">ff</span></span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">awk  <span class="string">&#x27;&#123; if($1==&quot;total&quot;) &#123;print ++i,a;a=0&#125;</span></span><br><span class="line"><span class="string">        else &#123;</span></span><br><span class="line"><span class="string">            if($4==&quot;F&quot;) x=0; else x=$1;</span></span><br><span class="line"><span class="string">            if($5==&quot;F&quot;) y=0; else y=$2;</span></span><br><span class="line"><span class="string">            if($6==&quot;F&quot;) z=0; else z=$3;</span></span><br><span class="line"><span class="string">            force=sqrt(x^2+y^2+z^2);</span></span><br><span class="line"><span class="string">            if(a&lt;force) a=force&#125; &#125;&#x27;</span> temp.<span class="property">ff</span> &gt;force.<span class="property">conv</span></span><br><span class="line"></span><br><span class="line">gnuplot &lt;&lt;<span class="variable constant_">EOF</span> </span><br><span class="line">set term dumb</span><br><span class="line">set title <span class="string">&#x27;Energy of each ionic step&#x27;</span></span><br><span class="line">set xlabel <span class="string">&#x27;Ionic steps&#x27;</span></span><br><span class="line">set ylabel <span class="string">&#x27;Energy(eV)&#x27;</span></span><br><span class="line">plot <span class="string">&#x27;temp.e&#x27;</span> u <span class="number">1</span>:<span class="number">5</span> w l  t <span class="string">&quot;Energy in eV&quot;</span></span><br><span class="line">set title <span class="string">&#x27;Max Force of each ionic step&#x27;</span></span><br><span class="line">set xlabel <span class="string">&#x27;Ionic steps&#x27;</span></span><br><span class="line">set ylabel <span class="string">&#x27;Force (eV/Angstrom)&#x27;</span></span><br><span class="line">plot <span class="string">&#x27;force.conv&#x27;</span> w l t <span class="string">&quot;Force in eV/Angstrom&quot;</span></span><br><span class="line"><span class="variable constant_">EOF</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ $steps -gt <span class="number">8</span> ] ; then</span><br><span class="line">tail -<span class="number">5</span> force.<span class="property">conv</span> &gt;temp.<span class="property">fff</span></span><br><span class="line">tail -<span class="number">5</span> temp.<span class="property">e</span> &gt;temp.<span class="property">ee</span></span><br><span class="line">gnuplot &lt;&lt;<span class="variable constant_">EOF</span> </span><br><span class="line">set term dumb</span><br><span class="line">set title <span class="string">&#x27;Energy of each ionic step for the last few steps&#x27;</span></span><br><span class="line">set xlabel <span class="string">&#x27;Ionic steps&#x27;</span></span><br><span class="line">set ylabel <span class="string">&#x27;Energy(eV)&#x27;</span></span><br><span class="line">plot <span class="string">&#x27;temp.ee&#x27;</span> u <span class="number">1</span>:<span class="number">5</span> w l  t <span class="string">&quot;Energy in eV&quot;</span></span><br><span class="line">set title <span class="string">&#x27;Max Force of each ionic step for the last few steps&#x27;</span></span><br><span class="line">set xlabel <span class="string">&#x27;Ionic steps&#x27;</span></span><br><span class="line">set ylabel <span class="string">&#x27;Force (eV/Angstrom)&#x27;</span></span><br><span class="line">plot <span class="string">&#x27;temp.fff&#x27;</span> w l  t <span class="string">&quot;Force in eV/Angstrom&quot;</span></span><br><span class="line"><span class="variable constant_">EOF</span></span><br><span class="line">rm temp.<span class="property">fff</span> temp.<span class="property">ee</span></span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">rm temp.<span class="property">e</span> temp.<span class="property">f</span> temp.<span class="property">ff</span> temp.<span class="property">fix</span> temp.<span class="property">fixx</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="批量提交任务"><a href="#批量提交任务" class="headerlink" title="批量提交任务"></a>批量提交任务</h1><p>适用于测试、有限位移法求力常数矩阵等情况。<br>简单：  <code>for i in *; do cd $i ; qsub sub4; cd $OLDPWD; done </code></p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#!<span class="regexp">/bin/</span>sh</span><br><span class="line">root_path=<span class="string">&#x27;pwd&#x27;</span></span><br><span class="line"></span><br><span class="line">#在每个job文件夹里进行静态计算。</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;<span class="number">001</span>.<span class="number">.1316</span>&#125; #按顺序从job-<span class="number">001</span>到<span class="number">116</span>做静态vasp计算,根据生成的文件夹设定</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">cd job-$i</span><br><span class="line">echo <span class="string">&quot;job-$i&quot;</span>, time </span><br><span class="line">sbatch sub.<span class="property">sh</span></span><br><span class="line">wait</span><br><span class="line">cd ..</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<h1 id="批量产生文件夹"><a href="#批量产生文件夹" class="headerlink" title="批量产生文件夹"></a>批量产生文件夹</h1><figure class="highlight plaintext"><figcaption><span>i in &#123;2..9&#125;; do cp 0.01 0.0$i -r ; done ``` #批量复制0.01文件夹复制成0.02-0.09</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">```sed &#x27;3s/0.01/0.02/g&#x27; INCAR &gt; INCAR_new```  #将INCAR中的第三行的0.01全部替换成0.02并输出位INCAR_new文件。</span><br><span class="line">```sed -i &#x27;3s/0.01/0.02/g&#x27; INCAR``` # -i表示直接对源文件进行编辑，也就是说编辑之后源文件被新文件替换掉。</span><br><span class="line">```for i in *; do sed -i &quot;3s/0.05/$i/g&quot; $i/INCAR ; done``` #将文件夹中所有的0.01替换成了文件夹序号。</span><br><span class="line"></span><br><span class="line">我们主要对KPOINTS的文件的第四行进行批量操作，将1 1 1改成 2 2 2， 3 3 3 等。复制文件夹：</span><br><span class="line">```for i in &#123;1..6&#125;; do cp ../ex03/0.01/ $&#123;i&#125;$&#123;i&#125;$&#123;i&#125; -r ; done```</span><br><span class="line">显示行号：</span><br><span class="line">```cat 333/KPOINTS  -n ```</span><br><span class="line">修改文件;</span><br><span class="line">```for i in &#123;1..6&#125;; do sed -i &#x27;4s/1 1 1/$i $i $i/g&#x27; $&#123;i&#125;$&#123;i&#125;$&#123;i&#125;/KPOINTS ; done```</span><br><span class="line"></span><br><span class="line">脚本：</span><br><span class="line"> ```javascript  &#123;.line-numbers&#125; </span><br><span class="line">for i in 3RD.POSCAR.*</span><br><span class="line">do</span><br><span class="line">s=$(echo $i| cut -d &quot;.&quot; -f 3) #代表.的3个字符</span><br><span class="line">d=job-$s</span><br><span class="line">mkdir $d</span><br><span class="line">cp $i $d/POSCAR</span><br><span class="line">cp ./INCAR ./sub.sh ./KPOINTS ./POTCAR $d</span><br><span class="line">pushd $d</span><br><span class="line">popd</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<h1 id="节约机时"><a href="#节约机时" class="headerlink" title="节约机时"></a>节约机时</h1><p><strong>grep User OUTCAR 后得出的结果被空格分成了4部分，时间信息在第4部分里面。User 或者 Elapsed都可以。</strong></p>
+<ul>
+<li>一个合理的初始结构，可以避免很多意外的错误以及快速得到正确的结果。</li>
+<li>如果你设置的收敛标准比较严格，精度比较高，则每一个离子步需要更多的电子步数，需要的时间也会随着离子步的增加成线性关系增长。</li>
+<li>ENCUT和KPOINTS文件需要测试，二者越大时间越久。</li>
+<li>这里我们就会需要一些其他的参数，<strong>NCORE和NPAR。</strong><br>NCORE：控制多少个核同时计算；<br>NPAR：如何把计算任务分配到计算资源上面计算。<br>它们之间的关系是：NCORE&#x3D; 计算使用的核数 &#x2F; NPAR。注意：这两个参数只能选取一个来使用:<br>NCORE&#x3D;单节点的核数，单节点的核数&#x2F;2，单节点的核数&#x2F;4…….个人使用经验是：NCORE &#x3D; 单个节点核数 &#x2F; 2 的时候，运行最省时间，设置也最方便。<br>当然NCORE也需要测试。</li>
+</ul>
+<h1 id="消虚频"><a href="#消虚频" class="headerlink" title="消虚频"></a>消虚频</h1><h3 id="结构优化消虚频"><a href="#结构优化消虚频" class="headerlink" title="结构优化消虚频"></a>结构优化消虚频</h3><p>X, Y, Z为体系中原子的坐标，也就是POSCAR中的内容。 dx, dy,dz为虚频对应的原子振动方向上的位移。我们将（dx, dy,dz）这个位移乘以一个介于0-1之间的校正因子，然后跟POSCAR中的坐标加起来即可。以z方向为例，<strong>校正因子设为0.1，</strong> 微调后的z方向坐标为： 10.709980 + （-0.676634）0.1。<br>脚本vib_correct.py如下：<a target="_blank" rel="noopener" href="https://www.bigbrosci.com/2022/04/29/A29/">https://www.bigbrosci.com/2022/04/29/A29/</a></p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"># -*- <span class="attr">coding</span>: utf-<span class="number">8</span> -*-</span><br><span class="line"><span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">Qiang Li</span></span><br><span class="line"><span class="string">Command: python3 vib_correct.py </span></span><br><span class="line"><span class="string">This is a temporary script file.</span></span><br><span class="line"><span class="string">&quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> ase.<span class="property">io</span> <span class="keyword">import</span> read, write</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">#获取虚频开始行</span><br><span class="line">l_position = <span class="number">0</span>  #虚频振动方向部分在<span class="variable constant_">OUTCAR</span>中的起始行数</span><br><span class="line"><span class="keyword">with</span> <span class="title function_">open</span>(<span class="string">&#x27;OUTCAR&#x27;</span>) <span class="keyword">as</span> <span class="attr">f_in</span>:</span><br><span class="line">    lines = f_in.<span class="title function_">readlines</span>()</span><br><span class="line">    wave_num = <span class="number">0.0</span></span><br><span class="line">    <span class="keyword">for</span> num, line <span class="keyword">in</span> <span class="title function_">enumerate</span>(lines):</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;f/i&#x27;</span> <span class="keyword">in</span> <span class="attr">line</span>:</span><br><span class="line">            wave_tem = <span class="title function_">float</span>(line.<span class="title function_">rstrip</span>().<span class="title function_">split</span>()[<span class="number">6</span>])</span><br><span class="line">            <span class="keyword">if</span> wave_tem &gt; <span class="attr">wave_num</span>: #获取最大的虚频</span><br><span class="line">                wave_num = wave_tem</span><br><span class="line">                l_position = num+<span class="number">2</span></span><br><span class="line"># <span class="variable constant_">ASE</span>读<span class="variable constant_">POSCAR</span></span><br><span class="line">model = <span class="title function_">read</span>(<span class="string">&#x27;POSCAR&#x27;</span>)</span><br><span class="line">model_positions = model.<span class="title function_">get_positions</span>()</span><br><span class="line">num_atoms = <span class="title function_">len</span>(model)</span><br><span class="line">#<span class="title function_">print</span>(model_positions)</span><br><span class="line"></span><br><span class="line"># 获取虚频对应的<span class="variable constant_">OUTCAR</span>部分 </span><br><span class="line">vib_lines = lines[<span class="attr">l_position</span>:l_position + num_atoms] #振动部分 <span class="number">7222</span>到<span class="number">7248</span>行</span><br><span class="line">#<span class="title function_">print</span>(vib_lines)</span><br><span class="line">vib_dis = []</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> <span class="attr">vib_lines</span>:</span><br><span class="line">    #model_positions = [<span class="title function_">float</span>(i) <span class="keyword">for</span> i <span class="keyword">in</span> line.<span class="title function_">rstrip</span>().<span class="title function_">split</span>()[:<span class="number">3</span>]]</span><br><span class="line">    vib_infor = [<span class="title function_">float</span>(i) <span class="keyword">for</span> i <span class="keyword">in</span> line.<span class="title function_">rstrip</span>().<span class="title function_">split</span>()[<span class="number">3</span>:]] # dx， dy， dz对应的那三列</span><br><span class="line">    vib_dis.<span class="title function_">append</span>(vib_infor)</span><br><span class="line">vib_dis = np.<span class="title function_">array</span>(vib_dis) #将振动部分写到一个array中。</span><br><span class="line"></span><br><span class="line"># 微调结构</span><br><span class="line">new_positions = model_positions + vib_dis * <span class="number">0.4</span> # <span class="number">0.4</span>是微调的校正因子，即虚频对应振动位移的<span class="number">0.4</span>，具体多大自己根据经验调。</span><br><span class="line">model.<span class="property">positions</span> = new_positions</span><br><span class="line"></span><br><span class="line">###保存结构</span><br><span class="line"><span class="title function_">write</span>(<span class="string">&#x27;POSCAR_new&#x27;</span>, model, vasp5=<span class="title class_">True</span>) # POSCAR_new是微调后的结构，用于下一步的计算（别忘了把POSCAR_new改成<span class="variable constant_">POSCAR</span>）。</span><br></pre></td></tr></table></figure>
+
+<h3 id="过渡态虚频"><a href="#过渡态虚频" class="headerlink" title="过渡态虚频"></a>过渡态虚频</h3><p>如果过渡态计算的时候出现好几个虚频，自己直接写个python脚本也能实现。不过使用ASE可以很方便地获取POSCAR中原子数目，保存原子固定的信息。参考如下。</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">#!<span class="regexp">/usr/</span>bin/env python</span><br><span class="line"># -*- <span class="attr">coding</span>: utf-<span class="number">8</span> -*-</span><br><span class="line"><span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">Qiang Li</span></span><br><span class="line"><span class="string">Command: python3 vib_correct.py</span></span><br><span class="line"><span class="string">This is a temporary script file.</span></span><br><span class="line"><span class="string">&quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">#获取虚频开始行</span><br><span class="line">l_position = <span class="number">0</span>  #虚频振动方向部分在<span class="variable constant_">OUTCAR</span>中的起始行数</span><br><span class="line"><span class="keyword">with</span> <span class="title function_">open</span>(<span class="string">&#x27;OUTCAR&#x27;</span>) <span class="keyword">as</span> <span class="attr">f_in</span>:</span><br><span class="line">    lines = f_in.<span class="title function_">readlines</span>()</span><br><span class="line">    wave_num = <span class="number">0.0</span></span><br><span class="line">    <span class="keyword">for</span> num, line <span class="keyword">in</span> <span class="title function_">enumerate</span>(lines):</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;f/i&#x27;</span> <span class="keyword">in</span> <span class="attr">line</span>:</span><br><span class="line">            wave_tem = <span class="title function_">float</span>(line.<span class="title function_">rstrip</span>().<span class="title function_">split</span>()[<span class="number">6</span>])</span><br><span class="line">            <span class="keyword">if</span> wave_tem &gt; <span class="attr">wave_num</span>: #获取最大的虚频</span><br><span class="line">                wave_num = wave_tem</span><br><span class="line">                l_position = num+<span class="number">2</span></span><br><span class="line"># 读<span class="variable constant_">POSCAR</span></span><br><span class="line"><span class="keyword">with</span> <span class="title function_">open</span>(<span class="string">&#x27;POSCAR&#x27;</span>) <span class="keyword">as</span> <span class="attr">f_pos</span>:</span><br><span class="line">    lines_pos = f_pos.<span class="title function_">readlines</span>()</span><br><span class="line"></span><br><span class="line"># 获取虚频对应的<span class="variable constant_">OUTCAR</span>部分    </span><br><span class="line">num_atoms = <span class="title function_">sum</span>([<span class="title function_">int</span>(i) <span class="keyword">for</span> i <span class="keyword">in</span> lines_pos[<span class="number">6</span>].<span class="title function_">rstrip</span>().<span class="title function_">split</span>()])</span><br><span class="line">vib_lines = lines[<span class="attr">l_position</span>:l_position + num_atoms] #振动部分 <span class="number">7222</span>到<span class="number">7248</span>行</span><br><span class="line"></span><br><span class="line">model_positions = []</span><br><span class="line">vib_dis = []</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> <span class="attr">vib_lines</span>:</span><br><span class="line">    position = [<span class="title function_">float</span>(i) <span class="keyword">for</span> i <span class="keyword">in</span> line.<span class="title function_">rstrip</span>().<span class="title function_">split</span>()[:<span class="number">3</span>]]</span><br><span class="line">    vib_infor = [<span class="title function_">float</span>(i) <span class="keyword">for</span> i <span class="keyword">in</span> line.<span class="title function_">rstrip</span>().<span class="title function_">split</span>()[<span class="number">3</span>:]] # dx， dy， dz对应的那三列</span><br><span class="line">    model_positions.<span class="title function_">append</span>(position)</span><br><span class="line">    vib_dis.<span class="title function_">append</span>(vib_infor)</span><br><span class="line"></span><br><span class="line"># 微调结构</span><br><span class="line">model_positions = np.<span class="title function_">array</span>(model_positions)</span><br><span class="line">vib_dis = np.<span class="title function_">array</span>(vib_dis) #将振动部分写到一个array中。</span><br><span class="line">new_positions = model_positions + vib_dis * <span class="number">0.4</span> # <span class="number">0.4</span>是微调的校正因子，即虚频对应振动位移的<span class="number">0.4</span>，具体多大自己根据经验调。</span><br><span class="line"></span><br><span class="line">###保存结构</span><br><span class="line">f_out = <span class="title function_">open</span>(<span class="string">&#x27;POSCAR_new&#x27;</span>,<span class="string">&#x27;w&#x27;</span>)</span><br><span class="line">f_out.<span class="title function_">writelines</span>(lines_pos[:<span class="number">8</span>])</span><br><span class="line">f_out.<span class="title function_">write</span>(<span class="string">&#x27;Cartesian\n&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="attr">new_positions</span>:</span><br><span class="line">    f_out.<span class="title function_">write</span>(<span class="string">&#x27; &#x27;</span>.<span class="title function_">join</span>([<span class="title function_">str</span>(coord) <span class="keyword">for</span> coord <span class="keyword">in</span> i]) + <span class="string">&#x27;  F  F  F\n&#x27;</span>)</span><br><span class="line">f_out.<span class="title function_">close</span>()</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="滑移堆叠能计算"><a href="#滑移堆叠能计算" class="headerlink" title="滑移堆叠能计算"></a>滑移堆叠能计算</h1><h2 id="vaspkit-926"><a href="#vaspkit-926" class="headerlink" title="vaspkit 926"></a>vaspkit 926</h2><h2 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h2><p>该脚本是计算双层的堆叠能，滑移能类似。准备优化好的POSCAR和其他输入文件。<br>stack.sh如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line"># 参数设置</span><br><span class="line">slip_step_x=$(echo &quot;scale=5; 1/12&quot; | bc)  # x方向滑移步长 (1/12) scale=5 设置浮点数精度为 5 位小数</span><br><span class="line">slip_step_y=$(echo &quot;scale=5; 1/12&quot; | bc)  # y方向滑移步长 (1/12)</span><br><span class="line">slip_steps=11                             # 滑移步数（从0到11，共12步）</span><br><span class="line"></span><br><span class="line"># 循环生成滑移结构</span><br><span class="line">for i in $(seq 0 $slip_steps); do</span><br><span class="line">    for j in $(seq 0 $slip_steps); do</span><br><span class="line">        # 格式化文件夹名称（固定宽度，两位数字）</span><br><span class="line">        folder_name=$(printf &quot;slip_%02d_%02d&quot; &quot;$i&quot; &quot;$j&quot;)</span><br><span class="line">        mkdir -p &quot;$folder_name&quot;</span><br><span class="line">        </span><br><span class="line">        # 复制输入文件（排除目录）</span><br><span class="line">        find . -maxdepth 1 -type f -name &quot;[IKPs]*&quot; -exec cp &#123;&#125; &quot;$folder_name/&quot; \;   #这里排除复制文件夹</span><br><span class="line">        cp ./sub.sh &quot;$folder_name/&quot;   # 复制 sub.sh提交任务的脚本</span><br><span class="line">        find . -maxdepth 1 -type f -name &quot;vdw-*&quot; -exec cp &#123;&#125; &quot;$folder_name/&quot; \;  # 这里使用opt86b范德华修正，自行选择</span><br><span class="line">        </span><br><span class="line">        # 计算滑移量</span><br><span class="line">        slip_x=$(echo &quot;scale=5; $i * $slip_step_x&quot; | bc)</span><br><span class="line">        slip_y=$(echo &quot;scale=5; $j * $slip_step_y&quot; | bc)</span><br><span class="line">        </span><br><span class="line">        # 修改POSCAR文件</span><br><span class="line">        awk -v slip_x=&quot;$slip_x&quot; -v slip_y=&quot;$slip_y&quot; &#x27;</span><br><span class="line">        &#123;</span><br><span class="line">            if (NR &gt; 9 &amp;&amp; $3 &gt; 0.5) &#123;</span><br><span class="line">                print $1 + slip_x, $2 + slip_y, $3, $4, $5, $6</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                print $0</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;&#x27; POSCAR &gt; &quot;$folder_name/POSCAR&quot;</span><br><span class="line">    done</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">echo &quot;滑移结构生成完成。&quot;</span><br></pre></td></tr></table></figure>
+
+<p>解释： 由于是六方结构，所有滑移步长1&#x2F;12,可自行更改。if (NR &gt; 9 &amp;&amp; $3 &gt; 0.5)里的0.5在两层之间，大于0.5的移动，小于等于不移动。要固定晶格 ISIF &#x3D; 2，离子要优化，要固定一些原子的xy方向的坐标，防止平面间的滑移，优化z方向。</p>
+<p>批量提交任务：for dir in slip_*&#x2F;; do cd “$dir”；qsub sub.sh； cd .. ；done</p>
+<p>取消所有任务(slurm)：scancel -u $USER</p>
+<p>画图：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">def load_data(filename):</span><br><span class="line">    &quot;&quot;&quot;加载数据文件并返回 numpy 数组&quot;&quot;&quot;</span><br><span class="line">    try:</span><br><span class="line">        data = np.loadtxt(filename)</span><br><span class="line">        return data</span><br><span class="line">    except Exception as e:</span><br><span class="line">        print(f&quot;Error loading file &#123;filename&#125;: &#123;e&#125;&quot;)</span><br><span class="line">        return None</span><br><span class="line"></span><br><span class="line">def reshape_data(x, y, z, shape=(11, 11)):</span><br><span class="line">    &quot;&quot;&quot;将一维数组重塑为二维数组&quot;&quot;&quot;</span><br><span class="line">    x2 = x.reshape(shape)</span><br><span class="line">    y2 = y.reshape(shape)</span><br><span class="line">    z2 = z.reshape(shape)</span><br><span class="line">    return x2, y2, z2</span><br><span class="line"></span><br><span class="line">def calculate_coordinates(x, y):</span><br><span class="line">    &quot;&quot;&quot;计算新的坐标 X 和 Y&quot;&quot;&quot;</span><br><span class="line">    X = x - 0.5 * y</span><br><span class="line">    Y = 0.5 * np.sqrt(3) * y</span><br><span class="line">    return X, Y</span><br><span class="line"></span><br><span class="line">def plot_contour(X, Y, Z, title, filename, levels=100, cmap=&#x27;viridis&#x27;):</span><br><span class="line">    &quot;&quot;&quot;绘制等高线图并保存&quot;&quot;&quot;</span><br><span class="line">    fig, ax = plt.subplots(figsize=(6, 6))</span><br><span class="line">    q = ax.contourf(X, Y, Z, levels=levels, cmap=cmap)</span><br><span class="line">    fig.colorbar(q, label=&#x27;Energy (eV)&#x27;)</span><br><span class="line">    ax.set_xlabel(&#x27;X&#x27;)</span><br><span class="line">    ax.set_ylabel(&#x27;Y&#x27;)</span><br><span class="line">    ax.set_title(title)</span><br><span class="line">    ax.set_aspect(1)</span><br><span class="line">    plt.savefig(filename, dpi=300, bbox_inches=&#x27;tight&#x27;)</span><br><span class="line">    plt.close()</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    # 加载数据</span><br><span class="line">    fm = load_data(&#x27;fm_Energy.dat&#x27;)</span><br><span class="line">    afm = load_data(&#x27;afm_Energy.dat&#x27;)</span><br><span class="line"></span><br><span class="line">    if fm is None or afm is None:</span><br><span class="line">        return</span><br><span class="line"></span><br><span class="line">    # 提取数据</span><br><span class="line">    x = fm[:, 0]</span><br><span class="line">    y = fm[:, 1]</span><br><span class="line">    zf = fm[:, 2]</span><br><span class="line">    za = afm[:, 2]</span><br><span class="line"></span><br><span class="line">    # 重塑数据</span><br><span class="line">    x2, y2, Zf = reshape_data(x, y, zf)</span><br><span class="line">    _, _, Za = reshape_data(x, y, za)</span><br><span class="line"></span><br><span class="line">    # 计算新坐标</span><br><span class="line">    X, Y = calculate_coordinates(x2, y2)</span><br><span class="line"></span><br><span class="line">    # 计算能量差</span><br><span class="line">    Zd = Zf - Za</span><br><span class="line"></span><br><span class="line">    # 绘制图形</span><br><span class="line">    plot_contour(X, Y, Zf, &#x27;Ferromagnetic (FM) Energy&#x27;, &#x27;FM.png&#x27;)</span><br><span class="line">    plot_contour(X, Y, Za, &#x27;Antiferromagnetic (AFM) Energy&#x27;, &#x27;AFM.png&#x27;)</span><br><span class="line">    plot_contour(X, Y, Zd, &#x27;FM - AFM Energy Difference&#x27;, &#x27;FM-AFM.png&#x27;)</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<h1 id="常用命令行"><a href="#常用命令行" class="headerlink" title="常用命令行"></a>常用命令行</h1><p><code>grep &quot;33  81&quot; -A3 FORCE_CONSTANTS | xargs echo -n| awk &#39;&#123;print $1,$2,$3+$7+$11&#125;&#39; &gt;&gt; trace.dat </code></p>
+<p>计算原子间二阶力常数矩阵的迹</p>
+<p><code>grep &#39;F=&#39; OSZICAR|awk &#39;&#123;print $1, &quot;\t&quot;$3,&quot;\t&quot;$9&#125;&#39; &gt;AIMD.dat</code></p>
+<p>提取分子动力学温度能量数值</p>
+<p><code>for i in 01 02 03 04 05;do cd $i &amp;&amp; cp CONTCAR POSCAR &amp;&amp; cd ..;done</code></p>
+<p>CINEB计算重新计算</p>
+<p><code>awk &#39;&#123;print $1,$2,$3+$4+$5,$6+$7+$8+$9+$10,$11&#125;&#39; PDOS &gt; pdos.dat</code></p>
+<p>pdos轨道加和</p>
+<p><code>grep LOOP+ OUTCAR |awk &#39;&#123;sum+=$4&#125; END &#123;print &quot;Average=&quot;,sum/NR&#125;&#39;</code></p>
+<p><code>grep LOOP+ OUTCAR |awk &#39;&#123;sum+=$4&#125; END &#123;print &quot;Sum=&quot;,sum&#125;&#39;</code></p>
+<p><code>grep LOOP+ OUTCAR |wc -l</code></p>
+<p>提取平均离子步时间，总时间，总步数</p>
+<p><code>echo -e &quot;4\n403\n49-96 121-144\n1\n&quot;|vaspkit</code></p>
+<p>vaspkit命令行</p>
+<p><code>for i in *; do mkdir $i &amp;&amp; cp INCAR KPOINTS POSCAR POTCAR sub.sh $i &amp;&amp; sed -i &quot;3s/0.05/$i/g&quot; $i/INCAR ; done</code></p>
+<p>批量修改INCAR</p>
+<p><code>sed -i &#39;5s/\&lt;0\&gt;/0.5/&#39; filename  </code><br>请将 filename 替换为您要修改的文件名。<br>5s&#x2F;&lt;0&gt;&#x2F;0.5&#x2F;：<br>5：指定要修改的行号（第 5 行）。<br>s：表示替换操作。<br>&lt;0&gt;：匹配完整的数字 0，确保只替换单独的 0。<br>0.5：要替换成的新值。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/18-47-23/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Keke Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lightchaser">
+      <meta itemprop="description" content="一个小学生的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Lightchaser">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/05/09/18-47-23/" class="post-title-link" itemprop="url">1.4 过渡态</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-09 18:47:23" itemprop="dateCreated datePublished" datetime="2023-05-09T18:47:23+08:00">2023-05-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-05 10:10:11" itemprop="dateModified" datetime="2024-06-05T10:10:11+08:00">2024-06-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DFT%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">DFT学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <ol>
+<li>插入的image只需要看一下有没有原子互相挨得很近，有的话调一下就行。</li>
+<li>一开始计算先用IOPT&#x3D;7，比IOPT&#x3D;3快一点，然后LCLIMB&#x3D;.FALSE.;算个一二十步之后再换IOPT&#x3D;1或2，LCLIMB&#x3D;.TRUE.</li>
+<li>NEB计算不需要收敛，从经验来看也极少能碰到收敛的情况。主要是找到切线力尽可能等于0的点，然后用dimer算，基本都能找到过渡态。</li>
+<li>nebresult.pl没用过，看结果“forces and energy:”下面的数据的第四列应该就是切线力，正常的计算切线力是由正值变到负值，或者由负值变到正值，然后找接近于0的点。你图里的数据只有正值，因此要么初末态构型有问题，要么你要找的点在0和1两个image之间。<br>不过1号image的切线力已经很接近0了，可以尝试直接做过dimer</li>
+<li>跑个一二十步之后停止计算，‘mv CONTCAR POSCAR’之后修改INCAR再继续算。脚本都是线性插值，因此初始构型一般都很不合理，上来就用IOPT&#x3D;2的话收敛慢，甚至可能出错。跑个几十步等构型相对合理一些之后，再换IOPT&#x3D;2。</li>
+<li>dimer是vasp里面自带的算法，详细用法手册里有。</li>
+</ol>
+<p>计算步骤</p>
+<ol>
+<li>初末态结构优化<br>建立两个文件夹ini(初态的意思),fin(末态)，每个文件夹放入vasp计算必备的四个文件（INCAR，POSCAR，KPOINTS，POTCAR），其中的两个POSCAR对应未优化的初末态。确保两个文件夹里面除POSCAR外，其他文件完全一样。</li>
+</ol>
+<p>对于两个POSCAR，注意每一行的原子一一对应。若有固定位置的原子（比方做表面计算，要固定底部1-2层原子），最好让两个POSCAR里面的固定原子位置完全相同。<br>用dist.pl检查两个优化后结构(两个CONTCAR)的相似程度（每个对应原子的初末态距离的平方和，再开根号）。</p>
+<p>具体命令为： dist.pl ini&#x2F;CONTCAR fin&#x2F;CONTCAR<br>若返回值小于5A，一般可以进行下一步。<br>2. 插点<br>插点的数目取决于前面dist.pl的返回值，一般插点数目可取（dist.pl返回值&#x2F;0.8）。</p>
+<p>具体插点的命令： nebmake.pl ini&#x2F;CONTCAR fin&#x2F;CONTCAR N</p>
+<p>最后的N表示插点数目。插入点的算法为线性插值，详情请进前面给的vtst脚本链接。我这里设置N为3，执行完命令后出现文件夹00，01，02，03，04.五个文件夹里面都有nebmake.pl产生的POSCAR。</p>
+<p>00表示初态，里面放的是ini&#x2F;CONTCAR,04表示末态，放的是fin&#x2F;CONTCAR, 01、02、03是插入的点。</p>
+<p>输出中提示讲初末态对应的OUTCAR复制到对应的文件夹中，以便后续数据分析。<br>检查插入点的合理性：</p>
+<p>输入命令 nebmovie.pl 0</p>
+<p>参数0表示用POSCAR生成xyz文件；还可取1，为用CONTCAR生成。</p>
+<p>可以看到每个文件夹内多了一个后缀名为xyz的文件。将这几个xyz文件合成一个movie.xyz文件即可在VMD中动画演示。我更倾向于使用jmol(或者ovito)来查看xyz文件，不过VMD可能大家更熟悉。</p>
+<p>用nebmovie.pl,没有直接生成movie.xyz是因为从官方主页下载的脚本默认当使用nebmovie.pl后面不带参数或者参数为0的时候(即使用POSCAR产生xyz)，不输出movie.xyz。 你想让脚本自动生成movie.xyz而不是自己去合并各个文件夹里面的xyz文件，需要自行修改nebmovie.pl文件。很简单，把倒数第二个if语句整个用#注释掉或者直接删掉即可。</p>
+<p>也可以直接用VESTA查看01的POSCAR。</p>
+<p>进一步可用命令nebavoid.pl 1,确保中间插入的点每一个原子间距都大于1A。该命令的参数1表示最小允许间距，可取小数。<br>原子间距太小说明结构有问题。要么是因为初末态POSCAR里的原子没有对应好，要么是因为nebmake.pl线性插值的方法不适用于估计反应路径路径。如果是前者，调整好对应原子，也就是CONTCAR里面相应行进行调换；如果是后者，用Materials studio之类的软件调整好结构，再放入对应文件夹。<br>3. 其它文件的准备<br>在当前目录下面放入KPOINTS，POTCAR及INCAR文件。要求KPOINTS和POTCAR与ini、fin文件夹中的一样；INCAR中的基本参数也与初末态计算的INCAR一样，另外再加入NEB计算的相关参数。<br>INCAR再多说两句。优化算法若想使用vtst的，需要如上设置IBRION&#x3D;3,POTIM&#x3D;0,IOPT设置见本文第四个图。若使用vasp自带的优化器，可以使用IBRION&#x3D;1或者3，不要取2；POTIM取合适的值（0.01-0.5范围内去尝试）。</p>
+<p>这样就可以提交NEB任务了。<br>4. 后处理<br>计算过程中，可以用nebef.pl命令（不带参数）查看计算收敛情况。<br>输出中，第二列即为最大受力（force of images in the neb），第三列为相应结构的能量。</p>
+<p>前面INCAR中EDIFFG设置为-0.02（一般结构优化可取-0.02，NEB计算取-0.03），表示当所有结构最大力小于0.02eV&#x2F;A时，结束计算。</p>
+<p>另一个可以用来观察收敛情况的命令是nebbarrier.pl（同样不带参数）。该命令没有输出到屏幕的内容，而是生成neb.dat文件。<br>neb.dat文件第二列表示距离（即临近两结构的dist.pl的计算结果），第三列表示能量（以初态能量为参考值），第四列为力（forces along the neb）。</p>
+<p>EDIFFG参数对应的力是nebef.pl输出中的force of images in the neb.</p>
+<p>计算完成后，使用命令nebresult.pl.</p>
+<p>nebresult.pl做的事情如其所输出表明的，完成了nebbarrier.pl, nebspline.pl, nebef.pl, nebmovie.pl, nebjmovie.pl, nebconverge.pl还有对各文件夹中的OUTCAR打包压缩。生成了很多文件。其中mep.eps是以dist.pl距离为横坐标，能量为纵坐标画出的能势垒图，如下：<br>该文件一般查看图片的软件打不开，推荐使用EPS&#x2F;PS viewer. <a target="_blank" rel="noopener" href="https://epsviewer.org/download.aspx">https://epsviewer.org/download.aspx</a></p>
+<p>生成的spline.dat文件是对上面几个点的拟合曲线数据，已经有了上图，这些数据就意义不大了。</p>
+<p>生成的vaspgr文件夹内是各个插点结构的收敛图（同样可用EPS&#x2F;PS viewer打开），如下vaspout1.eps是01结构收敛信息：</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/18-47-22/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Keke Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lightchaser">
+      <meta itemprop="description" content="一个小学生的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Lightchaser">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/05/09/18-47-22/" class="post-title-link" itemprop="url">1.3 结构优化3</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-09 18:47:22" itemprop="dateCreated datePublished" datetime="2023-05-09T18:47:22+08:00">2023-05-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-09-13 10:05:34" itemprop="dateModified" datetime="2024-09-13T10:05:34+08:00">2024-09-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DFT%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">DFT学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="加压"><a href="#加压" class="headerlink" title="加压"></a>加压</h1><p>可通过施加静水压强、调整晶格常数的方法实现结构压缩</p>
+<p>vi INCAR 增加标签 <code>PSTRESS=50</code><br>（单位为 0.1 GPa）</p>
+<p>其他不变</p>
+<h1 id="加电场"><a href="#加电场" class="headerlink" title="加电场"></a>加电场</h1><p>在vasp中根据自己所需要添加电场的场强更改INCAR中的如下参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LDIPOL=.TRUE.</span><br><span class="line">IDIPOL=1/2/3/4</span><br><span class="line">EFIELD= ？</span><br></pre></td></tr></table></figure>
+<p>对于IDIPOL参数的设置，需注意：对于IDIPOL&#x3D;1-3，偶极矩将分别平行于第一、第二或第三晶格矢量的方向计算。总能量的修正计算为当前超单元中单极子&#x2F;偶极子和四极子与放置在超单元中的同一偶极子之间的能量差，对应的晶格矢量接近无穷大。此标志应用于板计算。对于IDIPOL&#x3D;4，将计算所有方向上的完整偶极矩，并将总能量的修正计算为当前超级单体中的单极&#x2F;偶极&#x2F;四极和放置在真空中的同一单极&#x2F;偶极&#x2F;四极之间的能量差，使用该标志计算孤立分子。</p>
+<p>此外，EFIELD 的设置需要注意单位的换算。eV&#x2F;Å（电子伏特&#x2F;埃）计算完毕之后通过后处理软件分析所关注的性质即可。</p>
+<h1 id="状态方程拟合"><a href="#状态方程拟合" class="headerlink" title="状态方程拟合"></a>状态方程拟合</h1><p>我们需要对结构进行优化才可以获取稳定的晶格参数信息。有两个方法可以实现：</p>
+<p>1 Birch-Murnaghan状态方程拟合,<br>2 VASP计算中通过调节ISIF参数直接优化Bulk。<br>直接优化前面已经介绍，下面我们先讨论一下第一个方法：BM方程拟合。</p>
+<p>参考：大师兄科研网：<a target="_blank" rel="noopener" href="https://www.bigbrosci.com/2018/02/02/ex33/">https://www.bigbrosci.com/2018/02/02/ex33/</a></p>
+<p>科学网耿华运的博文：<a target="_blank" rel="noopener" href="https://blog.sciencenet.cn/blog-3469498-1280203.html">https://blog.sciencenet.cn/blog-3469498-1280203.html</a></p>
+<p>科学网赵志强的博文，关于拟合：<a target="_blank" rel="noopener" href="https://wap.sciencenet.cn/blog-3388193-1152915.html">https://wap.sciencenet.cn/blog-3388193-1152915.html</a></p>
+<p>vaspkit：<a target="_blank" rel="noopener" href="http://vaspkit.cn/index.php/48.html">http://vaspkit.cn/index.php/48.html</a></p>
+<h3 id="大致流程（以大师兄提供脚本为例）"><a href="#大致流程（以大师兄提供脚本为例）" class="headerlink" title="大致流程（以大师兄提供脚本为例）"></a>大致流程（以大师兄提供脚本为例）</h3><ol>
+<li><p>获得一定缩放系数的结构：<code>for i in 0.95 0.96 0.97 0.98 0.99 1.01 1.02 1.03 1.04 1.05; do cp 1.00 $i ; sed -i &quot;2s/1.0/$i/g&quot; $i/POSCAR ; done</code></p>
+</li>
+<li><p>分别进行结构优化:<code>for i in *; do cd $i; 提交任务命令; cd $OLDPWD; done</code></p>
+</li>
+<li><p>提取能量-体积以及能量-压力、压力-体积的数据:<code>for i in *; do echo -e $i &quot;\t&quot; $(grep &#39;  without&#39; $i/OUTCAR | tail -n 1| awk &#39;&#123;print $7&#125;&#39;);  done &gt; data</code></p>
+</li>
+<li><p>拟合能量体积曲线，获得平衡晶胞参数</p>
+</li>
+</ol>
+<ul>
+<li>这个流程可通过批量计算脚本实现，参考上面链接。另外还可以获得能量随压力的变化来模拟相变。</li>
+</ul>
+<h1 id="分数占据"><a href="#分数占据" class="headerlink" title="分数占据"></a>分数占据</h1><p>生成disorder或者掺杂构型的软件汇总：</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/vYar9UcYWAZgazBTgqUGEA">https://mp.weixin.qq.com/s/vYar9UcYWAZgazBTgqUGEA</a><br><a target="_blank" rel="noopener" href="https://github.com/jichunlian/disorder">https://github.com/jichunlian/disorder</a><br>supercell： <a target="_blank" rel="noopener" href="https://orex.github.io/supercell/">https://orex.github.io/supercell/</a><br>ATAT： <a target="_blank" rel="noopener" href="https://www.brown.edu/Departments/Engineering/Labs/avdw/atat/">https://www.brown.edu/Departments/Engineering/Labs/avdw/atat/</a><br>vaspkit：<a target="_blank" rel="noopener" href="https://vaspkit.com/">https://vaspkit.com/</a></p>
+<h2 id="disorder"><a href="#disorder" class="headerlink" title="disorder"></a>disorder</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ unzip disorder-main</span><br><span class="line">$ cd disorder-main</span><br><span class="line">$ make disorder (Only disorder is compilied)</span><br><span class="line">$ make supercell (Only supercell is compilied)</span><br><span class="line">$ make or make all (Both disorder and supercell are compilied)</span><br><span class="line">$ make clean (rm *.o *.mod disorder supercell)</span><br><span class="line">export PATH=$PATH:disorder_installation_path/disorder-main/bin</span><br><span class="line">(Add this to the ~/.bashrc file as you wish)</span><br></pre></td></tr></table></figure>
+<p>Note: The default compiler is ifort, and you can modify the Makefile<br>in the src directory to use another compiler (e.g. gfortran).</p>
+<p>需要准备两个文件SPOSCAR和INDSOD,以examples的1和2为例：</p>
+<h3 id="例子1：SnxPb1-xTe"><a href="#例子1：SnxPb1-xTe" class="headerlink" title="例子1：SnxPb1-xTe"></a>例子1：SnxPb1-xTe</h3><ol>
+<li>扩建超胞，保证整除<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Te Pb</span><br><span class="line">   1.0</span><br><span class="line">    13.1323995589999996    0.0000000000000000    0.0000000000000000</span><br><span class="line">     0.0000000000000000   13.1323995589999996    0.0000000000000000</span><br><span class="line">     0.0000000000000000    0.0000000000000000   13.1323995589999996</span><br><span class="line">  Te   Pb</span><br><span class="line">  32   32</span><br><span class="line">Direct</span><br><span class="line">* * *</span><br></pre></td></tr></table></figure></li>
+<li>准备INDSOD文件<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&amp;input</span><br><span class="line">  nsub = 2</span><br><span class="line">  subs = 16,16</span><br><span class="line">  symb = &#x27;Sn&#x27;,&#x27;Pb&#x27; ! The quotes is unnecessary for the ifort compiler</span><br><span class="line">  site = 2</span><br><span class="line">  prec = 1D-5</span><br><span class="line">! lpro = .true.</span><br><span class="line">! lpos = .true.</span><br><span class="line">! leqa = .true.</span><br><span class="line">! lspg = .true.</span><br><span class="line">  lcfg = .false.</span><br><span class="line">/</span><br></pre></td></tr></table></figure>
+官方解释：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">nsub-tag:nsub = 2 ~ 5; Default: nsub = 2.该位置取代原子种类。本例中是2种。</span><br><span class="line">subs-tag：subs = integer, integer, …; Default: None。对 应的原子数目。总和加起来应该等于该位点在SPOSCAR中的数目。</span><br><span class="line">symb-tag：symb = character, character, …; Default: None。元素化学符号。空位用Kw,即汉语kong wei。本例是Sn Pb单引号。</span><br><span class="line">site-tag：site = integer; Default: 1。所取代的位置在SPOSCAR中的位置。本例是第2.</span><br><span class="line">prec-tag：prec = real; Default: 1D-5。当软件产生空间群与其他软件识别不一致时调整该参数，一般不用修改。</span><br><span class="line">lpro-tag：lpro = logical; Default: .false.是否消除重复参数。对于大体系可以打开。</span><br><span class="line">lpos、leqa、lspg、lcfg：分别控制输出文件POSCAR-X、EQAMAT、SPGMAT、CFGMAT。</span><br></pre></td></tr></table></figure></li>
+<li>运行disorder。输入disorder即可。</li>
+<li>输出文件：</li>
+</ol>
+<h1 id="ATAT软件"><a href="#ATAT软件" class="headerlink" title="ATAT软件"></a>ATAT软件</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
+<li>什么是ATAT？</li>
+</ul>
+<p>其全称为 Alloy Theoretic Automated Toolkit (ATAT)<br>引用官网的一句话，ATAT is a generic name that refers to a collection of alloy theory tools developped by Axel van de Walle, in collaboration with various research groups and with various sources of financial support.</p>
+<ul>
+<li>如何安装ATAT：</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="http://brown.edu/Departments/Engineering/Labs/avdw//atat/atat3_36.tar.gz%E4%B8%8B%E8%BD%BDATAT%E6%BA%90%E7%A0%81%EF%BC%8C%E8%A7%A3%E5%8E%8B%E5%90%8E%EF%BC%8Cmake">http://brown.edu/Departments/Engineering/Labs/avdw//atat/atat3_36.tar.gz下载ATAT源码，解压后，make</a> all开始编译；之后make install进行程序和脚本定向安装；之后在home中打开.&#x2F;bashrc添加ATAT安装路径于环境变量当中（添加 export PATH&#x3D;$PATH:&#x2F;xxxx），并source .&#x2F;bashrc即可。</p>
+<p>进入安装包的glue目录，里面有与各种dft软件的算例的接口设置。例如进入vasp可以看到它的接口设置脚本ezvasp，由于make install已经将它拷贝到了安装目录中，所以在bin中打开ezvasp，并设置相关可执行程序，包括赝势文件的名称和路径即可。</p>
+<p>配置~&#x2F;.ezvasp.rc</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/csh</span><br><span class="line">set VASPCMD=&quot;/path/vasp_std# 设置vasp可执行程序</span><br><span class="line">set POTLDA/PBE=&quot;/path/to/pot_lad&quot; # 设置为赝势实际的路径</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>ATAT能做啥？</li>
+</ul>
+<p>ATAT 是Walle及其合作者开发的一个利用第一性原理结合MonteCarlo模拟计算相图及热力学性能的软件包。该软件包首先采用团簇展开(cluster expansion)，用第一原理方法计算一系列构型的形成能，然后用这些能量作为Monte Carlo模拟的哈密顿量，计算材料的热力学性能和高熵合金的mcsqs建模。</p>
+<h2 id="MAPs"><a href="#MAPs" class="headerlink" title="MAPs"></a>MAPs</h2><p>软件运行</p>
+<p>一）运行MAPS：</p>
+<ol>
+<li>准备lat.in文件</li>
+</ol>
+<p>2）maps -d &amp; #maps命令运行，等待后面的指令</p>
+<p>3）touch ready </p>
+<p>#等待十几秒钟，出现“0”文件夹，是合金中比例为0的纯相结构。</p>
+<p>4）此时需要利用第一性原理软件计算该结构的能量 </p>
+<p>#（参见下部分和VASP软件的交互,可无需手动输入），现在手动输入能量，理解一下计算过程，假设该结构的能量已经知道，在0这个文件夹下，echo 1.1 &gt; energy, 并删除wait。继续touch ready，就会生成1这个文件夹，里面是比例为1的另一个纯相结构，echo 2.2 &gt; energy, 删除wait。touch ready，生成2这个文件夹，一直这样循环下去，直至达到相应的精度，最终停止输入touch stop。</p>
+<p>二）运行MAPS与VASP交互：</p>
+<p>1）需要lat.in，vasp.wrap文件 （ #vasp的INCAR参数）</p>
+<p>2）其余与上面运行MAPS步骤相同，直到第4步骤计算能量，进入该文件夹，运行runstruct_vasp。</p>
+<p>大概率会报错，原因有几个：</p>
+<p>a. 常见为~&#x2F;.ezvasp.rc文件配置问题，赝势位置，vasp运行路径出错。</p>
+<p><strong>可以看运行命令后，是否有POTCAR文件产生，如果没有，基本就是赝势位置问题，如果POTCAR文件正常，就是vasp没有运行。</strong></p>
+<p>b. vasp不运行，在集群上面运行的软件，ATAT软件给了集群上面的运行办法, pollmach命令，将runstruct_vasp命令写在脚本里是可以的。</p>
+<p>最终正确版本运行步骤：</p>
+<p>1）准备lat.in，vasp.wrap文件，脚本文件。</p>
+<p>lat.in文件</p>
+<p>vasp.wrap文件</p>
+<p>sub.sh文件</p>
+<p>2）提交脚本文件即可</p>
+<p>说明：</p>
+<ul>
+<li>缺少<code>.machines.rc</code>文件的提示可忽略，该文件用于跨节点的并行</li>
+<li><code>maps</code>不断产生结构和构建团簇展开模型，<code>-d</code>表示使用默认参数，直接输入<code>maps</code>可查看可用参数</li>
+<li><code>runstruct_vasp</code>调用<code>vasp</code>计算所产生的结构的能量，每个目录包含一个结构及其计算结果，每个目录下的<code>energy</code>文件即从vasp的计算中读取的能量</li>
+<li><code>maps.log</code>中记载了现有的团簇展开模型的状态，包括对基态构型的预测和LOOCV等</li>
+</ul>
+<p>什么时候停止计算：</p>
+<ul>
+<li>团簇展开模型能够成功预测基态 (查看maps.log)</li>
+<li>LOOCV足够小 (&lt;0.025 eV suggested by ATAT manual) </li>
+<li>有效团簇相互作用随着团簇距离的增大而衰减</li>
+</ul>
+<p>以上的三个判据并不是绝对的，判断一个团簇展开模型是合理的还可以有其它方式。</p>
+<p>停止计算：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ touch stop</span><br><span class="line">$ touch stoppoll</span><br></pre></td></tr></table></figure>
+
+<p>重启计算: 与正常开始一个计算相同，如果之前的计算不是正常结束则需要删除一些文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rm maps_is_running pollmach_is_running ready</span><br><span class="line">maps -d &amp;</span><br><span class="line">pollmach runstruct_vasp</span><br></pre></td></tr></table></figure>
+
+<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><ul>
+<li><p><code>corrdump -2= -3= -4=</code> 产生团簇</p>
+</li>
+<li><p><code>getclus</code> 查看团簇</p>
+<ul>
+<li>第一列为团簇的阶数，第二列为团簇直径，第三列为团簇的多重度</li>
+<li><code>clusters.out</code>中有团簇格点位置的详细信息</li>
+</ul>
+</li>
+<li><p><code>clusterexpand -e -cv energy</code> 得到团簇展开系数</p>
+<ul>
+<li>此时产生的ECI文件为<code>energy.eci</code>，而<code>maps</code>产生的ECI为<code>eci.out</code>，后者是形成能的团簇展开结果，前者是直接对vasp能量(即<code>energy</code>文件)的团簇展开</li>
+<li>如果需要对其它性质做团簇展开，例如带隙，则可以在每个结构的目录下创建一个<code>bandgap</code>文件,其内容即为带隙的大小，然后运行<code>clusterexpand -e -cv -pa bandgap</code>以得到带隙团簇展开的系数<code>bandgap.eci</code>，其中<code>-pa</code>表示所展开的量已经是一个平均的量</li>
+</ul>
+</li>
+</ul>
+<h4 id="检查计算结果"><a href="#检查计算结果" class="headerlink" title="检查计算结果"></a>检查计算结果</h4><ul>
+<li>VASP是否正常结束<ul>
+<li>ATAT会自动检查一些错误(<code>checkerr_vasp</code>)</li>
+<li>但如果结构优化的离子步数不够大，不会有提示，因此建议在<code>vasp.wrap</code>中将<code>NSW</code>设置大一些</li>
+</ul>
+</li>
+<li>晶胞的应变是否很大<ul>
+<li><code>checkrelax</code> (&lt;0.1 suggested by ATAT）</li>
+</ul>
+</li>
+</ul>
+<h4 id="结果可视化"><a href="#结果可视化" class="headerlink" title="结果可视化"></a>结果可视化</h4><ul>
+<li><code>mapsrep</code> 会调用<code>gnuplot</code>作图并产生相应的脚本<code>mapsrep.gnu</code></li>
+</ul>
+<h4 id="输出文件"><a href="#输出文件" class="headerlink" title="输出文件"></a>输出文件</h4><ol>
+<li><p>maps.log：开始可能的warnings:<br>’Not enough known energies to fit CE’<br>’True ground states not &#x3D; fitted ground states’<br>’New ground states predicted, see predstr.out’<br>随着结构增多:<br>’Among structures of known energy, true and predicted ground states agree.’<br>’No other ground states of xx atoms&#x2F;unit cell or less exist.’<br>最后一行有crossvalidation score (in eV&#x2F;atom)，该值要小于0.025。精确小于0.001.</p>
+</li>
+<li><p>fit.out:拟合的结构，一个结构一行，共6列，分别代表concentration、 energy 、fitted_energy (energy-fitted_energy)、 weight 、index</p>
+</li>
+<li><p>predstr.out：预测的能量，一个结构一行，共5列，分别代表concentration、 energy 、predicted_energy、index、status.其中status包括status is either<br>b for busy (being calculated),<br>e for error,<br>u for unknown (not yet calculated) or<br>g if that structure is predicted to be a ground state (g can be combined with the above).</p>
+</li>
+<li><p>gs.out：基态能量，一个结构一行，四列，分别是concentration、 energy、 fitted_energy、 index</p>
+</li>
+<li><p>gs_str.out：基态的结构，格式和str.out一样。每一个结构后面会有end和一个空行隔开。</p>
+</li>
+<li><p>eci.out：eci值对应的cluster在clusters.out文件。</p>
+</li>
+<li><p>clusters.out：对于每一个团簇，第一行是多重度 multiplicity，第二行是团簇维度cluster diameter，第三行是团簇的格点数，下一行是格点对应的坐标。最后空行隔开每一个团簇。</p>
+</li>
+<li><p>str.out：在每个数字文件夹下面，和晶格输入文件相似，不同是坐标写成3*3矩阵，一个位置只写一个原子。</p>
+</li>
+<li><p>ref_energy.out：用于计算形成能的参考能量。</p>
+</li>
+</ol>
+<h4 id="后处理"><a href="#后处理" class="headerlink" title="后处理"></a>后处理</h4><p>一系列用于分析ATAT计算结果的python脚本，GitHub地址为：<a target="_blank" rel="noopener" href="https://github.com/xu-xi/clusterexpansion%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87">https://github.com/xu-xi/clusterexpansion可以通过</a> git clone 下载到本地服务器。用“-h”命令可以查看每个脚本的帮助文档。最常用的几个脚本是：</p>
+<p>1）cv_scan.py，测试CE模型对团簇截断半径的收敛性。</p>
+<p>2）lc.py，测试CE模型对训练集大小的收敛性。通常~80个构型就可以得到比较精确的团簇展开模型。</p>
+<p>3）ce_plot.py，这个脚本绘制的是拟合能量-计算能量分布图，默认-p&#x3D;energy（调用的是每个数字目录下的energy文件）。energy文件是ATAT完成一个构型的DFT (relax+static) 计算后自动生成的能量文件。在实际应用中，拟合能量-计算能量分布图需要的往往不是energy而是formation energy，所以就需要编写脚本手动在每一个数字目录下生成一个形成能文件formation_energy，该值需要将目标目录下energy的值与0文件夹的energy和1文件夹的energy作线性变换得到，再写入到每一个数字目录中，读者可自行尝试。下面的脚本仅供参考，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line">import os,subprocess,numpy,argparse,sys,subprocess,math</span><br><span class="line">energy_0 = float(subprocess.check_output(&#x27;cat ./0/energy&#x27;, shell = True))</span><br><span class="line">energy_1 = float(subprocess.check_output(&#x27;cat ./1/energy&#x27;, shell = True))</span><br><span class="line">for item in os.listdir(os.getcwd()):</span><br><span class="line">    fullpath = os.path.join(os.getcwd(),item)</span><br><span class="line">    if os.path.isdir(fullpath):</span><br><span class="line">        os.chdir(fullpath)</span><br><span class="line">        if not os.path.isfile(&#x27;error&#x27;):</span><br><span class="line">            sc_atom_number = len(file(&#x27;str.out&#x27;).readlines())-6</span><br><span class="line">            # print sc_atom_number</span><br><span class="line">            energy = float(subprocess.check_output(&#x27;cat energy&#x27;, shell = True))</span><br><span class="line">            energy /= sc_atom_number</span><br><span class="line">            #energy *= 5 normalize to unit cell,5 atoms in CsPbI3</span><br><span class="line">            sc_x = float(subprocess.check_output(&#x27;corrdump -pc -l=../lat.in&#x27;,shell=True).strip().split()[0])</span><br><span class="line">            formation_energy = energy - (1 - sc_x) * energy_0 - sc_x * energy_1</span><br><span class="line">            # print formation_energy</span><br><span class="line">            with open(&#x27;formation energy&#x27;,&#x27;w&#x27;) as f:</span><br><span class="line">                f.write(&#x27;%.7f\n&#x27; % formation_energy)</span><br><span class="line">        os.chdir(&#x27;../&#x27;)</span><br></pre></td></tr></table></figure>
+<p>注：这里如果报错：NameError: name ‘file’ is not defined. Did you mean: ‘filter’?将file改成open</p>
+<p>得到formation_energy文件后，执行命令ce_plot.py -p&#x3D;formation_energy -s&#x3D;”formation energy”，还可以用Origin手动绘制出形成能-掺杂浓度分布图；在得到了比较精确的CE模型后，可以进行蒙特卡罗模拟，得到团簇关联函数、系综平均能量和方差随温度变化示意图。</p>
+<h4 id="热力学计算"><a href="#热力学计算" class="headerlink" title="热力学计算"></a>热力学计算</h4><p>必要的输入文件：</p>
+<ul>
+<li><code>lat.in</code></li>
+<li><code>clusters.out</code></li>
+<li><code>eci.out</code></li>
+<li><code>gs_str.out</code></li>
+</ul>
+<h5 id="emc2使用示例"><a href="#emc2使用示例" class="headerlink" title="emc2使用示例"></a><code>emc2</code>使用示例</h5><p>蒙特卡洛模拟</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">emc2 -T0=300 -T1=3000 -dT=100 -cm -x=0 -keV -gs=-1 -er=30 -aq=0 -dx=1e-5 -sigdig=12</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>-cm</code>表示正则系综</li>
+<li><code>-x</code>其实是点团簇函数，若c表示格点的占据浓度，则x&#x3D;2c-1</li>
+<li><code>-sigdig=12</code>是为了表示有足够的位数输出能量的方差以判断相变</li>
+<li><code>-aq</code>和<code>-dx</code>是自动确定MC平衡步数和取样步数的算法，其原理可参考文献<a href="#ref_1">Ref.1</a>，也可以用<code>-eq</code>和<code>-n</code>来直接指定步数，需要做收敛性测试</li>
+<li>主要输出文件为<code>mc.out</code>，输入<code>emc2 -h</code>可查看每一列所表示的内容</li>
+<li>输出文件<code>mcsnapshot.out</code>为最后一个模拟温度下的MC快照。如果想得到某个温度下的snapshot，可以只设置T0而不设置T1和dT。  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cp</span> mcsnapshot.out str.out</span><br><span class="line">$ runstruct_vasp -nr </span><br><span class="line">$ vesta POSCAR</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="相图计算"><a href="#相图计算" class="headerlink" title="相图计算"></a>相图计算</h4><p>基本原理可参考文献<a href="#ref_1">Ref.1</a>，Martin Baker的<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1907.10151">笔记</a>提供了更多的例子和细节</p>
+<p>例子：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">phb -dT=10 -ltep=1e-3 -er=30 -gs1=0 -gs2=1 -o=phb.out -keV -dx=1e-5</span><br></pre></td></tr></table></figure>
+
+<h4 id="构建SQS-x2F-SQoS"><a href="#构建SQS-x2F-SQoS" class="headerlink" title="构建SQS&#x2F;SQoS"></a>构建SQS&#x2F;SQoS</h4><p>SQS&#x2F;SQoS是对无序体系的代表性结构，其中SQS假定原子完全随机的占据，而SQoS是SQS的扩展，可以考虑一定的短程有序性，其基本原理可参考相关文献<a href="#ref_2">Ref.2</a></p>
+<p>必要文件：</p>
+<ul>
+<li>rndstr.in</li>
+<li>clusters.out</li>
+</ul>
+<p><code>rndstr.in</code>的一个例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">4.1000 0.000000 0.000000</span><br><span class="line">0.000000 4.1000 0.000000</span><br><span class="line">0.000000 0.000000 4.1000</span><br><span class="line">1.000000 0.000000 0.000000</span><br><span class="line">0.000000 1.000000 0.000000</span><br><span class="line">0.000000 0.000000 1.000000</span><br><span class="line">0.000000 0.500000 0.500000 O=0.6667,N=0.3333</span><br><span class="line">0.500000 0.000000 0.500000 O=0.6667,N=0.3333</span><br><span class="line">0.500000 0.500000 0.000000 O=0.6667,N=0.3333</span><br><span class="line">0.000000 0.000000 0.000000 Ba</span><br><span class="line">0.500000 0.500000 0.500000 Ta</span><br></pre></td></tr></table></figure>
+
+<p>产生团簇文件<code>clusters.out</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">corrdump -l=rndstr.in -clus -noe -nop -2= -3= -4=</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li><code>-noe</code>和<code>-nop</code>表示忽略空团簇和点团簇</li>
+<li>用<code>getclus</code>查看所产生的团簇。如果团簇数目过少，则后续产生SQS有可能很容易完全匹配团簇函数，导致SQS实际上不够随机；而如果团簇过多，则有可能导致近邻的团簇匹配得不够好，而通常近邻的团簇是更为重要的，可以通过<code>-wd</code>加上权重以避免这种情况</li>
+</ul>
+<p>运行<code>mcsqs -n= &amp;</code><br>说明：</p>
+<ul>
+<li><code>-n</code>设定SQS晶胞的原子数</li>
+<li>可通过<code>-tcf</code>设定目标团簇函数（可从<code>mc.out</code>中提取），即SQoS方法</li>
+<li><code>mcsqs</code>不会自动停下来，可用<code>touch stopsqs</code>停止</li>
+<li>输出文件<code>mcsqs.log</code>中有对团簇函数匹配的优化记录</li>
+<li>输出文件<code>bestsqs.out</code>为目前找到的最佳的SQS，可将其复制为<code>str.out</code>，然后运行<code>runstruct_vasp -nr</code>生成vasp的输入文件用于后续计算</li>
+</ul>
+<h2 id="MCSQS"><a href="#MCSQS" class="headerlink" title="MCSQS"></a>MCSQS</h2><p>一、原理</p>
+<p>无序态的关联函数已知，因此只需要备选态的关联函数和无序态关联函数差别最小就可以，即让下方公式中的目标函数最小。</p>
+<p>二、运行步骤</p>
+<p>step1. 准备rndstr.in文件</p>
+<p>1 1 1 90 90 90</p>
+<p>1 0 0 </p>
+<p>0 1 0</p>
+<p>0 0 1</p>
+<p>.0 .0 .0 Cr</p>
+<p>.0 .5 .5 Ni&#x3D;0.333333,Fe&#x3D;.333333, Co&#x3D;.333334</p>
+<p>.5 .0 .5 Ni&#x3D;0.333333,Fe&#x3D;.333333, Co&#x3D;.333334</p>
+<p>.5 .5 .0 Ni&#x3D;0.333333,Fe&#x3D;.333333, Co&#x3D;.333334</p>
+<p>#第一行也可以改成3*3矩阵，类似于POSCAR中晶格常数格式。这里一般不用实际的晶格常数，用1替代。</p>
+<p>用1对后面的参数设置更容易。</p>
+<p>step2. 运行命令<br>corrdump -l&#x3D;rndstr.in -ro -noe -nop -clus -2&#x3D;1.1<br>该命令通过读取rndstr.in文件中的结构，进而计算结构的对称性和团簇等信息，输出clusters.out文件。</p>
+<p>#需要注意的是‘-2’这个参数，是用于计算关联函数的截断距离。如对于FCC构型而言，晶格常数为1，第一最近距离为2^0.5&#x2F;2&#x3D;0.71，第二距离为1，第三距离为1.5^0.5&#x3D;1.2。所以这里设置阶段距离在1和1.2之间。一般考虑‘-2’参数即可。（注：更高的-2，-3参数会产生更无序的结构，但是需要更长的时间，一般晶格常数为1，这里选取1.1就可以）</p>
+<p>step3. 运行命令 mcsqs -n XX<br>该命令主要输出sqscell.out文件。XX表示体系的原子个数，该数值一定是上述结构原子的倍数，否则会出错。</p>
+<p>#比如上述构型，自身CrNi有4个原子，其中Ni元素与Fe,Co构成合金，因此XX至少为12个原子。该步骤运行一下，就可以进行停止。输出文件需要关注sqscell.out文件，该文件给出了XX个原子扩胞后形成的不同晶格构型。可通过挑选，删除一些不太可能的结构，比如x,y,z三个方向长度差别过大，形成的角度较小等对VASP或后续计算不友好的结构。之后用新的sqscell.out文件运行第四步骤。</p>
+<p>step4. 运行命令mcsqs -rc<br>输出bestsqs.out文件和bestcorr.out文件。其中bestsqs.out就是无序结构。</p>
+<p>#通常而言没有最完美的无序结构，这个命令会一直运行下去，可以肯定的是，再一次生成的结构比上一次生成的结构要优异，所以什么时候停止取决于自身研究的精度。</p>
+<h1 id="层间结合能、结合力"><a href="#层间结合能、结合力" class="headerlink" title="层间结合能、结合力"></a>层间结合能、结合力</h1><p>贴一篇文章：<a target="_blank" rel="noopener" href="https://news.sciencenet.cn/htmlpaper/2022/4/202242914585844872440.shtm">https://news.sciencenet.cn/htmlpaper/2022/4/202242914585844872440.shtm</a></p>
+<h3 id="Graphite-interlayer-distance"><a href="#Graphite-interlayer-distance" class="headerlink" title="Graphite interlayer distance"></a>Graphite interlayer distance</h3><p>vasp上的教程：</p>
+<p>准备graphite结构，</p>
+<p>INCAR：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">IVDW = 20           </span><br><span class="line">LVDW_EWALD =.TRUE. </span><br><span class="line">NSW = 1 </span><br><span class="line">IBRION = 2</span><br><span class="line">ISIF = 4</span><br><span class="line">PREC = Accurate</span><br><span class="line">EDIFFG = 1e-5</span><br><span class="line">LWAVE = .FALSE.</span><br><span class="line">LCHARG = .FALSE.</span><br><span class="line">ISMEAR = -5</span><br><span class="line">SIGMA = 0.01</span><br><span class="line">EDIFF = 1e-6</span><br><span class="line">ALGO = Fast</span><br><span class="line">NPAR = 2</span><br></pre></td></tr></table></figure>
+<p>提交脚本：<br>To run this example, execute the run.sh bash-script:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">#</span><br><span class="line"># To run VASP this script calls $vasp_std</span><br><span class="line"># (or posibly $vasp_gam and/or $vasp_ncl).</span><br><span class="line"># These variables can be defined by sourcing vaspcmd</span><br><span class="line">. vaspcmd 2&gt; /dev/null</span><br><span class="line"></span><br><span class="line">#</span><br><span class="line"># When vaspcmd is not available and $vasp_std,</span><br><span class="line"># $vasp_gam, and/or $vasp_ncl are not set as environment</span><br><span class="line"># variables, you can specify them here</span><br><span class="line">[ -z &quot;`echo $vasp_std`&quot; ] &amp;&amp; vasp_std=&quot;mpirun -np 8 /path-to-your-vasp/vasp_std&quot;</span><br><span class="line">[ -z &quot;`echo $vasp_gam`&quot; ] &amp;&amp; vasp_gam=&quot;mpirun -np 8 /path-to-your-vasp/vasp_gam&quot;</span><br><span class="line">[ -z &quot;`echo $vasp_ncl`&quot; ] &amp;&amp; vasp_ncl=&quot;mpirun -np 8 /path-to-your-vasp/vasp_ncl&quot;</span><br><span class="line"></span><br><span class="line">#</span><br><span class="line"># The real work starts here</span><br><span class="line">#</span><br><span class="line"></span><br><span class="line">rm results.dat</span><br><span class="line"></span><br><span class="line">for d in 6.5 6.6 6.65 6.7 6.75 6.8 6.9 7.0</span><br><span class="line">do</span><br><span class="line">  cat&gt;POSCAR&lt;&lt;!</span><br><span class="line">graphite</span><br><span class="line">1.0</span><br><span class="line">1.22800000 -2.12695839  0.00000000</span><br><span class="line">1.22800000  2.12695839  0.00000000</span><br><span class="line">0.00000000  0.00000000  $d</span><br><span class="line">4</span><br><span class="line">direct</span><br><span class="line">   0.00000000  0.00000000  0.25000000</span><br><span class="line">   0.00000000  0.00000000  0.75000000</span><br><span class="line">   0.33333333  0.66666667  0.25000000</span><br><span class="line">   0.66666667  0.33333333  0.75000000</span><br><span class="line">!</span><br><span class="line">  $vasp_std</span><br><span class="line">  cp OUTCAR OUTCAR.$d</span><br><span class="line">  energy=$(grep &quot;free  ene&quot; OUTCAR.$d|awk &#x27;&#123;print $5&#125;&#x27;)</span><br><span class="line">  echo $d $energy &gt;&gt; results.dat </span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<p>The optimal length of the lattice vector c normal to the stacking direction is determined in a series of single point calculations with varied value of c (all other degrees of freedom are fixed at their experimental values).</p>
+<p>The computed c vs. energy dependence is written in the file results.dat and can be visualized e.g. using xmgrace. The optimal value can be obtained using the attached utility (python with numpy or Numeric is needed):</p>
+<p><code>./utilities/fit.py results.dat</code><br>This should yield:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">200 iterations performed</span><br><span class="line">Ch-square: 4.30305519481e-09</span><br><span class="line">---------</span><br><span class="line"></span><br><span class="line">       E0(eV):         -37.433456779</span><br><span class="line">       d0(A):  6.65603352689</span><br><span class="line">The computed value of 6.66 Å agrees well with experiment (6.71 Å).</span><br></pre></td></tr></table></figure>
+
+<h3 id="Graphite-MBD-binding-energy"><a href="#Graphite-MBD-binding-energy" class="headerlink" title="Graphite MBD binding energy"></a>Graphite MBD binding energy</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">IVDW = 202           </span><br><span class="line">LVDWEXPANSION =.TRUE. </span><br><span class="line">NSW = 1 </span><br><span class="line">IBRION = 2</span><br><span class="line">ISIF = 4</span><br><span class="line">PREC = Accurate</span><br><span class="line">EDIFFG = 1e-5</span><br><span class="line">LWAVE = .FALSE.</span><br><span class="line">LCHARG = .FALSE.</span><br><span class="line">ISMEAR = -5</span><br><span class="line">SIGMA = 0.01</span><br><span class="line">EDIFF = 1e-6</span><br><span class="line">ALGO = Fast</span><br><span class="line">NPAR = 2</span><br></pre></td></tr></table></figure>
+<p>KPOINTS</p>
+<p>Graphite:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Monkhorst Pack</span><br><span class="line">0</span><br><span class="line">gamma</span><br><span class="line">16 16 8</span><br><span class="line">0 0 0</span><br></pre></td></tr></table></figure>
+<p>Graphene:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Monkhorst Pack</span><br><span class="line">0</span><br><span class="line">gamma</span><br><span class="line">16 16 1</span><br><span class="line">0 0 0</span><br></pre></td></tr></table></figure>
+<p>Running this example<br>To run this example, execute the run.sh bash-script:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">#</span><br><span class="line"># To run VASP this script calls $vasp_std</span><br><span class="line"># (or posibly $vasp_gam and/or $vasp_ncl).</span><br><span class="line"># These variables can be defined by sourcing vaspcmd</span><br><span class="line">. vaspcmd 2&gt; /dev/null</span><br><span class="line"></span><br><span class="line">#</span><br><span class="line"># When vaspcmd is not available and $vasp_std,</span><br><span class="line"># $vasp_gam, and/or $vasp_ncl are not set as environment</span><br><span class="line"># variables, you can specify them here</span><br><span class="line">[ -z &quot;`echo $vasp_std`&quot; ] &amp;&amp; vasp_std=&quot;mpirun -np 8 /path-to-your-vasp/vasp_std&quot;</span><br><span class="line">[ -z &quot;`echo $vasp_gam`&quot; ] &amp;&amp; vasp_gam=&quot;mpirun -np 8 /path-to-your-vasp/vasp_gam&quot;</span><br><span class="line">[ -z &quot;`echo $vasp_ncl`&quot; ] &amp;&amp; vasp_ncl=&quot;mpirun -np 8 /path-to-your-vasp/vasp_ncl&quot;</span><br><span class="line"></span><br><span class="line">#</span><br><span class="line"># The real work starts here</span><br><span class="line">#</span><br><span class="line"></span><br><span class="line"># Here the work starts</span><br><span class="line">rm results.dat</span><br><span class="line"></span><br><span class="line">drct=$(pwd)</span><br><span class="line"></span><br><span class="line">for i in graphene graphite</span><br><span class="line">do</span><br><span class="line">  cd $drct/$i</span><br><span class="line">  $vasp_std</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">cd $drct</span><br><span class="line"></span><br><span class="line"># obtain total energy for graphite </span><br><span class="line">en2=$(grep &quot;free  ene&quot; graphite/OUTCAR |tail -1|awk &#x27;&#123;print $5&#125;&#x27;) </span><br><span class="line"></span><br><span class="line"># obtain total energy for graphene</span><br><span class="line">en1=$(grep &quot;free  ene&quot; graphene/OUTCAR |tail -1|awk &#x27;&#123;print $5&#125;&#x27;)</span><br><span class="line"></span><br><span class="line"># compute interlayer binding energy (eV/atom)</span><br><span class="line">deltaE=$(echo print $en2/4 - $en1/2 |python)</span><br><span class="line"></span><br><span class="line">echo &quot;Binding energy (eV/atom): &quot; $deltaE &gt;results.dat</span><br></pre></td></tr></table></figure>
+
+<p>Note that the calculation is performed in two steps (two separate single-point calculations) in which the energy for bulk graphite and for graphene are obtained. The binding energy is computed automatically and it is written in the file results.dat. (N.B.: for the latter python needs to be available.)</p>
+<p>The computed value of 0.050 eV&#x2F;A is now fairly close to the RPA reference of 0.048 eV&#x2F;atom [1].</p>
+<h3 id="Graphite-TS-binding-energy"><a href="#Graphite-TS-binding-energy" class="headerlink" title="Graphite TS binding energy"></a>Graphite TS binding energy</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">IVDW = 20            </span><br><span class="line">LVDW_EWALD =.TRUE. </span><br><span class="line">NSW = 1 </span><br><span class="line">IBRION = 2</span><br><span class="line">ISIF = 4</span><br><span class="line">PREC = Accurate</span><br><span class="line">EDIFFG = 1e-5</span><br><span class="line">LWAVE = .FALSE.</span><br><span class="line">LCHARG = .FALSE.</span><br><span class="line">ISMEAR = -5</span><br><span class="line">SIGMA = 0.01</span><br><span class="line">EDIFF = 1e-6</span><br><span class="line">ALGO = Fast</span><br><span class="line">NPAR = 2</span><br></pre></td></tr></table></figure>
+<p>To run this example, execute the run.sh bash-script:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">#</span><br><span class="line"># To run VASP this script calls $vasp_std</span><br><span class="line"># (or posibly $vasp_gam and/or $vasp_ncl).</span><br><span class="line"># These variables can be defined by sourcing vaspcmd</span><br><span class="line">. vaspcmd 2&gt; /dev/null</span><br><span class="line"></span><br><span class="line">#</span><br><span class="line"># When vaspcmd is not available and $vasp_std,</span><br><span class="line"># $vasp_gam, and/or $vasp_ncl are not set as environment</span><br><span class="line"># variables, you can specify them here</span><br><span class="line">[ -z &quot;`echo $vasp_std`&quot; ] &amp;&amp; vasp_std=&quot;mpirun -np 8 /path-to-your-vasp/vasp_std&quot;</span><br><span class="line">[ -z &quot;`echo $vasp_gam`&quot; ] &amp;&amp; vasp_gam=&quot;mpirun -np 8 /path-to-your-vasp/vasp_gam&quot;</span><br><span class="line">[ -z &quot;`echo $vasp_ncl`&quot; ] &amp;&amp; vasp_ncl=&quot;mpirun -np 8 /path-to-your-vasp/vasp_ncl&quot;</span><br><span class="line"></span><br><span class="line">#</span><br><span class="line"># The real work starts here</span><br><span class="line">#</span><br><span class="line"></span><br><span class="line">rm results.dat</span><br><span class="line"></span><br><span class="line">drct=$(pwd)</span><br><span class="line"></span><br><span class="line">for i in graphene graphite</span><br><span class="line">do</span><br><span class="line">  cd $drct/$i</span><br><span class="line">  $vasp_std</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">cd $drct</span><br><span class="line"></span><br><span class="line"># obtain total energy for graphite </span><br><span class="line">en2=$(grep &quot;free  ene&quot; graphite/OUTCAR |tail -1|awk &#x27;&#123;print $5&#125;&#x27;) </span><br><span class="line"></span><br><span class="line"># obtain total energy for graphene</span><br><span class="line">en1=$(grep &quot;free  ene&quot; graphene/OUTCAR |tail -1|awk &#x27;&#123;print $5&#125;&#x27;)</span><br><span class="line"></span><br><span class="line"># compute interlayer binding energy (eV/atom)</span><br><span class="line">deltaE=$(echo print $en2/4 - $en1/2 |python)</span><br><span class="line"></span><br><span class="line">echo &quot;Binding energy (eV/atom): &quot; $deltaE &gt;results.dat</span><br></pre></td></tr></table></figure>
+
+<p>Note that the calculation is performed in two steps (two separate single-point calculations) in which the energy for bulk graphite and for graphene are obtained. The binding energy is computed automatically and it is written in the file results.dat. (N.B.: for the latter python needs to be available.)</p>
+<p>Even though the TS method predicts a reasonable geometry (see the Graphite interlayer distance example) it overestimates the energetics strongly: the computed binding energy of -0.083 eV&#x2F;atom is too large compared to the RPA reference of 0.048 eV&#x2F;atom. This overestimation is - at least in part - due to neglecting the many-body interactions (see example Graphite MBD binding energy).</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1383,312 +1982,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/03/07/10-12-23/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Keke Liu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lightchaser">
-      <meta itemprop="description" content="一个小学生的博客">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Lightchaser">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/03/07/10-12-23/" class="post-title-link" itemprop="url">text</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-03-07 10:12:23" itemprop="dateCreated datePublished" datetime="2023-03-07T10:12:23+08:00">2023-03-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-12-19 17:16:24" itemprop="dateModified" datetime="2023-12-19T17:16:24+08:00">2023-12-19</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <ul>
-<li>使用 # 号可表示 1-6 级标题，一级标题对应一个 # 号，二级标题对应两个 # 号，以此类推。</li>
-</ul>
-<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><ul>
-<li>Markdown 段落没有特殊的格式，直接编写文字就好，段落的换行是使用两个以上空格加上回车。</li>
-</ul>
-<p><em>斜体文本</em><br><em>斜体</em><br><strong>粗体文本</strong><br><strong>粗体文本</strong><br><em><strong>粗斜体文本</strong></em><br><em><strong>粗斜体文本</strong></em></p>
-<p>&#x3D;&#x3D;高亮&#x3D;&#x3D;</p>
-<hr>
-<hr>
-<hr>
-<hr>
-<hr>
-<ul>
-<li>可以在一行中用三个以上的星号、减号、底线来建立一个分隔线，行内不能有其他东西。你也可以在星号或是减号中间插入空格。下面每种写法都可以建立分隔线：</li>
-<li>如果段落上的文字要添加删除线，只需要在文字的两端加上两个波浪线 ~~ 即可，实例如下</li>
-</ul>
-<p>RUNOOB.COM<br>GOOGLE.COM<br><del>BAIDU.COM</del></p>
-<ul>
-<li>下划线可以通过 HTML 的&lt; u 标签来实现：</li>
-</ul>
-<p><u>带下划线文本</u></p>
-<ul>
-<li>脚注是对文本的补充说明。Markdown 脚注的格式如下:</li>
-</ul>
-<p>[^要注明的文本]</p>
-<p>任务列表:</p>
-<ul>
-<li><input checked="" disabled="" type="checkbox"> 已经完成的事 1</li>
-<li><input checked="" disabled="" type="checkbox"> 已经完成的事 2</li>
-<li><input checked="" disabled="" type="checkbox"> 已经完成的事 3</li>
-<li><input disabled="" type="checkbox"> 仍未完成的事 4</li>
-<li><input disabled="" type="checkbox"> 仍未完成的事 5</li>
-</ul>
-<p>引用文本:</p>
-<blockquote>
-<p>引用别人说的话<br>就这样写<br>By. OrangeX4</p>
-</blockquote>
-<p>这是 <code>行内代码</code> 语法.</p>
-<p>代码块语法:</p>
-<p>‘’’ python<br>print(“Hello, World!”)<br>‘’’</p>
-<p>注意要将 ‘ 替换成 &#96;.</p>
-<p>代码行数的显示:</p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">x, y</span>) &#123;  </span><br><span class="line">    <span class="keyword">return</span> x + y</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>注意要将 ‘ 替换成 &#96;.</p>
-<p>上标 $x^2 + y^{12} &#x3D; 1$</p>
-<p>上标 $x_1 + y_{12} &#x3D; 1$</p>
-<p>xsr  &#x3D;&gt;  x^{2}</p>
-<p>xtp  &#x3D;&gt;  x^{…}</p>
-<p>x1  &#x3D;&gt;  x_1</p>
-<p>xii  &#x3D;&gt;  x_i</p>
-<p>xsb  &#x3D;&gt;  x_{…}</p>
-<p>较小的行内行分数 $\frac{1}{2}$</p>
-<p>展示型的分式 $\displaystyle\frac{x+1}{x-1}$</p>
-<p>开平方 $\sqrt{2}$</p>
-<p>开 $n$ 次方 $\sqrt[n]{2}$</p>
-<p>紧贴 $a!b$</p>
-<p>没有空格 $ab$</p>
-<p>小空格 $a,b$</p>
-<p>中等空格 $a;b$</p>
-<p>大空格 $a\ b$</p>
-<p>quad 空格 $a\quad b$</p>
-<p>两个 quad 空格 $a\qquad b$</p>
-<p>累加 $\sum_{k&#x3D;1}^n\frac{1}{k}  \quad  \displaystyle\sum_{k&#x3D;1}^n\frac{1}{k}$</p>
-<p>累乘 $\prod_{k&#x3D;1}^n\frac{1}{k}  \quad  \displaystyle\prod_{k&#x3D;1}^n\frac{1}{k}$</p>
-<p>积分 $\displaystyle \int_0^1x{\rm d}x  \quad  \iint_{D_{xy}}  \quad  \iiint_{\Omega_{xyz}}$</p>
-<p>圆括号 $\displaystyle \left(\sum_{k&#x3D;1}^{n}\frac{1}{k} \right)^2$</p>
-<p>方括号 $\displaystyle \left[\sum_{k&#x3D;1}^{n}\frac{1}{k} \right]^2$</p>
-<p>花括号 $\displaystyle \left{\sum_{k&#x3D;1}^{n}\frac{1}{k} \right}^2$</p>
-<p>尖括号 $\displaystyle \left\langle\sum_{k&#x3D;1}^{n}\frac{1}{k} \right\rangle^2$</p>
-<p>居中:</p>
-<p>$$<br>\begin{aligned}<br>y &amp;&#x3D;(x+5)^2-(x+1)^2 \<br>&amp;&#x3D;(x^2+10x+25)-(x^2+2x+1) \<br>&amp;&#x3D;8x+24 \<br>\end{aligned}<br>$$</p>
-<p>左对齐:</p>
-<p>$<br>\begin{aligned}<br>y &amp;&#x3D;(x+5)^2-(x+1)^2 \<br>&amp;&#x3D;(x^2+10x+25)-(x^2+2x+1) \<br>&amp;&#x3D;8x+24 \<br>\end{aligned}<br>$</p>
-<p>$$<br>\begin{cases}<br>k_{11}x_1+k_{12}x_2+\cdots+k_{1n}x_n&#x3D;b_1 \<br>k_{21}x_1+k_{22}x_2+\cdots+k_{2n}x_n&#x3D;b_2 \<br>\cdots \<br>k_{n1}x_1+k_{n2}x_2+\cdots+k_{nn}x_n&#x3D;b_n \<br>\end{cases}<br>$$</p>
-<p>矩阵:</p>
-<p>$$<br>\begin{pmatrix}<br>1 &amp; 1 &amp; \cdots &amp; 1 \<br>1 &amp; 1 &amp; \cdots &amp; 1 \<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots \<br>1 &amp; 1 &amp; \cdots &amp; 1 \<br>\end{pmatrix}</p>
-<p>\quad</p>
-<p>\begin{bmatrix}<br>1 &amp; 1 &amp; \cdots &amp; 1 \<br>1 &amp; 1 &amp; \cdots &amp; 1 \<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots \<br>1 &amp; 1 &amp; \cdots &amp; 1 \<br>\end{bmatrix}<br>$$ </p>
-<p>行列式: </p>
-<p>$$<br>\begin{vmatrix}<br>1 &amp; 1 &amp; \cdots &amp; 1 \<br>1 &amp; 1 &amp; \cdots &amp; 1 \<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots \<br>1 &amp; 1 &amp; \cdots &amp; 1 \<br>\end{vmatrix}<br>$$</p>
-<p>$$<br>x+2 \tag{1.2}<br>$$</p>
-<p>$$<br>\begin{equation}<br>x^n+y^n&#x3D;z^n<br>\end{equation}<br>$$</p>
-<p>由公式 $(1.2)$ 可得到结论</p>
-<p>点乘 $\cdot$, 叉乘 $\times$, 异或 $\otimes$, 直和 $\oplus$, 加减 $\pm$, 复合 $\circ$.<br>小于等于 $\leq$, 大于等于 $\geq$, 不等 $\neq$, 恒等 $\equiv$, 约等 $\approx$, 等价 $\cong$, 相似 $\sim$, 相似等于 $\simeq$, 点等 $\doteq$.<br>逻辑与 $\land$, 逻辑或 $\lor$, 逻辑非 $\lnot$, 蕴涵 $\to$, 等价 $\leftrightarrow$.<br>因为 $\because$, 所以 $\therefore$, 存在 $\exist$, 任意 $\forall$.<br>左小箭头 $\leftarrow$, 右小箭头 $\rightarrow$, 左大箭头 $\Leftarrow$, 右大箭头 $\Rightarrow$, 右长箭头 $\xrightarrow[fgh]{abcde}$.<br>属于 $\in$, 包含于 $\subset$, 真包含于 $\subseteq$, 交 $\cap$, 并 $\cup$, 空集 $\empty$<br>短向量 $\vec{x}$, 长向量 $\overrightarrow{AB}$, 上横线 $\overline{p}$.<br>无限 $\infty$, 极限 $\lim$, 微分 ${\rm d}$, 偏导 $\partial$, 点求导 $\dot{y}$, 点二阶导 $\ddot{y}$, 变化量 $\Delta$, 梯度 $\nabla$.<br>横省略 $\cdots$, 竖省略 $\vdots$, 斜省略 $\ddots$.<br>常见函数 $\sin$, $\cos$, $\tan$, $\arcsin$, $\arccos$, $\arctan$, $\ln$, $\log$, $\exp$.</p>
-<p>$\Alpha$</p>
-<p>$\alpha$</p>
-<ul>
-<li>Markdown 支持有序列表和无序列表。<br>无序列表使用星号(*)、加号(+)或是减号(-)作为列表标记，这些标记后面要添加一个空格，然后再填写内容：</li>
-<li>第一项</li>
-<li>第二项</li>
-<li>第三项</li>
-</ul>
-<ul>
-<li>第一项</li>
-<li>第二项</li>
-<li>第三项</li>
-</ul>
-<ul>
-<li>第一项</li>
-<li>第二项</li>
-<li>第三项</li>
-</ul>
-<ul>
-<li>有序列表使用数字并加上 . 号来表示，如：</li>
-</ul>
-<ol>
-<li>第一项</li>
-<li>第二项</li>
-<li>第三项</li>
-</ol>
-<ul>
-<li>列表嵌套只需在子列表中的选项前面添加两个或四个空格即可：</li>
-</ul>
-<ol>
-<li>第一项：<ul>
-<li>第一项嵌套的第一个元素</li>
-<li>第一项嵌套的第二个元素</li>
-</ul>
-</li>
-<li>第二项：<ul>
-<li>第二项嵌套的第一个元素</li>
-<li>第二项嵌套的第二个元素</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li>链接使用方法如下：</li>
-</ul>
-<p>这是一个链接 <a target="_blank" rel="noopener" href="https://www.runoob.com/">菜鸟教程</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.runoob.com/">https://www.runoob.com</a></p>
-<ul>
-<li>高级链接<br>我们可以通过变量来设置一个链接，变量赋值在文档末尾进行</li>
-</ul>
-<p>这个链接用 1 作为网址变量 <a target="_blank" rel="noopener" href="http://www.google.com/">Google</a><br>这个链接用 runoob 作为网址变量 <a target="_blank" rel="noopener" href="http://www.runoob.com/">Runoob</a><br>然后在文档的结尾为变量赋值（网址）</p>
-<ul>
-<li>Markdown 图片语法格式如下：</li>
-</ul>
-<p><img src="http://static.runoob.com/images/runoob-logo.png" alt="RUNOOB 图标"></p>
-<p><img src="http://static.runoob.com/images/runoob-logo.png" alt="RUNOOB 图标" title="RUNOOB"></p>
-<p>当然，你也可以像网址那样对图片网址使用变量:</p>
-<p>这个链接用 1 作为网址变量 <a target="_blank" rel="noopener" href="http://www.google.com/">RUNOOB</a>.<br>然后在文档的结尾为变量赋值（网址）</p>
-<p>Markdown 制作表格使用 | 来分隔不同的单元格，使用 - 来分隔表头和其他行。<br>语法格式如下：</p>
-<table>
-<thead>
-<tr>
-<th>表头</th>
-<th>表头</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>单元格</td>
-<td>单元格</td>
-</tr>
-<tr>
-<td>单元格</td>
-<td>单元格</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th align="left">左对齐</th>
-<th align="right">右对齐</th>
-<th align="center">居中对齐</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">单元格</td>
-<td align="right">单元格</td>
-<td align="center">单元格</td>
-</tr>
-<tr>
-<td align="left">单元格</td>
-<td align="right">单元格</td>
-<td align="center">单元格</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th align="left">左对齐</th>
-<th align="right">右对齐</th>
-<th align="center">居中对齐</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">单元格</td>
-<td align="right">单元格</td>
-<td align="center">单元格</td>
-</tr>
-<tr>
-<td align="left">单元格</td>
-<td align="right">单元格</td>
-<td align="center">单元格</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th align="left">左对齐</th>
-<th align="right">右对齐</th>
-<th align="center">居中对齐</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">单元<br>格</br></td>
-<td align="right">单元<br>格</br></td>
-<td align="center">单元<br>格</br></td>
-</tr>
-<tr>
-<td align="left">单元<br>格</br></td>
-<td align="right">单元<br>格</br></td>
-<td align="center">单元<br>格</br></td>
-</tr>
-</tbody></table>
-<p>不在 Markdown 涵盖范围之内的标签，都可以直接在文档里面用 HTML 撰写。目前支持的 HTML 元素有：&lt;kbd&gt; &lt;b&gt; &lt;i&gt; &lt;em&gt; &lt;sup&gt; &lt;sub&gt; &lt;br&gt; 等 ，  如</p>
-<p>使用 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd> 重启电脑</p>
-<p>Markdown 使用了很多特殊符号来表示特定的意义，如果需要显示特定的符号则需要使用转义字符，Markdown 使用反斜杠转义特殊字符：</p>
-<p><strong>文本加粗</strong> </p>
-<p>** 正常显示星号 **</p>
-<p>Markdown 支持以下这些符号前面加上反斜杠来帮助插入普通的符号：\   反斜线<br>&#96;   反引号<br>*   星号<br>_   下划线<br>{}  花括号<br>[]  方括号<br>()  小括号<br>#   井字号<br>+   加号<br>-   减号<br>.   英文句点<br>!   感叹号</p>
-<p>Markdown Preview Enhanced 使用 KaTeX 或者 MathJax 来渲染数学表达式。</p>
-<p>KaTeX 拥有比 MathJax 更快的性能，但是它却少了很多 MathJax 拥有的特性。你可以查看 KaTeX supported functions&#x2F;symbols 来了解 KaTeX 支持那些符号和函数。</p>
-<p>默认下的分隔符：</p>
-<p>$…$ 或者 (…) 中的数学表达式将会在行内显示。<br>$$…$$ 或者 […] 或者 &#96;&#96;&#96;math 中的数学表达式将会在块内显示。</p>
-<p>$$<br>\begin{Bmatrix}<br>   a &amp; b \<br>   c &amp; d<br>\end{Bmatrix}<br>$$<br>$$<br>\begin{CD}<br>   A @&gt;a&gt;&gt; B \<br>@VbVV @AAcA \<br>   C @&#x3D; D<br>\end{CD}<br>$$</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">%% 时序图例子,-&gt; 直线，--&gt;虚线，-&gt;&gt;实线箭头</span><br><span class="line">  sequenceDiagram</span><br><span class="line">    participant 张三</span><br><span class="line">    participant 李四</span><br><span class="line">    张三-&gt;王五: 王五你好吗？</span><br><span class="line">    loop 健康检查</span><br><span class="line">        王五-&gt;王五: 与疾病战斗</span><br><span class="line">    end</span><br><span class="line">    Note right of 王五: 合理 食物 &lt;br/&gt;看医生...</span><br><span class="line">    李四--&gt;&gt;张三: 很好!</span><br><span class="line">    王五-&gt;李四: 你怎么样?</span><br><span class="line">    李四--&gt;王五: 很好!</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
