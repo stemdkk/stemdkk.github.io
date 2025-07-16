@@ -1925,7 +1925,7 @@ int1 = hw[:,2]
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-13 20:40:25" itemprop="dateModified" datetime="2024-12-13T20:40:25+08:00">2024-12-13</time>
+      <time title="修改时间：2025-07-10 20:33:20" itemprop="dateModified" datetime="2025-07-10T20:33:20+08:00">2025-07-10</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1981,6 +1981,32 @@ int1 = hw[:,2]
 <li><p>gaussianSmearingWidth 高斯展宽，如果VASP中用的ISMEAR&#x3D;0，那么gaussianSmearingWidth的数值和SIGMA一样，默认值是0.2 eV，但是过大了，所以需要减小。设置格式：<code>gaussianSmearingWidth 0.05</code></p>
 </li>
 </ul>
+<h4 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h4><p>参考：<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/1920205994354521233">https://zhuanlan.zhihu.com/p/1920205994354521233</a></p>
+<p>COHP（晶体轨道哈布顿居数）：量化键合强度与稳定性变化，描述的是特定能级上，两个原子轨道之间的相互作用的强度和性质</p>
+<ol>
+<li><p>负值越大，键越稳定，可以用来分析掺杂对键能的影响（对结构稳定性的影响），负值代表成键，增强键强度</p>
+</li>
+<li><p>正值代表反键，削弱键强度，键易断裂</p>
+</li>
+<li><p>0值代表非键态</p>
+</li>
+</ol>
+<p>ICHOP：CHOP从-infnite到费米能级的积分，因为费米能级以下的电子是参与化学键形成的主要电子；注意进行不同体系或者不同键的ICOHP比较时，要保持积分区间一致。</p>
+<ol>
+<li><p>ICOHP将不同能量下的原子轨道间的相互作用的贡献累加在一起，可以代表键的总强度。</p>
+</li>
+<li><p>ICHOP&lt;0，表示成键，绝对值越大成键越稳定</p>
+</li>
+<li><p>ICHOP&gt;0，表示反键，绝对值越大成键越不稳定</p>
+</li>
+</ol>
+<p>COHPCAR.lobster文件内容</p>
+<p>第一列为能量，第2，3，4，5列为自旋向上的相互作用，其中第2，3列分别是平均相互作用的cohp和icohp，第4，5列分别是指定相互作用的chop和ichop</p>
+<p>那么第6，7，8，9列就是对应自旋向下的。</p>
+<p>绘制cohp-energy图像时可以选择第一列和第四列，一般绘制-cohp~energy图像。</p>
+<p>ICOBILIST.lobster, COBICAR.lobster输出文件，包含共价键指标: 晶体轨道键指数(Crystal Orbital Bond Index, COBI)</p>
+<p>ICOBI: 0(离子键)~1(共价键) per bond, 自旋极化体系分spin1,2，具有加和性</p>
+<p>MadelungEnergies.lobster, SitePotentials.lobster输出文件，包含离子键指标: 马德隆能(Madelung Energy, in eV per unit cell)</p>
 <h2 id="ELF电子局域函数计算"><a href="#ELF电子局域函数计算" class="headerlink" title="ELF电子局域函数计算"></a>ELF电子局域函数计算</h2><p>电子局域函数（Electron Localization Function—ELF）是研究电子结构的手段之一。用来描述以某个位置处的电子为参考，在其附近找到与他同自旋的电子的概率，可以表征这个作为参考的电子的局域化程度，也是一种描述在多电子体系中的电子对概率的方法。<br>ELF的取值范围是[0，1]。<br>ELF&#x3D;1 对应完全局域化；<br>ELF&#x3D;1&#x2F;2，对应类电子气型的成对概率；<br>ELF&#x3D;0，对应电子完全离域化。</p>
 <p>计算流程：做自洽的时候在INCAR中加入：<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">PREC</span>=A</span><br><span class="line"><span class="variable constant_">LELF</span>=T</span><br><span class="line"><span class="variable constant_">IBRION</span>=-<span class="number">1</span></span><br><span class="line"><span class="variable constant_">NSW</span>=<span class="number">0</span> </span><br></pre></td></tr></table></figure><br>运行vasp得到ELFCAR文件。</p>
 <p>将ELFCAR拖入Vesta <a target="_blank" rel="noopener" href="http://www.jp-minerals.org/vesta/en/download.html">http://www.jp-minerals.org/vesta/en/download.html</a></p>

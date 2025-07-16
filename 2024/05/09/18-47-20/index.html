@@ -28,7 +28,7 @@
 <meta property="og:description" content="vasp磁性参数设置ISPIN和MAGMOM参数，详见vasp官网。关闭对称性：ISYM&#x3D;0.一般有的采用先做非磁结构优化，再打开自旋和磁性设置做磁基态计算。确定磁性体系可以直接做磁性计算。磁性计算一般属于过渡金属，要进行DFT+U计算。对于考虑LDAU的情况一般推荐增加参数 LMAXMIX。 INCAR中的参数设置： 1234567LORBIT &#x3D; 11LDAU &#x3D; .TRUE. 打开">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-09T10:47:20.000Z">
-<meta property="article:modified_time" content="2024-11-18T08:26:53.789Z">
+<meta property="article:modified_time" content="2025-06-30T03:55:06.784Z">
 <meta property="article:author" content="Keke Liu">
 <meta property="article:tag" content="vasp">
 <meta name="twitter:card" content="summary">
@@ -114,7 +114,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vasp%E7%A3%81%E6%80%A7%E5%8F%82%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">vasp磁性参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A3%81%E5%9F%BA%E6%80%81"><span class="nav-number">2.</span> <span class="nav-text">磁基态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A3%81%E8%80%A6%E5%90%88"><span class="nav-number">3.</span> <span class="nav-text">磁耦合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B1%85%E9%87%8C%E6%B8%A9%E5%BA%A6"><span class="nav-number">4.</span> <span class="nav-text">居里温度</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#mcsolver%E8%AE%A1%E7%AE%97XY%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%B8%80%E4%B8%AA%E4%BE%8B%E5%AD%90%E3%80%82"><span class="nav-number">4.1.</span> <span class="nav-text">mcsolver计算XY模型的一个例子。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MAE"><span class="nav-number">5.</span> <span class="nav-text">MAE</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#vaspkit"><span class="nav-number">5.1.</span> <span class="nav-text">vaspkit</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%B5%E5%AD%90%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90"><span class="nav-number">6.</span> <span class="nav-text">电子结构分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">7.</span> <span class="nav-text"></span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vasp%E7%A3%81%E6%80%A7%E5%8F%82%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">vasp磁性参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A3%81%E5%9F%BA%E6%80%81"><span class="nav-number">2.</span> <span class="nav-text">磁基态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A3%81%E8%80%A6%E5%90%88"><span class="nav-number">3.</span> <span class="nav-text">磁耦合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E6%80%81%E6%B3%95"><span class="nav-number">3.0.1.</span> <span class="nav-text">四态法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B1%85%E9%87%8C%E6%B8%A9%E5%BA%A6"><span class="nav-number">4.</span> <span class="nav-text">居里温度</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#mcsolver%E8%AE%A1%E7%AE%97XY%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%B8%80%E4%B8%AA%E4%BE%8B%E5%AD%90%E3%80%82"><span class="nav-number">4.1.</span> <span class="nav-text">mcsolver计算XY模型的一个例子。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MAE"><span class="nav-number">5.</span> <span class="nav-text">MAE</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#vaspkit"><span class="nav-number">5.1.</span> <span class="nav-text">vaspkit</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%B5%E5%AD%90%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90"><span class="nav-number">6.</span> <span class="nav-text">电子结构分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%A6%E6%9D%9F%E7%A3%81%E7%9F%A9%E6%96%B9%E5%90%91%E5%92%8C%E5%A4%A7%E5%B0%8F"><span class="nav-number">7.</span> <span class="nav-text">约束磁矩方向和大小</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9D%9E%E5%85%B1%E7%BA%BF%E6%88%96%E9%9D%9E%E5%85%B1%E9%9D%A2%E7%A3%81"><span class="nav-number">8.</span> <span class="nav-text">非共线或非共面磁</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -209,7 +209,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-11-18 16:26:53" itemprop="dateModified" datetime="2024-11-18T16:26:53+08:00">2024-11-18</time>
+      <time title="修改时间：2025-06-30 11:55:06" itemprop="dateModified" datetime="2025-06-30T11:55:06+08:00">2025-06-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -247,13 +247,12 @@
 </ol>
 <h1 id="磁基态"><a href="#磁基态" class="headerlink" title="磁基态"></a>磁基态</h1><p>得出体系的具体磁基态：比较三个计算无磁，铁磁，反铁磁的能量，能量更低的为体系的磁基态。构建不同磁基态有可能需要扩胞。</p>
 <p>得出体系原子的具体磁矩：用vi编辑器打开OUTCAR或其他方式打开，从最后往前翻动，第一个magnetization (x)开头的表格就是原子的磁矩大小。需要打开LORBIT&#x3D;11</p>
-<p>磁矩分布画图：使用chgsplit.sh（可以向组内师兄师姐寻找）。磁性测试输出CHGCAR后，运行命令.&#x2F;chgsplit.sh CHGCAR得到cf1和cf2文件，把cf2文件重命名为CHGCAR-mag，与CONTCAR一起拖入VESTA中画图即可。</p>
+<p>磁矩分布画图：使用chgsplit.sh（可以向组内师兄师姐寻找）。磁性测试输出CHGCAR后，运行命令.&#x2F;chgsplit.sh CHGCAR得到cf1和cf2文件，把cf2文件重命名为CHGCAR-mag，与CONTCAR一起拖入VESTA中画图即可。vaspkit 312功能。</p>
 <h1 id="磁耦合"><a href="#磁耦合" class="headerlink" title="磁耦合"></a>磁耦合</h1><p>对于磁性体系的第一性原理计算结果，能量部分可以分<br>为两个部分E &#x3D; E_0 （非磁项） + E_s （磁性相关能量）<br>对比磁性耦合产生的能量，不能够用磁性态的能量跟非<br>磁的去对比<br>E_s 包含交换耦合以及单离子各向异性能（SOC）<br>一般来说，磁性相关的能量可以用下面的公式来表示</p>
 <ol>
 <li>磁性态的构造<br>为了求磁耦合强度，我们需要构造出不同磁构型哈密顿，通过求解这些哈密顿方程<br>组来得到磁耦合参数。例如对于一个体系，我们需要求解最近邻J1和次<br>近邻J2，那么体系能量中有三个未知量H0, J1, J2。这样我们需要构造三个线性独立的方程来求解。<br>磁耦合参数</li>
 </ol>
-<p>四态法</p>
-<p>接下来，我们以一个例子来看四态法<br>是如何用来求磁耦合的。</p>
+<h3 id="四态法"><a href="#四态法" class="headerlink" title="四态法"></a>四态法</h3><p>接下来，我们以一个例子来看四态法<br>是如何用来求磁耦合的。</p>
 <ol>
 <li>构建超胞<br>这里我们以二维六角晶格为例，原胞<br>中有两个磁性原子，我们构建一个<br>8<em>8</em>1的超胞，目标是求下图中A、B<br>之间的磁耦合作用。<br>构建四个磁性态 ，分别<br>为<br>其中第一项是DFT中的非磁项，联立这四个方程组就<br>可以求解<br>注意这里的超胞大小，只要满足这个8*8的超胞里的A、<br>B与周期外的A、B格点之间没有作用或者作用可忽略就<br>可以。</li>
 </ol>
@@ -356,7 +355,33 @@ tips:</li>
 <li>查表<br><a target="_blank" rel="noopener" href="http://gernot-katzers-spice-/">http://gernot-katzers-spice-</a> pages.com&#x2F;character_tables&#x2F;index.html</li>
 <li>判断能及大小</li>
 </ol>
-<h1 id=""><a href="#" class="headerlink" title=""></a></h1>
+<h1 id="约束磁矩方向和大小"><a href="#约束磁矩方向和大小" class="headerlink" title="约束磁矩方向和大小"></a>约束磁矩方向和大小</h1><p><a target="_blank" rel="noopener" href="https://www.shangyexinzhi.com/article/5004393.html">https://www.shangyexinzhi.com/article/5004393.html</a><br><a target="_blank" rel="noopener" href="https://www.vasp.at/wiki/index.php/Constraining_local_magnetic_moments">https://www.vasp.at/wiki/index.php/Constraining_local_magnetic_moments</a></p>
+<p>在系统中加入一个惩罚函数，将体系的局部磁矩驱动到期望的方向，当在输入中修改以下步骤时(注意惩罚函数对总能量的贡献):</p>
+<p>磁矩约束的开关(I_CONSTRAINED_M&#x3D;1)。</p>
+<p>设置积分半径来确定局部矩(RWIGS&#x3D;1.0)。</p>
+<p>惩罚函数中的权重(LAMBDA&#x3D;10)。</p>
+<p>磁矩约束的目标方向(M_CONSTR&#x3D; 0 0 1 0 1 1)。</p>
+<p>当收敛性不好时，我们能做什么:</p>
+<ol>
+<li><p>从ISTART&#x3D;0 (或删除WAVECAR文件)和ICHARG&#x3D;1计算非自旋极化的电荷密度开始。</p>
+</li>
+<li><p>通过设置BMIX&#x3D;0.0001和BMIX_MAG&#x3D;0.0001来使用线性混合。</p>
+</li>
+<li><p>慢慢混合，即减少AMIX和AMIX_MAG。</p>
+</li>
+<li><p>减少MAXMIX，存储在Broyden混合器中的步骤数(默认MAXMIX&#x3D;45)。</p>
+</li>
+<li><p>从部分收敛的结果重新启动(大约20步后停止计算，然后从WAVECAR文件重新启动计算)。</p>
+</li>
+<li><p>使用约束来稳定磁配置。</p>
+</li>
+</ol>
+<p>注意：</p>
+<p>当I_CONSTRAINED_M&#x3D;1时，只固定磁矩方向不固定大小， M_CONSTR&#x3D; 0 0 1 0 1 1表示方向。</p>
+<p>当 I_CONSTRAI NED_M&#x3D;2时，既固定磁矩方向也固定磁矩大小， M_CONSTR&#x3D; 0 0 3 0 0 3表示方向和大小。</p>
+<h1 id="非共线或非共面磁"><a href="#非共线或非共面磁" class="headerlink" title="非共线或非共面磁"></a>非共线或非共面磁</h1><p><a target="_blank" rel="noopener" href="https://www-.vasp.at/wiki/index.php/Spin_spirals">https://www-.vasp.at/wiki/index.php/Spin_spirals</a></p>
+<p><a target="_blank" rel="noopener" href="https://gpaw.readthedocs.io/algorithms.html">https://gpaw.readthedocs.io/algorithms.html</a></p>
+
     </div>
 
     
@@ -377,8 +402,8 @@ tips:</li>
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2024/05/10/18-47-20/" rel="next" title="7.3 DMFT">
-                  7.3 DMFT <i class="fa fa-chevron-right"></i>
+                <a href="/2024/05/10/18-47-20/" rel="next" title="7.2 磁性计算2">
+                  7.2 磁性计算2 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
