@@ -123,7 +123,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -134,7 +134,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-count">46</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -204,7 +204,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-04-22 17:23:12" itemprop="dateModified" datetime="2025-04-22T17:23:12+08:00">2025-04-22</time>
+      <time title="修改时间：2025-07-29 09:52:38" itemprop="dateModified" datetime="2025-07-29T09:52:38+08:00">2025-07-29</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -327,6 +327,7 @@
 <li><p>如果计算失败请检查 POSCAR 中晶格基矢对应分量是否为 0。如计算第三个方向偶极修正请保证前两个基矢的 z 分量为零且第三个基矢只有 z 分量不为零。另外要注销并行参数。</p>
 </li>
 </ol>
+<h1 id="偶极矩直接积分法计算极化"><a href="#偶极矩直接积分法计算极化" class="headerlink" title="偶极矩直接积分法计算极化"></a>偶极矩直接积分法计算极化</h1><p>通过积分电荷密度分布计算系统的总电偶极矩，进而得到极化强度。适用于金属&#x2F;绝缘体&#x2F;二维材料。VASP通过LVTOT+DIPOL实现，见上。</p>
 
       
     </div>
@@ -554,6 +555,112 @@
 <p>‘vc-md’：允许cell改变的md。</p>
 <p>pw.x的输入说明见INPUT_PW。注意默认的单位，其中原子单位制为（以下数值见源程序q-e-qe-6.3&#x2F;Modules&#x2F;constants.f90）：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1 bohr = 1 a.u. (atomic unit) = 0.52917720859 angstroms.</span><br><span class="line">1 Rydberg (Ry) = 13.60569193 eV</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/10/18-47-22/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Keke Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lightchaser">
+      <meta itemprop="description" content="一个小学生的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Lightchaser">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/05/10/18-47-22/" class="post-title-link" itemprop="url">7.3 贝里曲率计算</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-05-10 18:47:22" itemprop="dateCreated datePublished" datetime="2024-05-10T18:47:22+08:00">2024-05-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-10-29 16:51:23" itemprop="dateModified" datetime="2025-10-29T16:51:23+08:00">2025-10-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DFT%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">DFT学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="vaspberry-使用教程"><a href="#vaspberry-使用教程" class="headerlink" title="vaspberry 使用教程"></a>vaspberry 使用教程</h1><p>贝里曲率的计算，可用于研究反常霍尔电导、拓扑陈数、反常谷霍尔效应。作为一个VASP的接口程序，vaspberry程序可以使用VASP计算得到的WAVECAR，计算体系在布里渊区的贝里曲率，使用方法非常简单，参数很少，提供可视化脚本。贝里曲率的计算方法： J. Phys. Soc. Jap. 74, 1674 (2005)</p>
+<p>链接：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Infant83/VASPBERRY">https://github.com/Infant83/VASPBERRY</a></p>
+<h3 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h3><p>第一步： VASP的静态计算(要考虑SOC) LWAVE&#x3D;.TRUE.‍</p>
+<p>自洽关键参数：LWAVE&#x3D;.TRUE.  ISYM &#x3D; -1</p>
+<p>第二步： 在当前目录提交vaspberry的计算假设我们第一步中的KPOINTS使用的是12 * 12 * 1的参数，价带顶为18，或者我们计算第18个带的贝里曲率以及陈数，则运行命令</p>
+<p><code>./vaspberry -kx 12 -ky 12 -ii 1 -if 18</code></p>
+<p>会输出一个贝里曲率的输出文件BERRYCURV.dat 使用自带脚本contour.py，就可以显示贝里曲率了。</p>
+<p>在静态计算里面，判断价带顶和导带底<code>vaspberry -kx 1 -ky 1 -cd 1</code>可以得到VBM、CBM的序号；假设我们第一步中的KPOINTS使用的是12 * 12 * 1的参数，价带顶为18，或者我们计算第1个带-第18个带的贝里曲率以及陈数，则运行命令<code>./vaspberry -kx 12 -ky 12 -ii 1 -if 18</code></p>
+<p>计算某一条带的贝里曲率和陈数，例如第一占据价带，<code>./vaspberry -kx 12 -ky 12 -ii 18 -if 18</code></p>
+<p>若自洽为共线计算（vasp_std），则在vaspberry所在目录将自洽计算的波函数WAVECAR拷贝进来，运行<code>./vaspberry -kx 12 -ky 12 -ii 1 -if 18 -s 1</code><br>注意kx 和 ky值要与KPOINTS k点个数一致，-s 1表示共线计算,18表示价带顶</p>
+<h3 id="谷电子学"><a href="#谷电子学" class="headerlink" title="谷电子学"></a>谷电子学</h3><p>上是一个反常谷霍尔效应的例子，我们可以在第一部里渊区积分得到K和K‘附近的谷陈数（需要自己写个小脚本）。</p>
+<h3 id="量子反常霍尔效应研究"><a href="#量子反常霍尔效应研究" class="headerlink" title="量子反常霍尔效应研究"></a>量子反常霍尔效应研究</h3><p>如果是计算量子反常霍尔效应体系，可以看到输出文件最后的陈数结果，以及贝里曲率结果，不需要自己写脚本，用自带的就可以。</p>
+<h3 id="计算晶体CD-Circular-dichroism"><a href="#计算晶体CD-Circular-dichroism" class="headerlink" title="计算晶体CD(Circular dichroism)"></a>计算晶体CD(Circular dichroism)</h3><ol>
+<li>vasp，先优化几何，再计算出WAVECAR和BAND.dat（能带计算必须要SOC）。</li>
+<li>执行“vaspberry -kx 1 -ky 1 -cd 1”可以得到VBM、CBM的序号，比如示例数据里是240~241。</li>
+<li>计算 VBM-5 ~ VBM 到 CBM ~ CBM+5 之间的25个跃迁（可以加多，更精确）（可以bash做，参照batch_CD.sh）。</li>
+<li>把能带i、j间跃迁的CIRC_DICHROISM.dat的kx、ky、kz，对应到BAND_R_SOC.dat中能带i、j在kx、ky、kz处的能量差，即将selectivity对应到了E。</li>
+<li>将所有跃迁的 selectivity-E 关系叠加。</li>
+</ol>
+<h3 id="实空间波函数"><a href="#实空间波函数" class="headerlink" title="实空间波函数"></a>实空间波函数</h3><p>[ex, to plot 18-th state with 1-st k-point (if it is gamma point), with 40x40x40 grid for density file]</p>
+<p><code>./vaspberry -wf 18 -k 1 -ng 40,40,40</code></p>
 
       
     </div>
@@ -1859,204 +1966,6 @@ INPUT.txt其余的参数在前面的案例中，已经介绍了。可以看出�
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/09/09/18-47-21/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Keke Liu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lightchaser">
-      <meta itemprop="description" content="一个小学生的博客">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Lightchaser">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/09/09/18-47-21/" class="post-title-link" itemprop="url">5.1 分子动力学1</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-09-09 18:47:21" itemprop="dateCreated datePublished" datetime="2023-09-09T18:47:21+08:00">2023-09-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-04 21:41:21" itemprop="dateModified" datetime="2024-06-04T21:41:21+08:00">2024-06-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/DFT%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">DFT学习</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>从头算分子动力学（ab initio molecular dYnamics, AIMD），又称为第一性原理分子动力学，为研究电子与原子核相互耦合系统的力学进动过程的理论方法。AIMD是在早期经验力场分子动力学基础上发展起来的理论方法。经验力场分子动力学中，针对原子核之间相互作用，均采用经验性的力场，这种力场往往是对相互作用，基于这些相互作用势场好处是计算量小，能够模拟的体系较大，模拟时长也比较长，统计数据也较多。</p>
-<p>最初的AIMD为理想的Born-Oppenheimer分子动力学（BOMD），该理论将原子核-电子耦合体系的运动问题拆分为电子结构和分子动力学两部分，用密度泛函（DFT）等方法对特定原子核构型下的电子结构进行计算，得到K-S轨道及能量，在此基础上得到理想B-O势能面上原子核感受的势能和力，进而用经典力学来考察原子核在Born-Oppenheimer势能面上的运动。</p>
-<p>为解决理想的BOMD所遇到计算瓶颈的问题，Reberto Car和Michele Parrinello于1985年提出了一种近似的BOMD方法- Car-Parrinello MD（简称CPMD）（Car, R., &amp; Parrinello, M，1985）。该方法首次使用了一个扩展的Lagrangian量来描述电子-原子核耦合体系的动力学问题，Lagrangian量引入了虚拟电子质量u，基于这个Lagrangian量可给出运动方程，通过原子核的经典运动来近似更新电子波函数，而不再需要每一步通过矩阵对角化对电子结构进行SCF计算，简化了电子结构计算，大幅降低了计算成本，使得AIMD在技术上首次具备了可操作性，开创了近几十年AIMD模拟的时代。</p>
-<h1 id="第一性原理分子动力学（AIMD）结果分析"><a href="#第一性原理分子动力学（AIMD）结果分析" class="headerlink" title="第一性原理分子动力学（AIMD）结果分析"></a>第一性原理分子动力学（AIMD）结果分析</h1><p>与经典分子动力学不同，第一性原理分子动力学不需要提供力场参数，只需要提供原子初始结构，就能根据电子波函数正交化产生的虚拟力，求解牛顿运动方程。在运行优化任务时，VASP生成的XDATCAR记录的是优化步骤的离子构型；在运行AIMD任务时，记录的就是运动轨迹。而现阶段读取XDATCAR轨迹分析性质的后处理软件并不多，能读取的兼容性也并不好。__VASPKIT0.72版本之后支持了将XDATCAR转换成通用的多帧PDB文件的功能（504）以便可视化并进行后处理分析__。但是并没有提供后处理分析接口，因此我们开发了一个Python脚本XDATCAR_toolkit.py，除了实现了选择一定范围内的帧数转换成PDB文件的功能，还可以提取分子动力学模拟过程中的能量，温度并做出变化趋势图。这对判断动力学是否平衡很有帮助。另外本脚本预留了接口，可以调用读取每一帧的晶格信息和原子坐标，以便进行后续扩展编程。此脚本需要安装了numpy包的python环境，以及matplotlib包以便于画图。</p>
-<p>在得到通用轨迹PDB文件后，就可以利用现用的分子动力学后处理软件进行处理分析，比如VMD，MDtraj，MD Analysis， Pymol等。__本教程将演示通过VMD和MD Analysis软件包分析RDF（径向分布函数）和RMSD（均方根偏差）__，前者可以用来分析结构性质，后者对判断结构是否稳定以及模拟是否平衡很有帮助。</p>
-<p>将XDATCAR转换成PDB文件<br>以VASP官网中单个水分子的AIMD模拟为例。模拟的输入文件如下，模拟的步长是0.5fs，模拟步数1000步，模拟时间500fs。脚本和测试例子可以在Github仓库(<a target="_blank" rel="noopener" href="https://github.com/tamaswells/VASP_script/tree/master/XDATCAR_tookit)%E4%B8%8B%E8%BD%BD%E3%80%82">https://github.com/tamaswells/VASP_script/tree/master/XDATCAR_tookit)下载。</a></p>
-<p>图1. 模拟的盒子<br>INCAR</p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">PREC</span> = <span class="title class_">Normal</span>    ! standard precision </span><br><span class="line"><span class="variable constant_">ENMAX</span> = <span class="number">400</span>      ! cutoff should be set manually</span><br><span class="line"><span class="variable constant_">ISMEAR</span> = <span class="number">0</span> ; <span class="variable constant_">SIGMA</span> = <span class="number">0.1</span></span><br><span class="line"></span><br><span class="line"><span class="variable constant_">ISYM</span> = <span class="number">0</span>         ! strongly recommened <span class="keyword">for</span> <span class="variable constant_">MD</span></span><br><span class="line"><span class="variable constant_">IBRION</span> = <span class="number">0</span>       ! molecular dynamics</span><br><span class="line"><span class="variable constant_">NSW</span> = <span class="number">1000</span>       ! <span class="number">1000</span> steps</span><br><span class="line"><span class="variable constant_">POTIM</span> = <span class="number">0.5</span>      ! timestep <span class="number">0.5</span> fs</span><br><span class="line"></span><br><span class="line"><span class="variable constant_">SMASS</span> = -<span class="number">3</span>       ! <span class="title class_">Nose</span> <span class="title class_">Hoover</span> thermostat</span><br><span class="line"><span class="variable constant_">TEBEG</span> =  <span class="number">2000</span> ; <span class="variable constant_">TEEND</span> = <span class="number">2000</span> ! temperature</span><br><span class="line"></span><br><span class="line"><span class="variable constant_">NBANDS</span> = <span class="number">8</span></span><br></pre></td></tr></table></figure>
-<p>POSCAR</p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">H2O</span> _2</span><br><span class="line"><span class="number">0.52918</span>   ! scaling parameter</span><br><span class="line"> <span class="number">12</span> <span class="number">0</span> <span class="number">0</span></span><br><span class="line"> <span class="number">0</span> <span class="number">12</span> <span class="number">0</span></span><br><span class="line"> <span class="number">0</span> <span class="number">0</span> <span class="number">12</span></span><br><span class="line"><span class="number">1</span> <span class="number">2</span></span><br><span class="line">select</span><br><span class="line">cart</span><br><span class="line">      <span class="number">0.00</span>     <span class="number">0.00</span>     <span class="number">0.00</span> T T F</span><br><span class="line">      <span class="number">1.10</span>    -<span class="number">1.43</span>     <span class="number">0.00</span> T T F</span><br><span class="line">      <span class="number">1.10</span>     <span class="number">1.43</span>     <span class="number">0.00</span> T T F</span><br></pre></td></tr></table></figure>
-<p>KPOINTS</p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Gamma</span>-point only</span><br><span class="line"> <span class="number">1</span>        ! one k-point</span><br><span class="line">rec       ! <span class="keyword">in</span> units <span class="keyword">of</span> the reciprocal lattice vector</span><br><span class="line"> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span>  ! <span class="number">3</span> coordinates and weight</span><br></pre></td></tr></table></figure>
-<p>模拟完成后将XDATCAR_toolkit.py上传到文件夹中（或者置于环境变量的路径文件夹中并赋予可执行权限即可直接调用命令XDATCAR_toolkit.py运行脚本），在shell环境中运行以下命令:</p>
-<p><code>python XDATCAR_toolkit.py -p -t 0.5  --pbc</code><br>即可将XDATCAR的全部帧也就是0~499.5fs的轨迹转化成PDB格式。<strong>其中-p用于开启PDB转换功能，-t 0.5用于指定时间步为0.5fs，–pbc用于获取基于第一帧演变的连续轨迹。</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Now reading vasp MD energies and temperature.</span><br><span class="line">Now reading vasp XDATCAR.</span><br><span class="line">Total frames 1000, NpT is False</span><br><span class="line">Finish reading XDATCAR.</span><br><span class="line">Selected time-range:0.0~499.5fs</span><br><span class="line">[debug] Now entering function plotfigure.....</span><br></pre></td></tr></table></figure>
-<p>运行完成后，将会在文件夹内生成Temperature.dat，Energy.dat，ENERGY.png和XDATCAR.pdb四个文件，前面两个分别为温度和能量随着模拟时间的的变化数据，第三个是使用matplotlib绘制的趋势图（如下图），最后一个是转换得到的轨迹PDB文件，可以用于可视化轨迹，亦可用于后处理分析。</p>
-<p>-b参数用于指定转换从哪一帧开始，-e参数用于指定转换到哪一帧结束。经刘锦程博士建议，增加一个–pbc的选项，用于处理周期性获取连续的轨迹。当分子穿过盒子边界时，记录真实的位置坐标（尽管它出了边界）而不是从盒子另一边穿入的ghost原子的坐标。这对于分析与时间相关性的量（比如RMSD）很有帮助。所谓连续指的是后面的轨迹都是从第一帧演变得到的真实坐标，但是并不能保证第一帧的分子是完整的，由于周期性的缘故，第一帧内摆放的分子可能分处于盒子两侧。李继存老师有篇博文(<a target="_blank" rel="noopener" href="http://jerkwin.github.io/2016/05/31/GROMACS%E8%BD%A8%E8%BF%B9%E5%91%A8%E6%9C%9F%E6%80%A7%E8%BE%B9%E7%95%8C%E6%9D%A1%E4%BB%B6%E7%9A%84%E5%A4%84%E7%90%86/)%E8%AE%B2%E7%9A%84%E5%BE%88%E6%98%8E%E7%99%BD%EF%BC%8C%E5%8F%AF%E4%BB%A5%E5%8F%82%E8%80%83%E3%80%82%E5%A6%82%E6%9E%9C%E5%8F%91%E7%8E%B0%E7%AC%AC%E4%B8%80%E5%B8%A7%E5%86%85%E5%88%86%E5%AD%90%E4%B8%8D%E5%AE%8C%E6%95%B4%EF%BC%8C%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87%E6%B7%BB%E5%8A%A0%60-i">http://jerkwin.github.io/2016/05/31/GROMACS%E8%BD%A8%E8%BF%B9%E5%91%A8%E6%9C%9F%E6%80%A7%E8%BE%B9%E7%95%8C%E6%9D%A1%E4%BB%B6%E7%9A%84%E5%A4%84%E7%90%86/)讲的很明白，可以参考。如果发现第一帧内分子不完整，可以通过添加`-i</a> 1参数将分子向第一个原子靠近平移以获得完整的分子。如果发现不理想，可以通过调整-i&#96;的参数获得完整的分子。</p>
-<p>图2. 温度和系统能量的变化趋势图<br>RDF径向分布函数分析</p>
-<p>得到PDB文件后，可以使用VMD，MD Analysis等分子动力学后处理软件进行分析。</p>
-<h3 id="使用VMD分析工具分析"><a href="#使用VMD分析工具分析" class="headerlink" title="使用VMD分析工具分析"></a>使用VMD分析工具分析</h3><p>打开VMD，将PDB文件拖入显示窗口，在主菜单VMD Main中选择</p>
-<p>Extensions-Analysis-Radial Pair Distribution Function g(r)，选择分析H(type H)在O(type O)周围的概率分布。值得注意的是分析RDF时,横坐标也就是max r不能超过盒子最小边长的一半，也就是得满足最小映像约定。如图4所示，在计算RDF时，如果max r的取值大于盒子最小边长的一半，就有可能重复算到一个粒子和它的映像粒子，这使得程序的周期性判断失准。将生成的dat文件的第一列和第二列作图即可得到RDF图。</p>
-<p>图3. VMD中计算RDF</p>
-<p>图4. 最小映像约定示意图</p>
-<h3 id="使用-MD-Analysis分析-RDF"><a href="#使用-MD-Analysis分析-RDF" class="headerlink" title="使用 MD Analysis分析 RDF"></a>使用 MD Analysis分析 RDF</h3><p>MD Analysis是一个成熟的分子动力学后处理软件，使用Python编写，开源。其教程不仅步骤详细还会给出背景理论知识。可以通过conda或者pip工具在线安装。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">conda config --add channels conda-forge</span><br><span class="line">conda install mdanalysis</span><br><span class="line">#or</span><br><span class="line">pip install --upgrade MDAnalysis</span><br></pre></td></tr></table></figure>
-
-<p>RDF分析的介绍和使用方法在网页(<a target="_blank" rel="noopener" href="https://www.mdanalysis.org/docs/documentation_pages/analysis/rdf.html#radial-distribution-functions-mdanalysis-analysis-rdf)%E4%B8%8A%E6%9F%A5%E7%9C%8B%E3%80%82%E4%BD%BF%E7%94%A8%E4%BB%A5%E4%B8%8B%E7%9A%84%E8%84%9A%E6%9C%AC%E5%BE%97%E5%88%B0%E5%9C%A8O%E5%8E%9F%E5%AD%90%E5%91%A8%E5%9B%B4%E6%89%BE%E5%88%B0H%E5%8E%9F%E5%AD%90%E7%9A%84%E6%A6%82%E7%8E%87%EF%BC%8C%E5%B9%B6%E8%B0%83%E7%94%A8%60matplotlib%60%E7%BB%98%E5%88%B6RDF%E5%9B%BE%E3%80%82%E5%9C%A81.0">https://www.mdanalysis.org/docs/documentation_pages/analysis/rdf.html#radial-distribution-functions-mdanalysis-analysis-rdf)上查看。使用以下的脚本得到在O原子周围找到H原子的概率，并调用`matplotlib`绘制RDF图。在1.0</a> Å<br> 处出现一个尖峰，也就是对应了O-H键的平衡键长（0.96$Å$）。</p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">MDAnalysis</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">MDAnalysis</span>.<span class="property">analysis</span>.<span class="property">rdf</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.<span class="property">pyplot</span> <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">u = <span class="title class_">MDAnalysis</span>.<span class="title class_">Universe</span>(<span class="string">&#x27;XDATCAR.pdb&#x27;</span>, permissive=<span class="title class_">True</span>)</span><br><span class="line">g1= u.<span class="title function_">select_atoms</span>(<span class="string">&#x27;type O&#x27;</span>)</span><br><span class="line">g2= u.<span class="title function_">select_atoms</span>(<span class="string">&#x27;type H&#x27;</span>)</span><br><span class="line">rdf = <span class="title class_">MDAnalysis</span>.<span class="property">analysis</span>.<span class="property">rdf</span>.<span class="title class_">InterRDF</span>(g1,g2,nbins=<span class="number">75</span>, range=(<span class="number">0.0</span>, <span class="title function_">min</span>(u.<span class="property">dimensions</span>[:<span class="number">3</span>])/<span class="number">2.0</span>))</span><br><span class="line">           </span><br><span class="line">rdf.<span class="title function_">run</span>()</span><br><span class="line"></span><br><span class="line">fig = plt.<span class="title function_">figure</span>(figsize=(<span class="number">5</span>,<span class="number">4</span>))</span><br><span class="line">ax = fig.<span class="title function_">add_subplot</span>(<span class="number">111</span>)</span><br><span class="line">ax.<span class="title function_">plot</span>(rdf.<span class="property">bins</span>, rdf.<span class="property">rdf</span>, <span class="string">&#x27;k-&#x27;</span>,  label=<span class="string">&quot;rdf&quot;</span>)</span><br><span class="line"></span><br><span class="line">ax.<span class="title function_">legend</span>(loc=<span class="string">&quot;best&quot;</span>)</span><br><span class="line">ax.<span class="title function_">set_xlabel</span>(r<span class="string">&quot;Distance ($\AA$)&quot;</span>)</span><br><span class="line">ax.<span class="title function_">set_ylabel</span>(r<span class="string">&quot;RDF&quot;</span>)</span><br><span class="line">fig.<span class="title function_">savefig</span>(<span class="string">&quot;RDF_all.png&quot;</span>)</span><br><span class="line">#plt.<span class="title function_">show</span>()</span><br></pre></td></tr></table></figure>
-
-<p>图5. RDF_O_H<br>RMSD均方根偏差分析</p>
-<h3 id="VMD分析RMSD"><a href="#VMD分析RMSD" class="headerlink" title="VMD分析RMSD"></a>VMD分析RMSD</h3><p>确保使用了-pbc参数以获取连续的轨迹，将生成的XDATCAR.pdb文件拖入显示窗口。如图6右所示，第一帧内水的三个原子不在同一个镜像内，分子不完整。在进行RMSD分析时，尽管轨迹是连续的，但是在对齐分子时就会出现问题。因此在本例中需要选择第一个原子作为中心将分子平移完整，在图6左中，分子已经在同一个镜像中了。</p>
-<p><code>python XDATCAR_toolkit.py -p -t 0.5  --pbc -i 1</code></p>
-<p>图6. 完整和不完整的水分子<br>将重新生成的PDB文件拖入显示窗口，在主菜单VMD Main中选择Extensions-Analysis-Analysis-RMSD Trajectory Tool，在计算RMSD前必须先做Align（对齐），这会使得每一帧结构进行平移、旋转来与参考帧的结构尽可能贴近，从而使得RMSD最小化。刘锦程提到研究生物法分子的RMSD时需要对齐操作，而研究小分子时不需要对齐分子。</p>
-<p>图7. VMD中计算RMSD</p>
-<p>把左上角文本框里的默认的Protein改成all（代表所有原子都纳入考虑），然后把noh复选框的勾去掉（否则将忽略氢原子）。然后点右上角的ALIGN按钮，此时所有帧的结构就已经对齐了。本例中演示以模拟的第一帧为参考，分析氧原子位置的均方根偏差。因此在Reference mol那里选top作为参考结构，左上角文本框由all改为type O（代表计算O原子的RMSD），然后勾上Plot复选框，最后点击RMSD按钮即可得到O原子的RMSD图。在File菜单栏可以选择导出dat数据。</p>
-<p>图8. VMD中未对齐轨迹计算的RMSD</p>
-<p>图9. VMD中对齐了轨迹后计算的RMSD</p>
-<h3 id="使用-MD-Analysis分析-RMSD"><a href="#使用-MD-Analysis分析-RMSD" class="headerlink" title="使用 MD Analysis分析 RMSD"></a>使用 MD Analysis分析 RMSD</h3><p>RMSD分析的介绍和使用方法在网页（<a target="_blank" rel="noopener" href="https://www.mdanalysis.org/docs/documentation_pages/analysis/rms.html?highlight=average%EF%BC%89%E4%B8%8A%E6%9F%A5%E7%9C%8B%E3%80%82">https://www.mdanalysis.org/docs/documentation_pages/analysis/rms.html?highlight=average）上查看。</a></p>
-<p>使用以下的脚本可以分别得到所有原子，氢原子，氧原子的RMSD，并调用<code>matplotlib</code>绘制RMSD图。网页中有一段话（Note If you use trajectory data from simulations performed under periodic boundary conditions then you must make your molecules whole before performing RMSD calculations so that the centers of mass of the selected and reference structure are properly superimposed.）也就是在计算RMSD的时候选择的分子必须是完整的，不能分处于盒子的两边。这与我们之前的描述是一致的。MD Analysis默认对齐了分子。</p>
-<p>使用以下脚本可以绘制对齐了轨迹后所有原子，氧原子和氢原子的RMSD。</p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">MDAnalysis</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">MDAnalysis</span>.<span class="property">analysis</span>.<span class="property">rms</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.<span class="property">pyplot</span> <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">u = <span class="title class_">MDAnalysis</span>.<span class="title class_">Universe</span>(<span class="string">&#x27;XDATCAR.pdb&#x27;</span>, permissive=<span class="title class_">True</span>)</span><br><span class="line">ref = <span class="title class_">MDAnalysis</span>.<span class="title class_">Universe</span>(<span class="string">&#x27;XDATCAR.pdb&#x27;</span>, permissive=<span class="title class_">True</span>)     # reference (<span class="keyword">with</span> the <span class="keyword">default</span> ref_frame=<span class="number">0</span>)</span><br><span class="line">ref.<span class="property">trajectory</span>[<span class="number">0</span>] #use first frame <span class="keyword">as</span> reference</span><br><span class="line">R = <span class="title class_">MDAnalysis</span>.<span class="property">analysis</span>.<span class="property">rms</span>.<span class="title function_">RMSD</span>(u, ref,</span><br><span class="line">           select=<span class="string">&quot;all&quot;</span>,         # superimpose on whole backbone <span class="keyword">of</span> all atoms # align based on all atoms</span><br><span class="line">           groupselections=[<span class="string">&quot;type H&quot;</span>,<span class="string">&quot;type O&quot;</span>],</span><br><span class="line">           filename=<span class="string">&quot;rmsd_all.dat&quot;</span>,center=<span class="title class_">True</span>)#,   # <span class="variable constant_">CORE</span></span><br><span class="line">timestep=<span class="number">0.0005</span>  #<span class="number">0.</span>5fs <span class="keyword">from</span> fs to ps <span class="keyword">as</span> <span class="title class_">Reader</span> has no dt information, set to <span class="number">1.0</span> ps          </span><br><span class="line">R.<span class="title function_">run</span>()</span><br><span class="line">rmsd = R.<span class="property">rmsd</span>.<span class="property">T</span>   # transpose makes it easier <span class="keyword">for</span> plotting</span><br><span class="line">time = rmsd[<span class="number">1</span>]*timestep</span><br><span class="line"></span><br><span class="line">fig = plt.<span class="title function_">figure</span>(figsize=(<span class="number">5</span>,<span class="number">4</span>))</span><br><span class="line">ax = fig.<span class="title function_">add_subplot</span>(<span class="number">111</span>)</span><br><span class="line">ax.<span class="title function_">plot</span>(time, rmsd[<span class="number">2</span>], <span class="string">&#x27;k-&#x27;</span>,  label=<span class="string">&quot;all&quot;</span>)</span><br><span class="line">ax.<span class="title function_">plot</span>(time, rmsd[<span class="number">3</span>], <span class="string">&#x27;r--&#x27;</span>, label=<span class="string">&quot;type H&quot;</span>)</span><br><span class="line">ax.<span class="title function_">plot</span>(time, rmsd[<span class="number">4</span>], <span class="string">&#x27;b--&#x27;</span>, label=<span class="string">&quot;type O&quot;</span>)</span><br><span class="line">ax.<span class="title function_">legend</span>(loc=<span class="string">&quot;best&quot;</span>)</span><br><span class="line">ax.<span class="title function_">set_xlabel</span>(<span class="string">&quot;time (ps)&quot;</span>)</span><br><span class="line">ax.<span class="title function_">set_ylabel</span>(r<span class="string">&quot;RMSD ($\AA$)&quot;</span>)</span><br><span class="line">fig.<span class="title function_">savefig</span>(<span class="string">&quot;rmsd_md_analysis.png&quot;</span>)</span><br></pre></td></tr></table></figure>
-<h1 id="应用python工具pymatgen，"><a href="#应用python工具pymatgen，" class="headerlink" title="应用python工具pymatgen，"></a>应用python工具pymatgen，</h1><p>可以直接得到MSD，diffusion，donductivity。</p>
-<p><strong>得到XDATCAR后，需要首先配置pymatgen。</strong><br>需要用到conda命令，windows：可以安装anaconda3，通过spyder启动。<br>进入anaconda prompt中启动中断，配置conda environment:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda create –name my_pymatgen python</span><br><span class="line">activate my_pymatgen</span><br></pre></td></tr></table></figure>
-
-<p>linux环境下一个比较好的选择是安装miniconda3<br>wget <a target="_blank" rel="noopener" href="https://repo.anaconda.com/minico">https://repo.anaconda.com/minico</a> … -Windows-x86_64.exe</p>
-<p><code>bash Miniconda3-latest-linux-x86_64.sh</code><br>如果原来在bashrc中配置了anaconda，则注释掉，重启terminal。<br>与windows下相同，需要设置一个pymatgen环境。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda create –name my_pymatgen</span><br><span class="line">source activate my_pymatgen</span><br></pre></td></tr></table></figure>
-
-<p><strong>在my_pymatgen环境下安装 pymatgen：</strong></p>
-<p><code>conda install --channel conda-forge pymatgen</code></p>
-<p><strong>安装好之后运行建立如下test.py脚本, 可以得到结果：</strong></p>
-<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> pymatgen.<span class="property">core</span>.<span class="property">trajectory</span> <span class="keyword">import</span> <span class="title class_">Trajectory</span></span><br><span class="line"><span class="keyword">from</span> pymatgen.<span class="property">io</span>.<span class="property">vasp</span>.<span class="property">outputs</span> <span class="keyword">import</span> <span class="title class_">Xdatcar</span></span><br><span class="line"><span class="keyword">from</span> pymatgen <span class="keyword">import</span> <span class="title class_">Structure</span></span><br><span class="line"><span class="keyword">from</span> pymatgen.<span class="property">analysis</span>.<span class="property">diffusion_analyzer</span> <span class="keyword">import</span> <span class="title class_">DiffusionAnalyzer</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"></span><br><span class="line"># 这一步是读取 <span class="variable constant_">XDATCAR</span>，得到一系列结构信息</span><br><span class="line">traj = <span class="title class_">Trajectory</span>.<span class="title function_">from_file</span>(<span class="string">&#x27;XDATCAR&#x27;</span>)</span><br><span class="line"></span><br><span class="line"># 这一步是实例化 <span class="title class_">DiffusionAnalyzer</span> 的类</span><br><span class="line"># 并用 from_structures 方法初始化这个类； <span class="number">300</span> 是温度，<span class="number">1</span>是<span class="variable constant_">POTIM</span> 的time step，<span class="number">1000</span>是间隔步数</span><br><span class="line"># 间隔步数（step_skip）不太容易理解，但是根据官方教程(这里具体怎么回事我不太清楚，好像potim*step_skip需要小于<span class="number">1000</span>，<span class="number">1000</span>为<span class="variable constant_">NSW</span>值，这是我没彻底弄清楚的地方):</span><br><span class="line"># dt = timesteps * self.<span class="property">time_step</span> * self.<span class="property">step_skip</span></span><br><span class="line"></span><br><span class="line">diff = <span class="title class_">DiffusionAnalyzer</span>.<span class="title function_">from_structures</span>(traj,<span class="string">&#x27;Li&#x27;</span>,<span class="number">300</span>,<span class="number">1</span>,<span class="number">1000</span>)</span><br><span class="line"></span><br><span class="line"># 可以用内置的 plot_msd 方法画出 <span class="variable constant_">MSD</span> 图像</span><br><span class="line"># 有些终端不能显示图像，这时候可以调用 <span class="title function_">export_msdt</span>() 方法，得到数据后再自己作图</span><br><span class="line">diff.<span class="title function_">plot_msd</span>()</span><br><span class="line">diff.<span class="title function_">export_msdt</span>(<span class="string">&quot;write_msd&quot;</span>)</span><br><span class="line"># 接下来直接得到 离子迁移率， 单位是 mS/cm，diffusity单位是 cm^<span class="number">2</span>/S</span><br><span class="line"></span><br><span class="line">C = diff.<span class="property">conductivity</span></span><br><span class="line">D = diff.<span class="property">diffusivity</span></span><br><span class="line"><span class="keyword">with</span> <span class="title function_">open</span>(<span class="string">&#x27;result.dat&#x27;</span>,<span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> <span class="attr">f</span>:</span><br><span class="line">    f.<span class="title function_">write</span>(<span class="string">&#x27;# AIMD result for Li-ion\n&#x27;</span>)</span><br><span class="line">    f.<span class="title function_">write</span>(<span class="string">&#x27;temp\conductivity\diffusivity\n&#x27;</span>)</span><br><span class="line">    f.<span class="title function_">write</span>(<span class="string">&#x27;%d\t%.2f  %.10f&#x27;</span> %(<span class="number">300</span>,C,D))</span><br></pre></td></tr></table></figure>
-
-<p>在1.dat中是msd，conductivity和diffusivity会直接输出在result.dat中，模拟石墨烯表面Li的MD（excessive state）结果diffusivity为2*10-7 cm^2&#x2F;S，我觉得算出diffusivity后自己求conductivity比较好，请问应该怎么求？与文件对比，基本吻合（J. Phys. Chem. Lett. 2010, 1, 1176–1180；<a target="_blank" rel="noopener" href="https://pubs.acs.org/doi/10.1021/jp910134u%EF%BC%89%E3%80%82">https://pubs.acs.org/doi/10.1021/jp910134u）。</a><br>其它不对的地方，欢迎批评指正。<br>参考：<br><a target="_blank" rel="noopener" href="https://pymatgen.org/installation.html">https://pymatgen.org/installation.html</a><br><a target="_blank" rel="noopener" href="https://www.bigbrosci.com/2020/09/08/A18/">https://www.bigbrosci.com/2020/09/08/A18/</a></p>
-<p><strong>VTST的脚本里有一个xdat2xyz.pl，可以直接把XDATCAR转化成movie.xyz文件。xdatcar可以通过ase转换成ms的xtd，也可以转ext-xyz，理论上支持xyz格式的程序也能打开。ase convert xdatcar xxx.xtd（注意会生成隐藏文件xxx.arc，如果要移动xtd，应该要使两个文件在相同的目录）。</strong></p>
-<p>事实上，有xtd格式的话，如果你有MS的版权，有些针对xtd格式的分析其实可以直接在MS里面做。arc文件跟着xtd一块拷贝到相同目录。</p>
-<h1 id="离子的电导率"><a href="#离子的电导率" class="headerlink" title="离子的电导率"></a>离子的电导率</h1><p>Pymatgen 是 python materials genomics 的缩写，它是一款基于 python 的、开源的、强大的材料分析软件（<a target="_blank" rel="noopener" href="https://pymatgen.org/%EF%BC%89%E3%80%82">https://pymatgen.org/）。</a></p>
-<p>Pymatgen 包含一系列能够表示元素（Element）、位点（Site）、分子（Molecule）、和结构（Structure）的类（Class）。它具有为很多计算软件提供前处理和后处理的能力。这些计算软件包括VASP，ABINIT，exciting，FEFF，QCHEM，LAMMPS，ADF，AIIDA，ASE，Gaussian，Lobster，Phonopy，Shengbte，Pwscf，和Zeo++等等。它能实现科研狗的众多后处理需求，包括生成相图（Phase diagram）和布拜图（Pourbaix diagrams），分析态密度和能带等等。</p>
-<p>Pymatgen 还提供了很多数据库（Materials Project REST API，Crystallography Open Database，and other external data sources）的接口，方便大家从数据库中查询结构和其他数据。</p>
-<p>以下是Pymatgen官网提供的后处理的例子：</p>
-<p>Top: (left) Phase and (right) Pourbaix diagram from the Materials API. Bottom left: Calculated bandstructure plot using pymatgen’s parsing and plotting utilities. Bottom right: Arrhenius plot using pymatgen’s DiffusionAnalyzer.</p>
-<p><strong>本文就介绍一下如何使用 Pymatgen 的 DiffusionAnalyzer 类去计算锂离子固态电解质中锂离子电导率。</strong></p>
-<h3 id="计算离子电导率的理论与公式"><a href="#计算离子电导率的理论与公式" class="headerlink" title="计算离子电导率的理论与公式"></a>计算离子电导率的理论与公式</h3><p>目前，比较准确的计算离子电导率的方法是先用NVT系综第一性原理分子动力学（AIMD，ab initio molecular dynamics）模拟材料中离子在不同温度下的运动，然后计算出离子的平均（average）均方位移（MSD，mean square displacement），再计算出自扩散系数（D<br>，self-diffusion coefficient），最后求得离子在某温度下的电导率（<br>，conductivity）。</p>
-<h3 id="如何进行AIMD计算"><a href="#如何进行AIMD计算" class="headerlink" title="如何进行AIMD计算"></a>如何进行AIMD计算</h3><p>AIMD计算通常非常耗时，所以，为了减少计算成本，我们可以适当放宽计算精度。如果用 VASP 进行计算，具体的，大家可以</p>
-<p>采用较小的截断能。氧化物用 400 eV，硫化物用 280 eV，硒化物用 270 eV<br>采用Gamma点作为K点设置，并使用gam版本的 VASP 进行计算<br>采用单胞计算，如果材料的单胞包含比较多的原子<br>采用合适的步长，比如2 fs，即 POTIM &#x3D; 2<br>后处理的基本公式<br>一旦AIMD计算完成，大家就可以着手计算离子电导率了。本文首先先介绍以下计算过程中使用的公式，方便有兴趣的同学自己开发脚本。</p>
-<h3 id="平均均方位移（average-MSD）可以通过以下公式计算："><a href="#平均均方位移（average-MSD）可以通过以下公式计算：" class="headerlink" title="平均均方位移（average MSD）可以通过以下公式计算："></a>平均均方位移（average MSD）可以通过以下公式计算：</h3><p> 是第<br> 个离子在<br> 时刻的位移。</p>
-<p>自扩散系数（<br>）可以通过以下公式计算：</p>
-<p> 是离子在材料中的扩散维度（一般地，<br>），<br> 是离子扩散的时间。</p>
-<p>最后，离子电导率（<br>）可以这样计算：</p>
-<p> 是材料中的离子密度，<br> 是元电荷，<br> 是离子的价态，<br> 是玻尔兹曼常数，<br> 是温度。</p>
-<p>电导率计算的例子<br>现在我们通过一个 Li_Sn_S 材料的例子来详细了解一下整个计算和处理的过程。该材料的结构显示如下：</p>
-<p>本例中采用单胞做计算，INCAR 设置如下：</p>
-<p>[test@ln0%tianhe2 li_sn_s]$ vi INCAR</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">ISTART = 0</span><br><span class="line">ICHARG = 2</span><br><span class="line">IBRION = 0</span><br><span class="line">ISIF = 2</span><br><span class="line">NPAR = 8</span><br><span class="line">NSW = 30000</span><br><span class="line">TEBEG = 900 #还要设置成 1500K 等等</span><br><span class="line">PREC = N</span><br><span class="line">POTIM = 2</span><br><span class="line">SMASS = 0.0</span><br><span class="line">NELMIN = 4</span><br><span class="line">LWAVE = F</span><br><span class="line">LCHARG = F</span><br><span class="line">IALGO = 48</span><br><span class="line">LREAL = A</span><br></pre></td></tr></table></figure>
-<p>AIMD 计算结束之后会得到 XDATCAR 文件。很多时候，由于超算的时间限制，一个完整的AIMD计算需要提交两三次，从而产生两三个 XDATCAR 文件，这时，我们只要把它们按顺序通过 cat 命令合并在一起就行。例如我们有三个 XDATCAR 文件，分别命名成 XDATCAR01，XDATCAR02，和 XDATCAR03。</p>
-<p><code>[test@ln0%tianhe2 li_sn_s]$ cat XDATCAR01 XDATCAR02 XDATCAR03 &gt; XDATCAR </code><br>新得到的XDATCAR文件，注意删掉重复的与晶格信息相关的行，一般续算的次数也不多，在使用上面命令的时候，手动把XDATCAR02, XDATCAR03 中的删除即可。</p>
-<p>Pymatgen 大显身手<br>安装pymatgen<br>首先让我们安装 pyamtgen，推荐大家参考官网，使用 anaconda 安装，否则会出现问题。安装好了anaconda之后，不管是 linux 还是 windows, 安装 pyamtgen 的指令是一样的。下面以吕梁天河超算为例：</p>
-<p>[test@ln0%tianhe2 li_sn_s]$ conda install –channel conda-forge pymatgen<br>安装完成后，我们可以试着运行 python，导入 Pyamtgen 模块，如果像下面一样没有出错，就是安装成功了。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[test@ln0%tianhe2 li_sn_s]$ python</span><br><span class="line">Python 3.7.3 (default, Mar 27 2019, 22:11:17) </span><br><span class="line">[GCC 7.3.0] :: Anaconda, Inc. on linux</span><br><span class="line">Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</span><br><span class="line">&gt;&gt;&gt; import pymatgen</span><br><span class="line">&gt;&gt;&gt; </span><br></pre></td></tr></table></figure>
-<p>查看 DiffusionAnalyzer 的类<br>大家可以通过官方文档（<a target="_blank" rel="noopener" href="https://pymatgen.org/pymatgen.analysis.diffusion_analyzer.html%EF%BC%89%E6%9F%A5%E7%9C%8B%E6%8E%A5%E4%B8%8B%E6%9D%A5%E8%A6%81%E4%BD%BF%E7%94%A8%E7%9A%84%E7%B1%BB%EF%BC%8C%E7%86%9F%E6%82%89%E4%B8%80%E4%B8%8B%E4%BB%A3%E7%A0%81%E7%9A%84%E7%94%A8%E6%B3%95%E3%80%82">https://pymatgen.org/pymatgen.analysis.diffusion_analyzer.html）查看接下来要使用的类，熟悉一下代码的用法。</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class DiffusionAnalyzer(MSONable):</span><br><span class="line">    def __init__(self, structure, displacements, specie, temperature,</span><br><span class="line">                 time_step, step_skip, smoothed=&quot;max&quot;, min_obs=30,</span><br><span class="line">                 avg_nsteps=1000, lattices=None):</span><br></pre></td></tr></table></figure>
-<p>这段代码显示，运行这个类需要一系列的输入信息，包括材料结构（structure），位移（displacements），要研究的离子（specie），温度（temperature）等等。</p>
-<p>但是这个类提供了很多方法让大家可以通过读取 XDATCAR 或者 vasprun 文件的方式来实例化，例如</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@classmethod</span><br><span class="line">    def from_structures(cls, structures, specie, temperature,</span><br><span class="line">                        time_step, step_skip, initial_disp=None,</span><br><span class="line">                        initial_structure=None, **kwargs):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        Convenient constructor that takes in a list of Structure objects to</span><br><span class="line">        perform diffusion analysis.</span><br><span class="line">        Args:</span><br><span class="line">            structures ([Structure]): list of Structure objects (must be</span><br><span class="line">                ordered in sequence of run). E.g., you may have performed</span><br><span class="line">                sequential VASP runs to obtain sufficient statistics.</span><br><span class="line">        ... ...</span><br><span class="line">        &quot;&quot;&quot;</span><br></pre></td></tr></table></figure>
-<p>好了，废话不多说，直接上代码，开始进行后处理。</p>
-<p>代码示例<br>新建一个文件，名字为li_conductivity.py</p>
-<p>‘’’<br>分析AIMD结果，计算MSD 和 conductivity<br>‘’’</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">from pymatgen.core.trajectory import Trajectory</span><br><span class="line">from pymatgen.io.vasp.outputs import Xdatcar</span><br><span class="line">from pymatgen import Structure</span><br><span class="line">from pymatgen.analysis.diffusion_analyzer import DiffusionAnalyzer</span><br><span class="line">import numpy as np</span><br><span class="line">import pickle</span><br><span class="line"></span><br><span class="line"># 这一步是读取 XDATCAR，得到一系列结构信息</span><br><span class="line">traj = Trajectory.from_file(&#x27;XDATCAR&#x27;)</span><br><span class="line"></span><br><span class="line"># 这一步是实例化 DiffusionAnalyzer 的类</span><br><span class="line"># 并用 from_structures 方法初始化这个类； 900 是温度，2 是POTIM 的值，1是间隔步数</span><br><span class="line"># 间隔步数（step_skip）不太容易理解，但是根据官方教程:</span><br><span class="line"># dt = timesteps * self.time_step * self.step_skip</span><br><span class="line"></span><br><span class="line">diff = DiffusionAnalyzer.from_structures(traj,&#x27;Li&#x27;,900,2,1)</span><br><span class="line"></span><br><span class="line"># 可以用内置的 plot_msd 方法画出 MSD 图像</span><br><span class="line"># 有些终端不能显示图像，这时候可以调用 export_msdt() 方法，得到数据后再自己作图</span><br><span class="line">diff.plot_msd()</span><br><span class="line"></span><br><span class="line"># 接下来直接得到 离子迁移率， 单位是 mS/cm</span><br><span class="line">C = diff.conductivity</span><br><span class="line"></span><br><span class="line">with open(&#x27;result.dat&#x27;,&#x27;w&#x27;) as f:</span><br><span class="line">    f.write(&#x27;# AIMD result for Li-ion\n&#x27;)</span><br><span class="line">    f.write(&#x27;temp\tconductivity\n&#x27;)</span><br><span class="line">    f.write(&#x27;%d\t%.2f\n&#x27; %(900,C))</span><br></pre></td></tr></table></figure>
-<p>在终端运行该文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[test@ln0%tianhe2 li_sn_s]$ python li_conductivity.py</span><br></pre></td></tr></table></figure>
-<p>一段时间后就会得到MSD图像和离子电导率</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[test@ln0%tianhe2 li_sn_s]$ vi result.dat</span><br><span class="line"></span><br><span class="line"># AIMD result for Li-ion</span><br><span class="line">temp	conductivity</span><br><span class="line">900	884.05</span><br></pre></td></tr></table></figure>
-<p>可见，该材料在 900K 时的锂离子电导率为 884.05 mS&#x2F;cm。</p>
-<p>例子下载：<br>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1WGzOVJBoe6Ym8mvR1uWanA">https://pan.baidu.com/s/1WGzOVJBoe6Ym8mvR1uWanA</a><br>提取码：jhc5</p>
-<p>思考<br>简短几行代码就可以计算出离子电导率，那么如何得出材料在300K下的电导率呢？<br>如何计算离子在材料中的迁移势垒？<br>如何可视化离子在材料中的扩散路径？</p>
-<h1 id="如何使用-Pymatgen-可视化离子的迁移概率密度。"><a href="#如何使用-Pymatgen-可视化离子的迁移概率密度。" class="headerlink" title="如何使用 Pymatgen 可视化离子的迁移概率密度。"></a>如何使用 Pymatgen 可视化离子的迁移概率密度。</h1><p>先举个例子，</p>
-<p>在“Design principles for solid-state lithium superionic conductors”一文中（Wang et al., Nature Materials 2015, 14 , 1026–1031. ），作者用Ab Initio Molecular Dynamic （AIMD）计算了Li 离子在Li$\mathrm{_1}\mathrm{_2}，<br>\mathrm{_7}<br>\mathrm{_3}<br>\mathrm{_1}$$\mathrm{_1}，<br>\mathrm{_2}，和<br>\mathrm{_4}<br>\mathrm{_4}$ 四种材料中的迁移概率密度（Probability Density），结果如下图所示：</p>
-<p>从图中可以看出Li离子在图a所示材料中主要沿c轴方向的通道迁移，而且由于这个通道连通得比较好，Li离子的迁移势垒会比较低（0.22<del>0.25 eV）。<br>Li离子在图b所示的材料的迁移路径形成了一个三维网格，而且由于这个概率密度比图b中的概率密度分布得更加均匀，Li离子的迁移势垒更低（0.18</del>0.19 eV）。<br>图b所示的材料就完全不行了，因为Li离子的概率密度仅分布在特定的位点附近，说明离子不能有效地移动。<br>Li离子在图d所示材料中也存在迁移局域化的行为。<br>作者总结说 “A general principle for the design of Li-ion conductors with low activation energy can be distilled from the above findings: all of the sites within the diffusion network should be energetically close to equivalent, with large channels connecting them.”<br>那么我们如何在自己的计算中画出这样的图呢？Pymatgen 举手说，它可以帮忙！</p>
-<p>但是在开始之前，我们要安装Pymatgen的插件：Pymatgen-diffusion（<a target="_blank" rel="noopener" href="https://github.com/materialsvirtuallab/pymatgen-diffusion%EF%BC%89%E3%80%82">https://github.com/materialsvirtuallab/pymatgen-diffusion）。</a></p>
-<p>安装 Pymatgen-diffusion<br>推荐大家使用最新版的Anaconda安装Pymatgen及其插件。点击上面的链接，进入官网后，点击最新版本链接，</p>
-<p>我们可以下载.zip文件，</p>
-<p>下载完成后，大家可以解压这个文件，得到 pymatgen-diffusion-2019.8.18文件夹。</p>
-<p>我们把其中的 pymatgen_diffusion 文件夹放到 Anaconda的site-packages文件夹下，路径是 Windows 系统：……\Anaconda\Lib\site-packages；Linux系统：……&#x2F;anaconda3&#x2F;lib&#x2F;pythonx.x&#x2F;site-packages，就算安装好了。</p>
-<p>接下来我们可以启动python，导入这个模块，如果不报错就没有问题了。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[test@ln0%tianhe2 li_sn_s]$ python</span><br><span class="line">Python 3.8.3 (default, Jul  2 2020, 16:21:59) </span><br><span class="line">[GCC 7.3.0] :: Anaconda, Inc. on linux</span><br><span class="line">Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</span><br><span class="line">&gt;&gt;&gt; import pymatgen_diffusion</span><br><span class="line">&gt;&gt;&gt; </span><br></pre></td></tr></table></figure>
-<p>学习用法<br>我们可以在其github网站上通过例子学习这个模块的用法。</p>
-<p>点击打开 probbility_analysis.ipynb 文件。</p>
-<p>其内容如下（有所删减）：如果不想看的话可直接查看 开始作图 部分</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">from pymatgen.analysis.diffusion_analyzer import DiffusionAnalyzer</span><br><span class="line">from pymatgen_diffusion.aimd.pathway import ProbabilityDensityAnalysis</span><br><span class="line">import json</span><br><span class="line"></span><br><span class="line">#ProbabilityDensityAnalysis object</span><br><span class="line">filename=&quot;/Users/iekhengchu/repos/pymatgen-diffusion/pymatgen_diffusion/aimd/tests/cNa3PS4_pda.json&quot;</span><br><span class="line"></span><br><span class="line">data = json.load(open(&quot;../pymatgen_diffusion/aimd/tests/cNa3PS4_pda.json&quot;, &quot;r&quot;))</span><br><span class="line">diff_analyzer = DiffusionAnalyzer.from_dict(data) # 初始化DiffusionAnalyzer类</span><br><span class="line"></span><br><span class="line">pda = ProbabilityDensityAnalysis.from_diffusion_analyzer(diff_analyzer, interval=0.5, </span><br><span class="line">                                                         species=(&quot;Na&quot;, &quot;Li&quot;)) #可以指定离子</span><br><span class="line">#Save probability distribution to a CHGCAR-like file</span><br><span class="line">pda.to_chgcar(filename=&quot;CHGCAR_new2.vasp&quot;) #保存概率密度文件</span><br></pre></td></tr></table></figure>
-<p>开始作图<br>代码（test.py）如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from pymatgen_diffusion.aimd.pathway import ProbabilityDensityAnalysis</span><br><span class="line">from pymatgen.core.trajectory import Trajectory</span><br><span class="line">from pymatgen.io.vasp.outputs import Xdatcar</span><br><span class="line">from pymatgen.analysis.diffusion_analyzer import DiffusionAnalyzer</span><br><span class="line"></span><br><span class="line">traj = Trajectory.from_file(&#x27;XDATCAR&#x27;)</span><br><span class="line">diff = DiffusionAnalyzer.from_structures(traj,&#x27;Li&#x27;,900,2,1)</span><br><span class="line">pda = ProbabilityDensityAnalysis.from_diffusion_analyzer(diff,interval=0.5,species=(&quot;Li&quot;))</span><br><span class="line">pda.to_chgcar(filename=&quot;pda.vasp&quot;) #保存概率密度文件</span><br></pre></td></tr></table></figure>
-<p>此处理过程大概耗时8分钟，因机器而异。</p>
-<p>在VESTA中可视化</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -2070,7 +1979,7 @@ INPUT.txt其余的参数在前面的案例中，已经介绍了。可以看出�
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2025</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

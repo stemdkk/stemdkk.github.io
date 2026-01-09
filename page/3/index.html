@@ -123,7 +123,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -134,7 +134,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-count">46</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -159,6 +159,514 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/18-47-26/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Keke Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lightchaser">
+      <meta itemprop="description" content="一个小学生的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Lightchaser">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/05/09/18-47-26/" class="post-title-link" itemprop="url">2.2 AMSET</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-09 18:47:26" itemprop="dateCreated datePublished" datetime="2023-05-09T18:47:26+08:00">2023-05-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-06-05 10:12:33" itemprop="dateModified" datetime="2024-06-05T10:12:33+08:00">2024-06-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DFT%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">DFT学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p><a target="_blank" rel="noopener" href="https://github.com/hackingmaterials/Amset">https://github.com/hackingmaterials/Amset</a><br><a target="_blank" rel="noopener" href="https://hackingmaterials.lbl.gov/amset/">https://hackingmaterials.lbl.gov/amset/</a><br><a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41467-021-22440-5.pdf">https://www.nature.com/articles/s41467-021-22440-5.pdf</a></p>
+<p>劳伦斯·伯克利国家实验室Alex M. Ganose和Anubhav Jain开发了一种根据第一性原理输入来计算固态半导体和绝缘体载流子散射率的有效计算方法(AMSET)。本方法扩展了现有的极性和非极性电子-声子耦合、离子化杂质和基于各向同性能带结构的压电散射机制的公式以支持高度各向异性的材料。他们通过计算23种半导体的电子传输特性来测试这个公式，包括48个大原子$CH_3NH_3PbI_3$混合钙钛矿，并将结果与实验测量结果和更详细的散射模拟进行比较。相对于实验的斯皮尔曼迁移率秩系数（rs &#x3D; 0.93）与使用恒定弛豫时间近似值（rs &#x3D; 0.52）获得的结果相比有明显提高。他们发现，他们的方法可提供与最新技术类似的精度，而计算成本约为1&#x2F;500，因此可在高通量计算工作流程中使用，以精确筛选载流子迁移率、寿命和热电功率。</p>
+<ul>
+<li>Inputs obtainable from first-principles calculations. The primary input for AMSET is an uniform band structure calculation.</li>
+<li>Scattering rates calculated in the Born approximation using common materials properties such as phonon frequencies and dielectric constants.</li>
+<li>Transport properties calculated through the Boltzmann transport equation.</li>
+<li>Efficient implementation that can run on a personal laptop.</li>
+</ul>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><p>pymatgen&#x3D;&#x3D;2023.3.23<br>scipy&#x3D;&#x3D;1.10.1<br>monty&#x3D;&#x3D;2022.9.9<br>matplotlib&#x3D;&#x3D;3.7.1<br>BoltzTraP2&#x3D;&#x3D;22.12.1<br>tqdm&#x3D;&#x3D;4.65.0<br>tabulate&#x3D;&#x3D;0.9.0<br>memory_profiler&#x3D;&#x3D;0.61.0<br>spglib&#x3D;&#x3D;2.0.2<br>click&#x3D;&#x3D;8.1.3<br>sumo&#x3D;&#x3D;2.3.6<br>h5py&#x3D;&#x3D;3.8.0<br>pyFFTW&#x3D;&#x3D;0.13.0<br>interpolation&#x3D;&#x3D;2.2.4<br>numba&#x3D;&#x3D;0.56.4</p>
+<h3 id="conda-environment"><a href="#conda-environment" class="headerlink" title="conda environment"></a>conda environment</h3><p>pip install amset</p>
+<h3 id="Developer-Installation"><a href="#Developer-Installation" class="headerlink" title="Developer Installation"></a>Developer Installation</h3> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone <span class="attr">https</span>:<span class="comment">//github.com/hackingmaterials/amset.git</span></span><br><span class="line">cd amset</span><br><span class="line">pip install -e .</span><br></pre></td></tr></table></figure>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><h3 id="Structural-relaxation"><a href="#Structural-relaxation" class="headerlink" title="Structural relaxation:"></a>Structural relaxation:</h3><p>“tight” calculation settings<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">ADDGRID</span> = <span class="title class_">True</span>  </span><br><span class="line"><span class="variable constant_">EDIFF</span> = <span class="number">1E-8</span>   </span><br><span class="line"><span class="variable constant_">EDIFFG</span> = -<span class="number">5E-4</span>  </span><br><span class="line"><span class="variable constant_">PREC</span> = <span class="title class_">Accurate</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Dense-uniform-band-structure-and-wave-function-coefficients"><a href="#Dense-uniform-band-structure-and-wave-function-coefficients" class="headerlink" title="Dense uniform band structure and wave function coefficients:"></a>Dense uniform band structure and wave function coefficients:</h3><p>2倍的K点密度，HSE06 is required，输出波函数，</p>
+<figure class="highlight plaintext"><figcaption><span>wave ``` 得到</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">```wavefunction.h5 file ```</span><br><span class="line">### Elastic constants：</span><br><span class="line">&quot;tight&quot;relax   </span><br><span class="line"> ```javascript  &#123;.line-numbers&#125;  </span><br><span class="line"> NSW = 1  </span><br><span class="line"> IBRION = 6</span><br></pre></td></tr></table></figure>
+<h3 id="Deformation-potentials："><a href="#Deformation-potentials：" class="headerlink" title="Deformation potentials："></a>Deformation potentials：</h3><p><code>amset deform create </code><br>single point calculation，<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">NSW</span> = <span class="number">1</span>   </span><br><span class="line"><span class="variable constant_">ICORELEVEL</span> = <span class="number">1</span></span><br></pre></td></tr></table></figure><br><code>amset deform read undeformed def-1 def-2 def-3  </code><br>产生deformation.h5 file。</p>
+<h3 id="Dielectric-constants-piezoelectric-constants-and-polar-phonon-frequency："><a href="#Dielectric-constants-piezoelectric-constants-and-polar-phonon-frequency：" class="headerlink" title="Dielectric constants, piezoelectric constants and polar-phonon frequency："></a>Dielectric constants, piezoelectric constants and polar-phonon frequency：</h3><p>DFPT方法，Note, DFPT cannot be used with hybrid exchange-correlation functionals. In these cases the LCALCEPS flag should be used in combination with  <code>IBRION = 6 </code></p>
+ <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">NSW</span> = <span class="number">1</span></span><br><span class="line"><span class="variable constant_">IBRION</span> = <span class="number">8</span></span><br><span class="line"><span class="variable constant_">LEPSILON</span> = <span class="title class_">True</span></span><br></pre></td></tr></table></figure>
+
+<p><code>amset phonon-frequency </code><br>读取DFPT的 vasprun.xml 获得 dielectric constants 和 polar phonon frequency。</p>
+<h1 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h1><p>有两种方式，Python脚本<br>或者通过读取settings.yaml和输入文件加命令行运行</p>
+<h2 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h2><p><code>cp path/example/Si/Si.py  .</code><br>脚本如下：</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> warnings</span><br><span class="line"><span class="keyword">from</span> amset.<span class="property">core</span>.<span class="property">run</span> <span class="keyword">import</span> <span class="title class_">Runner</span></span><br><span class="line"><span class="keyword">from</span> amset.<span class="property">plot</span>.<span class="property">rates</span> <span class="keyword">import</span> <span class="title class_">RatesPlotter</span></span><br><span class="line">warnings.<span class="title function_">simplefilter</span>(<span class="string">&quot;ignore&quot;</span>)</span><br><span class="line">settings = &#123;</span><br><span class="line">   #general settings</span><br><span class="line">   <span class="string">&quot;scattering_type&quot;</span>: [<span class="string">&quot;IMP&quot;</span>, <span class="string">&quot;ADP&quot;</span>],</span><br><span class="line">   <span class="string">&quot;doping&quot;</span>: [-<span class="number">1.99e14</span>, -<span class="number">2.20e15</span>, -<span class="number">1.72e16</span>, -<span class="number">1.86e17</span>, -<span class="number">1.46e18</span>, -<span class="number">4.39e18</span>],</span><br><span class="line">   <span class="string">&quot;temperatures&quot;</span>: [<span class="number">300</span>],</span><br><span class="line">   <span class="string">&quot;bandgap&quot;</span>: <span class="number">1.14</span>,</span><br><span class="line">   #electronic_structure settings</span><br><span class="line">   <span class="string">&quot;interpolation_factor&quot;</span>: <span class="number">50</span>,</span><br><span class="line">   #materials properties</span><br><span class="line">   <span class="string">&quot;deformation_potential&quot;</span>: <span class="string">&quot;deformation.h5&quot;</span>,</span><br><span class="line">   <span class="string">&quot;elastic_constant&quot;</span>: [</span><br><span class="line">       [<span class="number">144</span>, <span class="number">53</span>, <span class="number">53</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">       [<span class="number">53</span>, <span class="number">144</span>, <span class="number">53</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">       [<span class="number">53</span>, <span class="number">53</span>, <span class="number">144</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">       [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">75</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">       [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">75</span>, <span class="number">0</span>],</span><br><span class="line">       [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">75</span>],</span><br><span class="line">       [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">75</span>],</span><br><span class="line">   ],</span><br><span class="line">   <span class="string">&quot;static_dielectric&quot;</span>: [[<span class="number">11.7</span>, <span class="number">0</span>, <span class="number">0</span>], [<span class="number">0</span>, <span class="number">11.7</span>, <span class="number">0</span>], [<span class="number">0</span>, <span class="number">0</span>, <span class="number">11.7</span>]],</span><br><span class="line">   <span class="string">&quot;high_frequency_dielectric&quot;</span>: [[<span class="number">11.7</span>, <span class="number">0</span>, <span class="number">0</span>], [<span class="number">0</span>, <span class="number">11.7</span>, <span class="number">0</span>], [<span class="number">0</span>, <span class="number">0</span>, <span class="number">11.7</span>]],</span><br><span class="line">   #performance settings</span><br><span class="line">   <span class="string">&quot;write_mesh&quot;</span>: <span class="title class_">True</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">   runner = <span class="title class_">Runner</span>.<span class="title function_">from_vasprun</span>(<span class="string">&quot;vasprun.xml&quot;</span>, settings)</span><br><span class="line">   amset_data = runner.<span class="title function_">run</span>()</span><br><span class="line"></span><br><span class="line">   plotter = <span class="title class_">RatesPlotter</span>(amset_data)</span><br><span class="line">   plt = plotter.<span class="title function_">get_plot</span>()</span><br><span class="line">   plt.<span class="title function_">savefig</span>(<span class="string">&quot;Si_rates.png&quot;</span>, bbox_inches=<span class="string">&quot;tight&quot;</span>, dpi=<span class="number">400</span>)</span><br></pre></td></tr></table></figure>
+
+<p>python Si.py 即可</p>
+<h2 id="命令行设置"><a href="#命令行设置" class="headerlink" title="命令行设置"></a>命令行设置</h2><p>需要准备settings.yaml文件：以Si为例：</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"> # general settings</span><br><span class="line"> <span class="attr">scattering_type</span>: [<span class="variable constant_">IMP</span>, <span class="variable constant_">ADP</span>]</span><br><span class="line"> <span class="attr">doping</span>: [-<span class="number">1.99e14</span>, -<span class="number">2.20e15</span>, -<span class="number">1.72e16</span>, -<span class="number">1.86e17</span>, -<span class="number">1.46e18</span>, -<span class="number">4.39e18</span>]</span><br><span class="line"> <span class="attr">temperatures</span>: [<span class="number">300</span>]</span><br><span class="line"> <span class="attr">bandgap</span>: <span class="number">1.14</span></span><br><span class="line"></span><br><span class="line"> # electronic_structure settings</span><br><span class="line"> <span class="attr">interpolation_factor</span>: <span class="number">50</span></span><br><span class="line"></span><br><span class="line"> # materials properties</span><br><span class="line"> <span class="attr">deformation_potential</span>: deformation.<span class="property">h5</span></span><br><span class="line"> <span class="attr">elastic_constant</span>:</span><br><span class="line">  - [<span class="number">144</span>,  <span class="number">53</span>,  <span class="number">53</span>,  <span class="number">0</span>,  <span class="number">0</span>,  <span class="number">0</span>]</span><br><span class="line">  - [ <span class="number">53</span>, <span class="number">144</span>,  <span class="number">53</span>,  <span class="number">0</span>,  <span class="number">0</span>,  <span class="number">0</span>]</span><br><span class="line">  - [ <span class="number">53</span>,  <span class="number">53</span>, <span class="number">144</span>,  <span class="number">0</span>,  <span class="number">0</span>,  <span class="number">0</span>]</span><br><span class="line">  - [  <span class="number">0</span>,   <span class="number">0</span>,   <span class="number">0</span>, <span class="number">75</span>,  <span class="number">0</span>,  <span class="number">0</span>]</span><br><span class="line">  - [  <span class="number">0</span>,   <span class="number">0</span>,   <span class="number">0</span>,  <span class="number">0</span>, <span class="number">75</span>,  <span class="number">0</span>]</span><br><span class="line">  - [  <span class="number">0</span>,   <span class="number">0</span>,   <span class="number">0</span>,  <span class="number">0</span>,  <span class="number">0</span>, <span class="number">75</span>]</span><br><span class="line"><span class="attr">static_dielectric</span>:</span><br><span class="line">  - [<span class="number">11.7</span>, <span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line">  - [<span class="number">0</span>, <span class="number">11.7</span>, <span class="number">0</span>]</span><br><span class="line">  - [<span class="number">0</span>, <span class="number">0</span>, <span class="number">11.7</span>]</span><br><span class="line"><span class="attr">high_frequency_dielectric</span>:</span><br><span class="line">  - [<span class="number">11.7</span>, <span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line">  - [<span class="number">0</span>, <span class="number">11.7</span>, <span class="number">0</span>]</span><br><span class="line">  - [<span class="number">0</span>, <span class="number">0</span>, <span class="number">11.7</span>]</span><br><span class="line"> #performance settings</span><br><span class="line"> <span class="attr">write_mesh</span>: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>amset run –directory path&#x2F;to&#x2F;files 运行即可<br>其他设置可以通过命令行加入：<br>amset run –interpolation-factor 20<br>画图：<br>amset plot rates mesh_99x99x99.h5</p>
+<p>Output filesThe transport results will be written to <code>transport_99x99x99.json</code>. The <code>99x99x99</code> is thefinal interpolated mesh upon which scattering rates and the transport properties arecomputed.The <code>write_mesh</code> option is set to True, meaning scattering rates for all doping levelsand temperatures will be written to the <code>mesh_99x99x99.h5</code> file.</p>
+<h2 id="设置相关参数："><a href="#设置相关参数：" class="headerlink" title="设置相关参数："></a>设置相关参数：</h2><h3 id="General-settings"><a href="#General-settings" class="headerlink" title="General settings"></a>General settings</h3><ol>
+<li>scattering_type：Default:  <code>auto </code>；单独设置： <code>ADP,IMP,POP </code>。<br>ADP (acoustic deformation potential scattering)<br>IMP (ionized impurity scattering)<br>PIE (piezoelectric scattering)<br>POP (polar optical phonon scattering)<br>CRT (constant relaxation time)<br>MFP (mean free path scattering)</li>
+<li>doping：负值代表电子，正值代表空穴<br>Default:  <code>[&#39;1.e15&#39;, &#39;1.e16&#39;, &#39;1.e17&#39;, &#39;1.e18&#39;, &#39;1.e19&#39;, &#39;1.e20&#39;, &#39;-1.e15&#39;, &#39;-1.e16&#39;, &#39;-1.e17&#39;, &#39;-1.e18&#39;, &#39;-1.e19&#39;, &#39;-1.e20&#39;] </code><br>单独设置有两种： <code>1E13,1E14,1E15,1E16,1E17,1E18,1E19,1E20 </code> 或者  <code>1E13:1E20:8 </code></li>
+<li>temperatures：Default: [300]<br>单独设置：<code>300,400,500,600,700,800,900,1000</code> 或者<code>300:1000:8</code></li>
+<li>interpolation_factor：Default: 10<br>控制插值密度，最终的k点等于能带计算的k点乘上插值因子。</li>
+<li>wavefunction_coefficients：Default: wavefunction.h5<br>波函数系数读取的方式，产生该文件可以通过<code>amset wave</code>获得。</li>
+<li>bandgap：<br>设置该参数会自动采用scissor修正，因此不能与<code>scissor</code>选项共用，且对金属不起作用。</li>
+<li>scissor：<br>正值代表带隙打开，负值代表缩小，对金属无效。</li>
+<li>zero_weighted_kpoints：<br>设置方式：<br>keep: Keep zero-weighted k-points in the band structure.<br>drop: Drop zero-weighted k-points, keeping only the weighted k-points.<br>prefer: Drop weighted-kpoints if zero-weighted k-points are present in the calculation (useful for cheap hybrid calculations).</li>
+<li>use_projections：Default: False<br>不建议设置。该参数使用投影计算波函数交叠，往往导致差的性能，使用时设置<code>LORBIT = 11</code></li>
+<li>free_carrier_screening：Default: False<br>控制是否屏蔽极化光学声子和压电散射率。这可以导致在高载流子浓度下散射率的大幅度降低。</li>
+</ol>
+<h3 id="Material-settings"><a href="#Material-settings" class="headerlink" title="Material settings"></a>Material settings</h3><ol start="11">
+<li>high_frequency_dielectric：Required for: POP, PIE</li>
+<li>static_dielectric：Required for: IMP, POP</li>
+<li>elastic_constant：Required for: ADP, PIE</li>
+<li>deformation_potential：Required for: ADP</li>
+<li>piezoelectric_constant：Required for: PIE</li>
+<li>defect_charge：Required for: IMP。Default: 1</li>
+<li>pop_frequency：Required for: POP    <code>amset phonon-frequency</code>获得。</li>
+<li>compensation_factor：Required for: IMP    Default: 2</li>
+<li>mean_free_path：Required for: MFP</li>
+<li>constant_relaxation_time：Required for: CRT  不建议和其他散射机制设置。</li>
+</ol>
+<h3 id="Performance-settings：控制速度和精度，一般默认。"><a href="#Performance-settings：控制速度和精度，一般默认。" class="headerlink" title="Performance settings：控制速度和精度，一般默认。"></a>Performance settings：控制速度和精度，一般默认。</h3><ol start="21">
+<li>energy_cutoff：Default: 1.5</li>
+<li>fd_tol：Default: 0.05. 0-1之间，越小计算K点越多。</li>
+<li>dos_estep:Default: 0.01.越小越好越贵。</li>
+<li>symprec：Default: 0.01。</li>
+<li>nworkers：Default: -1。代表用所有的机器。其他设置代表几个。</li>
+<li>cache_wavefunction：Default: True。加速计算，增加内存。如果内存不够关闭。</li>
+</ol>
+<h3 id="Output-settings：输出文件设置"><a href="#Output-settings：输出文件设置" class="headerlink" title="Output settings：输出文件设置"></a>Output settings：输出文件设置</h3><ol start="27">
+<li>calculate_mobility：Default: True。是否计算n&#x2F;p载流子迁移率。</li>
+<li>separate_scattering_mobilities：Default: True。是否计算单独的散射机制的迁移率。</li>
+<li>write_mesh：Default: False。是否将全K点结果写入磁盘。对于大的interpolation_factor可以打开。</li>
+<li>file_format：Default: json。输出文件的格式：json, yaml, and txt.对于write_mesh&#x3D;True不能用TXT。</li>
+<li>write_input：Default: False。是否将输入设置写入<code>amset_settings</code>.yaml.</li>
+<li>print_log：Default: True。是否输出日志。</li>
+</ol>
+<h2 id="Summary-of-scattering-rates"><a href="#Summary-of-scattering-rates" class="headerlink" title="Summary of scattering rates"></a>Summary of scattering rates</h2><table>
+<thead>
+<tr>
+<th>Mechanism</th>
+<th>Code</th>
+<th>Requires</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Acoustic deformation potential scattering</td>
+<td>ADP</td>
+<td>n- and p-type deformation potential, elastic constant</td>
+<td>Elastic</td>
+</tr>
+<tr>
+<td>Piezoelectric scattering</td>
+<td>PIE</td>
+<td>high-frequency dielectric constant, elastic constant, piezoelectric coefficient (e)</td>
+<td>Elastic</td>
+</tr>
+<tr>
+<td>Polar optical phonon scattering</td>
+<td>POP</td>
+<td>polar optical phonon frequency, static and high-frequency dielectric constants</td>
+<td>Inelastic</td>
+</tr>
+<tr>
+<td>Ionized impurity scattering</td>
+<td>IMP</td>
+<td>static dielectric constant</td>
+<td>Elastic</td>
+</tr>
+</tbody></table>
+<h1 id="其他功能"><a href="#其他功能" class="headerlink" title="其他功能"></a>其他功能</h1><p>you can use amset which relies on Fourier interpolation of the band<br>structure using BoltzTraP2. There are two options.</p>
+<ul>
+<li>Use <code>amset eff-mass</code>: This calculates the conductivity effective mass as defined here: <a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41524-017-0013-3">https://www.nature.com/articles/s41524-017-0013-3</a></li>
+<li>Use <code>amset plot band --stats vasprun.xml</code>: This calculates the effective mass in the same way as sumo but using a band structure interpolated from a uniform calculation.</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/09/18-47-25/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Keke Liu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lightchaser">
+      <meta itemprop="description" content="一个小学生的博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Lightchaser">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/05/09/18-47-25/" class="post-title-link" itemprop="url">2.1 电子性质1</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-09 18:47:25" itemprop="dateCreated datePublished" datetime="2023-05-09T18:47:25+08:00">2023-05-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-07-10 20:33:20" itemprop="dateModified" datetime="2025-07-10T20:33:20+08:00">2025-07-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DFT%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">DFT学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="自洽计算"><a href="#自洽计算" class="headerlink" title="自洽计算"></a>自洽计算</h1><p><strong>VASP做静态自洽的目的主要是为了得到好的电子密度和波函数文件，为了使后续的性质计算可以读取电子密度和波函数，进而增加收敛速度。</strong><br>首先进行 <strong>高精度</strong> 的结构优化。然后复制文件， cp CONTCAR POSCAR 做一次自洽计算。<br>自洽计算要求有密的k网格点，在计算条件允许的情况下要求自洽的k网格点大致为优化时的2倍左右。<br>修改标签<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">IBRION</span>=-<span class="number">1</span></span><br><span class="line"><span class="variable constant_">NSW</span>=<span class="number">0</span></span><br><span class="line"><span class="variable constant_">LWAVE</span>  = .<span class="property">T</span>.        (<span class="title class_">Write</span> <span class="variable constant_">WAVECAR</span> )</span><br><span class="line"><span class="variable constant_">LCHARG</span> = .<span class="property">T</span>.        (<span class="title class_">Write</span> <span class="variable constant_">CHGCAR</span> )</span><br></pre></td></tr></table></figure><br>这一步完成后的输出文件CHGCAR即是电荷密度，导入VESTA直接查看。</p>
+<h2 id="bader电荷"><a href="#bader电荷" class="headerlink" title="bader电荷"></a>bader电荷</h2><p>自洽时INCAR再加一个参数：<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">IBRION</span>=-<span class="number">1</span></span><br><span class="line"><span class="variable constant_">NSW</span>=<span class="number">0</span></span><br><span class="line"><span class="variable constant_">LAECHG</span>=.<span class="property">T</span>.</span><br></pre></td></tr></table></figure></p>
+<p>输出文件：<br>AECCAR0 全电子中的芯电子部分（POTCAR）<br>AECCAR1 自洽计算前的交叠原子电荷（POTCAR，bader 分析不用）<br>AECCAR2 全电子中的价电子部分（自洽计算后）<br>CHGCAR 自洽计算后赝电子</p>
+<p>输入：</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chgsum.<span class="property">pl</span> <span class="title class_">AECCAR0</span> <span class="title class_">AECCAR2</span></span><br><span class="line">bader <span class="variable constant_">CHGCAR</span> -ref CHGCAR_sum</span><br></pre></td></tr></table></figure>
+<p>得到两个文件：</p>
+<ul>
+<li><strong>BCF.dat</strong> 电荷极大值序号和坐标<br>体积内的 Bader 电荷（积分）<br>距离极大值最近的原子和距离</li>
+<li><strong>ACF.dat</strong> 原子序号和坐标<br>原子电荷（极大值的电荷之后）<br>到零通量面最小距离<br>原子体积</li>
+</ul>
+<p>李强博士《learn vasp the hard way》<a target="_blank" rel="noopener" href="https://www.bigbrosci.com/2011/12/24/A08/">https://www.bigbrosci.com/2011/12/24/A08/</a> Bader电荷与原子电荷着色：<br><a target="_blank" rel="noopener" href="https://www.bigbrosci.com/2011/12/23/A07/">https://www.bigbrosci.com/2011/12/23/A07/</a> <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/BNzjhz8SI_HXkaEnyL29Bg">https://mp.weixin.qq.com/s/BNzjhz8SI_HXkaEnyL29Bg</a></p>
+<h2 id="成键反键"><a href="#成键反键" class="headerlink" title="成键反键"></a>成键反键</h2><p>自洽时添加：<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">NBANDS</span>=<span class="number">96</span></span><br><span class="line"><span class="variable constant_">ISYM</span>=-<span class="number">1</span></span><br><span class="line"><span class="variable constant_">IBRION</span>=-<span class="number">1</span></span><br><span class="line"><span class="variable constant_">NSW</span>=<span class="number">0</span></span><br><span class="line"><span class="variable constant_">LWAVE</span> = T</span><br></pre></td></tr></table></figure></p>
+<p><code>vi lobsterin</code><br>原子编号改为自己的，例如</p>
+<p>lobsterin：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">COHPstartEnergy  -14</span><br><span class="line">COHPendEnergy     6   </span><br><span class="line">basisSet Bunge</span><br><span class="line">basisfunctions Ga 4s 4p 3d</span><br><span class="line">basisfunctions As 4s 4p</span><br><span class="line"></span><br><span class="line">cohpbetween atom 1 and atom 2</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>前两行代表提取的能量范围；第三行代表选择的基组，如果不设置(空行)就是默认基组，如果要覆盖默认基集，可使用此关键字进行覆盖。它目前支持bunge、koga和pbeVaspFit2015；第四行代表为每个元素指定所使用的基函数；最后一行代表选择一对两个原子进行键合分析。</p>
+<p><code>lobster &lt; lobsterin</code></p>
+<p>1、删除存在的WAVECAR文件，做单点计算，计算需要保存波函数文件；<br>2、做完单点计算在当前目录下运行lobster软件；<br>3、用wxDragon软件打开COHPCAR.lobster文件。<br>4、COHPCAR.lobster 文件包含COHP结果，第二列为pCOHP，将第二列乘-1可得-pCOHP<br><a target="_blank" rel="noopener" href="https://github.com/JaGeo/LobsterPy">https://github.com/JaGeo/LobsterPy</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/470592188">https://zhuanlan.zhihu.com/p/470592188</a></p>
+<p>注：</p>
+<ul>
+<li>orbitalWise 这个参数一般加在cohpBetween或者cohpGenerator之后，用以把原子之间的相互作用具体分到s p d 这些轨道上，比如计算s-s, p-p, d-d之间的pCOOP, pCOHP；<br>比如：<code>cohpBetween atom 1 atom 2 orbitalWise</code></li>
+</ul>
+<p><code>cohpGenerator from 1.4 to 1.5 type Ga type Sr orbitalWise</code></p>
+<ul>
+<li><p>不要使用US-PP超软赝势，使用PAW赝势；请使用vasp_std版本，不要使用vasp_gam<br>；不支持处理对称:ISYM&#x3D;0或ISYM&#x3D;-1</p>
+</li>
+<li><p>由于需要把基于平面波的波函数投影到原子轨道的基函数上，所以计算的能带的数量要多于投影的基函数，VASP计算的时候，默认的NBANDS达不到要求，需要加大NBANDS，只要查看OUTCAR里面的NBANDS多少，<code>grep NBANDS OUTCAR</code>；在INCAR里面，NBANDS关键词设置成1.5倍NBANDS，足以满足计算的投影要求，在计算过程中一定要记住设置足够的NBANDS，否则会出现报错，一直不能正常算出COHP</p>
+</li>
+<li><p>cohpGenerator 这里通过距离或者元素类别告诉想要计算什么原子之间的COHP；<code>cohpGenerator from 1.5 to 2.3 type Fe type N orbitalwise</code>  #输出Fe-N原子对距离在1.5到2.3的所有数据之和。</p>
+</li>
+<li><p>gaussianSmearingWidth 高斯展宽，如果VASP中用的ISMEAR&#x3D;0，那么gaussianSmearingWidth的数值和SIGMA一样，默认值是0.2 eV，但是过大了，所以需要减小。设置格式：<code>gaussianSmearingWidth 0.05</code></p>
+</li>
+</ul>
+<h4 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h4><p>参考：<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/1920205994354521233">https://zhuanlan.zhihu.com/p/1920205994354521233</a></p>
+<p>COHP（晶体轨道哈布顿居数）：量化键合强度与稳定性变化，描述的是特定能级上，两个原子轨道之间的相互作用的强度和性质</p>
+<ol>
+<li><p>负值越大，键越稳定，可以用来分析掺杂对键能的影响（对结构稳定性的影响），负值代表成键，增强键强度</p>
+</li>
+<li><p>正值代表反键，削弱键强度，键易断裂</p>
+</li>
+<li><p>0值代表非键态</p>
+</li>
+</ol>
+<p>ICHOP：CHOP从-infnite到费米能级的积分，因为费米能级以下的电子是参与化学键形成的主要电子；注意进行不同体系或者不同键的ICOHP比较时，要保持积分区间一致。</p>
+<ol>
+<li><p>ICOHP将不同能量下的原子轨道间的相互作用的贡献累加在一起，可以代表键的总强度。</p>
+</li>
+<li><p>ICHOP&lt;0，表示成键，绝对值越大成键越稳定</p>
+</li>
+<li><p>ICHOP&gt;0，表示反键，绝对值越大成键越不稳定</p>
+</li>
+</ol>
+<p>COHPCAR.lobster文件内容</p>
+<p>第一列为能量，第2，3，4，5列为自旋向上的相互作用，其中第2，3列分别是平均相互作用的cohp和icohp，第4，5列分别是指定相互作用的chop和ichop</p>
+<p>那么第6，7，8，9列就是对应自旋向下的。</p>
+<p>绘制cohp-energy图像时可以选择第一列和第四列，一般绘制-cohp~energy图像。</p>
+<p>ICOBILIST.lobster, COBICAR.lobster输出文件，包含共价键指标: 晶体轨道键指数(Crystal Orbital Bond Index, COBI)</p>
+<p>ICOBI: 0(离子键)~1(共价键) per bond, 自旋极化体系分spin1,2，具有加和性</p>
+<p>MadelungEnergies.lobster, SitePotentials.lobster输出文件，包含离子键指标: 马德隆能(Madelung Energy, in eV per unit cell)</p>
+<h2 id="ELF电子局域函数计算"><a href="#ELF电子局域函数计算" class="headerlink" title="ELF电子局域函数计算"></a>ELF电子局域函数计算</h2><p>电子局域函数（Electron Localization Function—ELF）是研究电子结构的手段之一。用来描述以某个位置处的电子为参考，在其附近找到与他同自旋的电子的概率，可以表征这个作为参考的电子的局域化程度，也是一种描述在多电子体系中的电子对概率的方法。<br>ELF的取值范围是[0，1]。<br>ELF&#x3D;1 对应完全局域化；<br>ELF&#x3D;1&#x2F;2，对应类电子气型的成对概率；<br>ELF&#x3D;0，对应电子完全离域化。</p>
+<p>计算流程：做自洽的时候在INCAR中加入：<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">PREC</span>=A</span><br><span class="line"><span class="variable constant_">LELF</span>=T</span><br><span class="line"><span class="variable constant_">IBRION</span>=-<span class="number">1</span></span><br><span class="line"><span class="variable constant_">NSW</span>=<span class="number">0</span> </span><br></pre></td></tr></table></figure><br>运行vasp得到ELFCAR文件。</p>
+<p>将ELFCAR拖入Vesta <a target="_blank" rel="noopener" href="http://www.jp-minerals.org/vesta/en/download.html">http://www.jp-minerals.org/vesta/en/download.html</a></p>
+<p>点击 Utiltties - 2D Data Display。<br>点击Slice，确定切面和fractional coordinates。<br>导出图片：之后可以用PS工具将原子模型加入。</p>
+<h2 id="费米面"><a href="#费米面" class="headerlink" title="费米面"></a>费米面</h2><p>费米面计算，这里我们以Cu为例，见vaspkit&#x2F;examples&#x2F;Cu_fermi_surface。<br>第一步，准备好POSCAR，注意一定是原胞（primitive cell ）和用于静态计算的INCAR文件；<br>第二步，运行VASPKIT，输入261命令，产生用于计算计算费米面的KPOINTS和POTCAR文件，<br>第三步，提交VASP作业；第四步，待VASP计算完成后，再次运行VASPKIT，输入262命令，生成包含费米面数据的FERMISURFACE.bxsf文件；第五步，运行XcrySDen软件。<br>发现第五条能带穿过费米面，因此我们选择Band Number 5，然后点击Selected，然后得到Cu的费米面。推荐使用FermiSurfer可视化费米面。<br>对于半导体不存在费米面，如果想可视化导带或价带中某个能级处的等能面，新建FERMI_ENERGY.in文件然后在该文件第二行（第一行为注释行）中人为指定能级大小，注意该值一定要保证穿过价带或导带。接下来调用vaspkit-252或263命令提取可视化。</p>
+<h2 id="STM模拟"><a href="#STM模拟" class="headerlink" title="STM模拟"></a>STM模拟</h2><p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/538950799">https://zhuanlan.zhihu.com/p/538950799</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/667558468">https://zhuanlan.zhihu.com/p/667558468</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.vasp.at/wiki/index.php/STM_of_graphite">https://www.vasp.at/wiki/index.php/STM_of_graphite</a></p>
+<ol>
+<li><p>首先做一个自洽计算，输出 WAVECAR 和 CHGCAR 文件。</p>
+</li>
+<li><p>加入一些特殊参数计算，输出我们想要的 PARCHG 文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">LPARD = .TRUE.</span><br><span class="line">LSEPK = .FALSE.</span><br><span class="line">LSEPB = .FALSE.</span><br><span class="line">NBMOD = -3</span><br><span class="line">EINT = -0.1 0.1</span><br></pre></td></tr></table></figure></li>
+<li><p>用p4vasp软件打开PARCHG文件或者vaspkit 后处理。由于 VASP 在对于远离原子表面时波函数的衰减指数描述不明确，所以模拟探针高度的时候不应该太高，否则会出现非物理的现象，比如 7 埃，就算比较远了。所以一般高度的选择要接近材料表面，这里选择了 0.5 埃。而原胞沿着 ab 平面重复的标准是 20 埃，也就是说原胞晶格 * 重复单元 &#x3D; 20 埃就可以。vaspkit 里选择的是 Tersoff-Hamman 方法，现在大多数模拟 STM 的都是选择这个方法。</p>
+</li>
+<li><p>vaspkit处理后的输出文件包括X.grd, Y.grd, STM_*.grd三个文件，可以用以下脚本画图。<br>Usage: python plot.pyimport numpy as npimport matplotlib as mpl#mpl.use(‘Agg’) #silent modefrom matplotlib import pyplot as plt<br>x_mesh&#x3D;np.loadtxt(‘X.grd’)      y_mesh&#x3D;np.loadtxt(‘Y.grd’)   v_mesh&#x3D;np.loadtxt(‘STM.grd’)<br>fig &#x3D; plt.figure()cmap &#x3D; plt.cm.get_cmap(“Greys_r”) plt.contourf(x_mesh,y_mesh,v_mesh,cmap&#x3D;cmap)<br>plt.axis(‘equal’)plt.axis(‘off’)#plt.show()plt.savefig(“STM.jpg”,dpi&#x3D;300)<br>或者用以下脚本处理后，得到data.txt文件，将该文件导入origin画图。Usage: sh get_data.shawk ‘{for(i&#x3D;1;i&lt;&#x3D;NF;i++) print $i}’ X.grd &gt;xawk ‘{for(i&#x3D;1;i&lt;&#x3D;NF;i++) print $i}’ Y.grd &gt;yawk ‘{for(i&#x3D;1;i&lt;&#x3D;NF;i++) print $i}’ STM_0.50.grd &gt;spaste x y s &gt;data.txt</p>
+</li>
+</ol>
+<h1 id="态密度"><a href="#态密度" class="headerlink" title="态密度"></a>态密度</h1><p>自洽计算之后，读取产生的CHGCAR、WAVECAR<br>上面例如bader电荷、ELF标签都关闭。<br>INCAR中修改：<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">ISTART</span>=<span class="number">1</span></span><br><span class="line"><span class="variable constant_">ICHARG</span>=<span class="number">11</span></span><br><span class="line"><span class="variable constant_">ISMEAR</span>=-<span class="number">5</span></span><br><span class="line"><span class="variable constant_">NEDOS</span>=<span class="number">2001</span></span><br><span class="line"><span class="variable constant_">LORBIT</span>=<span class="number">11</span></span><br></pre></td></tr></table></figure><br><strong>其他参数和自洽时保持一致。</strong><br>运行后vaspkit的111&#x2F;112&#x2F;113&#x2F;114命令处理即可得到。</p>
+<h2 id="分波态密度和局域态密度"><a href="#分波态密度和局域态密度" class="headerlink" title="分波态密度和局域态密度"></a>分波态密度和局域态密度</h2><p>态密度很多分析和能带的分析结果可以一一对应，很多术语也和能带分析相通。但是因为它更直观，因此在结果讨论中用得比能带分析更广泛一些。在电子能级为准连续分布的情况下，单位能量间隔内的电子态数目，即为态密度。能态密度与能带结构密切相关，是一个重要的基本函数。固体的许多特性，如电子比热、光和X射线的吸收和发射等，都与能态密度有关。在VASP中，LORBIT&#x3D;10计算的就是LDOS，也就是每个原子的局域态密度 (local DOS)，是分解到每个原子上面的s,p,d；LORBIT&#x3D;11，计算的就是PDOS,投影态密度(projected DOS)或分波态密度(partial DOS)，不仅分解到每个原子的s,p,d,而且还进行px,py,pz分解。</p>
+<p>在 <code>/vaspkit.0.72/examples/LDOS_PDOS/Partial_DOS_of_CO_on_Ni_111_surface </code>目录下启动 <code>vaspkit </code>，输入命令 <code>115 </code>选择子功能 <code>The Sum of Projected DOS for Selected Atoms and orbitals </code>。我们需要提取的是O的s，p轨道，C的s，p轨道以及表面的dxy和d3z2-r2(dz2)轨道。首先提示你选择元素（累加），第一次输入元素O，回车后提示你输入提取的轨道名（累加），第一次输入轨道s。回车后重复以上两个操作。如果想结束输入，在元素选择行直接按回车键结束输入。</p>
+<p>元素行接受自由格式输入，你可以输入以下内容元素行接受自由格式输入，你可以输入以下内容<code>1-3 4 Ni</code>表示选择元素1,2,3,4和Ni元素的PDOS进行累加。轨道行只支持标准输入，如果使用了<code>LORBIT=10</code>不投影轨道，你只能选择 s p d f中的一个或多个，如果使用了<code>LORBIT=11</code>投影了轨道，你可以从s p d f和s py pz px dxy dyz dz2 dxz dx2 f-3 f-2 f-1 f0 f1 f2 f3中选择一个或多个输入。轨道行还支持输入all计算所有轨道的DOS之和。</p>
+<p>比如元素行输入C O ,对应的轨道选择s px，那么提取的就是所有C和O元素的s轨道和px轨道的PDOS之和。 PDOS_USER.dat中的轨道名 为#Energy C&amp;O_s&amp;px，显而易懂。</p>
+<h2 id="电荷密度差"><a href="#电荷密度差" class="headerlink" title="电荷密度差"></a>电荷密度差</h2><p>Vaspkit 可以方便的处理 VASP 输出的电荷密度文件 (CHGCAR)，做电荷密度差分处理，VTST 脚本或者 VESTA 也可以做，但是不如 vaspkit方便灵活。<br>注：此文中讲述的功能同样适用于任何的实空间函数形式的文件处理，比如静电势差值图 (LOCPOT)，电子定域化函数差值图 (ELFCAR)，能带分解的电荷密度插值图 (PARCHG) 等等。<br>电荷密度差分（charge density difference）是研究电子结构的重要手段之一。可以直观的得到两个片段相互作用后的电子流向，原子形成分子过程中电子密度的变化、探究化学键的本质。电荷密度差分有以下几种形式：<br>（1）体系的电荷密度减去组成它的两个或几个片段的密度，也是最常见的电荷密度差分形式：</p>
+<p>（2）自洽计算收敛以后体系的电荷密度减去该原子构型下每个原子的球对称的电荷密度(即初猜电荷密度)，也称为变形电荷密度(Deformation charge density)</p>
+<p>（3）在某个状态的密度减去这个体系在另外一个状态的密度。比如：外加电场作用下的电荷密度减去没有外势场的电荷密度。再比如：激发态的密度减去它在基态时的密度。</p>
+<p><strong>以上三种电荷密度差，无论哪一种计算都需要保证原子坐标坐标必须一致！并且保证晶胞参数和 FFT-mesh 的格点密度 (NGXF, NGYF, NGZF) 一致！</strong></p>
+<p>(1) 的计算只需要优化 AB 的结构，A、B片段保持 AB 结构中原子坐标，不能再对片段进行单独优化。<br>(2) 只要优化自洽计算时候的几何结构，生成原子的球对称的电荷密度时候 (ICHARG &#x3D; 12) 保持坐标不变。<br>(3) 也需要共用其中一个状态的几何构型（比如激发态或基态的几何构型）。</p>
+<h3 id="CHGCAR文件格式"><a href="#CHGCAR文件格式" class="headerlink" title="CHGCAR文件格式"></a>CHGCAR文件格式</h3><p>CHGCAR 是包含电子密度信息的格点文件，对于自旋非极化体系（ISPIN &#x3D; 1）计算只包含电荷密度，对于自旋极化体系（ISPIN &#x3D; 2）计算还包含自旋电子密度。可以用 VESTA，Jmol 等程序打开。CHGCAR 的第一部分和 POSCAR, CONTCAR 的格式是完全一样的，它包含了最终结构的晶格矢量，原子核坐标等信息。紧接着是三个数字，这三个数是实空间函数的网格密度，对应于 NGXF，NGYF，NGZF 三个变量。然后是电荷密度信息 ρ(r) * Vcell。一共有 NGXF * NGYF * NGZF 个数值。比如：下面是一个 Al2O3 晶胞的 CHGCAR 文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">Al2O3 Cell opt                          </span><br><span class="line">  1.00000000000000     </span><br><span class="line">    6.138452   0.000551   -0.011568</span><br><span class="line">    5.434311   2.854620   -0.011568</span><br><span class="line">  -1.324042   -0.326661   5.501689</span><br><span class="line">  O   Al</span><br><span class="line">    6     4</span><br><span class="line">Direct</span><br><span class="line">0.160314 0.160314 0.108934</span><br><span class="line">0.839686 0.839686 0.891066</span><br><span class="line">0.495028 0.495028 0.257399</span><br><span class="line">0.504972 0.504972 0.742601</span><br><span class="line">0.826429 0.826429 0.432705</span><br><span class="line">0.173571 0.173571 0.567295</span><br><span class="line">0.090130 0.090130 0.795615</span><br><span class="line">0.909870 0.909870 0.204385</span><br><span class="line">0.342109 0.342109 0.683236</span><br><span class="line">0.657891 0.657891 0.316764</span><br><span class="line">100 100   96</span><br><span class="line">0.43432567054E+01 0.44027037758E+01 0.45822813500E+01 0.48861003640E+01 0.53223812855E+01</span><br><span class="line">0.59054783755E+01 0.66583226816E+01 0.76145085758E+01 0.88190771181E+01 0.10327304760E+02</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h4 id="Vaspkit计算几个片段的电荷密度差"><a href="#Vaspkit计算几个片段的电荷密度差" class="headerlink" title="Vaspkit计算几个片段的电荷密度差"></a>Vaspkit计算几个片段的电荷密度差</h4><p>以 CO 分子吸附在 Ni(100)  表面为例：<br>步骤一：优化 CO&#x2F;Ni(100) 的结构；<br>步骤二：分别计算 Ni(100) 和 CO 的单点能 CO 和 Ni(100) 片段的坐标从 CO&#x2F;Ni(100) 的 CONTCAR 里直接截取，不要再结构优化！！计算时也要保证三次自洽计算所采用的 FFT mesh  一致（NGXF,NGYF,NGZF）<br>步骤三：用 vaspkit 314 功能做电荷差分。依次输入三个片段的 CHGCAR 路径:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">314   </span><br><span class="line">======== File Options ========</span><br><span class="line">Input the Names of Charge/Potential Files with Space: </span><br><span class="line">(e.g., to get AB-A-B, type: ~/AB/CHGCAR ./A/CHGCAR ../B/CHGCAR)</span><br><span class="line">(e.g., to get A-B, type: ~/A/CHGCAR ./B/CHGCAR)</span><br><span class="line"></span><br><span class="line">------------&gt;&gt;</span><br><span class="line">./CHGCAR ./co/CHGCAR ./slab/CHGCAR</span><br><span class="line"></span><br><span class="line">--&gt;&gt; (01) Reading Structural Parameters from ./CHGCAR File...</span><br><span class="line">--&gt;&gt; (02) Reading Charge Density From ./CHGCAR File...</span><br><span class="line">--&gt;&gt; (03) Reading Structural Parameters from ./co/CHGCAR File...</span><br><span class="line">--&gt;&gt; (04) Reading Charge Density From ./co/CHGCAR File...</span><br><span class="line">--&gt;&gt; (05) Reading Structural Parameters from ./slab/CHGCAR File...</span><br><span class="line">--&gt;&gt; (06) Reading Charge Density From ./slab/CHGCAR File...</span><br><span class="line">--&gt;&gt; (07) Written CHGDIFF.vasp File!</span><br></pre></td></tr></table></figure>
+<p>生成 CHGDIFF.vasp 包含电荷密度差的信息，可以直接导入到 VESTA 里作图。<br>图片</p>
+<h4 id="Vaspkit计算变形电荷密度差"><a href="#Vaspkit计算变形电荷密度差" class="headerlink" title="Vaspkit计算变形电荷密度差"></a>Vaspkit计算变形电荷密度差</h4><p>变形电荷密度差：自洽计算收敛以后体系的电荷密度减去该原子构型下每个原子的球对称的电荷密度(即初猜电荷密度)。<br>以 CO 分子为例：<br>步骤一：先自洽计算优化 CO 分子。<br>步骤二：新键文件夹，在优化好的结构基础上用 ICHARG &#x3D; 12 做非自洽计算。<br>步骤三：用 vaspkit 314 功能做电荷差分。依次输入两个 CHGCAR 路径。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">314   </span><br><span class="line">======================= File Options ============================</span><br><span class="line">Input the Names of Charge/Potential Files with Space: </span><br><span class="line">(e.g., to get AB-A-B, type: ~/AB/CHGCAR ./A/CHGCAR ../B/CHGCAR)</span><br><span class="line">(e.g., to get A-B, type: ~/A/CHGCAR ./B/CHGCAR)</span><br><span class="line"></span><br><span class="line">------------&gt;&gt;</span><br><span class="line">./CHGCAR ./deform/CHGCAR</span><br><span class="line"></span><br><span class="line">--&gt;&gt; (01) Reading Structural Parameters from ./CHGCAR File...</span><br><span class="line">--&gt;&gt; (02) Reading Charge Density From ./CHGCAR File...</span><br><span class="line">--&gt;&gt; (03) Reading Structural Parameters from ./deform/CHGCAR File...</span><br><span class="line">--&gt;&gt; (04) Reading Charge Density From ./deform/CHGCAR File...</span><br><span class="line">--&gt;&gt; (05) Written CHGDIFF.vasp File!</span><br></pre></td></tr></table></figure>
+<p>步骤四：得到 CHGDIFF.vasp 文件，导入到 VESTA 里做图。</p>
+<h4 id="Vaspkit计算外加电场下的电荷密度差"><a href="#Vaspkit计算外加电场下的电荷密度差" class="headerlink" title="Vaspkit计算外加电场下的电荷密度差"></a>Vaspkit计算外加电场下的电荷密度差</h4><p>外加电场作用下的电荷密度减去没有外势场的电荷密度。<br>以 InSe 二维单层材料为例：<br>步骤一：先优化没有外加电场的结构。<br>步骤二：在同样结构下计算外加电场下做单点自洽计算。添加关键词，EFIELD 控制电场力的大小（eV&#x2F;Angstrom）F&#x3D;qE， 对应电场的单位是 E&#x3D;F&#x2F;q， 场强单位是  V&#x2F;Angstrom</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">EFIELD = 0.05</span><br><span class="line">IDIPOL = 3</span><br><span class="line">LDIPOL = .TRUE.</span><br></pre></td></tr></table></figure>
+<p>步骤三：运行 Vaspkit 314 功能做电荷差分。依次输入二个 CHGCAR 路径。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">314</span><br><span class="line">======================= File Options ============================</span><br><span class="line">Input the Names of Charge/Potential Files with Space: </span><br><span class="line">(e.g., to get AB-A-B, type: ~/AB/CHGCAR ./A/CHGCAR ../B/CHGCAR)</span><br><span class="line">(e.g., to get A-B, type: ~/A/CHGCAR ./B/CHGCAR)</span><br><span class="line"></span><br><span class="line">------------&gt;&gt;</span><br><span class="line">./CHGCAR ./noele/CHGCAR</span><br><span class="line"></span><br><span class="line">--&gt;&gt; (01) Reading Structural Parameters from ./CHGCAR File...</span><br><span class="line">--&gt;&gt; (02) Reading Charge Density From ./CHGCAR File...</span><br><span class="line">--&gt;&gt; (03) Reading Structural Parameters from ./noele/CHGCAR File...</span><br><span class="line">--&gt;&gt; (04) Reading Charge Density From ./noele/CHGCAR File...</span><br><span class="line">--&gt;&gt; (05) Written CHGDIFF.vasp File!</span><br><span class="line">步骤四：得到 CHGDIFF.vasp 文件，导入到 VESTA 里做图。</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="电荷密度差作图"><a href="#电荷密度差作图" class="headerlink" title="电荷密度差作图"></a>电荷密度差作图</h3><p>得到的电荷密度差文件必须作成图才便于被直观地考察，常用的图分为三类：<br>（1）3D 等值面图，isosurface.<br>（2）2D 切面图.<br>（3）1D，平面平均的数值，planar averaged charge.<br>通常这几种图可以配合使用讨论。等值面图和切面图用 VESTA 画最方便，平面平均图用 vaspkit 生成方便。得到的 CHGDIFF.vasp 用 VESTA 打开，isosurface 青色部分电荷密度减小，黄色密度电荷密度增加。注意 VESTA 对电荷密度的默认单位是 e&#x2F;Bohr3。<br>vaspkit 319 功能可以把VASP的格点文件转化成 .cube的方法，.cube 在 VMD 里作图可以得到更好看的效果：</p>
+<h1 id="能带计算"><a href="#能带计算" class="headerlink" title="能带计算"></a>能带计算</h1><p>参考链接：<br><a target="_blank" rel="noopener" href="https://yh-phys.github.io/2019/10/04/vasp-band-structure-dos/">https://yh-phys.github.io/2019/10/04/vasp-band-structure-dos/</a><br>自洽计算之后，读取产生的CHGCAR、WAVECAR<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">ISTART</span>=<span class="number">1</span></span><br><span class="line"><span class="variable constant_">ICHARG</span>=<span class="number">11</span></span><br></pre></td></tr></table></figure><br><strong>其他参数和自洽时保持一致。</strong></p>
+<p><strong>能带计算的KPOINTS文件不同于前面，称为高对称点。</strong><br>学术之友微信公众号历史记录搜索文章《五种方法生成能带结构计算的高对称点》<br>1、<a target="_blank" rel="noopener" href="http://cryst.ehu.es/">http://cryst.ehu.es/</a><br>2、<a target="_blank" rel="noopener" href="https://www.materialscloud.org/work/tools/seekpath">https://www.materialscloud.org/work/tools/seekpath</a><br>3、<a target="_blank" rel="noopener" href="http://www.aflowlib.org/aflow-online">http://www.aflowlib.org/aflow-online</a> (已更新)<br>4、<a target="_blank" rel="noopener" href="http://pymatgen.org/">http://pymatgen.org/</a> (pymatgen)<br>5、<a target="_blank" rel="noopener" href="http://www.xcrysden.org/">http://www.xcrysden.org/</a> (XCrySDen)<br>Accurate DOS and Band-structure calculations：<br><a target="_blank" rel="noopener" href="http://cms.mpi.univie.ac.at/vasp/vasp/Accurate_DOS_Band_structure_calculations.html">http://cms.mpi.univie.ac.at/vasp/vasp/Accurate_DOS_Band_structure_calculations.html</a></p>
+<p>可以通过vaspkit的303命令产生KPATH.in文件，cp KPATH.in KPOINTS即可。<br>计算完成后通过vaspkit的211命令提取能带。<br><strong>注意能带路径生成操作需在自洽计算前完成。</strong></p>
+<ul>
+<li><p>1.准备POSCAR，调用vaspkit- 303（体相材料）或-302（二维材料）得到KPATH.in和PRIMCELL.in文件；对于二维体系，需要检查POSCAR文件的真空层是否沿z方向，如果没有，可调用vaspkit-923或vaspkit-407强制真空层沿z方向。另外，如果需要改变识别结构对称性精度（symprec默认值为1E-5），可通过vaspkit -task 302 -symprec 1E-6实现或者在~&#x2F;.vaspkit中修改SYMPREC默认值。</p>
+</li>
+<li><p>2.执行cp PRIMCELL.vasp POSCAR命名。（如果PRIMCELL.vasp 和POSCAR不一样，并且要读取电荷密度和波函数，要从SCF计算保持结构一致。）KPATH.in推荐能带路径只针对于PRIMITIVE CELL，缺少这一步，你可能得到错误的结果。如果有必要，比较KPATH.in文件中的能带路径是否与在线能带路径产生工具SeeK-Path产生的一致，包括比较PRIMCELL.vasp和HIGH_SYMMETRY_POINTS文件。需要指出的是SeeK-Path只用于体相结构能带路径的产生。自1.3.0版本，对于二维体系不需要执行cp PRIMCELL.vasp POSCAR。</p>
+</li>
+</ul>
+<h2 id="投影电荷密度"><a href="#投影电荷密度" class="headerlink" title="投影电荷密度"></a>投影电荷密度</h2><p>复制能带结构文件，<br>vi INCAR<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">增加标签 <span class="variable constant_">LPARD</span>=.<span class="property">T</span>.</span><br><span class="line">增加标签 <span class="variable constant_">IBAND</span>=<span class="number">16</span> <span class="number">17</span></span><br><span class="line">增加标签 <span class="variable constant_">LSEPB</span>=.<span class="property">T</span>.</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>LPARD：它的取值为.TRUE.或.FALSE.，它的默认值是.FALSE.，当为.TRUE.时，表示读入自<br>洽收敛的 CHGCAR 和 WAVECAR 并进行 partial charge density计算。</li>
+<li>IBAND：它的取值就是你想要计算的第几条能带或哪几条能带(比如要计算第 4、 5、 6 条能带，那么就设置 IBAND &#x3D; 4 5 6)，此时 NBMOD的值就是所要计算的能带的条数。</li>
+<li>EINT：另一种方式指定所要计算的能带，它是指定计算某能量范围的partial charge density，一般是设置为两个实数，比如EINT&#x3D; 4.00 5.00，此时NBOMD的值设置为-2。如果只设置了一个数，那么表示计算从 EINT 到费米能级这个范围内的，此时NBOMD 的值为-3。</li>
+<li>KPUSE：指定所要计算的 k 点(哪个或哪几个)。</li>
+<li>LSEPB：指定是不是要把计算的partial charge density按每个带分别写到各自对应的文件</li>
+<li>PARCHG.nb (设置为.TRUE.)中，还是把它们合并写到一个文件中(相当于把各个带对应的partial charge density 加起来，设置为.FALSE.)，默认值为.FALSE.。</li>
+<li>LSEPK：指定是不是把要计算的partial charge density按每个k分别写到各自对应的文件PARCHG.nk (设置为.TRUE.).</li>
+</ul>
+<p><strong>三个方法：</strong></p>
+<p><strong>1、读取自恰计算的波函数，KPOINTS文件采用特定的k点</strong></p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#partial charge density</span><br><span class="line"><span class="variable constant_">LPARD</span> = .<span class="property">TRUE</span>. </span><br><span class="line"><span class="variable constant_">IBAND</span> = <span class="number">17</span> <span class="number">18</span> # 价带顶和导带底</span><br><span class="line"><span class="variable constant_">KPUSE</span> = <span class="number">1</span></span><br><span class="line"><span class="variable constant_">LSEPB</span> = .<span class="property">TRUE</span>.</span><br><span class="line"><span class="variable constant_">LSEPK</span> = .<span class="property">TRUE</span>.</span><br></pre></td></tr></table></figure>
+
+ <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">CsPbI3</span>-cubic</span><br><span class="line"><span class="number">1</span></span><br><span class="line">r</span><br><span class="line"><span class="number">0.500000</span> <span class="number">0.500000</span> <span class="number">0.500000</span> <span class="number">1.0</span></span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="http://muchong.com/html/200906/1404880.html">http://muchong.com/html/200906/1404880.html</a><br><strong>2、读取自恰计算的波函数，KPOINTS文件采用自恰计算的k点</strong><br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#partial charge density</span><br><span class="line"><span class="variable constant_">LPARD</span> = .<span class="property">TRUE</span>. </span><br><span class="line"><span class="variable constant_">IBAND</span> = <span class="number">17</span> <span class="number">18</span></span><br><span class="line"><span class="variable constant_">KPUSE</span> = <span class="number">35</span></span><br><span class="line"><span class="variable constant_">LSEPB</span> = .<span class="property">TRUE</span>.</span><br><span class="line"><span class="variable constant_">LSEPK</span> = .<span class="property">TRUE</span>.</span><br><span class="line"><span class="variable constant_">NELM</span> = <span class="number">200</span></span><br><span class="line"><span class="variable constant_">ICHARG</span> = <span class="number">1</span></span><br></pre></td></tr></table></figure><br>在scf自恰计算OUTCAR中<br>找到对应导带底和价带顶<br>对应的k-point编号<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">CsPbI3</span>-cubic</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="title class_">Gamma</span></span><br><span class="line"><span class="number">8</span> <span class="number">8</span> <span class="number">8</span></span><br><span class="line"><span class="number">0.0</span> <span class="number">0.0</span> <span class="number">0.0</span></span><br></pre></td></tr></table></figure><br><strong>3、读取能带计算的波函数，KPOINTS文件采用能带计算的k点</strong></p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#partial charge density</span><br><span class="line"><span class="variable constant_">LPARD</span> = .<span class="property">TRUE</span>. </span><br><span class="line"><span class="variable constant_">IBAND</span> = <span class="number">17</span> <span class="number">18</span></span><br><span class="line"><span class="variable constant_">KPUSE</span> = <span class="number">80</span> <span class="number">81</span></span><br><span class="line"><span class="variable constant_">LSEPB</span> = .<span class="property">TRUE</span>.</span><br><span class="line"><span class="variable constant_">LSEPK</span> = .<span class="property">TRUE</span>.</span><br><span class="line"><span class="variable constant_">NELM</span> = <span class="number">200</span></span><br><span class="line"><span class="variable constant_">ICHARG</span> = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>KPOINTS和能带计算一样。在band能带计算OUTCAR中找到对应导带底和价带顶对应的k-point编号。</p>
+<h2 id="轨道投影态密度和能带。"><a href="#轨道投影态密度和能带。" class="headerlink" title="轨道投影态密度和能带。"></a>轨道投影态密度和能带。</h2> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">LORBIT</span>=<span class="number">11</span> </span><br><span class="line"><span class="variable constant_">NEDOS</span>=<span class="number">2001</span></span><br></pre></td></tr></table></figure>
+<p>提取DOS：vaspkit -task 111&#x2F;113<br>提取band：211&#x2F;212&#x2F;213&#x2F;214<br><strong>如果3D能带图不够平滑，可通过能带插值进行改善。</strong><br>VASPKIT升级到1.3.0或更新版本，在~&#x2F;.vaspkit文件中设置以下三个参数：<br> <figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">GET_INTERPOLATED_DATA</span>      .<span class="property">TRUE</span>.     是否插值</span><br><span class="line"><span class="variable constant_">INTERPOLATION_SPACING</span>        <span class="number">0.04</span>     插值间距，决定平滑程度</span><br><span class="line"><span class="variable constant_">INTERPOLATION_METHOD</span>        <span class="string">&#x27;cubic&#x27;</span>   插值方法</span><br></pre></td></tr></table></figure></p>
+<h2 id="HSE06计算电子结构："><a href="#HSE06计算电子结构：" class="headerlink" title="HSE06计算电子结构："></a>HSE06计算电子结构：</h2><ol>
+<li><p>结构优化（PBE）</p>
+</li>
+<li><p>静态自洽scf计算（PBE）KPOINTS和POTCAR文件不变，写波函数和电荷密度</p>
+</li>
+<li><p>(可选）静态自洽scf计算（HSE06）KPOINTS，POSCAR和POTCAR文件不变</p>
+</li>
+<li><p>DOS&#x2F;band计算（HSE06）vaspkit -task 303<br>vaspkit→251→2→0.03→0.03生成KPOINTS，运行VASP<br>vaspkit-252<br><a target="_blank" rel="noopener" href="http://vaspkit.cn/index.php/29.html">http://vaspkit.cn/index.php/29.html</a></p>
+</li>
+<li><p>PBE优化结构</p>
+</li>
+<li><p>HSE自洽计算(得到波函数)</p>
+</li>
+<li><p>HSE能带计算&#x2F;态密度计算</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">ALGO</span> = <span class="title class_">Damped</span></span><br><span class="line"><span class="variable constant_">HFSCREEN</span> = <span class="number">0.2</span></span><br><span class="line"><span class="variable constant_">LHFCALC</span> = .<span class="property">True</span>.</span><br><span class="line"><span class="variable constant_">LMAXFOCK</span> = <span class="number">4</span></span><br><span class="line"><span class="variable constant_">PRECFOCK</span> = <span class="title class_">Fast</span></span><br><span class="line"><span class="variable constant_">TIME</span> = <span class="number">0.4</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="SOC计算电子结构："><a href="#SOC计算电子结构：" class="headerlink" title="+SOC计算电子结构："></a>+SOC计算电子结构：</h2><ol>
+<li>结构优化（PBE）</li>
+<li>静态自洽scf计算（PBE+SOC）KPOINTS和POTCAR文件不变，写波函数和电荷密度</li>
+<li>非自洽计算（PBE+SOC）<br>Spin-Orbit Coupling Calculation<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="variable constant_">ISPIN</span>  =  <span class="number">2</span></span><br><span class="line"> <span class="variable constant_">NELMIN</span> =  <span class="number">6</span>            (<span class="title class_">Min</span> electronic <span class="variable constant_">SCF</span> steps) </span><br><span class="line"> <span class="variable constant_">LSORBIT</span>    = .<span class="property">TRUE</span>.    (<span class="title class_">Activate</span> <span class="variable constant_">SOC</span>)</span><br><span class="line"> <span class="variable constant_">GGA_COMPAT</span> = .<span class="property">FALSE</span>.   (<span class="title class_">Apply</span> spherical cutoff on gradient field)</span><br><span class="line">#<span class="variable constant_">VOSKOWN</span>    =  <span class="number">1</span>        (<span class="title class_">Enhances</span> the magnetic moments and the magnetic energies)</span><br><span class="line"> <span class="variable constant_">LMAXMIX</span>    =  <span class="number">2</span>        (<span class="title class_">For</span> d elements increase <span class="variable constant_">LMAXMIX</span> to <span class="number">4</span>, <span class="attr">f</span>: <span class="variable constant_">LMAXMIX</span> = <span class="number">6</span>)</span><br><span class="line"> <span class="variable constant_">SAXIS</span>    =  <span class="number">0</span> <span class="number">0</span> <span class="number">1</span>      (<span class="title class_">Direction</span> <span class="keyword">of</span> the magnetic field)</span><br><span class="line"> #<span class="variable constant_">MAGMOM</span>   =  <span class="number">0</span> <span class="number">0</span> <span class="number">3</span>    (<span class="title class_">Set</span> <span class="variable language_">this</span> parameters manually, <span class="title class_">Local</span> magnetic moment parallel to <span class="variable constant_">SAXIS</span>, <span class="number">3</span>*<span class="variable constant_">NIONS</span>*<span class="number">1.0</span> <span class="keyword">for</span> non-collinear magnetic systems)</span><br><span class="line"> <span class="variable constant_">NBANDS</span>   =  <span class="number">32</span>         (<span class="title class_">Set</span> <span class="variable language_">this</span> parameters manually, <span class="number">2</span> * number <span class="keyword">of</span> bands <span class="keyword">of</span> collinear-run)</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="调节SOC强度"><a href="#调节SOC强度" class="headerlink" title="调节SOC强度"></a>调节SOC强度</h3><ol>
+<li>调节自旋轨道耦合作用的大小</li>
+</ol>
+<p>要调优VASP中的自旋轨道耦合强度，需要修改源文件vasp_source_code_path&#x2F;src&#x2F;relativistic.F 并重新编译。如果要将强度减少一半，可以在relativistic.F的129行L●S项乘以0.5d0，如下：<br>DO I&#x3D;0,1DO J&#x3D;0,1DO M &#x3D;1,2<em>LL+1DO MP&#x3D;1,2</em>LL+1    DLLMM(LMP+MP-1,LM+M-1,J+2<em>I+1)&#x3D;DLLMM(LMP+MP-1,LM+M-1,J+2</em>I+1)+ &amp;    0.5d0<em>SUM</em>LS(M,MP,I+2*J+1,LL)   !!!line 129 relativistic.F fileEND DOEND DOEND DOEND DO</p>
+<p>代码片段：可切换语言，无法单独设置文字格式</p>
+<p>   注意，需要使用重新编译的vasp_ncl来运行计算。另外，最好比较0d0<em>L●S，1d0</em>L●S和vasp_std，vasp_ncl计算结果。</p>
+<ol start="2">
+<li>如果只想给一些元素加SOC，而其他元素不加该怎么办呢？拓扑材料计算互助群的Eurus-清华给出了VASP中给特定元素加自旋轨道耦合相互作用的方法（感谢Eurus-清华）。在原来VASP，src文件夹下的relativistic.F文件中注释掉46行的</li>
+</ol>
+<p>! REAL(q), PARAMETER :: INVMC2&#x3D;7.45596E-6</p>
+<p>然后53行位置加入如下6-17行的内容，然后重新编译。</p>
+<pre><code>  INTEGER, PARAMETER :: LMAX=3, MMAX=LMAX*2+1      COMPLEX(q) DUMMY(MMAX,MMAX,3,LMAX)      COMPLEX(q) LS(MMAX,MMAX,4,LMAX)      REAL(q) SUM, SCALE
+</code></pre>
+<p>! add  parameter       REAL(q), PARAMETER :: INVMC2_ORIG&#x3D;7.45596E-6      REAL(q) INVMC2! add end ! add  control      IF(ABS(Z-83).LT.1.0E-5)THEN        INVMC2&#x3D;INVMC2_ORIG      ELSE        INVMC2&#x3D;INVMC2_ORIG*0.0001      END IF! add end<br>      LS&#x3D;(0._q,0._q)      CALL SETUP_LS(1,THETA,PHI,DUMMY(1:3,1:3,1:3,1),LS(1:3,1:3,1:4,1))      CALL SETUP_LS(2,THETA,PHI,DUMMY(1:5,1:5,1:3,2),LS(1:5,1:5,1:4,2))      CALL SETUP_LS(3,THETA,PHI,DUMMY(1:7,1:7,1:3,3),LS(1:7,1:7,1:4,3))<br>原理：这样做的原理就是将除Z-83的元素外的其他元素缩小一万倍。注意：这个脚本的第12行, IF(ABS(Z-83))，表明除了83号元素打开SOC之外，其他所有的元素SOC都是相当于关闭的。如果想打开某个特定元素的SOC，就把83改成你想要的元素序号就行。<br>另外，其他元素SOC关闭方式就是将其缩小一万倍。所以使用这种方法，任然是非共线计算，如果要进行wannier90计算，只要按照正常的wannier90设置就可以。</p>
+<h2 id="HSE06-SOC-band-structure-calculation"><a href="#HSE06-SOC-band-structure-calculation" class="headerlink" title="HSE06+SOC band structure calculation"></a>HSE06+SOC band structure calculation</h2><ul>
+<li><p>Step-I: HSE06 SCF calculation with SOC (INCAR):</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#<span class="variable constant_">SOC</span>-<span class="attr">related</span>:</span><br><span class="line"><span class="variable constant_">LSORBIT</span>=.<span class="property">TRUE</span>.                </span><br><span class="line"><span class="variable constant_">SAXIS</span>= <span class="number">0</span> <span class="number">0</span> <span class="number">1</span>  </span><br><span class="line"><span class="variable constant_">ISYM</span>=<span class="number">0</span>                   </span><br><span class="line"></span><br><span class="line">#<span class="title class_">HSE06</span>-<span class="attr">related</span>:</span><br><span class="line"><span class="variable constant_">LHFCALC</span> = .<span class="property">TRUE</span>.</span><br><span class="line"><span class="variable constant_">HFSCREEN</span> = <span class="number">0.2</span></span><br><span class="line"><span class="variable constant_">ALGO</span> = <span class="title class_">Damped</span>         #<span class="title class_">Damped</span>/<span class="title class_">Normal</span>/<span class="title class_">All</span></span><br><span class="line"><span class="variable constant_">TIME</span> = <span class="number">0.4</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Step-II: HSE06 NSCF calculation with SOC:</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#<span class="variable constant_">SOC</span>-<span class="attr">related</span>:</span><br><span class="line"><span class="variable constant_">LSORBIT</span>=.<span class="property">TRUE</span>.                </span><br><span class="line"><span class="variable constant_">SAXIS</span>= <span class="number">0</span> <span class="number">0</span> <span class="number">1</span>  </span><br><span class="line"><span class="variable constant_">ISYM</span>=<span class="number">0</span>                  </span><br><span class="line"></span><br><span class="line">#<span class="title class_">HSE06</span> <span class="attr">related</span>:</span><br><span class="line"><span class="variable constant_">LHFCALC</span> = .<span class="property">TRUE</span>.               </span><br><span class="line"><span class="variable constant_">HFSCREEN</span> = <span class="number">0.2</span></span><br><span class="line"><span class="variable constant_">ALGO</span> = <span class="title class_">Normal</span>                  !use <span class="title class_">Normal</span></span><br><span class="line"><span class="variable constant_">TIME</span> = <span class="number">0.4</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="能带反折叠"><a href="#能带反折叠" class="headerlink" title="能带反折叠"></a>能带反折叠</h2><h3 id="vaspkit"><a href="#vaspkit" class="headerlink" title="vaspkit:"></a>vaspkit:</h3><ol>
+<li>准备POSCAR</li>
+<li>运行vaspkit -task 302&#x2F;303生成KPATH.in文件</li>
+<li>cp PRIMCELL.vasp POSCAR </li>
+<li>运行vasp优化结构，cp CONTCAR POSCAR</li>
+<li>运行vaspkit -task 400&#x2F;400生成超胞结构POSCAR，并执行cp TRANSMAT TRANSMAT.in</li>
+<li>运行vasp优化含有缺陷的超胞结构，cp CONTCAR POSCAR</li>
+<li>运行vaspkit -task 281生成KPOINTS文件</li>
+<li>准备INCAR（静态计算，设置LWAVE &#x3D; T，适当增加NBANDS值）并执行VASP计算</li>
+<li>运行vaspkit -task 282提取effective band structure(画法类似于投影能带)</li>
+</ol>
+<ul>
+<li><strong>如果不会计算变换矩阵（TRANSMAT.in文件不存在时），可以执行cp PRIMCELL.vasp PRIMCELL.in，281</strong> ，这时vaspkit分别读入超胞基矢（POSCAR）和原胞基矢（PRIMCELL.in）计算变换矩阵并生成TRANSMAT.in文件。</li>
+<li>vaspkit&#x2F;examples&#x2F;band_unfolding&#x2F;ebs.py画图。生成的ENERGY.grd，WEIGHT.grd和MOMENTUM.grd三个文件，可使用vaspkit&#x2F;examples&#x2F;band_unfolding&#x2F;ebs_k_resolved_dos_plot_matlalb.m脚本画图。</li>
+</ul>
+<h3 id="bandup"><a href="#bandup" class="headerlink" title="bandup:"></a>bandup:</h3><p><strong>第一步</strong>  得到超胞CHGCAR:输入文件参考BANDUP的example的第一步，提交任务之后得到CHGCAR。<br><strong>第二步</strong>  主要是为了得到超胞非自洽计算的K点路径，分别给出单胞和超胞的晶格坐标文件prim_cell_lattice.in与supercell_lattice.in。还有单胞的高对称K点路径。<br>下一步命令是bandup kpts-sc-get -no_symm_avg,这一步会生成KPOINTS_supercell.out文件后面会用到。-no_symm_avg这个标签是为了减少需要计算的k点个数，减小计算量和WAVECAR大小。<br><strong>第三步</strong>  利用前面第一步生成 CHGCAR; POSCAR POTCAR与第一步的一样，K点从第二步那个复制过来,然后提交任务得到波函数WAVECAR<br>第四步就要开始做能带反折叠了，一句命令，bandup unfold -emin -13 -emax 6 -dE 0.050  -no_symm_avg<br>会生成一个unfolded_EBS_not-symmetry_averaged.dat文件，画出来就行了。<br><a target="_blank" rel="noopener" href="https://github.com/band-unfolding/bandup">https://github.com/band-unfolding/bandup</a></p>
+<p><a target="_blank" rel="noopener" href="http://staff.ustc.edu.cn/~zqj/posts/Band-unfolding-tutorial/">http://staff.ustc.edu.cn/~zqj/posts/Band-unfolding-tutorial/</a><br>可以处理能带反折叠的软件汇总：<br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/-5lN2lwxsALA-rhNQxK1dw">https://mp.weixin.qq.com/s/-5lN2lwxsALA-rhNQxK1dw</a><br><a target="_blank" rel="noopener" href="https://vaspkit.com/tutorials.html#band-unfolding">https://vaspkit.com/tutorials.html#band-unfolding</a><br><a target="_blank" rel="noopener" href="https://github.com/QuantumMaterialsModelling/bands4vasp">https://github.com/QuantumMaterialsModelling/bands4vasp</a><br><a target="_blank" rel="noopener" href="https://github.com/QuantumMaterialsModelling/UnfoldingPatch4vasp">https://github.com/QuantumMaterialsModelling/UnfoldingPatch4vasp</a></p>
+<h2 id="3D能带"><a href="#3D能带" class="headerlink" title="3D能带"></a>3D能带</h2><p>__第一步__，准备好石墨烯的POSCAR和用于静态计算的INCAR文件；<br>__第二步__：运行VASPKIT并选择231生成用于3D能带计算 的KPOINTS文件。为了获得平滑的3D能带面，用于产生KPOINTS文件的分辨率值应该设置在0.005左右 ；<br>__第三步__，提交VASP作业；<br>__第四步__，待VASP计算完成后，再次运行VASPKIT，输入232或233命令。233命令可一次性输入包含价带顶的BAND.HOMO.grd和导带底的BAND.LUMO.grd文件的能带；232可以得到其它任意能带的计算数据，这里我们选择233。<br>__第五步__：运行python how_to_visual.py，绘制3D能带图(python2.7环境)。<br><strong>如果3D能带图不够平滑，可通过能带插值进行改善。</strong></p>
+<h2 id="有效质量："><a href="#有效质量：" class="headerlink" title="有效质量："></a>有效质量：</h2><p>除了通过能带，也可以通过调用VASPKIT-911命令来得到带边位置，接下来我们计算K点处沿着K -&gt; Γ和K -&gt; M方向的电子及空穴载流子的有效质量；<br>第一步：准备POSCAR文件以及VPKIT.in文件，VPKIT.in文件包含以下内容；</p>
+<figure class="highlight javascript"><figcaption><span>&#123;.line-numbers&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>                  设置为<span class="number">1</span>将会生成计算有效质量的<span class="variable constant_">KPOINTS</span>文件，<span class="number">2</span>则计算有效质量</span><br><span class="line"><span class="number">6</span>                  <span class="number">6</span>表示我们在K附近取<span class="number">6</span>个离散点用于多项式拟合</span><br><span class="line"><span class="number">0.015</span>              k-cutoff, 截断半径，典型值<span class="number">0.015</span> <span class="number">1</span>/Å</span><br><span class="line"><span class="number">2</span>                  <span class="number">2</span> 表示有两个有效质量任务</span><br><span class="line"><span class="number">0.333333</span> <span class="number">0.3333333</span>  <span class="number">0.000</span>  <span class="number">0.000</span> <span class="number">0.000</span> <span class="number">0.000</span>  K-&gt;Γ     计算K点处有效质量，沿着K指向Γ方向    </span><br><span class="line"><span class="number">0.333333</span> <span class="number">0.3333333</span>  <span class="number">0.000</span>  <span class="number">0.500</span> <span class="number">0.000</span> <span class="number">0.000</span>  K-&gt;M     计算K点处有效质量，沿着K指向M方向 </span><br></pre></td></tr></table></figure>
+<p>第二步：运行vaspkit并选择912或者913产生KPOINTS，POTCAR文件及静态计算INCAR文件；<br>第三步：提交VASP作业；<br>第四步：计算完成后把VPKIT.in文件中第一行的1修改为2，然后再次运行vaspkit并选择913，得到结果：<br>为了得到可靠的有效质量计算值，括号里的精度至少要在1E-7这个量级，如果误差比较大，可以适当调整k-cutoff值，一般减少该值但不能太小。<br>手动vaspkit处理的能带：$m^∗&#x3D;3.815&#x2F;B$</p>
+<h2 id="GW方法"><a href="#GW方法" class="headerlink" title="GW方法"></a>GW方法</h2><p>参考：<a target="_blank" rel="noopener" href="https://www.vasp.at/wiki/index.php/Bandgap_of_Si_in_GW">https://www.vasp.at/wiki/index.php/Bandgap_of_Si_in_GW</a></p>
+<p>步骤：</p>
+<ol>
+<li>PBE基态计算</li>
+<li>获得虚拟轨道（50-100&#x2F;atom）</li>
+</ol>
+<p>INCAR：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ALGO = Exact</span><br><span class="line">NBANDS  = 64</span><br><span class="line">LOPTICS = .TRUE. #得到WAVEDER文件</span><br><span class="line">CSHIFT = 0.1</span><br><span class="line">NEDOS = 2000</span><br><span class="line"># you might try</span><br><span class="line">#LPEAD = .TRUE.</span><br><span class="line">   </span><br><span class="line">ISMEAR =  0</span><br><span class="line">SIGMA  =  0.05</span><br><span class="line">EDIFF  = 1E-8</span><br></pre></td></tr></table></figure>
+<p>完成后：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp WAVECAR WAVECAR.DIAG</span><br><span class="line">cp WAVEDER WAVEDER.DIAG</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>GW计算<br>读取上一步<br>INCAR：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># Frequency dependent dielectric tensor including</span><br><span class="line"># local field effects within the RPA (default) or</span><br><span class="line"># including changes in the DFT xc-potential (LRPA=.FALSE.).</span><br><span class="line"># N.B.: beware one first has to have done a</span><br><span class="line"># calculation with ALGO=Exact, LOPTICS=.TRUE.</span><br><span class="line"># and a reasonable number of virtual states (see above)</span><br><span class="line">ALGO = GW0 ; LSPECTRAL = .TRUE. ; NOMEGA = 50</span><br><span class="line">   </span><br><span class="line"># be sure to take the same number of bands as for</span><br><span class="line"># the LOPTICS=.TRUE. calculation, otherwise the</span><br><span class="line"># WAVEDER file is not read correctly</span><br><span class="line">NBANDS = 64</span><br><span class="line">     </span><br><span class="line"># Add this to update the quasiparticle energies</span><br><span class="line"># in the Green&#x27;s function (GW0)</span><br><span class="line">#NELM = 4</span><br><span class="line">    </span><br><span class="line">ISMEAR =  0</span><br><span class="line">SIGMA  =  0.05</span><br><span class="line">EDIFF  = 1E-8</span><br></pre></td></tr></table></figure>
+在OUTCAR中quasi-particle (QP) energies.<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">QP shifts &lt;psi_nk| G(iteration)W_0 |psi_nk&gt;: iteration 1</span><br><span class="line"> for sc-GW calculations column KS-energies equals QP-energies in previous step</span><br><span class="line"> and V_xc(KS)=  KS-energies - (&lt;T + V_ion + V_H &gt; + &lt;T+V_H+V_ion&gt;^1  + &lt;V_x&gt;^1)</span><br><span class="line"></span><br><span class="line"> k-point   1 :       0.0000    0.0000    0.0000</span><br><span class="line">  band No.  KS-energies  QP-energies   sigma(KS)   V_xc(KS)     V^pw_x(r,r&#x27;)   Z            occupation</span><br><span class="line">  .........</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="LWANNIER90计算能带结构"><a href="#LWANNIER90计算能带结构" class="headerlink" title="LWANNIER90计算能带结构"></a>LWANNIER90计算能带结构</h3><p>重新开始第三步</p>
+<p>INCAR：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ALGO = GW0 ; LSPECTRAL = .TRUE. ; NOMEGA = 50</span><br><span class="line">#LRPA = .FALSE. </span><br><span class="line">## be sure to take the same number of bands as for</span><br><span class="line">## the LOPTICS=.TRUE. calculation, otherwise the</span><br><span class="line">## WAVEDER file is not read correctly</span><br><span class="line">NBANDS = 64</span><br><span class="line">##VASP2WANNIER90</span><br><span class="line">LWANNIER90=.TRUE.</span><br></pre></td></tr></table></figure>
+<p>wannier90.win:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line">num_wann=8</span><br><span class="line">num_bands=8</span><br><span class="line"></span><br><span class="line">exclude_bands = 9-64</span><br><span class="line"></span><br><span class="line">Begin Projections</span><br><span class="line">Si:sp3</span><br><span class="line">End Projections</span><br><span class="line"></span><br><span class="line">dis_froz_max=9</span><br><span class="line">dis_num_iter=1000</span><br><span class="line"></span><br><span class="line">guiding_centres=true</span><br><span class="line"></span><br><span class="line"># Bandstructure plot </span><br><span class="line">#restart         =  plot</span><br><span class="line">#bands_plot      =  true</span><br><span class="line">#begin kpoint_path</span><br><span class="line">#L 0.50000  0.50000 0.5000 G 0.00000  0.00000 0.0000</span><br><span class="line">#G 0.00000  0.00000 0.0000 X 0.50000  0.00000 0.5000</span><br><span class="line">#X 0.50000  0.00000 0.5000 K 0.37500 -0.37500 0.0000</span><br><span class="line">#K 0.37500 -0.37500 0.0000 G 0.00000  0.00000 0.0000</span><br><span class="line">#end kpoint_path</span><br><span class="line">#bands_num_points 40</span><br><span class="line">#bands_plot_format gnuplot xmgrace</span><br><span class="line"></span><br><span class="line">begin unit_cell_cart</span><br><span class="line">     2.7150000     2.7150000     0.0000000</span><br><span class="line">     0.0000000     2.7150000     2.7150000</span><br><span class="line">     2.7150000     0.0000000     2.7150000</span><br><span class="line">end unit_cell_cart</span><br><span class="line"></span><br><span class="line">begin atoms_cart</span><br><span class="line">Si       0.0000000     0.0000000     0.0000000</span><br><span class="line">Si       1.3575000     1.3575000     1.3575000</span><br><span class="line">end atoms_cart</span><br><span class="line"></span><br><span class="line">mp_grid =     4     4     4</span><br><span class="line"></span><br><span class="line">begin kpoints</span><br><span class="line">     0.0000000     0.0000000     0.0000000</span><br><span class="line">     0.2500000     0.0000000     0.0000000</span><br><span class="line">     0.5000000     0.0000000     0.0000000</span><br><span class="line">     0.2500000     0.2500000     0.0000000</span><br><span class="line">     0.5000000     0.2500000     0.0000000</span><br><span class="line">    -0.2500000     0.2500000     0.0000000</span><br><span class="line">     0.5000000     0.5000000     0.0000000</span><br><span class="line">    -0.2500000     0.5000000     0.2500000</span><br><span class="line">     0.0000000     0.2500000     0.0000000</span><br><span class="line">     0.0000000     0.0000000     0.2500000</span><br><span class="line">    -0.2500000    -0.2500000    -0.2500000</span><br><span class="line">    -0.2500000     0.0000000     0.0000000</span><br><span class="line">     0.0000000    -0.2500000     0.0000000</span><br><span class="line">     0.0000000     0.0000000    -0.2500000</span><br><span class="line">     0.2500000     0.2500000     0.2500000</span><br><span class="line">     0.0000000     0.5000000     0.0000000</span><br><span class="line">     0.0000000     0.0000000     0.5000000</span><br><span class="line">    -0.5000000    -0.5000000    -0.5000000</span><br><span class="line">     0.0000000     0.2500000     0.2500000</span><br><span class="line">     0.2500000     0.0000000     0.2500000</span><br><span class="line">    -0.2500000    -0.2500000     0.0000000</span><br><span class="line">    -0.2500000     0.0000000    -0.2500000</span><br><span class="line">     0.0000000    -0.2500000    -0.2500000</span><br><span class="line">     0.0000000     0.5000000     0.2500000</span><br><span class="line">     0.2500000     0.0000000     0.5000000</span><br><span class="line">    -0.2500000    -0.2500000     0.2500000</span><br><span class="line">    -0.5000000    -0.2500000    -0.5000000</span><br><span class="line">     0.2500000     0.5000000     0.0000000</span><br><span class="line">     0.2500000    -0.2500000    -0.2500000</span><br><span class="line">    -0.5000000    -0.5000000    -0.2500000</span><br><span class="line">     0.0000000     0.2500000     0.5000000</span><br><span class="line">    -0.2500000     0.2500000    -0.2500000</span><br><span class="line">    -0.2500000    -0.5000000    -0.5000000</span><br><span class="line">     0.5000000     0.0000000     0.2500000</span><br><span class="line">    -0.5000000    -0.2500000     0.0000000</span><br><span class="line">     0.0000000    -0.5000000    -0.2500000</span><br><span class="line">    -0.2500000     0.0000000    -0.5000000</span><br><span class="line">     0.2500000     0.2500000    -0.2500000</span><br><span class="line">     0.5000000     0.2500000     0.5000000</span><br><span class="line">    -0.2500000    -0.5000000     0.0000000</span><br><span class="line">    -0.2500000     0.2500000     0.2500000</span><br><span class="line">     0.5000000     0.5000000     0.2500000</span><br><span class="line">     0.0000000    -0.2500000    -0.5000000</span><br><span class="line">     0.2500000    -0.2500000     0.2500000</span><br><span class="line">     0.2500000     0.5000000     0.5000000</span><br><span class="line">    -0.5000000     0.0000000    -0.2500000</span><br><span class="line">     0.0000000    -0.2500000     0.2500000</span><br><span class="line">     0.2500000     0.0000000    -0.2500000</span><br><span class="line">    -0.2500000    -0.2500000    -0.5000000</span><br><span class="line">     0.2500000     0.5000000     0.2500000</span><br><span class="line">     0.2500000    -0.2500000     0.0000000</span><br><span class="line">    -0.5000000    -0.2500000    -0.2500000</span><br><span class="line">     0.2500000     0.2500000     0.5000000</span><br><span class="line">     0.0000000     0.2500000    -0.2500000</span><br><span class="line">    -0.2500000    -0.5000000    -0.2500000</span><br><span class="line">     0.5000000     0.2500000     0.2500000</span><br><span class="line">    -0.2500000     0.0000000     0.2500000</span><br><span class="line">     0.0000000     0.5000000     0.5000000</span><br><span class="line">     0.5000000     0.0000000     0.5000000</span><br><span class="line">     0.2500000    -0.2500000     0.5000000</span><br><span class="line">     0.5000000     0.2500000    -0.2500000</span><br><span class="line">    -0.5000000    -0.2500000    -0.7500000</span><br><span class="line">     0.2500000    -0.5000000    -0.2500000</span><br><span class="line">    -0.2500000     0.2500000    -0.5000000</span><br><span class="line">end kpoints</span><br></pre></td></tr></table></figure>
+
+<p>Compute Wannier functions<br>run wannier90:</p>
+<p><code>wannier90.x wannier90</code></p>
+<p>This run generates the wannier90 standard output (wannier90.wout) and the file wannier90.chk needed for the wannier interpolation (next step)</p>
+<p>Obtain bandstructure (Wannier interpolation)<br>Uncomment the bandstructure plot flags in wannier90.win and rerun (restart) wannier90:</p>
+<p><code>wannier90.x wannier90</code></p>
+<p>This run generates the following bandstructure files which can be visualized using xmgrace or gnuplot:</p>
+<p>wannier90_band.agr</p>
+<p>wannier90_band.dat</p>
+<p>wannier90_band.gnu</p>
+<p>to plot the band structure using gnuplot: <code>gnuplot -persist wannier90_band.gnu</code></p>
+<h3 id="Beyond-the-random-phase-approximation"><a href="#Beyond-the-random-phase-approximation" class="headerlink" title="Beyond the random-phase-approximation"></a>Beyond the random-phase-approximation</h3><p>To include local field effects beyond the random-phase-approximation in the description of the frequency dependent dielectric response function (local field effects in DFT) add the following line to your INCAR file:</p>
+<p><code>LRPA = .FALSE.</code><br>and again restart from the WAVECAR and WAVEDER files from step 2.</p>
+<h3 id="Beyond-G0W0-GW0"><a href="#Beyond-G0W0-GW0" class="headerlink" title="Beyond G0W0: GW0"></a>Beyond G0W0: GW0</h3><p>The most usual step beyond single-shot GW (G0W0) is to iterate the quasi-particle energies in the Greens functions. This is the socalled GW0 approximation. To have VASP do, for instance, 4 iterations of the QP-energies in G, add the following line to the INCAR file:</p>
+<p><code>NELM = 4</code><br>and again restart from the WAVECAR and WAVEDER files from step 2.</p>
+<p>To quickly find the QP-energy of the highest lying occupied state after 4 iterations of the QP energies in G, type:</p>
+<p><code>./gap_GW.sh OUTCAR</code></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1614,375 +2122,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/01/18-48-24/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Keke Liu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lightchaser">
-      <meta itemprop="description" content="一个小学生的博客">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Lightchaser">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/05/01/18-48-24/" class="post-title-link" itemprop="url">0.2 linux</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-05-01 18:48:24" itemprop="dateCreated datePublished" datetime="2023-05-01T18:48:24+08:00">2023-05-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-12-19 17:16:24" itemprop="dateModified" datetime="2023-12-19T17:16:24+08:00">2023-12-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/DFT%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">DFT学习</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="查看cpu核数"><a href="#查看cpu核数" class="headerlink" title="查看cpu核数"></a>查看cpu核数</h2><p>cat &#x2F;proc&#x2F;cpuinfo| grep “physical id”| sort| uniq| wc -l</p>
-<p>cat &#x2F;proc&#x2F;cpuinfo| grep “cpu cores”| uniq</p>
-<p>cat &#x2F;proc&#x2F;cpuinfo | grep ‘process’ | sort | uniq | wc -l</p>
-<p>系统处理器基本信息记录在&#x2F;proc&#x2F;cpuinfo文件中;sort 可针对文本文件的内容，以行为单位来排序;uniq 命令用于检查及删除文本文件中重复出现的行列，一般与 sort 命令结合使用。wc （word count）命令常用于计算文件的行数、字数和字节数，-l , –lines : 显示行数。</p>
-<h2 id="查看内存总大小"><a href="#查看内存总大小" class="headerlink" title="查看内存总大小"></a>查看内存总大小</h2><p>cat &#x2F;proc&#x2F;meminfo | grep “MemTotal” | awk ‘{print $2&#x2F;1024&#x2F;1024}’</p>
-<p>awk ‘{print $2&#x2F;1024&#x2F;1024}’ 以空格分隔，并将分割后的变量打印出来，因为文件里面是KB，转成GB，除两次1024，最后就是内存的大小。</p>
-<h2 id="查看硬盘大小"><a href="#查看硬盘大小" class="headerlink" title="查看硬盘大小"></a>查看硬盘大小</h2><p>两种方法</p>
-<p>第一种（安全，建议使用），所有的相加。</p>
-<p>df -h<br>第二种，不安全,查看磁盘分区，相加。</p>
-<p>fdisk -l</p>
-<p>fdisk是磁盘分区命令，而且普通用户没法执行这个命令，如果使用出错，很容易完整删除整个系统，虚拟机玩玩就好了。</p>
-<p>求第四列数据的平均值和总和：<br>grep LOOP+ OUTCAR |awk ‘{sum+&#x3D;$4} END {print “Average&#x3D;”,sum&#x2F;NR}’<br>grep LOOP+ OUTCAR |awk ‘{sum+&#x3D;$4} END {print “Sum&#x3D;”,sum}’</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/01/08-12-23/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Keke Liu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Lightchaser">
-      <meta itemprop="description" content="一个小学生的博客">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Lightchaser">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/05/01/08-12-23/" class="post-title-link" itemprop="url">0.1 准备工作</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-05-01 08:12:23" itemprop="dateCreated datePublished" datetime="2023-05-01T08:12:23+08:00">2023-05-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-09-30 14:53:51" itemprop="dateModified" datetime="2024-09-30T14:53:51+08:00">2024-09-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/DFT%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">DFT学习</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="常用计算相关数据库"><a href="#常用计算相关数据库" class="headerlink" title="常用计算相关数据库"></a>常用计算相关数据库</h1><h2 id="结构查找"><a href="#结构查找" class="headerlink" title="结构查找"></a>结构查找</h2><ol>
-<li><strong>The Materials Project</strong> <a target="_blank" rel="noopener" href="https://www.materialsproject.org/">https://www.materialsproject.org/</a></li>
-<li><strong>ICSD the Inorganic Crystal Structure Database 无机晶体数据库</strong> <a target="_blank" rel="noopener" href="http://www2.fiz-karlsruhe.de/icsd_home.html">http://www2.fiz-karlsruhe.de/icsd_home.html</a> , 需要账号密码</li>
-<li>CCDC – The Cambridge Crystallographic Data Centre 剑桥晶体数据库。<a target="_blank" rel="noopener" href="https://www.ccdc.cam.ac.uk/">https://www.ccdc.cam.ac.uk/</a></li>
-<li>COD – 开放晶体结构数据库（Crystallography Open Database）。<a target="_blank" rel="noopener" href="http://www.crystallography.net/cod/">http://www.crystallography.net/cod/</a></li>
-<li>AMCSD – American Mineralogist Crystal Structure Database。<a target="_blank" rel="noopener" href="http://rruff.geo.arizona.edu/AMS/amcsd.php">http://rruff.geo.arizona.edu/AMS/amcsd.php</a></li>
-<li>AFLOW：<a target="_blank" rel="noopener" href="http://www.aflowlib.org/">http://www.aflowlib.org/</a></li>
-<li>springer material :  <a target="_blank" rel="noopener" href="https://materials.springer.com/periodictable#">https://materials.springer.com/periodictable#</a></li>
-<li>拓扑材料：（该部分内容参考：<a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/blog-1502061-1130705.html">http://blog.sciencenet.cn/blog-1502061-1130705.html</a> ）<br> Materiae ：<a target="_blank" rel="noopener" href="http://materiae.iphy.ac.cn/#/">http://materiae.iphy.ac.cn/#/</a><br>Topological Materials Arsenal：<br><a target="_blank" rel="noopener" href="https://ccmp.nju.edu.cn/">https://ccmp.nju.edu.cn/</a><br>Topological Materials Database:<br><a target="_blank" rel="noopener" href="http://topologicalquantumchemistry.org/#/">http://topologicalquantumchemistry.org/#/</a></li>
-<li>二维材料：<br>   Materials Cloud：<br>   <a target="_blank" rel="noopener" href="https://www.materialscloud.org/discover/2dstructures/dashboard/ptable">https://www.materialscloud.org/discover/2dstructures/dashboard/ptable</a><br>   2D Materials：<a target="_blank" rel="noopener" href="https://materialsweb.org/twodmaterials">https://materialsweb.org/twodmaterials</a><br>   C2DB: <a target="_blank" rel="noopener" href="https://cmr.fysik.dtu.dk/c2db/c2db.html">https://cmr.fysik.dtu.dk/c2db/c2db.html</a></li>
-<li>超导材料：<br>  第I类超导体：<a target="_blank" rel="noopener" href="http://www.superconductors.org/Type1.htm">http://www.superconductors.org/Type1.htm</a><br>  第II类超导体：<a target="_blank" rel="noopener" href="http://www.superconductors.org/Type2.htm">http://www.superconductors.org/Type2.htm</a></li>
-<li>磁结构数据库：MAGNDATA:<br><a target="_blank" rel="noopener" href="http://webbdcrista1.ehu.es/magndata/index.php?show_db=1">http://webbdcrista1.ehu.es/magndata/index.php?show_db=1</a></li>
-<li>ChemSpider :<a target="_blank" rel="noopener" href="http://www.chemspider.com/">http://www.chemspider.com/</a> RSC旗下的一个数据库</li>
-</ol>
-<h2 id="物理性质"><a href="#物理性质" class="headerlink" title="物理性质"></a>物理性质</h2><ol>
-<li><p><strong>NIST 数据库</strong> ： <a target="_blank" rel="noopener" href="https://physics.nist.gov/cuu/Constants/index.html">https://physics.nist.gov/cuu/Constants/index.html</a></p>
-</li>
-<li><p>CRC Handbook of physical chemistry查找热力学参数，晶格常数，entropy等等。<br><a target="_blank" rel="noopener" href="http://hbcponline.com/faces/contents/ContentsSearch.xhtml">http://hbcponline.com/faces/contents/ContentsSearch.xhtml</a> </p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://www2.ucdsb.on.ca/tiss/stretton/database/inorganic_thermo.htm">http://www2.ucdsb.on.ca/tiss/stretton/database/inorganic_thermo.htm</a> 无机化合物的物理和热力学相关数据</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://www.knowledgedoor.com/2/elements_handbook/cohesive_energy.html">http://www.knowledgedoor.com/2/elements_handbook/cohesive_energy.html</a> 结合能</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://www.surface-tension.de/">http://www.surface-tension.de/</a> 表面张力</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://www.wiredchemist.com/chemistry/data/thermodynamic-data">http://www.wiredchemist.com/chemistry/data/thermodynamic-data</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://atct.anl.gov/">https://atct.anl.gov/</a></p>
-</li>
-<li><p>物理常数<br><a target="_blank" rel="noopener" href="https://physics.nist.gov/cuu/Constants/index.html">https://physics.nist.gov/cuu/Constants/index.html</a><br><a target="_blank" rel="noopener" href="http://wild.life.nctu.edu.tw/class/common/energy-unit-conv-table.html">http://wild.life.nctu.edu.tw/class/common/energy-unit-conv-table.html</a><br><a target="_blank" rel="noopener" href="http://halas.rice.edu/conversions">http://halas.rice.edu/conversions</a></p>
-</li>
-<li><p>空间群对称性和其布里渊区的信息：<br> <a target="_blank" rel="noopener" href="http://cryst.ehu.es/">http://cryst.ehu.es/</a><br> <a target="_blank" rel="noopener" href="http://www.cryst.ehu.es/cryst/get_kvec.html">http://www.cryst.ehu.es/cryst/get_kvec.html</a></p>
-</li>
-</ol>
-<h1 id="软件官网"><a href="#软件官网" class="headerlink" title="软件官网"></a>软件官网</h1><ol>
-<li><p><strong>VASP官网</strong> <a target="_blank" rel="noopener" href="http://www.vasp.at/">http://www.vasp.at/</a></p>
-</li>
-<li><p>VASP 教程视频 <a target="_blank" rel="noopener" href="http://www.nersc.gov/users/training/events/3-day-vasp-workshop/">http://www.nersc.gov/users/training/events/3-day-vasp-workshop/</a></p>
-</li>
-<li><p>VASP官方论坛 <a target="_blank" rel="noopener" href="https://cms.mpi.univie.ac.at/vasp-forum/">https://cms.mpi.univie.ac.at/vasp-forum/</a> 需要注册才可以提问</p>
-</li>
-<li><p>Henkelman 课题组 <a target="_blank" rel="noopener" href="http://theory.cm.utexas.edu/henkelman/">http://theory.cm.utexas.edu/henkelman/</a></p>
-</li>
-<li><p>ASE： Atomic Simulation Environment： <a target="_blank" rel="noopener" href="https://wiki.fysik.dtu.dk/ase/">https://wiki.fysik.dtu.dk/ase/</a></p>
-</li>
-<li><p>Pymatgen： <a target="_blank" rel="noopener" href="http://pymatgen.org/">http://pymatgen.org/</a>, 适合材料计算的</p>
-</li>
-<li><p><strong>K-path</strong> ： <a target="_blank" rel="noopener" href="https://www.materialscloud.org/work/tools/seekpath">https://www.materialscloud.org/work/tools/seekpath</a></p>
-</li>
-<li><p>Chemml: <a target="_blank" rel="noopener" href="https://hachmannlab.github.io/chemml/">https://hachmannlab.github.io/chemml/</a></p>
-</li>
-<li><p>p4vasp：<a target="_blank" rel="noopener" href="http://www.p4vasp.at/">http://www.p4vasp.at/</a></p>
-</li>
-<li><p>RDkit：<a target="_blank" rel="noopener" href="https://www.rdkit.org/">https://www.rdkit.org/</a></p>
-</li>
-<li><p><strong>vaspkit</strong> ： <a target="_blank" rel="noopener" href="https://sourceforge.net/projects/vaspkit/files/">https://sourceforge.net/projects/vaspkit/files/</a> VASP计算前后处理。</p>
-</li>
-<li><p>VESTA ： <a target="_blank" rel="noopener" href="http://jp-minerals.org/vesta/en/">http://jp-minerals.org/vesta/en/</a> 日本开发的可视化建模软件</p>
-</li>
-<li><p>Xcrysden ：<a target="_blank" rel="noopener" href="http://www.xcrysden.org/%EF%BC%8C">http://www.xcrysden.org/，</a> 用于批量做图，选择K-path做能带图，等。</p>
-</li>
-<li><p>Jmol: (sourceforge.net)</p>
-</li>
-<li><p>phonopy：<a target="_blank" rel="noopener" href="https://atztogo.github.io/phonopy/">https://atztogo.github.io/phonopy/</a></p>
-</li>
-<li><p>Lobster：<a target="_blank" rel="noopener" href="http://schmeling.ac.rwth-aachen.de/cohp/index.php?menuID=6">http://schmeling.ac.rwth-aachen.de/cohp/index.php?menuID=6</a></p>
-</li>
-<li><p>Wannier90：<a target="_blank" rel="noopener" href="http://www.wannier.org/">http://www.wannier.org/</a></p>
-</li>
-</ol>
-<h1 id="免费的学习网站和论坛"><a href="#免费的学习网站和论坛" class="headerlink" title="免费的学习网站和论坛"></a>免费的学习网站和论坛</h1><ol>
-<li><p><strong>思想家公社的门口：量子化学·分子模拟·二次元</strong>  (sobereva.com)</p>
-</li>
-<li><p><strong>计算化学公社 - 高水平计算化学、理论化学交流论坛</strong> (keinsci.com)</p>
-</li>
-<li><p><strong>Learn VASP The Hard Way</strong> (bigbrosci.com)大师兄科研网</p>
-</li>
-<li><p><strong>世事如棋</strong> (<a target="_blank" rel="noopener" href="https://blog.shishiruqi.com/">https://blog.shishiruqi.com/</a>)</p>
-</li>
-<li><p><strong>Physics</strong> (yh-phys.github.io)</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.guanjihuan.com/">https://www.guanjihuan.com/</a></p>
-</li>
-<li><p>学术之友知乎 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/gangtangdft">https://zhuanlan.zhihu.com/gangtangdft</a></p>
-</li>
-<li><p>一个人就是一个叠加态（Li pai）：<a target="_blank" rel="noopener" href="http://blog.sina.com.cn/lipai91">http://blog.sina.com.cn/lipai91</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/home.php?mod=space&uid=1502061">http://blog.sciencenet.cn/home.php?mod=space&amp;uid=1502061</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/home.php?mod=space&uid=2909108">http://blog.sciencenet.cn/home.php?mod=space&amp;uid=2909108</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/home.php?mod=space&uid=548663">http://blog.sciencenet.cn/home.php?mod=space&amp;uid=548663</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/home.php?mod=space&uid=3352196">http://blog.sciencenet.cn/home.php?mod=space&amp;uid=3352196</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/home.php?mod=space&uid=3102863">http://blog.sciencenet.cn/home.php?mod=space&amp;uid=3102863</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/u/zhangfrank">http://blog.sciencenet.cn/u/zhangfrank</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/home.php?mod=space&uid=1524047">http://blog.sciencenet.cn/home.php?mod=space&amp;uid=1524047</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/home.php?mod=space&uid=3222255">http://blog.sciencenet.cn/home.php?mod=space&amp;uid=3222255</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/home.php?mod=space&uid=3388193">http://blog.sciencenet.cn/home.php?mod=space&amp;uid=3388193</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/home.php?mod=space&uid=478347">http://blog.sciencenet.cn/home.php?mod=space&amp;uid=478347</a></p>
-</li>
-<li><p>叶小球：<a target="_blank" rel="noopener" href="http://blog.sciencenet.cn/home.php?mod=space&uid=567091">http://blog.sciencenet.cn/home.php?mod=space&amp;uid=567091</a></p>
-</li>
-<li><p>Nan Xu github：<a target="_blank" rel="noopener" href="https://github.com/tamaswells">https://github.com/tamaswells</a></p>
-</li>
-<li><p>QijingZheng github：<a target="_blank" rel="noopener" href="https://github.com/QijingZheng">https://github.com/QijingZheng</a></p>
-</li>
-<li><p>Chenists github：<a target="_blank" rel="noopener" href="https://github.com/Chenists/VASP">https://github.com/Chenists/VASP</a></p>
-</li>
-<li><p>ChengCheng Xiao：<a target="_blank" rel="noopener" href="https://github.com/Chengcheng-Xiao?tab=repositories">https://github.com/Chengcheng-Xiao?tab=repositories</a></p>
-</li>
-<li><p>ShaoZhengjiang github：<a target="_blank" rel="noopener" href="https://github.com/PytLab">https://github.com/PytLab</a></p>
-</li>
-</ol>
-<h1 id="公众号"><a href="#公众号" class="headerlink" title="公众号"></a>公众号</h1>
-
-<h1 id="B站up"><a href="#B站up" class="headerlink" title="B站up"></a>B站up</h1>
-
-
-
-<h1 id="程序检索（更新至2024-x2F-07-x2F-21）"><a href="#程序检索（更新至2024-x2F-07-x2F-21）" class="headerlink" title="程序检索（更新至2024&#x2F;07&#x2F;21）"></a>程序检索（更新至2024&#x2F;07&#x2F;21）</h1><p>1、Sym4state.jl 程序：磁性材料的高效计算包<br>文章题目：</p>
-<p>MagneticTB: A package for tight-binding model of magnetic and non-magnetic materials</p>
-<p>文章链接：</p>
-<p><a target="_blank" rel="noopener" href="https://doi.org/10.1016/j.cpc.2024.109283">https://doi.org/10.1016/j.cpc.2024.109283</a></p>
-<p>附件下载：</p>
-<p><a target="_blank" rel="noopener" href="https://github/">https://github</a> .com &#x2F;A -LOST -WAPITI &#x2F;Sym4state .jl</p>
-<p>2、Crystal Toolkit</p>
-<p>该项目由Materials Project (<a target="_blank" rel="noopener" href="https://materialsproject.org/">https://materialsproject.org/</a>) 员工Matthew Horton主导开发，具有很多很方便的功能，比如可视化晶体结构、原胞和单胞之间的转换、切一个slab、构建晶界、猜测元素氧化态、替换和取代、分析局域配位环境、生成XRD图谱、计算的能带结构和态密度、相图等等。这些功能中有些甚至可以替代Materials Studio对应的功能(可视化晶体结构、单胞和原胞转换、构建slab、计算XRD图谱等)，也有一些特色的功能(分析局域配位环境等)。</p>
-<p>Crystal Toolkit主页</p>
-<p><a target="_blank" rel="noopener" href="https://crystaltoolkit.org/">https://crystaltoolkit.org/</a> </p>
-<p>Crystal Toolkit GitHub主页</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/materialsproject/crystaltoolkit">https://github.com/materialsproject/crystaltoolkit</a></p>
-<p>3、吸附位点扫描</p>
-<p>算吸附能时一般只需要算分子在高对称点的吸附能，比如算Li在铜表面的吸附能，我们只需算Li在Cu(111）面的Top，HCP，FCC和Bridge位的吸附能即可。但是这些离散的点没法帮你构建一个“势能面”，也就是无法得到吸附能在表面究竟是怎么分布的. 下面的文献里DOI：10.1063&#x2F;1.4901055有一张图非常生动，讲的分别是Li在Li(001)以及Mg在Mg(0001)表面的吸附势能分布，我们不仅可以知道哪些位置有利于吸附，还可以根据吸附能分布，描绘出分子在表面的扩散路径，这有助于我们使用NEB方法算扩散能垒。</p>
-<p>其实思路很简单，就是将表面网格化，算分子在格点的吸附能，再画出等高线图。但是大部分吸附位点其实是不稳定的，所以我们采取固定吸附分子x,y方向，在z方向弛豫以达到吸附平衡的策略。</p>
-<p>其实手动撒点，再采集数据也是可行的，但是会比较麻烦，因此作者根据实际需要开发了一款脚本scan_adsorption_energy用于自动完成这个过程。脚本使用Python编写，需要numpy和matplotlib第三方库。 我们首先算好一个吸附例子得到CONTCAR,这个可以让我们得到吸附分子的元素信息和理想的吸附高度。如下图，吸附的Li是第97号，也是最后一个原子，接着就可以变换这个结构得到不同的吸附结构。 </p>
-<p>脚本可以在我的Github仓库下载(<a target="_blank" rel="noopener" href="https://github.com/tamaswells/VASP_script/blob/master/scan_adsorption_energy.py">https://github.com/tamaswells/VASP_script/blob/master/scan_adsorption_energy.py</a>).</p>
-<p>4、nMoldyn-3</p>
-<p>We present a new implementation of the program nMoldyn, which has been developed for the computation and decomposition of neutron scattering intensities from Molecular Dynamics trajectories<br>.&#x2F;nMOLDYNStart.py</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/khinsen/nMOLDYN3/">https://github.com/khinsen/nMOLDYN3/</a></p>
-<ol start="5">
-<li>Modemap</li>
-</ol>
-<p> <a target="_blank" rel="noopener" href="https://github.com/JMSkelton/ModeMap/tree/master">https://github.com/JMSkelton/ModeMap/tree/master</a></p>
-<p>典型的用法包括三到四个步骤，实施一系列短程序：</p>
-<ul>
-<li><p>准备一系列结构，这些结构沿着一个（1D映射）或两个（2D映射）声子模式，在一系列的幅度上“冻结”（ModeMap.py）。</p>
-</li>
-<li><p>在这些结构上运行单点能量计算，并提取总能量。提供了一个适用于维也纳第一性原理模拟软件包（VASP）代码的基本脚本（ExtractTotalEnergies.py）。</p>
-</li>
-<li><p>对计算结果进行后处理，以生成势能表面图（ModeMap_PostProcess.py）。</p>
-</li>
-<li><p>如果需要，可以将计算出的势能表面拟合成多项式函数，以便进一步分析（ModeMap_PolynomialFit.py）。</p>
-</li>
-<li><p>再次，如果需要，通过使用拟合的势能面作为输入，进行进一步的后处理，使用1D薛定谔求解器。由J. Buckeridge（UCL）编写的Fortran代码在1DSchrodingerSolver中提供。该代码使用傅里叶方法获得非简谐势中的特征值和特征向量，并确定一个有效的重正化（简谐）频率，以再现其在给定温度下对热力学分区函数的贡献。由J. M. Frost编写的TISH代码可以与多项式拟合一起工作，用于研究带隙变形势能。</p>
-</li>
-</ul>
-<p>限制条件</p>
-<ol start="6">
-<li>Twister</li>
-</ol>
-<p><a target="_blank" rel="noopener" href="https://github.com/qtm-iisc/Twister/blob/main/README.md">https://github.com/qtm-iisc/Twister/blob/main/README.md</a></p>
-<p>TWISTER 是一个 Python 包，它帮助你在引入扭曲的二维材料之间找到和构造相称的莫尔超晶格。</p>
-<p>TWISTER 还可以通过 LAMMPS 接口研究使用经典力场的莫尔超晶格的结构重构。请查看 FFRelaxation&#x2F; 以获取示例。</p>
-<ul>
-<li>转角双层磷烯。</li>
-</ul>
-<p>从包含输入文件 get_ang.inp 的目录中，在终端运行以下命令：<br>python path_to_Get_Ang&#x2F;SRC&#x2F;get_ang.py</p>
-<p>输入文件的文档可以在 Documentation&#x2F; 文件夹中找到。</p>
-<p>为了找到适当的扭转角，运行 get_ang.inp 以获取一系列扭转角。</p>
-<ol>
-<li><p>如果生成了输出文件，它们将具有没有不匹配的适当扭转角。</p>
-</li>
-<li><p>会生成一个 twist.inp 文件，包含新的晶格向量和最小变形及最小超晶格面积的扭转角。运行 twister.py 获取超晶格中的原子位置。</p>
-</li>
-</ol>
-<p>每个角度对应的输出文件将以 “Angle_%angle%” 的形式写入 solutions&#x2F; 文件夹中。<br>输出的文档可以在 Documentation&#x2F; 文件夹中找到。</p>
-<p>为了可视化生成的结构，我们提供一个工具 tovasp.py，它读取 twist.inp 和 superlattice.dat 以生成 POSCAR.vasp。可以直接在 VESTA （<a target="_blank" rel="noopener" href="http://jp-minerals.org/vesta%EF%BC%89%E4%B8%AD%E8%BF%9B%E8%A1%8C%E5%8F%AF%E8%A7%86%E5%8C%96%E3%80%82">http://jp-minerals.org/vesta）中进行可视化。</a><br>python path_to_Twister&#x2F;SRC&#x2F;tovasp.py</p>
-<ol start="7">
-<li>Phasego</li>
-</ol>
-<p>附件下载：<a target="_blank" rel="noopener" href="http://dx.doi.org/10.17632/xp7gvmrxrg.1http://cpc.cs.qub.ac.uk/summaries/AEVQ_v2_0.html">http://dx.doi.org/10.17632/xp7gvmrxrg.1http://cpc.cs.qub.ac.uk/summaries/AEVQ_v2_0.html</a></p>
-<p>“Phasego 包从第一性原理计算获得的声子态密度中提取亥姆霍兹自由能。在状态方程拟合的帮助下，它在固定温度&#x2F;压力下降低了作为压力&#x2F;温度函数的吉布斯自由能。基于准谐波近似（QHA），它计算所有感兴趣结构之间可能的相边界，最后自动绘制相图。对于单相分析，Phasego 可以从数值上推导出许多属性，例如热膨胀系数、体积模量、热容、热压、Hugoniot 压力-体积-温度关系、Gruneisen 参数和 Debye 温度。为了检验它的相变分析能力，我在这里举两个例子：半导体GaN和金属Fe。对于 GaN，Phasego 自动确定并绘制了所提供的闪锌矿 (ZB)、纤锌矿 (WZ) 和岩盐 (RS) 结构之间的相边界。在 Fe 的情况下，结果表明，在高温下，电子热激发自由能校正显着改变了体心立方 (bcc)、面心立方 (fcc) 和六方密堆积 (hcp) 之间的相界结构</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1996,7 +2135,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2025</span>
+  <span itemprop="copyrightYear">2026</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
