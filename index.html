@@ -123,7 +123,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -581,7 +581,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/10/18-47-22/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/10/18-48-20/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -599,7 +599,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/05/10/18-47-22/" class="post-title-link" itemprop="url">7.3 贝里曲率计算</a>
+          <a href="/2024/05/10/18-48-20/" class="post-title-link" itemprop="url">7.3 磁性计算-vampire</a>
         </h2>
 
         <div class="post-meta-container">
@@ -610,14 +610,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2024-05-10 18:47:22" itemprop="dateCreated datePublished" datetime="2024-05-10T18:47:22+08:00">2024-05-10</time>
+      <time title="创建时间：2024-05-10 18:48:20" itemprop="dateCreated datePublished" datetime="2024-05-10T18:48:20+08:00">2024-05-10</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-10-29 16:51:23" itemprop="dateModified" datetime="2025-10-29T16:51:23+08:00">2025-10-29</time>
+      <time title="修改时间：2026-05-25 20:16:26" itemprop="dateModified" datetime="2026-05-25T20:16:26+08:00">2026-05-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -639,29 +639,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="vaspberry-使用教程"><a href="#vaspberry-使用教程" class="headerlink" title="vaspberry 使用教程"></a>vaspberry 使用教程</h1><p>贝里曲率的计算，可用于研究反常霍尔电导、拓扑陈数、反常谷霍尔效应。作为一个VASP的接口程序，vaspberry程序可以使用VASP计算得到的WAVECAR，计算体系在布里渊区的贝里曲率，使用方法非常简单，参数很少，提供可视化脚本。贝里曲率的计算方法： J. Phys. Soc. Jap. 74, 1674 (2005)</p>
-<p>链接：</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/Infant83/VASPBERRY">https://github.com/Infant83/VASPBERRY</a></p>
-<h3 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h3><p>第一步： VASP的静态计算(要考虑SOC) LWAVE&#x3D;.TRUE.‍</p>
-<p>自洽关键参数：LWAVE&#x3D;.TRUE.  ISYM &#x3D; -1</p>
-<p>第二步： 在当前目录提交vaspberry的计算假设我们第一步中的KPOINTS使用的是12 * 12 * 1的参数，价带顶为18，或者我们计算第18个带的贝里曲率以及陈数，则运行命令</p>
-<p><code>./vaspberry -kx 12 -ky 12 -ii 1 -if 18</code></p>
-<p>会输出一个贝里曲率的输出文件BERRYCURV.dat 使用自带脚本contour.py，就可以显示贝里曲率了。</p>
-<p>在静态计算里面，判断价带顶和导带底<code>vaspberry -kx 1 -ky 1 -cd 1</code>可以得到VBM、CBM的序号；假设我们第一步中的KPOINTS使用的是12 * 12 * 1的参数，价带顶为18，或者我们计算第1个带-第18个带的贝里曲率以及陈数，则运行命令<code>./vaspberry -kx 12 -ky 12 -ii 1 -if 18</code></p>
-<p>计算某一条带的贝里曲率和陈数，例如第一占据价带，<code>./vaspberry -kx 12 -ky 12 -ii 18 -if 18</code></p>
-<p>若自洽为共线计算（vasp_std），则在vaspberry所在目录将自洽计算的波函数WAVECAR拷贝进来，运行<code>./vaspberry -kx 12 -ky 12 -ii 1 -if 18 -s 1</code><br>注意kx 和 ky值要与KPOINTS k点个数一致，-s 1表示共线计算,18表示价带顶</p>
-<h3 id="谷电子学"><a href="#谷电子学" class="headerlink" title="谷电子学"></a>谷电子学</h3><p>上是一个反常谷霍尔效应的例子，我们可以在第一部里渊区积分得到K和K‘附近的谷陈数（需要自己写个小脚本）。</p>
-<h3 id="量子反常霍尔效应研究"><a href="#量子反常霍尔效应研究" class="headerlink" title="量子反常霍尔效应研究"></a>量子反常霍尔效应研究</h3><p>如果是计算量子反常霍尔效应体系，可以看到输出文件最后的陈数结果，以及贝里曲率结果，不需要自己写脚本，用自带的就可以。</p>
-<h3 id="计算晶体CD-Circular-dichroism"><a href="#计算晶体CD-Circular-dichroism" class="headerlink" title="计算晶体CD(Circular dichroism)"></a>计算晶体CD(Circular dichroism)</h3><ol>
-<li>vasp，先优化几何，再计算出WAVECAR和BAND.dat（能带计算必须要SOC）。</li>
-<li>执行“vaspberry -kx 1 -ky 1 -cd 1”可以得到VBM、CBM的序号，比如示例数据里是240~241。</li>
-<li>计算 VBM-5 ~ VBM 到 CBM ~ CBM+5 之间的25个跃迁（可以加多，更精确）（可以bash做，参照batch_CD.sh）。</li>
-<li>把能带i、j间跃迁的CIRC_DICHROISM.dat的kx、ky、kz，对应到BAND_R_SOC.dat中能带i、j在kx、ky、kz处的能量差，即将selectivity对应到了E。</li>
-<li>将所有跃迁的 selectivity-E 关系叠加。</li>
-</ol>
-<h3 id="实空间波函数"><a href="#实空间波函数" class="headerlink" title="实空间波函数"></a>实空间波函数</h3><p>[ex, to plot 18-th state with 1-st k-point (if it is gamma point), with 40x40x40 grid for density file]</p>
-<p><code>./vaspberry -wf 18 -k 1 -ng 40,40,40</code></p>
-
+          
       
     </div>
 
@@ -705,7 +683,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/05/10/18-47-21/" class="post-title-link" itemprop="url">7.3 DMFT</a>
+          <a href="/2024/05/10/18-47-21/" class="post-title-link" itemprop="url">7.4 DMFT</a>
         </h2>
 
         <div class="post-meta-container">
@@ -723,7 +701,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2025-06-30 11:56:38" itemprop="dateModified" datetime="2025-06-30T11:56:38+08:00">2025-06-30</time>
+      <time title="修改时间：2026-05-25 20:15:22" itemprop="dateModified" datetime="2026-05-25T20:15:22+08:00">2026-05-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -746,6 +724,9 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="DFT-DMFT-calculations-vasp6-5"><a href="#DFT-DMFT-calculations-vasp6-5" class="headerlink" title="DFT+DMFT calculations(vasp6.5)"></a>DFT+DMFT calculations(vasp6.5)</h1><p><a target="_blank" rel="noopener" href="https://www-.vasp.at/wiki/index.php/DFT%2BDMFT_calculations#">https://www-.vasp.at/wiki/index.php/DFT%2BDMFT_calculations#</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/uq5crQCFMG6mk4tSH5YD6Q">https://mp.weixin.qq.com/s/uq5crQCFMG6mk4tSH5YD6Q</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/WWnkcU8r9ultqE3kQeKy4g">https://mp.weixin.qq.com/s/WWnkcU8r9ultqE3kQeKy4g</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/RtcqP_fUC0S-JTtI6ob2dQ">https://mp.weixin.qq.com/s/RtcqP_fUC0S-JTtI6ob2dQ</a></p>
 
       
     </div>
